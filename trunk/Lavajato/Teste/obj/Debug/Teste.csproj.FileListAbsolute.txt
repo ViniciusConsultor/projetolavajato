@@ -1,0 +1,10 @@
+C:\Projetos\Lavajato\Teste\bin\Debug\Teste.exe.config
+C:\Projetos\Lavajato\Teste\bin\Debug\Teste.exe
+C:\Projetos\Lavajato\Teste\bin\Debug\Teste.pdb
+C:\Projetos\Lavajato\Teste\bin\Debug\DataAccess.dll
+C:\Projetos\Lavajato\Teste\bin\Debug\DomainModel.dll
+C:\Projetos\Lavajato\Teste\bin\Debug\DomainModel.pdb
+C:\Projetos\Lavajato\Teste\bin\Debug\DataAccess.pdb
+C:\Projetos\Lavajato\Teste\obj\Debug\ResolveAssemblyReference.cache
+C:\Projetos\Lavajato\Teste\obj\Debug\Teste.exe
+C:\Projetos\Lavajato\Teste\obj\Debug\Teste.pdb

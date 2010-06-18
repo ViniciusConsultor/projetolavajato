@@ -1,0 +1,5 @@
+C:\Projetos\Lavajato\DomainModel\bin\Debug\DomainModel.dll
+C:\Projetos\Lavajato\DomainModel\bin\Debug\DomainModel.pdb
+C:\Projetos\Lavajato\DomainModel\obj\Debug\ResolveAssemblyReference.cache
+C:\Projetos\Lavajato\DomainModel\obj\Debug\DomainModel.dll
+C:\Projetos\Lavajato\DomainModel\obj\Debug\DomainModel.pdb
