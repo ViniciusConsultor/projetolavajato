@@ -1,0 +1,4 @@
+﻿1- Terminar contar a pagar.
+2- Fazer alteração para inserir por data
+3- Finalizar relatorios.
+
