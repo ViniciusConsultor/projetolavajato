@@ -7,18 +7,13 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace HenryCorporation.Lavajato.Presentation
+namespace HenryCorporation.Lavajato.Presentation.ContasAPagar
 {
-    public partial class frmContasAPagar : Form
+    public partial class frmContaPagarPesquisa : Form
     {
-        public frmContasAPagar()
+        public frmContaPagarPesquisa()
         {
             InitializeComponent();
-        }
-
-        private void btnSalvar_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }

@@ -42,12 +42,13 @@
             this.subTiposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.promoçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.servicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.ordemServiçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.caixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ordemServiçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ordemServicoAbertoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.opõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.entradaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.retiradaToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.lavadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contasAPagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contasAReceberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -161,6 +162,7 @@
             this.promoçõesToolStripMenuItem.Name = "promoçõesToolStripMenuItem";
             this.promoçõesToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
             this.promoçõesToolStripMenuItem.Text = "Cadastro de Convênios";
+            this.promoçõesToolStripMenuItem.Click += new System.EventHandler(this.promoçõesToolStripMenuItem_Click);
             // 
             // servicoToolStripMenuItem
             // 
@@ -173,19 +175,19 @@
             this.servicoToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.servicoToolStripMenuItem.Text = "Servico";
             // 
-            // ordemServiçoToolStripMenuItem
-            // 
-            this.ordemServiçoToolStripMenuItem.Name = "ordemServiçoToolStripMenuItem";
-            this.ordemServiçoToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.ordemServiçoToolStripMenuItem.Text = "Ordem Serviço";
-            this.ordemServiçoToolStripMenuItem.Click += new System.EventHandler(this.ordemServiçoToolStripMenuItem_Click);
-            // 
             // caixaToolStripMenuItem
             // 
             this.caixaToolStripMenuItem.Name = "caixaToolStripMenuItem";
             this.caixaToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.caixaToolStripMenuItem.Text = "Caixa";
             this.caixaToolStripMenuItem.Click += new System.EventHandler(this.caixaToolStripMenuItem_Click);
+            // 
+            // ordemServiçoToolStripMenuItem
+            // 
+            this.ordemServiçoToolStripMenuItem.Name = "ordemServiçoToolStripMenuItem";
+            this.ordemServiçoToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.ordemServiçoToolStripMenuItem.Text = "Ordem Serviço";
+            this.ordemServiçoToolStripMenuItem.Click += new System.EventHandler(this.ordemServiçoToolStripMenuItem_Click);
             // 
             // ordemServicoAbertoToolStripMenuItem
             // 
@@ -197,7 +199,8 @@
             // 
             this.opõesToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.entradaToolStripMenuItem1,
-            this.retiradaToolStripMenuItem1});
+            this.retiradaToolStripMenuItem1,
+            this.lavadosToolStripMenuItem});
             this.opõesToolStripMenuItem.Name = "opõesToolStripMenuItem";
             this.opõesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.opõesToolStripMenuItem.Text = "Opões";
@@ -205,16 +208,23 @@
             // entradaToolStripMenuItem1
             // 
             this.entradaToolStripMenuItem1.Name = "entradaToolStripMenuItem1";
-            this.entradaToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.entradaToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
             this.entradaToolStripMenuItem1.Text = "1- Entrada";
             this.entradaToolStripMenuItem1.Click += new System.EventHandler(this.entradaToolStripMenuItem1_Click);
             // 
             // retiradaToolStripMenuItem1
             // 
             this.retiradaToolStripMenuItem1.Name = "retiradaToolStripMenuItem1";
-            this.retiradaToolStripMenuItem1.Size = new System.Drawing.Size(152, 22);
+            this.retiradaToolStripMenuItem1.Size = new System.Drawing.Size(139, 22);
             this.retiradaToolStripMenuItem1.Text = "2- Retirada";
             this.retiradaToolStripMenuItem1.Click += new System.EventHandler(this.retiradaToolStripMenuItem1_Click);
+            // 
+            // lavadosToolStripMenuItem
+            // 
+            this.lavadosToolStripMenuItem.Name = "lavadosToolStripMenuItem";
+            this.lavadosToolStripMenuItem.Size = new System.Drawing.Size(139, 22);
+            this.lavadosToolStripMenuItem.Text = "3- Lavados";
+            this.lavadosToolStripMenuItem.Click += new System.EventHandler(this.lavadosToolStripMenuItem_Click);
             // 
             // relatóriosToolStripMenuItem
             // 
@@ -297,6 +307,7 @@
         private System.Windows.Forms.ToolStripMenuItem opõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem entradaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem retiradaToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem lavadosToolStripMenuItem;
     }
 }
 

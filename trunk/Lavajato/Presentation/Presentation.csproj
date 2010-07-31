@@ -50,6 +50,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Cliente\frmConvenios.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Cliente\frmConvenios.Designer.cs">
+      <DependentUpon>frmConvenios.cs</DependentUpon>
+    </Compile>
     <Compile Include="Cliente\frmCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -61,6 +67,12 @@
     </Compile>
     <Compile Include="Cliente\frmClientePesquisa.Designer.cs">
       <DependentUpon>frmClientePesquisa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ContasAPagar\frmContaPagarPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContasAPagar\frmContaPagarPesquisa.Designer.cs">
+      <DependentUpon>frmContaPagarPesquisa.cs</DependentUpon>
     </Compile>
     <Compile Include="ContasAPagar\frmContasAPagar.cs">
       <SubType>Form</SubType>
@@ -97,12 +109,20 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="Cliente\frmConvenios.resx">
+      <DependentUpon>frmConvenios.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Cliente\frmCliente.resx">
       <DependentUpon>frmCliente.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Cliente\frmClientePesquisa.resx">
       <DependentUpon>frmClientePesquisa.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContasAPagar\frmContaPagarPesquisa.resx">
+      <DependentUpon>frmContaPagarPesquisa.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ContasAPagar\frmContasAPagar.resx">
@@ -145,6 +165,10 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Servicos\frmOrdemServico.resx">
       <DependentUpon>frmOrdemServico.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Servicos\frmOrdensAbertas.resx">
+      <DependentUpon>frmOrdensAbertas.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Servicos\frmRetirada.resx">
@@ -214,6 +238,12 @@
     </Compile>
     <Compile Include="Servicos\frmOrdemServico.Designer.cs">
       <DependentUpon>frmOrdemServico.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Servicos\frmOrdensAbertas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Servicos\frmOrdensAbertas.Designer.cs">
+      <DependentUpon>frmOrdensAbertas.cs</DependentUpon>
     </Compile>
     <Compile Include="Servicos\frmRetirada.cs">
       <SubType>Form</SubType>
@@ -1235,6 +1265,7 @@
     <Content Include="icons\zoom.png" />
     <Content Include="icons\zoom_in.png" />
     <Content Include="icons\zoom_out.png" />
+    <Content Include="Pendencias.txt" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">

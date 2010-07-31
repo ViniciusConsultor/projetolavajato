@@ -15,7 +15,7 @@ namespace HenryCorporation.Lavajato.Presentation
     public partial class frmOrdemServico : login
     {
         private ClienteBL clienteBL = new ClienteBL();
-        private Cliente cliente = new Cliente();
+        private DomainModel.Cliente cliente = new DomainModel.Cliente();
         private Servico servico = new Servico();
         private ServicoItem servicoItem = new ServicoItem();
         private ServicoBL servicoBL = new ServicoBL();
@@ -61,7 +61,7 @@ namespace HenryCorporation.Lavajato.Presentation
             }
         }
 
-        private void CarregaCliente(Cliente cliente)
+        private void CarregaCliente(DomainModel.Cliente cliente)
         {
             placa.Text = this.cliente.Placa;
             veiculo.Text = this.cliente.Veiculo;
@@ -70,7 +70,7 @@ namespace HenryCorporation.Lavajato.Presentation
             corVeiculo.Text = this.cliente.Cor;
         }
 
-        private Cliente ProcuraCliente(Cliente cliente)
+        private DomainModel.Cliente ProcuraCliente(DomainModel.Cliente cliente)
         {
             return clienteBL.ByPlaca(cliente);
         }
@@ -363,7 +363,7 @@ namespace HenryCorporation.Lavajato.Presentation
         {
            
             this.servico = new Servico();
-            this.cliente = new Cliente();
+            this.cliente = new DomainModel.Cliente();
             placa.Text = "";
             veiculo.Text = "";
             telefone.Text = "";
