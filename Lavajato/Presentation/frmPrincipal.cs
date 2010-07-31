@@ -77,5 +77,17 @@ namespace Presentation
             frmEntrada frmEntra = new frmEntrada();
             frmEntra.ShowDialog();
         }
+
+        private void lavadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmOrdensAbertas frmAbertas = new frmOrdensAbertas();
+            frmAbertas.ShowDialog();
+        }
+
+        private void promoçõesToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmConvenios frmConvenios = new frmConvenios();
+            frmConvenios.ShowDialog();
+        }
     }
 }

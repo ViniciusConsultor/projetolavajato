@@ -136,7 +136,6 @@
             this.tipoDocumento.Name = "tipoDocumento";
             this.tipoDocumento.Size = new System.Drawing.Size(299, 21);
             this.tipoDocumento.TabIndex = 12;
-            //this.tipoDocumento.SelectedIndexChanged += new System.EventHandler(this.comboBox2_SelectedIndexChanged);
             // 
             // label6
             // 
@@ -172,7 +171,6 @@
             this.credor.Name = "credor";
             this.credor.Size = new System.Drawing.Size(424, 21);
             this.credor.TabIndex = 8;
-            //this.credor.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
             // 
             // label4
             // 
@@ -264,7 +262,6 @@
             this.groupBox2.Size = new System.Drawing.Size(482, 72);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
-            //this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
             // 
             // saldoPaga
             // 
@@ -293,7 +290,6 @@
             this.valorPago.Name = "valorPago";
             this.valorPago.Size = new System.Drawing.Size(88, 22);
             this.valorPago.TabIndex = 19;
-            //this.valorPago.TextChanged += new System.EventHandler(this.textBox6_TextChanged);
             // 
             // label12
             // 
@@ -350,7 +346,6 @@
             this.dataPagamento.Name = "dataPagamento";
             this.dataPagamento.Size = new System.Drawing.Size(159, 20);
             this.dataPagamento.TabIndex = 16;
-            //this.dataPagamento.ValueChanged += new System.EventHandler(this.dateTimePicker3_ValueChanged);
             // 
             // btnSalvar
             // 
@@ -360,7 +355,7 @@
             this.btnSalvar.TabIndex = 2;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
-            //this.btnSalvar.Click += new System.EventHandler(this.button1_Click);
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // btnCancelar
             // 
@@ -379,7 +374,6 @@
             this.btnSair.TabIndex = 4;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
-            //this.btnSair.Click += new System.EventHandler(this.button3_Click);
             // 
             // textBox1
             // 
@@ -411,7 +405,6 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmContasAPagar";
             this.Text = "Contas a Pagar";
-            //this.Load += new System.EventHandler(this.frmContasAPagar_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

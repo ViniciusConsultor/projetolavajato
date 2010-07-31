@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using HenryCorporation.Lavajato.BusinessLogic;
 using HenryCorporation.Lavajato.Presentation;
+using HenryCorporation.Lavajato.DomainModel;
 
 namespace HenryCorporation.Lavajato.Presentation
 {
@@ -41,7 +42,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void grdClientes_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            HenryCorporation.Lavajato.DomainModel.Cliente cliente = new HenryCorporation.Lavajato.DomainModel.Cliente();
+            Cliente cliente = new Cliente();
             cliente.ID = int.Parse(grdClientes.Rows[grdClientes.CurrentRow.Index].Cells[0].Value.ToString());
             frmCliente frmCliente = new frmCliente(cliente);
             frmCliente.ShowDialog();

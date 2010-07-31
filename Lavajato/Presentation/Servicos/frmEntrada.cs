@@ -18,7 +18,14 @@ namespace HenryCorporation.Lavajato.Presentation
         public frmEntrada()
         {
             InitializeComponent();
+            SetOperador();
         }
+
+        private void SetOperador()
+        {
+            lblOperador.Text = this.Usuario.Nome;
+        }
+
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
@@ -48,6 +55,26 @@ namespace HenryCorporation.Lavajato.Presentation
         private void btnCancelar_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void valor_Enter(object sender, EventArgs e)
+        {
+            valor.BackColor = Color.Yellow;
+        }
+
+        private void valor_Leave(object sender, EventArgs e)
+        {
+            valor.BackColor = Color.White;
+        }
+
+        private void descricao_Enter(object sender, EventArgs e)
+        {
+            descricao.BackColor = Color.Yellow;
+        }
+
+        private void descricao_Leave(object sender, EventArgs e)
+        {
+            descricao.BackColor = Color.White;
         }
     }
 }

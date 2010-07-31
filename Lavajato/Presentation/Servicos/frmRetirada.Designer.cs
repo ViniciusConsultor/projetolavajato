@@ -72,7 +72,7 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(66, 105);
+            this.btnSalvar.Location = new System.Drawing.Point(65, 130);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 3;
@@ -82,7 +82,7 @@
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(147, 105);
+            this.btnCancelar.Location = new System.Drawing.Point(146, 130);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 4;
@@ -100,8 +100,9 @@
             // descricao
             // 
             this.descricao.Location = new System.Drawing.Point(65, 79);
+            this.descricao.Multiline = true;
             this.descricao.Name = "descricao";
-            this.descricao.Size = new System.Drawing.Size(266, 20);
+            this.descricao.Size = new System.Drawing.Size(266, 49);
             this.descricao.TabIndex = 2;
             this.descricao.TextChanged += new System.EventHandler(this.descricao_TextChanged);
             this.descricao.Leave += new System.EventHandler(this.descricao_Leave);
@@ -121,9 +122,9 @@
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(41, 56);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(21, 13);
+            this.label1.Size = new System.Drawing.Size(24, 13);
             this.label1.TabIndex = 7;
-            this.label1.Text = "R$";
+            this.label1.Text = "R$:";
             // 
             // label3
             // 
@@ -145,7 +146,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(335, 133);
+            this.ClientSize = new System.Drawing.Size(335, 158);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.descricao);
             this.Controls.Add(this.valor);
@@ -159,6 +160,7 @@
             this.Name = "frmRetirada";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Retirada/Sangria";
+            this.Load += new System.EventHandler(this.frmRetirada_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

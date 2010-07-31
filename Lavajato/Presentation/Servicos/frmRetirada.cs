@@ -84,5 +84,10 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             descricao.BackColor = Color.White;
         }
+
+        private void frmRetirada_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

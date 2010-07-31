@@ -42,7 +42,7 @@
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(-2, 79);
+            this.label3.Location = new System.Drawing.Point(1, 79);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(58, 13);
             this.label3.TabIndex = 18;
@@ -51,9 +51,13 @@
             // descricao
             // 
             this.descricao.Location = new System.Drawing.Point(59, 76);
+            this.descricao.MaxLength = 250;
+            this.descricao.Multiline = true;
             this.descricao.Name = "descricao";
-            this.descricao.Size = new System.Drawing.Size(266, 20);
+            this.descricao.Size = new System.Drawing.Size(266, 49);
             this.descricao.TabIndex = 12;
+            this.descricao.Leave += new System.EventHandler(this.descricao_Leave);
+            this.descricao.Enter += new System.EventHandler(this.descricao_Enter);
             // 
             // valor
             // 
@@ -61,19 +65,21 @@
             this.valor.Name = "valor";
             this.valor.Size = new System.Drawing.Size(139, 20);
             this.valor.TabIndex = 10;
+            this.valor.Leave += new System.EventHandler(this.valor_Leave);
+            this.valor.Enter += new System.EventHandler(this.valor_Enter);
             // 
             // label1
             // 
             this.label1.AutoSize = true;
             this.label1.Location = new System.Drawing.Point(35, 53);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(21, 13);
+            this.label1.Size = new System.Drawing.Size(24, 13);
             this.label1.TabIndex = 17;
-            this.label1.Text = "R$";
+            this.label1.Text = "R$:";
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(172, 102);
+            this.btnCancelar.Location = new System.Drawing.Point(172, 131);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(75, 23);
             this.btnCancelar.TabIndex = 16;
@@ -83,7 +89,7 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(91, 102);
+            this.btnSalvar.Location = new System.Drawing.Point(91, 131);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(75, 23);
             this.btnSalvar.TabIndex = 13;
@@ -124,7 +130,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(327, 126);
+            this.ClientSize = new System.Drawing.Size(327, 161);
             this.Controls.Add(this.label3);
             this.Controls.Add(this.descricao);
             this.Controls.Add(this.valor);
