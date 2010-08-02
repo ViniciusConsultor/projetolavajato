@@ -68,5 +68,17 @@ namespace HenryCorporation.Lavajato.Operacional
             }
             return m;
         }
+
+        public static string HoraEntrada(DateTime horaEntrada)
+        {
+            return horaEntrada.Year + "-" + horaEntrada.Month + "-" + horaEntrada.Day + " " + horaEntrada.Hour + ":" + horaEntrada.Minute + ":" + horaEntrada.Second;
+        }
+
+        public static string HoraSaida(DateTime horaSaida)
+        {
+            return horaSaida.Year + "-" + horaSaida.Month + "-" + horaSaida.Day + " " + horaSaida.Hour + ":" + horaSaida.Minute + ":" + horaSaida.Second;
+        }
+
+
     }
 }
