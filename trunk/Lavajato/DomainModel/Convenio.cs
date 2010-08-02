@@ -5,20 +5,13 @@ using System.Text;
 
 namespace HenryCorporation.Lavajato.DomainModel
 {
-    public class Cliente
+    public class Convenio
     {
-        public Cliente()
-        {
-
-        }
-
         public int ID { get; set; }
-        public string Nome { get; set; }
-        public string Cor { get; set; }
-        public string Placa { get; set; }
-        public string Telefone { get; set; }
-        public string Veiculo { get; set; }
+        public decimal Valor{get;set;}
+        public int Delete { get; set; }
 
+        public string Nome { get; set; }
         public string Endereco { get; set; }
         public string Numero { get; set; }
         public string Bairro { get; set; }
@@ -27,16 +20,13 @@ namespace HenryCorporation.Lavajato.DomainModel
         public string UF { get; set; }
         public string Email { get; set; }
         public string Celular { get; set; }
+        public string Telefone { get; set; }
         public string Cpf { get; set; }
         public string RG { get; set; }
-        public bool Delete { get; set; }
-
-        private Convenio convenio = new Convenio();
-
-        public Convenio Convenio
+        
+        public Convenio()
         {
-            get { return convenio; }
-            set { convenio = value; }
-        }
+
+        }       
     }
 }
