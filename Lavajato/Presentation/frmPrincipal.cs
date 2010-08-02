@@ -89,5 +89,17 @@ namespace Presentation
             frmConvenios frmConvenios = new frmConvenios();
             frmConvenios.ShowDialog();
         }
+
+        private void contasAPagarToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmContasAPagar frmContasAPagar = new frmContasAPagar();
+            frmContasAPagar.ShowDialog();
+        }
+
+        private void ordemServicoAbertoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmOrdensAbertas frmAbertas = new frmOrdensAbertas();
+            frmAbertas.ShowDialog();
+        }
     }
 }

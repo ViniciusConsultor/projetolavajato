@@ -132,6 +132,13 @@
             // tipoDocumento
             // 
             this.tipoDocumento.FormattingEnabled = true;
+            this.tipoDocumento.Items.AddRange(new object[] {
+            "Duplicada",
+            "Boleto",
+            "Cheque",
+            "Promissoria",
+            "Nota Fiscal",
+            "Outros"});
             this.tipoDocumento.Location = new System.Drawing.Point(177, 110);
             this.tipoDocumento.Name = "tipoDocumento";
             this.tipoDocumento.Size = new System.Drawing.Size(299, 21);
@@ -365,6 +372,7 @@
             this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSair
             // 
@@ -374,6 +382,7 @@
             this.btnSair.TabIndex = 4;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // textBox1
             // 

@@ -39,7 +39,7 @@
             this.tabManutencao = new System.Windows.Forms.TabPage();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.convênio = new System.Windows.Forms.ComboBox();
+            this.convenio = new System.Windows.Forms.ComboBox();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -197,7 +197,7 @@
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.convênio);
+            this.groupBox3.Controls.Add(this.convenio);
             this.groupBox3.Location = new System.Drawing.Point(6, 235);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(312, 45);
@@ -205,15 +205,15 @@
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Convênio";
             // 
-            // convênio
+            // convenio
             // 
-            this.convênio.FormattingEnabled = true;
-            this.convênio.Location = new System.Drawing.Point(5, 15);
-            this.convênio.Name = "convênio";
-            this.convênio.Size = new System.Drawing.Size(303, 21);
-            this.convênio.TabIndex = 12;
-            this.convênio.Leave += new System.EventHandler(this.convênio_Leave);
-            this.convênio.Enter += new System.EventHandler(this.convênio_Enter);
+            this.convenio.FormattingEnabled = true;
+            this.convenio.Location = new System.Drawing.Point(5, 15);
+            this.convenio.Name = "convenio";
+            this.convenio.Size = new System.Drawing.Size(303, 21);
+            this.convenio.TabIndex = 12;
+            this.convenio.Leave += new System.EventHandler(this.convênio_Leave);
+            this.convenio.Enter += new System.EventHandler(this.convênio_Enter);
             // 
             // btnSair
             // 
@@ -577,7 +577,7 @@
         private System.Windows.Forms.DataGridView grdClientes;
         private System.Windows.Forms.TabPage tabManutencao;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox convênio;
+        private System.Windows.Forms.ComboBox convenio;
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnExcluir;

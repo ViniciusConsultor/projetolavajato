@@ -266,7 +266,6 @@
             this.btnConcluirVenda.Text = "Concluir  Venda    (F2)";
             this.btnConcluirVenda.UseVisualStyleBackColor = true;
             this.btnConcluirVenda.Click += new System.EventHandler(this.btnConcluirVenda_Click);
-            //this.btnConcluirVenda.Enter += new System.EventHandler(this.btnConcluirVenda_Enter);
             this.btnConcluirVenda.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnConcluirVenda_KeyDown);
             // 
             // btnExcluir
@@ -327,6 +326,7 @@
             this.ordemServico.Name = "ordemServico";
             this.ordemServico.Size = new System.Drawing.Size(240, 31);
             this.ordemServico.TabIndex = 112;
+            this.ordemServico.Leave += new System.EventHandler(this.ordemServico_Leave);
             // 
             // chbLavado
             // 
@@ -578,7 +578,6 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "frmCaixa";
             this.Load += new System.EventHandler(this.frmCaixa_Load);
-            //this.Enter += new System.EventHandler(this.frmCaixa_Enter);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCaixa_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.grdServico)).EndInit();
             this.groupBox1.ResumeLayout(false);
