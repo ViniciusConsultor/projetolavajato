@@ -12,18 +12,18 @@ namespace HenryCorporation.Lavajato.DomainModel
         public string Serie{ get; set; }
         public string Documento{ get; set; }
         public DateTime DataDocomento{ get; set; }
-        public Cliente Cliente{ get; set; }
+        public Credor Credor{get;set;}
         public DateTime DataVencimento{ get; set; }
         public string TipoDocumento{ get; set; }
         public string Obs{ get; set; }
         public DateTime DataPagamento{ get; set; }
         public DateTime AtrasoDias{ get; set; }
-        public string ValorPago{ get; set; }
-        public string SaldoAPagar { get; set; }
+        public decimal ValorPago{ get; set; }
+        public decimal SaldoAPagar { get; set; }
 
         public ContaPagar()
         {
-            Cliente = new Cliente();
+            Credor = new Credor();
         }
     }
 }
