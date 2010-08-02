@@ -194,6 +194,7 @@
             this.ordemServicoAbertoToolStripMenuItem.Name = "ordemServicoAbertoToolStripMenuItem";
             this.ordemServicoAbertoToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
             this.ordemServicoAbertoToolStripMenuItem.Text = "Ordem Servico Aberto";
+            this.ordemServicoAbertoToolStripMenuItem.Click += new System.EventHandler(this.ordemServicoAbertoToolStripMenuItem_Click);
             // 
             // opõesToolStripMenuItem
             // 
@@ -240,6 +241,7 @@
             this.contasAPagarToolStripMenuItem.Name = "contasAPagarToolStripMenuItem";
             this.contasAPagarToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.contasAPagarToolStripMenuItem.Text = "Contas a Pagar";
+            this.contasAPagarToolStripMenuItem.Click += new System.EventHandler(this.contasAPagarToolStripMenuItem_Click);
             // 
             // contasAReceberToolStripMenuItem
             // 

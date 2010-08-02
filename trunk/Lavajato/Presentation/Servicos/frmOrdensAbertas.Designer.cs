@@ -39,6 +39,7 @@
             this.grdOrdensAbertas.Name = "grdOrdensAbertas";
             this.grdOrdensAbertas.Size = new System.Drawing.Size(430, 527);
             this.grdOrdensAbertas.TabIndex = 0;
+            this.grdOrdensAbertas.DoubleClick += new System.EventHandler(this.grdOrdensAbertas_DoubleClick);
             // 
             // frmOrdensAbertas
             // 

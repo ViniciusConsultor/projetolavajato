@@ -27,6 +27,16 @@ namespace HenryCorporation.Lavajato.Presentation
             ordemServico.Focus();
         }
 
+        public frmCaixa(Servico servico)
+        {
+            InitializeComponent();
+            CarregaProdutos();
+            CarregaLavadores();
+            CarregaFormaPagamento();
+            ProcuraServico(servico.OrdemServico);
+            
+        }
+
         private void CarregaLavadores()
         {
             cmbLavador.DataSource = new UsuarioBL().GetUsuarioTipoLavador();
@@ -39,22 +49,24 @@ namespace HenryCorporation.Lavajato.Presentation
             ordemServico.Focus();
         }
 
-        private void ordemServico_Leave(object sender, EventArgs e)
+      
+
+        private void ProcuraServico(int ordemServico)
         {
-            if (this.ordemServico.TextLength == 0)
+            if (ordemServico == 0)
                 return;
 
-            this.servico.OrdemServico = int.Parse( this.ordemServico.Text);
+            this.servico.OrdemServico = ordemServico;
             this.servico = servicoBL.ByOrdemServico(servico);
 
-            if (ExisteServico())
+            if (!ExisteServico())
             {
                 MessageBox.Show("Nenhum ordem servico aberta com esse número!", "Atenção");
                 LimpaCampos();
                 return;
             }
             else
-            { 
+            {
                 //ordem de serviço avulça
             }
 
@@ -431,6 +443,13 @@ namespace HenryCorporation.Lavajato.Presentation
         private void btnVendaAvulca_KeyUp(object sender, KeyEventArgs e)
         {
             ChamaFuncoesDeVenda(e);
+        }
+
+        private void ordemServico_Leave(object sender, EventArgs e)
+        {
+            int ordServico;
+            if (int.TryParse(this.ordemServico.Text, out ordServico))
+                ProcuraServico(ordServico);
         }
         
     }

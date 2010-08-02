@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using HenryCorporation.Lavajato.BusinessLogic;
+using HenryCorporation.Lavajato.DomainModel;
 
 namespace HenryCorporation.Lavajato.Presentation
 {
@@ -14,14 +15,14 @@ namespace HenryCorporation.Lavajato.Presentation
     {
 
         private ClienteBL clienteBL = new ClienteBL();
-        private HenryCorporation.Lavajato.DomainModel.Cliente cliente = new HenryCorporation.Lavajato.DomainModel.Cliente();
+        private Cliente cliente = new Cliente();
         
         public frmCliente()
         {
             InitializeComponent();
         }
 
-        public frmCliente(HenryCorporation.Lavajato.DomainModel.Cliente cliente)
+        public frmCliente(Cliente cliente)
         {
             InitializeComponent();
             this.cliente = cliente;
@@ -34,6 +35,16 @@ namespace HenryCorporation.Lavajato.Presentation
         private void frmCliente_Load(object sender, EventArgs e)
         {
             CarregaClientesCadastrados();
+            CarregaConvenioDosClientes();
+        }
+
+        private void CarregaConvenioDosClientes()
+        {
+            ConvenioBL convenioBL = new ConvenioBL();
+            convenio.DataSource = convenioBL.GetAll();
+            convenio.DisplayMember = "Nome";
+            convenio.ValueMember = "ID";
+
         }
 
         private void CarregaClientesCadastrados()
@@ -43,14 +54,14 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void placaPesquisa_TextChanged(object sender, EventArgs e)
         {
-            HenryCorporation.Lavajato.DomainModel.Cliente cliente = new HenryCorporation.Lavajato.DomainModel.Cliente();
+            Cliente cliente = new Cliente();
             cliente.Placa = placaPesquisa.Text;
             grdClientes.DataSource = clienteBL.ByPlacas(cliente);
         }
 
         private void nomePesquisa_TextChanged(object sender, EventArgs e)
         {
-            HenryCorporation.Lavajato.DomainModel.Cliente cliente = new HenryCorporation.Lavajato.DomainModel.Cliente();
+            Cliente cliente = new Cliente();
             cliente.Nome = nomePesquisa.Text;
             grdClientes.DataSource = clienteBL.ByName (cliente);
         }
@@ -63,7 +74,7 @@ namespace HenryCorporation.Lavajato.Presentation
             tabClientes.SelectedTab = tabManutencao;
         }
 
-        private void CarregaCampos(HenryCorporation.Lavajato.DomainModel.Cliente cliente)
+        private void CarregaCampos(Cliente cliente)
         {
             placa.Text = cliente.Placa;
             cor.Text = cliente.Cor;
@@ -79,7 +90,7 @@ namespace HenryCorporation.Lavajato.Presentation
             celular.Text = cliente.Celular;
         }
 
-        private HenryCorporation.Lavajato.DomainModel.Cliente ProcuraCliente(HenryCorporation.Lavajato.DomainModel.Cliente cliente)
+        private Cliente ProcuraCliente(Cliente cliente)
         {
             return clienteBL.ByID(cliente);
         }
@@ -137,6 +148,8 @@ namespace HenryCorporation.Lavajato.Presentation
             cliente.Bairro = bairro.Text;
             cliente.Telefone = fone.Text;
             cliente.Celular = celular.Text;
+            cliente.Convenio = new ConvenioBL().ByID(Convert.ToInt32(this.convenio.SelectedValue.ToString()));
+            
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -341,12 +354,12 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void convênio_Enter(object sender, EventArgs e)
         {
-            convênio.BackColor = Color.Yellow;
+            convenio.BackColor = Color.Yellow;
         }
 
         private void convênio_Leave(object sender, EventArgs e)
         {
-            convênio.BackColor = Color.White;
+            convenio.BackColor = Color.White;
         }
 
         private void veiculo_Enter(object sender, EventArgs e)

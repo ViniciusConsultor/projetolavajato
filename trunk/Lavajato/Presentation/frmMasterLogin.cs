@@ -23,16 +23,16 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnLogar_Click(object sender, EventArgs e)
         {
-            if ((string.IsNullOrEmpty(login.Text) || 
-                string.IsNullOrEmpty(password.Text)))
-            {
-                MessageBox.Show("Favor inserir nome e senha", "Preencher todos os campos");
-                return;
-            }
+            //if ((string.IsNullOrEmpty(login.Text) || 
+            //    string.IsNullOrEmpty(password.Text)))
+            //{
+            //    MessageBox.Show("Favor inserir nome e senha", "Preencher todos os campos");
+            //    return;
+            //}
 
             HenryCorporation.Lavajato.DomainModel.Usuario user = new HenryCorporation.Lavajato.DomainModel.Usuario();
-            user.Login = login.Text;
-            user.Password = password.Text;
+            user.Login = "loginteste";//login.Text;
+            user.Password = "senhateste";//password.Text;
             this.Usuario= user;
 
             if (this.IsAutenticado)
