@@ -13,6 +13,7 @@ namespace HenryCorporation.Lavajato.DomainModel
         public string Representante { get; set; }
         public string Email { get; set; }
         public string Site { get; set; }
+        public string TipoPessoa { get; set; }
         private Pessoa pessoa = new Pessoa();
         public int Delete { get; set; }
 

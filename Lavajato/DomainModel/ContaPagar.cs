@@ -21,6 +21,17 @@ namespace HenryCorporation.Lavajato.DomainModel
         public decimal ValorPago{ get; set; }
         public decimal SaldoAPagar { get; set; }
 
+        public enum TipoPesquisa 
+        { 
+            VencendoHoje,
+            DataVencimento,
+            MostrarTodos,
+            Pagos,
+            Documento,
+            RazaoSocial,
+            DataDocumento,
+        }
+
         public ContaPagar()
         {
             Credor = new Credor();
