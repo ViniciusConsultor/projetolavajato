@@ -41,6 +41,7 @@
             this.procuraProdutosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.subTiposToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.promoçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.credorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.servicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.caixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ordemServiçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,6 +55,7 @@
             this.contasAReceberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.pesquisaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -76,7 +78,8 @@
             this.clientesToolStripMenuItem,
             this.usuáriosToolStripMenuItem,
             this.produtoToolStripMenuItem,
-            this.promoçõesToolStripMenuItem});
+            this.promoçõesToolStripMenuItem,
+            this.credorToolStripMenuItem});
             this.cadatToolStripMenuItem.Name = "cadatToolStripMenuItem";
             this.cadatToolStripMenuItem.Size = new System.Drawing.Size(63, 20);
             this.cadatToolStripMenuItem.Text = "Cadastro";
@@ -164,6 +167,13 @@
             this.promoçõesToolStripMenuItem.Text = "Cadastro de Convênios";
             this.promoçõesToolStripMenuItem.Click += new System.EventHandler(this.promoçõesToolStripMenuItem_Click);
             // 
+            // credorToolStripMenuItem
+            // 
+            this.credorToolStripMenuItem.Name = "credorToolStripMenuItem";
+            this.credorToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.credorToolStripMenuItem.Text = "Credor";
+            this.credorToolStripMenuItem.Click += new System.EventHandler(this.credorToolStripMenuItem_Click);
+            // 
             // servicoToolStripMenuItem
             // 
             this.servicoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -204,7 +214,7 @@
             this.lavadosToolStripMenuItem});
             this.opõesToolStripMenuItem.Name = "opõesToolStripMenuItem";
             this.opõesToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
-            this.opõesToolStripMenuItem.Text = "Opões";
+            this.opõesToolStripMenuItem.Text = "Opções";
             // 
             // entradaToolStripMenuItem1
             // 
@@ -238,6 +248,8 @@
             // 
             // contasAPagarToolStripMenuItem
             // 
+            this.contasAPagarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.pesquisaToolStripMenuItem});
             this.contasAPagarToolStripMenuItem.Name = "contasAPagarToolStripMenuItem";
             this.contasAPagarToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
             this.contasAPagarToolStripMenuItem.Text = "Contas a Pagar";
@@ -262,6 +274,13 @@
             this.toolStrip1.Size = new System.Drawing.Size(621, 25);
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
+            // 
+            // pesquisaToolStripMenuItem
+            // 
+            this.pesquisaToolStripMenuItem.Name = "pesquisaToolStripMenuItem";
+            this.pesquisaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.pesquisaToolStripMenuItem.Text = "Pesquisa";
+            this.pesquisaToolStripMenuItem.Click += new System.EventHandler(this.pesquisaToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -310,6 +329,8 @@
         private System.Windows.Forms.ToolStripMenuItem entradaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem retiradaToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem lavadosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem credorToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem pesquisaToolStripMenuItem;
     }
 }
 

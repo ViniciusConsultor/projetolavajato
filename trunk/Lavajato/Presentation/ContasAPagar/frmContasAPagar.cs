@@ -19,6 +19,7 @@ namespace HenryCorporation.Lavajato.Presentation
         public frmContasAPagar()
         {
             InitializeComponent();
+            CarregaDados();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -44,11 +45,39 @@ namespace HenryCorporation.Lavajato.Presentation
             contaPagar.Serie = serie.Text;
             contaPagar.Documento = documento.Text;
             contaPagar.DataDocomento = dataDocumento.Value;
-            contaPagar.Credor = new Credor();
+            contaPagar.Credor.ID = int.Parse(credor.SelectedValue.ToString());
             contaPagar.DataVencimento = dataDocumento.Value;
             contaPagar.TipoDocumento = tipoDocumento.SelectedItem.ToString();
             contaPagar.Obs = observacao.Text;
             contaPagar.DataPagamento = dataPagamento.Value;
         }
+
+        private void SetUpCampos()
+        {
+            notaFiscal.Text = contaPagar.NF;
+            serie.Text = contaPagar.Serie;
+            documento.Text = contaPagar.Documento;
+            dataDocumento.Value = contaPagar.DataDocomento;
+            credor.SelectedValue = contaPagar.Credor.ID;
+            dataDocumento.Value = contaPagar.DataVencimento;
+            tipoDocumento.SelectedItem = contaPagar.TipoDocumento;
+            observacao.Text = contaPagar.Obs;
+            dataPagamento.Value = contaPagar.DataPagamento;
+        }
+
+
+        private void CarregaDados()
+        {
+            credor.DataSource = new CredorBL().GetAll();
+            credor.DisplayMember = "Razao Social";
+            credor.ValueMember = "ID";
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmPesquisaContasAPagar frmPesquisaContasAPagar = new frmPesquisaContasAPagar();
+            frmPesquisaContasAPagar.ShowDialog();
+        }
+
     }
 }
