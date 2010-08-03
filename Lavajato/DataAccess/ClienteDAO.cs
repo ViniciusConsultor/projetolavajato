@@ -12,7 +12,7 @@ namespace HenryCorporation.Lavajato.DataAccess
     public class ClienteDAO : DataAccessBase
     {
         private const string sql = " SELECT [ClienteID],[Placa],[Nome],[Cor],[Telefone],[Veiculo],[Endereco],[Numero] " +
-                             " ,[Bairro],[Cep],[Cidade],[UF],[Email],[Celular],[Cpf],[RG], [Delete]" +
+                             " ,[Bairro],[Cep],[Cidade],[UF],[Email],[Celular],[Cpf],[RG], [Delete], [ConvenioID]" +
                              " FROM [Lavajado].[dbo].[Clientes]";
 
         public ClienteDAO()
@@ -25,11 +25,11 @@ namespace HenryCorporation.Lavajato.DataAccess
         {
             string query = " INSERT INTO [Lavajado].[dbo].[Clientes]([Placa] " +
              " ,[Nome],[Cor],[Telefone],[Veiculo],[Endereco],[Numero],[Bairro],[Cep],[Cidade] " +
-             " ,[UF],[Email],[Celular],[Cpf],[RG]) VALUES " +
+             " ,[UF],[Email],[Celular],[Cpf],[RG], [ConvenioID]) VALUES " +
              " ('" + cliente.Placa + "', '" + cliente.Nome + "','" + cliente.Cor + "','" + cliente.Telefone + "', " +
              " '" + cliente.Veiculo + "','" + cliente.Endereco + "','" + cliente.Numero + "', " +
              " '" + cliente.Bairro + "','" + cliente.Cep + "','" + cliente.Cidade + "','" + cliente.UF + "','" + cliente.Email + "', " +
-             " '" + cliente.Celular + "','" + cliente.Cpf + "','" + cliente.RG + "') ";
+             " '" + cliente.Celular + "','" + cliente.Cpf + "','" + cliente.RG + "', '"+cliente.Convenio.ID+"') ";
 
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run();
@@ -65,7 +65,7 @@ namespace HenryCorporation.Lavajato.DataAccess
                          " ,[Nome] ='" + cliente.Nome + "' ,[Cor] ='" + cliente.Cor + "' ,[Telefone] ='" + cliente.Telefone + "',[Veiculo] ='" + cliente.Veiculo + "' " +
                          " ,[Endereco] ='" + cliente.Endereco + "' ,[Numero] ='" + cliente.Numero + "' ,[Bairro] ='" + cliente.Bairro + "' ,[Cep] ='" + cliente.Cep + "' " +
                          " ,[Cidade] ='" + cliente.Cidade + "' ,[UF] ='" + cliente.UF + "' ,[Email] ='" + cliente.Email + "',[Celular] ='" + cliente.Celular + "' " +
-                         " ,[Cpf] ='" + cliente.Cpf + "' ,[RG] ='" + cliente.RG + "' " +
+                         " ,[Cpf] ='" + cliente.Cpf + "' ,[RG] ='" + cliente.RG + "' ,[ConvenioID] ='" + cliente.Convenio.ID + "' " +
                          " WHERE ClienteID = " + cliente.ID;
 
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
@@ -161,6 +161,7 @@ namespace HenryCorporation.Lavajato.DataAccess
                 cliente.Cpf = reader.IsDBNull(14) ? "" : reader.GetString(14);
                 cliente.RG = reader.IsDBNull(15) ? "" : reader.GetString(15);
                 cliente.Delete = reader.IsDBNull(16) ? false : Convert.ToBoolean(reader.GetByte(16));
+                cliente.Convenio = GetConvenio( reader.IsDBNull(17) ? 0 : reader.GetInt32(17));
                 return cliente;
             }
             return cliente;
@@ -191,10 +192,19 @@ namespace HenryCorporation.Lavajato.DataAccess
                 cliente.Cpf = reader.IsDBNull(14) ? "" : reader.GetString(14);
                 cliente.RG = reader.IsDBNull(15) ? "" : reader.GetString(15);
                 cliente.Delete = reader.IsDBNull(16) ? false : Convert.ToBoolean( reader.GetByte(16));
+                cliente.Convenio = GetConvenio(reader.IsDBNull(17) ? 0 : reader.GetInt32(17));
                 clientes.Add(cliente);
             }
             return clientes;
 
+        }
+
+        public Convenio GetConvenio(int p)
+        { 
+            ConvenioDAO convenioDao = new ConvenioDAO();
+            Convenio convenio = new Convenio();
+            convenio.ID = p;
+            return convenioDao.ByID(convenio);
         }
 
       

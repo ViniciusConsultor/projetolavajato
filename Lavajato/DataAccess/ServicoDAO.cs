@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using HenryCorporation.Lavajato.DomainModel;
 using System.Data;
+using HenryCorporation.Lavajato.Operacional;
 
 namespace HenryCorporation.Lavajato.DataAccess
 {
@@ -26,6 +27,9 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public Servico Add(Servico servico)
         {
+            //string saida = servico.Saida.Year + "-" + servico.Saida.Month + "-" + servico.Saida.Day + " " + servico.Saida.Hour + ":" + servico.Saida.Minute + ":" + servico.Saida.Second;
+            //string entrada = servico.Entrada.Year + "-" + servico.Entrada.Month + "-" + servico.Entrada.Day + " " + servico.Entrada.Hour + ":" + servico.Entrada.Minute + ":" + servico.Entrada.Second;
+            
             string query = " INSERT INTO [Lavajado].[dbo].[Servico] ([ClienteID],[Total],[SubTotal], "+
                            " [Desconto],[Saida],[Entrada],[OrdemServico],[FormaPagamentoID],[Delete],"+
                            " [Cancelado],[Lavado],[Finalizado], [UsuarioID])" +
@@ -33,8 +37,8 @@ namespace HenryCorporation.Lavajato.DataAccess
                            " ,'"+servico.Total+"' "+
                            " ,'" + servico.SubTotal + "' " +
                            " ,'" + servico.Desconto + "' " +
-                           " , getdate()" +
-                           " , getdate()" +
+                           " , '"+Configuracao.HoraSaida(servico.Saida)+"' " +
+                           " , '" + Configuracao.HoraEntrada(servico.Entrada) + "' " +
                             //" ,'" + servico.Saida + "' " +
                            //" ,'" + servico.Entrada + "' " +
                            " ,'" + servico.OrdemServico+ "' " +
@@ -138,13 +142,17 @@ namespace HenryCorporation.Lavajato.DataAccess
             return SetUpField(dataBaseHelper.Run(this.ConnectionString));
         }
 
-        public List<Servico> GetAll()
+        public List<Servico> GetAll(string query)
         {
-            DataBaseHelper dataBaseHelper = new DataBaseHelper("");
+            DataBaseHelper dataBaseHelper;
+            if (query.Length == 0)
+                dataBaseHelper = new DataBaseHelper(this.sql);
+            else
+                dataBaseHelper = new DataBaseHelper(this.sql+ " Where [Delete] = 0 And [Cancelado] = 0 And [Finalizado] = 0");
+
             DataSet dataSet = dataBaseHelper.Run(this.ConnectionString);
 
-            List<Servico> servicos = new List<Servico>();
-            return new List<Servico>();
+            return SetUpFields(dataSet);
         }
 
         private Servico SetUpField(DataSet dataSet)
@@ -197,11 +205,11 @@ namespace HenryCorporation.Lavajato.DataAccess
                 servico.Entrada = reader.IsDBNull(6) ? DateTime.Now : reader.GetDateTime(6);
                 servico.OrdemServico = reader.IsDBNull(7) ? 0 : reader.GetInt32(7);
                 servico.FormaPagamento = FormaPagamentoByID(reader.GetInt32(8));
-                servico.Delete = reader.IsDBNull(9) ? 0 : reader.GetInt32(9);
-                servico.Cancelado = reader.IsDBNull(10) ? 0 : reader.GetInt32(10);
-                servico.Lavado = reader.IsDBNull(11) ? 0 : reader.GetInt32(11);
-                servico.Finalizado = reader.IsDBNull(12) ? 0 : reader.GetInt32(12);
-                servico.Usuario = SetUpUsuario(reader.IsDBNull(13) ? 0 : Convert.ToInt32(reader.GetByte(13)));
+                servico.Delete = reader.IsDBNull(9) ? 0 : Convert.ToInt32( reader.GetByte(9));
+                servico.Cancelado = reader.IsDBNull(10) ? 0 : Convert.ToInt32(reader.GetByte(10));
+                servico.Lavado = reader.IsDBNull(11) ? 0 : Convert.ToInt32(reader.GetByte(11));
+                servico.Finalizado = reader.IsDBNull(12) ? 0 : Convert.ToInt32(reader.GetByte(12));
+                servico.Usuario = SetUpUsuario(reader.IsDBNull(13) ? 0 : reader.GetInt32(13));
                 servico.ServicoItem = servicoItemDAO.ItensByID(servico);
                 servicos.Add(servico);
             }
