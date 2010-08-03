@@ -79,6 +79,13 @@ namespace HenryCorporation.Lavajato.Operacional
             return horaSaida.Year + "-" + horaSaida.Month + "-" + horaSaida.Day + " " + horaSaida.Hour + ":" + horaSaida.Minute + ":" + horaSaida.Second;
         }
 
+        public static string HoraPtBR(DateTime hora)
+        {
+            string dia = hora.Day.ToString().Length == 1 ? "0" + hora.Day.ToString() : hora.Day.ToString();
+            string mes = hora.Month.ToString().Length == 1 ? "0" + hora.Day.ToString() : hora.Day.ToString();
+            return dia + "/" + mes + "/" + hora.Year;
+        }
+
 
     }
 }
