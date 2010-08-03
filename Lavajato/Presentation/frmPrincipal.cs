@@ -101,5 +101,17 @@ namespace Presentation
             frmOrdensAbertas frmAbertas = new frmOrdensAbertas();
             frmAbertas.ShowDialog();
         }
+
+        private void credorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCredor frmCredor = new frmCredor();
+            frmCredor.ShowDialog();
+        }
+
+        private void pesquisaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmPesquisaContasAPagar frmpesquisacontas = new frmPesquisaContasAPagar();
+            frmpesquisacontas.ShowDialog();
+        }
     }
 }
