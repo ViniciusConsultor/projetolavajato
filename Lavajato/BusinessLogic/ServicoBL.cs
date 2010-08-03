@@ -69,7 +69,6 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             table.Columns.AddRange(CarregaColunas());
             foreach (ServicoItem si in servico.ServicoItem)
             {
-                // Declare DataColumn and DataRow variables.
                 DataRow row = table.NewRow();
                 row["ID"] = si.ID;
                 row["Descricao"] = si.Produto.Descricao;
@@ -111,6 +110,45 @@ namespace HenryCorporation.Lavajato.BusinessLogic
         public bool ExisteServico(Servico servico)
         {
             return servico.ID == 0 ? false : true;
+        }
+
+        public DataTable GetLavados(bool estaolavados)
+        {
+            DataColumn[] columns = new DataColumn[5];
+
+            DataColumn ID = new DataColumn();
+            ID.ColumnName = "ID";
+            columns[0] = ID;
+
+            DataColumn Descricao = new DataColumn();
+            Descricao.ColumnName = "Cliente";
+            columns[1] = Descricao;
+
+            DataColumn Quantidade = new DataColumn();
+            Quantidade.ColumnName = "Placa";
+            columns[2] = Quantidade;
+
+            DataColumn Valor = new DataColumn();
+            Valor.ColumnName = "Lavado";
+            columns[3] = Valor;
+
+            DataSet dataSet = new DataSet();
+            DataTable table = new DataTable();
+            dataSet.Tables.Add(table);
+            table.Columns.AddRange(columns);
+
+            foreach (Servico serv in servicoDAO.GetAll(estaolavados.ToString()))
+            {
+                // Declare DataColumn and DataRow variables.
+                DataRow row = table.NewRow();
+                row["ID"] = serv.ID;
+                row["Cliente"] = serv.Cliente.Nome;
+                row["Placa"] = serv.Cliente.Placa;
+                row["Lavado"] = serv.Lavado == 0 ? "Não Lavado" : "Lavado";
+                table.Rows.Add(row);
+            }
+
+            return table;
         }
     }
 }

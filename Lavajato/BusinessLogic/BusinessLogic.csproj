@@ -49,6 +49,9 @@
   <ItemGroup>
     <Compile Include="CategoriaProdutoBL.cs" />
     <Compile Include="ClienteBL.cs" />
+    <Compile Include="ContaPagarBL.cs" />
+    <Compile Include="ConvenioBL.cs" />
+    <Compile Include="CredorBL.cs" />
     <Compile Include="FormaPagamentoBL.cs" />
     <Compile Include="ProdutoBL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
