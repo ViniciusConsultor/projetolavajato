@@ -79,5 +79,145 @@ namespace HenryCorporation.Lavajato.Presentation
             frmPesquisaContasAPagar.ShowDialog();
         }
 
+        private void button5_Click(object sender, EventArgs e)
+        {
+            frmCredorPesquisa frmCredorPesquisa = new frmCredorPesquisa();
+            frmCredorPesquisa.ShowDialog();
+            this.contaPagar.Credor =  frmCredorPesquisa.Credor;
+            credor.SelectedValue = this.contaPagar.Credor.ID;
+        }
+
+        private void notaFiscal_Enter(object sender, EventArgs e)
+        {
+            notaFiscal.BackColor = Color.Yellow;
+        }
+
+        private void notaFiscal_Leave(object sender, EventArgs e)
+        {
+            notaFiscal.BackColor = Color.White;
+        }
+
+        private void serie_Enter(object sender, EventArgs e)
+        {
+            serie.BackColor = Color.Yellow;
+        }
+
+        private void serie_Leave(object sender, EventArgs e)
+        {
+            serie.BackColor = Color.White;
+
+        }
+
+        private void documento_Enter(object sender, EventArgs e)
+        {
+            documento.BackColor = Color.Yellow;
+        }
+
+        private void documento_Leave(object sender, EventArgs e)
+        {
+            documento.BackColor = Color.White;
+        }
+
+        private void dataDocumento_Enter(object sender, EventArgs e)
+        {
+            dataDocumento.BackColor = Color.Yellow;
+        }
+
+        private void dataDocumento_Leave(object sender, EventArgs e)
+        {
+            dataDocumento.BackColor = Color.White;
+        }
+
+        private void credor_Enter(object sender, EventArgs e)
+        {
+            credor.BackColor = Color.Yellow;
+        }
+
+        private void credor_Leave(object sender, EventArgs e)
+        {
+            credor.BackColor = Color.White;
+        }
+
+        private void dataVencimento_Enter(object sender, EventArgs e)
+        {
+            dataVencimento.BackColor = Color.Yellow;
+        }
+
+        private void dataVencimento_Leave(object sender, EventArgs e)
+        {
+            dataVencimento.BackColor = Color.White;
+        }
+
+        private void tipoDocumento_Enter(object sender, EventArgs e)
+        {
+            tipoDocumento.BackColor = Color.Yellow;
+        }
+
+        private void tipoDocumento_Leave(object sender, EventArgs e)
+        {
+            tipoDocumento.BackColor = Color.White;
+        }
+
+        private void valorTitulo_Enter(object sender, EventArgs e)
+        {
+            valorTitulo.BackColor = Color.Yellow;
+        }
+
+        private void valorTitulo_Leave(object sender, EventArgs e)
+        {
+            valorTitulo.BackColor = Color.White;
+        }
+
+        private void observacao_Enter(object sender, EventArgs e)
+        {
+            observacao.BackColor = Color.Yellow;
+        }
+
+        private void observacao_Leave(object sender, EventArgs e)
+        {
+            observacao.BackColor = Color.White;
+        }
+
+        private void dataPagamento_Enter(object sender, EventArgs e)
+        {
+            dataPagamento.BackColor = Color.Yellow;
+        }
+
+        private void dataPagamento_Leave(object sender, EventArgs e)
+        {
+            dataPagamento.BackColor = Color.White;
+
+        }
+
+        private void diasAtraso_Enter(object sender, EventArgs e)
+        {
+            diasAtraso.BackColor = Color.Yellow;
+        }
+
+        private void diasAtraso_Leave(object sender, EventArgs e)
+        {
+            diasAtraso.BackColor = Color.White;
+        }
+
+        private void valorPago_Enter(object sender, EventArgs e)
+        {
+            valorPago.BackColor = Color.Yellow;
+        }
+
+        private void valorPago_Leave(object sender, EventArgs e)
+        {
+            valorPago.BackColor = Color.White;
+        }
+
+        private void saldoPaga_Enter(object sender, EventArgs e)
+        {
+            saldoPaga.BackColor = Color.Yellow;
+        }
+
+        private void saldoPaga_Leave(object sender, EventArgs e)
+        {
+            saldoPaga.BackColor = Color.White;
+        }
+
     }
 }

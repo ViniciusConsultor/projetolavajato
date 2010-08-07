@@ -29,6 +29,8 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.valorTitulo = new System.Windows.Forms.TextBox();
+            this.label14 = new System.Windows.Forms.Label();
             this.button5 = new System.Windows.Forms.Button();
             this.observacao = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
@@ -61,8 +63,6 @@
             this.btnSair = new System.Windows.Forms.Button();
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
-            this.valorTitulo = new System.Windows.Forms.TextBox();
-            this.label14 = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -95,6 +95,27 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // valorTitulo
+            // 
+            this.valorTitulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.valorTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.valorTitulo.Location = new System.Drawing.Point(370, 109);
+            this.valorTitulo.Name = "valorTitulo";
+            this.valorTitulo.Size = new System.Drawing.Size(106, 22);
+            this.valorTitulo.TabIndex = 17;
+            this.valorTitulo.Leave += new System.EventHandler(this.valorTitulo_Leave);
+            this.valorTitulo.Enter += new System.EventHandler(this.valorTitulo_Enter);
+            // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(367, 93);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(71, 15);
+            this.label14.TabIndex = 16;
+            this.label14.Text = "Valor Título:";
+            // 
             // button5
             // 
             this.button5.Location = new System.Drawing.Point(437, 73);
@@ -103,6 +124,7 @@
             this.button5.TabIndex = 6;
             this.button5.Text = "...";
             this.button5.UseVisualStyleBackColor = true;
+            this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
             // observacao
             // 
@@ -113,6 +135,8 @@
             this.observacao.Name = "observacao";
             this.observacao.Size = new System.Drawing.Size(464, 71);
             this.observacao.TabIndex = 15;
+            this.observacao.Leave += new System.EventHandler(this.observacao_Leave);
+            this.observacao.Enter += new System.EventHandler(this.observacao_Enter);
             // 
             // label8
             // 
@@ -148,6 +172,8 @@
             this.tipoDocumento.Name = "tipoDocumento";
             this.tipoDocumento.Size = new System.Drawing.Size(192, 21);
             this.tipoDocumento.TabIndex = 12;
+            this.tipoDocumento.Leave += new System.EventHandler(this.tipoDocumento_Leave);
+            this.tipoDocumento.Enter += new System.EventHandler(this.tipoDocumento_Enter);
             // 
             // label6
             // 
@@ -165,6 +191,8 @@
             this.dataVencimento.Name = "dataVencimento";
             this.dataVencimento.Size = new System.Drawing.Size(159, 20);
             this.dataVencimento.TabIndex = 10;
+            this.dataVencimento.Leave += new System.EventHandler(this.dataVencimento_Leave);
+            this.dataVencimento.Enter += new System.EventHandler(this.dataVencimento_Enter);
             // 
             // label5
             // 
@@ -183,6 +211,8 @@
             this.credor.Name = "credor";
             this.credor.Size = new System.Drawing.Size(424, 21);
             this.credor.TabIndex = 8;
+            this.credor.Leave += new System.EventHandler(this.credor_Leave);
+            this.credor.Enter += new System.EventHandler(this.credor_Enter);
             // 
             // label4
             // 
@@ -200,6 +230,8 @@
             this.dataDocumento.Name = "dataDocumento";
             this.dataDocumento.Size = new System.Drawing.Size(198, 20);
             this.dataDocumento.TabIndex = 6;
+            this.dataDocumento.Leave += new System.EventHandler(this.dataDocumento_Leave);
+            this.dataDocumento.Enter += new System.EventHandler(this.dataDocumento_Enter);
             // 
             // documento
             // 
@@ -209,6 +241,8 @@
             this.documento.Name = "documento";
             this.documento.Size = new System.Drawing.Size(116, 22);
             this.documento.TabIndex = 5;
+            this.documento.Leave += new System.EventHandler(this.documento_Leave);
+            this.documento.Enter += new System.EventHandler(this.documento_Enter);
             // 
             // label3
             // 
@@ -228,6 +262,8 @@
             this.serie.Name = "serie";
             this.serie.Size = new System.Drawing.Size(31, 22);
             this.serie.TabIndex = 3;
+            this.serie.Leave += new System.EventHandler(this.serie_Leave);
+            this.serie.Enter += new System.EventHandler(this.serie_Enter);
             // 
             // notaFiscal
             // 
@@ -237,6 +273,8 @@
             this.notaFiscal.Name = "notaFiscal";
             this.notaFiscal.Size = new System.Drawing.Size(101, 22);
             this.notaFiscal.TabIndex = 2;
+            this.notaFiscal.Leave += new System.EventHandler(this.notaFiscal_Leave);
+            this.notaFiscal.Enter += new System.EventHandler(this.notaFiscal_Enter);
             // 
             // label2
             // 
@@ -283,6 +321,8 @@
             this.saldoPaga.Name = "saldoPaga";
             this.saldoPaga.Size = new System.Drawing.Size(96, 22);
             this.saldoPaga.TabIndex = 21;
+            this.saldoPaga.Leave += new System.EventHandler(this.saldoPaga_Leave);
+            this.saldoPaga.Enter += new System.EventHandler(this.saldoPaga_Enter);
             // 
             // label13
             // 
@@ -302,6 +342,8 @@
             this.valorPago.Name = "valorPago";
             this.valorPago.Size = new System.Drawing.Size(88, 22);
             this.valorPago.TabIndex = 19;
+            this.valorPago.Leave += new System.EventHandler(this.valorPago_Leave);
+            this.valorPago.Enter += new System.EventHandler(this.valorPago_Enter);
             // 
             // label12
             // 
@@ -321,6 +363,8 @@
             this.diasAtraso.Name = "diasAtraso";
             this.diasAtraso.Size = new System.Drawing.Size(100, 22);
             this.diasAtraso.TabIndex = 17;
+            this.diasAtraso.Leave += new System.EventHandler(this.diasAtraso_Leave);
+            this.diasAtraso.Enter += new System.EventHandler(this.diasAtraso_Enter);
             // 
             // label11
             // 
@@ -358,6 +402,8 @@
             this.dataPagamento.Name = "dataPagamento";
             this.dataPagamento.Size = new System.Drawing.Size(159, 20);
             this.dataPagamento.TabIndex = 16;
+            this.dataPagamento.Leave += new System.EventHandler(this.dataPagamento_Leave);
+            this.dataPagamento.Enter += new System.EventHandler(this.dataPagamento_Enter);
             // 
             // btnSalvar
             // 
@@ -407,25 +453,6 @@
             this.textBox2.Size = new System.Drawing.Size(31, 22);
             this.textBox2.TabIndex = 3;
             // 
-            // valorTitulo
-            // 
-            this.valorTitulo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.valorTitulo.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.valorTitulo.Location = new System.Drawing.Point(370, 109);
-            this.valorTitulo.Name = "valorTitulo";
-            this.valorTitulo.Size = new System.Drawing.Size(106, 22);
-            this.valorTitulo.TabIndex = 17;
-            // 
-            // label14
-            // 
-            this.label14.AutoSize = true;
-            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(367, 93);
-            this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(71, 15);
-            this.label14.TabIndex = 16;
-            this.label14.Text = "Valor Título:";
-            // 
             // button1
             // 
             this.button1.Location = new System.Drawing.Point(116, 311);
@@ -447,6 +474,7 @@
             this.Controls.Add(this.btnSalvar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmContasAPagar";
             this.Text = "Contas a Pagar";
             this.groupBox1.ResumeLayout(false);

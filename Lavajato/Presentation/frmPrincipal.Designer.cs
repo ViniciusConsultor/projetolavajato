@@ -52,10 +52,12 @@
             this.lavadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contasAPagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.pesquisaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contasAReceberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
+            this.fechamentoDeCaixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.pesquisaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.produtoAbaixoEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -255,6 +257,13 @@
             this.contasAPagarToolStripMenuItem.Text = "Contas a Pagar";
             this.contasAPagarToolStripMenuItem.Click += new System.EventHandler(this.contasAPagarToolStripMenuItem_Click);
             // 
+            // pesquisaToolStripMenuItem
+            // 
+            this.pesquisaToolStripMenuItem.Name = "pesquisaToolStripMenuItem";
+            this.pesquisaToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.pesquisaToolStripMenuItem.Text = "Pesquisa";
+            this.pesquisaToolStripMenuItem.Click += new System.EventHandler(this.pesquisaToolStripMenuItem_Click);
+            // 
             // contasAReceberToolStripMenuItem
             // 
             this.contasAReceberToolStripMenuItem.Name = "contasAReceberToolStripMenuItem";
@@ -263,9 +272,19 @@
             // 
             // relatóriosToolStripMenuItem1
             // 
+            this.relatóriosToolStripMenuItem1.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.fechamentoDeCaixaToolStripMenuItem,
+            this.produtoAbaixoEstoqueToolStripMenuItem});
             this.relatóriosToolStripMenuItem1.Name = "relatóriosToolStripMenuItem1";
             this.relatóriosToolStripMenuItem1.Size = new System.Drawing.Size(67, 20);
             this.relatóriosToolStripMenuItem1.Text = "Relatórios";
+            // 
+            // fechamentoDeCaixaToolStripMenuItem
+            // 
+            this.fechamentoDeCaixaToolStripMenuItem.Name = "fechamentoDeCaixaToolStripMenuItem";
+            this.fechamentoDeCaixaToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.fechamentoDeCaixaToolStripMenuItem.Text = "Fechamento De Caixa";
+            this.fechamentoDeCaixaToolStripMenuItem.Click += new System.EventHandler(this.fechamentoDeCaixaToolStripMenuItem_Click);
             // 
             // toolStrip1
             // 
@@ -275,12 +294,12 @@
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // pesquisaToolStripMenuItem
+            // produtoAbaixoEstoqueToolStripMenuItem
             // 
-            this.pesquisaToolStripMenuItem.Name = "pesquisaToolStripMenuItem";
-            this.pesquisaToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
-            this.pesquisaToolStripMenuItem.Text = "Pesquisa";
-            this.pesquisaToolStripMenuItem.Click += new System.EventHandler(this.pesquisaToolStripMenuItem_Click);
+            this.produtoAbaixoEstoqueToolStripMenuItem.Name = "produtoAbaixoEstoqueToolStripMenuItem";
+            this.produtoAbaixoEstoqueToolStripMenuItem.Size = new System.Drawing.Size(201, 22);
+            this.produtoAbaixoEstoqueToolStripMenuItem.Text = "Produto Abaixo Estoque";
+            this.produtoAbaixoEstoqueToolStripMenuItem.Click += new System.EventHandler(this.produtoAbaixoEstoqueToolStripMenuItem_Click);
             // 
             // frmPrincipal
             // 
@@ -331,6 +350,8 @@
         private System.Windows.Forms.ToolStripMenuItem lavadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem credorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem pesquisaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem fechamentoDeCaixaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem produtoAbaixoEstoqueToolStripMenuItem;
     }
 }
 

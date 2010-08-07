@@ -114,13 +114,15 @@
             this.tabPage1.Text = "Consultar";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // NomeFantasiaPesquisa
+            // nomeFantasiaPesquisa
             // 
             this.nomeFantasiaPesquisa.Location = new System.Drawing.Point(224, 388);
-            this.nomeFantasiaPesquisa.Name = "NomeFantasiaPesquisa";
+            this.nomeFantasiaPesquisa.Name = "nomeFantasiaPesquisa";
             this.nomeFantasiaPesquisa.Size = new System.Drawing.Size(219, 20);
             this.nomeFantasiaPesquisa.TabIndex = 49;
             this.nomeFantasiaPesquisa.TextChanged += new System.EventHandler(this.NomeFantasiaPesquisa_TextChanged);
+            this.nomeFantasiaPesquisa.Leave += new System.EventHandler(this.nomeFantasiaPesquisa_Leave);
+            this.nomeFantasiaPesquisa.Enter += new System.EventHandler(this.nomeFantasiaPesquisa_Enter);
             // 
             // label21
             // 
@@ -138,6 +140,8 @@
             this.razaoSocialPesquisa.Size = new System.Drawing.Size(217, 20);
             this.razaoSocialPesquisa.TabIndex = 47;
             this.razaoSocialPesquisa.TextChanged += new System.EventHandler(this.razaoSocialPesquisa_TextChanged);
+            this.razaoSocialPesquisa.Leave += new System.EventHandler(this.razaoSocialPesquisa_Leave);
+            this.razaoSocialPesquisa.Enter += new System.EventHandler(this.razaoSocialPesquisa_Enter);
             // 
             // label10
             // 
@@ -194,6 +198,8 @@
             this.site.Name = "site";
             this.site.Size = new System.Drawing.Size(430, 20);
             this.site.TabIndex = 43;
+            this.site.Leave += new System.EventHandler(this.site_Leave);
+            this.site.Enter += new System.EventHandler(this.site_Enter);
             // 
             // label19
             // 
@@ -210,6 +216,8 @@
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(430, 20);
             this.email.TabIndex = 41;
+            this.email.Leave += new System.EventHandler(this.email_Leave);
+            this.email.Enter += new System.EventHandler(this.email_Enter);
             // 
             // label18
             // 
@@ -226,6 +234,8 @@
             this.representante.Name = "representante";
             this.representante.Size = new System.Drawing.Size(430, 20);
             this.representante.TabIndex = 39;
+            this.representante.Leave += new System.EventHandler(this.representante_Leave);
+            this.representante.Enter += new System.EventHandler(this.representante_Enter);
             // 
             // label17
             // 
@@ -258,6 +268,8 @@
             this.rg.Name = "rg";
             this.rg.Size = new System.Drawing.Size(115, 20);
             this.rg.TabIndex = 39;
+            this.rg.Leave += new System.EventHandler(this.rg_Leave);
+            this.rg.Enter += new System.EventHandler(this.rg_Enter);
             // 
             // label16
             // 
@@ -274,6 +286,8 @@
             this.cpf.Name = "cpf";
             this.cpf.Size = new System.Drawing.Size(105, 20);
             this.cpf.TabIndex = 37;
+            this.cpf.Leave += new System.EventHandler(this.cpf_Leave);
+            this.cpf.Enter += new System.EventHandler(this.cpf_Enter);
             // 
             // label15
             // 
@@ -290,6 +304,8 @@
             this.inscEstadual.Name = "inscEstadual";
             this.inscEstadual.Size = new System.Drawing.Size(105, 20);
             this.inscEstadual.TabIndex = 35;
+            this.inscEstadual.Leave += new System.EventHandler(this.inscEstadual_Leave);
+            this.inscEstadual.Enter += new System.EventHandler(this.inscEstadual_Enter);
             // 
             // label14
             // 
@@ -306,6 +322,8 @@
             this.cnpj.Name = "cnpj";
             this.cnpj.Size = new System.Drawing.Size(105, 20);
             this.cnpj.TabIndex = 33;
+            this.cnpj.Leave += new System.EventHandler(this.cnpj_Leave);
+            this.cnpj.Enter += new System.EventHandler(this.cnpj_Enter);
             // 
             // label13
             // 
@@ -362,6 +380,8 @@
             this.fax.Name = "fax";
             this.fax.Size = new System.Drawing.Size(105, 20);
             this.fax.TabIndex = 67;
+            this.fax.Leave += new System.EventHandler(this.fax_Leave);
+            this.fax.Enter += new System.EventHandler(this.fax_Enter);
             // 
             // label12
             // 
@@ -378,6 +398,8 @@
             this.telefone.Name = "telefone";
             this.telefone.Size = new System.Drawing.Size(115, 20);
             this.telefone.TabIndex = 65;
+            this.telefone.Leave += new System.EventHandler(this.telefone_Leave);
+            this.telefone.Enter += new System.EventHandler(this.telefone_Enter);
             // 
             // label11
             // 
@@ -423,6 +445,8 @@
             this.uf.Name = "uf";
             this.uf.Size = new System.Drawing.Size(76, 21);
             this.uf.TabIndex = 60;
+            this.uf.Leave += new System.EventHandler(this.uf_Leave);
+            this.uf.Enter += new System.EventHandler(this.uf_Enter);
             // 
             // label9
             // 
@@ -439,6 +463,8 @@
             this.complemento.Name = "complemento";
             this.complemento.Size = new System.Drawing.Size(94, 20);
             this.complemento.TabIndex = 59;
+            this.complemento.Leave += new System.EventHandler(this.complemento_Leave);
+            this.complemento.Enter += new System.EventHandler(this.complemento_Enter);
             // 
             // label8
             // 
@@ -454,6 +480,8 @@
             this.cep.Name = "cep";
             this.cep.Size = new System.Drawing.Size(115, 20);
             this.cep.TabIndex = 57;
+            this.cep.Leave += new System.EventHandler(this.cep_Leave);
+            this.cep.Enter += new System.EventHandler(this.cep_Enter);
             // 
             // label7
             // 
@@ -470,6 +498,8 @@
             this.bairro.Name = "bairro";
             this.bairro.Size = new System.Drawing.Size(103, 20);
             this.bairro.TabIndex = 55;
+            this.bairro.Leave += new System.EventHandler(this.bairro_Leave);
+            this.bairro.Enter += new System.EventHandler(this.bairro_Enter);
             // 
             // label6
             // 
@@ -486,6 +516,8 @@
             this.numero.Name = "numero";
             this.numero.Size = new System.Drawing.Size(32, 20);
             this.numero.TabIndex = 53;
+            this.numero.Leave += new System.EventHandler(this.numero_Leave);
+            this.numero.Enter += new System.EventHandler(this.numero_Enter);
             // 
             // label5
             // 
@@ -502,6 +534,8 @@
             this.endereco.Name = "endereco";
             this.endereco.Size = new System.Drawing.Size(295, 20);
             this.endereco.TabIndex = 51;
+            this.endereco.Leave += new System.EventHandler(this.endereco_Leave);
+            this.endereco.Enter += new System.EventHandler(this.endereco_Enter);
             // 
             // label4
             // 
@@ -518,6 +552,8 @@
             this.nomeFantasia.Name = "nomeFantasia";
             this.nomeFantasia.Size = new System.Drawing.Size(431, 20);
             this.nomeFantasia.TabIndex = 49;
+            this.nomeFantasia.Leave += new System.EventHandler(this.nomeFantasia_Leave);
+            this.nomeFantasia.Enter += new System.EventHandler(this.nomeFantasia_Enter);
             // 
             // label3
             // 
@@ -539,6 +575,8 @@
             this.tipoPessoa.Name = "tipoPessoa";
             this.tipoPessoa.Size = new System.Drawing.Size(135, 21);
             this.tipoPessoa.TabIndex = 47;
+            this.tipoPessoa.Leave += new System.EventHandler(this.tipoPessoa_Leave);
+            this.tipoPessoa.Enter += new System.EventHandler(this.tipoPessoa_Enter);
             // 
             // label2
             // 
@@ -555,6 +593,8 @@
             this.razaoSocial.Name = "razaoSocial";
             this.razaoSocial.Size = new System.Drawing.Size(296, 20);
             this.razaoSocial.TabIndex = 45;
+            this.razaoSocial.Leave += new System.EventHandler(this.razaoSocial_Leave);
+            this.razaoSocial.Enter += new System.EventHandler(this.razaoSocial_Enter);
             // 
             // label1
             // 
@@ -611,6 +651,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(460, 444);
             this.Controls.Add(this.tabControl1);
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.MaximizeBox = false;
             this.Name = "frmCredor";
             this.Text = "frmCredor";
             this.tabControl1.ResumeLayout(false);
