@@ -82,7 +82,7 @@ namespace HenryCorporation.Lavajato.Operacional
         public static string HoraPtBR(DateTime hora)
         {
             string dia = hora.Day.ToString().Length == 1 ? "0" + hora.Day.ToString() : hora.Day.ToString();
-            string mes = hora.Month.ToString().Length == 1 ? "0" + hora.Day.ToString() : hora.Day.ToString();
+            string mes = hora.Month.ToString().Length == 1 ? "0" + hora.Month.ToString() : hora.Month.ToString();
             return dia + "/" + mes + "/" + hora.Year;
         }
 
