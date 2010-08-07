@@ -9,7 +9,8 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 {
     public class ProdutoBL
     {
-        ProdutoDAO produtoDAO = new ProdutoDAO();
+        private ProdutoDAO produtoDAO = new ProdutoDAO();
+        private EstoqueDAO estoqueDAO = new EstoqueDAO();
 
         public ProdutoBL()
         {
@@ -17,6 +18,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
         public void Add(Produto produto)
         {
+            estoqueDAO.Add(produto.Estoque);
             produtoDAO.Add(produto);
         }
 
@@ -27,6 +29,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
         public void Update(Produto produto)
         {
+            estoqueDAO.Update(produto.Estoque);
             produtoDAO.Update(produto);
         }
 
