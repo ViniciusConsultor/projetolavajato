@@ -18,6 +18,12 @@ namespace HenryCorporation.Lavajato.Presentation
         public frmPesquisaContasAPagar()
         {
             InitializeComponent();
+            CarregaDados();
+        }
+
+        private void CarregaDados()
+        {
+            grdContasPagar.DataSource = contaPagarBL.PesquisaPorDataETipo(ContaPagar.TipoPesquisa.MostrarTodos.ToString(), documentoPesquisa.Text, DateTime.Now).DefaultView;
         }
 
         private void documentoPesquisa_TextChanged(object sender, EventArgs e)
