@@ -39,8 +39,6 @@ namespace HenryCorporation.Lavajato.DataAccess
                            " ,'" + servico.Desconto + "' " +
                            " , '"+Configuracao.HoraSaida(servico.Saida)+"' " +
                            " , '" + Configuracao.HoraEntrada(servico.Entrada) + "' " +
-                            //" ,'" + servico.Saida + "' " +
-                           //" ,'" + servico.Entrada + "' " +
                            " ,'" + servico.OrdemServico+ "' " +
                            " ,'" + servico.FormaPagamento.ID + "' " +
                            " ,'" + servico.Delete + "' " +

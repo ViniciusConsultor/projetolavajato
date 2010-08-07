@@ -10,9 +10,10 @@ namespace HenryCorporation.Lavajato.DataAccess
 {
     public class ContaAPagarDAO : DataAccessBase
     {
-        private const string sql = " SELECT [ContasPagaID],[NF],[Serie],[Documento],[DataDocomento],[ClienteID],[DataVencimento],[TipoDocumento],[Obs] " +
-                                   " ,[DataPagamento],[AtrasoDias],[ValorPago],[SaldoAPagar] " +
-                                   " FROM [Lavajado].[dbo].[ContasAPagar] ";
+        private const string sql = "  SELECT [ContasAPagar].[ContasPagaID],[ContasAPagar].[NF],[ContasAPagar].[Serie],[ContasAPagar].[Documento],[ContasAPagar].[DataDocomento], " +
+                                   " [ContasAPagar].[ClienteID],[ContasAPagar].[DataVencimento],[ContasAPagar].[TipoDocumento],[ContasAPagar].[Obs] " +
+                                   " ,[ContasAPagar].[DataPagamento],[ContasAPagar].[AtrasoDias],[ContasAPagar].[ValorPago],[ContasAPagar].[SaldoAPagar], [ContasAPagar].[ValorTitulo]  " +
+                                   " FROM [ContasAPagar] ";
 
         public ContaAPagarDAO()
         {
@@ -98,26 +99,24 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public List<ContaPagar> PesquisaPorDataETipo(string tipoPesquisa, string documento, DateTime data)
         {
-            string query = sql + " INNER JOIN Credor c on cp.[ClienteID] = c.[CredorID] ";
+            string query = sql + " INNER JOIN Credor c on [ContasAPagar].[ClienteID] = c.[CredorID] ";
             switch (tipoPesquisa)
             {
                 case "MostrarTodos":
                     query += " ORDER BY C.RAZAOSOCIAL ";
                     break;
                 case "Pagos":
-                    query += " WHERE cp.[ValorPago] = cp.[ValorTitulo] ORDER BY C.RAZAOSOCIAL ";
+                    query += " WHERE [ContasAPagar].[ValorPago] = [ContasAPagar].[ValorTitulo] ORDER BY C.RAZAOSOCIAL ";
                     break;
                 case "Documento":
-                    query += " WHERE cp.[Documento] = '" + documento + "' ORDER BY C.RAZAOSOCIAL ";
+                    query += " WHERE [ContasAPagar].[Documento] like('%" + documento + "%') ORDER BY C.RAZAOSOCIAL ";
                     break;
                 case "RazaoSocial":
                     query += " WHERE C.[RazaoSocial] like('%"+documento+"%') ORDER BY C.RAZAOSOCIAL ";
                     break;
                 case "VencendoHoje":
-                    query += " WHERE CONVERT(VARCHAR, cp.[DataDocumento], 103) = '" + Configuracao.HoraPtBR(data) + "' ORDER BY C.RAZAOSOCIAL ";
+                    query += " WHERE CONVERT(VARCHAR, [ContasAPagar].[DataVencimento], 103) = '" + Configuracao.HoraPtBR(data) + "' ORDER BY C.RAZAOSOCIAL ";
                     break;
-                
-                
             }
     
             DataBaseHelper baseHelper = new DataBaseHelper(query);
@@ -168,7 +167,7 @@ namespace HenryCorporation.Lavajato.DataAccess
                 cp.Serie = reader.IsDBNull(2) ? "" : reader.GetString(2);
                 cp.Documento = reader.IsDBNull(3) ? "" : reader.GetString(3);
                 cp.DataDocomento = reader.IsDBNull(4) ? new DateTime(1900, 01, 01) : reader.GetDateTime(4);
-                cp.Credor.ID = reader.IsDBNull(5) ? 0 : reader.GetInt32(6);
+                cp.Credor.ID = reader.IsDBNull(5) ? 0 : reader.GetInt32(5);
                 cp.DataVencimento = reader.IsDBNull(6) ? new DateTime(1900, 01, 01) : reader.GetDateTime(6);
                 cp.TipoDocumento = reader.IsDBNull(7) ? "" : reader.GetString(7);
                 cp.Obs = reader.IsDBNull(8) ? "" : reader.GetString(8);
@@ -176,6 +175,7 @@ namespace HenryCorporation.Lavajato.DataAccess
                 cp.AtrasoDias = reader.IsDBNull(10) ? new DateTime(1900, 01, 01) : reader.GetDateTime(10);
                 cp.ValorPago = reader.IsDBNull(11) ? 0 : reader.GetDecimal(11);
                 cp.SaldoAPagar = reader.IsDBNull(12) ? 0 : reader.GetDecimal(12);
+                cps.Add(cp);
             }
 
             return cps;
