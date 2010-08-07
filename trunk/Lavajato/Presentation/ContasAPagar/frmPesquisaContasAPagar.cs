@@ -50,5 +50,25 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             grdContasPagar.DataSource = contaPagarBL.PesquisaPorDataETipo(ContaPagar.TipoPesquisa.Pagos.ToString(), "", DateTime.Now);
         }
+
+        private void documentoPesquisa_Enter(object sender, EventArgs e)
+        {
+            documentoPesquisa.BackColor = Color.Yellow;
+        }
+
+        private void documentoPesquisa_Leave(object sender, EventArgs e)
+        {
+            documentoPesquisa.BackColor = Color.White;
+        }
+
+        private void nomeCredorPesquisa_Enter(object sender, EventArgs e)
+        {
+            nomeCredorPesquisa.BackColor = Color.Yellow;
+        }
+
+        private void nomeCredorPesquisa_Leave(object sender, EventArgs e)
+        {
+            nomeCredorPesquisa.BackColor = Color.White;
+        }
     }
 }

@@ -113,5 +113,17 @@ namespace Presentation
             frmPesquisaContasAPagar frmpesquisacontas = new frmPesquisaContasAPagar();
             frmpesquisacontas.ShowDialog();
         }
+
+        private void fechamentoDeCaixaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRelatorioFechamentoDeCaixa fc = new frmRelatorioFechamentoDeCaixa();
+            fc.ShowDialog();
+        }
+
+        private void produtoAbaixoEstoqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProdutoAbaixoEstoque frmPAE = new frmProdutoAbaixoEstoque();
+            frmPAE.ShowDialog();
+        }
     }
 }

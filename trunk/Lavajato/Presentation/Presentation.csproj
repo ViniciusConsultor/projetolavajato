@@ -31,6 +31,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="Microsoft.VisualBasic.PowerPacks.Vs, Version=9.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a" />
     <Reference Include="System" />
@@ -68,12 +69,6 @@
     <Compile Include="Cliente\frmClientePesquisa.Designer.cs">
       <DependentUpon>frmClientePesquisa.cs</DependentUpon>
     </Compile>
-    <Compile Include="ContasAPagar\frmContaPagarPesquisa.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Include="ContasAPagar\frmContaPagarPesquisa.Designer.cs">
-      <DependentUpon>frmContaPagarPesquisa.cs</DependentUpon>
-    </Compile>
     <Compile Include="ContasAPagar\frmContasAPagar.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -85,6 +80,12 @@
     </Compile>
     <Compile Include="ContasAPagar\frmCredor.Designer.cs">
       <DependentUpon>frmCredor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ContasAPagar\frmCredorPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="ContasAPagar\frmCredorPesquisa.Designer.cs">
+      <DependentUpon>frmCredorPesquisa.cs</DependentUpon>
     </Compile>
     <Compile Include="ContasAPagar\frmPesquisaContasAPagar.cs">
       <SubType>Form</SubType>
@@ -133,16 +134,16 @@
       <DependentUpon>frmClientePesquisa.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="ContasAPagar\frmContaPagarPesquisa.resx">
-      <DependentUpon>frmContaPagarPesquisa.cs</DependentUpon>
-      <SubType>Designer</SubType>
-    </EmbeddedResource>
     <EmbeddedResource Include="ContasAPagar\frmContasAPagar.resx">
       <DependentUpon>frmContasAPagar.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ContasAPagar\frmCredor.resx">
       <DependentUpon>frmCredor.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ContasAPagar\frmCredorPesquisa.resx">
+      <DependentUpon>frmCredorPesquisa.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="ContasAPagar\frmPesquisaContasAPagar.resx">
@@ -170,6 +171,15 @@
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\frmProdutoAbaixoEstoque.resx">
+      <DependentUpon>frmProdutoAbaixoEstoque.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\frmRelatorioFechamentoDeCaixa.resx">
+      <DependentUpon>frmRelatorioFechamentoDeCaixa.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\relProdutoAbaixoEstoque.rdlc" />
     <EmbeddedResource Include="Relatorios\VendaPorPeriodo.rdlc" />
     <EmbeddedResource Include="Servicos\frmAlterarQuantidadeItem.resx">
       <DependentUpon>frmAlterarQuantidadeItem.cs</DependentUpon>
@@ -214,27 +224,60 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Relatorios\VendaPorPeriodo.xsc">
-      <DependentUpon>VendaPorPeriodo.xsd</DependentUpon>
+    <None Include="Relatorios\FechamentoCaixa.xsc">
+      <DependentUpon>FechamentoCaixa.xsd</DependentUpon>
     </None>
-    <None Include="Relatorios\VendaPorPeriodo.xsd">
+    <None Include="Relatorios\FechamentoCaixa.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>VendaPorPeriodo.Designer.cs</LastGenOutput>
+      <LastGenOutput>FechamentoCaixa.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Relatorios\VendaPorPeriodo.xss">
-      <DependentUpon>VendaPorPeriodo.xsd</DependentUpon>
+    <None Include="Relatorios\FechamentoCaixa.xss">
+      <DependentUpon>FechamentoCaixa.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\relProdutoAbaixoEstoque.xsc">
+      <DependentUpon>relProdutoAbaixoEstoque.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\relProdutoAbaixoEstoque.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>relProdutoAbaixoEstoque.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\relProdutoAbaixoEstoque.xss">
+      <DependentUpon>relProdutoAbaixoEstoque.xsd</DependentUpon>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Relatorios\VendaPorPeriodo.Designer.cs">
+    <Compile Include="Relatorios\FechamentoCaixa.cs">
+      <DependentUpon>FechamentoCaixa.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatorios\FechamentoCaixa.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>VendaPorPeriodo.xsd</DependentUpon>
+      <DependentUpon>FechamentoCaixa.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Relatorios\frmProdutoAbaixoEstoque.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\frmProdutoAbaixoEstoque.Designer.cs">
+      <DependentUpon>frmProdutoAbaixoEstoque.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\frmRelatorioFechamentoDeCaixa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\frmRelatorioFechamentoDeCaixa.Designer.cs">
+      <DependentUpon>frmRelatorioFechamentoDeCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\relProdutoAbaixoEstoque.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>relProdutoAbaixoEstoque.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Util.cs" />
     <Compile Include="Servicos\frmAlterarQuantidadeItem.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -1292,6 +1335,10 @@
       <Project>{4E53ADF2-A3A5-4F30-A0F6-61668FAED40E}</Project>
       <Name>BusinessLogic</Name>
     </ProjectReference>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{EFB17A56-B089-4E1B-9B93-A59A3D7D2EAB}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
     <ProjectReference Include="..\DomainModel\DomainModel.csproj">
       <Project>{1EF6BF33-D1DF-4240-AAF6-08721E6B0534}</Project>
       <Name>DomainModel</Name>
@@ -1300,6 +1347,9 @@
       <Project>{472179EE-8D15-4940-BFAA-C45121A4B4DF}</Project>
       <Name>Operacional</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Properties\DataSources\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

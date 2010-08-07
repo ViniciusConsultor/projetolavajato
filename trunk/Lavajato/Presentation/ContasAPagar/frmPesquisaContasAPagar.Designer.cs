@@ -70,6 +70,8 @@
             this.nomeCredorPesquisa.Size = new System.Drawing.Size(424, 20);
             this.nomeCredorPesquisa.TabIndex = 3;
             this.nomeCredorPesquisa.TextChanged += new System.EventHandler(this.nomeCredorPesquisa_TextChanged);
+            this.nomeCredorPesquisa.Leave += new System.EventHandler(this.nomeCredorPesquisa_Leave);
+            this.nomeCredorPesquisa.Enter += new System.EventHandler(this.nomeCredorPesquisa_Enter);
             // 
             // label2
             // 
@@ -87,6 +89,8 @@
             this.documentoPesquisa.Size = new System.Drawing.Size(108, 20);
             this.documentoPesquisa.TabIndex = 1;
             this.documentoPesquisa.TextChanged += new System.EventHandler(this.documentoPesquisa_TextChanged);
+            this.documentoPesquisa.Leave += new System.EventHandler(this.documentoPesquisa_Leave);
+            this.documentoPesquisa.Enter += new System.EventHandler(this.documentoPesquisa_Enter);
             // 
             // label1
             // 

@@ -36,20 +36,6 @@ namespace HenryCorporation.Lavajato.Presentation
             tabProdutos.SelectedTab = tabProduto;
         }
 
-
-
-        private void CarregaCategoriaProduto()
-        {
-            cmbCategoriaProduto.DataSource = new CategoriaProdutoBL().GetAll();
-            cmbCategoriaProduto.DisplayMember = "Descricao";
-            cmbCategoriaProduto.ValueMember = "ID";
-        }
-
-        private void CarregaProdutos()
-        {
-            grdProdutos.DataSource = produtoBL.GetAll();
-        }
-
         private void nomePesquisa_TextChanged(object sender, EventArgs e)
         {
             HenryCorporation.Lavajato.DomainModel.Produto produto = new HenryCorporation.Lavajato.DomainModel.Produto();
@@ -65,26 +51,6 @@ namespace HenryCorporation.Lavajato.Presentation
             tabProdutos.SelectedTab = tabProduto;
         }
 
-        private void CarregaCampos(HenryCorporation.Lavajato.DomainModel.Produto produto)
-        {
-            descricao.Text = produto.Descricao;
-            quantidade.Text = produto.Quantidade.ToString();
-            precoCompra.Text = produto.PrecoCompra.ToString("C").Replace("R$", "");
-            precoVenda.Text = produto.ValorUnitario.ToString("C").Replace("R$", "");
-            minimo.Text = produto.Quantidade.ToString();
-            cmbCategoriaProduto.SelectedValue = produto.CategoriaProduto.ID;
-        }
-
-        private void SetProduto()
-        {
-            this.produto.Descricao = descricao.Text;
-            this.produto.Quantidade = Configuracao.ConverteParaInteiro(quantidade.Text);
-            this.produto.PrecoCompra = Configuracao.ConverteParaDecimal(precoCompra.Text);
-            this.produto.ValorUnitario = Configuracao.ConverteParaDecimal(precoVenda.Text);
-            this.produto.Minimo = int.Parse(minimo.Text);
-            this.produto.CategoriaProduto.ID = int.Parse(cmbCategoriaProduto.SelectedValue.ToString());
-        }
-
         private HenryCorporation.Lavajato.DomainModel.Produto ProcuraProduto(HenryCorporation.Lavajato.DomainModel.Produto produto)
         {
             return produtoBL.ByID(produto);
@@ -92,7 +58,6 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-
             if (this.produto.ID == 0)
             {
                 MessageBox.Show("Favor selecionar um produto", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -109,19 +74,6 @@ namespace HenryCorporation.Lavajato.Presentation
             produtoBL.Update(this.produto);
             CarregaProdutos();
             MessageBox.Show("Produto atualizado com sucesso", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void LimpaCampos()
-        {
-            descricao.Text = "";
-            quantidade.Text = "";
-            precoCompra.Text = "";
-            precoVenda.Text = "";
-            minimo.Text = "";
-            cmbCategoriaProduto.SelectedIndex = 0;
-            this.produto = new HenryCorporation.Lavajato.DomainModel.Produto();
-            RetornaFocoParaDescricao();
-            
         }
 
         private void precoCompra_TextChanged(object sender, EventArgs e)
@@ -178,6 +130,53 @@ namespace HenryCorporation.Lavajato.Presentation
             LimpaCampos();
             MessageBox.Show("Produto excluido!", "Atenção");
             RetornaFocoParaDescricao();
+        }
+
+        private void CarregaCategoriaProduto()
+        {
+            cmbCategoriaProduto.DataSource = new CategoriaProdutoBL().GetAll();
+            cmbCategoriaProduto.DisplayMember = "Descricao";
+            cmbCategoriaProduto.ValueMember = "ID";
+        }
+
+        private void CarregaProdutos()
+        {
+            grdProdutos.DataSource = produtoBL.GetAll();
+        }
+
+        private void CarregaCampos(HenryCorporation.Lavajato.DomainModel.Produto produto)
+        {
+            descricao.Text = produto.Descricao;
+            precoCompra.Text = produto.PrecoCompra.ToString("C").Replace("R$", "");
+            precoVenda.Text = produto.ValorUnitario.ToString("C").Replace("R$", "");
+            cmbCategoriaProduto.SelectedValue = produto.CategoriaProduto.ID;
+
+            minimo.Text = produto.Estoque.Minimo.ToString();
+            quantidade.Text = produto.Estoque.Quantidade.ToString();
+        }
+
+        private void LimpaCampos()
+        {
+            descricao.Text = "";
+            quantidade.Text = "";
+            precoCompra.Text = "";
+            precoVenda.Text = "";
+            minimo.Text = "";
+            cmbCategoriaProduto.SelectedIndex = 0;
+            this.produto = new HenryCorporation.Lavajato.DomainModel.Produto();
+            RetornaFocoParaDescricao();
+        }
+
+        private void SetProduto()
+        {
+            this.produto.Descricao = descricao.Text;
+            this.produto.PrecoCompra = Configuracao.ConverteParaDecimal(precoCompra.Text);
+            this.produto.ValorUnitario = Configuracao.ConverteParaDecimal(precoVenda.Text);
+            this.produto.CategoriaProduto.ID = int.Parse(cmbCategoriaProduto.SelectedValue.ToString());
+
+            this.produto.Estoque.Quantidade = Configuracao.ConverteParaInteiro(quantidade.Text);
+            this.produto.Estoque.Minimo = int.Parse(minimo.Text);
+            this.produto.Estoque.Data = DateTime.Now;
         }
 
         private void precoCompra_Enter(object sender, EventArgs e)
