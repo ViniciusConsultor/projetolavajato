@@ -1,9 +1,0 @@
-C:\Projetos\Lavajato\BusinessLogic\obj\Debug\ResolveAssemblyReference.cache
-C:\Projetos\Lavajato\BusinessLogic\bin\Debug\BusinessLogic.dll
-C:\Projetos\Lavajato\BusinessLogic\bin\Debug\BusinessLogic.pdb
-C:\Projetos\Lavajato\BusinessLogic\bin\Debug\DataAccess.dll
-C:\Projetos\Lavajato\BusinessLogic\bin\Debug\DomainModel.dll
-C:\Projetos\Lavajato\BusinessLogic\bin\Debug\DomainModel.pdb
-C:\Projetos\Lavajato\BusinessLogic\bin\Debug\DataAccess.pdb
-C:\Projetos\Lavajato\BusinessLogic\obj\Debug\BusinessLogic.dll
-C:\Projetos\Lavajato\BusinessLogic\obj\Debug\BusinessLogic.pdb
