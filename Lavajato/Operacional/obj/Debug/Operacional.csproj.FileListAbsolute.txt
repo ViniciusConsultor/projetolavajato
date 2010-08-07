@@ -1,5 +1,0 @@
-C:\Projetos\Lavajato\Operacional\bin\Debug\Operacional.dll
-C:\Projetos\Lavajato\Operacional\bin\Debug\Operacional.pdb
-C:\Projetos\Lavajato\Operacional\obj\Debug\ResolveAssemblyReference.cache
-C:\Projetos\Lavajato\Operacional\obj\Debug\Operacional.dll
-C:\Projetos\Lavajato\Operacional\obj\Debug\Operacional.pdb
