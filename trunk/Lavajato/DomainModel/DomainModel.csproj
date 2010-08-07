@@ -51,6 +51,7 @@
     <Compile Include="Convenio.cs" />
     <Compile Include="Credor.cs" />
     <Compile Include="EnumCategoriaProduto.cs" />
+    <Compile Include="Estoque.cs" />
     <Compile Include="FormaPagamento.cs" />
     <Compile Include="Fornecedor.cs" />
     <Compile Include="Permissao.cs" />

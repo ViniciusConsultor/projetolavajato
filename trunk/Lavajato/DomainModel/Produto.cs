@@ -14,10 +14,17 @@ namespace HenryCorporation.Lavajato.DomainModel
         public decimal PrecoCompra { get; set; }
         public decimal ValorUnitario { get; set; }
         private CategoriaProduto _categoriaProduto;
-        
+        private Estoque estoque = new Estoque();
+
         public Produto()
         {
             
+        }
+        
+        public Estoque Estoque
+        {
+            get { return estoque; }
+            set { estoque = value; }
         }
 
         public virtual CategoriaProduto CategoriaProduto

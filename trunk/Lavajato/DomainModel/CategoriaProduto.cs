@@ -14,5 +14,10 @@ namespace HenryCorporation.Lavajato.DomainModel
         { 
         
         }
+
+        public override string ToString()
+        {
+            return this.Descricao;
+        }
     }
 }
