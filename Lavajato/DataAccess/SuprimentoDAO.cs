@@ -18,7 +18,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public Suprimento Insert(Suprimento suprimento)
         {
-            string query = " INSERT INTO [Lavajado].[dbo].[Suprimentos] "+
+            string query = " INSERT INTO [Suprimentos] "+
                            " ([UsuarioID] "+
                            " ,[Valor] "+
                            " ,[Descricao] "+

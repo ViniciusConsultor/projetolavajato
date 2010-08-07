@@ -53,6 +53,7 @@
     <Compile Include="CredorDAO.cs" />
     <Compile Include="DataAccessBase.cs" />
     <Compile Include="DataBaseHelper.cs" />
+    <Compile Include="EstoqueDAO.cs" />
     <Compile Include="FormaPagamentoDAO.cs" />
     <Compile Include="PessoaDAO.cs" />
     <Compile Include="ProdutoDAO.cs" />

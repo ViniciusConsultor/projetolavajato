@@ -18,7 +18,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public Retirada Insert(Retirada retirada)
         {
-            string query = " INSERT INTO [Lavajado].[dbo].[Retirada] (" +
+            string query = " INSERT INTO [Retirada] (" +
                            "  [UsuarioID] " +
                            "  ,[Descricao] " +
                            "  ,[Valor] " +

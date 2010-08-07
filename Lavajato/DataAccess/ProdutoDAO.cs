@@ -9,10 +9,13 @@ namespace HenryCorporation.Lavajato.DataAccess
 {
     public class ProdutoDAO : DataAccessBase
     {
-        private const string sql = " SELECT Produto.ProdutoID, Produto.Descricao, Produto.Quantidade, Produto.ValorUnitario, Produto.Minimo, CategoriaProduto.CategoriaProdutoID, " +
-                            " CategoriaProduto.Descricao AS CategoriaProduto, Produto.PrecoCompra " +
+        private const string sql = " SELECT Produto.ProdutoID, Produto.Descricao, Estoque.Quantidade, Produto.ValorUnitario, Estoque.Minimo, CategoriaProduto.CategoriaProdutoID, " +
+                            " CategoriaProduto.Descricao AS CategoriaProduto, Produto.PrecoCompra, Produto.Estoque " +
                             " FROM CategoriaProduto INNER JOIN " +
-                            " Produto ON CategoriaProduto.CategoriaProdutoID = Produto.CategoriaProdutoID";
+                            " Produto ON CategoriaProduto.CategoriaProdutoID = Produto.CategoriaProdutoID "+
+                            " INNER JOIN Estoque on Estoque.EstoqueID = Produto.Estoque";
+
+        private EstoqueDAO estoqueDAO = new EstoqueDAO();
 
         public ProdutoDAO()
         {
@@ -23,7 +26,7 @@ namespace HenryCorporation.Lavajato.DataAccess
         {
             string query = " INSERT INTO [Lavajado].[dbo].[Produto] " +
                 " ([Descricao],[Quantidade],[ValorUnitario],[Minimo] " +
-                " ,[CategoriaProdutoID],[PrecoCompra],[Delete]) " +
+                " ,[CategoriaProdutoID],[PrecoCompra],[Delete], [Estoque]) " +
                 " VALUES " +
                 " ('" + produto.Descricao + "' " +
                 " ,'" + produto.Quantidade + "' " +
@@ -31,7 +34,8 @@ namespace HenryCorporation.Lavajato.DataAccess
                 " ,'" + produto.Minimo + "'" +
                 " ,'" + produto.CategoriaProduto.ID + "' " +
                 " ,'" + produto.PrecoCompra.ToString().Replace(",", ".") + "' " +
-                " ,0)";
+                " ,0 "+
+                " ,'"+produto.Estoque.ID+"')";
 
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run();
@@ -46,7 +50,8 @@ namespace HenryCorporation.Lavajato.DataAccess
                    " ,[Minimo] = '" + produto.Minimo + "' " +
                    " ,[CategoriaProdutoID] = '" + produto.CategoriaProduto.ID + "' " +
                    " ,[PrecoCompra] = '" + produto.PrecoCompra.ToString().Replace(",", ".") + "' " +
-                   " ,[Delete] = 0 " +
+                   " ,[Delete] = 0 "+
+                   " ,[Estoque]='"+produto.Estoque.ID+"' " +
                    "  WHERE ProdutoID = " + produto.ID;
 
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
@@ -105,13 +110,13 @@ namespace HenryCorporation.Lavajato.DataAccess
             {
                 produto.ID = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
                 produto.Descricao = reader.IsDBNull(1) ? "" : reader.GetString(1);
-                produto.Quantidade = reader.IsDBNull(2) ? 0 : int.Parse(reader.GetString(2));
+                produto.Quantidade = reader.IsDBNull(2) ? 0 : reader.GetInt32(2);
                 produto.ValorUnitario = reader.IsDBNull(3) ? 0 : reader.GetDecimal(3);
                 produto.Minimo = reader.IsDBNull(4) ? 0 : reader.GetInt32(4);
                 produto.CategoriaProduto.ID = reader.IsDBNull(5) ? 0 : reader.GetInt32(5);
                 produto.CategoriaProduto.Descricao = reader.IsDBNull(6) ? "" : reader.GetString(6);
                 produto.PrecoCompra = reader.IsDBNull(7) ? 0 : reader.GetDecimal(7);
-
+                produto.Estoque = estoqueDAO.ByID(reader.IsDBNull(8) ? 0 : reader.GetInt32(8));
                 return produto;
             }
             return produto;
@@ -126,12 +131,13 @@ namespace HenryCorporation.Lavajato.DataAccess
                 Produto produto = new Produto();
                 produto.ID = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
                 produto.Descricao = reader.IsDBNull(1) ? "" : reader.GetString(1);
-                produto.Quantidade = reader.IsDBNull(2) ? 0 : int.Parse(reader.GetString(2));
+                produto.Quantidade = reader.IsDBNull(2) ? 0 : reader.GetInt32(2);
                 produto.ValorUnitario = reader.IsDBNull(3) ? 0 : reader.GetDecimal(3);
                 produto.Minimo = reader.IsDBNull(4) ? 0 : reader.GetInt32(4);
                 produto.CategoriaProduto.ID = reader.IsDBNull(5) ? 0 : reader.GetInt32(5);
                 produto.CategoriaProduto.Descricao = reader.IsDBNull(6) ? "" : reader.GetString(6);
                 produto.PrecoCompra = reader.IsDBNull(7) ? 0 : reader.GetDecimal(7);
+                produto.Estoque = estoqueDAO.ByID(reader.IsDBNull(8) ? 0 : reader.GetInt32(8));
                 produtos.Add(produto);
             }
             return produtos;
