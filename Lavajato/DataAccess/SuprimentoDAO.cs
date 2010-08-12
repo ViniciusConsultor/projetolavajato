@@ -24,8 +24,8 @@ namespace HenryCorporation.Lavajato.DataAccess
                            " ,[Descricao] "+
                            " ,[Data]) "+
                            " VALUES "+
-                           " ( "+suprimento.Usuario.ID+" "+
-                           " ,"+suprimento.Valor+" "+
+                           " ('"+suprimento.Usuario.ID+"' "+
+                           " ,'"+suprimento.Valor+"' "+
                            " ,'"+suprimento.Descricao+"' " +
                            " ,getdate() )";
 

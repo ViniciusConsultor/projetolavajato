@@ -9,11 +9,11 @@ namespace HenryCorporation.Lavajato.DataAccess
 {
     public class ProdutoDAO : DataAccessBase
     {
-        private const string sql = " SELECT Produto.ProdutoID, Produto.Descricao, Estoque.Quantidade, Produto.ValorUnitario, Estoque.Minimo, CategoriaProduto.CategoriaProdutoID, " +
-                            " CategoriaProduto.Descricao AS CategoriaProduto, Produto.PrecoCompra, Produto.Estoque " +
-                            " FROM CategoriaProduto INNER JOIN " +
-                            " Produto ON CategoriaProduto.CategoriaProdutoID = Produto.CategoriaProdutoID "+
-                            " INNER JOIN Estoque on Estoque.EstoqueID = Produto.Estoque";
+        private const string sql = " SELECT Produto.ProdutoID, Estoque.EstoqueID, CategoriaProduto.CategoriaProdutoID, CategoriaProduto.Descricao, Produto.Descricao, " +
+                                   " Produto.PrecoCompra, Produto.ValorUnitario " +
+                                   " FROM Produto " +
+                                   " INNER JOIN CategoriaProduto ON CategoriaProduto.CategoriaProdutoID = Produto.CategoriaProdutoID " +
+                                   " INNER JOIN Estoque on Estoque.EstoqueID = Produto.Estoque ";
 
         private EstoqueDAO estoqueDAO = new EstoqueDAO();
 
@@ -25,13 +25,11 @@ namespace HenryCorporation.Lavajato.DataAccess
         public void Add(Produto produto)
         {
             string query = " INSERT INTO [Lavajado].[dbo].[Produto] " +
-                " ([Descricao],[Quantidade],[ValorUnitario],[Minimo] " +
+                " ([Descricao],[ValorUnitario] " +
                 " ,[CategoriaProdutoID],[PrecoCompra],[Delete], [Estoque]) " +
                 " VALUES " +
                 " ('" + produto.Descricao + "' " +
-                " ,'" + produto.Quantidade + "' " +
                 " ,'" + produto.ValorUnitario.ToString().Replace(",", ".") + "' " +
-                " ,'" + produto.Minimo + "'" +
                 " ,'" + produto.CategoriaProduto.ID + "' " +
                 " ,'" + produto.PrecoCompra.ToString().Replace(",", ".") + "' " +
                 " ,0 "+
@@ -45,9 +43,7 @@ namespace HenryCorporation.Lavajato.DataAccess
         {
             string query = " UPDATE [Lavajado].[dbo].[Produto] " +
                    " SET [Descricao] = '" + produto.Descricao + "' " +
-                   " ,[Quantidade] = '" + produto.Quantidade + "' " +
                    " ,[ValorUnitario] = '" + produto.ValorUnitario.ToString().Replace(",", ".") + "' " +
-                   " ,[Minimo] = '" + produto.Minimo + "' " +
                    " ,[CategoriaProdutoID] = '" + produto.CategoriaProduto.ID + "' " +
                    " ,[PrecoCompra] = '" + produto.PrecoCompra.ToString().Replace(",", ".") + "' " +
                    " ,[Delete] = 0 "+
@@ -109,14 +105,12 @@ namespace HenryCorporation.Lavajato.DataAccess
             if (reader.Read())
             {
                 produto.ID = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
-                produto.Descricao = reader.IsDBNull(1) ? "" : reader.GetString(1);
-                produto.Quantidade = reader.IsDBNull(2) ? 0 : reader.GetInt32(2);
-                produto.ValorUnitario = reader.IsDBNull(3) ? 0 : reader.GetDecimal(3);
-                produto.Minimo = reader.IsDBNull(4) ? 0 : reader.GetInt32(4);
-                produto.CategoriaProduto.ID = reader.IsDBNull(5) ? 0 : reader.GetInt32(5);
-                produto.CategoriaProduto.Descricao = reader.IsDBNull(6) ? "" : reader.GetString(6);
-                produto.PrecoCompra = reader.IsDBNull(7) ? 0 : reader.GetDecimal(7);
-                produto.Estoque = estoqueDAO.ByID(reader.IsDBNull(8) ? 0 : reader.GetInt32(8));
+                produto.Estoque = estoqueDAO.ByID(reader.IsDBNull(1) ? 0 : reader.GetInt32(1));
+                produto.CategoriaProduto.ID = reader.IsDBNull(2) ? 0 : reader.GetInt32(2);
+                produto.CategoriaProduto.Descricao = reader.IsDBNull(3) ? "" : reader.GetString(3);
+                produto.Descricao = reader.IsDBNull(4) ? "" : reader.GetString(4);
+                produto.PrecoCompra = reader.IsDBNull(5) ? 0 : reader.GetDecimal(5);
+                produto.ValorUnitario = reader.IsDBNull(6) ? 0 : reader.GetDecimal(6);
                 return produto;
             }
             return produto;
@@ -130,14 +124,12 @@ namespace HenryCorporation.Lavajato.DataAccess
             {
                 Produto produto = new Produto();
                 produto.ID = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
-                produto.Descricao = reader.IsDBNull(1) ? "" : reader.GetString(1);
-                produto.Quantidade = reader.IsDBNull(2) ? 0 : reader.GetInt32(2);
-                produto.ValorUnitario = reader.IsDBNull(3) ? 0 : reader.GetDecimal(3);
-                produto.Minimo = reader.IsDBNull(4) ? 0 : reader.GetInt32(4);
-                produto.CategoriaProduto.ID = reader.IsDBNull(5) ? 0 : reader.GetInt32(5);
-                produto.CategoriaProduto.Descricao = reader.IsDBNull(6) ? "" : reader.GetString(6);
-                produto.PrecoCompra = reader.IsDBNull(7) ? 0 : reader.GetDecimal(7);
-                produto.Estoque = estoqueDAO.ByID(reader.IsDBNull(8) ? 0 : reader.GetInt32(8));
+                produto.Estoque = estoqueDAO.ByID(reader.IsDBNull(1) ? 0 : reader.GetInt32(1));
+                produto.CategoriaProduto.ID = reader.IsDBNull(2) ? 0 : reader.GetInt32(2);
+                produto.CategoriaProduto.Descricao = reader.IsDBNull(3) ? "" : reader.GetString(3);
+                produto.Descricao = reader.IsDBNull(4) ? "" : reader.GetString(4);
+                produto.PrecoCompra = reader.IsDBNull(5) ? 0 : reader.GetDecimal(5);
+                produto.ValorUnitario = reader.IsDBNull(6) ? 0 : reader.GetDecimal(6);
                 produtos.Add(produto);
             }
             return produtos;
