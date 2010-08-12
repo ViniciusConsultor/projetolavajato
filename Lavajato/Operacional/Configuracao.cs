@@ -25,7 +25,7 @@ namespace HenryCorporation.Lavajato.Operacional
         public static int ConverteParaInteiro(string valor)
         {
             string strTemp = valor.Replace("R$", "");
-            return Convert.ToInt32(strTemp);
+            return Convert.ToInt32(strTemp.Length > 0 ? strTemp : "0");
         }
 
         public static bool EInteiro(string valor, out int valorint)
