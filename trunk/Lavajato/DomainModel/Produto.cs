@@ -9,8 +9,6 @@ namespace HenryCorporation.Lavajato.DomainModel
     {
         public int ID { get; set; }
         public string Descricao { get; set; }
-        public int Quantidade { get; set; }
-        public int Minimo { get; set; }
         public decimal PrecoCompra { get; set; }
         public decimal ValorUnitario { get; set; }
         private CategoriaProduto _categoriaProduto;
