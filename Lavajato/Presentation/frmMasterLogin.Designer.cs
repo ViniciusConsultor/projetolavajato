@@ -67,6 +67,7 @@
             // 
             this.password.Location = new System.Drawing.Point(68, 29);
             this.password.Name = "password";
+            this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(125, 20);
             this.password.TabIndex = 3;
             // 
@@ -101,7 +102,7 @@
             this.Controls.Add(this.btnLogar);
             this.Name = "frmMasterLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmMasterLogin";
+            this.Text = "Login";
             this.Load += new System.EventHandler(this.frmMasterLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();

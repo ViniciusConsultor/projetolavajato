@@ -41,7 +41,7 @@ namespace HenryCorporation.Lavajato.Presentation
             string query = " SELECT P.DESCRICAO, P.VALORUNITARIO, E.MINIMO, E.QUANTIDADE, P.PRECOCOMPRA, CP.DESCRICAO [CATEGORIAPRODUTO] FROM PRODUTO P "+
 	                       " INNER JOIN ESTOQUE E ON P.ESTOQUE = E.ESTOQUEID "+
                            " INNER JOIN CATEGORIAPRODUTO CP ON P.CATEGORIAPRODUTOID = CP.CATEGORIAPRODUTOID " +
-                           " WHERE E.MINIMO >= E.QUANTIDADE";
+                           " WHERE CP.CATEGORIAPRODUTOID = 1 ";
 
 
             DataTable table = new DataTable();

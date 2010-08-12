@@ -86,7 +86,7 @@
             this.tabClientes.Name = "tabClientes";
             this.tabClientes.SelectedIndex = 0;
             this.tabClientes.Size = new System.Drawing.Size(333, 364);
-            this.tabClientes.TabIndex = 0;
+            this.tabClientes.TabIndex = 20;
             // 
             // tabConsulta
             // 
@@ -131,7 +131,7 @@
             this.placaPesquisa.MaxLength = 50;
             this.placaPesquisa.Name = "placaPesquisa";
             this.placaPesquisa.Size = new System.Drawing.Size(100, 21);
-            this.placaPesquisa.TabIndex = 6;
+            this.placaPesquisa.TabIndex = 1;
             this.placaPesquisa.TextChanged += new System.EventHandler(this.placaPesquisa_TextChanged);
             this.placaPesquisa.Leave += new System.EventHandler(this.placaPesquisa_Leave);
             this.placaPesquisa.Enter += new System.EventHandler(this.placaPesquisa_Enter);
@@ -153,7 +153,7 @@
             this.nomePesquisa.MaxLength = 50;
             this.nomePesquisa.Name = "nomePesquisa";
             this.nomePesquisa.Size = new System.Drawing.Size(206, 21);
-            this.nomePesquisa.TabIndex = 7;
+            this.nomePesquisa.TabIndex = 2;
             this.nomePesquisa.TextChanged += new System.EventHandler(this.nomePesquisa_TextChanged);
             this.nomePesquisa.Leave += new System.EventHandler(this.nomePesquisa_Leave);
             this.nomePesquisa.Enter += new System.EventHandler(this.nomePesquisa_Enter);
@@ -190,7 +190,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(116, 286);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(55, 38);
-            this.btnSalvar.TabIndex = 13;
+            this.btnSalvar.TabIndex = 15;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -211,7 +211,7 @@
             this.convenio.Location = new System.Drawing.Point(5, 15);
             this.convenio.Name = "convenio";
             this.convenio.Size = new System.Drawing.Size(303, 21);
-            this.convenio.TabIndex = 12;
+            this.convenio.TabIndex = 14;
             this.convenio.Leave += new System.EventHandler(this.convênio_Leave);
             this.convenio.Enter += new System.EventHandler(this.convênio_Enter);
             // 
@@ -220,7 +220,7 @@
             this.btnSair.Location = new System.Drawing.Point(264, 286);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(55, 38);
-            this.btnSair.TabIndex = 17;
+            this.btnSair.TabIndex = 19;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
@@ -230,7 +230,7 @@
             this.btnAlterar.Location = new System.Drawing.Point(61, 286);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(55, 38);
-            this.btnAlterar.TabIndex = 14;
+            this.btnAlterar.TabIndex = 17;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
@@ -240,7 +240,7 @@
             this.btnExcluir.Location = new System.Drawing.Point(171, 286);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(55, 38);
-            this.btnExcluir.TabIndex = 15;
+            this.btnExcluir.TabIndex = 18;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -287,7 +287,7 @@
             this.celular.Mask = "(00)0000-0000";
             this.celular.Name = "celular";
             this.celular.Size = new System.Drawing.Size(88, 20);
-            this.celular.TabIndex = 11;
+            this.celular.TabIndex = 13;
             this.celular.Leave += new System.EventHandler(this.celular_Leave);
             this.celular.Enter += new System.EventHandler(this.celular_Enter);
             // 
@@ -298,7 +298,7 @@
             this.fone.Mask = "(00)0000-0000";
             this.fone.Name = "fone";
             this.fone.Size = new System.Drawing.Size(88, 20);
-            this.fone.TabIndex = 10;
+            this.fone.TabIndex = 12;
             this.fone.Leave += new System.EventHandler(this.fone_Leave);
             this.fone.Enter += new System.EventHandler(this.fone_Enter);
             // 
@@ -354,7 +354,7 @@
             this.uf.Location = new System.Drawing.Point(7, 105);
             this.uf.Name = "uf";
             this.uf.Size = new System.Drawing.Size(76, 21);
-            this.uf.TabIndex = 7;
+            this.uf.TabIndex = 9;
             this.uf.Leave += new System.EventHandler(this.uf_Leave);
             this.uf.Enter += new System.EventHandler(this.uf_Enter);
             // 
@@ -375,7 +375,7 @@
             this.bairro.MaxLength = 50;
             this.bairro.Name = "bairro";
             this.bairro.Size = new System.Drawing.Size(133, 21);
-            this.bairro.TabIndex = 9;
+            this.bairro.TabIndex = 11;
             this.bairro.Leave += new System.EventHandler(this.bairro_Leave);
             this.bairro.Enter += new System.EventHandler(this.bairro_Enter);
             // 
@@ -396,7 +396,7 @@
             this.cep.MaxLength = 50;
             this.cep.Name = "cep";
             this.cep.Size = new System.Drawing.Size(91, 21);
-            this.cep.TabIndex = 8;
+            this.cep.TabIndex = 10;
             this.cep.Leave += new System.EventHandler(this.cep_Leave);
             this.cep.Enter += new System.EventHandler(this.cep_Enter);
             // 
@@ -426,7 +426,7 @@
             this.numero.MaxLength = 50;
             this.numero.Name = "numero";
             this.numero.Size = new System.Drawing.Size(40, 21);
-            this.numero.TabIndex = 6;
+            this.numero.TabIndex = 8;
             this.numero.Leave += new System.EventHandler(this.numero_Leave);
             this.numero.Enter += new System.EventHandler(this.numero_Enter);
             // 
@@ -447,7 +447,7 @@
             this.endereco.MaxLength = 50;
             this.endereco.Name = "endereco";
             this.endereco.Size = new System.Drawing.Size(260, 21);
-            this.endereco.TabIndex = 5;
+            this.endereco.TabIndex = 7;
             this.endereco.Leave += new System.EventHandler(this.endereco_Leave);
             this.endereco.Enter += new System.EventHandler(this.endereco_Enter);
             // 
@@ -468,7 +468,7 @@
             this.nome.MaxLength = 50;
             this.nome.Name = "nome";
             this.nome.Size = new System.Drawing.Size(300, 21);
-            this.nome.TabIndex = 4;
+            this.nome.TabIndex = 6;
             this.nome.Leave += new System.EventHandler(this.nome_Leave);
             this.nome.Enter += new System.EventHandler(this.nome_Enter);
             // 
@@ -494,7 +494,7 @@
             this.placa.Mask = "aaa-0000";
             this.placa.Name = "placa";
             this.placa.Size = new System.Drawing.Size(100, 20);
-            this.placa.TabIndex = 1;
+            this.placa.TabIndex = 3;
             this.placa.Leave += new System.EventHandler(this.placa_Leave);
             this.placa.Enter += new System.EventHandler(this.placa_Enter);
             // 
@@ -504,7 +504,7 @@
             this.veiculo.Location = new System.Drawing.Point(207, 30);
             this.veiculo.Name = "veiculo";
             this.veiculo.Size = new System.Drawing.Size(100, 20);
-            this.veiculo.TabIndex = 3;
+            this.veiculo.TabIndex = 5;
             this.veiculo.Leave += new System.EventHandler(this.veiculo_Leave);
             this.veiculo.Enter += new System.EventHandler(this.veiculo_Enter);
             // 
@@ -514,7 +514,7 @@
             this.cor.Location = new System.Drawing.Point(107, 30);
             this.cor.Name = "cor";
             this.cor.Size = new System.Drawing.Size(100, 20);
-            this.cor.TabIndex = 2;
+            this.cor.TabIndex = 4;
             this.cor.Leave += new System.EventHandler(this.cor_Leave);
             this.cor.Enter += new System.EventHandler(this.cor_Enter);
             // 

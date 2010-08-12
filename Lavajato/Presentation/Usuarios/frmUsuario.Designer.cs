@@ -38,6 +38,7 @@
             this.grdUsuarios = new System.Windows.Forms.DataGridView();
             this.tabUsuario = new System.Windows.Forms.TabPage();
             this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cmbTipoUsuario = new System.Windows.Forms.ComboBox();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.rg = new System.Windows.Forms.TextBox();
@@ -56,7 +57,6 @@
             this.checkBoxProduto = new System.Windows.Forms.CheckBox();
             this.label3 = new System.Windows.Forms.Label();
             this.btnSalvar = new System.Windows.Forms.Button();
-            this.btnSair = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
@@ -86,7 +86,7 @@
             this.endereco = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.nome = new System.Windows.Forms.TextBox();
-            this.cmbTipoUsuario = new System.Windows.Forms.ComboBox();
+            this.button1 = new System.Windows.Forms.Button();
             this.tabControl.SuspendLayout();
             this.tabUsuarioPesquisa.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -184,11 +184,11 @@
             // 
             // tabUsuario
             // 
+            this.tabUsuario.Controls.Add(this.button1);
             this.tabUsuario.Controls.Add(this.groupBox6);
             this.tabUsuario.Controls.Add(this.groupBox4);
             this.tabUsuario.Controls.Add(this.groupBox3);
             this.tabUsuario.Controls.Add(this.btnSalvar);
-            this.tabUsuario.Controls.Add(this.btnSair);
             this.tabUsuario.Controls.Add(this.btnAlterar);
             this.tabUsuario.Controls.Add(this.btnExcluir);
             this.tabUsuario.Controls.Add(this.btnNovo);
@@ -211,6 +211,14 @@
             this.groupBox6.TabIndex = 13;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Tipo de Funcionário";
+            // 
+            // cmbTipoUsuario
+            // 
+            this.cmbTipoUsuario.FormattingEnabled = true;
+            this.cmbTipoUsuario.Location = new System.Drawing.Point(6, 13);
+            this.cmbTipoUsuario.Name = "cmbTipoUsuario";
+            this.cmbTipoUsuario.Size = new System.Drawing.Size(178, 21);
+            this.cmbTipoUsuario.TabIndex = 18;
             // 
             // groupBox4
             // 
@@ -242,7 +250,7 @@
             this.rg.MaxLength = 50;
             this.rg.Name = "rg";
             this.rg.Size = new System.Drawing.Size(99, 21);
-            this.rg.TabIndex = 5;
+            this.rg.TabIndex = 17;
             this.rg.Leave += new System.EventHandler(this.rg_Leave);
             this.rg.Enter += new System.EventHandler(this.rg_Enter);
             // 
@@ -263,7 +271,7 @@
             this.cpf.MaxLength = 50;
             this.cpf.Name = "cpf";
             this.cpf.Size = new System.Drawing.Size(80, 21);
-            this.cpf.TabIndex = 4;
+            this.cpf.TabIndex = 16;
             this.cpf.Leave += new System.EventHandler(this.cpf_Leave);
             this.cpf.Enter += new System.EventHandler(this.cpf_Enter);
             // 
@@ -295,7 +303,7 @@
             this.checkOrdemEmAberto.Location = new System.Drawing.Point(213, 91);
             this.checkOrdemEmAberto.Name = "checkOrdemEmAberto";
             this.checkOrdemEmAberto.Size = new System.Drawing.Size(136, 20);
-            this.checkOrdemEmAberto.TabIndex = 18;
+            this.checkOrdemEmAberto.TabIndex = 24;
             this.checkOrdemEmAberto.Text = "Ordens em Aberto";
             this.checkOrdemEmAberto.UseVisualStyleBackColor = true;
             // 
@@ -305,7 +313,7 @@
             this.checkBoxCategoriaProduto.Location = new System.Drawing.Point(11, 91);
             this.checkBoxCategoriaProduto.Name = "checkBoxCategoriaProduto";
             this.checkBoxCategoriaProduto.Size = new System.Drawing.Size(136, 20);
-            this.checkBoxCategoriaProduto.TabIndex = 17;
+            this.checkBoxCategoriaProduto.TabIndex = 21;
             this.checkBoxCategoriaProduto.Text = "Categoria Produto";
             this.checkBoxCategoriaProduto.UseVisualStyleBackColor = true;
             // 
@@ -315,7 +323,7 @@
             this.checkBoxRelatorio.Location = new System.Drawing.Point(391, 67);
             this.checkBoxRelatorio.Name = "checkBoxRelatorio";
             this.checkBoxRelatorio.Size = new System.Drawing.Size(82, 20);
-            this.checkBoxRelatorio.TabIndex = 16;
+            this.checkBoxRelatorio.TabIndex = 26;
             this.checkBoxRelatorio.Text = "Relatório";
             this.checkBoxRelatorio.UseVisualStyleBackColor = true;
             // 
@@ -325,7 +333,7 @@
             this.checkBoxCaixa.Location = new System.Drawing.Point(391, 43);
             this.checkBoxCaixa.Name = "checkBoxCaixa";
             this.checkBoxCaixa.Size = new System.Drawing.Size(61, 20);
-            this.checkBoxCaixa.TabIndex = 15;
+            this.checkBoxCaixa.TabIndex = 25;
             this.checkBoxCaixa.Text = "Caixa";
             this.checkBoxCaixa.UseVisualStyleBackColor = true;
             // 
@@ -344,7 +352,7 @@
             this.checkBoxOrdemServico.Location = new System.Drawing.Point(214, 67);
             this.checkBoxOrdemServico.Name = "checkBoxOrdemServico";
             this.checkBoxOrdemServico.Size = new System.Drawing.Size(117, 20);
-            this.checkBoxOrdemServico.TabIndex = 12;
+            this.checkBoxOrdemServico.TabIndex = 23;
             this.checkBoxOrdemServico.Text = "Ordem Serviço";
             this.checkBoxOrdemServico.UseVisualStyleBackColor = true;
             // 
@@ -354,7 +362,7 @@
             this.checkBoxServico.Location = new System.Drawing.Point(214, 43);
             this.checkBoxServico.Name = "checkBoxServico";
             this.checkBoxServico.Size = new System.Drawing.Size(73, 20);
-            this.checkBoxServico.TabIndex = 11;
+            this.checkBoxServico.TabIndex = 22;
             this.checkBoxServico.Text = "Serviço";
             this.checkBoxServico.UseVisualStyleBackColor = true;
             // 
@@ -373,7 +381,7 @@
             this.checkBoxUsuario.Location = new System.Drawing.Point(11, 67);
             this.checkBoxUsuario.Name = "checkBoxUsuario";
             this.checkBoxUsuario.Size = new System.Drawing.Size(74, 20);
-            this.checkBoxUsuario.TabIndex = 9;
+            this.checkBoxUsuario.TabIndex = 20;
             this.checkBoxUsuario.Text = "Usuário";
             this.checkBoxUsuario.UseVisualStyleBackColor = true;
             // 
@@ -383,7 +391,7 @@
             this.checkBoxProduto.Location = new System.Drawing.Point(11, 43);
             this.checkBoxProduto.Name = "checkBoxProduto";
             this.checkBoxProduto.Size = new System.Drawing.Size(74, 20);
-            this.checkBoxProduto.TabIndex = 7;
+            this.checkBoxProduto.TabIndex = 19;
             this.checkBoxProduto.Text = "Produto";
             this.checkBoxProduto.UseVisualStyleBackColor = true;
             // 
@@ -402,27 +410,17 @@
             this.btnSalvar.Location = new System.Drawing.Point(116, 392);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(55, 38);
-            this.btnSalvar.TabIndex = 18;
+            this.btnSalvar.TabIndex = 27;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
-            // 
-            // btnSair
-            // 
-            this.btnSair.Location = new System.Drawing.Point(460, 392);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(55, 38);
-            this.btnSair.TabIndex = 22;
-            this.btnSair.Text = "Sair";
-            this.btnSair.UseVisualStyleBackColor = true;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // btnAlterar
             // 
             this.btnAlterar.Location = new System.Drawing.Point(61, 392);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(55, 38);
-            this.btnAlterar.TabIndex = 19;
+            this.btnAlterar.TabIndex = 29;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
@@ -432,7 +430,7 @@
             this.btnExcluir.Location = new System.Drawing.Point(171, 392);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(55, 38);
-            this.btnExcluir.TabIndex = 20;
+            this.btnExcluir.TabIndex = 30;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -442,7 +440,7 @@
             this.btnNovo.Location = new System.Drawing.Point(6, 392);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(55, 38);
-            this.btnNovo.TabIndex = 21;
+            this.btnNovo.TabIndex = 28;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
@@ -477,7 +475,7 @@
             this.senha.MaxLength = 50;
             this.senha.Name = "senha";
             this.senha.Size = new System.Drawing.Size(99, 21);
-            this.senha.TabIndex = 5;
+            this.senha.TabIndex = 15;
             this.senha.Leave += new System.EventHandler(this.senha_Leave);
             this.senha.Enter += new System.EventHandler(this.senha_Enter);
             // 
@@ -498,7 +496,7 @@
             this.login.MaxLength = 50;
             this.login.Name = "login";
             this.login.Size = new System.Drawing.Size(80, 21);
-            this.login.TabIndex = 4;
+            this.login.TabIndex = 14;
             this.login.Leave += new System.EventHandler(this.login_Leave);
             this.login.Enter += new System.EventHandler(this.login_Enter);
             // 
@@ -548,7 +546,7 @@
             this.email.MaxLength = 50;
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(300, 21);
-            this.email.TabIndex = 22;
+            this.email.TabIndex = 13;
             this.email.Leave += new System.EventHandler(this.email_Leave);
             this.email.Enter += new System.EventHandler(this.email_Enter);
             // 
@@ -569,7 +567,7 @@
             this.cidade.MaxLength = 50;
             this.cidade.Name = "cidade";
             this.cidade.Size = new System.Drawing.Size(120, 21);
-            this.cidade.TabIndex = 20;
+            this.cidade.TabIndex = 7;
             this.cidade.Leave += new System.EventHandler(this.cidade_Leave);
             this.cidade.Enter += new System.EventHandler(this.cidade_Enter);
             // 
@@ -580,7 +578,7 @@
             this.celular.Mask = "(00)0000-0000";
             this.celular.Name = "celular";
             this.celular.Size = new System.Drawing.Size(93, 20);
-            this.celular.TabIndex = 11;
+            this.celular.TabIndex = 12;
             this.celular.Leave += new System.EventHandler(this.celular_Leave);
             this.celular.Enter += new System.EventHandler(this.celular_Enter);
             // 
@@ -591,7 +589,7 @@
             this.fone.Mask = "(00)0000-0000";
             this.fone.Name = "fone";
             this.fone.Size = new System.Drawing.Size(88, 20);
-            this.fone.TabIndex = 10;
+            this.fone.TabIndex = 11;
             this.fone.Leave += new System.EventHandler(this.fone_Leave);
             this.fone.Enter += new System.EventHandler(this.fone_Enter);
             // 
@@ -647,7 +645,7 @@
             this.uf.Location = new System.Drawing.Point(237, 105);
             this.uf.Name = "uf";
             this.uf.Size = new System.Drawing.Size(70, 21);
-            this.uf.TabIndex = 7;
+            this.uf.TabIndex = 9;
             this.uf.Leave += new System.EventHandler(this.uf_Leave);
             this.uf.Enter += new System.EventHandler(this.uf_Enter);
             // 
@@ -668,7 +666,7 @@
             this.bairro.MaxLength = 50;
             this.bairro.Name = "bairro";
             this.bairro.Size = new System.Drawing.Size(109, 21);
-            this.bairro.TabIndex = 9;
+            this.bairro.TabIndex = 8;
             this.bairro.Leave += new System.EventHandler(this.bairro_Leave);
             this.bairro.Enter += new System.EventHandler(this.bairro_Enter);
             // 
@@ -689,7 +687,7 @@
             this.cep.MaxLength = 50;
             this.cep.Name = "cep";
             this.cep.Size = new System.Drawing.Size(120, 21);
-            this.cep.TabIndex = 8;
+            this.cep.TabIndex = 10;
             this.cep.Leave += new System.EventHandler(this.cep_Leave);
             this.cep.Enter += new System.EventHandler(this.cep_Enter);
             // 
@@ -765,13 +763,14 @@
             this.nome.Leave += new System.EventHandler(this.nome_Leave);
             this.nome.Enter += new System.EventHandler(this.nome_Enter);
             // 
-            // cmbTipoUsuario
+            // button1
             // 
-            this.cmbTipoUsuario.FormattingEnabled = true;
-            this.cmbTipoUsuario.Location = new System.Drawing.Point(6, 13);
-            this.cmbTipoUsuario.Name = "cmbTipoUsuario";
-            this.cmbTipoUsuario.Size = new System.Drawing.Size(178, 21);
-            this.cmbTipoUsuario.TabIndex = 24;
+            this.button1.Location = new System.Drawing.Point(460, 392);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(55, 38);
+            this.button1.TabIndex = 31;
+            this.button1.Text = "Sair";
+            this.button1.UseVisualStyleBackColor = true;
             // 
             // frmUsuario
             // 
@@ -842,7 +841,6 @@
         private System.Windows.Forms.CheckBox checkBoxProduto;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Button btnSalvar;
-        private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnNovo;
@@ -864,6 +862,7 @@
         private System.Windows.Forms.TextBox email;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.ComboBox cmbTipoUsuario;
+        private System.Windows.Forms.Button button1;
 
     }
 }

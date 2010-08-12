@@ -41,6 +41,12 @@ namespace HenryCorporation.Lavajato.Presentation
             HenryCorporation.Lavajato.DomainModel.Produto produto = new HenryCorporation.Lavajato.DomainModel.Produto();
             produto.Descricao = nomePesquisa.Text;
             grdProdutos.DataSource = produtoBL.ByName(produto);
+            OcultaCampo();
+        }
+
+        private void OcultaCampo()
+        {
+            grdProdutos.Columns[0].Visible = false;
         }
 
         private void grdProdutos_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -90,7 +96,7 @@ namespace HenryCorporation.Lavajato.Presentation
             if (precoVenda.Text.Contains("."))
             {
                 precoVenda.Text = precoVenda.Text.Remove(precoVenda.Text.Length - 1);
-                precoVenda.SelectionStart = precoVenda.Text.Length - 1;
+                precoVenda.SelectionStart = precoVenda.Text.Length;
             }
         }
 
@@ -98,7 +104,7 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             LimpaCampos();
             btnNovo.Enabled = false;
-            RetornaFocoParaDescricao();
+            
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -108,7 +114,6 @@ namespace HenryCorporation.Lavajato.Presentation
             btnNovo.Enabled = true;
             CarregaProdutos();
             MessageBox.Show("Produto salvo com sucesso", "Atenção");
-            RetornaFocoParaDescricao();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -129,7 +134,6 @@ namespace HenryCorporation.Lavajato.Presentation
             CarregaProdutos();
             LimpaCampos();
             MessageBox.Show("Produto excluido!", "Atenção");
-            RetornaFocoParaDescricao();
         }
 
         private void CarregaCategoriaProduto()
@@ -142,6 +146,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private void CarregaProdutos()
         {
             grdProdutos.DataSource = produtoBL.GetAll();
+            OcultaCampo();
         }
 
         private void CarregaCampos(HenryCorporation.Lavajato.DomainModel.Produto produto)
@@ -164,7 +169,7 @@ namespace HenryCorporation.Lavajato.Presentation
             minimo.Text = "";
             cmbCategoriaProduto.SelectedIndex = 0;
             this.produto = new HenryCorporation.Lavajato.DomainModel.Produto();
-            RetornaFocoParaDescricao();
+            
         }
 
         private void SetProduto()
@@ -174,8 +179,8 @@ namespace HenryCorporation.Lavajato.Presentation
             this.produto.ValorUnitario = Configuracao.ConverteParaDecimal(precoVenda.Text);
             this.produto.CategoriaProduto.ID = int.Parse(cmbCategoriaProduto.SelectedValue.ToString());
 
-            this.produto.Estoque.Quantidade = Configuracao.ConverteParaInteiro(quantidade.Text);
-            this.produto.Estoque.Minimo = int.Parse(minimo.Text);
+            this.produto.Estoque.Quantidade = Configuracao.ConverteParaInteiro(quantidade.Text.Length > 0 ? quantidade.Text: "0");
+            this.produto.Estoque.Minimo = int.Parse(minimo.Text.Length > 0 ? minimo.Text : "0");
             this.produto.Estoque.Data = DateTime.Now;
         }
 
@@ -187,6 +192,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private void precoCompra_Leave(object sender, EventArgs e)
         {
             precoCompra.BackColor = Color.White;
+            precoVenda.Focus();
         }
 
         private void descricao_Enter(object sender, EventArgs e)
@@ -197,6 +203,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private void descricao_Leave(object sender, EventArgs e)
         {
             descricao.BackColor = Color.White;
+            this.cmbCategoriaProduto.Focus();
         }
 
         private void precoVenda_Enter(object sender, EventArgs e)
@@ -207,6 +214,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private void precoVenda_Leave(object sender, EventArgs e)
         {
             precoVenda.BackColor = Color.White;
+            quantidade.Focus();
         }
 
         private void quantidade_Enter(object sender, EventArgs e)
@@ -217,6 +225,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private void quantidade_Leave(object sender, EventArgs e)
         {
             quantidade.BackColor = Color.White;
+            minimo.Focus();
         }
 
         private void minimo_Enter(object sender, EventArgs e)
@@ -227,6 +236,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private void minimo_Leave(object sender, EventArgs e)
         {
             minimo.BackColor = Color.White;
+            btnSalvar.Focus();
         }
 
         private void cmbCategoriaProduto_Enter(object sender, EventArgs e)
@@ -237,6 +247,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private void cmbCategoriaProduto_Leave(object sender, EventArgs e)
         {
             cmbCategoriaProduto.BackColor = Color.White;
+            precoCompra.Focus();
         }
 
         private void quantidade_TextChanged(object sender, EventArgs e)
@@ -280,10 +291,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.Close();
         }
 
-        private void RetornaFocoParaDescricao()
-        {
-            descricao.Focus();
-        }
+        
 
         private void cmbCategoriaProduto_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -302,13 +310,40 @@ namespace HenryCorporation.Lavajato.Presentation
                 precoCompra.Enabled = false;
                 minimo.Enabled = false;
                 quantidade.Enabled = false;
+                precoCompra.Focus();
             }
             else
             {
                 precoCompra.Enabled = true;
                 minimo.Enabled = true;
                 quantidade.Enabled = true;
+                precoVenda.Focus();
             }
+        }
+
+        private void btnSalvar_Leave(object sender, EventArgs e)
+        {
+            btnExcluir.Focus();
+        }
+
+        private void btnExcluir_Leave(object sender, EventArgs e)
+        {
+            btnSair.Focus();
+        }
+
+        private void btnSair_Leave(object sender, EventArgs e)
+        {
+            btnNovo.Focus();
+        }
+
+        private void btnNovo_Leave(object sender, EventArgs e)
+        {
+            btnAlterar.Focus();
+        }
+
+        private void btnAlterar_Leave(object sender, EventArgs e)
+        {
+            descricao.Focus();
         }
     }
 }

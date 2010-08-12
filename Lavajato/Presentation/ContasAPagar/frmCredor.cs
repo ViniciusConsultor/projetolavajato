@@ -88,6 +88,12 @@ namespace HenryCorporation.Lavajato.Presentation
             Credor crd = new Credor();
             crd.RazaoSocial = razaoSocialPesquisa.Text;
             grdCredor.DataSource = credorBL.ByRazaoSocial(crd);
+            OcultaCampos();
+        }
+
+        public void OcultaCampos()
+        {
+            grdCredor.Columns[0].Visible = false;
         }
 
         private void NomeFantasiaPesquisa_TextChanged(object sender, EventArgs e)
@@ -95,6 +101,7 @@ namespace HenryCorporation.Lavajato.Presentation
             Credor crd = new Credor();
             crd.NomeFantasia = nomeFantasiaPesquisa.Text;
             grdCredor.DataSource = credorBL.ByNomeFantasia(crd);
+            OcultaCampos();
         }
 
         private void LimpaCampos()
@@ -169,6 +176,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private void CarregaDados()
         {
             grdCredor.DataSource = credorBL.GetAll();
+            OcultaCampos();
         }
 
         private void razaoSocialPesquisa_Enter(object sender, EventArgs e)

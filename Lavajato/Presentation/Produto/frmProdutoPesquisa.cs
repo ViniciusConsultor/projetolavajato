@@ -26,11 +26,13 @@ namespace HenryCorporation.Lavajato.Presentation
             HenryCorporation.Lavajato.DomainModel.Produto produto = new HenryCorporation.Lavajato.DomainModel.Produto();
             produto.Descricao = nomePesquisa.Text;
             grdProdutos.DataSource = produtoBL.ByName(produto);
+            OcultaCampos();
         }
 
         private void CarregaProdutos()
         {
             grdProdutos.DataSource = produtoBL.GetAll();
+            OcultaCampos();
         }
 
         private void grdProdutos_DoubleClick(object sender, EventArgs e)
@@ -50,6 +52,11 @@ namespace HenryCorporation.Lavajato.Presentation
         private void nomePesquisa_Leave(object sender, EventArgs e)
         {
             nomePesquisa.BackColor = Color.White;
+        }
+
+        private void OcultaCampos()
+        {
+            grdProdutos.Columns[0].Visible = false;
         }
     }
 }

@@ -19,6 +19,7 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             InitializeComponent();
             grdUsuarios.DataSource = usuarioBL.GetAll().Tables[0];
+            OcultaCampos();
         }
 
         private void nomePesquisa_TextChanged(object sender, EventArgs e)
@@ -26,11 +27,18 @@ namespace HenryCorporation.Lavajato.Presentation
             Usuario usuario = new Usuario();
             usuario.Nome = nomePesquisa.Text;
             grdUsuarios.DataSource = usuarioBL.ByName(usuario);
+            OcultaCampos();
         }
 
         private void loginPesquisa_TextChanged(object sender, EventArgs e)
         {
             grdUsuarios.DataSource = usuarioBL.ByLogin(loginPesquisa.Text);
+            OcultaCampos();
+        }
+
+        private void OcultaCampos()
+        {
+            grdUsuarios.Columns[0].Visible = false;
         }
 
         private void grdUsuarios_MouseDoubleClick(object sender, MouseEventArgs e)

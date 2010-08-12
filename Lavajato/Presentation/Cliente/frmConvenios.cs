@@ -101,12 +101,20 @@ namespace HenryCorporation.Lavajato.Presentation
             Convenio con = new Convenio();
             con.Nome = conveniadoPesquisa.Text;
             grdConvenios.DataSource = convenioBL.ByName(con);
+            OcultaCampos();
         }
 
         private void CarregaDados()
         {
             grdConvenios.DataSource = convenioBL.GetAll();
+            OcultaCampos();
         }
+
+        public void OcultaCampos()
+        {
+            grdConvenios.Columns[0].Visible = false;
+        }
+
 
         private void LimpaCampos()
         {

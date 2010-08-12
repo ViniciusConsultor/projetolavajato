@@ -44,6 +44,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private void CarregaUsuarios()
         {
             grdUsuarios.DataSource = usuarioBL.GetAll().Tables[0];
+            grdUsuarios.Columns[0].Visible = false;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -149,6 +150,21 @@ namespace HenryCorporation.Lavajato.Presentation
             MessageBox.Show("Usuario alterado com sucesso!", "Atenção");
             CarregaUsuarios();
         }
+
+        private void nomePesquisa_TextChanged(object sender, EventArgs e)
+        {
+            HenryCorporation.Lavajato.DomainModel.Usuario usuario = new HenryCorporation.Lavajato.DomainModel.Usuario();
+            usuario.Nome = nomePesquisa.Text;
+            grdUsuarios.DataSource = usuarioBL.ByName(usuario);
+            OcultaCampo();
+        }
+
+        private void loginPesquisa_TextChanged(object sender, EventArgs e)
+        {
+            grdUsuarios.DataSource = usuarioBL.ByLogin(loginPesquisa.Text);
+            OcultaCampo();
+        }
+
 
         private void btnNovo_Click(object sender, EventArgs e)
         {
@@ -347,16 +363,9 @@ namespace HenryCorporation.Lavajato.Presentation
             rg.BackColor = Color.White;
         }
 
-        private void nomePesquisa_TextChanged(object sender, EventArgs e)
+        private void OcultaCampo()
         {
-            HenryCorporation.Lavajato.DomainModel.Usuario usuario = new HenryCorporation.Lavajato.DomainModel.Usuario();
-            usuario.Nome = nomePesquisa.Text;
-            grdUsuarios.DataSource = usuarioBL.ByName(usuario);
-        }
-
-        private void loginPesquisa_TextChanged(object sender, EventArgs e)
-        {
-            grdUsuarios.DataSource = usuarioBL.ByLogin(loginPesquisa.Text);
+            grdUsuarios.Columns[0].Visible = false;
         }
 
         
