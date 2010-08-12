@@ -61,7 +61,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             return servicoDAO.ByServicoItemID(servicoItem);
         }
 
-        public static DataTable CriaGrid(Servico servico)
+        public DataTable CriaGrid(Servico servico)
         {
             DataSet dataSet = new DataSet();
             DataTable table = new DataTable();
@@ -80,7 +80,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             return table;
         }
 
-        private static DataColumn[] CarregaColunas()
+        private DataColumn[] CarregaColunas()
         {
             DataColumn[] columns = new DataColumn[5];
 
