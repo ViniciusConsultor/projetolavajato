@@ -108,6 +108,12 @@
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Produto\frmCategoriaProduto.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produto\frmCategoriaProduto.Designer.cs">
+      <DependentUpon>frmCategoriaProduto.cs</DependentUpon>
+    </Compile>
     <Compile Include="Produto\frmProduto.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -158,6 +164,11 @@
       <DependentUpon>frmPrincipal.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\HistoricoCliente.rdlc" />
+    <EmbeddedResource Include="Produto\frmCategoriaProduto.resx">
+      <DependentUpon>frmCategoriaProduto.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="Produto\frmProduto.resx">
       <DependentUpon>frmProduto.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -169,6 +180,15 @@
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\frmClientePesquisaPorPlaca.resx">
+      <DependentUpon>frmClientePesquisaPorPlaca.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\frmClientePorPlaca.rdlc" />
+    <EmbeddedResource Include="Relatorios\frmClientesPorPlaca.resx">
+      <DependentUpon>frmClientesPorPlaca.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\frmProdutoAbaixoEstoque.resx">
@@ -224,6 +244,17 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
+    <None Include="Relatorios\clientePorPlaca.xsc">
+      <DependentUpon>clientePorPlaca.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\clientePorPlaca.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>clientePorPlaca.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\clientePorPlaca.xss">
+      <DependentUpon>clientePorPlaca.xsd</DependentUpon>
+    </None>
     <None Include="Relatorios\FechamentoCaixa.xsc">
       <DependentUpon>FechamentoCaixa.xsd</DependentUpon>
     </None>
@@ -234,6 +265,17 @@
     </None>
     <None Include="Relatorios\FechamentoCaixa.xss">
       <DependentUpon>FechamentoCaixa.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\HistoricoCliente.xsc">
+      <DependentUpon>HistoricoCliente.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\HistoricoCliente.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>HistoricoCliente.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\HistoricoCliente.xss">
+      <DependentUpon>HistoricoCliente.xsd</DependentUpon>
     </None>
     <None Include="Relatorios\relProdutoAbaixoEstoque.xsc">
       <DependentUpon>relProdutoAbaixoEstoque.xsd</DependentUpon>
@@ -251,6 +293,14 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="Relatorios\clientePorPlaca.cs">
+      <DependentUpon>clientePorPlaca.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\clientePorPlaca.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>clientePorPlaca.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\FechamentoCaixa.cs">
       <DependentUpon>FechamentoCaixa.xsd</DependentUpon>
       <SubType>Component</SubType>
@@ -259,6 +309,18 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>FechamentoCaixa.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\frmClientePesquisaPorPlaca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\frmClientePesquisaPorPlaca.Designer.cs">
+      <DependentUpon>frmClientePesquisaPorPlaca.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\frmClientesPorPlaca.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\frmClientesPorPlaca.Designer.cs">
+      <DependentUpon>frmClientesPorPlaca.cs</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\frmProdutoAbaixoEstoque.cs">
       <SubType>Form</SubType>
@@ -271,6 +333,11 @@
     </Compile>
     <Compile Include="Relatorios\frmRelatorioFechamentoDeCaixa.Designer.cs">
       <DependentUpon>frmRelatorioFechamentoDeCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\HistoricoCliente.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>HistoricoCliente.xsd</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\relProdutoAbaixoEstoque.Designer.cs">
       <AutoGen>True</AutoGen>

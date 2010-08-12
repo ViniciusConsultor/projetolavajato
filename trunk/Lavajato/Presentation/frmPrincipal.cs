@@ -60,12 +60,6 @@ namespace Presentation
             frmOrdemServico.ShowDialog();
         }
 
-        private void caixaToolStripMenuItem_Click(object sender, EventArgs e)
-        {
-            frmCaixa frmCaixa = new frmCaixa();
-            frmCaixa.ShowDialog();
-        }
-
         private void retiradaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
             frmRetirada frmRetirada = new frmRetirada();
@@ -124,6 +118,36 @@ namespace Presentation
         {
             frmProdutoAbaixoEstoque frmPAE = new frmProdutoAbaixoEstoque();
             frmPAE.ShowDialog();
+        }
+
+        private void carrosLavadosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmOrdensAbertas frmAbertas = new frmOrdensAbertas();
+            frmAbertas.ShowDialog();
+        }
+
+        private void entradaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmEntrada frmEntra = new frmEntrada();
+            frmEntra.ShowDialog();
+        }
+
+        private void saidaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRetirada frmRetirada = new frmRetirada();
+            frmRetirada.ShowDialog();
+        }
+
+        private void clientePorPlacaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmClientePesquisaPorPlaca cliePesquisa = new frmClientePesquisaPorPlaca();
+            cliePesquisa.ShowDialog();
+        }
+
+        private void servicoToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            frmCaixa frmCaixa = new frmCaixa();
+            frmCaixa.ShowDialog();
         }
     }
 }

@@ -27,6 +27,8 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             Servico servico = new Servico();
             servico.ID = int.Parse(grdOrdensAbertas.Rows[grdOrdensAbertas.CurrentRow.Index].Cells[0].Value.ToString());
+            servico = new ServicoBL().ByID(servico);
+            
             frmCaixa frmCaixa = new frmCaixa(servico);
             frmCaixa.ShowDialog();
         }

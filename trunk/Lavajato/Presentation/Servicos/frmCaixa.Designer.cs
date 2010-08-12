@@ -81,7 +81,7 @@
             btnAlterarQuantidade.Location = new System.Drawing.Point(76, 519);
             btnAlterarQuantidade.Name = "btnAlterarQuantidade";
             btnAlterarQuantidade.Size = new System.Drawing.Size(75, 51);
-            btnAlterarQuantidade.TabIndex = 88;
+            btnAlterarQuantidade.TabIndex = 22;
             btnAlterarQuantidade.Text = "Alterar Quantidade (F3)";
             btnAlterarQuantidade.UseVisualStyleBackColor = true;
             btnAlterarQuantidade.Click += new System.EventHandler(this.btnAlterarQuantidade_Click);
@@ -102,7 +102,7 @@
             this.cmbProduto.Location = new System.Drawing.Point(1, 397);
             this.cmbProduto.Name = "cmbProduto";
             this.cmbProduto.Size = new System.Drawing.Size(686, 33);
-            this.cmbProduto.TabIndex = 1;
+            this.cmbProduto.TabIndex = 13;
             this.cmbProduto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProduto_KeyDown);
             // 
             // btnAdicionar
@@ -110,7 +110,7 @@
             this.btnAdicionar.Location = new System.Drawing.Point(693, 397);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(94, 33);
-            this.btnAdicionar.TabIndex = 3;
+            this.btnAdicionar.TabIndex = 15;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = true;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
@@ -152,7 +152,7 @@
             this.desconto.Multiline = true;
             this.desconto.Name = "desconto";
             this.desconto.Size = new System.Drawing.Size(112, 33);
-            this.desconto.TabIndex = 93;
+            this.desconto.TabIndex = 19;
             this.desconto.TextChanged += new System.EventHandler(this.desconto_TextChanged);
             this.desconto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.desconto_KeyDown);
             // 
@@ -175,7 +175,7 @@
             this.cmbFormaPagamento.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cmbFormaPagamento.Name = "cmbFormaPagamento";
             this.cmbFormaPagamento.Size = new System.Drawing.Size(161, 33);
-            this.cmbFormaPagamento.TabIndex = 91;
+            this.cmbFormaPagamento.TabIndex = 16;
             this.cmbFormaPagamento.SelectedIndexChanged += new System.EventHandler(this.cmbFormaPagamento_SelectedIndexChanged);
             this.cmbFormaPagamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbFormaPagamento_KeyDown);
             // 
@@ -198,7 +198,7 @@
             this.troco.Multiline = true;
             this.troco.Name = "troco";
             this.troco.Size = new System.Drawing.Size(112, 33);
-            this.troco.TabIndex = 89;
+            this.troco.TabIndex = 20;
             this.troco.TextChanged += new System.EventHandler(this.troco_TextChanged);
             this.troco.KeyDown += new System.Windows.Forms.KeyEventHandler(this.troco_KeyDown);
             // 
@@ -221,7 +221,7 @@
             this.valor.Multiline = true;
             this.valor.Name = "valor";
             this.valor.Size = new System.Drawing.Size(112, 33);
-            this.valor.TabIndex = 87;
+            this.valor.TabIndex = 18;
             this.valor.TextChanged += new System.EventHandler(this.valor_TextChanged);
             // 
             // label1
@@ -243,7 +243,7 @@
             this.totalServico.Multiline = true;
             this.totalServico.Name = "totalServico";
             this.totalServico.Size = new System.Drawing.Size(112, 33);
-            this.totalServico.TabIndex = 14;
+            this.totalServico.TabIndex = 17;
             this.totalServico.TextChanged += new System.EventHandler(this.totalServico_TextChanged);
             this.totalServico.KeyDown += new System.Windows.Forms.KeyEventHandler(this.totalServico_KeyDown);
             // 
@@ -252,7 +252,7 @@
             this.btnCancelarVenda.Location = new System.Drawing.Point(301, 519);
             this.btnCancelarVenda.Name = "btnCancelarVenda";
             this.btnCancelarVenda.Size = new System.Drawing.Size(75, 51);
-            this.btnCancelarVenda.TabIndex = 86;
+            this.btnCancelarVenda.TabIndex = 25;
             this.btnCancelarVenda.Text = " Cancelar  \r\n   Venda     \r(F6)";
             this.btnCancelarVenda.UseVisualStyleBackColor = true;
             this.btnCancelarVenda.Click += new System.EventHandler(this.btnFinalizarVenda_Click);
@@ -262,7 +262,7 @@
             this.btnConcluirVenda.Location = new System.Drawing.Point(1, 519);
             this.btnConcluirVenda.Name = "btnConcluirVenda";
             this.btnConcluirVenda.Size = new System.Drawing.Size(75, 51);
-            this.btnConcluirVenda.TabIndex = 87;
+            this.btnConcluirVenda.TabIndex = 21;
             this.btnConcluirVenda.Text = "Concluir  Venda    (F2)";
             this.btnConcluirVenda.UseVisualStyleBackColor = true;
             this.btnConcluirVenda.Click += new System.EventHandler(this.btnConcluirVenda_Click);
@@ -273,7 +273,7 @@
             this.btnExcluir.Location = new System.Drawing.Point(226, 519);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(75, 51);
-            this.btnExcluir.TabIndex = 89;
+            this.btnExcluir.TabIndex = 24;
             this.btnExcluir.Text = "   Excluir\r\n   Item \r\n   (F5)";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -283,7 +283,7 @@
             this.btnVendaAvulca.Location = new System.Drawing.Point(151, 519);
             this.btnVendaAvulca.Name = "btnVendaAvulca";
             this.btnVendaAvulca.Size = new System.Drawing.Size(75, 51);
-            this.btnVendaAvulca.TabIndex = 91;
+            this.btnVendaAvulca.TabIndex = 23;
             this.btnVendaAvulca.Text = "   Venda   \r\n     Avulsa    \r\n (F4)";
             this.btnVendaAvulca.UseVisualStyleBackColor = true;
             this.btnVendaAvulca.Click += new System.EventHandler(this.btnVendaAvulca_Click);
@@ -325,7 +325,7 @@
             this.ordemServico.Location = new System.Drawing.Point(133, 12);
             this.ordemServico.Name = "ordemServico";
             this.ordemServico.Size = new System.Drawing.Size(240, 31);
-            this.ordemServico.TabIndex = 112;
+            this.ordemServico.TabIndex = 1;
             this.ordemServico.Leave += new System.EventHandler(this.ordemServico_Leave);
             // 
             // chbLavado
@@ -335,7 +335,7 @@
             this.chbLavado.Location = new System.Drawing.Point(132, 353);
             this.chbLavado.Name = "chbLavado";
             this.chbLavado.Size = new System.Drawing.Size(130, 29);
-            this.chbLavado.TabIndex = 111;
+            this.chbLavado.TabIndex = 12;
             this.chbLavado.Text = "Finalizado";
             this.chbLavado.UseVisualStyleBackColor = true;
             // 
@@ -355,16 +355,16 @@
             // 
             this.cmbLavador.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbLavador.FormattingEnabled = true;
-            this.cmbLavador.Location = new System.Drawing.Point(133, 319);
+            this.cmbLavador.Location = new System.Drawing.Point(133, 284);
             this.cmbLavador.Name = "cmbLavador";
             this.cmbLavador.Size = new System.Drawing.Size(240, 33);
-            this.cmbLavador.TabIndex = 109;
+            this.cmbLavador.TabIndex = 10;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 315);
+            this.label4.Location = new System.Drawing.Point(13, 286);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(120, 31);
@@ -380,7 +380,7 @@
             this.dataEntrada.Location = new System.Drawing.Point(133, 216);
             this.dataEntrada.Name = "dataEntrada";
             this.dataEntrada.Size = new System.Drawing.Size(240, 31);
-            this.dataEntrada.TabIndex = 107;
+            this.dataEntrada.TabIndex = 7;
             // 
             // label10
             // 
@@ -403,13 +403,13 @@
             this.min.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.min.Name = "min";
             this.min.Size = new System.Drawing.Size(108, 37);
-            this.min.TabIndex = 106;
+            this.min.TabIndex = 9;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(61, 284);
+            this.label3.Location = new System.Drawing.Point(61, 321);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 29);
@@ -425,7 +425,7 @@
             this.hora.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.hora.Name = "hora";
             this.hora.Size = new System.Drawing.Size(115, 37);
-            this.hora.TabIndex = 105;
+            this.hora.TabIndex = 8;
             // 
             // placa
             // 
@@ -435,7 +435,7 @@
             this.placa.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.placa.Name = "placa";
             this.placa.Size = new System.Drawing.Size(240, 35);
-            this.placa.TabIndex = 92;
+            this.placa.TabIndex = 2;
             // 
             // veiculo
             // 
@@ -445,16 +445,16 @@
             this.veiculo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.veiculo.Name = "veiculo";
             this.veiculo.Size = new System.Drawing.Size(240, 35);
-            this.veiculo.TabIndex = 94;
+            this.veiculo.TabIndex = 5;
             // 
             // quantidade
             // 
             this.quantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantidade.Location = new System.Drawing.Point(133, 284);
+            this.quantidade.Location = new System.Drawing.Point(133, 317);
             this.quantidade.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.quantidade.Name = "quantidade";
             this.quantidade.Size = new System.Drawing.Size(240, 35);
-            this.quantidade.TabIndex = 104;
+            this.quantidade.TabIndex = 11;
             // 
             // nome
             // 
@@ -464,7 +464,7 @@
             this.nome.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.nome.Name = "nome";
             this.nome.Size = new System.Drawing.Size(240, 35);
-            this.nome.TabIndex = 98;
+            this.nome.TabIndex = 3;
             // 
             // corVeiculo
             // 
@@ -474,7 +474,7 @@
             this.corVeiculo.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.corVeiculo.Name = "corVeiculo";
             this.corVeiculo.Size = new System.Drawing.Size(240, 35);
-            this.corVeiculo.TabIndex = 99;
+            this.corVeiculo.TabIndex = 6;
             // 
             // label2
             // 
@@ -496,7 +496,7 @@
             this.telefone.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.telefone.Name = "telefone";
             this.telefone.Size = new System.Drawing.Size(240, 35);
-            this.telefone.TabIndex = 100;
+            this.telefone.TabIndex = 4;
             // 
             // label9
             // 

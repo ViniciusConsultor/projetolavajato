@@ -41,6 +41,8 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnNovo = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
+            this.label4 = new System.Windows.Forms.Label();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.minimo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -54,8 +56,6 @@
             this.label7 = new System.Windows.Forms.Label();
             this.descricao = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
             this.tabProdutos.SuspendLayout();
             this.tabProdutoPesquisa.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -75,7 +75,7 @@
             this.tabProdutos.Name = "tabProdutos";
             this.tabProdutos.SelectedIndex = 0;
             this.tabProdutos.Size = new System.Drawing.Size(407, 416);
-            this.tabProdutos.TabIndex = 0;
+            this.tabProdutos.TabIndex = 58;
             // 
             // tabProdutoPesquisa
             // 
@@ -118,7 +118,7 @@
             this.nomePesquisa.MaxLength = 50;
             this.nomePesquisa.Name = "nomePesquisa";
             this.nomePesquisa.Size = new System.Drawing.Size(378, 21);
-            this.nomePesquisa.TabIndex = 7;
+            this.nomePesquisa.TabIndex = 61;
             this.nomePesquisa.TextChanged += new System.EventHandler(this.nomePesquisa_TextChanged);
             // 
             // grdProdutos
@@ -127,7 +127,7 @@
             this.grdProdutos.Location = new System.Drawing.Point(7, 7);
             this.grdProdutos.Name = "grdProdutos";
             this.grdProdutos.Size = new System.Drawing.Size(386, 310);
-            this.grdProdutos.TabIndex = 0;
+            this.grdProdutos.TabIndex = 60;
             this.grdProdutos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.grdProdutos_MouseDoubleClick);
             // 
             // tabProduto
@@ -154,50 +154,55 @@
             this.btnSalvar.Location = new System.Drawing.Point(112, 165);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(55, 38);
-            this.btnSalvar.TabIndex = 8;
+            this.btnSalvar.TabIndex = 10;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
+            this.btnSalvar.Leave += new System.EventHandler(this.btnSalvar_Leave);
             // 
             // btnSair
             // 
             this.btnSair.Location = new System.Drawing.Point(222, 165);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(55, 38);
-            this.btnSair.TabIndex = 11;
+            this.btnSair.TabIndex = 12;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            this.btnSair.Leave += new System.EventHandler(this.btnSair_Leave);
             // 
             // btnAlterar
             // 
             this.btnAlterar.Location = new System.Drawing.Point(57, 165);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(55, 38);
-            this.btnAlterar.TabIndex = 10;
+            this.btnAlterar.TabIndex = 9;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
+            this.btnAlterar.Leave += new System.EventHandler(this.btnAlterar_Leave);
             // 
             // btnExcluir
             // 
             this.btnExcluir.Location = new System.Drawing.Point(167, 165);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(55, 38);
-            this.btnExcluir.TabIndex = 10;
+            this.btnExcluir.TabIndex = 11;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
+            this.btnExcluir.Leave += new System.EventHandler(this.btnExcluir_Leave);
             // 
             // btnNovo
             // 
             this.btnNovo.Location = new System.Drawing.Point(2, 165);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(55, 38);
-            this.btnNovo.TabIndex = 9;
+            this.btnNovo.TabIndex = 8;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
+            this.btnNovo.Leave += new System.EventHandler(this.btnNovo_Leave);
             // 
             // groupBox4
             // 
@@ -210,9 +215,28 @@
             this.groupBox4.Location = new System.Drawing.Point(125, 64);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(158, 100);
-            this.groupBox4.TabIndex = 21;
+            this.groupBox4.TabIndex = 17;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Estoque";
+            // 
+            // label4
+            // 
+            this.label4.AutoSize = true;
+            this.label4.Location = new System.Drawing.Point(13, 58);
+            this.label4.Name = "label4";
+            this.label4.Size = new System.Drawing.Size(55, 13);
+            this.label4.TabIndex = 20;
+            this.label4.Text = "Saldo Est:";
+            // 
+            // textBox1
+            // 
+            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.textBox1.Enabled = false;
+            this.textBox1.Location = new System.Drawing.Point(69, 55);
+            this.textBox1.MaxLength = 50;
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(83, 20);
+            this.textBox1.TabIndex = 7;
             // 
             // label3
             // 
@@ -220,7 +244,7 @@
             this.label3.Location = new System.Drawing.Point(25, 37);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(43, 13);
-            this.label3.TabIndex = 20;
+            this.label3.TabIndex = 19;
             this.label3.Text = "Minimo:";
             // 
             // minimo
@@ -229,7 +253,7 @@
             this.minimo.Location = new System.Drawing.Point(69, 35);
             this.minimo.Name = "minimo";
             this.minimo.Size = new System.Drawing.Size(83, 20);
-            this.minimo.TabIndex = 6;
+            this.minimo.TabIndex = 5;
             this.minimo.TextChanged += new System.EventHandler(this.minimo_TextChanged);
             this.minimo.Leave += new System.EventHandler(this.minimo_Leave);
             this.minimo.Enter += new System.EventHandler(this.minimo_Enter);
@@ -260,7 +284,7 @@
             this.groupBox3.Location = new System.Drawing.Point(2, 117);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(117, 47);
-            this.groupBox3.TabIndex = 20;
+            this.groupBox3.TabIndex = 16;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Preço de Venda";
             // 
@@ -281,7 +305,7 @@
             this.groupBox2.Location = new System.Drawing.Point(2, 64);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(117, 47);
-            this.groupBox2.TabIndex = 2;
+            this.groupBox2.TabIndex = 15;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Preço de Compra";
             // 
@@ -354,7 +378,7 @@
             this.label7.Location = new System.Drawing.Point(285, 11);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(55, 13);
-            this.label7.TabIndex = 16;
+            this.label7.TabIndex = 14;
             this.label7.Text = "Categoria:";
             // 
             // descricao
@@ -373,27 +397,8 @@
             this.label2.Location = new System.Drawing.Point(4, 11);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(113, 13);
-            this.label2.TabIndex = 3;
+            this.label2.TabIndex = 13;
             this.label2.Text = "Descrição do Produto:";
-            // 
-            // label4
-            // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(13, 58);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(55, 13);
-            this.label4.TabIndex = 22;
-            this.label4.Text = "Saldo Est:";
-            // 
-            // textBox1
-            // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(69, 55);
-            this.textBox1.MaxLength = 50;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(83, 20);
-            this.textBox1.TabIndex = 7;
             // 
             // frmProduto
             // 

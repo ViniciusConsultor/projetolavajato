@@ -25,12 +25,14 @@ namespace HenryCorporation.Lavajato.Presentation
         private void CarregaClientesCadastrados()
         {
             grdClientes.DataSource = clienteBL.GetAll();
+            OculdaColuna();
         }
         private void placaPesquisa_TextChanged(object sender, EventArgs e)
         {
             HenryCorporation.Lavajato.DomainModel.Cliente cliente = new HenryCorporation.Lavajato.DomainModel.Cliente();
             cliente.Placa = placaPesquisa.Text;
             grdClientes.DataSource = clienteBL.ByPlacas(cliente);
+            OculdaColuna();
         }
 
         private void nomePesquisa_TextChanged(object sender, EventArgs e)
@@ -38,6 +40,7 @@ namespace HenryCorporation.Lavajato.Presentation
             HenryCorporation.Lavajato.DomainModel.Cliente cliente = new HenryCorporation.Lavajato.DomainModel.Cliente();
             cliente.Nome = nomePesquisa.Text;
             grdClientes.DataSource = clienteBL.ByName(cliente);
+            OculdaColuna();
         }
 
         private void grdClientes_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -47,6 +50,31 @@ namespace HenryCorporation.Lavajato.Presentation
             frmCliente frmCliente = new frmCliente(cliente);
             frmCliente.ShowDialog();
             this.Close();
+        }
+
+        private void OculdaColuna()
+        {
+            grdClientes.Columns[0].Visible = false;
+        }
+
+        private void placaPesquisa_Enter(object sender, EventArgs e)
+        {
+            placaPesquisa.BackColor = Color.Yellow;
+        }
+
+        private void placaPesquisa_Leave(object sender, EventArgs e)
+        {
+            placaPesquisa.BackColor = Color.White;
+        }
+
+        private void nomePesquisa_Enter(object sender, EventArgs e)
+        {
+            nomePesquisa.BackColor = Color.Yellow;
+        }
+
+        private void nomePesquisa_Leave(object sender, EventArgs e)
+        {
+            nomePesquisa.BackColor = Color.White;
         }
     }
 }

@@ -15,7 +15,7 @@ namespace HenryCorporation.Lavajato.Presentation
     public partial class frmOrdemServico : login
     {
         private ClienteBL clienteBL = new ClienteBL();
-        private DomainModel.Cliente cliente = new DomainModel.Cliente();
+        private Cliente cliente = new Cliente();
         private Servico servico = new Servico();
         private ServicoItem servicoItem = new ServicoItem();
         private ServicoBL servicoBL = new ServicoBL();
@@ -44,7 +44,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void CarregaItensDoServico(Servico servico)
         {
-            grdServico.DataSource = ServicoBL.CriaGrid(this.servico).DefaultView;
+            grdServico.DataSource = servicoBL.CriaGrid(this.servico).DefaultView;
             grdServico.Columns[0].Visible = false;
             grdServico.Columns[1].Width = 150;
             grdServico.Columns[2].Width = 150;
@@ -215,8 +215,8 @@ namespace HenryCorporation.Lavajato.Presentation
             }
 
             SomaTotal();
-            this. servico.OrdemServico = servico.ID + 1;
-            this. servico.Saida = dataEntrada.Value.AddHours(double.Parse(hora.SelectedItem.ToString())).AddMinutes(double.Parse( min.SelectedItem.ToString()));
+            this.servico.OrdemServico = servico.ID;
+            this.servico.Saida = dataEntrada.Value.AddHours(double.Parse(hora.SelectedItem.ToString())).AddMinutes(double.Parse( min.SelectedItem.ToString()));
             servicoBL.Update(this.servico);
 
             //Imprimir recibo
@@ -242,8 +242,7 @@ namespace HenryCorporation.Lavajato.Presentation
             hora.SelectedIndex = 0;
             min.SelectedIndex = 0;
         }
-
-      
+        
 
         private void veiculo_Enter(object sender, EventArgs e)
         {
@@ -361,7 +360,6 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-           
             this.servico = new Servico();
             this.cliente = new DomainModel.Cliente();
             placa.Text = "";

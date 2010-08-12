@@ -50,6 +50,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private void CarregaClientesCadastrados()
         {
             grdClientes.DataSource = clienteBL.GetAll();
+            grdClientes.Columns[0].Visible = false;
         }
 
         private void placaPesquisa_TextChanged(object sender, EventArgs e)
@@ -88,6 +89,7 @@ namespace HenryCorporation.Lavajato.Presentation
             bairro.Text = cliente.Bairro;
             fone.Text = cliente.Telefone;
             celular.Text = cliente.Celular;
+            convenio.SelectedValue = cliente.Convenio.ID;
         }
 
         private Cliente ProcuraCliente(Cliente cliente)
@@ -148,8 +150,7 @@ namespace HenryCorporation.Lavajato.Presentation
             cliente.Bairro = bairro.Text;
             cliente.Telefone = fone.Text;
             cliente.Celular = celular.Text;
-            cliente.Convenio = new ConvenioBL().ByID(Convert.ToInt32(this.convenio.SelectedValue.ToString()));
-            
+            cliente.Convenio = this.convenio.SelectedIndex > 0 ? new ConvenioBL().ByID(Convert.ToInt32(this.convenio.SelectedValue.ToString())) : new Convenio() { ID=0};
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -222,14 +223,6 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void placa_Leave(object sender, EventArgs e)
         {
-            string strTemp = placa.Text.Replace("   -", "");
-            if (!ValidaCampos(strTemp))
-            {
-                MessageBox.Show("Favor digitar uma placa!", "Atenção");
-                placa.BackColor = Color.Yellow;
-                placa.Focus();
-                return;
-            }
             placa.BackColor = Color.White;
         }
 
@@ -350,6 +343,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private void celular_Leave(object sender, EventArgs e)
         {
             celular.BackColor = Color.White;
+            btnSair.Focus();
         }
 
         private void convênio_Enter(object sender, EventArgs e)
