@@ -37,7 +37,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public Pessoa Add(Pessoa pessoa)
         {
-            string query = " INSERT INTO [Lavajado].[dbo].[Pessoa]" +
+            string query = " INSERT INTO [Pessoa]" +
                            " ([Endereco],[Numero],[Bairro]" +
                            " ,[Cep],[UF],[Complemento]" +
                            " ,[Telefone],[Fax],[Cnpj]" +

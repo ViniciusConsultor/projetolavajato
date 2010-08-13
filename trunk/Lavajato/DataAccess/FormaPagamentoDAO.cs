@@ -16,7 +16,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public FormaPagamento ByID(FormaPagamento forPagamento)
         {
-            string query = "SELECT [FormaPagamentoID] ,[Descricao] FROM [Lavajado].[dbo].[FormaPagamento] Where [FormaPagamentoID] = " + forPagamento.ID;
+            string query = "SELECT [FormaPagamentoID] ,[Descricao] FROM [FormaPagamento] Where [FormaPagamentoID] = " + forPagamento.ID;
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             DataSet dataSet = dataBaseHelper.Run(this.ConnectionString);
             DataTableReader reader = dataSet.Tables[0].CreateDataReader();
@@ -32,7 +32,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public List<FormaPagamento> GetAll()
         {
-            string query = "SELECT [FormaPagamentoID] ,[Descricao] FROM [Lavajado].[dbo].[FormaPagamento] ";
+            string query = "SELECT [FormaPagamentoID] ,[Descricao] FROM [FormaPagamento] ";
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             DataSet dataSet = dataBaseHelper.Run(this.ConnectionString);
             DataTableReader reader = dataSet.Tables[0].CreateDataReader();

@@ -22,7 +22,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public ContaPagar Insert(ContaPagar contarPagar)
         {
-            string query = " INSERT INTO [Lavajado].[dbo].[ContasAPagar] " +
+            string query = " INSERT INTO [ContasAPagar] " +
                      " ([NF],[Serie],[Documento],[DataDocomento] " +
                      " ,[ClienteID],[DataVencimento],[TipoDocumento],[Obs] " +
                      " ,[DataPagamento],[AtrasoDias],[ValorPago],[SaldoAPagar]) " +
@@ -64,14 +64,14 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public void Delete(ContaPagar contarPagar)
         {
-            string query = " DELETE FROM [Lavajado].[dbo].[ContasAPagar]   WHERE [ContasPagaID] = " + contarPagar.ID;
+            string query = " DELETE FROM [ContasAPagar]   WHERE [ContasPagaID] = " + contarPagar.ID;
             DataBaseHelper baseHelper = new DataBaseHelper(query);
             baseHelper.Run();
         }
 
         public ContaPagar Update(ContaPagar contarPagar)
         {
-            string query = " UPDATE [Lavajado].[dbo].[ContasAPagar] " +
+            string query = " UPDATE [ContasAPagar] " +
                " SET [NF] = '" + contarPagar.NF + "' " +
                ",[Serie] = '" + contarPagar.Serie + "' " +
                ",[Documento] ='" + contarPagar.Documento + "' " +
@@ -150,7 +150,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         private int Max()
         {
-            string query = " SELECT MAX([ContasPagaID]) FROM [Lavajado].[dbo].[ContasAPagar] ";
+            string query = " SELECT MAX([ContasPagaID]) FROM [ContasAPagar] ";
             DataBaseHelper baseHelper = new DataBaseHelper(query);
             return int.Parse( baseHelper.Run(this.ConnectionString).Tables[0].Rows[0][0].ToString());
         }

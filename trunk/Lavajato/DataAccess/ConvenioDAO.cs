@@ -20,7 +20,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public Convenio Add(Convenio convenio)
         {
-            string query = " INSERT INTO [Lavajado].[dbo].[Convenios] "+
+            string query = " INSERT INTO [Convenios] "+
                            " ([Desconto],[Nome],[Endereco] "+
                            " ,[Numero],[Bairro],[Cep] "+
                            " ,[Cidade],[Email],[Celular] "+
