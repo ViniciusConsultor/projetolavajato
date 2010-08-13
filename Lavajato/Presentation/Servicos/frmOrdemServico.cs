@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using HenryCorporation.Lavajato.DomainModel;
 using HenryCorporation.Lavajato.BusinessLogic;
 using HenryCorporation.Lavajato.Operacional;
+using System.Drawing.Printing;
+using System.IO;
 
 namespace HenryCorporation.Lavajato.Presentation
 {
@@ -208,7 +210,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnGerarOrdemServico_Click(object sender, EventArgs e)
         {
-            if (ExisteServico(this.servico))
+            if (!ExisteServico(this.servico))
             {
                 MessageBox.Show("Nenhum serviço encontrado!", "Atenção");
                 return;
@@ -220,7 +222,81 @@ namespace HenryCorporation.Lavajato.Presentation
             servicoBL.Update(this.servico);
 
             //Imprimir recibo
+            EmiteRecibo();
+            //print();
         }
+
+        
+        private void EmiteRecibo()
+        {
+            PrintDocument recibo = new PrintDocument();
+            recibo.PrintPage += new PrintPageEventHandler(this.recibo_PrintPage);
+            recibo.Print();
+        }
+
+        private void recibo_PrintPage(object sender, PrintPageEventArgs ev)
+        {
+            string enter = "\n";
+            Pen myPen = new Pen(Brushes.Black);
+            Point pt1 = new Point(30, 53);
+            Font myFont1 = new Font("Arial", 9);
+ 
+            StringBuilder strCabecalho = new StringBuilder();
+            strCabecalho.Append("LAVEVIP LAVAJATO" + enter);
+            strCabecalho.Append("Rua da Bahia, 2244, Lourdes" + enter);
+            strCabecalho.Append("Minas Tenis Clube-Piso 1" + enter);
+            strCabecalho.Append("(31)xxxx-xxxx" + enter);
+            strCabecalho.Append("----------------------------------------------" + enter);
+            strCabecalho.Append("Placa: " + servico.Cliente.Placa + "  Veículo:" + servico.Cliente.Veiculo + "  Cor:" + servico.Cliente.Cor + "" + enter);
+            strCabecalho.Append("Nome:  " + servico.Cliente.Nome + "      Fone:" + servico.Cliente.Telefone + "" + enter);
+            strCabecalho.Append("Entrada:  " + servico.Entrada + "   Saida:" + servico.Saida.Hour.ToString() + "" + enter);
+            strCabecalho.Append("----------------------------------------------" + enter);
+            strCabecalho.Append("SERVICO             QTDE.     VALOR   TOTAL" + enter);
+
+            string desc = "";
+            foreach (var item in servico.ServicoItem)
+            {
+                if (item.Produto.Descricao.Length >= 16)
+                {
+                    desc = item.Produto.Descricao;
+                }
+                else
+                {
+                    for (int i = 0; i < 16 - item.Produto.Descricao.Length; i++)
+                    {
+                        desc  += " ";
+                    }
+                }
+
+                string qtde = item.Quantidade.ToString();
+                string valUni = item.Produto.ValorUnitario.ToString("C").Replace("R$", "");
+                string tot = (item.Produto.ValorUnitario * item.Quantidade).ToString("C").Replace("R$", "");
+                strCabecalho.Append(desc + qtde + "       " + valUni + tot + enter);
+            }
+
+            ev.Graphics.DrawString(strCabecalho.ToString(), myFont1, Brushes.Black, 30, 30);
+            ev.HasMorePages = false;
+        }
+
+        //private void cabecalho_PrintPage(object sender, PrintPageEventArgs ev)
+        //{
+        //    string enter = "\r\n";
+        //    Pen myPen = new Pen(Brushes.Black);
+
+        //    Point pt1 = new Point(30, 53);
+        //    Font myFont1 = new Font("Arial", 9);
+
+        //    StringBuilder strCabecalho = new StringBuilder();
+        //    strCabecalho.Append("LAVEVIP LAVAJATO" + enter);
+        //    strCabecalho.Append("Rua da Bahia, 2244, Lourdes" + enter);
+        //    strCabecalho.Append("Minas Tenis Clube-Piso 1" + enter);
+        //    strCabecalho.Append("(31)xxxx-xxxx" + enter);
+        //    strCabecalho.Append("----------------------------------------------" + enter);
+
+
+        //    ev.Graphics.DrawString(strCabecalho.ToString(), myFont1, Brushes.Black, 30, 30);
+        //    ev.HasMorePages = false;
+        //}
 
         private void SomaTotal()
         {
@@ -379,5 +455,59 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             telefone.BackColor = Color.White;
         }
+
+        //StreamReader streamToPrint;
+        //Font printFont;
+        //private void print()
+        //{
+        //    try
+        //    {
+        //        streamToPrint = new StreamReader
+        //           (@"G:\Documents and Settings\SANDRA\Meus documentos\MyFile.txt.txt");
+        //        try
+        //        {
+        //           printFont = new Font("Arial", 10);
+        //            PrintDocument pd = new PrintDocument();
+        //            pd.PrintPage += new PrintPageEventHandler
+        //               (this.pd_PrintPage);
+        //            pd.Print();
+        //        }
+        //        finally
+        //        {
+        //            streamToPrint.Close();
+        //        }
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        MessageBox.Show(ex.Message);
+        //    }
+        //}
+
+        //// The PrintPage event is raised for each page to be printed.
+        //private void pd_PrintPage(object sender, PrintPageEventArgs ev)
+        //{
+        //    float linesPerPage = 0;
+        //    float yPos = 0;
+        //    int count = 0;
+        //    float leftMargin = ev.MarginBounds.Left;
+        //    float topMargin = ev.MarginBounds.Top;
+        //    string line = null;
+
+        //    // Calculate the number of lines per page.
+        //    linesPerPage = ev.MarginBounds.Height /
+        //       printFont.GetHeight(ev.Graphics);
+
+        //    // Print each line of the file.
+        //    while (count < linesPerPage &&
+        //       ((line = streamToPrint.ReadLine()) != null))
+        //    {
+        //        yPos = topMargin + (count *
+        //           printFont.GetHeight(ev.Graphics));
+        //        ev.Graphics.DrawString(line, printFont, Brushes.Black,
+        //           leftMargin, yPos, new StringFormat());
+        //        count++;
+        //    }
+        //}
+
     }
 }
