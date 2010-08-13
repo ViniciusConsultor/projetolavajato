@@ -9,7 +9,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 {
     public class TipoFuncionarioDAO : DataAccessBase
     {
-        private const string sql = " SELECT [TipoFuncionarioID],[Descricao]  FROM [Lavajado].[dbo].[TipoFuncionario] ";
+        private const string sql = " SELECT [TipoFuncionarioID],[Descricao]  FROM [TipoFuncionario] ";
         public TipoFuncionarioDAO()
         {
 

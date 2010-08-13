@@ -13,7 +13,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         private const string sql = " SELECT [UsuarioID],[Login],[Password],[Endereco],[Numero],[Bairro],[Cep],[Cidade] "+
                             " ,[UF],[Email],[Celular],[Cpf],[RG],[Delete], [Nome],[Fone], [TipoFuncionarioID] " +
-                            " FROM [Lavajado].[dbo].[Usuarios]";
+                            " FROM [Usuarios]";
     
 
         private const string sqlPermissao = " SELECT Permissao.PermissaoID, Permissao.Produto, Permissao.Usuario, Permissao.Servico, Permissao.OrdemServico, Permissao.Relatorio, Permissao.Caixa, " +
@@ -36,7 +36,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public Usuario Add(Usuario ususario)
         {
-            string query = " INSERT INTO [Lavajado].[dbo].[Usuarios] " +
+            string query = " INSERT INTO [Usuarios] " +
                           " ([Login],[Password],[Endereco],[Numero],[Bairro],[Cep],[Cidade]" +
                           " ,[UF],[Email],[Fone],[Celular],[Cpf],[RG],[Delete], [Nome], [TipoFuncionarioID] ) VALUES" +
                           "('" + ususario.Login.Trim() + "','" + ususario.Password.Trim() + "','" + ususario.Endereco.Trim() + "','" + ususario.Numero.Trim() + "', " +
@@ -95,7 +95,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public void Update(Usuario ususario)
         {
-           string query = " UPDATE [Lavajado].[dbo].[Usuarios] " +
+           string query = " UPDATE [Usuarios] " +
             " SET [Login] = '"+ususario.Login.Trim()+"' " +
             " ,[Password] = '" + ususario.Password.Trim() + "' " +
             " ,[Endereco] = '" + ususario.Endereco.Trim() + "' " +
@@ -131,7 +131,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public void Delete(Usuario ususario)
         {
-            string query = " UPDATE [Lavajado].[dbo].[Usuarios] " +
+            string query = " UPDATE [Usuarios] " +
             " SET [Delete] = 1 " +
             " WHERE UsuarioID = " + ususario.ID;
 
@@ -195,7 +195,7 @@ namespace HenryCorporation.Lavajato.DataAccess
                            " USUARIOS.[Bairro],USUARIOS.[Cep],USUARIOS.[Cidade] " +
                            " ,USUARIOS.[UF],USUARIOS.[Email],USUARIOS.[Celular],USUARIOS.[Cpf],USUARIOS.[RG],USUARIOS.[Delete], USUARIOS.[Nome], " +
                            " USUARIOS.[Fone], USUARIOS.[TipoFuncionarioID] " +
-                           " FROM [Lavajado].[dbo].[Usuarios] " +
+                           " FROM [Usuarios] " +
                            " INNER JOIN TIPOFUNCIONARIO TP ON USUARIOS.TipoFuncionarioID = TP.TipoFuncionarioID "+
                            " WHERE USUARIOS.TipoFuncionarioID = 3 ";
 

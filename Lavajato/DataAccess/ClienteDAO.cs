@@ -13,7 +13,7 @@ namespace HenryCorporation.Lavajato.DataAccess
     {
         private const string sql = " SELECT [ClienteID],[Placa],[Nome],[Cor],[Telefone],[Veiculo],[Endereco],[Numero] " +
                              " ,[Bairro],[Cep],[Cidade],[UF],[Email],[Celular],[Cpf],[RG], [Delete], [ConvenioID]" +
-                             " FROM [Lavajado].[dbo].[Clientes]";
+                             " FROM [Clientes]";
 
         public ClienteDAO()
         {
@@ -23,7 +23,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public Cliente Add(Cliente cliente)
         {
-            string query = " INSERT INTO [Lavajado].[dbo].[Clientes]([Placa] " +
+            string query = " INSERT INTO [Clientes]([Placa] " +
              " ,[Nome],[Cor],[Telefone],[Veiculo],[Endereco],[Numero],[Bairro],[Cep],[Cidade] " +
              " ,[UF],[Email],[Celular],[Cpf],[RG], [ConvenioID]) VALUES " +
              " ('" + cliente.Placa + "', '" + cliente.Nome + "','" + cliente.Cor + "','" + cliente.Telefone + "', " +
@@ -51,7 +51,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public void Delete(Cliente cliente)
         {
-            string query = " UPDATE [Lavajado].[dbo].[Clientes] SET [Delete] = 1  WHERE clienteid = @ClienteID";
+            string query = " UPDATE [Clientes] SET [Delete] = 1  WHERE clienteid = @ClienteID";
             SqlParameter[] parameter = { new SqlParameter("@ClienteID", cliente.ID) };
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Parameters = parameter;
@@ -60,7 +60,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public void Update(Cliente cliente)
         {
-            string query = " UPDATE [Lavajado].[dbo].[Clientes] " +
+            string query = " UPDATE [Clientes] " +
                          " SET [Placa] ='" + cliente.Placa + "' " +
                          " ,[Nome] ='" + cliente.Nome + "' ,[Cor] ='" + cliente.Cor + "' ,[Telefone] ='" + cliente.Telefone + "',[Veiculo] ='" + cliente.Veiculo + "' " +
                          " ,[Endereco] ='" + cliente.Endereco + "' ,[Numero] ='" + cliente.Numero + "' ,[Bairro] ='" + cliente.Bairro + "' ,[Cep] ='" + cliente.Cep + "' " +

@@ -24,7 +24,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public void Add(Produto produto)
         {
-            string query = " INSERT INTO [Lavajado].[dbo].[Produto] " +
+            string query = " INSERT INTO [Produto] " +
                 " ([Descricao],[ValorUnitario] " +
                 " ,[CategoriaProdutoID],[PrecoCompra],[Delete], [Estoque]) " +
                 " VALUES " +
@@ -41,7 +41,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public void Update(Produto produto)
         {
-            string query = " UPDATE [Lavajado].[dbo].[Produto] " +
+            string query = " UPDATE [Produto] " +
                    " SET [Descricao] = '" + produto.Descricao + "' " +
                    " ,[ValorUnitario] = '" + produto.ValorUnitario.ToString().Replace(",", ".") + "' " +
                    " ,[CategoriaProdutoID] = '" + produto.CategoriaProduto.ID + "' " +
@@ -56,7 +56,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public void Delete(Produto produto)
         {
-            string query = " UPDATE [Lavajado].[dbo].[Produto] SET [Delete] = 1 WHERE ProdutoID=" + produto.ID;
+            string query = " UPDATE [Produto] SET [Delete] = 1 WHERE ProdutoID=" + produto.ID;
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run();
         }

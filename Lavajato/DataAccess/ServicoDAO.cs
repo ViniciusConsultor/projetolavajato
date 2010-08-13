@@ -16,7 +16,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         string sql = " SELECT [ServicoID], [ClienteID], [Total], [SubTotal], [Desconto], [Saida], [Entrada] " +
                      " ,[OrdemServico], [FormaPagamentoID], [Delete], [Cancelado], [Lavado], [Finalizado], [UsuarioID]  " +
-                     " FROM [Lavajado].[dbo].[Servico] ";
+                     " FROM [Servico] ";
 
         public ServicoDAO()
         {
@@ -30,7 +30,7 @@ namespace HenryCorporation.Lavajato.DataAccess
             //string saida = servico.Saida.Year + "-" + servico.Saida.Month + "-" + servico.Saida.Day + " " + servico.Saida.Hour + ":" + servico.Saida.Minute + ":" + servico.Saida.Second;
             //string entrada = servico.Entrada.Year + "-" + servico.Entrada.Month + "-" + servico.Entrada.Day + " " + servico.Entrada.Hour + ":" + servico.Entrada.Minute + ":" + servico.Entrada.Second;
             
-            string query = " INSERT INTO [Lavajado].[dbo].[Servico] ([ClienteID],[Total],[SubTotal], "+
+            string query = " INSERT INTO [Servico] ([ClienteID],[Total],[SubTotal], "+
                            " [Desconto],[Saida],[Entrada],[OrdemServico],[FormaPagamentoID],[Delete],"+
                            " [Cancelado],[Lavado],[Finalizado], [UsuarioID])" +
                            " VALUES('"+servico.Cliente.ID+"' "+
@@ -70,7 +70,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public void Delete(Servico servico)
         {
-            string query = " UPDATE [Lavajado].[dbo].[Servico] "+
+            string query = " UPDATE [Servico] "+
                            " SET [Delete] = 1 " +
                            " WHERE ServicoID = " + servico.ID;
 
@@ -85,7 +85,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public void Update(Servico servico)
         {
-            string query = " UPDATE [Lavajado].[dbo].[Servico] "+
+            string query = " UPDATE [Servico] "+
                            " SET [ClienteID] = '"+servico.Cliente.ID.ToString().Trim()+"' "+
                            " ,[Total] = '"+servico.Total.ToString().Replace(",", ".")+"' "+
                            " ,[SubTotal] = '" + servico.SubTotal.ToString().Replace(",", ".") + "' " +

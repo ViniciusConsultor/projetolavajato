@@ -9,7 +9,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 {
     public class SuprimentoDAO : DataAccessBase
     {
-        private const string sql = " SELECT [SuprimentoID],[UsuarioID],[Valor],[Descricao],[Data]  FROM [Lavajado].[dbo].[Suprimentos] ";
+        private const string sql = " SELECT [SuprimentoID],[UsuarioID],[Valor],[Descricao],[Data]  FROM [Suprimentos] ";
         
         public SuprimentoDAO()
         { 
@@ -37,7 +37,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         private Suprimento UltimoSuprimento()
         {
-            string query = " SELECT MAX([suprimentoid])  FROM [Lavajado].[dbo].[suprimentos] ";
+            string query = " SELECT MAX([suprimentoid])  FROM [suprimentos] ";
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run();
             Suprimento suprimento = new Suprimento();

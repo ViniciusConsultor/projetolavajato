@@ -11,7 +11,7 @@ namespace HenryCorporation.Lavajato.DataAccess
     public class ServicoItemDAO : DataAccessBase
     {
         private const string sql = " SELECT [ServicoItensID],[ServicoID],[ProdutoID],[Quantidade] " +
-                              " FROM [Lavajado].[dbo].[ServicoItens]";
+                              " FROM [ServicoItens]";
 
 
         public ServicoItemDAO()
@@ -49,7 +49,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public void Update(ServicoItem servicoItem)
         {
-            string query = " UPDATE [Lavajado].[dbo].[ServicoItens] " +
+            string query = " UPDATE [ServicoItens] " +
                            " SET [ServicoID] = " + servicoItem.Servico.ID + " " +
                            " ,[ProdutoID] = " + servicoItem.Produto.ID + " " +
                            " ,[Quantidade] = " + servicoItem.Quantidade + " " +

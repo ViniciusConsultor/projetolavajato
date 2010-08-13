@@ -60,7 +60,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public Credor Add(Credor credor)
         {
-            string query = " INSERT INTO [Lavajado].[dbo].[Credor] " +
+            string query = " INSERT INTO [Credor] " +
                            " ([PessoaID] "+
                            " ,[RazaoSocial]" +
                            " ,[NomeFantasia]" +

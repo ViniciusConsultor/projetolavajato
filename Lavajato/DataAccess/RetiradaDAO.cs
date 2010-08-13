@@ -9,7 +9,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 {
     public class RetiradaDAO : DataAccessBase
     {
-        private const string sql = " SELECT [RetiradaID],[UsuarioID],[Descricao],[Valor],[Data]  FROM [Lavajado].[dbo].[Retirada] ";
+        private const string sql = " SELECT [RetiradaID],[UsuarioID],[Descricao],[Valor],[Data]  FROM [Retirada] ";
 
         public RetiradaDAO()
         {
@@ -37,7 +37,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         private Retirada UltimaRetirada()
         {
-            string query = " SELECT MAX([RetiradaID])  FROM [Lavajado].[dbo].[Retirada] ";
+            string query = " SELECT MAX([RetiradaID])  FROM [Retirada] ";
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run();
             Retirada retirada = new Retirada();
