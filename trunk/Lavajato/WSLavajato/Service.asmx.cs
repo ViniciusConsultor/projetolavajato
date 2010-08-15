@@ -12,6 +12,8 @@ using HenryCorporation.Lavajato.DomainModel;
 using HenryCorporation.Lavajato.DataAccess;
 using System.Collections.Generic;
 using System.Drawing.Printing;
+using System.Drawing;
+using System.Text;
 
 namespace WSLavajato
 {
@@ -89,7 +91,6 @@ namespace WSLavajato
 
         #endregion
 
-
         #region Cliente
 
         [WebMethod]
@@ -106,6 +107,15 @@ namespace WSLavajato
 
         #endregion
 
+        #region Configuracao
 
+        [WebMethod]
+        public int EmiteRecibo(HenryCorporation.Lavajato.DomainModel.Servico servico)
+        {
+            HenryCorporation.Lavajato.Operacional.Configuracao confi = new HenryCorporation.Lavajato.Operacional.Configuracao();
+            return confi.EmiteRecibo(servico);
+        }
+        
+        #endregion
     }
 }
