@@ -64,10 +64,20 @@
     <Compile Include="frmEntrada.Designer.cs">
       <DependentUpon>frmEntrada.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmServico.Designer.cs">
+      <DependentUpon>frmServico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="frmEntrada.resx">
       <DependentUpon>frmEntrada.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmServico.resx">
+      <DependentUpon>frmServico.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -89,10 +99,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://187.25.130.29/service.asmx">
+    <WebReferenceUrl Include="http://192.168.0.156/Service.asmx">
       <UrlBehavior>Static</UrlBehavior>
       <RelPath>Web References\WSLavajato\</RelPath>
-      <UpdateFromURL>http://187.25.130.29/service.asmx</UpdateFromURL>
+      <UpdateFromURL>http://192.168.0.156/Service.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -114,8 +124,8 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\WSLavajato\service.disco" />
-    <None Include="Web References\WSLavajato\service.wsdl" />
+    <None Include="Web References\WSLavajato\Service.disco" />
+    <None Include="Web References\WSLavajato\Service.wsdl" />
     <None Include="Web References\WSLavajato\Servico.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>
