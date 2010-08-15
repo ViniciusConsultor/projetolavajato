@@ -111,16 +111,19 @@ namespace HenryCorporation.Lavajato.Operacional
             Point pt1 = new Point(30, 53);
             Font myFont1 = new Font("Arial", 9);
 
+
+            string hora = servico.Entrada.Hour.ToString().Length == 1 ? "0" + servico.Entrada.Hour.ToString() : servico.Entrada.Hour.ToString();
+
+            string minuto =  servico.Entrada.Minute.ToString().Length == 1 ? "0" + servico.Entrada.Minute.ToString() : servico.Entrada.Minute.ToString();
+            string entrada =  servico.Entrada.ToShortDateString()+ " " + hora+":"+minuto;
+            decimal somaTotal = 0;
             StringBuilder strCabecalho = new StringBuilder();
-            strCabecalho.Append("LAVEVIP LAVAJATO" + enter);
-            strCabecalho.Append("Rua da Bahia, 2244, Lourdes" + enter);
-            strCabecalho.Append("Minas Tenis Clube-Piso 1" + enter);
-            strCabecalho.Append("(31)xxxx-xxxx" + enter);
-            strCabecalho.Append("----------------------------------------------" + enter);
+            
+            strCabecalho.Append("--------------------------------------------" + enter);
             strCabecalho.Append("Placa: " + servico.Cliente.Placa + "  Veículo:" + servico.Cliente.Veiculo + "  Cor:" + servico.Cliente.Cor + "" + enter);
             strCabecalho.Append("Nome:  " + servico.Cliente.Nome + "      Fone:" + servico.Cliente.Telefone + "" + enter);
-            strCabecalho.Append("Entrada:  " + servico.Entrada + "   Saida:" + servico.Saida.Hour.ToString() + "" + enter);
-            strCabecalho.Append("----------------------------------------------" + enter);
+            strCabecalho.Append("Entrada:  " + entrada + "   Saida:" + servico.Saida.Hour + ":" + servico.Saida.Second + "" + enter);
+            strCabecalho.Append("--------------------------------------------" + enter);
             strCabecalho.Append("SERVICO             QTDE.     VALOR   TOTAL" + enter);
 
             string desc = "";
@@ -129,9 +132,14 @@ namespace HenryCorporation.Lavajato.Operacional
                 if (item.Produto.Descricao.Length >= 16)
                 {
                     desc = item.Produto.Descricao;
+                    for (int i = 0; i < 16 - item.Produto.Descricao.Length; i++)
+                    {
+                        desc += " ";
+                    }
                 }
                 else
                 {
+                    desc = item.Produto.Descricao;
                     for (int i = 0; i < 16 - item.Produto.Descricao.Length; i++)
                     {
                         desc += " ";
@@ -141,8 +149,41 @@ namespace HenryCorporation.Lavajato.Operacional
                 string qtde = item.Quantidade.ToString();
                 string valUni = item.Produto.ValorUnitario.ToString("C").Replace("R$", "");
                 string tot = (item.Produto.ValorUnitario * item.Quantidade).ToString("C").Replace("R$", "");
-                strCabecalho.Append(desc + qtde + "       " + valUni + tot + enter);
+                somaTotal += Configuracao.ConverteParaDecimal(tot);
+
+                if (valUni.Length == 5)
+                    valUni = "         " + valUni;
+                else if (valUni.Length == 4)
+                    valUni = "            " + valUni;
+                else if (valUni.Length == 6)
+                    valUni = "        " + valUni;
+
+                if (tot.Length == 5)
+                    tot = "   " + tot;
+                else if (tot.Length == 4)
+                    tot = "   " + tot;
+                else if (tot.Length == 6)
+                    tot = "  " + tot;
+
+                strCabecalho.Append(desc + "     " + qtde  + valUni + tot +enter);
+                
             }
+            strCabecalho.Append("                          Valor Total: " + somaTotal);
+
+            strCabecalho.Append(enter);
+            strCabecalho.Append(enter);
+            strCabecalho.Append(enter);
+            strCabecalho.Append(enter);
+            strCabecalho.Append(enter);
+            strCabecalho.Append(enter);
+            
+            strCabecalho.Append("LAVEVIP LAVAJATO" + enter);
+            strCabecalho.Append("Rua da Bahia, 2244, Lourdes" + enter);
+            strCabecalho.Append("Minas Tenis Clube-Piso 1" + enter);
+            strCabecalho.Append("(31)xxxx-xxxx" + enter);
+            strCabecalho.Append("(31)xxxx-xxxx" + enter);
+            strCabecalho.Append("(31)xxxx-xxxx" + enter);
+            strCabecalho.Append("(31)xxxx-xxxx" + enter);
 
             ev.Graphics.DrawString(strCabecalho.ToString(), myFont1, Brushes.Black, 30, 30);
             ev.HasMorePages = false;
