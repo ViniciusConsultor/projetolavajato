@@ -12,18 +12,13 @@ namespace LavajatoMobile
 {
     public partial class frmEntrada : Form
     {
+
+        private WSLavajato.Cliente cliente = new LavajatoMobile.WSLavajato.Cliente();
         private WSLavajato.Service wsService = new LavajatoMobile.WSLavajato.Service();
-        private WSLavajato.Cliente cliente;
-        private WSLavajato.Servico servico = new LavajatoMobile.WSLavajato.Servico();
-        private WSLavajato.ServicoItem servicoItem = new LavajatoMobile.WSLavajato.ServicoItem();
-
-
+        
         public frmEntrada()
         {
             InitializeComponent();
-            cliente = new LavajatoMobile.WSLavajato.Cliente();
-            btnCadastraCliente.Enabled = false;
-            CarregaProdutos();
             CarregaHora();
         }
 
@@ -64,58 +59,29 @@ namespace LavajatoMobile
             else
             {
                 CarregaCliente(this.cliente);
+                DateTime saida = entrada.Value.AddHours(double.Parse(hora.SelectedItem.ToString())).AddMinutes(double.Parse(min.SelectedItem.ToString()));
+                frmServico frmServico = new frmServico(this.cliente, entrada.Value, saida);
+                frmServico.ShowDialog();
             }
-
-            this.servico = wsService.ServicoByCliente(this.cliente);
-            if (this.servico.ID == 0)
-            {
-                placa.BackColor = Color.White;
-                btnAdicionaProduto.Focus();
-                return;
-            }
-            else
-            {
-                CarregaItensDoServico(this.servico);
-                btnAdicionaProduto.Focus();
-            }
-
-            if (this.servico.Finalizado == 0)
-                MessageBox.Show("Ordem de Serviço Aberto", "Atenção");
-
-            if (this.servico.Lavado == 1)
-                MessageBox.Show("Veículo já lavado", "Atenção");
 
             placa.BackColor = Color.White;
+            
         }
 
         private void btnCadastraCliente_Click(object sender, EventArgs e)
         {
+            DateTime saida = entrada.Value.AddHours(double.Parse(hora.SelectedItem.ToString())).AddMinutes(double.Parse(min.SelectedItem.ToString()));
             SetUpFieldsCliente();
             ClienteInsert();
             MessageBox.Show("Cliente salvo com sucesso!", "Atenção");
-            btnCadastraCliente.Enabled = false;
-            btnAdicionaProduto.Focus();
+            frmServico frmServico = new frmServico(this.cliente, entrada.Value, saida);
+            frmServico.ShowDialog();
+            LimpaCampos();
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (this.servico.ID == 0)
-            {
-                MessageBox.Show("Nenhum item encontrado!", "Atenção");
-                return;
-            }
-
-            DialogResult res = MessageBox.Show("Deseja realmente apagar o item de pedido", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-            if (res == DialogResult.No)
-            {
-                return;
-            }
-
-            wsService.ServicoItemDelete(this.servicoItem);
-            MessageBox.Show("Item deletado com sucesso!", "Atenção");
-            CarregaItensDoServico();
-            CarregaItensDoServico(this.servico);
-
+            
         }
 
         private void placa_TextChanged(object sender, EventArgs e)
@@ -146,48 +112,15 @@ namespace LavajatoMobile
             placa.SelectionStart = placa.TextLength;
         }
 
-        private void grdServico_Click(object sender, EventArgs e)
-        {
-            if (grdServico.CurrentRowIndex <= -1)
-                return;
-
-            int id = int.Parse(wsService.ServicoCriaGrid(this.servico).Rows[grdServico.CurrentRowIndex]["ID"].ToString());
-            this.servicoItem.ID = id;
-        }
-
-        private void btnAdicionaProduto_Click(object sender, EventArgs e)
-        {
-
-            if (this.cliente.ID == 0)
-            {
-                MessageBox.Show("Nenhum cliente encontrado!", "Atenção");
-                return;
-            }
-
-            if (this.servico.ID == 0)
-            {
-                this.servico = ServicoSalva();
-                ItemDoServicoSalva(this.servico);
-            }
-            else
-            {
-                ItemDoServicoSalva(this.servico);
-            }
-
-            CarregaItensDoServico();
-            CarregaItensDoServico(this.servico);
-        }
-
         private void btnLimpar_Click(object sender, EventArgs e)
         {
-            this.servico = new LavajatoMobile.WSLavajato.Servico();
+            
             this.cliente = new LavajatoMobile.WSLavajato.Cliente();
             placa.Text = "";
             veiculo.Text = "";
             telefone.Text = "";
             nome.Text = "";
             cor.Text = "";
-            CarregaItensDoServico(this.servico);
         }
 
         private void ClienteInsert()
@@ -204,10 +137,7 @@ namespace LavajatoMobile
             this.cliente.Cor = cor.Text;
         }
 
-        private void CarregaItensDoServico(Servico servico)
-        {
-            grdServico.DataSource = wsService.ServicoCriaGrid(this.servico);
-        }
+        
 
         private void CarregaCliente(Cliente cliente)
         {
@@ -222,14 +152,7 @@ namespace LavajatoMobile
         {
             return wsService.ClienteByPlaca(this.cliente);
         }
-
-        private void CarregaProdutos()
-        {
-            cmdServico.DataSource = wsService.ProdutoTipo(2);
-            cmdServico.DisplayMember = "Descricao";
-            cmdServico.ValueMember = "ID";
-        }
-
+        
         private void CarregaHora()
         {
             foreach (var item in Configuracao.CarregaHora())
@@ -242,52 +165,15 @@ namespace LavajatoMobile
             min.SelectedIndex = 0;
         }
 
-        private void CarregaItensDoServico()
-        {
-            this.servico = wsService.ServicoByID(this.servico);
-        }
-
         private void LimpaCampos()
         {
-            this.servico = new LavajatoMobile.WSLavajato.Servico();
             this.cliente = new LavajatoMobile.WSLavajato.Cliente();
             veiculo.Text = "";
             telefone.Text = "";
             nome.Text = "";
             cor.Text = "";
-            CarregaItensDoServico(this.servico);
         }
-
-        private void ItemDoServicoSalva(Servico servico)
-        {
-            ServicoItem servicoItem = new ServicoItem();
-            servicoItem.Produto = new Produto() { ID = ((Produto)cmdServico.SelectedItem).ID };
-            servicoItem.Quantidade = 1;
-            servicoItem.Servico = servico;
-            wsService.ServicoItemAdd(servicoItem);
-        }
-
-        private Servico ServicoSalva()
-        {
-            Servico servico = new Servico();
-            servico.Cliente = this.cliente;
-            servico.Total = 0;
-            servico.SubTotal = 0;
-            servico.Desconto = 0;
-            servico.Entrada = DateTime.Now;
-            servico.Saida = servico.Entrada.AddHours(double.Parse(hora.SelectedItem.ToString())).AddMinutes(double.Parse(min.SelectedItem.ToString()));
-            servico.OrdemServico = this.cliente.ID;
-            servico.FormaPagamento = new FormaPagamento() { ID = 1 };
-            servico.Usuario = new Usuario() { ID = 26 };
-
-            servico.Cancelado = 0;
-            servico.Delete = 0;
-            servico.Finalizado = 0;
-            servico.Lavado = 0;
-
-            return wsService.ServicoAdd(servico);
-        }
-
+      
         private void veiculo_GotFocus(object sender, EventArgs e)
         {
             veiculo.BackColor = Color.Yellow;
@@ -363,24 +249,9 @@ namespace LavajatoMobile
             min.BackColor = Color.White;
         }
 
-        private void cmdServico_GotFocus(object sender, EventArgs e)
-        {
-            cmdServico.BackColor = Color.Yellow;
-        }
-
-        private void cmdServico_LostFocus(object sender, EventArgs e)
-        {
-            cmdServico.BackColor = Color.White;
-        }
-
         private void telefone_TextChanged(object sender, EventArgs e)
         {
 
-        }
-
-        private void btnConcluir_Click(object sender, EventArgs e)
-        {
-            
         }
     }
 }
