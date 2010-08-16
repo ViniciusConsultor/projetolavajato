@@ -20,6 +20,8 @@ namespace LavajatoMobile
         {
             InitializeComponent();
             CarregaHora();
+            textBox1.Text = DateTime.Now.ToShortTimeString();
+            textBox1.Enabled = false;
         }
 
         private void placa_LostFocus(object sender, EventArgs e)
@@ -45,12 +47,12 @@ namespace LavajatoMobile
                 DialogResult dialogResult = MessageBox.Show("Cliente não Cadastrado, deseja cadastrar?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 if (dialogResult == DialogResult.Yes)
                 {
-                    btnCadastraCliente.Enabled = true;
                     placa.BackColor = Color.White;
                     return;
                 }
                 else
                 {
+                    placa.BackColor = Color.Yellow;
                     placa.Focus();
                 }
 
@@ -62,21 +64,29 @@ namespace LavajatoMobile
                 DateTime saida = entrada.Value.AddHours(double.Parse(hora.SelectedItem.ToString())).AddMinutes(double.Parse(min.SelectedItem.ToString()));
                 frmServico frmServico = new frmServico(this.cliente, entrada.Value, saida);
                 frmServico.ShowDialog();
+                LimpaCampos();
+                placa.BackColor = Color.Yellow;
+                placa.Focus();
             }
 
             placa.BackColor = Color.White;
-            
         }
 
         private void btnCadastraCliente_Click(object sender, EventArgs e)
         {
-            DateTime saida = entrada.Value.AddHours(double.Parse(hora.SelectedItem.ToString())).AddMinutes(double.Parse(min.SelectedItem.ToString()));
             SetUpFieldsCliente();
             ClienteInsert();
             MessageBox.Show("Cliente salvo com sucesso!", "Atenção");
-            frmServico frmServico = new frmServico(this.cliente, entrada.Value, saida);
+            
+            frmServico frmServico = new frmServico(this.cliente, entrada.Value, SetUpSaidaData());
             frmServico.ShowDialog();
             LimpaCampos();
+        }
+
+        private DateTime SetUpSaidaData()
+        {
+            DateTime saida = entrada.Value.AddHours(double.Parse(hora.SelectedItem.ToString())).AddMinutes(double.Parse(min.SelectedItem.ToString()));
+            return saida;
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -137,8 +147,6 @@ namespace LavajatoMobile
             this.cliente.Cor = cor.Text;
         }
 
-        
-
         private void CarregaCliente(Cliente cliente)
         {
             placa.Text = this.cliente.Placa;
@@ -172,6 +180,7 @@ namespace LavajatoMobile
             telefone.Text = "";
             nome.Text = "";
             cor.Text = "";
+            placa.Text = "";
         }
       
         private void veiculo_GotFocus(object sender, EventArgs e)
