@@ -13,8 +13,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Presentation", "Presentatio
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Teste", "Teste\Teste.csproj", "{DD50275B-2A3D-4969-8886-B7E7E732166C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BusinessLogicTeste", "BusinessLogicTeste\BusinessLogicTeste.csproj", "{7D10D4E1-0898-43D8-9A11-C69D04BB4E55}"
-EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CEC07F95-FA87-41DE-BE21-85E2DC100691}"
 	ProjectSection(SolutionItems) = preProject
 		Lavajato.vsmdi = Lavajato.vsmdi
@@ -25,10 +23,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WSLavajato", "WSLavajato\WS
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LavajatoMobile", "LavajatoMobile\LavajatoMobile.csproj", "{BDD96E8F-3BEC-4C9F-B8FB-5963721B743B}"
 EndProject
+Project("{B900F1C2-3D47-4FEC-85B3-04AAF18C3634}") = "LavajatoMobileInstalador", "LavajatoMobileInstalador\LavajatoMobileInstalador.vddproj", "{C835BE63-2C60-4CA4-9BCF-04D9F06A1E5E}"
+EndProject
 Global
-	GlobalSection(TestCaseManagementSettings) = postSolution
-		CategoryFile = Lavajato.vsmdi
-	EndGlobalSection
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
 		Release|Any CPU = Release|Any CPU
@@ -58,10 +55,6 @@ Global
 		{DD50275B-2A3D-4969-8886-B7E7E732166C}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DD50275B-2A3D-4969-8886-B7E7E732166C}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DD50275B-2A3D-4969-8886-B7E7E732166C}.Release|Any CPU.Build.0 = Release|Any CPU
-		{7D10D4E1-0898-43D8-9A11-C69D04BB4E55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{7D10D4E1-0898-43D8-9A11-C69D04BB4E55}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{7D10D4E1-0898-43D8-9A11-C69D04BB4E55}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{7D10D4E1-0898-43D8-9A11-C69D04BB4E55}.Release|Any CPU.Build.0 = Release|Any CPU
 		{933614AC-9298-4FE1-A017-A261E28EFE99}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{933614AC-9298-4FE1-A017-A261E28EFE99}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{933614AC-9298-4FE1-A017-A261E28EFE99}.Release|Any CPU.ActiveCfg = Release|Any CPU
@@ -72,6 +65,8 @@ Global
 		{BDD96E8F-3BEC-4C9F-B8FB-5963721B743B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{BDD96E8F-3BEC-4C9F-B8FB-5963721B743B}.Release|Any CPU.Build.0 = Release|Any CPU
 		{BDD96E8F-3BEC-4C9F-B8FB-5963721B743B}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{C835BE63-2C60-4CA4-9BCF-04D9F06A1E5E}.Debug|Any CPU.ActiveCfg = Debug
+		{C835BE63-2C60-4CA4-9BCF-04D9F06A1E5E}.Release|Any CPU.ActiveCfg = Release
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
