@@ -64,7 +64,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             {
                 DataRow row = table.NewRow();
                 row["ID"] = prod.ID;
-                row["Descrição"] = prod.Descricao;
+                row["Descricao"] = prod.Descricao;
                 row["Estoque"] = prod.Estoque.Quantidade;
                 row["Preço"] = prod.ValorUnitario.ToString("C");
                 table.Rows.Add(row);
@@ -81,7 +81,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             columns[0] = id;
 
             DataColumn desc = new DataColumn();
-            desc.ColumnName = "Descrição";
+            desc.ColumnName = "Descricao";
             columns[1] = desc;
 
             DataColumn estq = new DataColumn();
