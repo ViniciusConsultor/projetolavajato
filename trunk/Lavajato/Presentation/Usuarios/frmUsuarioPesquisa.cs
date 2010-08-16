@@ -50,6 +50,26 @@ namespace HenryCorporation.Lavajato.Presentation
             this.Close();
         }
 
+        private void nomePesquisa_Enter(object sender, EventArgs e)
+        {
+            nomePesquisa.BackColor = Color.Yellow;
+        }
+
+        private void nomePesquisa_Leave(object sender, EventArgs e)
+        {
+            nomePesquisa.BackColor = Color.White;
+        }
+
+        private void loginPesquisa_Enter(object sender, EventArgs e)
+        {
+            loginPesquisa.BackColor = Color.Yellow;
+        }
+
+        private void loginPesquisa_Leave(object sender, EventArgs e)
+        {
+            loginPesquisa.BackColor = Color.White;
+        }
+
        
     }
 }

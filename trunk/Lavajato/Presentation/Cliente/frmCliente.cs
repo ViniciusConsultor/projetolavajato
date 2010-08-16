@@ -97,7 +97,7 @@ namespace HenryCorporation.Lavajato.Presentation
             return clienteBL.ByID(cliente);
         }
 
-        private void btnNovo_Click(object sender, EventArgs e)
+        private void btnNovo_Click_1(object sender, EventArgs e)
         {
             LimpaCampos();
             btnNovo.Enabled = false;
@@ -190,7 +190,7 @@ namespace HenryCorporation.Lavajato.Presentation
             }
 
             clienteBL.Delete(this.cliente);
-            MessageBox.Show("Cliente salvo com sucesso!", "Atenção");
+            MessageBox.Show("Cliente deletado com sucesso!", "Atenção");
             CarregaClientesCadastrados();
             LimpaCampos();
             RetornaFocoParaPlaca();
@@ -214,6 +214,11 @@ namespace HenryCorporation.Lavajato.Presentation
         private void nomePesquisa_Leave(object sender, EventArgs e)
         {
             nomePesquisa.BackColor = Color.White;
+        }
+
+        private void btnSair_Click_1(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         private void placa_Enter(object sender, EventArgs e)
@@ -240,13 +245,6 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void cor_Leave(object sender, EventArgs e)
         {
-            if (!ValidaCampos(cor.Text))
-            {
-                MessageBox.Show("Favor digitar uma cor!", "Atenção");
-                cor.BackColor = Color.Yellow;
-                cor.Focus();
-                return;
-            }
             cor.BackColor = Color.White;
         }
 
@@ -257,13 +255,6 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void nome_Leave(object sender, EventArgs e)
         {
-            if (!ValidaCampos(nome.Text))
-            {
-                MessageBox.Show("Favor digitar uma nome para o cliente!", "Atenção");
-                nome.BackColor = Color.Yellow;
-                nome.Focus();
-                return;
-            }
             nome.BackColor = Color.White;
         }
 
@@ -297,16 +288,6 @@ namespace HenryCorporation.Lavajato.Presentation
             uf.BackColor = Color.White;
         }
 
-        private void cep_Enter(object sender, EventArgs e)
-        {
-            cep.BackColor = Color.Yellow;
-        }
-
-        private void cep_Leave(object sender, EventArgs e)
-        {
-            cep.BackColor = Color.White;
-        }
-
         private void bairro_Enter(object sender, EventArgs e)
         {
             bairro.BackColor = Color.Yellow;
@@ -324,14 +305,6 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void fone_Leave(object sender, EventArgs e)
         {
-            string strTemp = fone.Text.Replace("(  )    -", "");
-            if (!ValidaCampos(strTemp))
-            {
-                MessageBox.Show("Favor digitar uma nome para o cliente!", "Atenção");
-                fone.BackColor = Color.Yellow;
-                fone.Focus();
-                return;
-            }
             fone.BackColor = Color.White;
         }
 
@@ -343,7 +316,6 @@ namespace HenryCorporation.Lavajato.Presentation
         private void celular_Leave(object sender, EventArgs e)
         {
             celular.BackColor = Color.White;
-            btnSair.Focus();
         }
 
         private void convênio_Enter(object sender, EventArgs e)
@@ -363,13 +335,6 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void veiculo_Leave(object sender, EventArgs e)
         {
-            if (!ValidaCampos(veiculo.Text))
-            {
-                MessageBox.Show("Favor digitar uma placa válida!", "Atenção");
-                veiculo.BackColor = Color.Yellow;
-                veiculo.Focus();
-                return;
-            }
             veiculo.BackColor = Color.White;
         }
 
@@ -377,6 +342,25 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             placa.Focus();
         }
-       
+
+        private void convenio_Enter(object sender, EventArgs e)
+        {
+            convenio.BackColor = Color.Yellow;
+        }
+
+        private void convenio_Leave(object sender, EventArgs e)
+        {
+            convenio.BackColor = Color.White;
+        }
+
+        private void cep_Enter_1(object sender, EventArgs e)
+        {
+            cep.BackColor = Color.Yellow;
+        }
+
+        private void cep_Leave_1(object sender, EventArgs e)
+        {
+            cep.BackColor = Color.White;
+        }
     }
 }

@@ -172,7 +172,8 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void CarregaProdutos()
         {
-            cmbProduto.DataSource = new ProdutoBL().TipoServico(EnumCategoriaProduto.Produto);
+            ProdutoBL produtoBL = new ProdutoBL();
+            cmbProduto.DataSource = produtoBL.TipoServico(EnumCategoriaProduto.Produto);
             cmbProduto.DisplayMember = "Descricao";
             cmbProduto.ValueMember = "ID";
         }
@@ -392,9 +393,16 @@ namespace HenryCorporation.Lavajato.Presentation
                 return;
             }
 
+            DialogResult res = MessageBox.Show("Deseja realmente apagar o item de pedido", "Atenção", MessageBoxButtons.YesNo);
+            if (res == DialogResult.No)
+            {
+                return;
+            }
+
             servicoBL.ServicoItemDelete(this.servicoItem);
             this.servico = servicoBL.ByID(this.servico);
             CriaTabela(this.servico);
+            MessageBox.Show("Item excluido");
         }
 
         private void btnFinalizarVenda_Click(object sender, EventArgs e)
@@ -410,8 +418,15 @@ namespace HenryCorporation.Lavajato.Presentation
                 return;
             }
 
+            DialogResult res = MessageBox.Show("Deseja cancelar a venda", "Atenção", MessageBoxButtons.YesNo);
+            if (res == DialogResult.No)
+            {
+                return;
+            }
+
             this.servico.Cancelado = 1;
             this.servicoBL.Update(this.servico);
+            MessageBox.Show("Venda cancelada com sucesso!");
         }
 
         private void btnVendaAvulca_Click(object sender, EventArgs e)

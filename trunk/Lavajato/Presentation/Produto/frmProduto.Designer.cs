@@ -120,6 +120,8 @@
             this.nomePesquisa.Size = new System.Drawing.Size(378, 21);
             this.nomePesquisa.TabIndex = 61;
             this.nomePesquisa.TextChanged += new System.EventHandler(this.nomePesquisa_TextChanged);
+            this.nomePesquisa.Leave += new System.EventHandler(this.nomePesquisa_Leave);
+            this.nomePesquisa.Enter += new System.EventHandler(this.nomePesquisa_Enter);
             // 
             // grdProdutos
             // 

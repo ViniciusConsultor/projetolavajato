@@ -1,4 +1,23 @@
-﻿1- Terminar contar a pagar.
-2- Fazer alteração para inserir por data
-3- Finalizar relatorios.
+﻿cliente
+1- OK - Aumentar tamanho do campo de login
+2- OK - Mudar mensagem em clientes qdo apagar um cliente.
+3- OK - Colcar mask edit para o cep em cliente
 
+
+usuario
+4- OK - Colcar mask edit para o cep em usuario
+5- OK -qdo um usuario for excluido limpar o campo e-mail
+6- OK -em usuario fazer o botão funcionar corretamente
+7- OK -mudar o nome do form de pesquisa em usuario
+8- OK -colocar os campos em amarelo qdo estiver com o foco e branco qdo perder o foco
+
+
+produto
+9- OK - colocar os campos em amarelo qdo estiver com o foco e branco qdo perder o foco
+10- OK - olhar update em produtos, modificar a data pois não está salvando corretamente
+11- qdp clicar em novo mandar o foco para a primeira caixa de texto(depois está chato de fazer)
+
+
+convenios
+qdo salva o botão de novo e salvar ficam enable
+colocar amarelo nós botoões qdo tiver alguma coisa e branco qdo não tiver

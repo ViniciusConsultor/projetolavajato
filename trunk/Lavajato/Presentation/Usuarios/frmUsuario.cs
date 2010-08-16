@@ -174,19 +174,21 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void LimpaCampos()
         {
-            nome.Text = "";
-            endereco.Text = "";
-            numero.Text = "";
+            nome.Clear();
+            endereco.Clear();
+            numero.Clear();
             uf.SelectedItem = "";
-            cep.Text = "";
-            bairro.Text = "";
-            fone.Text = "";
-            celular.Text = "";
+            cidade.Clear();
+            cep.Clear();
+            bairro.Clear();
+            fone.Clear();
+            celular.Clear();
+            email.Clear();
 
-            login.Text = "";
-            senha.Text = "";
-            cpf.Text = "";
-            rg.Text = "";
+            login.Clear();
+            senha.Clear();
+            cpf.Clear();
+            rg.Clear();
             this.usuario = new HenryCorporation.Lavajato.DomainModel.Usuario();
 
             checkBoxOrdemServico.Checked = false;
@@ -366,6 +368,31 @@ namespace HenryCorporation.Lavajato.Presentation
         private void OcultaCampo()
         {
             grdUsuarios.Columns[0].Visible = false;
+        }
+
+        private void nomePesquisa_Enter(object sender, EventArgs e)
+        {
+            nomePesquisa.BackColor = Color.Yellow;
+        }
+
+        private void nomePesquisa_Leave(object sender, EventArgs e)
+        {
+            nomePesquisa.BackColor = Color.White;
+        }
+
+        private void loginPesquisa_Enter(object sender, EventArgs e)
+        {
+            loginPesquisa.BackColor = Color.Yellow;
+        }
+
+        private void loginPesquisa_Leave(object sender, EventArgs e)
+        {
+            loginPesquisa.BackColor = Color.White;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
         
