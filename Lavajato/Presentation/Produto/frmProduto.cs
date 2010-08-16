@@ -103,15 +103,12 @@ namespace HenryCorporation.Lavajato.Presentation
         private void btnNovo_Click(object sender, EventArgs e)
         {
             LimpaCampos();
-            btnNovo.Enabled = false;
-            
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
             SetProduto();
             produtoBL.Add(this.produto);
-            btnNovo.Enabled = true;
             CarregaProdutos();
             MessageBox.Show("Produto salvo com sucesso", "Atenção");
         }
@@ -181,7 +178,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
             this.produto.Estoque.Quantidade = Configuracao.ConverteParaInteiro(quantidade.Text.Length > 0 ? quantidade.Text: "0");
             this.produto.Estoque.Minimo = int.Parse(minimo.Text.Length > 0 ? minimo.Text : "0");
-            this.produto.Estoque.Data = DateTime.Now;
+            this.produto.Estoque.Data = this.produto.Estoque.Data;
         }
 
         private void precoCompra_Enter(object sender, EventArgs e)
@@ -344,6 +341,16 @@ namespace HenryCorporation.Lavajato.Presentation
         private void btnAlterar_Leave(object sender, EventArgs e)
         {
             descricao.Focus();
+        }
+
+        private void nomePesquisa_Enter(object sender, EventArgs e)
+        {
+            nomePesquisa.BackColor = Color.Yellow;
+        }
+
+        private void nomePesquisa_Leave(object sender, EventArgs e)
+        {
+            nomePesquisa.BackColor = Color.White;
         }
     }
 }

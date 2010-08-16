@@ -37,14 +37,14 @@
             this.nomePesquisa = new System.Windows.Forms.TextBox();
             this.grdClientes = new System.Windows.Forms.DataGridView();
             this.tabManutencao = new System.Windows.Forms.TabPage();
+            this.btnSair = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.convenio = new System.Windows.Forms.ComboBox();
-            this.btnSair = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnNovo = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cep = new System.Windows.Forms.MaskedTextBox();
             this.celular = new System.Windows.Forms.MaskedTextBox();
             this.fone = new System.Windows.Forms.MaskedTextBox();
             this.label11 = new System.Windows.Forms.Label();
@@ -53,7 +53,6 @@
             this.label9 = new System.Windows.Forms.Label();
             this.bairro = new System.Windows.Forms.TextBox();
             this.label8 = new System.Windows.Forms.Label();
-            this.cep = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.numero = new System.Windows.Forms.TextBox();
@@ -68,6 +67,7 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btnNovo = new System.Windows.Forms.Button();
             this.tabClientes.SuspendLayout();
             this.tabConsulta.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -169,12 +169,12 @@
             // 
             // tabManutencao
             // 
+            this.tabManutencao.Controls.Add(this.btnNovo);
+            this.tabManutencao.Controls.Add(this.btnSair);
             this.tabManutencao.Controls.Add(this.btnSalvar);
             this.tabManutencao.Controls.Add(this.groupBox3);
-            this.tabManutencao.Controls.Add(this.btnSair);
             this.tabManutencao.Controls.Add(this.btnAlterar);
             this.tabManutencao.Controls.Add(this.btnExcluir);
-            this.tabManutencao.Controls.Add(this.btnNovo);
             this.tabManutencao.Controls.Add(this.groupBox2);
             this.tabManutencao.Controls.Add(this.groupBox1);
             this.tabManutencao.Location = new System.Drawing.Point(4, 22);
@@ -185,12 +185,22 @@
             this.tabManutencao.Text = "Cliente";
             this.tabManutencao.UseVisualStyleBackColor = true;
             // 
+            // btnSair
+            // 
+            this.btnSair.Location = new System.Drawing.Point(263, 286);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(55, 38);
+            this.btnSair.TabIndex = 17;
+            this.btnSair.Text = "Sair";
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click_1);
+            // 
             // btnSalvar
             // 
             this.btnSalvar.Location = new System.Drawing.Point(116, 286);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(55, 38);
-            this.btnSalvar.TabIndex = 15;
+            this.btnSalvar.TabIndex = 13;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -208,29 +218,19 @@
             // convenio
             // 
             this.convenio.FormattingEnabled = true;
-            this.convenio.Location = new System.Drawing.Point(5, 15);
+            this.convenio.Location = new System.Drawing.Point(3, 14);
             this.convenio.Name = "convenio";
-            this.convenio.Size = new System.Drawing.Size(303, 21);
-            this.convenio.TabIndex = 14;
-            this.convenio.Leave += new System.EventHandler(this.convênio_Leave);
-            this.convenio.Enter += new System.EventHandler(this.convênio_Enter);
-            // 
-            // btnSair
-            // 
-            this.btnSair.Location = new System.Drawing.Point(264, 286);
-            this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(55, 38);
-            this.btnSair.TabIndex = 19;
-            this.btnSair.Text = "Sair";
-            this.btnSair.UseVisualStyleBackColor = true;
-            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
+            this.convenio.Size = new System.Drawing.Size(304, 21);
+            this.convenio.TabIndex = 12;
+            this.convenio.Leave += new System.EventHandler(this.convenio_Leave);
+            this.convenio.Enter += new System.EventHandler(this.convenio_Enter);
             // 
             // btnAlterar
             // 
             this.btnAlterar.Location = new System.Drawing.Point(61, 286);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(55, 38);
-            this.btnAlterar.TabIndex = 17;
+            this.btnAlterar.TabIndex = 15;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
@@ -240,23 +240,14 @@
             this.btnExcluir.Location = new System.Drawing.Point(171, 286);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(55, 38);
-            this.btnExcluir.TabIndex = 18;
+            this.btnExcluir.TabIndex = 16;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
             // 
-            // btnNovo
-            // 
-            this.btnNovo.Location = new System.Drawing.Point(6, 286);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(55, 38);
-            this.btnNovo.TabIndex = 16;
-            this.btnNovo.Text = "Novo";
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
-            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cep);
             this.groupBox2.Controls.Add(this.celular);
             this.groupBox2.Controls.Add(this.fone);
             this.groupBox2.Controls.Add(this.label11);
@@ -265,7 +256,6 @@
             this.groupBox2.Controls.Add(this.label9);
             this.groupBox2.Controls.Add(this.bairro);
             this.groupBox2.Controls.Add(this.label8);
-            this.groupBox2.Controls.Add(this.cep);
             this.groupBox2.Controls.Add(this.label7);
             this.groupBox2.Controls.Add(this.label6);
             this.groupBox2.Controls.Add(this.numero);
@@ -280,6 +270,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados Pessoais";
             // 
+            // cep
+            // 
+            this.cep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cep.Location = new System.Drawing.Point(83, 105);
+            this.cep.Mask = "99.9999-999";
+            this.cep.Name = "cep";
+            this.cep.Size = new System.Drawing.Size(90, 20);
+            this.cep.TabIndex = 8;
+            this.cep.Leave += new System.EventHandler(this.cep_Leave_1);
+            this.cep.Enter += new System.EventHandler(this.cep_Enter_1);
+            // 
             // celular
             // 
             this.celular.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -287,7 +288,7 @@
             this.celular.Mask = "(00)0000-0000";
             this.celular.Name = "celular";
             this.celular.Size = new System.Drawing.Size(88, 20);
-            this.celular.TabIndex = 13;
+            this.celular.TabIndex = 11;
             this.celular.Leave += new System.EventHandler(this.celular_Leave);
             this.celular.Enter += new System.EventHandler(this.celular_Enter);
             // 
@@ -298,7 +299,7 @@
             this.fone.Mask = "(00)0000-0000";
             this.fone.Name = "fone";
             this.fone.Size = new System.Drawing.Size(88, 20);
-            this.fone.TabIndex = 12;
+            this.fone.TabIndex = 10;
             this.fone.Leave += new System.EventHandler(this.fone_Leave);
             this.fone.Enter += new System.EventHandler(this.fone_Enter);
             // 
@@ -354,7 +355,7 @@
             this.uf.Location = new System.Drawing.Point(7, 105);
             this.uf.Name = "uf";
             this.uf.Size = new System.Drawing.Size(76, 21);
-            this.uf.TabIndex = 9;
+            this.uf.TabIndex = 7;
             this.uf.Leave += new System.EventHandler(this.uf_Leave);
             this.uf.Enter += new System.EventHandler(this.uf_Enter);
             // 
@@ -375,7 +376,7 @@
             this.bairro.MaxLength = 50;
             this.bairro.Name = "bairro";
             this.bairro.Size = new System.Drawing.Size(133, 21);
-            this.bairro.TabIndex = 11;
+            this.bairro.TabIndex = 9;
             this.bairro.Leave += new System.EventHandler(this.bairro_Leave);
             this.bairro.Enter += new System.EventHandler(this.bairro_Enter);
             // 
@@ -387,18 +388,6 @@
             this.label8.Size = new System.Drawing.Size(29, 13);
             this.label8.TabIndex = 12;
             this.label8.Text = "Cep:";
-            // 
-            // cep
-            // 
-            this.cep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cep.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cep.Location = new System.Drawing.Point(83, 105);
-            this.cep.MaxLength = 50;
-            this.cep.Name = "cep";
-            this.cep.Size = new System.Drawing.Size(91, 21);
-            this.cep.TabIndex = 10;
-            this.cep.Leave += new System.EventHandler(this.cep_Leave);
-            this.cep.Enter += new System.EventHandler(this.cep_Enter);
             // 
             // label7
             // 
@@ -426,7 +415,7 @@
             this.numero.MaxLength = 50;
             this.numero.Name = "numero";
             this.numero.Size = new System.Drawing.Size(40, 21);
-            this.numero.TabIndex = 8;
+            this.numero.TabIndex = 6;
             this.numero.Leave += new System.EventHandler(this.numero_Leave);
             this.numero.Enter += new System.EventHandler(this.numero_Enter);
             // 
@@ -447,7 +436,7 @@
             this.endereco.MaxLength = 50;
             this.endereco.Name = "endereco";
             this.endereco.Size = new System.Drawing.Size(260, 21);
-            this.endereco.TabIndex = 7;
+            this.endereco.TabIndex = 5;
             this.endereco.Leave += new System.EventHandler(this.endereco_Leave);
             this.endereco.Enter += new System.EventHandler(this.endereco_Enter);
             // 
@@ -468,7 +457,7 @@
             this.nome.MaxLength = 50;
             this.nome.Name = "nome";
             this.nome.Size = new System.Drawing.Size(300, 21);
-            this.nome.TabIndex = 6;
+            this.nome.TabIndex = 4;
             this.nome.Leave += new System.EventHandler(this.nome_Leave);
             this.nome.Enter += new System.EventHandler(this.nome_Enter);
             // 
@@ -494,7 +483,7 @@
             this.placa.Mask = "aaa-0000";
             this.placa.Name = "placa";
             this.placa.Size = new System.Drawing.Size(100, 20);
-            this.placa.TabIndex = 3;
+            this.placa.TabIndex = 1;
             this.placa.Leave += new System.EventHandler(this.placa_Leave);
             this.placa.Enter += new System.EventHandler(this.placa_Enter);
             // 
@@ -504,7 +493,7 @@
             this.veiculo.Location = new System.Drawing.Point(207, 30);
             this.veiculo.Name = "veiculo";
             this.veiculo.Size = new System.Drawing.Size(100, 20);
-            this.veiculo.TabIndex = 5;
+            this.veiculo.TabIndex = 3;
             this.veiculo.Leave += new System.EventHandler(this.veiculo_Leave);
             this.veiculo.Enter += new System.EventHandler(this.veiculo_Enter);
             // 
@@ -514,7 +503,7 @@
             this.cor.Location = new System.Drawing.Point(107, 30);
             this.cor.Name = "cor";
             this.cor.Size = new System.Drawing.Size(100, 20);
-            this.cor.TabIndex = 4;
+            this.cor.TabIndex = 2;
             this.cor.Leave += new System.EventHandler(this.cor_Leave);
             this.cor.Enter += new System.EventHandler(this.cor_Enter);
             // 
@@ -544,6 +533,16 @@
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Placa:";
+            // 
+            // btnNovo
+            // 
+            this.btnNovo.Location = new System.Drawing.Point(6, 286);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(55, 38);
+            this.btnNovo.TabIndex = 14;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click_1);
             // 
             // frmCliente
             // 
@@ -577,11 +576,8 @@
         private System.Windows.Forms.DataGridView grdClientes;
         private System.Windows.Forms.TabPage tabManutencao;
         private System.Windows.Forms.GroupBox groupBox3;
-        private System.Windows.Forms.ComboBox convenio;
-        private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label10;
@@ -589,7 +585,6 @@
         private System.Windows.Forms.Label label9;
         private System.Windows.Forms.TextBox bairro;
         private System.Windows.Forms.Label label8;
-        private System.Windows.Forms.TextBox cep;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox numero;
@@ -612,6 +607,10 @@
         private System.Windows.Forms.MaskedTextBox celular;
         private System.Windows.Forms.MaskedTextBox fone;
         private System.Windows.Forms.MaskedTextBox placa;
+        private System.Windows.Forms.MaskedTextBox cep;
+        private System.Windows.Forms.ComboBox convenio;
+        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.Button btnNovo;
 
     }
 }

@@ -60,6 +60,8 @@
             this.loginPesquisa.Size = new System.Drawing.Size(187, 21);
             this.loginPesquisa.TabIndex = 11;
             this.loginPesquisa.TextChanged += new System.EventHandler(this.loginPesquisa_TextChanged);
+            this.loginPesquisa.Leave += new System.EventHandler(this.loginPesquisa_Leave);
+            this.loginPesquisa.Enter += new System.EventHandler(this.loginPesquisa_Enter);
             // 
             // label14
             // 
@@ -80,6 +82,8 @@
             this.nomePesquisa.Size = new System.Drawing.Size(300, 21);
             this.nomePesquisa.TabIndex = 9;
             this.nomePesquisa.TextChanged += new System.EventHandler(this.nomePesquisa_TextChanged);
+            this.nomePesquisa.Leave += new System.EventHandler(this.nomePesquisa_Leave);
+            this.nomePesquisa.Enter += new System.EventHandler(this.nomePesquisa_Enter);
             // 
             // label17
             // 
