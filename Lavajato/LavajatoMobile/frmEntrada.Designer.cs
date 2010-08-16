@@ -46,6 +46,7 @@
             this.entrada = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.min = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // label1
@@ -91,7 +92,7 @@
             this.nome.Location = new System.Drawing.Point(0, 91);
             this.nome.Name = "nome";
             this.nome.Size = new System.Drawing.Size(153, 26);
-            this.nome.TabIndex = 4;
+            this.nome.TabIndex = 5;
             this.nome.GotFocus += new System.EventHandler(this.nome_GotFocus);
             this.nome.LostFocus += new System.EventHandler(this.nome_LostFocus);
             // 
@@ -145,7 +146,7 @@
             this.telefone.Location = new System.Drawing.Point(123, 52);
             this.telefone.Name = "telefone";
             this.telefone.Size = new System.Drawing.Size(117, 26);
-            this.telefone.TabIndex = 5;
+            this.telefone.TabIndex = 4;
             this.telefone.TextChanged += new System.EventHandler(this.telefone_TextChanged);
             this.telefone.GotFocus += new System.EventHandler(this.telefone_GotFocus);
             this.telefone.LostFocus += new System.EventHandler(this.telefone_LostFocus);
@@ -160,22 +161,24 @@
             // 
             // hora
             // 
-            this.hora.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
+            this.hora.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular);
             this.hora.Location = new System.Drawing.Point(147, 130);
             this.hora.Name = "hora";
-            this.hora.Size = new System.Drawing.Size(41, 27);
+            this.hora.Size = new System.Drawing.Size(41, 30);
             this.hora.TabIndex = 7;
             this.hora.LostFocus += new System.EventHandler(this.hora_LostFocus);
             this.hora.GotFocus += new System.EventHandler(this.hora_GotFocus);
             // 
             // entrada
             // 
+            this.entrada.CustomFormat = "hh:mm";
             this.entrada.Enabled = false;
             this.entrada.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
-            this.entrada.Location = new System.Drawing.Point(0, 130);
+            this.entrada.Location = new System.Drawing.Point(6, 226);
             this.entrada.Name = "entrada";
             this.entrada.Size = new System.Drawing.Size(147, 27);
             this.entrada.TabIndex = 6;
+            this.entrada.Value = new System.DateTime(2010, 8, 15, 17, 45, 0, 0);
             this.entrada.GotFocus += new System.EventHandler(this.entrada_GotFocus);
             this.entrada.LostFocus += new System.EventHandler(this.entrada_LostFocus);
             // 
@@ -189,13 +192,21 @@
             // 
             // min
             // 
-            this.min.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
+            this.min.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular);
             this.min.Location = new System.Drawing.Point(188, 130);
             this.min.Name = "min";
-            this.min.Size = new System.Drawing.Size(52, 27);
+            this.min.Size = new System.Drawing.Size(52, 30);
             this.min.TabIndex = 8;
             this.min.LostFocus += new System.EventHandler(this.min_LostFocus);
             this.min.GotFocus += new System.EventHandler(this.min_GotFocus);
+            // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
+            this.textBox1.Location = new System.Drawing.Point(1, 130);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(146, 26);
+            this.textBox1.TabIndex = 16;
             // 
             // frmEntrada
             // 
@@ -203,6 +214,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.min);
             this.Controls.Add(this.hora);
             this.Controls.Add(this.telefone);
@@ -244,6 +256,7 @@
         private System.Windows.Forms.DateTimePicker entrada;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox min;
+        private System.Windows.Forms.TextBox textBox1;
 
     }
 }

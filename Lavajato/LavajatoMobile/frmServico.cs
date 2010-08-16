@@ -16,6 +16,8 @@ namespace LavajatoMobile
         private WSLavajato.Servico servico = new LavajatoMobile.WSLavajato.Servico();
         private WSLavajato.ServicoItem servicoItem = new LavajatoMobile.WSLavajato.ServicoItem();
         private WSLavajato.Service wsService = new LavajatoMobile.WSLavajato.Service();
+        private DataSet dataSet = new DataSet();
+        private DataTable table = new DataTable();
 
         public frmServico()
         {
@@ -25,12 +27,33 @@ namespace LavajatoMobile
 
         public frmServico(Cliente cliente, DateTime entrada, DateTime saida)
         {
+        
+            InitializeComponent();
+
             this.cliente = cliente;
             this.servico.Entrada = entrada;
             this.servico.Saida = saida;
 
-            InitializeComponent();
+            SetUpDataSet();
             CarregaProdutos();
+            SetUpServico(this.cliente);
+            // MensagemSeExistePedidos(this.servico);
+            CarregaItensDoServico(this.servico);
+        }
+
+        private void MensagemSeExistePedidos(Servico servico)
+        {
+
+            this.servico = wsService.ServicoByID(servico);
+            if (servico.ID == 0)
+                return;
+
+            MessageBox.Show("Pedido número " + servico.OrdemServico);
+        }
+
+        private void SetUpDataSet()
+        {
+            dataSet.Tables.Add(table);
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -51,13 +74,6 @@ namespace LavajatoMobile
             MessageBox.Show("Item deletado com sucesso!", "Atenção");
             CarregaItensDoServico();
             CarregaItensDoServico(this.servico);
-        }
-
-        private void CarregaProdutos()
-        {
-            cmdServico.DataSource = wsService.ProdutoTipo(2);
-            cmdServico.DisplayMember = "Descricao";
-            cmdServico.ValueMember = "ID";
         }
 
         private void grdServico_Click(object sender, EventArgs e)
@@ -104,6 +120,18 @@ namespace LavajatoMobile
                 MessageBox.Show("Erro ao imprimir, favor imprimir pelo Desktop", "Atenção");
             else
                 MessageBox.Show("Ticket Impressoo", "Atenção");
+
+            DialogResult result = MessageBox.Show("Deseja imprimir outro ticket ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            if (result == DialogResult.Yes)
+            {
+                impressao = wsService.EmiteRecibo(this.servico);
+                if (impressao == 0)
+                    MessageBox.Show("Erro ao imprimir, favor imprimir pelo Desktop", "Atenção");
+                else
+                    MessageBox.Show("Ticket Impressoo", "Atenção");
+            }
+
+            this.Close();
         }
 
         private void btnAdicionaProduto_Click(object sender, EventArgs e)
@@ -123,7 +151,6 @@ namespace LavajatoMobile
             {
                 ItemDoServicoSalva(this.servico);
             }
-
             CarregaItensDoServico();
             CarregaItensDoServico(this.servico);
         }
@@ -133,14 +160,20 @@ namespace LavajatoMobile
             this.servico = wsService.ServicoByID(this.servico);
         }
 
+        private void SomaTotal()
+        {
+            decimal total = 0;
+            foreach (DataRow item in table.Rows)
+                total += decimal.Parse( item["Total"].ToString().Replace("R$", "").Replace(",", ".").Trim());
+
+            lblTotal.Text = "R$ "+ total.ToString();
+        }
+
         private void CarregaItensDoServico(Servico servico)
         {
-            DataTable table = wsService.ServicoCriaGrid(this.servico);
+            table = wsService.ServicoCriaGrid(this.servico);
             grdServico.DataSource = table;
 
-
-            /* Create a new DataGridTableStyle and set
-            its MappingName to the TableName of a DataTable. */
             DataGridTableStyle ts1 = new DataGridTableStyle();
             ts1.MappingName = table.TableName;
 
@@ -152,53 +185,42 @@ namespace LavajatoMobile
             DataGridColumnStyle desc = new DataGridTextBoxColumn();
             desc.MappingName = "Descricao";
             desc.HeaderText = "Desc.";
-            desc.Width = 40;
+            desc.Width = 70;
             ts1.GridColumnStyles.Add(desc);
 
             DataGridColumnStyle qtde = new DataGridTextBoxColumn();
             qtde.MappingName = "Quantidade";
-            qtde.HeaderText = "Qtde.";
-            qtde.Width = 50;
+            qtde.HeaderText = "Qt";
+            qtde.Width = 22;
             ts1.GridColumnStyles.Add(qtde);
 
             DataGridColumnStyle val = new DataGridTextBoxColumn();
             val.MappingName = "Valor";
-            val.HeaderText = "Qtde.";
-            val.Width = 50;
+            val.HeaderText = "Valor";
+            val.Width = 56;
             ts1.GridColumnStyles.Add(val);
 
             DataGridColumnStyle tot = new DataGridTextBoxColumn();
             tot.MappingName = "Total";
             tot.HeaderText = "Total";
-            tot.Width = 50;
+            tot.Width = 56;
             ts1.GridColumnStyles.Add(tot);
-
 
             grdServico.TableStyles.Clear();
             grdServico.TableStyles.Add(ts1);
+            SomaTotal();
         }
 
-        private void teste() 
+        private void SetUpServico(Cliente cliente)
         {
-            /*this.servico = wsService.ServicoByCliente(this.cliente);
-            if (this.servico.ID == 0)
-            {
-                placa.BackColor = Color.White;
-                btnAdicionaProduto.Focus();
-                return;
-            }
-            else
-            {
-                CarregaItensDoServico(this.servico);
-                btnAdicionaProduto.Focus();
-            }
+            this.servico = wsService.ServicoByCliente(cliente);
+        }
 
-            if (this.servico.Finalizado == 0)
-                MessageBox.Show("Ordem de Serviço Aberto", "Atenção");
-
-            if (this.servico.Lavado == 1)
-                MessageBox.Show("Veículo já lavado", "Atenção");*/
-
+        private void CarregaProdutos()
+        {
+            cmdServico.DataSource = wsService.ProdutoTipo(2);
+            cmdServico.DisplayMember = "Descricao";
+            cmdServico.ValueMember = "ID";
         }
 
         private void frmServico_KeyDown(object sender, KeyEventArgs e)
@@ -225,7 +247,6 @@ namespace LavajatoMobile
             }
 
         }
-
 
 
     }

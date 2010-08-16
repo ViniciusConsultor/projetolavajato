@@ -31,38 +31,29 @@
         {
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.btnConcluir = new System.Windows.Forms.Button();
-            this.btnLimpar = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAdicionaProduto = new System.Windows.Forms.Button();
             this.cmdServico = new System.Windows.Forms.ComboBox();
             this.grdServico = new System.Windows.Forms.DataGrid();
+            this.lblTotal = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // btnConcluir
             // 
             this.btnConcluir.BackColor = System.Drawing.Color.Lime;
             this.btnConcluir.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.btnConcluir.Location = new System.Drawing.Point(172, 167);
+            this.btnConcluir.Location = new System.Drawing.Point(171, 161);
             this.btnConcluir.Name = "btnConcluir";
             this.btnConcluir.Size = new System.Drawing.Size(67, 32);
             this.btnConcluir.TabIndex = 28;
             this.btnConcluir.Text = "Concluir";
             this.btnConcluir.Click += new System.EventHandler(this.btnConcluir_Click);
             // 
-            // btnLimpar
-            // 
-            this.btnLimpar.BackColor = System.Drawing.Color.Orange;
-            this.btnLimpar.Location = new System.Drawing.Point(68, 167);
-            this.btnLimpar.Name = "btnLimpar";
-            this.btnLimpar.Size = new System.Drawing.Size(67, 32);
-            this.btnLimpar.TabIndex = 26;
-            this.btnLimpar.Text = "Limpa";
-            // 
             // btnExcluir
             // 
             this.btnExcluir.BackColor = System.Drawing.Color.Red;
             this.btnExcluir.Font = new System.Drawing.Font("Tahoma", 10F, System.Drawing.FontStyle.Bold);
-            this.btnExcluir.Location = new System.Drawing.Point(1, 167);
+            this.btnExcluir.Location = new System.Drawing.Point(1, 161);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(67, 32);
             this.btnExcluir.TabIndex = 25;
@@ -91,12 +82,20 @@
             // grdServico
             // 
             this.grdServico.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.grdServico.Font = new System.Drawing.Font("Tahoma", 11F, System.Drawing.FontStyle.Regular);
+            this.grdServico.Font = new System.Drawing.Font("Tahoma", 9F, System.Drawing.FontStyle.Regular);
             this.grdServico.Location = new System.Drawing.Point(1, 29);
             this.grdServico.Name = "grdServico";
-            this.grdServico.Size = new System.Drawing.Size(236, 138);
+            this.grdServico.Size = new System.Drawing.Size(236, 132);
             this.grdServico.TabIndex = 27;
             this.grdServico.Click += new System.EventHandler(this.grdServico_Click);
+            // 
+            // lblTotal
+            // 
+            this.lblTotal.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
+            this.lblTotal.Location = new System.Drawing.Point(74, 161);
+            this.lblTotal.Name = "lblTotal";
+            this.lblTotal.Size = new System.Drawing.Size(92, 20);
+            this.lblTotal.Text = "label1";
             // 
             // frmServico
             // 
@@ -104,8 +103,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.lblTotal);
             this.Controls.Add(this.btnConcluir);
-            this.Controls.Add(this.btnLimpar);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.btnAdicionaProduto);
             this.Controls.Add(this.cmdServico);
@@ -122,10 +121,10 @@
         #endregion
 
         private System.Windows.Forms.Button btnConcluir;
-        private System.Windows.Forms.Button btnLimpar;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnAdicionaProduto;
         private System.Windows.Forms.ComboBox cmdServico;
         private System.Windows.Forms.DataGrid grdServico;
+        private System.Windows.Forms.Label lblTotal;
     }
 }
