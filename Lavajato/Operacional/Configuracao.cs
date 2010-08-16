@@ -129,22 +129,22 @@ namespace HenryCorporation.Lavajato.Operacional
             string desc = "";
             foreach (var item in servico.ServicoItem)
             {
-                if (item.Produto.Descricao.Length >= 16)
+                if (item.Produto.Descricao.Length > 16)
                 {
-                    desc = item.Produto.Descricao;
-                    for (int i = 0; i < 16 - item.Produto.Descricao.Length; i++)
-                    {
-                        desc += " ";
-                    }
+                    desc = item.Produto.Descricao.Substring(16, item.Produto.Descricao.Length -1);
+                }
+                else if (item.Produto.Descricao.Length == 16)
+                { 
+                
                 }
                 else
                 {
                     desc = item.Produto.Descricao;
-                    for (int i = 0; i < 16 - item.Produto.Descricao.Length; i++)
+                    for (int i = 0; i < 17 - item.Produto.Descricao.Length; i++)
                     {
-                        desc += " ";
+                        desc += "  ";
                     }
-                }
+                } 
 
                 string qtde = item.Quantidade.ToString();
                 string valUni = item.Produto.ValorUnitario.ToString("C").Replace("R$", "");
@@ -152,23 +152,23 @@ namespace HenryCorporation.Lavajato.Operacional
                 somaTotal += Configuracao.ConverteParaDecimal(tot);
 
                 if (valUni.Length == 5)
-                    valUni = "         " + valUni;
+                    valUni = "              " + valUni;
                 else if (valUni.Length == 4)
-                    valUni = "            " + valUni;
+                    valUni = "              " + valUni;
                 else if (valUni.Length == 6)
-                    valUni = "        " + valUni;
+                    valUni = "              " + valUni;
 
                 if (tot.Length == 5)
-                    tot = "   " + tot;
+                    tot = "    " + tot;
                 else if (tot.Length == 4)
-                    tot = "   " + tot;
+                    tot = "      " + tot;
                 else if (tot.Length == 6)
-                    tot = "  " + tot;
+                    tot = "   " + tot;
 
-                strCabecalho.Append(desc + "     " + qtde  + valUni + tot +enter);
+                strCabecalho.Append(desc  + qtde  + valUni + tot + enter);
                 
             }
-            strCabecalho.Append("                          Valor Total: " + somaTotal);
+            strCabecalho.Append("                                       Valor Total: " + somaTotal);
 
             strCabecalho.Append(enter);
             strCabecalho.Append(enter);
