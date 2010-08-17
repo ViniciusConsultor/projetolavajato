@@ -11,7 +11,7 @@ namespace HenryCorporation.Lavajato.DataAccess
     {
         private const string sql = " SELECT [ConvenioID],[Desconto],[Nome],[Endereco],[Numero],[Bairro],[Cep], "+
                                    " [Cidade],[Email],[Celular] "+
-                                   " ,[Cpf],[UF],[RG],[Delete], [Telefone] FROM [Convenios] ";
+                                   " ,[Cpf],[UF],[RG],[Delete], [Telefone], [Porcentagem] FROM [Convenios] ";
         
         public ConvenioDAO()
         {
@@ -24,12 +24,12 @@ namespace HenryCorporation.Lavajato.DataAccess
                            " ([Desconto],[Nome],[Endereco] "+
                            " ,[Numero],[Bairro],[Cep] "+
                            " ,[Cidade],[Email],[Celular] "+
-                           " ,[Cpf],[UF],[RG], [Telefone]) "+
+                           " ,[Cpf],[UF],[RG], [Telefone], [Porcentagem]) "+
                             " VALUES ("+
                            " '"+convenio.Valor+"', '"+convenio.Nome+"', '"+convenio.Endereco+"' "+
-                           " ,'"+convenio.Numero+"','"+convenio.Bairro+"' , '"+convenio.Endereco+"' "+
+                           " ,'"+convenio.Numero+"','"+convenio.Bairro+"' , '"+convenio.Cep+"' "+
                            " ,'"+convenio.Cidade+"' ,'"+convenio.Email+"' ,'"+convenio.Celular+"' "+
-                           " ,'"+convenio.Cpf+"','"+convenio.UF+"', '"+convenio.RG+"', '"+convenio.Telefone+"') ";
+                           " ,'"+convenio.Cpf+"','"+convenio.UF+"', '"+convenio.RG+"', '"+convenio.Telefone+"', '"+convenio.PorcentagemDesconto+"') ";
 
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run();
@@ -86,6 +86,7 @@ namespace HenryCorporation.Lavajato.DataAccess
                 convenio.RG = reader.IsDBNull(12) ? "" : reader.GetString(12);
                 convenio.Delete = reader.IsDBNull(13) ? 0 : reader.GetInt32(13);
                 convenio.Telefone = reader.IsDBNull(14) ? "" : reader.GetString(14);
+                convenio.PorcentagemDesconto = reader.IsDBNull(15) ? 0 : reader.GetDecimal(15);
 
                 return convenio;
             }
@@ -115,6 +116,7 @@ namespace HenryCorporation.Lavajato.DataAccess
                 convenio.RG = reader.IsDBNull(12) ? "" : reader.GetString(12);
                 convenio.Delete = reader.IsDBNull(13) ? 0 : reader.GetInt32(13);
                 convenio.Telefone = reader.IsDBNull(14) ? "" : reader.GetString(14);
+                convenio.PorcentagemDesconto = reader.IsDBNull(15) ? 0 : reader.GetDecimal(15);
                 convenios.Add(convenio);
             }
             return convenios;
@@ -152,6 +154,7 @@ namespace HenryCorporation.Lavajato.DataAccess
                            "    ,[RG] = '" + convenio.RG + "' " +
                            "    ,[Delete] = 0 " +
                            "    ,[Telefone] = '" + convenio.Telefone + "' " +
+                             "  ,[Porcentagem] = '" + convenio.PorcentagemDesconto + "' " +
                            " WHERE [ConvenioID] = " + convenio.ID;
 
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);

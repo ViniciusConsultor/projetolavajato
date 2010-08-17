@@ -9,6 +9,7 @@ namespace HenryCorporation.Lavajato.DomainModel
     {
         public int ID { get; set; }
         public decimal Valor{get;set;}
+        public decimal PorcentagemDesconto { get; set; }
         public int Delete { get; set; }
 
         public string Nome { get; set; }

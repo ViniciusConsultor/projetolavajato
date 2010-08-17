@@ -102,6 +102,12 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void adicionarServico_Click(object sender, EventArgs e)
         {
+            if (this.cliente.ID == 0)
+            {
+                MessageBox.Show("Favor escolher um cliente", "Atenção!");
+                return;
+            }
+
             if (!ExisteServico(this.servico))
             {
                 this.servico = ServicoSalva();
@@ -130,8 +136,8 @@ namespace HenryCorporation.Lavajato.Presentation
         private void ItemDoServicoSalva(Servico servico)
         {
             ServicoItem servicoItem = new ServicoItem();
-            servicoItem.Produto.ID = ((Produto)cmdServico.SelectedItem).ID;
-            servicoItem.Quantidade = 1;
+            servicoItem.Produto.ID = int.Parse( cmdServico.SelectedValue.ToString());
+            servicoItem.Quantidade = textBox1.TextLength == 0 ? 1 : Convert.ToDecimal( textBox1.Text);
             servicoItem.Servico = servico;
             servicoBL.ServicoItemInsert(servicoItem);
         }
@@ -181,7 +187,7 @@ namespace HenryCorporation.Lavajato.Presentation
       
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (ExisteServico(this.servico))
+            if (!ExisteServico(this.servico))
             {
                 MessageBox.Show("Nenhum item encontrado!", "Atenção");
                 return;
@@ -218,86 +224,13 @@ namespace HenryCorporation.Lavajato.Presentation
 
             SomaTotal();
             this.servico.OrdemServico = servico.ID;
-            this.servico.Saida = dataEntrada.Value.AddHours(double.Parse(hora.SelectedItem.ToString())).AddMinutes(double.Parse( min.SelectedItem.ToString()));
+            this.servico.Saida = dataEntrada.Value.AddHours(double.Parse(hora.SelectedItem.ToString())).AddMinutes(double.Parse(min.SelectedItem.ToString()));
             servicoBL.Update(this.servico);
 
             //Imprimir recibo
-            Configuracao conf = new Configuracao();
-            conf.EmiteRecibo(this.servico);
-            //print();
-        }
-
+            new Configuracao().EmiteRecibo(this.servico);
         
-        private void EmiteRecibo()
-        {
-            PrintDocument recibo = new PrintDocument();
-            recibo.PrintPage += new PrintPageEventHandler(this.recibo_PrintPage);
-            recibo.Print();
         }
-
-        private void recibo_PrintPage(object sender, PrintPageEventArgs ev)
-        {
-            string enter = "\n";
-            Pen myPen = new Pen(Brushes.Black);
-            Point pt1 = new Point(30, 53);
-            Font myFont1 = new Font("Arial", 9);
- 
-            StringBuilder strCabecalho = new StringBuilder();
-            strCabecalho.Append("LAVEVIP LAVAJATO" + enter);
-            strCabecalho.Append("Rua da Bahia, 2244, Lourdes" + enter);
-            strCabecalho.Append("Minas Tenis Clube-Piso 1" + enter);
-            strCabecalho.Append("(31)xxxx-xxxx" + enter);
-            strCabecalho.Append("----------------------------------------------" + enter);
-            strCabecalho.Append("Placa: " + servico.Cliente.Placa + "  Veículo:" + servico.Cliente.Veiculo + "  Cor:" + servico.Cliente.Cor + "" + enter);
-            strCabecalho.Append("Nome:  " + servico.Cliente.Nome + "      Fone:" + servico.Cliente.Telefone + "" + enter);
-            strCabecalho.Append("Entrada:  " + servico.Entrada + "   Saida:" + servico.Saida.Hour.ToString() + "" + enter);
-            strCabecalho.Append("----------------------------------------------" + enter);
-            strCabecalho.Append("SERVICO             QTDE.     VALOR   TOTAL" + enter);
-
-            string desc = "";
-            foreach (var item in servico.ServicoItem)
-            {
-                if (item.Produto.Descricao.Length >= 16)
-                {
-                    desc = item.Produto.Descricao;
-                }
-                else
-                {
-                    for (int i = 0; i < 16 - item.Produto.Descricao.Length; i++)
-                    {
-                        desc  += " ";
-                    }
-                }
-
-                string qtde = item.Quantidade.ToString();
-                string valUni = item.Produto.ValorUnitario.ToString("C").Replace("R$", "");
-                string tot = (item.Produto.ValorUnitario * item.Quantidade).ToString("C").Replace("R$", "");
-                strCabecalho.Append(desc + qtde + "       " + valUni + tot + enter);
-            }
-
-            ev.Graphics.DrawString(strCabecalho.ToString(), myFont1, Brushes.Black, 30, 30);
-            ev.HasMorePages = false;
-        }
-
-        //private void cabecalho_PrintPage(object sender, PrintPageEventArgs ev)
-        //{
-        //    string enter = "\r\n";
-        //    Pen myPen = new Pen(Brushes.Black);
-
-        //    Point pt1 = new Point(30, 53);
-        //    Font myFont1 = new Font("Arial", 9);
-
-        //    StringBuilder strCabecalho = new StringBuilder();
-        //    strCabecalho.Append("LAVEVIP LAVAJATO" + enter);
-        //    strCabecalho.Append("Rua da Bahia, 2244, Lourdes" + enter);
-        //    strCabecalho.Append("Minas Tenis Clube-Piso 1" + enter);
-        //    strCabecalho.Append("(31)xxxx-xxxx" + enter);
-        //    strCabecalho.Append("----------------------------------------------" + enter);
-
-
-        //    ev.Graphics.DrawString(strCabecalho.ToString(), myFont1, Brushes.Black, 30, 30);
-        //    ev.HasMorePages = false;
-        //}
 
         private void SomaTotal()
         {
@@ -319,7 +252,15 @@ namespace HenryCorporation.Lavajato.Presentation
             hora.SelectedIndex = 0;
             min.SelectedIndex = 0;
         }
-        
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            if (textBox1.Text.Contains("."))
+            {
+                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
+                textBox1.SelectionStart = textBox1.Text.Length;
+            }
+        }
 
         private void veiculo_Enter(object sender, EventArgs e)
         {
@@ -387,13 +328,23 @@ namespace HenryCorporation.Lavajato.Presentation
            
         }
 
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            this.servico = new Servico();
+            this.cliente = new DomainModel.Cliente();
+            placa.Text = "";
+            veiculo.Text = "";
+            telefone.Text = "";
+            nome.Text = "";
+            corVeiculo.Text = "";
+            CarregaItensDoServico(this.servico);
+        }
+
         private void placa_Leave(object sender, EventArgs e)
         {
             placa.BackColor = Color.White;
             if (placa.Text == "   -")
-            {
                 return;
-            }
 
             this.cliente.Placa = placa.Text;
             this.cliente = ProcuraCliente(this.cliente);
@@ -419,7 +370,7 @@ namespace HenryCorporation.Lavajato.Presentation
             CarregaItensDoServico(this.servico);
 
             if (this.servico.Finalizado == 0)
-                MessageBox.Show("Ordem de Serviço Aberto", "Atenção");
+                MessageBox.Show("Ordem de Serviço Aberto " + servico.OrdemServico, "Atenção");
 
             if (this.servico.Lavado == 1)
                 MessageBox.Show("Veículo já lavado", "Atenção");
@@ -435,18 +386,6 @@ namespace HenryCorporation.Lavajato.Presentation
             min.BackColor = Color.White;
         }
 
-        private void btnFechar_Click(object sender, EventArgs e)
-        {
-            this.servico = new Servico();
-            this.cliente = new DomainModel.Cliente();
-            placa.Text = "";
-            veiculo.Text = "";
-            telefone.Text = "";
-            nome.Text = "";
-            corVeiculo.Text = "";
-            CarregaItensDoServico(this.servico);
-        }
-
         private void telefone_Enter(object sender, EventArgs e)
         {
             telefone.BackColor = Color.Yellow;
@@ -455,6 +394,16 @@ namespace HenryCorporation.Lavajato.Presentation
         private void telefone_Leave(object sender, EventArgs e)
         {
             telefone.BackColor = Color.White;
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            textBox1.BackColor = Color.Yellow;
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            textBox1.BackColor = Color.White;
         }
     }
 }

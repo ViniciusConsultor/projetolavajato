@@ -28,12 +28,14 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle9 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle11 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle12 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grdServico = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.label2 = new System.Windows.Forms.Label();
             this.telefone = new System.Windows.Forms.MaskedTextBox();
             this.placa = new System.Windows.Forms.MaskedTextBox();
             this.min = new System.Windows.Forms.ComboBox();
@@ -62,44 +64,46 @@
             // 
             // grdServico
             // 
-            dataGridViewCellStyle1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grdServico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle1;
+            dataGridViewCellStyle9.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdServico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle9;
             this.grdServico.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.grdServico.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdServico.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            dataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle10.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle10.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle10.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle10.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle10.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle10.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdServico.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle10;
             this.grdServico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle3.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle3.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle3.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle3.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle3.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdServico.DefaultCellStyle = dataGridViewCellStyle3;
+            dataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle11.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle11.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle11.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle11.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle11.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle11.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdServico.DefaultCellStyle = dataGridViewCellStyle11;
             this.grdServico.Location = new System.Drawing.Point(3, 201);
             this.grdServico.MultiSelect = false;
             this.grdServico.Name = "grdServico";
-            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle4.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdServico.RowHeadersDefaultCellStyle = dataGridViewCellStyle4;
+            dataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle12.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle12.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle12.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle12.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle12.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle12.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdServico.RowHeadersDefaultCellStyle = dataGridViewCellStyle12;
             this.grdServico.Size = new System.Drawing.Size(788, 332);
             this.grdServico.TabIndex = 69;
             this.grdServico.MouseClick += new System.Windows.Forms.MouseEventHandler(this.grdServico_MouseClick);
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.textBox1);
+            this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.telefone);
             this.groupBox1.Controls.Add(this.placa);
             this.groupBox1.Controls.Add(this.min);
@@ -125,6 +129,27 @@
             this.groupBox1.TabIndex = 70;
             this.groupBox1.TabStop = false;
             // 
+            // textBox1
+            // 
+            this.textBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.textBox1.Location = new System.Drawing.Point(539, 153);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(91, 31);
+            this.textBox1.TabIndex = 11;
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
+            this.textBox1.Leave += new System.EventHandler(this.textBox1_Leave);
+            this.textBox1.Enter += new System.EventHandler(this.textBox1_Enter);
+            // 
+            // label2
+            // 
+            this.label2.AutoSize = true;
+            this.label2.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label2.Location = new System.Drawing.Point(467, 151);
+            this.label2.Name = "label2";
+            this.label2.Size = new System.Drawing.Size(72, 29);
+            this.label2.TabIndex = 97;
+            this.label2.Text = "Qtde:";
+            // 
             // telefone
             // 
             this.telefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -132,7 +157,7 @@
             this.telefone.Mask = "(99) 0000-0000";
             this.telefone.Name = "telefone";
             this.telefone.Size = new System.Drawing.Size(258, 31);
-            this.telefone.TabIndex = 96;
+            this.telefone.TabIndex = 5;
             this.telefone.Leave += new System.EventHandler(this.telefone_Leave);
             this.telefone.Enter += new System.EventHandler(this.telefone_Enter);
             // 
@@ -143,7 +168,7 @@
             this.placa.Mask = "AAA-0000";
             this.placa.Name = "placa";
             this.placa.Size = new System.Drawing.Size(258, 31);
-            this.placa.TabIndex = 95;
+            this.placa.TabIndex = 1;
             this.placa.Leave += new System.EventHandler(this.placa_Leave);
             this.placa.Enter += new System.EventHandler(this.placa_Enter_1);
             // 
@@ -154,7 +179,7 @@
             this.min.Location = new System.Drawing.Point(630, 113);
             this.min.Name = "min";
             this.min.Size = new System.Drawing.Size(150, 33);
-            this.min.TabIndex = 94;
+            this.min.TabIndex = 8;
             this.min.Leave += new System.EventHandler(this.min_Leave);
             this.min.Enter += new System.EventHandler(this.min_Enter);
             // 
@@ -176,7 +201,7 @@
             this.adicionarServico.Location = new System.Drawing.Point(630, 149);
             this.adicionarServico.Name = "adicionarServico";
             this.adicionarServico.Size = new System.Drawing.Size(150, 37);
-            this.adicionarServico.TabIndex = 10;
+            this.adicionarServico.TabIndex = 12;
             this.adicionarServico.Text = "Adicionar";
             this.adicionarServico.UseVisualStyleBackColor = true;
             this.adicionarServico.Click += new System.EventHandler(this.adicionarServico_Click);
@@ -187,19 +212,20 @@
             this.btnCadastraCliente.Location = new System.Drawing.Point(92, 116);
             this.btnCadastraCliente.Name = "btnCadastraCliente";
             this.btnCadastraCliente.Size = new System.Drawing.Size(258, 34);
-            this.btnCadastraCliente.TabIndex = 8;
+            this.btnCadastraCliente.TabIndex = 9;
             this.btnCadastraCliente.Text = "Cadastrar Cliente";
             this.btnCadastraCliente.UseVisualStyleBackColor = true;
             this.btnCadastraCliente.Click += new System.EventHandler(this.btnCadastraCliente_Click);
             // 
             // cmdServico
             // 
+            this.cmdServico.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cmdServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdServico.FormattingEnabled = true;
             this.cmdServico.Location = new System.Drawing.Point(105, 151);
             this.cmdServico.Name = "cmdServico";
-            this.cmdServico.Size = new System.Drawing.Size(525, 33);
-            this.cmdServico.TabIndex = 9;
+            this.cmdServico.Size = new System.Drawing.Size(356, 33);
+            this.cmdServico.TabIndex = 10;
             this.cmdServico.Leave += new System.EventHandler(this.cmdServico_Leave);
             this.cmdServico.Enter += new System.EventHandler(this.cmdServico_Enter);
             // 
@@ -332,7 +358,7 @@
             this.btnGerarOrdemServico.Location = new System.Drawing.Point(690, 535);
             this.btnGerarOrdemServico.Name = "btnGerarOrdemServico";
             this.btnGerarOrdemServico.Size = new System.Drawing.Size(101, 40);
-            this.btnGerarOrdemServico.TabIndex = 13;
+            this.btnGerarOrdemServico.TabIndex = 15;
             this.btnGerarOrdemServico.Text = "Concluir";
             this.btnGerarOrdemServico.UseVisualStyleBackColor = true;
             this.btnGerarOrdemServico.Click += new System.EventHandler(this.btnGerarOrdemServico_Click);
@@ -343,7 +369,7 @@
             this.btnFechar.Location = new System.Drawing.Point(105, 535);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(101, 40);
-            this.btnFechar.TabIndex = 12;
+            this.btnFechar.TabIndex = 14;
             this.btnFechar.Text = "Limpar Campos";
             this.btnFechar.UseVisualStyleBackColor = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
@@ -354,7 +380,7 @@
             this.btnExcluir.Location = new System.Drawing.Point(4, 535);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(101, 40);
-            this.btnExcluir.TabIndex = 11;
+            this.btnExcluir.TabIndex = 13;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -407,5 +433,7 @@
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.MaskedTextBox placa;
         private System.Windows.Forms.MaskedTextBox telefone;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

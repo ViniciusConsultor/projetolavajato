@@ -3,8 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-
-
 namespace HenryCorporation.Lavajato.DomainModel
 {
    
@@ -13,7 +11,7 @@ namespace HenryCorporation.Lavajato.DomainModel
         public int ID { get; set; }
         private Servico _servico;
         private Produto _produto;
-        public int Quantidade { get; set; }
+        public decimal Quantidade { get; set; }
 
         public ServicoItem()
         { 

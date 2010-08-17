@@ -78,7 +78,7 @@ namespace HenryCorporation.Lavajato.DataAccess
                 serIte.ID = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
                 serIte.Servico.ID = reader.IsDBNull(1) ? 0 : reader.GetInt32(1);
                 serIte.Produto = ProdutoByID(reader.GetInt32(2));
-                serIte.Quantidade = reader.IsDBNull(3) ? 0 : Convert.ToInt32(reader.GetString(3));
+                serIte.Quantidade = reader.IsDBNull(3) ? 0 : Convert.ToDecimal(reader.GetString(3));
                 servicos.Add(serIte);
             }
 
@@ -102,7 +102,7 @@ namespace HenryCorporation.Lavajato.DataAccess
                 serIte.ID = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
                 serIte.Produto = ProdutoByID(reader.GetInt32(2));
                 serIte.Servico.ID = reader.IsDBNull(1) ? 0 : reader.GetInt32(1);
-                serIte.Quantidade = reader.IsDBNull(0) ? 0 : Convert.ToInt32(reader.GetString(3));
+                serIte.Quantidade = reader.IsDBNull(0) ? 0 : Convert.ToDecimal(reader.GetString(3));
                 return serIte;
             }
 

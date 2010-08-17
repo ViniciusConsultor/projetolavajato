@@ -19,5 +19,22 @@ produto
 
 
 convenios
-qdo salva o botão de novo e salvar ficam enable
-colocar amarelo nós botoões qdo tiver alguma coisa e branco qdo não tiver
+12 - OK qdo salva o botão de novo e salvar ficam enable
+13 - OK colocar amarelo nós botoões qdo tiver alguma coisa e branco qdo não tiver
+
+Credor
+13- Mudar index de complemento e uf
+14- Mudar nome de formulario
+
+
+SELECT * FROM CONVENIOS
+DELETE FROM CONVENIOS
+
+SELECT * FROM SERVICOITENS
+DELETE FROM SERVICOITENS
+
+SELECT * FROM SERVICO
+DELETE FROM SERVICO
+
+SELECT * FROM CLIENTES
+DELETE FROM CLIENTES
