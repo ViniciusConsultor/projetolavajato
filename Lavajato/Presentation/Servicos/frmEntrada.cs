@@ -36,7 +36,7 @@ namespace HenryCorporation.Lavajato.Presentation
             }
 
             Suprimento suprimento = new Suprimento();
-            suprimento.Valor = decimal.Parse(valor.Text);
+            suprimento.Valor = Operacional.Configuracao.ConverteParaDecimal(valor.Text);
             suprimento.Usuario = this.Usuario;
             suprimento.Descricao = descricao.Text;
             suprimento = suprimentoBL.Insert(suprimento);
