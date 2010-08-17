@@ -35,7 +35,7 @@ namespace HenryCorporation.Lavajato.Presentation
             }
 
             Retirada retirada = new Retirada();
-            retirada.Valor = decimal.Parse(valor.Text);
+            retirada.Valor = Operacional.Configuracao.ConverteParaDecimal(valor.Text);
             retirada.Usuario = this.Usuario;
             retirada.Descricao = descricao.Text;
             retirada = retiradaBL.Insert(retirada);
