@@ -12,7 +12,7 @@ using HenryCorporation.Lavajato.Operacional;
 
 namespace HenryCorporation.Lavajato.Presentation
 {
-    public partial class frmCaixa : Form
+    public partial class frmCaixa : login
     {
         private Servico servico = new Servico();
         private ServicoItem servicoItem = new ServicoItem();
@@ -193,14 +193,37 @@ namespace HenryCorporation.Lavajato.Presentation
                 return;
             }
 
-            ServicoItem servicoItem = new ServicoItem();
-            servicoItem.Produto = ((Produto)cmbProduto.SelectedItem);
-            servicoItem.Quantidade = int.Parse( quantidade.Text);
-            servicoItem.Servico = this.servico;
-            servicoBL.ServicoItemInsert(servicoItem);
-            
+            if (!ExisteServico())
+            {
+                MessageBox.Show("Nenhum servico encontrado", "Atenção!");
+                return;
+            }
+
+            CriaServicoItem();
             this.servico = servicoBL.ByID(this.servico);
             CriaTabela(this.servico);
+        }
+
+        private void CriaServicoItem()
+        {
+            ServicoItem servicoItem = new ServicoItem();
+            servicoItem.Produto.ID = int.Parse(cmbProduto.SelectedValue.ToString());
+            servicoItem.Quantidade = int.Parse(quantidade.Text);
+            servicoItem.Servico = this.servico;
+            servicoBL.ServicoItemInsert(servicoItem);
+        }
+
+        private void FazerVendaAvulsa()
+        {
+            if (this.servico.ID != 0)
+            {
+                return;
+            }
+
+            DialogResult result = MessageBox.Show("Deseja fazer venda avulsa?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            if (result == DialogResult.Yes)
+                CriaServico();
+
         }
 
         private void btnConcluirVenda_Click(object sender, EventArgs e)
@@ -213,7 +236,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void ConcluirVenda()
         {
-            if (ExisteServico())
+            if (!ExisteServico())
             {
                 MessageBox.Show("Nenhum serviço encontrado", "Atenção");
                 return;
@@ -431,21 +454,13 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnVendaAvulca_Click(object sender, EventArgs e)
         {
-            VendaAvulsa();
+            FazerVendaAvulsa();
         }
 
-        private void VendaAvulsa()
+        private void CriaServico()
         {
-            DialogResult result = MessageBox.Show("Deseja realmente fazer uma venda avulsa?", "Venda avulça", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation);
-            if (result == DialogResult.No)
-            {
-                return;
-            }
-
-            LimpaCampos();
-            this.servico.Cliente.ID = 16;
-
-            this.servico.Cliente = servico.Cliente;
+            this.servico.Cliente.ID = 69;
+            this.servico.Usuario = this.Usuario;
             this.servico.Total = 0;
             this.servico.SubTotal = 0;
             this.servico.Desconto = 0;
@@ -458,7 +473,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.servico.Delete = 0;
             this.servico.Finalizado = 0;
             this.servico.Lavado = 0;
-            this.servico = servicoBL.Add(this.servico);
+            this.servico = servicoBL.Add(servico);
         }
 
         private void ordemServico_KeyDown(object sender, KeyEventArgs e)
@@ -473,7 +488,7 @@ namespace HenryCorporation.Lavajato.Presentation
             else if (e.KeyCode == Keys.F3)
                 AlterarQuantidade();
             else if (e.KeyCode == Keys.F4)
-                VendaAvulsa();
+                CriaServico();
             else if (e.KeyCode == Keys.F5)
                 ExcluirItem();
             else if (e.KeyCode == Keys.F6)

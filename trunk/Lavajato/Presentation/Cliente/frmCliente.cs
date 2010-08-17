@@ -145,7 +145,7 @@ namespace HenryCorporation.Lavajato.Presentation
             cliente.Nome = nome.Text;
             cliente.Endereco = endereco.Text;
             cliente.Numero = numero.Text;
-            cliente.UF = uf.SelectedItem.ToString().Length > 0 ? uf.SelectedItem.ToString() : "MG";
+            cliente.UF = uf.SelectedItem != null ? uf.SelectedItem.ToString() : "MG";
             cliente.Cep = cep.Text;
             cliente.Bairro = bairro.Text;
             cliente.Telefone = fone.Text;

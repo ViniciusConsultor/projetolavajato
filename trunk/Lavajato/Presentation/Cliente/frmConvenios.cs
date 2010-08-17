@@ -19,7 +19,6 @@ namespace HenryCorporation.Lavajato.Presentation
         public frmConvenios()
         {
             InitializeComponent();
-            btnSalvar.Enabled = false;
             CarregaDados();
         }
        
@@ -36,16 +35,12 @@ namespace HenryCorporation.Lavajato.Presentation
             SetUpConvenio();
             convenioBL.Update(convenio);
             CarregaDados();
-
             MessageBox.Show("Dados alterados com sucesso!", "Atenção");
-
         }
 
         private void btnNovo_Click_1(object sender, EventArgs e)
         {
             LimpaCampos();
-            btnNovo.Enabled = false;
-            btnSalvar.Enabled = true;
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -53,7 +48,6 @@ namespace HenryCorporation.Lavajato.Presentation
             SetUpConvenio();
             this.convenio = convenioBL.Add(convenio);
             SetUpFields(this.convenio);
-            btnSalvar.Enabled = false;
             CarregaDados();
             MessageBox.Show("Dados salvos com sucesso!", "Atenção");
 
@@ -64,7 +58,7 @@ namespace HenryCorporation.Lavajato.Presentation
             if (this.convenio.ID == 0)
                 MessageBox.Show("Nenhuma convênio encontrado", "Atenção");
 
-            DialogResult res = MessageBox.Show("Deseja realmente apagar o cliente?", "Atenção", MessageBoxButtons.YesNo);
+            DialogResult res = MessageBox.Show("Deseja realmente apagar o convênio?", "Atenção", MessageBoxButtons.YesNo);
             if (res == DialogResult.No)
             {
                 return;
@@ -133,16 +127,17 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private Convenio SetUpConvenio()
         {
-            this.convenio.Valor = desconto.TextLength > 0 ? Convert.ToDecimal(desconto.Text) : 0;
+            this.convenio.Valor = desconto.TextLength > 0 ? Convert.ToDecimal(desconto.Text.Replace("R$","")) : 0;
             this.convenio.Nome = nome.Text;
             this.convenio.Endereco = endereco.Text;
             this.convenio.Numero = numero.Text;
             this.convenio.Bairro = bairro.Text;
             this.convenio.Cep = cep.Text;
             this.convenio.Cidade = cidade.Text;
-            this.convenio.UF = uf.SelectedItem.ToString().Length > 0 ? uf.SelectedItem.ToString() : "MG";
+            this.convenio.UF = uf.SelectedItem == null ? "MG" : uf.SelectedItem.ToString();
             this.convenio.Telefone = fone.Text;
             this.convenio.Celular = celular.Text;
+            this.convenio.PorcentagemDesconto = porcentagem.TextLength > 0 ? Convert.ToDecimal(porcentagem.Text) : 0;
 
             return convenio;
         }
@@ -158,7 +153,136 @@ namespace HenryCorporation.Lavajato.Presentation
             uf.SelectedItem = this.convenio.UF.Length > 0 ? this.convenio.UF : "MG";
             fone.Text = this.convenio.Telefone;
             celular.Text = this.convenio.Celular;
-            desconto.Text = this.convenio.Valor.ToString();
+            desconto.Text = this.convenio.Valor.ToString("C").Replace("R$", "");
+            porcentagem.Text = this.convenio.PorcentagemDesconto.ToString();
+        }
+
+        private void conveniadoPesquisa_Enter(object sender, EventArgs e)
+        {
+            conveniadoPesquisa.BackColor = Color.Yellow;
+        }
+
+        private void conveniadoPesquisa_Leave(object sender, EventArgs e)
+        {
+            conveniadoPesquisa.BackColor = Color.White;
+        }
+
+        private void nome_Enter(object sender, EventArgs e)
+        {
+            nome.BackColor = Color.Yellow;
+        }
+
+        private void nome_Leave(object sender, EventArgs e)
+        {
+            nome.BackColor = Color.White;
+        }
+
+        private void endereco_Enter(object sender, EventArgs e)
+        {
+            endereco.BackColor = Color.Yellow;
+        }
+
+        private void endereco_Leave(object sender, EventArgs e)
+        {
+            endereco.BackColor = Color.White;
+        }
+
+        private void numero_Enter(object sender, EventArgs e)
+        {
+            numero.BackColor = Color.Yellow;
+        }
+
+        private void numero_Leave(object sender, EventArgs e)
+        {
+            numero.BackColor = Color.White;
+        }
+
+        private void cidade_Enter(object sender, EventArgs e)
+        {
+            cidade.BackColor = Color.Yellow;
+        }
+
+        private void cidade_Leave(object sender, EventArgs e)
+        {
+            cidade.BackColor = Color.White;
+        }
+
+        private void uf_Enter(object sender, EventArgs e)
+        {
+            uf.BackColor = Color.Yellow;
+        }
+
+        private void uf_Leave(object sender, EventArgs e)
+        {
+            uf.BackColor = Color.White;
+        }
+
+        private void cep_Enter(object sender, EventArgs e)
+        {
+            cep.BackColor = Color.Yellow;
+        }
+
+        private void cep_Leave(object sender, EventArgs e)
+        {
+            cep.BackColor = Color.White;
+        }
+
+        private void bairro_Enter(object sender, EventArgs e)
+        {
+            bairro.BackColor = Color.Yellow;
+        }
+
+        private void bairro_Leave(object sender, EventArgs e)
+        {
+            bairro.BackColor = Color.White;
+        }
+
+        private void celular_Enter(object sender, EventArgs e)
+        {
+            celular.BackColor = Color.Yellow;
+        }
+
+        private void celular_Leave(object sender, EventArgs e)
+        {
+            celular.BackColor = Color.White;
+        }
+
+        private void desconto_Enter(object sender, EventArgs e)
+        {
+            desconto.BackColor = Color.Yellow;
+        }
+
+        private void desconto_Leave(object sender, EventArgs e)
+        {
+            desconto.BackColor = Color.White;
+        }
+
+        private void fone_Enter(object sender, EventArgs e)
+        {
+            fone.BackColor = Color.Yellow;
+        }
+        
+        private void fone_Leave(object sender, EventArgs e)
+        {
+        fone.BackColor = Color.White;
+        }
+
+        private void desconto_TextChanged(object sender, EventArgs e)
+        {
+            if (desconto.Text.Contains("."))
+            {
+                desconto.Text = desconto.Text.Remove(desconto.Text.Length - 1);
+                desconto.SelectionStart = desconto.Text.Length;
+            }
+        }
+
+        private void porcentagem_TextChanged(object sender, EventArgs e)
+        {
+            if (porcentagem.Text.Contains("."))
+            {
+                porcentagem.Text = desconto.Text.Remove(porcentagem.Text.Length - 1);
+                porcentagem.SelectionStart = porcentagem.Text.Length;
+            }
         }
 
       

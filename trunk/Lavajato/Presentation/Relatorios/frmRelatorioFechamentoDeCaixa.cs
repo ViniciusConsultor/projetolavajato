@@ -19,6 +19,18 @@ namespace HenryCorporation.Lavajato.Presentation
             InitializeComponent();
         }
 
+        private int usuarioID;
+        private string date;
+
+        public frmRelatorioFechamentoDeCaixa(int usuarioID, string date)
+        {
+            InitializeComponent();
+            this.usuarioID = usuarioID;
+            this.date = date;
+        }
+
+
+
         private void frmRelatorioFechamentoDeCaixa_Load(object sender, EventArgs e)
         {
             PreviewReport(GetFechamentoDeCaixa());
@@ -27,30 +39,30 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void PreviewReport(DataTable table)
         {
-            string strPathReport = @"C:\Projetos\Lavajato\Presentation\Relatorios\VendaPorPeriodo.rdlc";//Path.Combine(Application.StartupPath, "VendaPorPeriodo.rdlc");
-
-            //strPathReport = strPathReport.Replace(@"bin\Debug\", "");
+            string strPathReport = Path.Combine(Application.StartupPath + "\\Relatorios\\", "VendaPorPeriodo.rdlc");
+            strPathReport = strPathReport.Replace(@"bin\Debug\", "");
             this.reportViewFechamentoCaixa.LocalReport.ReportPath = strPathReport;
 
-            ReportDataSource myReportDataSource = new ReportDataSource("FechamentoCaixa_DataTable1", table);
+            ReportDataSource myReportDataSource = new ReportDataSource("dsFechamentoDeCaixa_DataTable1", table);
             this.reportViewFechamentoCaixa.LocalReport.DataSources.Add(myReportDataSource);
-
         }
 
         public DataTable GetFechamentoDeCaixa()
         {
             Util util = new Util();
-            string query = " select distinct min(s.servicoid) as [OSInicial], max(s.servicoid) as [OSFinal], " +
-                           " (select count(servico.cancelado) from servico where  servico.cancelado = 1 and s.servicoid = servico.servicoid) as [OSCancelado], "+
-                           " sum(s.Total) as [TotalVendas], sum(s.Desconto) as [TotalDesconto], "+
-                           " isnull((select sum(servico.total) from servico inner join formapagamento fp on fp.formapagamentoid = servico.formapagamentoid where servico.formapagamentoid = 1 and s.servicoid = servico.servicoid),0) as [Dinheiro], "+
-                           " isnull((select sum(servico.total) from servico inner join formapagamento fp on fp.formapagamentoid = servico.formapagamentoid where servico.formapagamentoid = 2 and s.servicoid = servico.servicoid),0)  as [VisaDebito], "+
-                           " isnull((select sum(servico.total) from servico inner join formapagamento fp on fp.formapagamentoid = servico.formapagamentoid where servico.formapagamentoid = 3 and s.servicoid = servico.servicoid),0)  as [VisaCredito], "+
-                           " isnull((select sum(servico.total) from servico inner join formapagamento fp on fp.formapagamentoid = servico.formapagamentoid where servico.formapagamentoid = 4 and s.servicoid = servico.servicoid),0) as [MasterDebito], "+
-                           " isnull((select sum(servico.total) from servico inner join formapagamento fp on fp.formapagamentoid = servico.formapagamentoid where servico.formapagamentoid = 5 and s.servicoid = servico.servicoid),0)  as [MasterDebito], "+
-                           " isnull((select sum(valor) from suprimentos where convert(varchar, s.entrada, 103) = 'parametro'), 0) as Entrada, "+
-                           " isnull((select sum(valor) from retirada where convert(varchar, s.entrada, 103) = 'parametro'), 0) as Saida "+
-                           " from servico s "+
+            string query = " select distinct min(s.servicoid) as [OSInicial], max(s.servicoid) as [OSFinal],  " +
+                           " (select count(servico.cancelado) from servico where  servico.cancelado = 1 and s.servicoid = servico.servicoid) as [OSCancelado], " +
+                           " sum(s.Total) as [TotalVendas], sum(s.Desconto) as [TotalDesconto], " +
+                           " isnull((select sum(servico.total) from servico inner join formapagamento fp on fp.formapagamentoid = servico.formapagamentoid where servico.formapagamentoid = 1 and s.servicoid = servico.servicoid),0) as [Dinheiro], " +
+                           " isnull((select sum(servico.total) from servico inner join formapagamento fp on fp.formapagamentoid = servico.formapagamentoid where servico.formapagamentoid = 2 and s.servicoid = servico.servicoid),0)  as [VisaDebito], " +
+                           " isnull((select sum(servico.total) from servico inner join formapagamento fp on fp.formapagamentoid = servico.formapagamentoid where servico.formapagamentoid = 3 and s.servicoid = servico.servicoid),0)  as [VisaCredito], " +
+                           " isnull((select sum(servico.total) from servico inner join formapagamento fp on fp.formapagamentoid = servico.formapagamentoid where servico.formapagamentoid = 4 and s.servicoid = servico.servicoid),0) as [MasterDebito], " +
+                           " isnull((select sum(servico.total) from servico inner join formapagamento fp on fp.formapagamentoid = servico.formapagamentoid where servico.formapagamentoid = 5 and s.servicoid = servico.servicoid),0)  as [MasterCredito], " +
+                           " isnull((select sum(valor) from suprimentos where convert(varchar, suprimentos.data, 103) = convert(varchar, retirada.data, 103)  and suprimentos.usuarioid = s.usuarioid), 0) as Entrada, " +
+                           " isnull((select sum(valor) from retirada where convert(varchar, retirada.data, 103) = convert(varchar, s.entrada, 103)  and retirada.usuarioid = s.usuarioid), 0) as Saida " +
+                           " from servico s " +
+                           " inner join usuarios u on s.usuarioid = u.usuarioid" +
+                           " where u.usuarioid = '"+this.usuarioID+"' and convert(varchar,s.entrada, 103) = '"+this.date+"'" +
                            " group by s.ServicoID, s.entrada ";
 
 

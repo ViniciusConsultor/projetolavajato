@@ -110,8 +110,8 @@ namespace Presentation
 
         private void fechamentoDeCaixaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmRelatorioFechamentoDeCaixa fc = new frmRelatorioFechamentoDeCaixa();
-            fc.ShowDialog();
+            frmFechamentoCaixa frmFechamentoCaixa = new frmFechamentoCaixa();
+            frmFechamentoCaixa.ShowDialog();
         }
 
         private void produtoAbaixoEstoqueToolStripMenuItem_Click(object sender, EventArgs e)

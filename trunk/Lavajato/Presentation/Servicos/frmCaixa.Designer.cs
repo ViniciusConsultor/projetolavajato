@@ -70,6 +70,7 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lblVeiculo = new System.Windows.Forms.Label();
             this.lblPlaca = new System.Windows.Forms.Label();
+            this.label14 = new System.Windows.Forms.Label();
             btnAlterarQuantidade = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.grdServico)).BeginInit();
             this.groupBox1.SuspendLayout();
@@ -99,17 +100,18 @@
             // 
             this.cmbProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProduto.FormattingEnabled = true;
-            this.cmbProduto.Location = new System.Drawing.Point(1, 397);
+            this.cmbProduto.Location = new System.Drawing.Point(134, 397);
             this.cmbProduto.Name = "cmbProduto";
-            this.cmbProduto.Size = new System.Drawing.Size(686, 33);
+            this.cmbProduto.Size = new System.Drawing.Size(416, 33);
             this.cmbProduto.TabIndex = 13;
             this.cmbProduto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProduto_KeyDown);
             // 
             // btnAdicionar
             // 
-            this.btnAdicionar.Location = new System.Drawing.Point(693, 397);
+            this.btnAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionar.Location = new System.Drawing.Point(683, 397);
             this.btnAdicionar.Name = "btnAdicionar";
-            this.btnAdicionar.Size = new System.Drawing.Size(94, 33);
+            this.btnAdicionar.Size = new System.Drawing.Size(104, 33);
             this.btnAdicionar.TabIndex = 15;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = true;
@@ -299,11 +301,9 @@
             this.groupBox2.Controls.Add(this.dataEntrada);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.min);
-            this.groupBox2.Controls.Add(this.label3);
             this.groupBox2.Controls.Add(this.hora);
             this.groupBox2.Controls.Add(this.placa);
             this.groupBox2.Controls.Add(this.veiculo);
-            this.groupBox2.Controls.Add(this.quantidade);
             this.groupBox2.Controls.Add(this.nome);
             this.groupBox2.Controls.Add(this.corVeiculo);
             this.groupBox2.Controls.Add(this.label2);
@@ -315,7 +315,7 @@
             this.groupBox2.Controls.Add(this.lblPlaca);
             this.groupBox2.Location = new System.Drawing.Point(1, 1);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(378, 389);
+            this.groupBox2.Size = new System.Drawing.Size(378, 359);
             this.groupBox2.TabIndex = 92;
             this.groupBox2.TabStop = false;
             // 
@@ -332,7 +332,7 @@
             // 
             this.chbLavado.AutoSize = true;
             this.chbLavado.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbLavado.Location = new System.Drawing.Point(132, 353);
+            this.chbLavado.Location = new System.Drawing.Point(133, 319);
             this.chbLavado.Name = "chbLavado";
             this.chbLavado.Size = new System.Drawing.Size(130, 29);
             this.chbLavado.TabIndex = 12;
@@ -409,7 +409,7 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(61, 321);
+            this.label3.Location = new System.Drawing.Point(555, 397);
             this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(72, 29);
@@ -450,10 +450,10 @@
             // quantidade
             // 
             this.quantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantidade.Location = new System.Drawing.Point(133, 317);
+            this.quantidade.Location = new System.Drawing.Point(631, 395);
             this.quantidade.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.quantidade.Name = "quantidade";
-            this.quantidade.Size = new System.Drawing.Size(240, 35);
+            this.quantidade.Size = new System.Drawing.Size(51, 35);
             this.quantidade.TabIndex = 11;
             // 
             // nome
@@ -558,11 +558,23 @@
             this.lblPlaca.TabIndex = 91;
             this.lblPlaca.Text = "Placa:";
             // 
+            // label14
+            // 
+            this.label14.AutoSize = true;
+            this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label14.Location = new System.Drawing.Point(12, 398);
+            this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label14.Name = "label14";
+            this.label14.Size = new System.Drawing.Size(117, 31);
+            this.label14.TabIndex = 111;
+            this.label14.Text = "Produto:";
+            // 
             // frmCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(788, 573);
+            this.Controls.Add(this.label14);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.btnVendaAvulca);
             this.Controls.Add(this.btnExcluir);
@@ -571,8 +583,10 @@
             this.Controls.Add(this.btnCancelarVenda);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.btnAdicionar);
+            this.Controls.Add(this.label3);
             this.Controls.Add(this.cmbProduto);
             this.Controls.Add(this.grdServico);
+            this.Controls.Add(this.quantidade);
             this.MinimizeBox = false;
             this.Name = "frmCaixa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
@@ -585,6 +599,7 @@
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
@@ -631,6 +646,7 @@
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.Label lblVeiculo;
         private System.Windows.Forms.Label lblPlaca;
+        private System.Windows.Forms.Label label14;
 
     }
 }

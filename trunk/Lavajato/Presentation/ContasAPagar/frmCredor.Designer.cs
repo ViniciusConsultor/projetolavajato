@@ -194,6 +194,7 @@
             // 
             // site
             // 
+            this.site.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.site.Location = new System.Drawing.Point(6, 91);
             this.site.Name = "site";
             this.site.Size = new System.Drawing.Size(430, 20);
@@ -212,6 +213,7 @@
             // 
             // email
             // 
+            this.email.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.email.Location = new System.Drawing.Point(5, 57);
             this.email.Name = "email";
             this.email.Size = new System.Drawing.Size(430, 20);
@@ -230,6 +232,7 @@
             // 
             // representante
             // 
+            this.representante.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.representante.Location = new System.Drawing.Point(5, 21);
             this.representante.Name = "representante";
             this.representante.Size = new System.Drawing.Size(430, 20);
@@ -264,6 +267,7 @@
             // 
             // rg
             // 
+            this.rg.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.rg.Location = new System.Drawing.Point(319, 22);
             this.rg.Name = "rg";
             this.rg.Size = new System.Drawing.Size(115, 20);
@@ -282,6 +286,7 @@
             // 
             // cpf
             // 
+            this.cpf.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cpf.Location = new System.Drawing.Point(214, 22);
             this.cpf.Name = "cpf";
             this.cpf.Size = new System.Drawing.Size(105, 20);
@@ -300,6 +305,7 @@
             // 
             // inscEstadual
             // 
+            this.inscEstadual.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.inscEstadual.Location = new System.Drawing.Point(109, 22);
             this.inscEstadual.Name = "inscEstadual";
             this.inscEstadual.Size = new System.Drawing.Size(105, 20);
@@ -318,6 +324,7 @@
             // 
             // cnpj
             // 
+            this.cnpj.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cnpj.Location = new System.Drawing.Point(4, 22);
             this.cnpj.Name = "cnpj";
             this.cnpj.Size = new System.Drawing.Size(105, 20);
@@ -376,6 +383,7 @@
             // 
             // fax
             // 
+            this.fax.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fax.Location = new System.Drawing.Point(122, 169);
             this.fax.Name = "fax";
             this.fax.Size = new System.Drawing.Size(105, 20);
@@ -394,6 +402,7 @@
             // 
             // telefone
             // 
+            this.telefone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.telefone.Location = new System.Drawing.Point(5, 169);
             this.telefone.Name = "telefone";
             this.telefone.Size = new System.Drawing.Size(115, 20);
@@ -444,7 +453,7 @@
             this.uf.Location = new System.Drawing.Point(120, 129);
             this.uf.Name = "uf";
             this.uf.Size = new System.Drawing.Size(76, 21);
-            this.uf.TabIndex = 60;
+            this.uf.TabIndex = 59;
             this.uf.Leave += new System.EventHandler(this.uf_Leave);
             this.uf.Enter += new System.EventHandler(this.uf_Enter);
             // 
@@ -459,10 +468,11 @@
             // 
             // complemento
             // 
+            this.complemento.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.complemento.Location = new System.Drawing.Point(196, 129);
             this.complemento.Name = "complemento";
             this.complemento.Size = new System.Drawing.Size(94, 20);
-            this.complemento.TabIndex = 59;
+            this.complemento.TabIndex = 60;
             this.complemento.Leave += new System.EventHandler(this.complemento_Leave);
             this.complemento.Enter += new System.EventHandler(this.complemento_Enter);
             // 
@@ -476,6 +486,7 @@
             // 
             // cep
             // 
+            this.cep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cep.Location = new System.Drawing.Point(5, 129);
             this.cep.Name = "cep";
             this.cep.Size = new System.Drawing.Size(115, 20);
@@ -494,6 +505,7 @@
             // 
             // bairro
             // 
+            this.bairro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.bairro.Location = new System.Drawing.Point(332, 93);
             this.bairro.Name = "bairro";
             this.bairro.Size = new System.Drawing.Size(103, 20);
@@ -512,6 +524,7 @@
             // 
             // numero
             // 
+            this.numero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.numero.Location = new System.Drawing.Point(300, 93);
             this.numero.Name = "numero";
             this.numero.Size = new System.Drawing.Size(32, 20);
@@ -530,6 +543,7 @@
             // 
             // endereco
             // 
+            this.endereco.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.endereco.Location = new System.Drawing.Point(5, 93);
             this.endereco.Name = "endereco";
             this.endereco.Size = new System.Drawing.Size(295, 20);
@@ -548,6 +562,7 @@
             // 
             // nomeFantasia
             // 
+            this.nomeFantasia.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.nomeFantasia.Location = new System.Drawing.Point(4, 57);
             this.nomeFantasia.Name = "nomeFantasia";
             this.nomeFantasia.Size = new System.Drawing.Size(431, 20);
@@ -589,6 +604,7 @@
             // 
             // razaoSocial
             // 
+            this.razaoSocial.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.razaoSocial.Location = new System.Drawing.Point(4, 22);
             this.razaoSocial.Name = "razaoSocial";
             this.razaoSocial.Size = new System.Drawing.Size(296, 20);

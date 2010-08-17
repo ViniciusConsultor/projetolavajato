@@ -50,7 +50,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.grdConvenios = new System.Windows.Forms.DataGridView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.label22 = new System.Windows.Forms.Label();
+            this.porcentagem = new System.Windows.Forms.TextBox();
+            this.label20 = new System.Windows.Forms.Label();
+            this.desconto = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.cidade = new System.Windows.Forms.TextBox();
             this.celular = new System.Windows.Forms.MaskedTextBox();
             this.fone = new System.Windows.Forms.MaskedTextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -59,7 +66,6 @@
             this.label14 = new System.Windows.Forms.Label();
             this.bairro = new System.Windows.Forms.TextBox();
             this.label15 = new System.Windows.Forms.Label();
-            this.cep = new System.Windows.Forms.TextBox();
             this.label16 = new System.Windows.Forms.Label();
             this.label17 = new System.Windows.Forms.Label();
             this.numero = new System.Windows.Forms.TextBox();
@@ -67,18 +73,14 @@
             this.endereco = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.nome = new System.Windows.Forms.TextBox();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.desconto = new System.Windows.Forms.TextBox();
-            this.label20 = new System.Windows.Forms.Label();
-            this.label21 = new System.Windows.Forms.Label();
-            this.cidade = new System.Windows.Forms.TextBox();
+            this.cep = new System.Windows.Forms.MaskedTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdConvenios)).BeginInit();
             this.tabPage2.SuspendLayout();
-            this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -176,7 +178,7 @@
             this.btnNovo.Location = new System.Drawing.Point(3, 218);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(55, 38);
-            this.btnNovo.TabIndex = 28;
+            this.btnNovo.TabIndex = 15;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click_1);
@@ -186,7 +188,7 @@
             this.btnExcluir.Location = new System.Drawing.Point(168, 218);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(55, 38);
-            this.btnExcluir.TabIndex = 27;
+            this.btnExcluir.TabIndex = 17;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -196,7 +198,7 @@
             this.btnAlterar.Location = new System.Drawing.Point(58, 218);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(55, 38);
-            this.btnAlterar.TabIndex = 26;
+            this.btnAlterar.TabIndex = 16;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
@@ -206,7 +208,7 @@
             this.btnSair.Location = new System.Drawing.Point(261, 218);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(55, 38);
-            this.btnSair.TabIndex = 29;
+            this.btnSair.TabIndex = 18;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
@@ -216,7 +218,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(113, 218);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(55, 38);
-            this.btnSalvar.TabIndex = 25;
+            this.btnSalvar.TabIndex = 14;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -225,7 +227,7 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage1);
             this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Location = new System.Drawing.Point(-1, 1);
+            this.tabControl1.Location = new System.Drawing.Point(0, 2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(329, 305);
@@ -255,11 +257,14 @@
             // 
             // conveniadoPesquisa
             // 
+            this.conveniadoPesquisa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.conveniadoPesquisa.Location = new System.Drawing.Point(41, 9);
             this.conveniadoPesquisa.Name = "conveniadoPesquisa";
             this.conveniadoPesquisa.Size = new System.Drawing.Size(255, 20);
             this.conveniadoPesquisa.TabIndex = 1;
             this.conveniadoPesquisa.TextChanged += new System.EventHandler(this.conveniadoPesquisa_TextChanged);
+            this.conveniadoPesquisa.Leave += new System.EventHandler(this.conveniadoPesquisa_Leave);
+            this.conveniadoPesquisa.Enter += new System.EventHandler(this.conveniadoPesquisa_Enter);
             // 
             // label3
             // 
@@ -296,8 +301,63 @@
             this.tabPage2.Text = "Convênio";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.label22);
+            this.groupBox3.Controls.Add(this.porcentagem);
+            this.groupBox3.Controls.Add(this.label20);
+            this.groupBox3.Controls.Add(this.desconto);
+            this.groupBox3.Location = new System.Drawing.Point(3, 177);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(313, 36);
+            this.groupBox3.TabIndex = 12;
+            this.groupBox3.TabStop = false;
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(162, 12);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(18, 13);
+            this.label22.TabIndex = 22;
+            this.label22.Text = "%:";
+            // 
+            // porcentagem
+            // 
+            this.porcentagem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.porcentagem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.porcentagem.Location = new System.Drawing.Point(181, 9);
+            this.porcentagem.MaxLength = 50;
+            this.porcentagem.Name = "porcentagem";
+            this.porcentagem.Size = new System.Drawing.Size(131, 21);
+            this.porcentagem.TabIndex = 21;
+            this.porcentagem.TextChanged += new System.EventHandler(this.porcentagem_TextChanged);
+            // 
+            // label20
+            // 
+            this.label20.AutoSize = true;
+            this.label20.Location = new System.Drawing.Point(2, 12);
+            this.label20.Name = "label20";
+            this.label20.Size = new System.Drawing.Size(24, 13);
+            this.label20.TabIndex = 20;
+            this.label20.Text = "R$:";
+            // 
+            // desconto
+            // 
+            this.desconto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.desconto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.desconto.Location = new System.Drawing.Point(25, 9);
+            this.desconto.MaxLength = 50;
+            this.desconto.Name = "desconto";
+            this.desconto.Size = new System.Drawing.Size(131, 21);
+            this.desconto.TabIndex = 13;
+            this.desconto.TextChanged += new System.EventHandler(this.desconto_TextChanged);
+            this.desconto.Leave += new System.EventHandler(this.desconto_Leave);
+            this.desconto.Enter += new System.EventHandler(this.desconto_Enter);
+            // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.cep);
             this.groupBox2.Controls.Add(this.label21);
             this.groupBox2.Controls.Add(this.cidade);
             this.groupBox2.Controls.Add(this.celular);
@@ -308,7 +368,6 @@
             this.groupBox2.Controls.Add(this.label14);
             this.groupBox2.Controls.Add(this.bairro);
             this.groupBox2.Controls.Add(this.label15);
-            this.groupBox2.Controls.Add(this.cep);
             this.groupBox2.Controls.Add(this.label16);
             this.groupBox2.Controls.Add(this.label17);
             this.groupBox2.Controls.Add(this.numero);
@@ -323,6 +382,27 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados Pessoais";
             // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(209, 54);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(43, 13);
+            this.label21.TabIndex = 21;
+            this.label21.Text = "Cidade:";
+            // 
+            // cidade
+            // 
+            this.cidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cidade.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cidade.Location = new System.Drawing.Point(210, 69);
+            this.cidade.MaxLength = 50;
+            this.cidade.Name = "cidade";
+            this.cidade.Size = new System.Drawing.Size(96, 21);
+            this.cidade.TabIndex = 7;
+            this.cidade.Leave += new System.EventHandler(this.cidade_Leave);
+            this.cidade.Enter += new System.EventHandler(this.cidade_Enter);
+            // 
             // celular
             // 
             this.celular.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
@@ -330,7 +410,9 @@
             this.celular.Mask = "(00)0000-0000";
             this.celular.Name = "celular";
             this.celular.Size = new System.Drawing.Size(88, 20);
-            this.celular.TabIndex = 11;
+            this.celular.TabIndex = 12;
+            this.celular.Leave += new System.EventHandler(this.celular_Leave);
+            this.celular.Enter += new System.EventHandler(this.celular_Enter);
             // 
             // fone
             // 
@@ -339,7 +421,9 @@
             this.fone.Mask = "(00)0000-0000";
             this.fone.Name = "fone";
             this.fone.Size = new System.Drawing.Size(88, 20);
-            this.fone.TabIndex = 10;
+            this.fone.TabIndex = 11;
+            this.fone.Leave += new System.EventHandler(this.fone_Leave);
+            this.fone.Enter += new System.EventHandler(this.fone_Enter);
             // 
             // label12
             // 
@@ -393,7 +477,9 @@
             this.uf.Location = new System.Drawing.Point(7, 105);
             this.uf.Name = "uf";
             this.uf.Size = new System.Drawing.Size(76, 21);
-            this.uf.TabIndex = 7;
+            this.uf.TabIndex = 8;
+            this.uf.Leave += new System.EventHandler(this.uf_Leave);
+            this.uf.Enter += new System.EventHandler(this.uf_Enter);
             // 
             // label14
             // 
@@ -412,7 +498,9 @@
             this.bairro.MaxLength = 50;
             this.bairro.Name = "bairro";
             this.bairro.Size = new System.Drawing.Size(133, 21);
-            this.bairro.TabIndex = 9;
+            this.bairro.TabIndex = 10;
+            this.bairro.Leave += new System.EventHandler(this.bairro_Leave);
+            this.bairro.Enter += new System.EventHandler(this.bairro_Enter);
             // 
             // label15
             // 
@@ -422,16 +510,6 @@
             this.label15.Size = new System.Drawing.Size(29, 13);
             this.label15.TabIndex = 12;
             this.label15.Text = "Cep:";
-            // 
-            // cep
-            // 
-            this.cep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cep.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cep.Location = new System.Drawing.Point(83, 105);
-            this.cep.MaxLength = 50;
-            this.cep.Name = "cep";
-            this.cep.Size = new System.Drawing.Size(91, 21);
-            this.cep.TabIndex = 8;
             // 
             // label16
             // 
@@ -460,6 +538,8 @@
             this.numero.Name = "numero";
             this.numero.Size = new System.Drawing.Size(27, 21);
             this.numero.TabIndex = 6;
+            this.numero.Leave += new System.EventHandler(this.numero_Leave);
+            this.numero.Enter += new System.EventHandler(this.numero_Enter);
             // 
             // label18
             // 
@@ -479,6 +559,8 @@
             this.endereco.Name = "endereco";
             this.endereco.Size = new System.Drawing.Size(176, 21);
             this.endereco.TabIndex = 5;
+            this.endereco.Leave += new System.EventHandler(this.endereco_Leave);
+            this.endereco.Enter += new System.EventHandler(this.endereco_Enter);
             // 
             // label19
             // 
@@ -498,54 +580,19 @@
             this.nome.Name = "nome";
             this.nome.Size = new System.Drawing.Size(300, 21);
             this.nome.TabIndex = 4;
+            this.nome.Leave += new System.EventHandler(this.nome_Leave);
+            this.nome.Enter += new System.EventHandler(this.nome_Enter);
             // 
-            // groupBox3
+            // cep
             // 
-            this.groupBox3.Controls.Add(this.label20);
-            this.groupBox3.Controls.Add(this.desconto);
-            this.groupBox3.Location = new System.Drawing.Point(3, 177);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(313, 36);
-            this.groupBox3.TabIndex = 12;
-            this.groupBox3.TabStop = false;
-            // 
-            // desconto
-            // 
-            this.desconto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.desconto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.desconto.Location = new System.Drawing.Point(25, 9);
-            this.desconto.MaxLength = 50;
-            this.desconto.Name = "desconto";
-            this.desconto.Size = new System.Drawing.Size(280, 21);
-            this.desconto.TabIndex = 20;
-            // 
-            // label20
-            // 
-            this.label20.AutoSize = true;
-            this.label20.Location = new System.Drawing.Point(2, 12);
-            this.label20.Name = "label20";
-            this.label20.Size = new System.Drawing.Size(24, 13);
-            this.label20.TabIndex = 20;
-            this.label20.Text = "R$:";
-            // 
-            // label21
-            // 
-            this.label21.AutoSize = true;
-            this.label21.Location = new System.Drawing.Point(209, 54);
-            this.label21.Name = "label21";
-            this.label21.Size = new System.Drawing.Size(43, 13);
-            this.label21.TabIndex = 21;
-            this.label21.Text = "Cidade:";
-            // 
-            // cidade
-            // 
-            this.cidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cidade.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cidade.Location = new System.Drawing.Point(210, 69);
-            this.cidade.MaxLength = 50;
-            this.cidade.Name = "cidade";
-            this.cidade.Size = new System.Drawing.Size(96, 21);
-            this.cidade.TabIndex = 20;
+            this.cep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cep.Location = new System.Drawing.Point(83, 105);
+            this.cep.Mask = "99.999-999";
+            this.cep.Name = "cep";
+            this.cep.Size = new System.Drawing.Size(91, 20);
+            this.cep.TabIndex = 9;
+            this.cep.Leave += new System.EventHandler(this.cep_Leave);
+            this.cep.Enter += new System.EventHandler(this.cep_Enter);
             // 
             // frmConvenios
             // 
@@ -563,10 +610,10 @@
             this.groupBox1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdConvenios)).EndInit();
             this.tabPage2.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
             this.groupBox3.ResumeLayout(false);
             this.groupBox3.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -614,7 +661,6 @@
         private System.Windows.Forms.Label label14;
         private System.Windows.Forms.TextBox bairro;
         private System.Windows.Forms.Label label15;
-        private System.Windows.Forms.TextBox cep;
         private System.Windows.Forms.Label label16;
         private System.Windows.Forms.Label label17;
         private System.Windows.Forms.TextBox numero;
@@ -627,6 +673,9 @@
         private System.Windows.Forms.TextBox desconto;
         private System.Windows.Forms.Label label21;
         private System.Windows.Forms.TextBox cidade;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.TextBox porcentagem;
+        private System.Windows.Forms.MaskedTextBox cep;
 
     }
 }

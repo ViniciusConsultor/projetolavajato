@@ -50,9 +50,9 @@ namespace HenryCorporation.Lavajato.Operacional
 
         public static object[] CarregaHora()
         {
-            object[] h = new object[24];
+            object[] h = new object[25];
             int j = 0;
-            for (int i = 1; i <= 24; i++)
+            for (int i = 0; i <= 24; i++)
             {
                 h[j] = i;
                 j++;
@@ -62,9 +62,9 @@ namespace HenryCorporation.Lavajato.Operacional
 
         public static object[] CarregaMinuto()
         {
-            object[] m = new object[7];
+            object[] m = new object[12];
             int j = 0;
-            for (int i = 0; i <= 60; i += 10)
+            for (int i = 5; i <= 60; i += 5)
             {
                 m[j] = (i);
                 j++;
@@ -72,6 +72,7 @@ namespace HenryCorporation.Lavajato.Operacional
             return m;
         }
 
+        
         public static string HoraEntrada(DateTime horaEntrada)
         {
             return horaEntrada.Year + "-" + horaEntrada.Month + "-" + horaEntrada.Day + " " + horaEntrada.Hour + ":" + horaEntrada.Minute + ":" + horaEntrada.Second;
@@ -131,7 +132,7 @@ namespace HenryCorporation.Lavajato.Operacional
             {
                 if (item.Produto.Descricao.Length > 16)
                 {
-                    desc = item.Produto.Descricao.Substring(16, item.Produto.Descricao.Length -1);
+                    desc = item.Produto.Descricao.Remove(16);
                 }
                 else if (item.Produto.Descricao.Length == 16)
                 { 

@@ -5,7 +5,7 @@
       <rd:DataSourceID>ff7302c2-53c9-4c3c-a14d-c3c5eba7fb9e</rd:DataSourceID>
       <ConnectionProperties>
         <DataProvider>SQL</DataProvider>
-        <ConnectString>Data Source=.\SQLEXPRESS;Initial Catalog=Lavajado;User ID=dblavajato;Password=123</ConnectString>
+        <ConnectString>Data Source=.\SQLEXPRESS;Initial Catalog=lavajato;Integrated Security=True</ConnectString>
       </ConnectionProperties>
     </DataSource>
   </DataSources>
@@ -74,7 +74,7 @@
   <rd:ReportID>23b021d5-fa68-43e8-bc20-10362efc84c7</rd:ReportID>
   <PageWidth>21cm</PageWidth>
   <DataSets>
-    <DataSet Name="FechamentoCaixa_DataTable1">
+    <DataSet Name="dsFechamentoDeCaixa_DataTable1">
       <Fields>
         <Field Name="OSInicial">
           <DataField>OSInicial</DataField>
@@ -88,8 +88,8 @@
           <DataField>OSCancelado</DataField>
           <rd:TypeName>System.Int32</rd:TypeName>
         </Field>
-        <Field Name="Total_Vendas">
-          <DataField>Total Vendas</DataField>
+        <Field Name="TotalVendas">
+          <DataField>TotalVendas</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
         <Field Name="TotalDesconto">
@@ -124,10 +124,6 @@
           <DataField>Saida</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
-        <Field Name="TotalVendas">
-          <DataField>TotalVendas</DataField>
-          <rd:TypeName>System.Decimal</rd:TypeName>
-        </Field>
       </Fields>
       <Query>
         <DataSourceName>DummyDataSource</DataSourceName>
@@ -135,31 +131,219 @@
         <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
       </Query>
       <rd:DataSetInfo>
-        <rd:DataSetName>FechamentoCaixa</rd:DataSetName>
+        <rd:DataSetName>dsFechamentoDeCaixa</rd:DataSetName>
         <rd:TableName>DataTable1</rd:TableName>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
-  <Width>8.2cm</Width>
+  <Width>8.43968cm</Width>
   <Body>
     <ColumnSpacing>1cm</ColumnSpacing>
     <ReportItems>
-      <Textbox Name="textbox10">
-        <Top>7.61904cm</Top>
-        <Width>2.4cm</Width>
+      <Textbox Name="VisaCredito">
+        <rd:DefaultName>VisaCredito</rd:DefaultName>
+        <Top>4.44444cm</Top>
+        <Width>2.53968cm</Width>
         <Style>
-          <FontWeight>700</FontWeight>
           <TextAlign>Right</TextAlign>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
-        <ZIndex>27</ZIndex>
+        <ZIndex>26</ZIndex>
         <CanGrow>true</CanGrow>
         <Left>3.8cm</Left>
         <Height>0.63492cm</Height>
-        <Value />
+        <Value>=Sum(cint( Fields!VisaCredito.Value))</Value>
+      </Textbox>
+      <Textbox Name="VisaDebito">
+        <rd:DefaultName>VisaDebito</rd:DefaultName>
+        <Top>3.80952cm</Top>
+        <Width>2.53968cm</Width>
+        <Style>
+          <TextAlign>Right</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>25</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>3.8cm</Left>
+        <Height>0.63492cm</Height>
+        <Value>=Sum(cint( Fields!VisaDebito.Value))</Value>
+      </Textbox>
+      <Textbox Name="MasterDebito">
+        <rd:DefaultName>MasterDebito</rd:DefaultName>
+        <Top>5.07936cm</Top>
+        <Width>2.53968cm</Width>
+        <Style>
+          <TextAlign>Right</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>24</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>3.8cm</Left>
+        <Height>0.63492cm</Height>
+        <Value>=sum( cint( Fields!MasterDebito.Value))</Value>
+      </Textbox>
+      <Textbox Name="Saida">
+        <rd:DefaultName>Saida</rd:DefaultName>
+        <Top>6.98413cm</Top>
+        <Width>2.53968cm</Width>
+        <Style>
+          <TextAlign>Right</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <Language>pt-BR</Language>
+        </Style>
+        <ZIndex>23</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>3.8cm</Left>
+        <Height>0.63492cm</Height>
+        <Value>=Fields!Saida.Value</Value>
+      </Textbox>
+      <Textbox Name="Entrada">
+        <rd:DefaultName>Entrada</rd:DefaultName>
+        <Top>6.3492cm</Top>
+        <Width>2.53968cm</Width>
+        <Style>
+          <TextAlign>Right</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+          <Language>pt-BR</Language>
+        </Style>
+        <ZIndex>22</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>3.8cm</Left>
+        <Height>0.63492cm</Height>
+        <Value>=FormatCurrency(Fields!Entrada.Value, 2)</Value>
+      </Textbox>
+      <Textbox Name="MasterCredito">
+        <rd:DefaultName>MasterCredito</rd:DefaultName>
+        <Top>5.71428cm</Top>
+        <Width>2.53968cm</Width>
+        <Style>
+          <TextAlign>Right</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>21</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>3.8cm</Left>
+        <Height>0.63492cm</Height>
+        <Value>=sum( cint( Fields!MasterCredito.Value))</Value>
+      </Textbox>
+      <Textbox Name="Dinheiro">
+        <rd:DefaultName>Dinheiro</rd:DefaultName>
+        <Top>3.1746cm</Top>
+        <Width>2.53968cm</Width>
+        <Style>
+          <TextAlign>Right</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>20</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>3.8cm</Left>
+        <Height>0.63492cm</Height>
+        <Value>=sum( cint(Fields!Dinheiro.Value))</Value>
+      </Textbox>
+      <Textbox Name="TotalDesconto">
+        <rd:DefaultName>TotalDesconto</rd:DefaultName>
+        <Top>2.53968cm</Top>
+        <Width>2.53968cm</Width>
+        <Style>
+          <TextAlign>Right</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>19</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>3.8cm</Left>
+        <Height>0.63492cm</Height>
+        <Value>=sum( cint( Fields!TotalDesconto.Value))</Value>
+      </Textbox>
+      <Textbox Name="TotalVendas">
+        <rd:DefaultName>TotalVendas</rd:DefaultName>
+        <Top>1.90476cm</Top>
+        <Width>2.53968cm</Width>
+        <Style>
+          <TextAlign>Right</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>18</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>3.8cm</Left>
+        <Height>0.63492cm</Height>
+        <Value>=sum( cint( Fields!TotalVendas.Value))</Value>
+      </Textbox>
+      <Textbox Name="OSCancelado">
+        <rd:DefaultName>OSCancelado</rd:DefaultName>
+        <Top>1.26984cm</Top>
+        <Width>2.53968cm</Width>
+        <Style>
+          <TextAlign>Right</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>17</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>3.8cm</Left>
+        <Height>0.63492cm</Height>
+        <Value>=sum( cint( Fields!OSCancelado.Value))</Value>
+      </Textbox>
+      <Textbox Name="OSFinal">
+        <rd:DefaultName>OSFinal</rd:DefaultName>
+        <Top>0.63492cm</Top>
+        <Width>2.53968cm</Width>
+        <Style>
+          <TextAlign>Right</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>16</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>3.8cm</Left>
+        <Height>0.63492cm</Height>
+        <Value>= max( Fields!OSFinal.Value)</Value>
+      </Textbox>
+      <Textbox Name="OSInicial">
+        <rd:DefaultName>OSInicial</rd:DefaultName>
+        <Width>2.53968cm</Width>
+        <Style>
+          <TextAlign>Right</TextAlign>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+        <ZIndex>15</ZIndex>
+        <CanGrow>true</CanGrow>
+        <Left>3.8cm</Left>
+        <Height>0.63492cm</Height>
+        <Value>=Min( Fields!OSInicial.Value)</Value>
       </Textbox>
       <Textbox Name="textbox7">
         <Top>7.61904cm</Top>
@@ -172,7 +356,7 @@
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
-        <ZIndex>26</ZIndex>
+        <ZIndex>14</ZIndex>
         <CanGrow>true</CanGrow>
         <Left>0.3cm</Left>
         <Height>0.63492cm</Height>
@@ -188,215 +372,11 @@
           <PaddingTop>2pt</PaddingTop>
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
-        <ZIndex>25</ZIndex>
+        <ZIndex>13</ZIndex>
         <CanGrow>true</CanGrow>
         <Left>2.8cm</Left>
         <Height>0.63492cm</Height>
         <Value>Nome/Assinatura</Value>
-      </Textbox>
-      <Textbox Name="Saida">
-        <rd:DefaultName>Saida</rd:DefaultName>
-        <Top>6.98412cm</Top>
-        <Width>2.4cm</Width>
-        <Style>
-          <TextAlign>Right</TextAlign>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-        <ZIndex>24</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Left>3.8cm</Left>
-        <Height>0.63492cm</Height>
-        <Value>=FormatCurrency(Fields!Saida.Value,2)</Value>
-      </Textbox>
-      <Textbox Name="Entrada">
-        <rd:DefaultName>Entrada</rd:DefaultName>
-        <Top>6.3492cm</Top>
-        <Width>2.4cm</Width>
-        <Style>
-          <TextAlign>Right</TextAlign>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-        <ZIndex>23</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Left>3.8cm</Left>
-        <Height>0.63492cm</Height>
-        <Value>=FormatCurrency(Fields!Entrada.Value)</Value>
-      </Textbox>
-      <Textbox Name="MasterCredito">
-        <rd:DefaultName>MasterCredito</rd:DefaultName>
-        <Top>5.71428cm</Top>
-        <Width>2.4cm</Width>
-        <Style>
-          <TextAlign>Right</TextAlign>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-        <ZIndex>22</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Left>3.8cm</Left>
-        <Height>0.63492cm</Height>
-        <Value>=FormatCurrency(Fields!MasterCredito.Value)</Value>
-      </Textbox>
-      <Textbox Name="MasterDebito">
-        <rd:DefaultName>MasterDebito</rd:DefaultName>
-        <Top>5.07936cm</Top>
-        <Width>2.4cm</Width>
-        <Style>
-          <TextAlign>Right</TextAlign>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-        <ZIndex>21</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Left>3.8cm</Left>
-        <Height>0.63492cm</Height>
-        <Value>=FormatCurrency(Fields!MasterDebito.Value)</Value>
-      </Textbox>
-      <Textbox Name="VisaCredito">
-        <rd:DefaultName>VisaCredito</rd:DefaultName>
-        <Top>4.44444cm</Top>
-        <Width>2.4cm</Width>
-        <Style>
-          <TextAlign>Right</TextAlign>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-        <ZIndex>20</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Left>3.8cm</Left>
-        <Height>0.63492cm</Height>
-        <Value>=FormatCurrency(Fields!VisaCredito.Value)</Value>
-      </Textbox>
-      <Textbox Name="VisaDebito">
-        <rd:DefaultName>VisaDebito</rd:DefaultName>
-        <Top>3.80952cm</Top>
-        <Width>2.4cm</Width>
-        <Style>
-          <TextAlign>Right</TextAlign>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-        <ZIndex>19</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Left>3.8cm</Left>
-        <Height>0.63492cm</Height>
-        <Value>=FormatCurrency(Fields!VisaDebito.Value)</Value>
-      </Textbox>
-      <Textbox Name="Dinheiro">
-        <rd:DefaultName>Dinheiro</rd:DefaultName>
-        <Top>3.1746cm</Top>
-        <Width>2.4cm</Width>
-        <Style>
-          <TextAlign>Right</TextAlign>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-        <ZIndex>18</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Left>3.8cm</Left>
-        <Height>0.63492cm</Height>
-        <Value>=FormatCurrency(Fields!Dinheiro.Value)</Value>
-      </Textbox>
-      <Textbox Name="TotalDesconto">
-        <rd:DefaultName>TotalDesconto</rd:DefaultName>
-        <Top>2.53968cm</Top>
-        <Width>2.4cm</Width>
-        <Style>
-          <TextAlign>Right</TextAlign>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-        <ZIndex>17</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Left>3.8cm</Left>
-        <Height>0.63492cm</Height>
-        <Value>=FormatCurrency(Fields!TotalDesconto.Value)</Value>
-      </Textbox>
-      <Textbox Name="TotalVendas">
-        <rd:DefaultName>TotalVendas</rd:DefaultName>
-        <Top>1.90476cm</Top>
-        <Width>2.4cm</Width>
-        <Style>
-          <TextAlign>Right</TextAlign>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-        <ZIndex>16</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Left>3.8cm</Left>
-        <Height>0.63492cm</Height>
-        <Value>=FormatCurrency(Fields!TotalVendas.Value)</Value>
-      </Textbox>
-      <Textbox Name="OSCancelado">
-        <rd:DefaultName>OSCancelado</rd:DefaultName>
-        <Top>1.26984cm</Top>
-        <Width>2.4cm</Width>
-        <Style>
-          <TextAlign>Right</TextAlign>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-        <ZIndex>15</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Left>3.8cm</Left>
-        <Height>0.63492cm</Height>
-        <Value>=Fields!OSCancelado.Value</Value>
-      </Textbox>
-      <Textbox Name="OSFinal">
-        <rd:DefaultName>OSFinal</rd:DefaultName>
-        <Top>0.63492cm</Top>
-        <Width>2.4cm</Width>
-        <Style>
-          <TextAlign>Right</TextAlign>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-        <ZIndex>14</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Left>3.8cm</Left>
-        <Height>0.63492cm</Height>
-        <Value>=Fields!OSFinal.Value</Value>
-      </Textbox>
-      <Textbox Name="OSInicial">
-        <rd:DefaultName>OSInicial</rd:DefaultName>
-        <Width>2.4cm</Width>
-        <Style>
-          <TextAlign>Right</TextAlign>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-          <LineHeight>12pt</LineHeight>
-        </Style>
-        <ZIndex>13</ZIndex>
-        <CanGrow>true</CanGrow>
-        <Left>3.8cm</Left>
-        <Height>0.63492cm</Height>
-        <Value>=Fields!OSInicial.Value</Value>
       </Textbox>
       <Textbox Name="textbox5">
         <Top>6.98412cm</Top>
@@ -626,6 +606,7 @@
     <PrintOnFirstPage>true</PrintOnFirstPage>
     <ReportItems>
       <Textbox Name="textbox3">
+        <Width>7.7cm</Width>
         <Style>
           <FontFamily>Verdana</FontFamily>
           <FontSize>8pt</FontSize>
