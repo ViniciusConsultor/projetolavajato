@@ -31,6 +31,11 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             return clienteDao.ByPlaca(cliente);
         }
 
+        public bool Existe(Cliente cliente)
+        {
+            return clienteDao.Existe(cliente);
+        }
+
         public List<Cliente> ByName(Cliente cliente)
         {
             return clienteDao.ByNames(cliente);

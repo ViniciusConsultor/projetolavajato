@@ -31,6 +31,11 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             return servicoDAO.ByID(servico);
         }
 
+        public void CarroLavado(Servico servico)
+        {
+            servicoDAO.CarroLavado(servico);
+        }
+
         public Servico ByOrdemServico(Servico servico)
         {
             return servicoDAO.ByOrdemServico(servico);

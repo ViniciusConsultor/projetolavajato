@@ -26,7 +26,7 @@ namespace HenryCorporation.Lavajato.DataAccess
                            "   VALUES " +
                            "  (" + retirada.Usuario.ID + " " +
                            "  ,'" + retirada.Descricao + "' " +
-                           "  ,'" + retirada.Valor + "' " +
+                           "  ,'" + retirada.Valor.ToString().Replace(",", ".") + "' " +
                            "  ,GetDate()) ";
 
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);

@@ -25,7 +25,7 @@ namespace HenryCorporation.Lavajato.DataAccess
                            " ,[Data]) "+
                            " VALUES "+
                            " ('"+suprimento.Usuario.ID+"' "+
-                           " ,'"+suprimento.Valor+"' "+
+                           " ,'" + suprimento.Valor.ToString().Replace(",", ".") + "' " +
                            " ,'"+suprimento.Descricao+"' " +
                            " ,getdate() )";
 
