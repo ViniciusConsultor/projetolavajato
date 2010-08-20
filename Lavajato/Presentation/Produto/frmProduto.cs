@@ -352,5 +352,10 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             nomePesquisa.BackColor = Color.White;
         }
+
+        private void frmProduto_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
