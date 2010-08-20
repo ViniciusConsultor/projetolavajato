@@ -160,7 +160,15 @@ namespace HenryCorporation.Lavajato.Presentation
                 MessageBox.Show("Favor preencher todos os campos", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            
+
+            Cliente clientePlaca = new Cliente();
+            cliente.Placa = placa.Text;
+            if (clienteBL.Existe(this.cliente))
+            {
+                MessageBox.Show("Cliente já existente na base, favor mudar a placa", "Atenção");
+                return;
+            }
+
             CarregaCliente();
             clienteBL.Insert(cliente);
             this.cliente = clienteBL.ByPlaca(cliente);

@@ -56,6 +56,7 @@
             this.label20 = new System.Windows.Forms.Label();
             this.desconto = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cep = new System.Windows.Forms.MaskedTextBox();
             this.label21 = new System.Windows.Forms.Label();
             this.cidade = new System.Windows.Forms.TextBox();
             this.celular = new System.Windows.Forms.MaskedTextBox();
@@ -73,7 +74,6 @@
             this.endereco = new System.Windows.Forms.TextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.nome = new System.Windows.Forms.TextBox();
-            this.cep = new System.Windows.Forms.MaskedTextBox();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.groupBox1.SuspendLayout();
@@ -382,6 +382,18 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados Pessoais";
             // 
+            // cep
+            // 
+            this.cep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cep.Location = new System.Drawing.Point(83, 105);
+            this.cep.Mask = "99.999-999";
+            this.cep.Name = "cep";
+            this.cep.Size = new System.Drawing.Size(91, 20);
+            this.cep.TabIndex = 9;
+            // this.cep.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.cep_MaskInputRejected);
+            this.cep.Leave += new System.EventHandler(this.cep_Leave);
+            this.cep.Enter += new System.EventHandler(this.cep_Enter);
+            // 
             // label21
             // 
             this.label21.AutoSize = true;
@@ -400,6 +412,7 @@
             this.cidade.Name = "cidade";
             this.cidade.Size = new System.Drawing.Size(96, 21);
             this.cidade.TabIndex = 7;
+            // this.cidade.TextChanged += new System.EventHandler(this.cidade_TextChanged);
             this.cidade.Leave += new System.EventHandler(this.cidade_Leave);
             this.cidade.Enter += new System.EventHandler(this.cidade_Enter);
             // 
@@ -499,6 +512,7 @@
             this.bairro.Name = "bairro";
             this.bairro.Size = new System.Drawing.Size(133, 21);
             this.bairro.TabIndex = 10;
+            // this.bairro.TextChanged += new System.EventHandler(this.bairro_TextChanged);
             this.bairro.Leave += new System.EventHandler(this.bairro_Leave);
             this.bairro.Enter += new System.EventHandler(this.bairro_Enter);
             // 
@@ -538,6 +552,7 @@
             this.numero.Name = "numero";
             this.numero.Size = new System.Drawing.Size(27, 21);
             this.numero.TabIndex = 6;
+            //this.numero.TextChanged += new System.EventHandler(this.numero_TextChanged);
             this.numero.Leave += new System.EventHandler(this.numero_Leave);
             this.numero.Enter += new System.EventHandler(this.numero_Enter);
             // 
@@ -559,6 +574,7 @@
             this.endereco.Name = "endereco";
             this.endereco.Size = new System.Drawing.Size(176, 21);
             this.endereco.TabIndex = 5;
+            // this.endereco.TextChanged += new System.EventHandler(this.endereco_TextChanged);
             this.endereco.Leave += new System.EventHandler(this.endereco_Leave);
             this.endereco.Enter += new System.EventHandler(this.endereco_Enter);
             // 
@@ -580,19 +596,9 @@
             this.nome.Name = "nome";
             this.nome.Size = new System.Drawing.Size(300, 21);
             this.nome.TabIndex = 4;
+            // this.nome.TextChanged += new System.EventHandler(this.nome_TextChanged);
             this.nome.Leave += new System.EventHandler(this.nome_Leave);
             this.nome.Enter += new System.EventHandler(this.nome_Enter);
-            // 
-            // cep
-            // 
-            this.cep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cep.Location = new System.Drawing.Point(83, 105);
-            this.cep.Mask = "99.999-999";
-            this.cep.Name = "cep";
-            this.cep.Size = new System.Drawing.Size(91, 20);
-            this.cep.TabIndex = 9;
-            this.cep.Leave += new System.EventHandler(this.cep_Leave);
-            this.cep.Enter += new System.EventHandler(this.cep_Enter);
             // 
             // frmConvenios
             // 

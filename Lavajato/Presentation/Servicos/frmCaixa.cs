@@ -54,6 +54,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private void frmCaixa_Load(object sender, EventArgs e)
         {
             ordemServico.Focus();
+            CarregaConvenioDosClientes();
         }
 
       
@@ -81,6 +82,14 @@ namespace HenryCorporation.Lavajato.Presentation
             CriaTabela(this.servico);
         }
 
+        private void CarregaConvenioDosClientes()
+        {
+            ConvenioBL convenioBL = new ConvenioBL();
+            convenio.DataSource = convenioBL.GetAll();
+            convenio.DisplayMember = "Nome";
+            convenio.ValueMember = "ID";
+        }
+
         private bool ExisteServico()
         {
             return servicoBL.ExisteServico(this.servico);
@@ -94,16 +103,26 @@ namespace HenryCorporation.Lavajato.Presentation
             nome.Text = servico.Cliente.Nome;
             corVeiculo.Text = servico.Cliente.Cor;
             chbLavado.Checked = Convert.ToBoolean(servico.Lavado);
+            convenio.SelectedValue = servico.Cliente.Convenio.ID;
+        }
+
+        private Convenio SetUpConvenio()
+        {
+            return this.convenio.SelectedIndex > 0 ? new ConvenioBL().ByID(Convert.ToInt32(this.convenio.SelectedValue.ToString())) : new Convenio() { ID = 0 };
         }
 
         private void LimpaCampos()
         {
-            placa.Text = "";
-            veiculo.Text = "";
-            telefone.Text = "";
-            nome.Text = "";
-            corVeiculo.Text = "";
-            ordemServico.Text = "";
+            placa.Clear();
+            veiculo.Clear();
+            telefone.Clear();
+            nome.Clear();
+            corVeiculo.Clear();
+            ordemServico.Clear();
+            valor.Clear();
+            totalServico.Clear();
+            desconto.Clear();
+            troco.Clear();
             this.servico = new Servico();
             grdServico.DataSource = null;
         }
@@ -131,6 +150,7 @@ namespace HenryCorporation.Lavajato.Presentation
             }
             totalServico.Text = ValorTotalCompra().ToString();
             this.cmbFormaPagamento.SelectedIndexChanged += cmbFormaPagamento_SelectedIndexChanged;
+            desconto.Text = ValorDesconto().ToString("C").Replace("R$", "");
         }
 
         private void btnAlterarQuantidade_Click(object sender, EventArgs e)
@@ -229,7 +249,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private void btnConcluirVenda_Click(object sender, EventArgs e)
         {
             ConcluirVenda();
-            //imprime copom
+            new Configuracao().EmiteReciboPC(this.servico);
 
             LimpaCampos();
         }
@@ -244,18 +264,38 @@ namespace HenryCorporation.Lavajato.Presentation
 
             this.servico.Finalizado = 1;
             this.servico.Lavado = 1;
+            this.servico.Pago = 1;
             this.servico.Total = Configuracao.ConverteParaDecimal(totalServico.Text);
             this.servico.SubTotal = Configuracao.ConverteParaDecimal(totalServico.Text);
             this.servico.Desconto = Configuracao.ConverteParaDecimal(desconto.Text);
             servicoBL.Update(this.servico);
         }
 
+        private decimal ValorDesconto()
+        {
+            decimal valorTotalComDesconto = 0;
+            foreach (var si in this.servico.ServicoItem)
+            {
+                if (si.Produto.CategoriaProduto.ID == (int)EnumCategoriaProduto.Servico)
+                    valorTotalComDesconto += si.Quantidade * si.Produto.ValorUnitario;
+
+            }
+
+            if (this.servico.Cliente.Convenio.PorcentagemDesconto > 0)
+                return valorTotalComDesconto * Math.Abs(this.servico.Cliente.Convenio.PorcentagemDesconto/100);
+            else if (this.servico.Cliente.Convenio.Valor > 0)
+                return valorTotalComDesconto - this.servico.Cliente.Convenio.Valor;
+
+            return 0;
+        }
+
         private decimal ValorTotalCompra()
         {
+
             decimal total = 0;
             for (int i = 0; i < grdServico.Rows.Count - 1; i++)
                 total += Configuracao.ConverteParaDecimal(grdServico.Rows[i].Cells[4].Value.ToString());
-            
+
             return total;
         }
 
@@ -299,7 +339,6 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void valor_TextChanged(object sender, EventArgs e)
         {
-
             if (!valor.Text.Contains(enter))
             {
                 valorServico = valor.Text;
@@ -325,9 +364,10 @@ namespace HenryCorporation.Lavajato.Presentation
             decimal valorText = Convert.ToDecimal(valor.TextLength > 0 ? valor.Text : "0" );
             decimal valorTotal = Convert.ToDecimal(totalServico.TextLength > 0 ? totalServico.Text : "0");
             if (valorText > valorTotal)
-                troco.Text = (valorText - valorTotal).ToString();
+                troco.Text = (valorText - valorTotal).ToString("C").Replace("R$", "");
             else
                 troco.Text = "";
+
         }
 
         private void desconto_TextChanged(object sender, EventArgs e)
@@ -343,26 +383,23 @@ namespace HenryCorporation.Lavajato.Presentation
                 troco.Focus();
             }
             
-            
-            
             if (desconto.Text.Contains("."))
             {
                 desconto.Text = desconto.Text.Remove(desconto.TextLength - 1);
                 desconto.SelectionStart = desconto.Text.Length;
             }
 
-            decimal descontoTxt = Convert.ToDecimal(desconto.TextLength > 0 ? desconto.Text : "0");
+            decimal descontoTemp = Convert.ToDecimal(desconto.TextLength > 0 ? desconto.Text : "0");
             decimal totalValor = ValorTotalCompra();
 
             if (totalValor == 0)
                 return;
 
-            if (descontoTxt <= totalValor)
-                totalServico.Text = (totalValor - descontoTxt).ToString();
+            if (descontoTemp <= totalValor)
+                valor.Text = (totalValor - descontoTemp).ToString("C").Replace("R$", "");
             else
-                totalServico.Text = ValorTotalCompra().ToString();
-
-            if (descontoTxt > totalValor)
+                valor.Text = ValorTotalCompra().ToString("C").Replace("R$", "")
+; if (descontoTemp > totalValor)
             {
                 MessageBox.Show("Desconto maior que o valor do produto!", "Atenção");
                 desconto.Text = "";
@@ -545,6 +582,43 @@ namespace HenryCorporation.Lavajato.Presentation
             int ordServico;
             if (int.TryParse(this.ordemServico.Text, out ordServico))
                 ProcuraServico(ordServico);
-        }    
+        }
+
+        private void acertoFuturo_CheckedChanged(object sender, EventArgs e)
+        {
+            if (!ExisteServico())
+            {
+                MessageBox.Show("Nenhum servico encontrado");
+                return;
+            }
+            servico.AcertoFuturo = Convert.ToInt32(chbLavado.Checked.ToString());
+            servicoBL.CarroLavado(servico);
+        }
+
+        private void chbLavado_CheckedChanged_1(object sender, EventArgs e)
+        {
+            if (!ExisteServico())
+            {
+                MessageBox.Show("Nenhum servico encontrado");
+                return;
+            }
+
+            servico.Lavado = Convert.ToInt32(chbLavado.Checked);
+            servicoBL.CarroLavado(servico);
+        }
+
+        private void convenio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.convenio.SelectedIndex == 0 || this.convenio.SelectedIndex == -1)
+            {
+                desconto.Text = "";
+                return;
+            }
+            Convenio convenio = new ConvenioBL().ByID(int.Parse(this.convenio.SelectedValue.ToString()));
+            this.servico.Cliente.Convenio = convenio;
+            desconto.Text = ValorDesconto().ToString("C").Replace("R$", "");
+
+            new ClienteBL().Update(this.servico.Cliente);
+        } 
     }
 }
