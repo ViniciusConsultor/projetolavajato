@@ -37,6 +37,7 @@
             this.nomePesquisa = new System.Windows.Forms.TextBox();
             this.grdClientes = new System.Windows.Forms.DataGridView();
             this.tabManutencao = new System.Windows.Forms.TabPage();
+            this.btnNovo = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -67,7 +68,6 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
-            this.btnNovo = new System.Windows.Forms.Button();
             this.tabClientes.SuspendLayout();
             this.tabConsulta.SuspendLayout();
             this.groupBox4.SuspendLayout();
@@ -185,6 +185,16 @@
             this.tabManutencao.Text = "Cliente";
             this.tabManutencao.UseVisualStyleBackColor = true;
             // 
+            // btnNovo
+            // 
+            this.btnNovo.Location = new System.Drawing.Point(6, 286);
+            this.btnNovo.Name = "btnNovo";
+            this.btnNovo.Size = new System.Drawing.Size(55, 38);
+            this.btnNovo.TabIndex = 14;
+            this.btnNovo.Text = "Novo";
+            this.btnNovo.UseVisualStyleBackColor = true;
+            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click_1);
+            // 
             // btnSair
             // 
             this.btnSair.Location = new System.Drawing.Point(263, 286);
@@ -278,6 +288,7 @@
             this.cep.Name = "cep";
             this.cep.Size = new System.Drawing.Size(90, 20);
             this.cep.TabIndex = 8;
+            // this.cep.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.cep_MaskInputRejected);
             this.cep.Leave += new System.EventHandler(this.cep_Leave_1);
             this.cep.Enter += new System.EventHandler(this.cep_Enter_1);
             // 
@@ -300,6 +311,7 @@
             this.fone.Name = "fone";
             this.fone.Size = new System.Drawing.Size(88, 20);
             this.fone.TabIndex = 10;
+            // this.fone.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.fone_MaskInputRejected);
             this.fone.Leave += new System.EventHandler(this.fone_Leave);
             this.fone.Enter += new System.EventHandler(this.fone_Enter);
             // 
@@ -377,6 +389,7 @@
             this.bairro.Name = "bairro";
             this.bairro.Size = new System.Drawing.Size(133, 21);
             this.bairro.TabIndex = 9;
+            // this.bairro.TextChanged += new System.EventHandler(this.bairro_TextChanged);
             this.bairro.Leave += new System.EventHandler(this.bairro_Leave);
             this.bairro.Enter += new System.EventHandler(this.bairro_Enter);
             // 
@@ -437,6 +450,7 @@
             this.endereco.Name = "endereco";
             this.endereco.Size = new System.Drawing.Size(260, 21);
             this.endereco.TabIndex = 5;
+            // this.endereco.TextChanged += new System.EventHandler(this.endereco_TextChanged);
             this.endereco.Leave += new System.EventHandler(this.endereco_Leave);
             this.endereco.Enter += new System.EventHandler(this.endereco_Enter);
             // 
@@ -458,6 +472,7 @@
             this.nome.Name = "nome";
             this.nome.Size = new System.Drawing.Size(300, 21);
             this.nome.TabIndex = 4;
+            // this.nome.TextChanged += new System.EventHandler(this.nome_TextChanged);
             this.nome.Leave += new System.EventHandler(this.nome_Leave);
             this.nome.Enter += new System.EventHandler(this.nome_Enter);
             // 
@@ -484,6 +499,7 @@
             this.placa.Name = "placa";
             this.placa.Size = new System.Drawing.Size(100, 20);
             this.placa.TabIndex = 1;
+            // this.placa.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.placa_MaskInputRejected);
             this.placa.Leave += new System.EventHandler(this.placa_Leave);
             this.placa.Enter += new System.EventHandler(this.placa_Enter);
             // 
@@ -494,6 +510,7 @@
             this.veiculo.Name = "veiculo";
             this.veiculo.Size = new System.Drawing.Size(100, 20);
             this.veiculo.TabIndex = 3;
+            // this.veiculo.TextChanged += new System.EventHandler(this.veiculo_TextChanged);
             this.veiculo.Leave += new System.EventHandler(this.veiculo_Leave);
             this.veiculo.Enter += new System.EventHandler(this.veiculo_Enter);
             // 
@@ -504,6 +521,7 @@
             this.cor.Name = "cor";
             this.cor.Size = new System.Drawing.Size(100, 20);
             this.cor.TabIndex = 2;
+            // this.cor.TextChanged += new System.EventHandler(this.cor_TextChanged);
             this.cor.Leave += new System.EventHandler(this.cor_Leave);
             this.cor.Enter += new System.EventHandler(this.cor_Enter);
             // 
@@ -533,16 +551,6 @@
             this.label1.Size = new System.Drawing.Size(37, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Placa:";
-            // 
-            // btnNovo
-            // 
-            this.btnNovo.Location = new System.Drawing.Point(6, 286);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(55, 38);
-            this.btnNovo.TabIndex = 14;
-            this.btnNovo.Text = "Novo";
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click_1);
             // 
             // frmCliente
             // 

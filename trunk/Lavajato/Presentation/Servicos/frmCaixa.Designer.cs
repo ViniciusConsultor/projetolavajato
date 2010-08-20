@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             System.Windows.Forms.Button btnAlterarQuantidade;
+            System.Windows.Forms.CheckBox acertoFuturo;
             this.grdServico = new System.Windows.Forms.DataGridView();
             this.cmbProduto = new System.Windows.Forms.ComboBox();
             this.btnAdicionar = new System.Windows.Forms.Button();
@@ -48,6 +49,8 @@
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnVendaAvulca = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.label15 = new System.Windows.Forms.Label();
+            this.convenio = new System.Windows.Forms.ComboBox();
             this.ordemServico = new System.Windows.Forms.TextBox();
             this.chbLavado = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -56,11 +59,9 @@
             this.dataEntrada = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.min = new System.Windows.Forms.ComboBox();
-            this.label3 = new System.Windows.Forms.Label();
             this.hora = new System.Windows.Forms.ComboBox();
             this.placa = new System.Windows.Forms.TextBox();
             this.veiculo = new System.Windows.Forms.TextBox();
-            this.quantidade = new System.Windows.Forms.TextBox();
             this.nome = new System.Windows.Forms.TextBox();
             this.corVeiculo = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -70,8 +71,12 @@
             this.label7 = new System.Windows.Forms.Label();
             this.lblVeiculo = new System.Windows.Forms.Label();
             this.lblPlaca = new System.Windows.Forms.Label();
+            this.label3 = new System.Windows.Forms.Label();
+            this.quantidade = new System.Windows.Forms.TextBox();
             this.label14 = new System.Windows.Forms.Label();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             btnAlterarQuantidade = new System.Windows.Forms.Button();
+            acertoFuturo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdServico)).BeginInit();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -87,6 +92,19 @@
             btnAlterarQuantidade.UseVisualStyleBackColor = true;
             btnAlterarQuantidade.Click += new System.EventHandler(this.btnAlterarQuantidade_Click);
             // 
+            // acertoFuturo
+            // 
+            acertoFuturo.AutoSize = true;
+            acertoFuturo.Enabled = false;
+            acertoFuturo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            acertoFuturo.Location = new System.Drawing.Point(215, 351);
+            acertoFuturo.Name = "acertoFuturo";
+            acertoFuturo.Size = new System.Drawing.Size(154, 29);
+            acertoFuturo.TabIndex = 111;
+            acertoFuturo.Text = "Acerto futuro";
+            acertoFuturo.UseVisualStyleBackColor = true;
+            acertoFuturo.CheckedChanged += new System.EventHandler(this.acertoFuturo_CheckedChanged);
+            // 
             // grdServico
             // 
             this.grdServico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -100,10 +118,11 @@
             // 
             this.cmbProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmbProduto.FormattingEnabled = true;
-            this.cmbProduto.Location = new System.Drawing.Point(134, 397);
+            this.cmbProduto.Location = new System.Drawing.Point(134, 395);
             this.cmbProduto.Name = "cmbProduto";
             this.cmbProduto.Size = new System.Drawing.Size(416, 33);
             this.cmbProduto.TabIndex = 13;
+            //this.cmbProduto.SelectedIndexChanged += new System.EventHandler(this.cmbProduto_SelectedIndexChanged);
             this.cmbProduto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProduto_KeyDown);
             // 
             // btnAdicionar
@@ -293,6 +312,9 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.label15);
+            this.groupBox2.Controls.Add(acertoFuturo);
+            this.groupBox2.Controls.Add(this.convenio);
             this.groupBox2.Controls.Add(this.ordemServico);
             this.groupBox2.Controls.Add(this.chbLavado);
             this.groupBox2.Controls.Add(this.label5);
@@ -315,9 +337,30 @@
             this.groupBox2.Controls.Add(this.lblPlaca);
             this.groupBox2.Location = new System.Drawing.Point(1, 1);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(378, 359);
+            this.groupBox2.Size = new System.Drawing.Size(378, 394);
             this.groupBox2.TabIndex = 92;
             this.groupBox2.TabStop = false;
+            // 
+            // label15
+            // 
+            this.label15.AutoSize = true;
+            this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label15.Location = new System.Drawing.Point(-4, 317);
+            this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label15.Name = "label15";
+            this.label15.Size = new System.Drawing.Size(137, 31);
+            this.label15.TabIndex = 113;
+            this.label15.Text = "Convenio:";
+            // 
+            // convenio
+            // 
+            this.convenio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.convenio.FormattingEnabled = true;
+            this.convenio.Location = new System.Drawing.Point(133, 317);
+            this.convenio.Name = "convenio";
+            this.convenio.Size = new System.Drawing.Size(240, 33);
+            this.convenio.TabIndex = 112;
+            this.convenio.SelectedIndexChanged += new System.EventHandler(this.convenio_SelectedIndexChanged);
             // 
             // ordemServico
             // 
@@ -332,12 +375,13 @@
             // 
             this.chbLavado.AutoSize = true;
             this.chbLavado.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbLavado.Location = new System.Drawing.Point(133, 319);
+            this.chbLavado.Location = new System.Drawing.Point(123, 351);
             this.chbLavado.Name = "chbLavado";
-            this.chbLavado.Size = new System.Drawing.Size(130, 29);
+            this.chbLavado.Size = new System.Drawing.Size(102, 29);
             this.chbLavado.TabIndex = 12;
-            this.chbLavado.Text = "Finalizado";
+            this.chbLavado.Text = "Lavado";
             this.chbLavado.UseVisualStyleBackColor = true;
+            this.chbLavado.CheckedChanged += new System.EventHandler(this.chbLavado_CheckedChanged_1);
             // 
             // label5
             // 
@@ -405,17 +449,6 @@
             this.min.Size = new System.Drawing.Size(108, 37);
             this.min.TabIndex = 9;
             // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(555, 397);
-            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(72, 29);
-            this.label3.TabIndex = 103;
-            this.label3.Text = "Qtde:";
-            // 
             // hora
             // 
             this.hora.Enabled = false;
@@ -446,15 +479,6 @@
             this.veiculo.Name = "veiculo";
             this.veiculo.Size = new System.Drawing.Size(240, 35);
             this.veiculo.TabIndex = 5;
-            // 
-            // quantidade
-            // 
-            this.quantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.quantidade.Location = new System.Drawing.Point(631, 395);
-            this.quantidade.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.quantidade.Name = "quantidade";
-            this.quantidade.Size = new System.Drawing.Size(51, 35);
-            this.quantidade.TabIndex = 11;
             // 
             // nome
             // 
@@ -558,16 +582,45 @@
             this.lblPlaca.TabIndex = 91;
             this.lblPlaca.Text = "Placa:";
             // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(555, 397);
+            this.label3.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(72, 29);
+            this.label3.TabIndex = 103;
+            this.label3.Text = "Qtde:";
+            // 
+            // quantidade
+            // 
+            this.quantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.quantidade.Location = new System.Drawing.Point(631, 395);
+            this.quantidade.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.quantidade.Name = "quantidade";
+            this.quantidade.Size = new System.Drawing.Size(51, 35);
+            this.quantidade.TabIndex = 11;
+            // 
             // label14
             // 
             this.label14.AutoSize = true;
             this.label14.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label14.Location = new System.Drawing.Point(12, 398);
+            this.label14.Location = new System.Drawing.Point(11, 395);
             this.label14.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(117, 31);
             this.label14.TabIndex = 111;
             this.label14.Text = "Produto:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(133, 317);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(240, 33);
+            this.comboBox1.TabIndex = 112;
             // 
             // frmCaixa
             // 
@@ -647,6 +700,9 @@
         private System.Windows.Forms.Label lblVeiculo;
         private System.Windows.Forms.Label lblPlaca;
         private System.Windows.Forms.Label label14;
+        private System.Windows.Forms.Label label15;
+        private System.Windows.Forms.ComboBox convenio;
+        private System.Windows.Forms.ComboBox comboBox1;
 
     }
 }

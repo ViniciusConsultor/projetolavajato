@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using HenryCorporation.Lavajato.DomainModel;
 using HenryCorporation.Lavajato.BusinessLogic;
+using HenryCorporation.Lavajato.Operacional;
 
 namespace HenryCorporation.Lavajato.Presentation
 {
@@ -45,6 +46,12 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            if (porcentagem.TextLength > 0 && desconto.TextLength > 0)
+            {
+                MessageBox.Show("Deve haver somente um tipo de desconto, ou em Dinherio ou em Porcentagem", "Atenção",MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            
             SetUpConvenio();
             this.convenio = convenioBL.Add(convenio);
             SetUpFields(this.convenio);
@@ -92,6 +99,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void conveniadoPesquisa_TextChanged(object sender, EventArgs e)
         {
+           
             Convenio con = new Convenio();
             con.Nome = conveniadoPesquisa.Text;
             grdConvenios.DataSource = convenioBL.ByName(con);
@@ -127,7 +135,9 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private Convenio SetUpConvenio()
         {
-            this.convenio.Valor = desconto.TextLength > 0 ? Convert.ToDecimal(desconto.Text.Replace("R$","")) : 0;
+            decimal valorTemp = Configuracao.ConverteParaDecimal( desconto.Text.Trim());
+            decimal porcentagemTemp = Configuracao.ConverteParaDecimal( porcentagem.Text.Trim());
+            this.convenio.Valor = valorTemp;
             this.convenio.Nome = nome.Text;
             this.convenio.Endereco = endereco.Text;
             this.convenio.Numero = numero.Text;
@@ -137,7 +147,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.convenio.UF = uf.SelectedItem == null ? "MG" : uf.SelectedItem.ToString();
             this.convenio.Telefone = fone.Text;
             this.convenio.Celular = celular.Text;
-            this.convenio.PorcentagemDesconto = porcentagem.TextLength > 0 ? Convert.ToDecimal(porcentagem.Text) : 0;
+            this.convenio.PorcentagemDesconto = porcentagemTemp;
 
             return convenio;
         }
@@ -284,8 +294,6 @@ namespace HenryCorporation.Lavajato.Presentation
                 porcentagem.SelectionStart = porcentagem.Text.Length;
             }
         }
-
-      
 
     }
 }

@@ -149,5 +149,11 @@ namespace Presentation
             frmCaixa frmCaixa = new frmCaixa();
             frmCaixa.ShowDialog();
         }
+
+        private void produtosInternosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            ProdutosInternos frmProdutoInternos = new ProdutosInternos();
+            frmProdutoInternos.ShowDialog();
+        }
     }
 }

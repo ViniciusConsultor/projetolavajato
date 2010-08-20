@@ -165,6 +165,14 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnCadastraCliente_Click(object sender, EventArgs e)
         {
+            Cliente clientePlaca = new Cliente();
+            cliente.Placa = placa.Text;
+            if (clienteBL.Existe(this.cliente))
+            {
+                MessageBox.Show("Cliente já existente na base, favor mudar a placa", "Atenção");
+                return;
+            }
+
             SetUpFieldsCliente();
             ClienteInsert();
             MessageBox.Show("Cliente salvo com sucesso!", "Atenção");
@@ -228,20 +236,18 @@ namespace HenryCorporation.Lavajato.Presentation
             servicoBL.Update(this.servico);
 
             //Imprimir recibo
-            new Configuracao().EmiteRecibo(this.servico);
+            new Configuracao().EmiteReciboPC(this.servico);
         
         }
 
         private void SomaTotal()
         {
-            decimal total = 0;
-            decimal qtdeTotal = 0;
+            decimal total = 0, qtdeTotal = 0;
             foreach (ServicoItem si in this.servico.ServicoItem)
             {
                 total += si.Produto.ValorUnitario * si.Quantidade;
                 qtdeTotal += si.Quantidade;
             }
-
             this.servico.Total = total;
         }
 

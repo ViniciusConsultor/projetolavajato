@@ -58,6 +58,7 @@
             this.clienteToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.clientePorPlacaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.produtosInternosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -92,7 +93,7 @@
             this.cadastroClienteToolStripMenuItem,
             this.consultaClienteToolStripMenuItem});
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
             // 
             // cadastroClienteToolStripMenuItem
@@ -115,7 +116,7 @@
             this.cadatroProdutosToolStripMenuItem,
             this.procuraUsuariosToolStripMenuItem});
             this.usuáriosToolStripMenuItem.Name = "usuáriosToolStripMenuItem";
-            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.usuáriosToolStripMenuItem.Text = "Usuários";
             // 
             // cadatroProdutosToolStripMenuItem
@@ -136,9 +137,10 @@
             // 
             this.produtoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.categoriaProdutosToolStripMenuItem,
-            this.procuraProdutosToolStripMenuItem});
+            this.procuraProdutosToolStripMenuItem,
+            this.produtosInternosToolStripMenuItem});
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.produtoToolStripMenuItem.Text = "Mercadorias";
             // 
             // categoriaProdutosToolStripMenuItem
@@ -158,14 +160,14 @@
             // promoçõesToolStripMenuItem
             // 
             this.promoçõesToolStripMenuItem.Name = "promoçõesToolStripMenuItem";
-            this.promoçõesToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
-            this.promoçõesToolStripMenuItem.Text = "Cadastro de Convênios";
+            this.promoçõesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.promoçõesToolStripMenuItem.Text = "Convênios";
             this.promoçõesToolStripMenuItem.Click += new System.EventHandler(this.promoçõesToolStripMenuItem_Click);
             // 
             // credorToolStripMenuItem
             // 
             this.credorToolStripMenuItem.Name = "credorToolStripMenuItem";
-            this.credorToolStripMenuItem.Size = new System.Drawing.Size(197, 22);
+            this.credorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
             this.credorToolStripMenuItem.Text = "Credor";
             this.credorToolStripMenuItem.Click += new System.EventHandler(this.credorToolStripMenuItem_Click);
             // 
@@ -302,6 +304,13 @@
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // produtosInternosToolStripMenuItem
+            // 
+            this.produtosInternosToolStripMenuItem.Name = "produtosInternosToolStripMenuItem";
+            this.produtosInternosToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.produtosInternosToolStripMenuItem.Text = "3- Produtos Internos";
+            this.produtosInternosToolStripMenuItem.Click += new System.EventHandler(this.produtosInternosToolStripMenuItem_Click);
+            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -353,6 +362,7 @@
         private System.Windows.Forms.ToolStripMenuItem clienteToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem clientePorPlacaToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem servicoToolStripMenuItem1;
+        private System.Windows.Forms.ToolStripMenuItem produtosInternosToolStripMenuItem;
     }
 }
 
