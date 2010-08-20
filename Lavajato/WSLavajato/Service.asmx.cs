@@ -103,8 +103,21 @@ namespace WSLavajato
         public Cliente ClienteAdd(Cliente cliente)
         {
             return clienteDao.Add(cliente);
-        }       
+        }
 
+        [WebMethod]
+        public void ClienteUpdate(Cliente cliente)
+        {
+             clienteDao.Update(cliente);
+        }
+
+        [WebMethod]
+        public bool ClienteExiste(Cliente cliente)
+        {
+            return clienteDao.Existe(cliente);
+        }
+
+        
         #endregion
 
         #region Configuracao

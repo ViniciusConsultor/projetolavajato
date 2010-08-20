@@ -90,11 +90,13 @@ namespace HenryCorporation.Lavajato.Operacional
             return dia + "/" + mes + "/" + hora.Year;
         }
 
+        #region Impressão Palm
+
         private Servico servico;
         private  PrintDocument recibo;
         public int EmiteRecibo(Servico servico)
         {
-            this.servico = servico;
+            this.servico =  servico;
             if (this.servico.ID == 0)
                 return 0;
 
@@ -169,7 +171,7 @@ namespace HenryCorporation.Lavajato.Operacional
                 strCabecalho.Append(desc  + qtde  + valUni + tot + enter);
                 
             }
-            strCabecalho.Append("                                       Valor Total: " + somaTotal);
+            strCabecalho.Append("                                         Valor Total: " + somaTotal);
 
             strCabecalho.Append(enter);
             strCabecalho.Append(enter);
@@ -177,19 +179,126 @@ namespace HenryCorporation.Lavajato.Operacional
             strCabecalho.Append(enter);
             strCabecalho.Append(enter);
             strCabecalho.Append(enter);
-            
-            strCabecalho.Append("LAVEVIP LAVAJATO" + enter);
-            strCabecalho.Append("Rua da Bahia, 2244, Lourdes" + enter);
-            strCabecalho.Append("Minas Tenis Clube-Piso 1" + enter);
-            strCabecalho.Append("(31)xxxx-xxxx" + enter);
-            strCabecalho.Append("(31)xxxx-xxxx" + enter);
-            strCabecalho.Append("(31)xxxx-xxxx" + enter);
-            strCabecalho.Append("(31)xxxx-xxxx" + enter);
+
+            strCabecalho.Append("LAVEVIP - Estetica Automotiva  Nº" + this.servico.OrdemServico + enter);
+            strCabecalho.Append("Av. Pres. Carlos Luz, 3001, Caiçara" + enter);
+            strCabecalho.Append("Area QVip1 2ºP" + enter);
+            strCabecalho.Append("               LAVEVIP" + enter);
+            strCabecalho.Append("O melhor amigo do seu veiculo" + enter);
+            strCabecalho.Append("(31)3415-8085" + enter);
+            strCabecalho.Append("(31)9208-9977" + enter);
 
             ev.Graphics.DrawString(strCabecalho.ToString(), myFont1, Brushes.Black, 30, 30);
             ev.HasMorePages = false;
         }
 
+        #endregion
 
+        #region PC
+
+        private Servico servicoPC;
+        private PrintDocument reciboPC;
+        public int EmiteReciboPC(Servico servicoPC)
+        {
+            this.servicoPC = servicoPC;
+            if (this.servicoPC.ID == 0)
+                return 0;
+
+            reciboPC = new PrintDocument();
+            reciboPC.PrintPage += new PrintPageEventHandler(this.recibo_PrintPagePC);
+            reciboPC.Print();
+
+            return 1;
+        }
+        private void recibo_PrintPagePC(object sender, PrintPageEventArgs ev)
+        {
+            string enter = "\n";
+            Pen myPen = new Pen(Brushes.Black);
+            Point pt1 = new Point(30, 53);
+            Font myFont1 = new Font("Arial", 9);
+
+
+            string hora = servicoPC.Entrada.Hour.ToString().Length == 1 ? "0" + servicoPC.Entrada.Hour.ToString() : servicoPC.Entrada.Hour.ToString();
+
+            string minuto = servicoPC.Entrada.Minute.ToString().Length == 1 ? "0" + servicoPC.Entrada.Minute.ToString() : servicoPC.Entrada.Minute.ToString();
+            string entrada = servicoPC.Entrada.ToShortDateString() + " " + hora + ":" + minuto;
+            decimal somaTotal = 0;
+            StringBuilder strCabecalho = new StringBuilder();
+
+            strCabecalho.Append("--------------------------------------------------" + enter);
+            strCabecalho.Append("Placa: " + servicoPC.Cliente.Placa + "  Veículo:" + servicoPC.Cliente.Veiculo + "  Cor:" + servicoPC.Cliente.Cor + "" + enter);
+            strCabecalho.Append("Nome:  " + servicoPC.Cliente.Nome + "      Fone:" + servicoPC.Cliente.Telefone + "" + enter);
+            strCabecalho.Append("Entrada:  " + entrada + "   Saida:" + servicoPC.Saida.Hour + ":" + servicoPC.Saida.Second + "" + enter);
+            strCabecalho.Append("--------------------------------------------------" + enter);
+            strCabecalho.Append("SERVICO             QTDE.     VALOR   TOTAL" + enter);
+
+            string desc = "";
+            foreach (var item in servicoPC.ServicoItem)
+            {
+                if (item.Produto.Descricao.Length > 16)
+                {
+                    desc = item.Produto.Descricao.Remove(16);
+                }
+                else if (item.Produto.Descricao.Length == 16)
+                {
+
+                }
+                else
+                {
+                    desc = item.Produto.Descricao;
+                    for (int i = 0; i < 17 - item.Produto.Descricao.Length; i++)
+                    {
+                        desc += "  ";
+                    }
+                }
+
+                string qtde = item.Quantidade.ToString();
+                string valUni = item.Produto.ValorUnitario.ToString("C").Replace("R$", "");
+                string tot = (item.Produto.ValorUnitario * item.Quantidade).ToString("C").Replace("R$", "");
+                somaTotal += Configuracao.ConverteParaDecimal(tot);
+
+                if (valUni.Length == 5)
+                    valUni = "              " + valUni;
+                else if (valUni.Length == 4)
+                    valUni = "              " + valUni;
+                else if (valUni.Length == 6)
+                    valUni = "              " + valUni;
+
+                if (tot.Length == 5)
+                    tot = "    " + tot;
+                else if (tot.Length == 4)
+                    tot = "      " + tot;
+                else if (tot.Length == 6)
+                    tot = "   " + tot;
+
+                strCabecalho.Append(desc + qtde + valUni + tot + enter);
+
+            }
+            strCabecalho.Append("                                           Valor Total: " + somaTotal);
+            //Image newImage = Image.FromFile("carro.jpg");
+            //ev.Graphics.DrawImage(newImage, -20, ev.PageSettings.PrinterSettings.PaperSizes);
+
+            strCabecalho.Append(enter);
+            strCabecalho.Append(enter);
+            strCabecalho.Append(enter);
+            strCabecalho.Append(enter);
+            strCabecalho.Append(enter);
+            strCabecalho.Append(enter);
+            strCabecalho.Append(enter);
+            strCabecalho.Append(enter);
+
+            strCabecalho.Append("LAVEVIP - Estetica Automotiva  Nº" + this.servicoPC.OrdemServico + enter);
+            strCabecalho.Append("Av. Pres. Carlos Luz, 3001, Caiçara" + enter);
+            strCabecalho.Append("Area QVip1 2ºP" + enter);
+            strCabecalho.Append("               LAVEVIP" + enter);
+            strCabecalho.Append("O melhor amigo do seu veiculo" + enter);
+            strCabecalho.Append("(31)3415-8085" + enter);
+            strCabecalho.Append("(31)9208-9977" + enter);
+
+            ev.Graphics.DrawString(strCabecalho.ToString(), myFont1, Brushes.Black, 30, 30);
+            ev.HasMorePages = false;
+        }
+
+        #endregion
     }
 }

@@ -57,6 +57,7 @@
     <Compile Include="FormaPagamentoDAO.cs" />
     <Compile Include="PessoaDAO.cs" />
     <Compile Include="ProdutoDAO.cs" />
+    <Compile Include="ProdutoInternoDAO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RetiradaDAO.cs" />
     <Compile Include="ServicoDAO.cs" />

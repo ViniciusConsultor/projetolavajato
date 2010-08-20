@@ -25,6 +25,8 @@ namespace HenryCorporation.Lavajato.DomainModel
         public int Cancelado { get; set; }
         public int Lavado { get; set; }
         public int Finalizado { get; set; }
+        public int AcertoFuturo { get; set; }
+        public int Pago { get; set; }
 
         public Servico()
         {

@@ -74,7 +74,10 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public bool Existe(Cliente cliente)
         {
-            return false;
+            string query = sql + " SELECT COUNT(*) FROM CLIENTES WHERE PLACA = '" + cliente.Placa.Trim() + "'";
+            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            DataSet dataSet = dataBaseHelper.Run(this.ConnectionString);
+            return (dataSet.Tables[0].Rows.Count > 0);
         }
 
         public Cliente ByID(Cliente cliente)
@@ -135,6 +138,16 @@ namespace HenryCorporation.Lavajato.DataAccess
 
             Cliente cli = SetUpField(dataSet);
             return cli;
+        }
+
+        public string ByPlaca(string placa)
+        {
+            string query = sql + " Where [Delete] = 0 and placa = '" + placa + "'";
+            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            DataSet dataSet = dataBaseHelper.Run(this.ConnectionString);
+
+            Cliente cli = SetUpField(dataSet);
+            return cli.ID + "," + cli.Placa;
         }
 
         private Cliente SetUpField(DataSet dataSet)
