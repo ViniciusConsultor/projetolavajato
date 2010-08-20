@@ -1,6 +1,6 @@
 ﻿namespace HenryCorporation.Lavajato.Presentation
 {
-    partial class frmProduto
+    partial class ProdutosInternos
     {
         /// <summary>
         /// Required designer variable.
@@ -71,11 +71,11 @@
             // 
             this.tabProdutos.Controls.Add(this.tabProdutoPesquisa);
             this.tabProdutos.Controls.Add(this.tabProduto);
-            this.tabProdutos.Location = new System.Drawing.Point(2, 3);
+            this.tabProdutos.Location = new System.Drawing.Point(0, 3);
             this.tabProdutos.Name = "tabProdutos";
             this.tabProdutos.SelectedIndex = 0;
             this.tabProdutos.Size = new System.Drawing.Size(407, 416);
-            this.tabProdutos.TabIndex = 58;
+            this.tabProdutos.TabIndex = 59;
             // 
             // tabProdutoPesquisa
             // 
@@ -119,9 +119,6 @@
             this.nomePesquisa.Name = "nomePesquisa";
             this.nomePesquisa.Size = new System.Drawing.Size(378, 21);
             this.nomePesquisa.TabIndex = 61;
-            this.nomePesquisa.TextChanged += new System.EventHandler(this.nomePesquisa_TextChanged);
-            this.nomePesquisa.Leave += new System.EventHandler(this.nomePesquisa_Leave);
-            this.nomePesquisa.Enter += new System.EventHandler(this.nomePesquisa_Enter);
             // 
             // grdProdutos
             // 
@@ -130,7 +127,7 @@
             this.grdProdutos.Name = "grdProdutos";
             this.grdProdutos.Size = new System.Drawing.Size(386, 310);
             this.grdProdutos.TabIndex = 60;
-            this.grdProdutos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.grdProdutos_MouseDoubleClick);
+            this.grdProdutos.DoubleClick += new System.EventHandler(this.grdProdutos_DoubleClick);
             // 
             // tabProduto
             // 
@@ -160,7 +157,6 @@
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
-            this.btnSalvar.Leave += new System.EventHandler(this.btnSalvar_Leave);
             // 
             // btnSair
             // 
@@ -171,7 +167,6 @@
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
-            this.btnSair.Leave += new System.EventHandler(this.btnSair_Leave);
             // 
             // btnAlterar
             // 
@@ -182,7 +177,6 @@
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
-            this.btnAlterar.Leave += new System.EventHandler(this.btnAlterar_Leave);
             // 
             // btnExcluir
             // 
@@ -193,7 +187,6 @@
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
-            this.btnExcluir.Leave += new System.EventHandler(this.btnExcluir_Leave);
             // 
             // btnNovo
             // 
@@ -203,8 +196,6 @@
             this.btnNovo.TabIndex = 8;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
-            this.btnNovo.Leave += new System.EventHandler(this.btnNovo_Leave);
             // 
             // groupBox4
             // 
@@ -256,9 +247,6 @@
             this.minimo.Name = "minimo";
             this.minimo.Size = new System.Drawing.Size(83, 20);
             this.minimo.TabIndex = 5;
-            this.minimo.TextChanged += new System.EventHandler(this.minimo_TextChanged);
-            this.minimo.Leave += new System.EventHandler(this.minimo_Leave);
-            this.minimo.Enter += new System.EventHandler(this.minimo_Enter);
             // 
             // label1
             // 
@@ -276,9 +264,6 @@
             this.quantidade.Name = "quantidade";
             this.quantidade.Size = new System.Drawing.Size(83, 20);
             this.quantidade.TabIndex = 5;
-            this.quantidade.TextChanged += new System.EventHandler(this.quantidade_TextChanged);
-            this.quantidade.Leave += new System.EventHandler(this.quantidade_Leave);
-            this.quantidade.Enter += new System.EventHandler(this.quantidade_Enter);
             // 
             // groupBox3
             // 
@@ -297,9 +282,6 @@
             this.precoVenda.Name = "precoVenda";
             this.precoVenda.Size = new System.Drawing.Size(104, 20);
             this.precoVenda.TabIndex = 4;
-            this.precoVenda.TextChanged += new System.EventHandler(this.precoVenda_TextChanged);
-            this.precoVenda.Leave += new System.EventHandler(this.precoVenda_Leave);
-            this.precoVenda.Enter += new System.EventHandler(this.precoVenda_Enter);
             // 
             // groupBox2
             // 
@@ -318,9 +300,6 @@
             this.precoCompra.Name = "precoCompra";
             this.precoCompra.Size = new System.Drawing.Size(104, 20);
             this.precoCompra.TabIndex = 3;
-            this.precoCompra.TextChanged += new System.EventHandler(this.precoCompra_TextChanged);
-            this.precoCompra.Leave += new System.EventHandler(this.precoCompra_Leave);
-            this.precoCompra.Enter += new System.EventHandler(this.precoCompra_Enter);
             // 
             // groupBox1
             // 
@@ -366,13 +345,10 @@
             "SP",
             "SE ",
             "TO"});
-            this.cmbCategoriaProduto.Location = new System.Drawing.Point(288, 28);
+            this.cmbCategoriaProduto.Location = new System.Drawing.Point(287, 27);
             this.cmbCategoriaProduto.Name = "cmbCategoriaProduto";
             this.cmbCategoriaProduto.Size = new System.Drawing.Size(97, 21);
-            this.cmbCategoriaProduto.TabIndex = 2;
-            this.cmbCategoriaProduto.SelectedIndexChanged += new System.EventHandler(this.cmbCategoriaProduto_SelectedIndexChanged);
-            this.cmbCategoriaProduto.Leave += new System.EventHandler(this.cmbCategoriaProduto_Leave);
-            this.cmbCategoriaProduto.Enter += new System.EventHandler(this.cmbCategoriaProduto_Enter);
+            this.cmbCategoriaProduto.TabIndex = 15;
             // 
             // label7
             // 
@@ -390,8 +366,6 @@
             this.descricao.Name = "descricao";
             this.descricao.Size = new System.Drawing.Size(275, 20);
             this.descricao.TabIndex = 1;
-            this.descricao.Leave += new System.EventHandler(this.descricao_Leave);
-            this.descricao.Enter += new System.EventHandler(this.descricao_Enter);
             // 
             // label2
             // 
@@ -402,18 +376,14 @@
             this.label2.TabIndex = 13;
             this.label2.Text = "Descrição do Produto:";
             // 
-            // frmProduto
+            // ProdutosInternos
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(414, 425);
+            this.ClientSize = new System.Drawing.Size(410, 422);
             this.Controls.Add(this.tabProdutos);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.MaximizeBox = false;
-            this.Name = "frmProduto";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Cadastro Produto";
-            this.Load += new System.EventHandler(this.frmProduto_Load);
+            this.Name = "ProdutosInternos";
+            this.Text = "Produtos Internos";
             this.tabProdutos.ResumeLayout(false);
             this.tabProdutoPesquisa.ResumeLayout(false);
             this.groupBox5.ResumeLayout(false);
@@ -436,31 +406,31 @@
 
         private System.Windows.Forms.TabControl tabProdutos;
         private System.Windows.Forms.TabPage tabProdutoPesquisa;
+        private System.Windows.Forms.GroupBox groupBox5;
+        private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.TextBox nomePesquisa;
+        private System.Windows.Forms.DataGridView grdProdutos;
         private System.Windows.Forms.TabPage tabProduto;
-        private System.Windows.Forms.GroupBox groupBox1;
-        private System.Windows.Forms.TextBox descricao;
-        private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.GroupBox groupBox2;
-        private System.Windows.Forms.ComboBox cmbCategoriaProduto;
-        private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.TextBox precoCompra;
+        private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.Button btnAlterar;
+        private System.Windows.Forms.Button btnExcluir;
+        private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.GroupBox groupBox4;
+        private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.TextBox minimo;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox quantidade;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox precoVenda;
-        private System.Windows.Forms.DataGridView grdProdutos;
-        private System.Windows.Forms.GroupBox groupBox5;
-        private System.Windows.Forms.Label label12;
-        private System.Windows.Forms.TextBox nomePesquisa;
-        private System.Windows.Forms.Button btnSalvar;
-        private System.Windows.Forms.Button btnSair;
-        private System.Windows.Forms.Button btnAlterar;
-        private System.Windows.Forms.Button btnExcluir;
-        private System.Windows.Forms.Button btnNovo;
-        private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox precoCompra;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.Label label7;
+        private System.Windows.Forms.TextBox descricao;
+        private System.Windows.Forms.Label label2;
+        private System.Windows.Forms.ComboBox cmbCategoriaProduto;
     }
 }
