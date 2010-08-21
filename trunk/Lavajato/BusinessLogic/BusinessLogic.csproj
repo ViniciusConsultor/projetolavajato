@@ -52,6 +52,7 @@
     <Compile Include="ContaPagarBL.cs" />
     <Compile Include="ConvenioBL.cs" />
     <Compile Include="CredorBL.cs" />
+    <Compile Include="EstoqueDAO.cs" />
     <Compile Include="FormaPagamentoBL.cs" />
     <Compile Include="ProdutoBL.cs" />
     <Compile Include="ProdutoInternoBL.cs" />

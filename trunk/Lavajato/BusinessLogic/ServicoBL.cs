@@ -11,10 +11,15 @@ namespace HenryCorporation.Lavajato.BusinessLogic
     public class ServicoBL
     {
         ServicoDAO servicoDAO = new ServicoDAO();
+        private const int qtdeMaximaDeOrdensDeServico = 1000;
+        
 
         public ServicoBL()
         {
+          
         }
+
+        #region Metodos GRUD Servico
 
         public Servico ByCliente(Cliente cliente)
         {
@@ -46,6 +51,10 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             servicoDAO.Update(servico);
         }
 
+        #endregion
+
+        #region Metodos GRUD ServicoItem
+
         public void ServicoItemInsert(ServicoItem servicoItem)
         {
             servicoDAO.ItemDoServicoInsert(servicoItem);
@@ -66,6 +75,8 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             return servicoDAO.ByServicoItemID(servicoItem);
         }
 
+        #endregion
+
         public DataTable CriaGrid(Servico servico)
         {
             DataSet dataSet = new DataSet();
@@ -83,6 +94,32 @@ namespace HenryCorporation.Lavajato.BusinessLogic
                 table.Rows.Add(row);
             }
             return table;
+        }
+
+        public DataTable CriaGridCarrosLavano()
+        {
+            DataSet dataSet = new DataSet();
+            DataTable table = new DataTable();
+            dataSet.Tables.Add(table);
+            table.Columns.AddRange(ColunasCarroLavando());
+            foreach (Servico si in servicoDAO.GetCarrosLavando())
+            {
+                DataRow row = table.NewRow();
+                row["Placa"] = si.Cliente.Placa;
+                row["Carro"] = si.Cliente.Veiculo;
+                row["Saida"] = si.Saida.ToShortTimeString();
+                table.Rows.Add(row);
+            }
+            return table;
+        }
+
+        public int OrdemServicoMax()
+        {
+            int ordemServico = servicoDAO.OrdemServicoMax();
+            if (ordemServico < qtdeMaximaDeOrdensDeServico)
+                return ordemServico += 1;
+            else
+                return ordemServico = 1;
         }
 
         private DataColumn[] CarregaColunas()
@@ -109,6 +146,26 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             DataColumn Total = new DataColumn();
             Total.ColumnName = "Total";
             columns[4] = Total;
+            return columns;
+        }
+
+
+        private DataColumn[] ColunasCarroLavando()
+        {
+            DataColumn[] columns = new DataColumn[4];
+
+            DataColumn placa = new DataColumn();
+            placa.ColumnName = "Placa";
+            columns[0] = placa;
+
+            DataColumn clie = new DataColumn();
+            clie.ColumnName = "Carro";
+            columns[1] = clie;
+
+            DataColumn sai = new DataColumn();
+            sai.ColumnName = "Saida";
+            columns[2] = sai;
+
             return columns;
         }
 
