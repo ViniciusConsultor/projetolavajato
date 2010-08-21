@@ -33,11 +33,25 @@ namespace WSLavajato
         private ServicoDAO servicoDao = new ServicoDAO();
         private ClienteDAO clienteDao = new ClienteDAO();
         private ProdutoDAO produtoDao = new ProdutoDAO();
+        private ServicoBL servicoBL = new ServicoBL();
+
+        private const int qtdeMaximaDeOrdensDeServico = 1000;
         
         [WebMethod]
         public Servico ServicoAdd(Servico servico)
         {
+            
+            servico.OrdemServico = GetOrdemServico();
             return servicoDao.Add(servico);
+        }
+
+        private int GetOrdemServico()
+        {
+            int ordemServico = servicoDao.OrdemServicoMax();
+            if (ordemServico < qtdeMaximaDeOrdensDeServico)
+                return ordemServico += 1;
+            else
+                return ordemServico = 1;
         }
 
         [WebMethod]
@@ -59,7 +73,11 @@ namespace WSLavajato
             return servicobl.CriaGrid(servico);
         }
 
-
+        [WebMethod]
+        public DataTable CriaGridCarrosLavano()
+        {
+            return servicoBL.CriaGridCarrosLavano();
+        }
 
         #endregion
 
@@ -123,10 +141,10 @@ namespace WSLavajato
         #region Configuracao
 
         [WebMethod]
-        public int EmiteRecibo(HenryCorporation.Lavajato.DomainModel.Servico servico)
+        public int EmiteRecibo(HenryCorporation.Lavajato.DomainModel.Servico servico, string avaria)
         {
             HenryCorporation.Lavajato.Operacional.Configuracao confi = new HenryCorporation.Lavajato.Operacional.Configuracao();
-            return confi.EmiteRecibo(servico);
+            return confi.EmiteRecibo(servico, avaria);
         }
         
         #endregion
