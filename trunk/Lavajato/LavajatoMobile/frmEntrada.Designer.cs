@@ -29,7 +29,9 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
+            this.menuItem2 = new System.Windows.Forms.MenuItem();
             this.label1 = new System.Windows.Forms.Label();
             this.placa = new System.Windows.Forms.TextBox();
             this.veiculo = new System.Windows.Forms.TextBox();
@@ -43,11 +45,22 @@
             this.telefone = new System.Windows.Forms.TextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.hora = new System.Windows.Forms.ComboBox();
-            this.entrada = new System.Windows.Forms.DateTimePicker();
             this.label5 = new System.Windows.Forms.Label();
             this.min = new System.Windows.Forms.ComboBox();
             this.textBox1 = new System.Windows.Forms.TextBox();
+            this.btnCadastrarServicos = new System.Windows.Forms.Button();
+            this.entrada = new System.Windows.Forms.DateTimePicker();
+            this.inputPanel1 = new Microsoft.WindowsCE.Forms.InputPanel(this.components);
             this.SuspendLayout();
+            // 
+            // mainMenu1
+            // 
+            this.mainMenu1.MenuItems.Add(this.menuItem2);
+            // 
+            // menuItem2
+            // 
+            this.menuItem2.Text = "Carros Lavando";
+            this.menuItem2.Click += new System.EventHandler(this.menuItem2_Click);
             // 
             // label1
             // 
@@ -75,6 +88,7 @@
             this.veiculo.Name = "veiculo";
             this.veiculo.Size = new System.Drawing.Size(117, 26);
             this.veiculo.TabIndex = 2;
+            this.veiculo.TextChanged += new System.EventHandler(this.veiculo_TextChanged);
             this.veiculo.GotFocus += new System.EventHandler(this.veiculo_GotFocus);
             this.veiculo.LostFocus += new System.EventHandler(this.veiculo_LostFocus);
             // 
@@ -93,6 +107,7 @@
             this.nome.Name = "nome";
             this.nome.Size = new System.Drawing.Size(153, 26);
             this.nome.TabIndex = 5;
+            this.nome.TextChanged += new System.EventHandler(this.nome_TextChanged);
             this.nome.GotFocus += new System.EventHandler(this.nome_GotFocus);
             this.nome.LostFocus += new System.EventHandler(this.nome_LostFocus);
             // 
@@ -111,6 +126,7 @@
             this.cor.Name = "cor";
             this.cor.Size = new System.Drawing.Size(123, 26);
             this.cor.TabIndex = 3;
+            this.cor.TextChanged += new System.EventHandler(this.cor_TextChanged);
             this.cor.GotFocus += new System.EventHandler(this.cor_GotFocus);
             this.cor.LostFocus += new System.EventHandler(this.cor_LostFocus);
             // 
@@ -136,7 +152,7 @@
             this.btnCadastraCliente.Location = new System.Drawing.Point(153, 91);
             this.btnCadastraCliente.Name = "btnCadastraCliente";
             this.btnCadastraCliente.Size = new System.Drawing.Size(87, 26);
-            this.btnCadastraCliente.TabIndex = 9;
+            this.btnCadastraCliente.TabIndex = 8;
             this.btnCadastraCliente.Text = "Cad. Cliente";
             this.btnCadastraCliente.Click += new System.EventHandler(this.btnCadastraCliente_Click);
             // 
@@ -161,26 +177,13 @@
             // 
             // hora
             // 
-            this.hora.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular);
+            this.hora.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
             this.hora.Location = new System.Drawing.Point(147, 130);
             this.hora.Name = "hora";
-            this.hora.Size = new System.Drawing.Size(41, 30);
-            this.hora.TabIndex = 7;
+            this.hora.Size = new System.Drawing.Size(41, 27);
+            this.hora.TabIndex = 6;
             this.hora.LostFocus += new System.EventHandler(this.hora_LostFocus);
             this.hora.GotFocus += new System.EventHandler(this.hora_GotFocus);
-            // 
-            // entrada
-            // 
-            this.entrada.CustomFormat = "hh:mm";
-            this.entrada.Enabled = false;
-            this.entrada.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
-            this.entrada.Location = new System.Drawing.Point(6, 226);
-            this.entrada.Name = "entrada";
-            this.entrada.Size = new System.Drawing.Size(147, 27);
-            this.entrada.TabIndex = 6;
-            this.entrada.Value = new System.DateTime(2010, 8, 15, 17, 45, 0, 0);
-            this.entrada.GotFocus += new System.EventHandler(this.entrada_GotFocus);
-            this.entrada.LostFocus += new System.EventHandler(this.entrada_LostFocus);
             // 
             // label5
             // 
@@ -192,11 +195,11 @@
             // 
             // min
             // 
-            this.min.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular);
+            this.min.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
             this.min.Location = new System.Drawing.Point(188, 130);
             this.min.Name = "min";
-            this.min.Size = new System.Drawing.Size(52, 30);
-            this.min.TabIndex = 8;
+            this.min.Size = new System.Drawing.Size(52, 27);
+            this.min.TabIndex = 7;
             this.min.LostFocus += new System.EventHandler(this.min_LostFocus);
             this.min.GotFocus += new System.EventHandler(this.min_GotFocus);
             // 
@@ -208,12 +211,36 @@
             this.textBox1.Size = new System.Drawing.Size(146, 26);
             this.textBox1.TabIndex = 16;
             // 
+            // btnCadastrarServicos
+            // 
+            this.btnCadastrarServicos.Location = new System.Drawing.Point(0, 157);
+            this.btnCadastrarServicos.Name = "btnCadastrarServicos";
+            this.btnCadastrarServicos.Size = new System.Drawing.Size(240, 23);
+            this.btnCadastrarServicos.TabIndex = 24;
+            this.btnCadastrarServicos.Text = "Cadastrar Servicos";
+            this.btnCadastrarServicos.Click += new System.EventHandler(this.btnCadastrarServicos_Click);
+            // 
+            // entrada
+            // 
+            this.entrada.CustomFormat = "hh:mm";
+            this.entrada.Enabled = false;
+            this.entrada.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
+            this.entrada.Location = new System.Drawing.Point(0, 202);
+            this.entrada.Name = "entrada";
+            this.entrada.Size = new System.Drawing.Size(147, 27);
+            this.entrada.TabIndex = 6;
+            this.entrada.Value = new System.DateTime(2010, 8, 15, 17, 45, 0, 0);
+            this.entrada.Visible = false;
+            this.entrada.GotFocus += new System.EventHandler(this.entrada_GotFocus);
+            this.entrada.LostFocus += new System.EventHandler(this.entrada_LostFocus);
+            // 
             // frmEntrada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.btnCadastrarServicos);
             this.Controls.Add(this.textBox1);
             this.Controls.Add(this.min);
             this.Controls.Add(this.hora);
@@ -233,7 +260,7 @@
             this.Controls.Add(this.label1);
             this.Menu = this.mainMenu1;
             this.Name = "frmEntrada";
-            this.Text = "frmEntrada";
+            this.Text = "Entrada";
             this.ResumeLayout(false);
 
         }
@@ -253,10 +280,13 @@
         private System.Windows.Forms.TextBox telefone;
         private System.Windows.Forms.Label label7;
         private System.Windows.Forms.ComboBox hora;
-        private System.Windows.Forms.DateTimePicker entrada;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox min;
         private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button btnCadastrarServicos;
+        private System.Windows.Forms.MenuItem menuItem2;
+        private System.Windows.Forms.DateTimePicker entrada;
+        private Microsoft.WindowsCE.Forms.InputPanel inputPanel1;
 
     }
 }
