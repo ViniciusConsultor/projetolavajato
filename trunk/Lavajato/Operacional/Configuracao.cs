@@ -16,6 +16,8 @@ namespace HenryCorporation.Lavajato.Operacional
 
         }
 
+        #region Metodos Casas Decimais e Inteiros
+
         public static decimal ConverteParaDecimal(string valor)
         {
             if (valor.Length == 0)
@@ -47,6 +49,9 @@ namespace HenryCorporation.Lavajato.Operacional
             return i;
         }
 
+        #endregion
+
+        #region Trabalha com hora e dada
 
         public static object[] CarregaHora()
         {
@@ -90,13 +95,17 @@ namespace HenryCorporation.Lavajato.Operacional
             return dia + "/" + mes + "/" + hora.Year;
         }
 
+        #endregion
+
         #region Impressão Palm
 
         private Servico servico;
         private  PrintDocument recibo;
-        public int EmiteRecibo(Servico servico)
+        private string avarias;
+        public int EmiteRecibo(Servico servico, string avarias)
         {
             this.servico =  servico;
+            this.avarias = avarias;
             if (this.servico.ID == 0)
                 return 0;
 
@@ -109,24 +118,27 @@ namespace HenryCorporation.Lavajato.Operacional
         
         private void recibo_PrintPage(object sender, PrintPageEventArgs ev)
         {
+            string[] avariasTemp = null;
+            if (avarias.Length > 0)
+                avariasTemp = avarias.Split(new string[] { " " }, StringSplitOptions.None);
+
             string enter = "\n";
             Pen myPen = new Pen(Brushes.Black);
             Point pt1 = new Point(30, 53);
             Font myFont1 = new Font("Arial", 9);
 
-
             string hora = servico.Entrada.Hour.ToString().Length == 1 ? "0" + servico.Entrada.Hour.ToString() : servico.Entrada.Hour.ToString();
-
             string minuto =  servico.Entrada.Minute.ToString().Length == 1 ? "0" + servico.Entrada.Minute.ToString() : servico.Entrada.Minute.ToString();
             string entrada =  servico.Entrada.ToShortDateString()+ " " + hora+":"+minuto;
             decimal somaTotal = 0;
             StringBuilder strCabecalho = new StringBuilder();
             
-            strCabecalho.Append("--------------------------------------------" + enter);
+            strCabecalho.Append("---------------------------------------------------------" + enter);
+            strCabecalho.Append("Nº: " + this.servico.OrdemServico + enter);
             strCabecalho.Append("Placa: " + servico.Cliente.Placa + "  Veículo:" + servico.Cliente.Veiculo + "  Cor:" + servico.Cliente.Cor + "" + enter);
             strCabecalho.Append("Nome:  " + servico.Cliente.Nome + "      Fone:" + servico.Cliente.Telefone + "" + enter);
             strCabecalho.Append("Entrada:  " + entrada + "   Saida:" + servico.Saida.Hour + ":" + servico.Saida.Second + "" + enter);
-            strCabecalho.Append("--------------------------------------------" + enter);
+            strCabecalho.Append("---------------------------------------------------------" + enter);
             strCabecalho.Append("SERVICO             QTDE.     VALOR   TOTAL" + enter);
 
             string desc = "";
@@ -171,7 +183,14 @@ namespace HenryCorporation.Lavajato.Operacional
                 strCabecalho.Append(desc  + qtde  + valUni + tot + enter);
                 
             }
-            strCabecalho.Append("                                         Valor Total: " + somaTotal);
+            strCabecalho.Append("                                       Valor Total: " + somaTotal + enter);
+            strCabecalho.Append("---------------------------------------------------------" + enter);
+            strCabecalho.Append("Avarias: " + enter);
+            if (avariasTemp != null)
+            {
+                for (int i = 0; i < avariasTemp.Length; i++)
+                    strCabecalho.Append(avariasTemp[i] + " ");
+            }
 
             strCabecalho.Append(enter);
             strCabecalho.Append(enter);
@@ -180,7 +199,7 @@ namespace HenryCorporation.Lavajato.Operacional
             strCabecalho.Append(enter);
             strCabecalho.Append(enter);
 
-            strCabecalho.Append("LAVEVIP - Estetica Automotiva  Nº" + this.servico.OrdemServico + enter);
+            strCabecalho.Append("LAVEVIP - Estetica Automotiva "+enter);
             strCabecalho.Append("Av. Pres. Carlos Luz, 3001, Caiçara" + enter);
             strCabecalho.Append("Area QVip1 2ºP" + enter);
             strCabecalho.Append("               LAVEVIP" + enter);
@@ -226,6 +245,7 @@ namespace HenryCorporation.Lavajato.Operacional
             StringBuilder strCabecalho = new StringBuilder();
 
             strCabecalho.Append("--------------------------------------------------" + enter);
+            strCabecalho.Append("Nº: " + this.servico.OrdemServico + enter);
             strCabecalho.Append("Placa: " + servicoPC.Cliente.Placa + "  Veículo:" + servicoPC.Cliente.Veiculo + "  Cor:" + servicoPC.Cliente.Cor + "" + enter);
             strCabecalho.Append("Nome:  " + servicoPC.Cliente.Nome + "      Fone:" + servicoPC.Cliente.Telefone + "" + enter);
             strCabecalho.Append("Entrada:  " + entrada + "   Saida:" + servicoPC.Saida.Hour + ":" + servicoPC.Saida.Second + "" + enter);
@@ -287,7 +307,7 @@ namespace HenryCorporation.Lavajato.Operacional
             strCabecalho.Append(enter);
             strCabecalho.Append(enter);
 
-            strCabecalho.Append("LAVEVIP - Estetica Automotiva  Nº" + this.servicoPC.OrdemServico + enter);
+            strCabecalho.Append("LAVEVIP - Estetica Automotiva " + enter);
             strCabecalho.Append("Av. Pres. Carlos Luz, 3001, Caiçara" + enter);
             strCabecalho.Append("Area QVip1 2ºP" + enter);
             strCabecalho.Append("               LAVEVIP" + enter);
