@@ -45,6 +45,7 @@
     <GenerateSerializationAssemblies>Off</GenerateSerializationAssemblies>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.WindowsCE.Forms" />
     <Reference Include="mscorlib" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -58,6 +59,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Configuracao.cs" />
+    <Compile Include="frmAvarias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAvarias.Designer.cs">
+      <DependentUpon>frmAvarias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCarrosLavando.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCarrosLavando.Designer.cs">
+      <DependentUpon>frmCarrosLavando.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmEntrada.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -72,6 +85,14 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <EmbeddedResource Include="frmAvarias.resx">
+      <DependentUpon>frmAvarias.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCarrosLavando.resx">
+      <DependentUpon>frmCarrosLavando.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmEntrada.resx">
       <DependentUpon>frmEntrada.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -99,10 +120,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://192.168.0.156/Service.asmx">
+    <WebReferenceUrl Include="http://192.168.0.157/service.asmx">
       <UrlBehavior>Static</UrlBehavior>
       <RelPath>Web References\WSLavajato\</RelPath>
-      <UpdateFromURL>http://192.168.0.156/Service.asmx</UpdateFromURL>
+      <UpdateFromURL>http://192.168.0.157/service.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -112,6 +133,9 @@
       <CachedSettingsPropName>
       </CachedSettingsPropName>
     </WebReferenceUrl>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Web References\WSLavajato\service.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\WSLavajato\Cliente.datasource">
@@ -124,8 +148,7 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\WSLavajato\Service.disco" />
-    <None Include="Web References\WSLavajato\Service.wsdl" />
+    <None Include="Web References\WSLavajato\service.disco" />
     <None Include="Web References\WSLavajato\Servico.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>

@@ -9,9 +9,9 @@ namespace LavajatoMobile
     {
         public static object[] CarregaHora()
         {
-            object[] h = new object[24];
+            object[] h = new object[25];
             int j = 0;
-            for (int i = 1; i <= 24; i++)
+            for (int i = 0; i <= 24; i++)
             {
                 h[j] = i;
                 j++;
