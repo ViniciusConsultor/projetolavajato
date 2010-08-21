@@ -44,167 +44,6 @@ namespace HenryCorporation.Lavajato.Presentation
             
         }
 
-        private void CarregaLavadores()
-        {
-            cmbLavador.DataSource = new UsuarioBL().GetUsuarioTipoLavador();
-            cmbLavador.DisplayMember = "Nome";
-            cmbLavador.ValueMember = "ID";
-        }
-
-        private void frmCaixa_Load(object sender, EventArgs e)
-        {
-            ordemServico.Focus();
-            CarregaConvenioDosClientes();
-        }
-
-      
-
-        private void ProcuraServico(int ordemServico)
-        {
-            if (ordemServico == 0)
-                return;
-
-            this.servico.OrdemServico = ordemServico;
-            this.servico = servicoBL.ByOrdemServico(servico);
-
-            if (!ExisteServico())
-            {
-                MessageBox.Show("Nenhum ordem servico aberta com esse número!", "Atenção");
-                LimpaCampos();
-                return;
-            }
-            else
-            {
-                //ordem de serviço avulça
-            }
-
-            CarregaCliente(this.servico);
-            CriaTabela(this.servico);
-        }
-
-        private void CarregaConvenioDosClientes()
-        {
-            ConvenioBL convenioBL = new ConvenioBL();
-            convenio.DataSource = convenioBL.GetAll();
-            convenio.DisplayMember = "Nome";
-            convenio.ValueMember = "ID";
-        }
-
-        private bool ExisteServico()
-        {
-            return servicoBL.ExisteServico(this.servico);
-        }
-
-        private void CarregaCliente(Servico servico)
-        {
-            placa.Text = servico.Cliente.Placa;
-            veiculo.Text = servico.Cliente.Veiculo;
-            telefone.Text = servico.Cliente.Telefone;
-            nome.Text = servico.Cliente.Nome;
-            corVeiculo.Text = servico.Cliente.Cor;
-            chbLavado.Checked = Convert.ToBoolean(servico.Lavado);
-            convenio.SelectedValue = servico.Cliente.Convenio.ID;
-        }
-
-        private Convenio SetUpConvenio()
-        {
-            return this.convenio.SelectedIndex > 0 ? new ConvenioBL().ByID(Convert.ToInt32(this.convenio.SelectedValue.ToString())) : new Convenio() { ID = 0 };
-        }
-
-        private void LimpaCampos()
-        {
-            placa.Clear();
-            veiculo.Clear();
-            telefone.Clear();
-            nome.Clear();
-            corVeiculo.Clear();
-            ordemServico.Clear();
-            valor.Clear();
-            totalServico.Clear();
-            desconto.Clear();
-            troco.Clear();
-            this.servico = new Servico();
-            grdServico.DataSource = null;
-        }
-
-        private void CriaTabela(Servico servico)
-        {
-            grdServico.DataSource = servicoBL.CriaGrid(servico);
-            FormadaGrid(grdServico);
-        }
-
-        private void FormadaGrid(DataGridView grdServico)
-        {
-            grdServico.Columns[0].Visible = false;
-            grdServico.Columns[1].Width = 90;
-            grdServico.Columns[2].Width = 80;
-            grdServico.Columns[3].Width = 70;
-            grdServico.Columns[4].Width = 70;
-            for (int i = 0; i < grdServico.Rows.Count; i++)
-            {
-                decimal div = (i % 2);
-                if (div == 0)
-                {
-                    grdServico.BackgroundColor = System.Drawing.Color.AntiqueWhite;
-                }
-            }
-            totalServico.Text = ValorTotalCompra().ToString();
-            this.cmbFormaPagamento.SelectedIndexChanged += cmbFormaPagamento_SelectedIndexChanged;
-            desconto.Text = ValorDesconto().ToString("C").Replace("R$", "");
-        }
-
-        private void btnAlterarQuantidade_Click(object sender, EventArgs e)
-        {
-            AlterarQuantidade();
-        }
-
-        private void AlterarQuantidade()
-        {
-            SetUpServicoItem(this.servicoItem);
-            frmAlterarQuantidadeItem frmAlterarQuantidade = new frmAlterarQuantidadeItem(this.servicoItem);
-            frmAlterarQuantidade.ShowDialog();
-            this.servico = servicoBL.ByID(this.servico);
-            CriaTabela(this.servico);
-        }
-
-        private ServicoItem SetUpServicoItem(ServicoItem servicoItem)
-        {
-            if (this.servicoItem.ID == 0)
-            {
-                MessageBox.Show("Nenhem item selecionado para alteração", "Atenção");
-                return new ServicoItem();
-            }
-
-            this.servicoItem = servicoBL.ByServicoItemID(servicoItem);
-            if (this.servicoItem.ID == 0)
-            {
-                MessageBox.Show("Nenhem item encontrado!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return new ServicoItem();
-            }
-
-            return servicoItem;
-        }
-
-        private void grdServico_MouseClick(object sender, MouseEventArgs e)
-        {
-            this.servicoItem.ID = int.Parse(grdServico.Rows[grdServico.CurrentRow.Index].Cells[0].Value.ToString());
-        }
-
-        private void CarregaProdutos()
-        {
-            ProdutoBL produtoBL = new ProdutoBL();
-            cmbProduto.DataSource = produtoBL.TipoServico(EnumCategoriaProduto.Produto);
-            cmbProduto.DisplayMember = "Descricao";
-            cmbProduto.ValueMember = "ID";
-        }
-
-        private void CarregaFormaPagamento()
-        {
-            cmbFormaPagamento.DataSource = new FormaPagamentoBL().GetAll();
-            cmbFormaPagamento.DisplayMember = "Descricao";
-            cmbFormaPagamento.ValueMember = "ID";
-        }
-
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
             if (quantidade.TextLength == 0)
@@ -224,98 +63,27 @@ namespace HenryCorporation.Lavajato.Presentation
             CriaTabela(this.servico);
         }
 
-        private void CriaServicoItem()
+        private void frmCaixa_Load(object sender, EventArgs e)
         {
-            ServicoItem servicoItem = new ServicoItem();
-            servicoItem.Produto.ID = int.Parse(cmbProduto.SelectedValue.ToString());
-            servicoItem.Quantidade = int.Parse(quantidade.Text);
-            servicoItem.Servico = this.servico;
-            servicoBL.ServicoItemInsert(servicoItem);
+            ordemServico.Focus();
+            CarregaConvenioDosClientes();
         }
 
-        private void FazerVendaAvulsa()
+        private void btnAlterarQuantidade_Click(object sender, EventArgs e)
         {
-            if (this.servico.ID != 0)
-            {
-                return;
-            }
+            AlterarQuantidade();
+        }
 
-            DialogResult result = MessageBox.Show("Deseja fazer venda avulsa?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-            if (result == DialogResult.Yes)
-                CriaServico();
-
+        private void grdServico_MouseClick(object sender, MouseEventArgs e)
+        {
+            this.servicoItem.ID = int.Parse(grdServico.Rows[grdServico.CurrentRow.Index].Cells[0].Value.ToString());
         }
 
         private void btnConcluirVenda_Click(object sender, EventArgs e)
         {
             ConcluirVenda();
-            new Configuracao().EmiteReciboPC(this.servico);
-
             LimpaCampos();
         }
-
-        private void ConcluirVenda()
-        {
-            if (!ExisteServico())
-            {
-                MessageBox.Show("Nenhum serviço encontrado", "Atenção");
-                return;
-            }
-
-            this.servico.Finalizado = 1;
-            this.servico.Lavado = 1;
-            this.servico.Pago = 1;
-            this.servico.Total = Configuracao.ConverteParaDecimal(totalServico.Text);
-            this.servico.SubTotal = Configuracao.ConverteParaDecimal(totalServico.Text);
-            this.servico.Desconto = Configuracao.ConverteParaDecimal(desconto.Text);
-            servicoBL.Update(this.servico);
-        }
-
-        private decimal ValorDesconto()
-        {
-            decimal valorTotalComDesconto = 0;
-            foreach (var si in this.servico.ServicoItem)
-            {
-                if (si.Produto.CategoriaProduto.ID == (int)EnumCategoriaProduto.Servico)
-                    valorTotalComDesconto += si.Quantidade * si.Produto.ValorUnitario;
-
-            }
-
-            if (this.servico.Cliente.Convenio.PorcentagemDesconto > 0)
-                return valorTotalComDesconto * Math.Abs(this.servico.Cliente.Convenio.PorcentagemDesconto/100);
-            else if (this.servico.Cliente.Convenio.Valor > 0)
-                return valorTotalComDesconto - this.servico.Cliente.Convenio.Valor;
-
-            return 0;
-        }
-
-        private decimal ValorTotalCompra()
-        {
-
-            decimal total = 0;
-            for (int i = 0; i < grdServico.Rows.Count - 1; i++)
-                total += Configuracao.ConverteParaDecimal(grdServico.Rows[i].Cells[4].Value.ToString());
-
-            return total;
-        }
-
-        private void cmbFormaPagamento_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            valor.Text = "";
-            if (cmbFormaPagamento.SelectedIndex == 0)
-            {
-                desconto.Enabled = true;
-                troco.Enabled = true;
-            }
-            else
-            {
-                desconto.Enabled = false;
-                troco.Enabled = false;
-                valor.Text = totalServico.Text;
-            }
-        }
-
-        
 
         private void totalServico_TextChanged(object sender, EventArgs e)
         {
@@ -328,8 +96,8 @@ namespace HenryCorporation.Lavajato.Presentation
                 totalServico.Text = total;
                 valor.Focus();
             }
-            
-            
+
+
             if (totalServico.Text.Contains("."))
             {
                 totalServico.Text = totalServico.Text.Remove(totalServico.Text.Length - 1);
@@ -348,20 +116,20 @@ namespace HenryCorporation.Lavajato.Presentation
                 valor.Text = valorServico;
                 desconto.Focus();
             }
-            
-            
+
+
             int num = 0;
             if (!int.TryParse(valor.Text, out num))
                 return;
 
-            
+
             if (valor.Text.Contains("."))
             {
                 valor.Text = valor.Text.Remove(valor.Text.Length - 1);
                 valor.SelectionStart = valor.Text.Length;
             }
 
-            decimal valorText = Convert.ToDecimal(valor.TextLength > 0 ? valor.Text : "0" );
+            decimal valorText = Convert.ToDecimal(valor.TextLength > 0 ? valor.Text : "0");
             decimal valorTotal = Convert.ToDecimal(totalServico.TextLength > 0 ? totalServico.Text : "0");
             if (valorText > valorTotal)
                 troco.Text = (valorText - valorTotal).ToString("C").Replace("R$", "");
@@ -382,7 +150,7 @@ namespace HenryCorporation.Lavajato.Presentation
                 desconto.Text = descontoServico;
                 troco.Focus();
             }
-            
+
             if (desconto.Text.Contains("."))
             {
                 desconto.Text = desconto.Text.Remove(desconto.TextLength - 1);
@@ -418,7 +186,7 @@ namespace HenryCorporation.Lavajato.Presentation
                 troco.Text = trocoServico;
                 btnConcluirVenda.Focus();
             }
-            
+
             if (troco.Text.Contains("."))
             {
                 troco.Text = troco.Text.Remove(troco.Text.Length - 1);
@@ -437,7 +205,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
             this.servico.Lavado = 0;
             this.servicoBL.Update(this.servico);
-                
+
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -445,24 +213,20 @@ namespace HenryCorporation.Lavajato.Presentation
             ExcluirItem();
         }
 
-        private void ExcluirItem()
+        private void cmbFormaPagamento_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if (this.servicoItem.ID == 0)
+            valor.Text = "";
+            if (cmbFormaPagamento.SelectedIndex == 0)
             {
-                MessageBox.Show("Nenhem item encontrado!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
+                desconto.Enabled = true;
+                troco.Enabled = true;
             }
-
-            DialogResult res = MessageBox.Show("Deseja realmente apagar o item de pedido", "Atenção", MessageBoxButtons.YesNo);
-            if (res == DialogResult.No)
+            else
             {
-                return;
+                desconto.Enabled = false;
+                troco.Enabled = false;
+                valor.Text = totalServico.Text;
             }
-
-            servicoBL.ServicoItemDelete(this.servicoItem);
-            this.servico = servicoBL.ByID(this.servico);
-            CriaTabela(this.servico);
-            MessageBox.Show("Item excluido");
         }
 
         private void btnFinalizarVenda_Click(object sender, EventArgs e)
@@ -470,66 +234,9 @@ namespace HenryCorporation.Lavajato.Presentation
             CancelarVenda();
         }
 
-        private void CancelarVenda()
-        {
-            if (this.servicoItem.ID == 0)
-            {
-                MessageBox.Show("Nenhem item encontrado!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return;
-            }
-
-            DialogResult res = MessageBox.Show("Deseja cancelar a venda", "Atenção", MessageBoxButtons.YesNo);
-            if (res == DialogResult.No)
-            {
-                return;
-            }
-
-            this.servico.Cancelado = 1;
-            this.servicoBL.Update(this.servico);
-            MessageBox.Show("Venda cancelada com sucesso!");
-        }
-
         private void btnVendaAvulca_Click(object sender, EventArgs e)
         {
             FazerVendaAvulsa();
-        }
-
-        private void CriaServico()
-        {
-            this.servico.Cliente.ID = 69;
-            this.servico.Usuario = this.Usuario;
-            this.servico.Total = 0;
-            this.servico.SubTotal = 0;
-            this.servico.Desconto = 0;
-            this.servico.Entrada = DateTime.Now;
-            this.servico.Saida = DateTime.Now;
-            this.servico.OrdemServico = 000;
-            this.servico.FormaPagamento.ID = 1;
-
-            this.servico.Cancelado = 0;
-            this.servico.Delete = 0;
-            this.servico.Finalizado = 0;
-            this.servico.Lavado = 0;
-            this.servico = servicoBL.Add(servico);
-        }
-
-        private void ordemServico_KeyDown(object sender, KeyEventArgs e)
-        {
-            ChamaFuncoesDeVenda(e); 
-        }
-
-        private void ChamaFuncoesDeVenda(KeyEventArgs e)
-        {
-            if (e.KeyCode == Keys.F2)
-                ConcluirVenda();
-            else if (e.KeyCode == Keys.F3)
-                AlterarQuantidade();
-            else if (e.KeyCode == Keys.F4)
-                CriaServico();
-            else if (e.KeyCode == Keys.F5)
-                ExcluirItem();
-            else if (e.KeyCode == Keys.F6)
-                CancelarVenda();
         }
 
         private void frmCaixa_KeyDown(object sender, KeyEventArgs e)
@@ -619,6 +326,324 @@ namespace HenryCorporation.Lavajato.Presentation
             desconto.Text = ValorDesconto().ToString("C").Replace("R$", "");
 
             new ClienteBL().Update(this.servico.Cliente);
-        } 
+        }
+
+        private void cmbLavador_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (this.cmbLavador.SelectedIndex == 0 || this.cmbLavador.SelectedIndex == -1)
+                return;
+
+            this.servico.Lavador = int.Parse( cmbLavador.SelectedValue.ToString());
+            this.servicoBL.Update(this.servico);
+        }
+
+        private void ProcuraServico(int ordemServico)
+        {
+            if (ordemServico == 0)
+                return;
+
+            this.servico.OrdemServico = ordemServico;
+            this.servico = servicoBL.ByOrdemServico(servico);
+
+            if (!ExisteServico())
+            {
+                MessageBox.Show("Nenhum ordem servico aberta com esse número!", "Atenção");
+                LimpaCampos();
+                this.ordemServico.Focus();
+                return;
+            }
+
+            CarregaCliente(this.servico);
+            CriaTabela(this.servico);
+        }
+
+        private void CarregaConvenioDosClientes()
+        {
+            ConvenioBL convenioBL = new ConvenioBL();
+            convenio.DataSource = convenioBL.GetAll();
+            convenio.DisplayMember = "Nome";
+            convenio.ValueMember = "ID";
+        }
+
+        private bool ExisteServico()
+        {
+            return servicoBL.ExisteServico(this.servico);
+        }
+
+        private void CarregaCliente(Servico servico)
+        {
+            placa.Text = servico.Cliente.Placa;
+            veiculo.Text = servico.Cliente.Veiculo;
+            telefone.Text = servico.Cliente.Telefone;
+            nome.Text = servico.Cliente.Nome;
+            corVeiculo.Text = servico.Cliente.Cor;
+            chbLavado.Checked = Convert.ToBoolean(servico.Lavado);
+            convenio.SelectedValue = servico.Cliente.Convenio.ID;
+            cmbLavador.SelectedValue = servico.Lavador;
+            this.cmbLavador.SelectedValue = servico.Lavador;
+        }
+
+        private void CarregaLavadores()
+        {
+            cmbLavador.DataSource = new UsuarioBL().GetUsuarioTipoLavador();
+            cmbLavador.DisplayMember = "Nome";
+            cmbLavador.ValueMember = "ID";
+        }
+
+        private Convenio SetUpConvenio()
+        {
+            return this.convenio.SelectedIndex > 0 ? new ConvenioBL().ByID(Convert.ToInt32(this.convenio.SelectedValue.ToString())) : new Convenio() { ID = 0 };
+        }
+
+        private void LimpaCampos()
+        {
+            placa.Clear();
+            veiculo.Clear();
+            telefone.Clear();
+            nome.Clear();
+            corVeiculo.Clear();
+            ordemServico.Clear();
+            valor.Text = "";
+            totalServico.Clear();
+            desconto.Clear();
+            troco.Clear();
+            this.servico = new Servico();
+            grdServico.DataSource = null;
+        }
+
+        private void CriaTabela(Servico servico)
+        {
+            grdServico.DataSource = servicoBL.CriaGrid(servico);
+            FormadaGrid(grdServico);
+        }
+
+        private void FormadaGrid(DataGridView grdServico)
+        {
+            grdServico.Columns[0].Visible = false;
+            grdServico.Columns[1].Width = 90;
+            grdServico.Columns[2].Width = 80;
+            grdServico.Columns[3].Width = 70;
+            grdServico.Columns[4].Width = 70;
+            for (int i = 0; i < grdServico.Rows.Count; i++)
+            {
+                decimal div = (i % 2);
+                if (div == 0)
+                {
+                    grdServico.BackgroundColor = System.Drawing.Color.AntiqueWhite;
+                }
+            }
+            totalServico.Text = ValorTotalCompra().ToString();
+            this.cmbFormaPagamento.SelectedIndexChanged += cmbFormaPagamento_SelectedIndexChanged;
+            desconto.Text = ValorDesconto().ToString("C").Replace("R$", "");
+        }
+
+        private void AlterarQuantidade()
+        {
+            SetUpServicoItem(this.servicoItem);
+            frmAlterarQuantidadeItem frmAlterarQuantidade = new frmAlterarQuantidadeItem(this.servicoItem);
+            frmAlterarQuantidade.ShowDialog();
+            this.servico = servicoBL.ByID(this.servico);
+            CriaTabela(this.servico);
+        }
+
+        private ServicoItem SetUpServicoItem(ServicoItem servicoItem)
+        {
+            if (this.servicoItem.ID == 0)
+            {
+                MessageBox.Show("Nenhem item selecionado para alteração", "Atenção");
+                return new ServicoItem();
+            }
+
+            this.servicoItem = servicoBL.ByServicoItemID(servicoItem);
+            if (this.servicoItem.ID == 0)
+            {
+                MessageBox.Show("Nenhem item encontrado!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return new ServicoItem();
+            }
+
+            return servicoItem;
+        }
+
+        private void CarregaProdutos()
+        {
+            ProdutoBL produtoBL = new ProdutoBL();
+            cmbProduto.DataSource = produtoBL.TipoServico(EnumCategoriaProduto.Produto);
+            cmbProduto.DisplayMember = "Descricao";
+            cmbProduto.ValueMember = "ID";
+        }
+
+        private void CarregaFormaPagamento()
+        {
+            cmbFormaPagamento.DataSource = new FormaPagamentoBL().GetAll();
+            cmbFormaPagamento.DisplayMember = "Descricao";
+            cmbFormaPagamento.ValueMember = "ID";
+        }
+
+       
+
+        private void CriaServicoItem()
+        {
+            ServicoItem servicoItem = new ServicoItem();
+            servicoItem.Produto.ID = int.Parse(cmbProduto.SelectedValue.ToString());
+            servicoItem.Quantidade = int.Parse(quantidade.Text);
+            servicoItem.Servico = this.servico;
+            servicoBL.ServicoItemInsert(servicoItem);
+        }
+
+        private void FazerVendaAvulsa()
+        {
+            if (this.servico.ID != 0)
+            {
+                return;
+            }
+
+            DialogResult result = MessageBox.Show("Deseja fazer venda avulsa?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
+            if (result == DialogResult.Yes)
+                CriaServico();
+
+        }
+
+        private void ConcluirVenda()
+        {
+            if (!ExisteServico())
+            {
+                MessageBox.Show("Nenhum serviço encontrado", "Atenção");
+                return;
+            }
+
+            this.servico.Finalizado = 1;
+            this.servico.Lavado = 1;
+            this.servico.Pago = 1;
+            this.servico.Lavador = cmbLavador.SelectedValue == null ? 0 : int.Parse(cmbLavador.SelectedValue.ToString());
+            this.servico.Total = Configuracao.ConverteParaDecimal(totalServico.Text);
+            this.servico.SubTotal = Configuracao.ConverteParaDecimal(totalServico.Text);
+            this.servico.Desconto = Configuracao.ConverteParaDecimal(desconto.Text);
+            servicoBL.Update(this.servico);
+
+            new ClienteBL().Update(this.servico.Cliente);
+        }
+
+        private decimal ValorDesconto()
+        {
+            decimal valorTotalComDesconto = 0;
+            foreach (var si in this.servico.ServicoItem)
+            {
+                if (si.Produto.CategoriaProduto.ID == (int)EnumCategoriaProduto.Servico)
+                    valorTotalComDesconto += si.Quantidade * si.Produto.ValorUnitario;
+
+            }
+
+            if (this.servico.Cliente.Convenio.PorcentagemDesconto > 0)
+            {
+                decimal valTotal = Configuracao.ConverteParaDecimal( this.totalServico.Text);
+                decimal desc = valorTotalComDesconto * Math.Abs(this.servico.Cliente.Convenio.PorcentagemDesconto / 100);
+                this.valor.Text = (valTotal - desc).ToString("C").Replace("R$", "");
+                return desc;
+            }
+            else if (this.servico.Cliente.Convenio.Valor > 0)
+            {
+                return valorTotalComDesconto - this.servico.Cliente.Convenio.Valor;
+            }
+            return 0;
+        }
+
+        private decimal ValorTotalCompra()
+        {
+
+            decimal total = 0;
+            for (int i = 0; i < grdServico.Rows.Count - 1; i++)
+                total += Configuracao.ConverteParaDecimal(grdServico.Rows[i].Cells[4].Value.ToString());
+
+            return total;
+        }
+
+      
+        
+
+       
+        private void ExcluirItem()
+        {
+            if (this.servicoItem.ID == 0)
+            {
+                MessageBox.Show("Nenhem item encontrado!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DialogResult res = MessageBox.Show("Deseja realmente apagar o item de pedido", "Atenção", MessageBoxButtons.YesNo);
+            if (res == DialogResult.No)
+            {
+                return;
+            }
+
+            servicoBL.ServicoItemDelete(this.servicoItem);
+            this.servico = servicoBL.ByID(this.servico);
+            CriaTabela(this.servico);
+            MessageBox.Show("Item excluido");
+        }
+
+      
+        private void CancelarVenda()
+        {
+            if (this.servicoItem.ID == 0)
+            {
+                MessageBox.Show("Nenhem item encontrado!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+
+            DialogResult res = MessageBox.Show("Deseja cancelar a venda", "Atenção", MessageBoxButtons.YesNo);
+            if (res == DialogResult.No)
+            {
+                return;
+            }
+
+            this.servico.Cancelado = 1;
+            this.servicoBL.Update(this.servico);
+            MessageBox.Show("Venda cancelada com sucesso!");
+        }
+
+      
+
+        private void CriaServico()
+        {
+            this.servico.Cliente.ID = 69;
+            this.servico.Usuario = this.Usuario;
+            this.servico.Total = 0;
+            this.servico.SubTotal = 0;
+            this.servico.Desconto = 0;
+            this.servico.Entrada = DateTime.Now;
+            this.servico.Saida = DateTime.Now;
+            this.servico.OrdemServico = 000;
+            this.servico.FormaPagamento.ID = 1;
+
+            this.servico.Cancelado = 0;
+            this.servico.Delete = 0;
+            this.servico.Finalizado = 0;
+            this.servico.Lavado = 0;
+            this.servico = servicoBL.Add(servico);
+        }
+
+        private void ordemServico_KeyDown(object sender, KeyEventArgs e)
+        {
+            ChamaFuncoesDeVenda(e); 
+        }
+
+        private void ChamaFuncoesDeVenda(KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+                ConcluirVenda();
+            else if (e.KeyCode == Keys.F3)
+                AlterarQuantidade();
+            else if (e.KeyCode == Keys.F4)
+                CriaServico();
+            else if (e.KeyCode == Keys.F5)
+                ExcluirItem();
+            else if (e.KeyCode == Keys.F6)
+                CancelarVenda();
+        }
+
+        private void ordemServico_Validated(object sender, EventArgs e)
+        {
+
+        }
     }
 }

@@ -126,11 +126,17 @@
     <Compile Include="Produto\frmProdutoPesquisa.Designer.cs">
       <DependentUpon>frmProdutoPesquisa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Produto\ProdutosInternos.cs">
+    <Compile Include="Produto\frmProdutoRetiradoEstoqueInterno.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Produto\ProdutosInternos.Designer.cs">
-      <DependentUpon>ProdutosInternos.cs</DependentUpon>
+    <Compile Include="Produto\frmProdutoRetiradoEstoqueInterno.Designer.cs">
+      <DependentUpon>frmProdutoRetiradoEstoqueInterno.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produto\frmProdutosInternos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produto\frmProdutosInternos.Designer.cs">
+      <DependentUpon>frmProdutosInternos.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -170,12 +176,24 @@
       <DependentUpon>frmPrincipal.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Produto\ProdutosInternos.resx">
-      <DependentUpon>ProdutosInternos.cs</DependentUpon>
+    <EmbeddedResource Include="Produto\frmProdutoRetiradoEstoqueInterno.resx">
+      <DependentUpon>frmProdutoRetiradoEstoqueInterno.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produto\frmProdutosInternos.resx">
+      <DependentUpon>frmProdutosInternos.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\frmFechamentoCaixa.resx">
       <DependentUpon>frmFechamentoCaixa.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\frmLavagemPorLavadorRelatorio.resx">
+      <DependentUpon>frmLavagemPorLavadorRelatorio.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\frmLavagensPorLavador.resx">
+      <DependentUpon>frmLavagensPorLavador.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\HistoricoCliente.rdlc" />
@@ -214,6 +232,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\relProdutoAbaixoEstoque.rdlc" />
+    <EmbeddedResource Include="Relatorios\rptLavagemPorLavador.rdlc" />
     <EmbeddedResource Include="Relatorios\VendaPorPeriodo.rdlc" />
     <EmbeddedResource Include="Servicos\AbrirCaixa.resx">
       <DependentUpon>AbrirCaixa.cs</DependentUpon>
@@ -284,6 +303,17 @@
     <None Include="Relatorios\dsFechamentoCaixa.xss">
       <DependentUpon>dsFechamentoCaixa.xsd</DependentUpon>
     </None>
+    <None Include="Relatorios\dsLavagemPorLavador.xsc">
+      <DependentUpon>dsLavagemPorLavador.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\dsLavagemPorLavador.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsLavagemPorLavador.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\dsLavagemPorLavador.xss">
+      <DependentUpon>dsLavagemPorLavador.xsd</DependentUpon>
+    </None>
     <None Include="Relatorios\HistoricoCliente.xsc">
       <DependentUpon>HistoricoCliente.xsd</DependentUpon>
     </None>
@@ -324,6 +354,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>dsFechamentoCaixa.xsd</DependentUpon>
     </Compile>
+    <Compile Include="Relatorios\dsLavagemPorLavador.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsLavagemPorLavador.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\frmClientePesquisaPorPlaca.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -341,6 +376,18 @@
     </Compile>
     <Compile Include="Relatorios\frmFechamentoCaixa.Designer.cs">
       <DependentUpon>frmFechamentoCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\frmLavagemPorLavadorRelatorio.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\frmLavagemPorLavadorRelatorio.Designer.cs">
+      <DependentUpon>frmLavagemPorLavadorRelatorio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\frmLavagensPorLavador.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\frmLavagensPorLavador.Designer.cs">
+      <DependentUpon>frmLavagensPorLavador.cs</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\frmProdutoAbaixoEstoque.cs">
       <SubType>Form</SubType>
