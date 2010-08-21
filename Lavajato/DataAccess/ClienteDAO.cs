@@ -74,10 +74,10 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public bool Existe(Cliente cliente)
         {
-            string query = sql + " SELECT COUNT(*) FROM CLIENTES WHERE PLACA = '" + cliente.Placa.Trim() + "'";
+            string query = " SELECT COUNT(*) FROM CLIENTES WHERE PLACA = '" + cliente.Placa.Trim() + "'";
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             DataSet dataSet = dataBaseHelper.Run(this.ConnectionString);
-            return (dataSet.Tables[0].Rows.Count > 0);
+            return (int.Parse(dataSet.Tables[0].Rows[0][0].ToString()) > 0);
         }
 
         public Cliente ByID(Cliente cliente)
