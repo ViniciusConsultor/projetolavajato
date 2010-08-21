@@ -4,6 +4,8 @@ using System.Linq;
 using System.Text;
 using HenryCorporation.Lavajato.DataAccess;
 using HenryCorporation.Lavajato.DomainModel;
+using HenryCorporation.Lavajato.BusinessLogic;
+using System.Data;
 
 namespace Teste
 {
@@ -11,11 +13,13 @@ namespace Teste
     {
         static void Main(string[] args)
         {
-            string[] placas = { "ggg1234567", "ggg12345", "ggg87547855", "ggg-8754" };
-            for (int i = 0; i < placas.Length; i++)
-                VerificaPlaca(placas[i]);
+            ServicoBL servicoBL = new ServicoBL();
+            DataTable table = servicoBL.CriaGridCarrosLavano();
+            //string[] placas = { "ggg1234567", "ggg12345", "ggg87547855", "ggg-8754" };
+            //for (int i = 0; i < placas.Length; i++)
+            //    VerificaPlaca(placas[i]);
 
-            Console.ReadKey();
+            //Console.ReadKey();
         }
 
         private static void VerificaPlaca(string placaBackup)
