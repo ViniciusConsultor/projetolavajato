@@ -67,6 +67,7 @@
             this.label16 = new System.Windows.Forms.Label();
             this.login = new System.Windows.Forms.TextBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.cep = new System.Windows.Forms.MaskedTextBox();
             this.label19 = new System.Windows.Forms.Label();
             this.email = new System.Windows.Forms.TextBox();
             this.label18 = new System.Windows.Forms.Label();
@@ -86,7 +87,6 @@
             this.endereco = new System.Windows.Forms.TextBox();
             this.label4 = new System.Windows.Forms.Label();
             this.nome = new System.Windows.Forms.TextBox();
-            this.cep = new System.Windows.Forms.MaskedTextBox();
             this.tabControl.SuspendLayout();
             this.tabUsuarioPesquisa.SuspendLayout();
             this.groupBox5.SuspendLayout();
@@ -233,6 +233,7 @@
             this.cmbTipoUsuario.Name = "cmbTipoUsuario";
             this.cmbTipoUsuario.Size = new System.Drawing.Size(178, 21);
             this.cmbTipoUsuario.TabIndex = 18;
+            this.cmbTipoUsuario.SelectedIndexChanged += new System.EventHandler(this.cmbTipoUsuario_SelectedIndexChanged);
             // 
             // groupBox4
             // 
@@ -544,6 +545,17 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados Pessoais";
             // 
+            // cep
+            // 
+            this.cep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.cep.Location = new System.Drawing.Point(7, 140);
+            this.cep.Mask = "99.9999-999";
+            this.cep.Name = "cep";
+            this.cep.Size = new System.Drawing.Size(121, 20);
+            this.cep.TabIndex = 10;
+            this.cep.Leave += new System.EventHandler(this.cep_Leave);
+            this.cep.Enter += new System.EventHandler(this.cep_Enter);
+            // 
             // label19
             // 
             this.label19.AutoSize = true;
@@ -765,17 +777,6 @@
             this.nome.TabIndex = 4;
             this.nome.Leave += new System.EventHandler(this.nome_Leave);
             this.nome.Enter += new System.EventHandler(this.nome_Enter);
-            // 
-            // cep
-            // 
-            this.cep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cep.Location = new System.Drawing.Point(7, 140);
-            this.cep.Mask = "99.9999-999";
-            this.cep.Name = "cep";
-            this.cep.Size = new System.Drawing.Size(121, 20);
-            this.cep.TabIndex = 10;
-            this.cep.Leave += new System.EventHandler(this.cep_Leave);
-            this.cep.Enter += new System.EventHandler(this.cep_Enter);
             // 
             // frmUsuario
             // 

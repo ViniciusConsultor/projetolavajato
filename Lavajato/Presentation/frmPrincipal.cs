@@ -152,8 +152,14 @@ namespace Presentation
 
         private void produtosInternosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            ProdutosInternos frmProdutoInternos = new ProdutosInternos();
+            frmProdutosInternos frmProdutoInternos = new frmProdutosInternos();
             frmProdutoInternos.ShowDialog();
+        }
+
+        private void lavagemPorLavadorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmLavagensPorLavador frmlavPorLavador = new frmLavagensPorLavador();
+            frmlavPorLavador.ShowDialog();
         }
     }
 }

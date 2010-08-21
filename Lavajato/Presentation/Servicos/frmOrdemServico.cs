@@ -151,7 +151,7 @@ namespace HenryCorporation.Lavajato.Presentation
             servico.Desconto = 0;
             servico.Entrada = DateTime.Now;
             servico.Saida = servico.Entrada.AddHours(double.Parse( hora.SelectedItem.ToString())).AddMinutes( double.Parse(min.SelectedItem.ToString()));
-            servico.OrdemServico = this.cliente.ID;
+            servico.OrdemServico = servicoBL.OrdemServicoMax();
             servico.FormaPagamento.ID = 1;
             servico.Usuario = this.Usuario;
 

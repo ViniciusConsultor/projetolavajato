@@ -97,7 +97,7 @@
             acertoFuturo.AutoSize = true;
             acertoFuturo.Enabled = false;
             acertoFuturo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            acertoFuturo.Location = new System.Drawing.Point(215, 351);
+            acertoFuturo.Location = new System.Drawing.Point(225, 351);
             acertoFuturo.Name = "acertoFuturo";
             acertoFuturo.Size = new System.Drawing.Size(154, 29);
             acertoFuturo.TabIndex = 111;
@@ -122,7 +122,6 @@
             this.cmbProduto.Name = "cmbProduto";
             this.cmbProduto.Size = new System.Drawing.Size(416, 33);
             this.cmbProduto.TabIndex = 13;
-            //this.cmbProduto.SelectedIndexChanged += new System.EventHandler(this.cmbProduto_SelectedIndexChanged);
             this.cmbProduto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProduto_KeyDown);
             // 
             // btnAdicionar
@@ -345,7 +344,7 @@
             // 
             this.label15.AutoSize = true;
             this.label15.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label15.Location = new System.Drawing.Point(-4, 317);
+            this.label15.Location = new System.Drawing.Point(-4, 314);
             this.label15.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label15.Name = "label15";
             this.label15.Size = new System.Drawing.Size(137, 31);
@@ -369,6 +368,7 @@
             this.ordemServico.Name = "ordemServico";
             this.ordemServico.Size = new System.Drawing.Size(240, 31);
             this.ordemServico.TabIndex = 1;
+            this.ordemServico.Validated += new System.EventHandler(this.ordemServico_Validated);
             this.ordemServico.Leave += new System.EventHandler(this.ordemServico_Leave);
             // 
             // chbLavado
@@ -403,12 +403,13 @@
             this.cmbLavador.Name = "cmbLavador";
             this.cmbLavador.Size = new System.Drawing.Size(240, 33);
             this.cmbLavador.TabIndex = 10;
+            this.cmbLavador.SelectedIndexChanged += new System.EventHandler(this.cmbLavador_SelectedIndexChanged);
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(13, 286);
+            this.label4.Location = new System.Drawing.Point(13, 284);
             this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(120, 31);

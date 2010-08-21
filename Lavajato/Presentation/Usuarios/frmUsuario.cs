@@ -60,6 +60,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.usuario = usuarioBL.Insert(this.usuario);
             CarregaUsuarios();
             MessageBox.Show("Usuário salvo com sucesso!", "Atenção") ;
+
         }
 
         private void SetUsuario()
@@ -170,6 +171,7 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             LimpaCampos();
             btnNovo.Enabled = false;
+            cmbTipoUsuario.SelectedIndex = -1;
         }
 
         private void LimpaCampos()
@@ -198,6 +200,23 @@ namespace HenryCorporation.Lavajato.Presentation
             checkBoxUsuario.Checked = false;
             checkBoxCaixa.Checked = false;
             checkBoxCategoriaProduto.Checked = false;
+        }
+
+        private void cmbTipoUsuario_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (cmbTipoUsuario.SelectedValue == null)
+                return;
+
+            if (cmbTipoUsuario.SelectedValue.ToString() == "3")
+            {
+                login.Enabled = false;
+                senha.Enabled = false;
+            }
+            else
+            {
+                login.Enabled = true;
+                senha.Enabled = true;
+            }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -394,8 +413,6 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             this.Close();
         }
-
-        
 
     }
 }
