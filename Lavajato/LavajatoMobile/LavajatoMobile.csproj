@@ -2,7 +2,7 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProductVersion>9.0.21022</ProductVersion>
+    <ProductVersion>9.0.30729</ProductVersion>
     <SchemaVersion>2.0</SchemaVersion>
     <ProjectGuid>{BDD96E8F-3BEC-4C9F-B8FB-5963721B743B}</ProjectGuid>
     <OutputType>WinExe</OutputType>
@@ -120,10 +120,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://192.168.0.157/service.asmx">
+    <WebReferenceUrl Include="http://localhost:1193/Service.asmx">
       <UrlBehavior>Static</UrlBehavior>
       <RelPath>Web References\WSLavajato\</RelPath>
-      <UpdateFromURL>http://192.168.0.157/service.asmx</UpdateFromURL>
+      <UpdateFromURL>http://localhost:1193/Service.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -135,7 +135,7 @@
     </WebReferenceUrl>
   </ItemGroup>
   <ItemGroup>
-    <None Include="Web References\WSLavajato\service.wsdl" />
+    <None Include="Web References\WSLavajato\Service.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\WSLavajato\Cliente.datasource">
@@ -148,7 +148,7 @@
       <Generator>MSDiscoCodeGenerator</Generator>
       <LastGenOutput>Reference.cs</LastGenOutput>
     </None>
-    <None Include="Web References\WSLavajato\service.disco" />
+    <None Include="Web References\WSLavajato\Service.disco" />
     <None Include="Web References\WSLavajato\Servico.datasource">
       <DependentUpon>Reference.map</DependentUpon>
     </None>

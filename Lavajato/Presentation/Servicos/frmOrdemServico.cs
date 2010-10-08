@@ -236,7 +236,7 @@ namespace HenryCorporation.Lavajato.Presentation
             servicoBL.Update(this.servico);
 
             //Imprimir recibo
-            new Configuracao().EmiteReciboPC(this.servico);
+            //new Configuracao().EmiteReciboPC(this.servico);
         
         }
 
