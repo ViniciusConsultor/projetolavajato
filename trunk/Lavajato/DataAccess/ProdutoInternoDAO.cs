@@ -22,7 +22,7 @@ namespace HenryCorporation.Lavajato.DataAccess
  
         }
 
-        public void Add(ProdutoInterno produto)
+        public void Add(DomainModel.ProdutoInterno produto)
         {
             string query = " INSERT INTO [ProdutoInterno] " +
                 " ([Descricao],[ValorUnitario] " +

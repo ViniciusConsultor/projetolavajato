@@ -11,7 +11,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
     public class ProdutoBL
     {
         private ProdutoDAO produtoDAO = new ProdutoDAO();
-        private EstoqueDAO estoqueDAO = new EstoqueDAO();
+        private EstoqueBL estoqueDAO = new EstoqueBL();
 
         public ProdutoBL()
         {

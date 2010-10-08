@@ -514,6 +514,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.servico.Finalizado = 1;
             this.servico.Lavado = 1;
             this.servico.Pago = 1;
+            this.servico.FormaPagamento = ((FormaPagamento)(cmbFormaPagamento.SelectedItem));
             this.servico.Lavador = cmbLavador.SelectedValue == null ? 0 : int.Parse(cmbLavador.SelectedValue.ToString());
             this.servico.Total = Configuracao.ConverteParaDecimal(totalServico.Text);
             this.servico.SubTotal = Configuracao.ConverteParaDecimal(totalServico.Text);
