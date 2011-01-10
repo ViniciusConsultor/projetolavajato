@@ -46,7 +46,7 @@
     
     mimetype: application/x-microsoft.net.object.binary.base64
     value   : The object must be serialized with 
-            : System.Serialization.Formatters.Binary.BinaryFormatter
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
             : and then encoded with base64 encoding.
     
     mimetype: application/x-microsoft.net.object.soap.base64
@@ -60,6 +60,7 @@
             : and then encoded with base64 encoding.
     -->
   <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
     <xsd:element name="root" msdata:IsDataSet="true">
       <xsd:complexType>
         <xsd:choice maxOccurs="unbounded">
@@ -68,9 +69,10 @@
               <xsd:sequence>
                 <xsd:element name="value" type="xsd:string" minOccurs="0" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" />
+              <xsd:attribute name="name" use="required" type="xsd:string" />
               <xsd:attribute name="type" type="xsd:string" />
               <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="assembly">
@@ -85,9 +87,10 @@
                 <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
                 <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
               </xsd:sequence>
-              <xsd:attribute name="name" type="xsd:string" msdata:Ordinal="1" />
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
               <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
               <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
             </xsd:complexType>
           </xsd:element>
           <xsd:element name="resheader">
@@ -114,4 +117,82 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="Usuario_nao_encontrado" xml:space="preserve">
+    <value>Nenhum usuário encontrado</value>
+  </data>
+  <data name="Atencao" xml:space="preserve">
+    <value>Atenção</value>
+  </data>
+  <data name="Preencher_todos_os_campos" xml:space="preserve">
+    <value>Preencher todos os campos</value>
+  </data>
+  <data name="Favor_inserir_nome_e_senha" xml:space="preserve">
+    <value>Favor inserir nome e senha</value>
+  </data>
+  <data name="Cliente_não_Cadastrado" xml:space="preserve">
+    <value>Cliente não Cadastrado, deseja cadastrar?</value>
+  </data>
+  <data name="Ordem_de_Serviço_Aberto" xml:space="preserve">
+    <value>Ordem de Serviço Aberto </value>
+  </data>
+  <data name="Veiculo_ja_lavado" xml:space="preserve">
+    <value>Veículo já lavado</value>
+  </data>
+  <data name="Favor_escolher_um_cliente" xml:space="preserve">
+    <value>Favor escolher um cliente</value>
+  </data>
+  <data name="Cliente_já_existente_na_base" xml:space="preserve">
+    <value>Cliente já existente na base, favor mudar a placa</value>
+  </data>
+  <data name="Cliente_salvo_com_sucesso" xml:space="preserve">
+    <value>Cliente salvo com sucesso!</value>
+  </data>
+  <data name="Apagar_item_de_pedido" xml:space="preserve">
+    <value>Deseja realmente apagar o item de pedido</value>
+  </data>
+  <data name="Item_deletado" xml:space="preserve">
+    <value>Item deletado com sucesso!</value>
+  </data>
+  <data name="Placa_vazia" xml:space="preserve">
+    <value>   -</value>
+  </data>
+  <data name="Tamanho_Maximo_Placa" xml:space="preserve">
+    <value>tamanhoMaximoDaPlaca</value>
+  </data>
+	<data name="Separador_Placa">
+		<value xml:space="preserve">-</value>
+	</data>
+	<data name="Inserir_quantidade_valida">
+		<value xml:space="preserve">Favor inserir uma quantidade valida!</value>
+	</data>
+	<data name="Nenhum_servico_encontrado">
+		<value xml:space="preserve">Nenhum servico encontrado</value>
+	</data>
+	<data name="Desconto_maior_que_valor_produto">
+		<value xml:space="preserve">Desconto maior que o valor do produto!</value>
+	</data>
+	<data name="Nenhum_ordem_servico_aberta">
+		<value xml:space="preserve">Nenhum ordem servico aberta com esse número!</value>
+	</data>
+	<data name="Nenhem_item_selecionado">
+		<value xml:space="preserve">Nenhem item selecionado para alteração</value>
+	</data>
+	<data name="Nenhem_item_encontrado">
+		<value xml:space="preserve">Nenhem item encontrado!</value>
+	</data>
+	<data name="frmCaixa_VendaAvulsa">
+		<value xml:space="preserve">Deseja fazer venda avulsa?</value>
+	</data>
+	<data name="Apagar_o_item_de_pedido">
+		<value xml:space="preserve">Deseja realmente apagar o item de pedido</value>
+	</data>
+	<data name="Item_excluido">
+		<value xml:space="preserve">Item excluido</value>
+	</data>
+	<data name="Deseja_cancelar_a_venda">
+		<value xml:space="preserve">Deseja cancelar a venda</value>
+	</data>
+	<data name="Venda_cancelada">
+		<value xml:space="preserve">Venda cancelada com sucesso!</value>
+	</data>
 </root>

@@ -1,4 +1,7 @@
-﻿namespace HenryCorporation.Lavajato.Presentation
+﻿using HenryCorporation.Lavajato.BusinessLogic;
+using HenryCorporation.Lavajato.DomainModel;
+
+namespace HenryCorporation.Lavajato.Presentation
 {
     partial class frmCaixa
     {
@@ -368,7 +371,7 @@
             this.ordemServico.Name = "ordemServico";
             this.ordemServico.Size = new System.Drawing.Size(240, 31);
             this.ordemServico.TabIndex = 1;
-            this.ordemServico.Validated += new System.EventHandler(this.ordemServico_Validated);
+            //this.ordemServico.Validated += new System.EventHandler(this.ordemServico_Validated);
             this.ordemServico.Leave += new System.EventHandler(this.ordemServico_Leave);
             // 
             // chbLavado
@@ -704,6 +707,10 @@
         private System.Windows.Forms.Label label15;
         private System.Windows.Forms.ComboBox convenio;
         private System.Windows.Forms.ComboBox comboBox1;
-
+        
+        private Servico servico = new Servico();
+        private ServicoItem servicoItem = new ServicoItem();
+        private ServicoBL servicoBL = new ServicoBL();
+        private string enter = "\r\n";
     }
 }

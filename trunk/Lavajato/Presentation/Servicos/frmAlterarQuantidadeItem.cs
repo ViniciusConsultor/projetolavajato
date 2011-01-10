@@ -41,7 +41,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private void btnAlterar_Click(object sender, EventArgs e)
         {
             this.servicoItem.Quantidade = Convert.ToInt32(quantidade.Value);
-            servicoBL.ServicoItemUpdate(this.servicoItem);
+            servicoBL.ItemUpdate(this.servicoItem);
             MessageBox.Show("Quantidade alterada com sucesso", "Atenção");
         }
 

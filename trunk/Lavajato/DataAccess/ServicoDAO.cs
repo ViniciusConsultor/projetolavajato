@@ -10,9 +10,9 @@ namespace HenryCorporation.Lavajato.DataAccess
 {
     public class ServicoDAO : DataAccessBase
     {
-        private FormaPagamentoDAO formaPagamentoDAO;
-        private ClienteDAO clienteDAO;
-        private ServicoItemDAO servicoItemDAO;
+        internal FormaPagamentoDAO formaPagamentoDAO;
+        internal ClienteDAO clienteDAO;
+        internal ServicoItemDAO servicoItemDAO;
 
         string sql = " SELECT [ServicoID], [ClienteID], [Total], [SubTotal], [Desconto], [Saida], [Entrada] " +
                      " ,[OrdemServico], [FormaPagamentoID], [Delete], [Cancelado], [Lavado], [Finalizado], [UsuarioID], [Pago],[LavadorID]  " +
@@ -33,7 +33,7 @@ namespace HenryCorporation.Lavajato.DataAccess
                            " [Desconto],[Saida],[Entrada],[OrdemServico],[FormaPagamentoID],[Delete],"+
                            " [Cancelado],[Lavado],[Finalizado], [UsuarioID], [Pago])" +
                            " VALUES('"+servico.Cliente.ID+"' "+
-                           " ,'"+servico.Total+"' "+
+                           " ,'"+servico.Total.ToString().Replace(",",".")+"' "+
                            " ,'" + servico.SubTotal + "' " +
                            " ,'" + servico.Desconto + "' " +
                            " , '"+Configuracao.HoraSaida(servico.Saida)+"' " +
@@ -47,7 +47,7 @@ namespace HenryCorporation.Lavajato.DataAccess
                            " ,'" + servico.Usuario.ID + "' "+
                            " ,'" + servico.Pago + "')";
 
-            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            var dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run();
 
             return ServicoInserido();
@@ -55,44 +55,44 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public List<Servico> GetCarrosLavando()
         {
-            string query = sql + " Where [Delete] = 0 and [Pago] = 0  And [Cancelado] = 0 and [Lavado] = 0 order by  ordemservico asc  ";
-            DataBaseHelper dataBaseHelper = new DataBaseHelper(this.sql);
+            var query = sql + " Where [Delete] = 0 and [Pago] = 0  And [Cancelado] = 0 and [Lavado] = 0 order by  ordemservico asc  ";
+            var dataBaseHelper = new DataBaseHelper(this.sql);
             return SetUpFields(dataBaseHelper.Run(this.ConnectionString));
         }
 
         public void Delete(Servico servico)
         {
-            string query = " UPDATE [Servico] "+
+            var query = " UPDATE [Servico] "+
                            " SET [Delete] = 1 " +
                            " WHERE ServicoID = " + servico.ID;
 
-            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            var dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run();
         }
 
         public void CarroLavado(Servico servico)
         {
-            string query = " UPDATE [Servico] " +
+            var query = " UPDATE [Servico] " +
                            " SET [Lavado] = 1 " +
                            " WHERE ServicoID = " + servico.ID;
 
-            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            var dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run();
         }
 
         public void AcertoFuturo(Servico servico)
         {
-            string query = " UPDATE [Servico] " +
+            var query = " UPDATE [Servico] " +
                            " SET [AcertoFuturo] = 1 " +
                            " WHERE ServicoID = " + servico.ID;
 
-            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            var dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run();
         }
 
         public void Update(Servico servico)
         {
-            string query = " UPDATE [Servico] "+
+            var query = " UPDATE [Servico] "+
                            " SET [ClienteID] = '"+servico.Cliente.ID.ToString().Trim()+"' "+
                            " ,[Total] = '"+servico.Total.ToString().Replace(",", ".")+"' "+
                            " ,[SubTotal] = '" + servico.SubTotal.ToString().Replace(",", ".") + "' " +
@@ -110,29 +110,29 @@ namespace HenryCorporation.Lavajato.DataAccess
                            " ,[LavadorID] = '" + servico.Lavador + "' " +
                            " WHERE [ServicoID] = " + servico.ID;
 
-            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            var dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run();
         }
 
         public Servico ByID(Servico servico)
         {
-            string query = sql + "Where [Delete] = 0 And [Cancelado] = 0  And [ServicoID] =" + servico.ID;
-            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
-            DataSet dataSet = dataBaseHelper.Run(this.ConnectionString);
+            var query = sql + "Where [Delete] = 0 And [Cancelado] = 0  And [ServicoID] =" + servico.ID;
+            var dataBaseHelper = new DataBaseHelper(query);
+            var dataSet = dataBaseHelper.Run(this.ConnectionString);
             return SetUpField(dataSet);
         }
 
         public Servico ByCliente(Cliente cliente)
         {
-            string query = sql + "Where [Delete] = 0 And [Cancelado] = 0 And ClienteID = " + cliente.ID;
-            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            var query = sql + "Where [Delete] = 0 And [Cancelado] = 0 And ClienteID = " + cliente.ID;
+            var dataBaseHelper = new DataBaseHelper(query);
             return SetUpField(dataBaseHelper.Run(this.ConnectionString));
         }
 
         public int OrdemServicoMax()
         {
-            string query = "select top 1 ordemservico from servico order by servicoid desc";
-            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            var query = "select top 1 ordemservico from servico order by servicoid desc";
+            var dataBaseHelper = new DataBaseHelper(query);
             int index = dataBaseHelper.Run(this.ConnectionString).Tables[0].Rows.Count;
             return index > 0 ? int.Parse(dataBaseHelper.Run(this.ConnectionString).Tables[0].Rows[0][0].ToString()) : 0;
         }
@@ -163,21 +163,17 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public Servico ByOrdemServico(Servico servico)
         {
-            string query = sql + "Where [Delete] = 0 And [Cancelado] = 0 and [Pago] = 0 And [OrdemServico] =" + servico.OrdemServico;
-            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
-            DataSet dataSet = dataBaseHelper.Run(this.ConnectionString);
+            var query = sql + "Where [Delete] = 0 And [Cancelado] = 0 and [Pago] = 0 And [OrdemServico] =" + servico.OrdemServico;
+            var dataBaseHelper = new DataBaseHelper(query);
+            var dataSet = dataBaseHelper.Run(this.ConnectionString);
             return SetUpField(dataSet);
         }
 
         public List<Servico> GetAll(string query)
         {
-            DataBaseHelper dataBaseHelper;
-            if (query.Length == 0)
-                dataBaseHelper = new DataBaseHelper(this.sql);
-            else
-                dataBaseHelper = new DataBaseHelper(this.sql + " Where [Delete] = 0 and [Pago] = 0  And [Cancelado] = 0 ");
 
-            DataSet dataSet = dataBaseHelper.Run(this.ConnectionString);
+            var dataBaseHelper = query.Length == 0 ? new DataBaseHelper(this.sql) : new DataBaseHelper(this.sql + " Where [Delete] = 0 and [Pago] = 0  And [Cancelado] = 0 ");
+            var dataSet = dataBaseHelper.Run(this.ConnectionString);
             return SetUpFields(dataSet);
         }
 

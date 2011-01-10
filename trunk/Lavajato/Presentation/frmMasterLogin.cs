@@ -6,6 +6,8 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using HenryCorporation.Lavajato.DomainModel;
+using HenryCorporation.Lavajato.Presentation.Properties;
 using Presentation;
 
 namespace HenryCorporation.Lavajato.Presentation
@@ -17,33 +19,32 @@ namespace HenryCorporation.Lavajato.Presentation
             InitializeComponent();
         }
 
-        private void frmMasterLogin_Load(object sender, EventArgs e)
-        {
-        }
 
         private void btnLogar_Click(object sender, EventArgs e)
         {
-            if ((string.IsNullOrEmpty(login.Text) ||
-                string.IsNullOrEmpty(password.Text)))
-            {
-                MessageBox.Show("Favor inserir nome e senha", "Preencher todos os campos");
-                return;
-            }
+            //if ((string.IsNullOrEmpty(login.Text) ||
+            //    string.IsNullOrEmpty(password.Text)))
+            //{
+            //    MessageBox.Show(Resources.Favor_inserir_nome_e_senha, Resources.Preencher_todos_os_campos);
+            //    return;
+            //}
 
-            HenryCorporation.Lavajato.DomainModel.Usuario user = new HenryCorporation.Lavajato.DomainModel.Usuario();
-            user.Login = login.Text;
-            user.Password = password.Text;
+            var user = new Usuario
+                           {
+                               Login = "loginteste",//login.Text,
+                               Password = "senhateste"//password.Text
+                           };
             this.Usuario= user;
 
             if (this.IsAutenticado)
             {
-                frmPrincipal frmPrin = new frmPrincipal();
+                var frmPrin = new frmPrincipal();
                 frmPrin.ShowDialog();
                 this.Close();
             }
             else 
             {
-                MessageBox.Show("Nenhum usuário encontrado", "Atenção");
+                MessageBox.Show(Resources.Usuario_nao_encontrado, Resources.Atencao);
             }
         }
 

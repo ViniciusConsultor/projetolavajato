@@ -19,7 +19,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
           
         }
 
-        #region Metodos GRUD Servico
+        #region Metodos CRUD Servico
 
         public Servico ByCliente(Cliente cliente)
         {
@@ -31,7 +31,12 @@ namespace HenryCorporation.Lavajato.BusinessLogic
              return servicoDAO.Add(servico);
         }
 
-        public Servico ByID(Servico servico)
+        public void Delete(Servico servico)
+        {
+            servicoDAO.Delete(servico);
+        }
+
+        public Servico ID(Servico servico)
         {
             return servicoDAO.ByID(servico);
         }
@@ -55,51 +60,33 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
         #region Metodos GRUD ServicoItem
 
-        public void ServicoItemInsert(ServicoItem servicoItem)
+        public void ItemInsert(ServicoItem servicoItem)
         {
             servicoDAO.ItemDoServicoInsert(servicoItem);
         }
 
-        public void ServicoItemUpdate(ServicoItem servicoItem)
+        public void ItemUpdate(ServicoItem servicoItem)
         {
             servicoDAO.ServicoItemUpdate(servicoItem);
         }
 
-        public void ServicoItemDelete(ServicoItem servicoItem)
+        public void ItemDelete(ServicoItem servicoItem)
         {
             servicoDAO.ItemDoServicoDelete(servicoItem);
         }
 
-        public ServicoItem ByServicoItemID(ServicoItem servicoItem)
+        public ServicoItem ItemID(ServicoItem servicoItem)
         {
             return servicoDAO.ByServicoItemID(servicoItem);
         }
 
         #endregion
 
-        public DataTable CriaGrid(Servico servico)
-        {
-            DataSet dataSet = new DataSet();
-            DataTable table = new DataTable();
-            dataSet.Tables.Add(table);
-            table.Columns.AddRange(CarregaColunas());
-            foreach (ServicoItem si in servico.ServicoItem)
-            {
-                DataRow row = table.NewRow();
-                row["ID"] = si.ID;
-                row["Descricao"] = si.Produto.Descricao;
-                row["Quantidade"] = si.Quantidade;
-                row["Valor"] = si.Produto.ValorUnitario.ToString("C");
-                row["Total"] = (si.Produto.ValorUnitario * si.Quantidade).ToString("C");
-                table.Rows.Add(row);
-            }
-            return table;
-        }
-
+        
         public DataTable CriaGridCarrosLavano()
         {
-            DataSet dataSet = new DataSet();
-            DataTable table = new DataTable();
+            var dataSet = new DataSet();
+            var table = new DataTable();
             dataSet.Tables.Add(table);
             table.Columns.AddRange(ColunasCarroLavando());
             foreach (Servico si in servicoDAO.GetCarrosLavando())
@@ -122,11 +109,30 @@ namespace HenryCorporation.Lavajato.BusinessLogic
                 return ordemServico = 1;
         }
 
-        private DataColumn[] CarregaColunas()
+        public DataTable CriaGrid(Servico servico)
         {
-            DataColumn[] columns = new DataColumn[5];
+            DataSet dataSet = new DataSet();
+            DataTable table = new DataTable();
+            dataSet.Tables.Add(table);
+            table.Columns.AddRange(CarregaColunas());
+            foreach (ServicoItem si in servico.ServicoItem)
+            {
+                DataRow row = table.NewRow();
+                //row["ID"] = si.ID;
+                row["Descricao"] = si.Produto.Descricao;
+                row["Quantidade"] = si.Quantidade;
+                row["Valor"] = si.Produto.ValorUnitario.ToString("C");
+                row["Total"] = (si.Produto.ValorUnitario * si.Quantidade).ToString("C");
+                table.Rows.Add(row);
+            }
+            return table;
+        }
 
-            // Create new DataColumn, set DataType, ColumnName and add to DataTable.    
+        public static DataColumn[] CarregaColunas()
+        {
+            DataColumn[] columns = new DataColumn[6];
+
+            //// Create new DataColumn, set DataType, ColumnName and add to DataTable.    
             DataColumn ID = new DataColumn();
             ID.ColumnName = "ID";
             columns[0] = ID;

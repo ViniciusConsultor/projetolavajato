@@ -20,146 +20,163 @@ namespace Presentation
 
         private void cadastroClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCliente frmCliente = new frmCliente();
+            var frmCliente = new frmCliente();
             frmCliente.ShowDialog();
         }
 
         private void consultaClienteToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmClientePesquisa frmClientePesquisa = new frmClientePesquisa();
+            var frmClientePesquisa = new frmClientePesquisa();
             frmClientePesquisa.ShowDialog();
         }
 
         private void categoriaProdutosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmProduto frmProduto = new frmProduto();
+            var frmProduto = new frmProduto();
             frmProduto.ShowDialog();
         }
 
         private void procuraProdutosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmProdutoPesquisa frmProdutoPesquisa = new frmProdutoPesquisa();
+            var frmProdutoPesquisa = new frmProdutoPesquisa();
             frmProdutoPesquisa.ShowDialog();
         }
 
         private void cadatroProdutosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmUsuario frmUsuario = new frmUsuario();
+            var frmUsuario = new frmUsuario();
             frmUsuario.ShowDialog();
         }
 
         private void procuraUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmUsuarioPesquisa frmUsuarioPesquisa = new frmUsuarioPesquisa();
+            var frmUsuarioPesquisa = new frmUsuarioPesquisa();
             frmUsuarioPesquisa.ShowDialog();
         }
 
         private void ordemServiçoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmOrdemServico frmOrdemServico = new frmOrdemServico();
+            var frmOrdemServico = new frmOrdemServico();
             frmOrdemServico.ShowDialog();
         }
 
         private void retiradaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmRetirada frmRetirada = new frmRetirada();
+            var frmRetirada = new frmRetirada();
             frmRetirada.ShowDialog();
         }
 
         private void entradaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmEntrada frmEntra = new frmEntrada();
+            var frmEntra = new frmEntrada();
             frmEntra.ShowDialog();
         }
 
         private void lavadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmOrdensAbertas frmAbertas = new frmOrdensAbertas();
+            var frmAbertas = new frmOrdensAbertas();
             frmAbertas.ShowDialog();
         }
 
         private void promoçõesToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmConvenios frmConvenios = new frmConvenios();
+            var frmConvenios = new frmConvenios();
             frmConvenios.ShowDialog();
         }
 
         private void contasAPagarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmContasAPagar frmContasAPagar = new frmContasAPagar();
+            var frmContasAPagar = new frmContasAPagar();
             frmContasAPagar.ShowDialog();
         }
 
         private void ordemServicoAbertoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmOrdensAbertas frmAbertas = new frmOrdensAbertas();
+            var frmAbertas = new frmOrdensAbertas();
             frmAbertas.ShowDialog();
         }
 
         private void credorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmCredor frmCredor = new frmCredor();
+            var frmCredor = new frmCredor();
             frmCredor.ShowDialog();
         }
 
         private void pesquisaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmPesquisaContasAPagar frmpesquisacontas = new frmPesquisaContasAPagar();
+            var frmpesquisacontas = new frmPesquisaContasAPagar();
             frmpesquisacontas.ShowDialog();
         }
 
         private void fechamentoDeCaixaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmFechamentoCaixa frmFechamentoCaixa = new frmFechamentoCaixa();
+            var frmFechamentoCaixa = new frmFechamentoCaixa();
             frmFechamentoCaixa.ShowDialog();
         }
 
         private void produtoAbaixoEstoqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmProdutoAbaixoEstoque frmPAE = new frmProdutoAbaixoEstoque();
+            var frmPAE = new frmProdutoAbaixoEstoque();
             frmPAE.ShowDialog();
         }
 
         private void carrosLavadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmOrdensAbertas frmAbertas = new frmOrdensAbertas();
+            var frmAbertas = new frmOrdensAbertas();
             frmAbertas.ShowDialog();
         }
 
         private void entradaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmEntrada frmEntra = new frmEntrada();
+            var frmEntra = new frmEntrada();
             frmEntra.ShowDialog();
         }
 
         private void saidaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmRetirada frmRetirada = new frmRetirada();
+            var frmRetirada = new frmRetirada();
             frmRetirada.ShowDialog();
         }
 
         private void clientePorPlacaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmClientePesquisaPorPlaca cliePesquisa = new frmClientePesquisaPorPlaca();
+            var cliePesquisa = new frmClientePesquisaPorPlaca();
             cliePesquisa.ShowDialog();
         }
 
         private void servicoToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            frmCaixa frmCaixa = new frmCaixa();
+            var frmCaixa = new frmCaixa();
             frmCaixa.ShowDialog();
         }
 
         private void produtosInternosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmProdutosInternos frmProdutoInternos = new frmProdutosInternos();
+            var frmProdutoInternos = new frmProdutosInternos();
             frmProdutoInternos.ShowDialog();
         }
 
         private void lavagemPorLavadorToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            frmLavagensPorLavador frmlavPorLavador = new frmLavagensPorLavador();
+            var frmlavPorLavador = new frmLavagensPorLavador();
             frmlavPorLavador.ShowDialog();
+        }
+
+        private void fechamentoDeCaixaPorVendedorToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var vendasDiarias = new frmVendasDiarias();
+            vendasDiarias.ShowDialog();
+        }
+
+        private void sairToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void trocarUToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var masterLogin = new frmMasterLogin();
+            masterLogin.ShowDialog();
         }
     }
 }
