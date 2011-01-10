@@ -11,24 +11,19 @@ using HenryCorporation.Lavajato.BusinessLogic;
 using HenryCorporation.Lavajato.Operacional;
 using System.Drawing.Printing;
 using System.IO;
+using HenryCorporation.Lavajato.Presentation.Properties;
+using Impressao;
 
 namespace HenryCorporation.Lavajato.Presentation
 {
     public partial class frmOrdemServico : login
     {
-        private ClienteBL clienteBL = new ClienteBL();
-        private Cliente cliente = new Cliente();
-        private Servico servico = new Servico();
-        private ServicoItem servicoItem = new ServicoItem();
-        private ServicoBL servicoBL = new ServicoBL();
-        
-        private DataSet dst = new DataSet();
-        private DataTable table = new DataTable();
-
         public frmOrdemServico()
         {
             InitializeComponent();
             btnCadastraCliente.Enabled = false;
+            dataTable.Columns.AddRange(ServicoBL.CarregaColunas());
+            dataSetItens.Tables.Add(dataTable);
         }
 
         private void frmOrdemServico_Load(object sender, EventArgs e)
@@ -37,44 +32,40 @@ namespace HenryCorporation.Lavajato.Presentation
             CarregaProdutos();
         }
 
-        private void CarregaProdutos()
+        private void placa_Leave(object sender, EventArgs e)
         {
-            cmdServico.DataSource = new ProdutoBL().TipoServico(EnumCategoriaProduto.Servico);
-            cmdServico.DisplayMember = "Descricao";
-            cmdServico.ValueMember = "ID";
-        }
+            placa.BackColor = Color.White;
+            if (Equals(placa.Text, Resources.Placa_vazia))
+                return;
 
-        private void CarregaItensDoServico(Servico servico)
-        {
-            grdServico.DataSource = servicoBL.CriaGrid(this.servico).DefaultView;
-            grdServico.Columns[0].Visible = false;
-            grdServico.Columns[1].Width = 150;
-            grdServico.Columns[2].Width = 150;
-            grdServico.Columns[3].Width = 100;
-            grdServico.Columns[4].Width = 100;
+            this.clienteParaCarregarAsInformacoes.Placa = placa.Text;
 
-            for (int i = 0; i < grdServico.Rows.Count; i++)
+            this.clienteParaCarregarAsInformacoes = ProcuraCliente(this.clienteParaCarregarAsInformacoes);
+            if (clienteParaCarregarAsInformacoes.ID == 0)
             {
-                decimal div = (i % 2);
-                if (div == 0)
+                var dialogResult = MessageBox.Show(Resources.Cliente_não_Cadastrado, Resources.Atencao, MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
                 {
-                    grdServico.BackgroundColor = Color.AntiqueWhite;
+                    btnCadastraCliente.Enabled = true;
+                    return;
                 }
             }
-        }
 
-        private void CarregaCliente(DomainModel.Cliente cliente)
-        {
-            placa.Text = this.cliente.Placa;
-            veiculo.Text = this.cliente.Veiculo;
-            telefone.Text = this.cliente.Telefone;
-            nome.Text = this.cliente.Nome;
-            corVeiculo.Text = this.cliente.Cor;
-        }
+            servico = servicoBL.ByCliente(this.clienteParaCarregarAsInformacoes);
+            if (servico.ID == 0)
+            {
+                CarregaCliente(this.clienteParaCarregarAsInformacoes);
+                return;
+            }
 
-        private DomainModel.Cliente ProcuraCliente(DomainModel.Cliente cliente)
-        {
-            return clienteBL.ByPlaca(cliente);
+            CarregaCliente(this.clienteParaCarregarAsInformacoes);
+            
+            if (this.servico.Lavado != 1)
+            CarregaItens(this.servico);
+
+            if (this.servico.Finalizado == 0)
+                MessageBox.Show(Resources.Ordem_de_Serviço_Aberto + servico.OrdemServico, Resources.Atencao);
+                
         }
 
         private void placa_TextChanged(object sender, EventArgs e)
@@ -82,173 +73,143 @@ namespace HenryCorporation.Lavajato.Presentation
             FormataPlaca();
         }
 
-        private void FormataPlaca()
-        {
-            int tamanhoPlaca = placa.Text.Length - 1;
-            if (tamanhoPlaca == 2)
-            {
-                placa.Text = placa.Text + "-";
-                placa.SelectionStart = placa.TextLength;
-            }
-
-            tamanhoPlaca = placa.Text.Length;
-            int tamanhoMaximoDaPlaca = 8;
-            if (tamanhoPlaca == tamanhoMaximoDaPlaca)
-            {
-                placa.Text = placa.Text.Remove(placa.Text.Length - 1);
-                placa.SelectionStart = placa.TextLength;
-            }
-        }
-
         private void adicionarServico_Click(object sender, EventArgs e)
         {
-            if (this.cliente.ID == 0)
+            if (clienteParaCarregarAsInformacoes.ID == 0)
             {
-                MessageBox.Show("Favor escolher um cliente", "Atenção!");
+                MessageBox.Show(Resources.Favor_escolher_um_cliente, Resources.Atencao);
                 return;
             }
-
-            if (!ExisteServico(this.servico))
-            {
-                this.servico = ServicoSalva();
-                ItemDoServicoSalva(this.servico);
-            }
-            else 
-            {
-                ItemDoServicoSalva(this.servico);
-            }
-
-            CarregaItensDoServico();
-            CarregaItensDoServico(this.servico);
-        }
-
-        private bool ExisteServico(Servico servico)
-        {
-            return servicoBL.ExisteServico(servico);
-        }
-
-        private void CarregaItensDoServico()
-        {
-            ServicoBL servBL = new ServicoBL();
-            this.servico = servBL.ByID(this.servico);
-        }
-
-        private void ItemDoServicoSalva(Servico servico)
-        {
-            ServicoItem servicoItem = new ServicoItem();
-            servicoItem.Produto.ID = int.Parse( cmdServico.SelectedValue.ToString());
-            servicoItem.Quantidade = textBox1.TextLength == 0 ? 1 : Convert.ToDecimal( textBox1.Text);
-            servicoItem.Servico = servico;
-            servicoBL.ServicoItemInsert(servicoItem);
-        }
-
-        private Servico ServicoSalva()
-        {
-            Servico servico = new Servico();
-            servico.Cliente = this.cliente;
-            servico.Total = 0;
-            servico.SubTotal = 0;
-            servico.Desconto = 0;
-            servico.Entrada = DateTime.Now;
-            servico.Saida = servico.Entrada.AddHours(double.Parse( hora.SelectedItem.ToString())).AddMinutes( double.Parse(min.SelectedItem.ToString()));
-            servico.OrdemServico = servicoBL.OrdemServicoMax();
-            servico.FormaPagamento.ID = 1;
-            servico.Usuario = this.Usuario;
-
-            servico.Cancelado = 0;
-            servico.Delete = 0;
-            servico.Finalizado = 0;
-            servico.Lavado = 0;
-
-            return servicoBL.Add(servico);
+            AdicionaItem();
         }
 
         private void btnCadastraCliente_Click(object sender, EventArgs e)
         {
-            Cliente clientePlaca = new Cliente();
-            cliente.Placa = placa.Text;
-            if (clienteBL.Existe(this.cliente))
+            var clientePlaca = new Cliente();
+            clienteParaCarregarAsInformacoes.Placa = placa.Text;
+            if (clienteBL.Existe(clienteParaCarregarAsInformacoes))
             {
-                MessageBox.Show("Cliente já existente na base, favor mudar a placa", "Atenção");
+                MessageBox.Show(Resources.Cliente_já_existente_na_base, Resources.Atencao);
                 return;
             }
 
             SetUpFieldsCliente();
             ClienteInsert();
-            MessageBox.Show("Cliente salvo com sucesso!", "Atenção");
+            MessageBox.Show(Resources.Cliente_salvo_com_sucesso, Resources.Atencao);
             btnCadastraCliente.Enabled = false;
-        }
-
-        private void ClienteInsert()
-        {
-            this.cliente = clienteBL.Insert(this.cliente);
-        }
-
-        private void SetUpFieldsCliente()
-        {
-            this.cliente.Placa = placa.Text;
-            this.cliente.Veiculo = veiculo.Text;
-            this.cliente.Telefone = telefone.Text;
-            this.cliente.Nome = nome.Text;
-            this.cliente.Cor = corVeiculo.Text;
         }
       
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (!ExisteServico(this.servico))
-            {
-                MessageBox.Show("Nenhum item encontrado!", "Atenção");
-                return;
-            }
-
-            DialogResult res = MessageBox.Show("Deseja realmente apagar o item de pedido", "Atenção", MessageBoxButtons.YesNo);
+            var res = MessageBox.Show(Resources.Apagar_item_de_pedido, Resources.Atencao, MessageBoxButtons.YesNo);
             if (res == DialogResult.No)
             {
                 return;
             }
 
-            servicoBL.ServicoItemDelete(this.servicoItem);
-            MessageBox.Show("Item deletado com sucesso!", "Atenção");
-            CarregaItensDoServico();
-            CarregaItensDoServico(this.servico);
+            dataSetItens.Tables[0].Rows[dataSetItens.Tables[0].Rows.Count != 0 ? indexColumaDataGrid : 0].Delete();
+            grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
 
+            MessageBox.Show(Resources.Item_deletado, Resources.Atencao);
         }
 
         private void grdServico_MouseClick(object sender, MouseEventArgs e)
         {
-            if (grdServico.CurrentRow == null)
-                return;
-
-           this.servicoItem.ID = int.Parse(grdServico.Rows[grdServico.CurrentRow.Index].Cells[0].Value.ToString());
+            if (grdServico.CurrentRow != null) indexColumaDataGrid = grdServico.CurrentRow.Index;
         }
 
         private void btnGerarOrdemServico_Click(object sender, EventArgs e)
         {
-            if (!ExisteServico(this.servico))
-            {
-                MessageBox.Show("Nenhum serviço encontrado!", "Atenção");
-                return;
-            }
-
-            SomaTotal();
-            this.servico.OrdemServico = servico.ID;
-            this.servico.Saida = dataEntrada.Value.AddHours(double.Parse(hora.SelectedItem.ToString())).AddMinutes(double.Parse(min.SelectedItem.ToString()));
-            servicoBL.Update(this.servico);
-
-            //Imprimir recibo
-            //new Configuracao().EmiteReciboPC(this.servico);
-        
+            var servicoSalva = ServicoSalva();
+            ServicoItemSalva(servicoSalva);
+            IImprimir impressao = new ImprimirComprovantePagamento(this.servico);
         }
 
-        private void SomaTotal()
+        private Servico ServicoSalva()
         {
-            decimal total = 0, qtdeTotal = 0;
-            foreach (ServicoItem si in this.servico.ServicoItem)
+
+            var servicoSalva = new Servico
             {
-                total += si.Produto.ValorUnitario * si.Quantidade;
-                qtdeTotal += si.Quantidade;
+                Cliente = this.clienteParaCarregarAsInformacoes,
+                Total = SomaTotal(),
+                SubTotal = 0,
+                Desconto = 0,
+                Entrada = DateTime.Now
+            };
+
+            servicoSalva.Saida = servicoSalva.Entrada.AddHours(double.Parse(hora.SelectedItem.ToString())).AddMinutes(double.Parse(min.SelectedItem.ToString()));
+            servicoSalva.OrdemServico = servicoBL.OrdemServicoMax();
+            servicoSalva.FormaPagamento.ID = 1;
+            servicoSalva.Usuario = this.Usuario;
+
+            servicoSalva.Cancelado = 0;
+            servicoSalva.Delete = 0;
+            servicoSalva.Finalizado = 0;
+            servicoSalva.Lavado = 0;
+
+            try
+            {
+                return servicoBL.Add(servicoSalva);
             }
-            this.servico.Total = total;
+            catch (Exception)
+            {
+                servicoBL.Delete(servicoSalva);                
+            }
+            return new Servico();
+        }
+
+        private void ServicoItemSalva(Servico servico)
+        {
+            if (dataSetItens != null)
+                foreach (DataRow row in dataSetItens.Tables[0].Rows)
+                {
+                    var item = new ServicoItem();
+                    var produto = new Produto() { ID = int.Parse(row["ID"].ToString()) };
+                    item.Produto = new ProdutoBL().ByID(produto);
+                    item.Quantidade = int.Parse(row["Quantidade"].ToString());
+                    item.Servico = servico;
+                    servicoBL.ItemInsert(item);
+                }
+        }
+
+        private decimal SomaTotal()
+        {
+            var qtdeTotal = dataSetItens.Tables[0].Rows.Cast<DataRow>().Sum(
+                row => Configuracao.ConverteParaDecimal(row["Total"].ToString()));
+            this.servico.Total = qtdeTotal;
+            return  qtdeTotal;
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            servico = new Servico();
+            clienteParaCarregarAsInformacoes = new Cliente();
+            placa.Text = "";
+            veiculo.Text = "";
+            telefone.Text = "";
+            nome.Text = "";
+            corVeiculo.Text = "";
+            CarregaItens(servico);
+            dataSetItens = new DataSet();
+            dataTable = new DataTable();
+            dataTable.Columns.AddRange(ServicoBL.CarregaColunas());
+            dataSetItens.Tables.Add(dataTable);
+            grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
+
+        }
+
+        private void ClienteInsert()
+        {
+            clienteParaCarregarAsInformacoes = clienteBL.Insert(clienteParaCarregarAsInformacoes);
+        }
+
+        private void SetUpFieldsCliente()
+        {
+            clienteParaCarregarAsInformacoes.Placa = placa.Text;
+            clienteParaCarregarAsInformacoes.Veiculo = veiculo.Text;
+            clienteParaCarregarAsInformacoes.Telefone = telefone.Text;
+            clienteParaCarregarAsInformacoes.Nome = nome.Text;
+            clienteParaCarregarAsInformacoes.Cor = corVeiculo.Text;
         }
 
         private void CarregaHora()
@@ -259,13 +220,151 @@ namespace HenryCorporation.Lavajato.Presentation
             min.SelectedIndex = 0;
         }
 
+        private void CarregaItens(Servico servicoParaCarregarItens)
+        {
+            if (grdServico == null) return;
+
+            grdServico.DataSource = CarregaItensNoGrid(servicoParaCarregarItens);
+            grdServico.Columns[0].Width = 150;
+            grdServico.Columns[1].Width = 150;
+            grdServico.Columns[2].Width = 100;
+            grdServico.Columns[3].Width = 100;
+        }
+
+        private void AdicionaItem()
+        {
+            var item = new Produto();
+            item.ID = int.Parse(cmdServico.SelectedValue.ToString());
+            item = new ProdutoBL().ByID(item);
+            dataSetItens.Tables[0].Rows.Add(AdicionaLinhaDeItemAoGrid(item));
+            grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
+
+            grdServico.Columns[0].Visible = false;
+        }
+
+        private DataRow AdicionaLinhaDeItemAoGrid(Produto item)
+        {
+            var quantidadeDeItens = string.IsNullOrEmpty(quantidadeProduto.Text) ? 1 : int.Parse(quantidadeProduto.Text);
+
+            var row = dataSetItens.Tables[0].NewRow();
+            row["ID"] = item.ID;
+            row["Descricao"] = item.Descricao;
+            row["Quantidade"] = quantidadeDeItens;
+            row["Valor"] = item.ValorUnitario.ToString("C");
+            row["Total"] = (item.ValorUnitario * quantidadeDeItens).ToString("C");
+
+            return row;
+        }
+
+        private void ItemDoServicoSalva(Servico servicoDoItem)
+        {
+            var item = new ServicoItem();
+            item.Produto.ID = int.Parse(cmdServico.SelectedValue.ToString());
+            item.Quantidade = quantidadeProduto.TextLength == 0 ? 1 : Convert.ToDecimal(quantidadeProduto.Text);
+            item.Servico = servicoDoItem;
+            servicoBL.ItemInsert(item);
+        }
+
+        private void FormataPlaca()
+        {
+            var tamanhoPlaca = placa.Text.Length - 1;
+            if (Equals(tamanhoPlaca, 2))
+            {
+                placa.Text = placa.Text + Resources.Separador_Placa;
+                placa.SelectionStart = placa.TextLength;
+            }
+
+            tamanhoPlaca = placa.Text.Length;
+            var tamanhoMaximoDaPlaca = 8;
+            if (Equals(tamanhoPlaca, int.Parse(Resources.Tamanho_Maximo_Placa)))
+            {
+
+                placa.Text = placa.Text.Remove(placa.Text.Length - 1);
+                placa.SelectionStart = placa.TextLength;
+            }
+        }
+
+        private DataTable CarregaItensNoGrid(Servico servicoParaSerCarregado)
+        {
+            foreach (var si in servicoParaSerCarregado.ServicoItem)
+            {
+                var row = dataTable.NewRow();
+                //row["ID"] = si.ID;
+                row["Descricao"] = si.Produto.Descricao;
+                row["Quantidade"] = si.Quantidade;
+                row["Valor"] = si.Produto.ValorUnitario.ToString("C");
+                row["Total"] = (si.Produto.ValorUnitario * si.Quantidade).ToString("C");
+                dataTable.Rows.Add(row);
+            }
+            return dataTable;
+        }
+
         private void textBox1_TextChanged(object sender, EventArgs e)
         {
-            if (textBox1.Text.Contains("."))
+            if (quantidadeProduto.Text.Contains("."))
             {
-                textBox1.Text = textBox1.Text.Remove(textBox1.Text.Length - 1);
-                textBox1.SelectionStart = textBox1.Text.Length;
+                quantidadeProduto.Text = quantidadeProduto.Text.Remove(quantidadeProduto.Text.Length - 1);
+                quantidadeProduto.SelectionStart = quantidadeProduto.Text.Length;
             }
+        }
+
+        private void CarregaProdutos()
+        {
+            cmdServico.DataSource = new ProdutoBL().TipoServico(EnumCategoriaProduto.Servico);
+            cmdServico.DisplayMember = "Descricao";
+            cmdServico.ValueMember = "ID";
+        }
+
+
+        private void CarregaCliente(Cliente cliente)
+        {
+            if (cliente == null) 
+                throw new ArgumentNullException("cliente");
+
+            placa.Text = clienteParaCarregarAsInformacoes.Placa;
+            veiculo.Text = clienteParaCarregarAsInformacoes.Veiculo;
+            telefone.Text = clienteParaCarregarAsInformacoes.Telefone;
+            nome.Text = clienteParaCarregarAsInformacoes.Nome;
+            corVeiculo.Text = clienteParaCarregarAsInformacoes.Cor;
+        }
+        
+        private Cliente ProcuraCliente(Cliente clienteProcurado)
+        {
+            return clienteBL.ByPlaca(clienteProcurado);
+        }
+        
+        #region "Metodos de apoio"
+
+        
+        
+        private void min_Enter(object sender, EventArgs e)
+        {
+            min.BackColor = Color.Yellow;
+        }
+
+        private void min_Leave(object sender, EventArgs e)
+        {
+            min.BackColor = Color.White;
+        }
+
+        private void telefone_Enter(object sender, EventArgs e)
+        {
+            telefone.BackColor = Color.Yellow;
+        }
+
+        private void telefone_Leave(object sender, EventArgs e)
+        {
+            telefone.BackColor = Color.White;
+        }
+
+        private void textBox1_Enter(object sender, EventArgs e)
+        {
+            quantidadeProduto.BackColor = Color.Yellow;
+        }
+
+        private void textBox1_Leave(object sender, EventArgs e)
+        {
+            quantidadeProduto.BackColor = Color.White;
         }
 
         private void veiculo_Enter(object sender, EventArgs e)
@@ -331,85 +430,9 @@ namespace HenryCorporation.Lavajato.Presentation
         private void placa_Enter_1(object sender, EventArgs e)
         {
             placa.BackColor = Color.Yellow;
-           
+
         }
 
-        private void btnFechar_Click(object sender, EventArgs e)
-        {
-            this.servico = new Servico();
-            this.cliente = new DomainModel.Cliente();
-            placa.Text = "";
-            veiculo.Text = "";
-            telefone.Text = "";
-            nome.Text = "";
-            corVeiculo.Text = "";
-            CarregaItensDoServico(this.servico);
-        }
-
-        private void placa_Leave(object sender, EventArgs e)
-        {
-            placa.BackColor = Color.White;
-            if (placa.Text == "   -")
-                return;
-
-            this.cliente.Placa = placa.Text;
-            this.cliente = ProcuraCliente(this.cliente);
-
-            if (this.cliente.ID == 0)
-            {
-                DialogResult dialogResult = MessageBox.Show("Cliente não Cadastrado, deseja cadastrar?", "Atenção", MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    btnCadastraCliente.Enabled = true;
-                    return;
-                }
-            }
-
-            this.servico = servicoBL.ByCliente(this.cliente);
-            if (this.servico.ID == 0)
-            {
-                CarregaCliente(this.cliente);
-                return;
-            }
-
-            CarregaCliente(this.cliente);
-            CarregaItensDoServico(this.servico);
-
-            if (this.servico.Finalizado == 0)
-                MessageBox.Show("Ordem de Serviço Aberto " + servico.OrdemServico, "Atenção");
-
-            if (this.servico.Lavado == 1)
-                MessageBox.Show("Veículo já lavado", "Atenção");
-        }
-
-        private void min_Enter(object sender, EventArgs e)
-        {
-            min.BackColor = Color.Yellow;
-        }
-
-        private void min_Leave(object sender, EventArgs e)
-        {
-            min.BackColor = Color.White;
-        }
-
-        private void telefone_Enter(object sender, EventArgs e)
-        {
-            telefone.BackColor = Color.Yellow;
-        }
-
-        private void telefone_Leave(object sender, EventArgs e)
-        {
-            telefone.BackColor = Color.White;
-        }
-
-        private void textBox1_Enter(object sender, EventArgs e)
-        {
-            textBox1.BackColor = Color.Yellow;
-        }
-
-        private void textBox1_Leave(object sender, EventArgs e)
-        {
-            textBox1.BackColor = Color.White;
-        }
+        #endregion
     }
 }

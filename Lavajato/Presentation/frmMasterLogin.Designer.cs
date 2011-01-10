@@ -109,7 +109,6 @@
             this.Name = "frmMasterLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Login";
-            this.Load += new System.EventHandler(this.frmMasterLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

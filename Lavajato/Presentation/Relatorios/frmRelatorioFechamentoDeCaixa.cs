@@ -47,7 +47,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         public DataTable GetFechamentoDeCaixa()
         {
-            Util util = new Util();
+            var util = new Util();
             string query = " select min(xx.[O.S. Inicial]) [O.S. Inicial], max(xx.[O.S. Final]) as [O.S. Final], " +
                            " sum(xx.totalvendas) as totalvendas, sum(xx.OSCancelado) as OSCancelado , sum(xx.[TotalVendas]), sum(xx.[TotalDesconto]) as TotalDesconto, " +
                            " sum(xx.[Dinheiro]) as [Dinheiro], sum(xx.[VisaDebito]) as [VisaDebito], sum(xx.[VisaCredito]) as [VisaCredito],  " +
@@ -75,15 +75,15 @@ namespace HenryCorporation.Lavajato.Presentation
                            " group by xx.Entrada, xx.Saida ";
 
 
-            DataTable table = new DataTable();
+            var table = new DataTable();
             table.Columns.AddRange(SetUpColumns());
 
-            DataSet dataSet = util.GeraTabela(query);
+            var dataSet = util.GeraTabela(query);
             dataSet.Tables.Add(table);
-            DataTableReader reader = dataSet.Tables[0].CreateDataReader();
+            var reader = dataSet.Tables[0].CreateDataReader();
             while (reader.Read())
             {
-                DataRow row = table.NewRow();
+                var row = table.NewRow();
                 row["OSInicial"] = reader.GetInt32(0);
                 row["OSFinal"] = reader.GetInt32(1);
                 row["OSCancelado"] = reader.GetInt32(3);
@@ -102,15 +102,15 @@ namespace HenryCorporation.Lavajato.Presentation
             return table;
         }
 
-        private DataColumn[] SetUpColumns()
+        private static DataColumn[] SetUpColumns()
         {
-            DataColumn[] columns = new DataColumn[12];
+            var columns = new DataColumn[12];
 
-            DataColumn osInicial = new DataColumn();
+            var osInicial = new DataColumn();
             osInicial.ColumnName = "OSInicial";
             columns[0] = osInicial;
 
-            DataColumn osFinal = new DataColumn();
+            var osFinal = new DataColumn();
             osFinal.ColumnName = "OSFinal";
             columns[1] = osFinal;
 

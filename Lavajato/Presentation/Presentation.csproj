@@ -196,6 +196,12 @@
       <DependentUpon>frmLavagensPorLavador.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\frmRelatorioDeVendas.resx">
+      <DependentUpon>frmRelatorioDeVendas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\frmVendasDiarias.resx">
+      <DependentUpon>frmVendasDiarias.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\HistoricoCliente.rdlc" />
     <EmbeddedResource Include="Produto\frmCategoriaProduto.resx">
       <DependentUpon>frmCategoriaProduto.cs</DependentUpon>
@@ -232,6 +238,7 @@
       <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\relProdutoAbaixoEstoque.rdlc" />
+    <EmbeddedResource Include="Relatorios\relRelatorioDeVendas.rdlc" />
     <EmbeddedResource Include="Relatorios\rptLavagemPorLavador.rdlc" />
     <EmbeddedResource Include="Relatorios\VendaPorPeriodo.rdlc" />
     <EmbeddedResource Include="Servicos\frmAlterarQuantidadeItem.resx">
@@ -332,6 +339,17 @@
     <None Include="Relatorios\relProdutoAbaixoEstoque.xss">
       <DependentUpon>relProdutoAbaixoEstoque.xsd</DependentUpon>
     </None>
+    <None Include="Relatorios\relVendasDiarias.xsc">
+      <DependentUpon>relVendasDiarias.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\relVendasDiarias.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>relVendasDiarias.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\relVendasDiarias.xss">
+      <DependentUpon>relVendasDiarias.xsd</DependentUpon>
+    </None>
     <Compile Include="Properties\Settings.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
@@ -391,11 +409,23 @@
     <Compile Include="Relatorios\frmProdutoAbaixoEstoque.Designer.cs">
       <DependentUpon>frmProdutoAbaixoEstoque.cs</DependentUpon>
     </Compile>
+    <Compile Include="Relatorios\frmRelatorioDeVendas.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\frmRelatorioDeVendas.Designer.cs">
+      <DependentUpon>frmRelatorioDeVendas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\frmRelatorioFechamentoDeCaixa.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Relatorios\frmRelatorioFechamentoDeCaixa.Designer.cs">
       <DependentUpon>frmRelatorioFechamentoDeCaixa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\frmVendasDiarias.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\frmVendasDiarias.Designer.cs">
+      <DependentUpon>frmVendasDiarias.cs</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\HistoricoCliente.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -406,6 +436,15 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>relProdutoAbaixoEstoque.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\relVendasDiarias.cs">
+      <DependentUpon>relVendasDiarias.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatorios\relVendasDiarias.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>relVendasDiarias.xsd</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\Util.cs" />
     <Compile Include="Servicos\frmAlterarQuantidadeItem.cs">
@@ -1472,6 +1511,10 @@
     <ProjectReference Include="..\DomainModel\DomainModel.csproj">
       <Project>{1EF6BF33-D1DF-4240-AAF6-08721E6B0534}</Project>
       <Name>DomainModel</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Impressao\Impressao.csproj">
+      <Project>{75B250BD-58B4-422F-A78E-9323B8A23857}</Project>
+      <Name>Impressao</Name>
     </ProjectReference>
     <ProjectReference Include="..\Operacional\Operacional.csproj">
       <Project>{472179EE-8D15-4940-BFAA-C45121A4B4DF}</Project>
