@@ -22,7 +22,7 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             InitializeComponent();
             btnCadastraCliente.Enabled = false;
-            dataTable.Columns.AddRange(ServicoBL.CarregaColunas());
+            dataTable.Columns.AddRange(ServicoBL.ServicoCarregaColunas());
             dataSetItens.Tables.Add(dataTable);
         }
 
@@ -38,34 +38,85 @@ namespace HenryCorporation.Lavajato.Presentation
             if (Equals(placa.Text, Resources.Placa_vazia))
                 return;
 
-            this.clienteParaCarregarAsInformacoes.Placa = placa.Text;
+            var clienteInformacao = ClienteCarregaInformacoes();
+            LiberaBotaoParaCadastroDeCliente();
+            servico = ServicoCarrega();
+            ImprimeNumeroOrdemServico();
+            ImprimeMensagemParaCarroJaLavado();
+            LimpaGrid(placa.Text);
+            CarregaItens(servico);
+            CarregaCliente(this.clienteInformacao);
+            LiberaBotaoParaExclusaoDeItens();
+        }
 
-            this.clienteParaCarregarAsInformacoes = ProcuraCliente(this.clienteParaCarregarAsInformacoes);
-            if (clienteParaCarregarAsInformacoes.ID == 0)
+        private Cliente ClienteCarregaInformacoes()
+        {
+            this.clienteInformacao.Placa = placa.Text;
+            this.clienteInformacao = ProcuraCliente(this.clienteInformacao);
+            return this.clienteInformacao;
+        }
+
+        private void LiberaBotaoParaCadastroDeCliente()
+        {
+            if (clienteInformacao.ID == 0)
             {
                 var dialogResult = MessageBox.Show(Resources.Cliente_não_Cadastrado, Resources.Atencao, MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
                 {
                     btnCadastraCliente.Enabled = true;
+                    LimpaGrid();
                     return;
                 }
             }
+        }
 
-            servico = servicoBL.ByCliente(this.clienteParaCarregarAsInformacoes);
-            if (servico.ID == 0)
+        private void LimpaGrid()
+        {
+            dataTable = new DataTable();
+            dataSetItens = new DataSet();
+            dataTable.Columns.AddRange(ServicoBL.CarregaColunasOrdemServico());
+            dataSetItens.Tables.Add(dataTable);
+            grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
+        }
+
+        private void LimpaGrid(string placaPesquisada)
+        {
+            if (Equals(clienteInformacao.Placa, placaPesquisada))
             {
-                CarregaCliente(this.clienteParaCarregarAsInformacoes);
-                return;
+                dataTable = new DataTable();
+                dataSetItens = new DataSet();
+                dataTable.Columns.AddRange(ServicoBL.CarregaColunasOrdemServico());
+                dataSetItens.Tables.Add(dataTable);
+                grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
             }
+        }
 
-            CarregaCliente(this.clienteParaCarregarAsInformacoes);
-            
-            if (this.servico.Lavado != 1)
-            CarregaItens(this.servico);
+        private Servico ServicoCarrega()
+        {
+            return servicoBL.ByCliente(this.clienteInformacao);
+        }
 
+        private void CarroJaLavado()
+        {
             if (this.servico.Finalizado == 0)
                 MessageBox.Show(Resources.Ordem_de_Serviço_Aberto + servico.OrdemServico, Resources.Atencao);
-                
+        }
+
+        private void LiberaBotaoParaExclusaoDeItens()
+        {
+            btnExcluir.Enabled = this.servico.ID == 0;
+        }
+
+        private void ImprimeNumeroOrdemServico()
+        {
+            if (this.servico.ID > 0)
+                MessageBox.Show("Número da Ordem Serviço: " + this.servico.OrdemServico, "Atenção");
+        }
+
+        private void ImprimeMensagemParaCarroJaLavado()
+        {
+            if (this.servico.Lavado > 0)
+                MessageBox.Show("Carro já lavado", "Atenção");
         }
 
         private void placa_TextChanged(object sender, EventArgs e)
@@ -75,7 +126,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void adicionarServico_Click(object sender, EventArgs e)
         {
-            if (clienteParaCarregarAsInformacoes.ID == 0)
+            if (clienteInformacao.ID == 0)
             {
                 MessageBox.Show(Resources.Favor_escolher_um_cliente, Resources.Atencao);
                 return;
@@ -86,8 +137,8 @@ namespace HenryCorporation.Lavajato.Presentation
         private void btnCadastraCliente_Click(object sender, EventArgs e)
         {
             var clientePlaca = new Cliente();
-            clienteParaCarregarAsInformacoes.Placa = placa.Text;
-            if (clienteBL.Existe(clienteParaCarregarAsInformacoes))
+            clienteInformacao.Placa = placa.Text;
+            if (clienteBL.Existe(clienteInformacao))
             {
                 MessageBox.Show(Resources.Cliente_já_existente_na_base, Resources.Atencao);
                 return;
@@ -120,22 +171,44 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnGerarOrdemServico_Click(object sender, EventArgs e)
         {
-            var servicoSalva = ServicoSalva();
-            ServicoItemSalva(servicoSalva);
-            IImprimir impressao = new ImprimirComprovantePagamento(this.servico);
+            this.servico = ServicoSalva();
+            var itens =  ItensParaInsercao(this.servico);
+            SalvaItens(itens);
+            //IImprimir impressao = new ImprimirComprovantePagamento(this.servico);
+            LiberaBotaoParaExclusaoDeItens();
         }
 
         private Servico ServicoSalva()
         {
-
-            var servicoSalva = new Servico
+            if (!ServicoExiste(this.servico))
+                return servicoBL.Add(NovoServico());
+            else
             {
-                Cliente = this.clienteParaCarregarAsInformacoes,
-                Total = SomaTotal(),
-                SubTotal = 0,
-                Desconto = 0,
-                Entrada = DateTime.Now
-            };
+                servico.Total = SomaTotal();
+                servicoBL.Update(this.servico);
+                return this.servico;
+            }
+        }
+
+        private void SalvaItens(List<ServicoItem> servicoItens)
+        {
+            foreach (var item in servicoItens)
+                this.servicoBL.ItemAdd(item);
+        }
+        
+        private bool ServicoExiste(Servico servico)
+        {
+            return servico.ID > 0;
+        }
+
+        private Servico NovoServico()
+        {
+            var servicoSalva = new Servico();
+            servicoSalva.Cliente = this.clienteInformacao;
+            servicoSalva.Total = SomaTotal();
+            servicoSalva.SubTotal = 0;
+            servicoSalva.Desconto = 0;
+            servicoSalva.Entrada = DateTime.Now;
 
             servicoSalva.Saida = servicoSalva.Entrada.AddHours(double.Parse(hora.SelectedItem.ToString())).AddMinutes(double.Parse(min.SelectedItem.ToString()));
             servicoSalva.OrdemServico = servicoBL.OrdemServicoMax();
@@ -147,31 +220,44 @@ namespace HenryCorporation.Lavajato.Presentation
             servicoSalva.Finalizado = 0;
             servicoSalva.Lavado = 0;
 
-            try
-            {
-                return servicoBL.Add(servicoSalva);
-            }
-            catch (Exception)
-            {
-                servicoBL.Delete(servicoSalva);                
-            }
-            return new Servico();
+            return servicoSalva;
         }
 
-        private void ServicoItemSalva(Servico servico)
+        //Caso o item já exista no bd não será necessario inserilo novamente
+        //criar um novo lista somente com os existentes.
+        //criar metodo somente para inserção passando o list
+        private List<ServicoItem> ItensParaInsercao(Servico servico)
         {
-            if (dataSetItens != null)
-                foreach (DataRow row in dataSetItens.Tables[0].Rows)
+            var ids = new List<int>();
+            foreach (DataRow row in dataSetItens.Tables[0].Rows)
+            {
+                var ID = int.Parse(row["ID"].ToString());
+                foreach (ServicoItem si in servico.ServicoItem)
+                {
+                    if (ID == si.ID)
+                        ids.Add(ID);
+                } 
+            }
+
+            var servicoItems = new List< ServicoItem>(); 
+            var idpi = new List<int>();
+            foreach (DataRow row in dataSetItens.Tables[0].Rows)
+            {
+                var servicoItemID = int.Parse(row["ID"].ToString());
+                if (!ids.Contains(servicoItemID))
                 {
                     var item = new ServicoItem();
                     var produto = new Produto() { ID = int.Parse(row["ID"].ToString()) };
                     item.Produto = new ProdutoBL().ByID(produto);
                     item.Quantidade = int.Parse(row["Quantidade"].ToString());
                     item.Servico = servico;
-                    servicoBL.ItemInsert(item);
+                    servicoItems.Add(item);
                 }
-        }
+            }
 
+            return servicoItems;
+        }
+    
         private decimal SomaTotal()
         {
             var qtdeTotal = dataSetItens.Tables[0].Rows.Cast<DataRow>().Sum(
@@ -183,16 +269,15 @@ namespace HenryCorporation.Lavajato.Presentation
         private void btnFechar_Click(object sender, EventArgs e)
         {
             servico = new Servico();
-            clienteParaCarregarAsInformacoes = new Cliente();
+            clienteInformacao = new Cliente();
             placa.Text = "";
             veiculo.Text = "";
             telefone.Text = "";
             nome.Text = "";
             corVeiculo.Text = "";
-            CarregaItens(servico);
             dataSetItens = new DataSet();
             dataTable = new DataTable();
-            dataTable.Columns.AddRange(ServicoBL.CarregaColunas());
+            dataTable.Columns.AddRange(ServicoBL.CarregaColunasOrdemServico());
             dataSetItens.Tables.Add(dataTable);
             grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
 
@@ -200,16 +285,16 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void ClienteInsert()
         {
-            clienteParaCarregarAsInformacoes = clienteBL.Insert(clienteParaCarregarAsInformacoes);
+            this.clienteInformacao = clienteBL.Insert(clienteInformacao);
         }
 
         private void SetUpFieldsCliente()
         {
-            clienteParaCarregarAsInformacoes.Placa = placa.Text;
-            clienteParaCarregarAsInformacoes.Veiculo = veiculo.Text;
-            clienteParaCarregarAsInformacoes.Telefone = telefone.Text;
-            clienteParaCarregarAsInformacoes.Nome = nome.Text;
-            clienteParaCarregarAsInformacoes.Cor = corVeiculo.Text;
+            this.clienteInformacao.Placa = placa.Text;
+            this.clienteInformacao.Veiculo = veiculo.Text;
+            this.clienteInformacao.Telefone = telefone.Text;
+            this.clienteInformacao.Nome = nome.Text;
+            this.clienteInformacao.Cor = corVeiculo.Text;
         }
 
         private void CarregaHora()
@@ -225,7 +310,7 @@ namespace HenryCorporation.Lavajato.Presentation
             if (grdServico == null) return;
 
             grdServico.DataSource = CarregaItensNoGrid(servicoParaCarregarItens);
-            grdServico.Columns[0].Width = 150;
+            grdServico.Columns[0].Visible = false;
             grdServico.Columns[1].Width = 150;
             grdServico.Columns[2].Width = 100;
             grdServico.Columns[3].Width = 100;
@@ -262,7 +347,7 @@ namespace HenryCorporation.Lavajato.Presentation
             item.Produto.ID = int.Parse(cmdServico.SelectedValue.ToString());
             item.Quantidade = quantidadeProduto.TextLength == 0 ? 1 : Convert.ToDecimal(quantidadeProduto.Text);
             item.Servico = servicoDoItem;
-            servicoBL.ItemInsert(item);
+            servicoBL.ItemAdd(item);
         }
 
         private void FormataPlaca()
@@ -289,7 +374,7 @@ namespace HenryCorporation.Lavajato.Presentation
             foreach (var si in servicoParaSerCarregado.ServicoItem)
             {
                 var row = dataTable.NewRow();
-                //row["ID"] = si.ID;
+                row["ID"] = si.ID;
                 row["Descricao"] = si.Produto.Descricao;
                 row["Quantidade"] = si.Quantidade;
                 row["Valor"] = si.Produto.ValorUnitario.ToString("C");
@@ -318,14 +403,25 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void CarregaCliente(Cliente cliente)
         {
-            if (cliente == null) 
-                throw new ArgumentNullException("cliente");
+            if (cliente.ID == 0)
+            {
+                LimparCamposCadastro();
+                return;
+            }
 
-            placa.Text = clienteParaCarregarAsInformacoes.Placa;
-            veiculo.Text = clienteParaCarregarAsInformacoes.Veiculo;
-            telefone.Text = clienteParaCarregarAsInformacoes.Telefone;
-            nome.Text = clienteParaCarregarAsInformacoes.Nome;
-            corVeiculo.Text = clienteParaCarregarAsInformacoes.Cor;
+            placa.Text = clienteInformacao.Placa;
+            veiculo.Text = clienteInformacao.Veiculo;
+            telefone.Text = clienteInformacao.Telefone;
+            nome.Text = clienteInformacao.Nome;
+            corVeiculo.Text = clienteInformacao.Cor;
+        }
+
+        private void LimparCamposCadastro()
+        {
+            veiculo.Clear();
+            telefone.Clear();
+            nome.Clear();
+            corVeiculo.Clear();
         }
         
         private Cliente ProcuraCliente(Cliente clienteProcurado)

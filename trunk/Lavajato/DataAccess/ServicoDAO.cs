@@ -73,7 +73,7 @@ namespace HenryCorporation.Lavajato.DataAccess
         public void CarroLavado(Servico servico)
         {
             var query = " UPDATE [Servico] " +
-                           " SET [Lavado] = 1 " +
+                           " SET [Lavado] = '"+servico.Lavado+"' " +
                            " WHERE ServicoID = " + servico.ID;
 
             var dataBaseHelper = new DataBaseHelper(query);

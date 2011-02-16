@@ -15,12 +15,6 @@ namespace HenryCorporation.Lavajato.Presentation
 {
     public partial class frmCaixa : login
     {
-        private string total;
-        private string valorServico;
-        private string descontoServico;
-        private string trocoServico;
-
-
         public frmCaixa()
         {
             InitializeComponent();
@@ -38,6 +32,59 @@ namespace HenryCorporation.Lavajato.Presentation
             CarregaFormaPagamento();
             ProcuraServico(servico.OrdemServico);
             
+        }
+
+        private void frmCaixa_Load(object sender, EventArgs e)
+        {
+            ordemServico.Focus();
+            CarregaConvenioDosClientes();
+        }
+
+        private void ordemServico_Leave(object sender, EventArgs e)
+        {
+            try
+            {
+                int ordServico = int.Parse(this.ordemServico.Text);
+                this.servico = ProcuraServico(ordServico);
+                CarregaCliente(this.servico);
+                CriaTabela(this.servico);
+                
+            }
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show(Resources.SomenteNumeros + " " + ex.Message, Resources.Atencao);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Favor preencher o campo de pesquisa!" + " " + ex.Message, Resources.Atencao);
+            }
+            
+        }
+
+        private Servico ProcuraServico(int ordemServicoProcurada)
+        {
+            var serv = new Servico();
+            if (ordemServicoProcurada == 0)
+            {
+                MessageBox.Show(Resources.OrdemServicoNaoEncontrada + this.ordemServico.Text, "Atenção");
+                return serv;
+            }
+            serv.OrdemServico = ordemServicoProcurada;
+            serv = servicoBL.ByOrdemServico(serv);
+            return serv;
+        }
+
+        private void CarregaCliente(Servico servicoQueSeraCarregado)
+        {
+            placa.Text = servicoQueSeraCarregado.Cliente.Placa;
+            veiculo.Text = servicoQueSeraCarregado.Cliente.Veiculo;
+            telefone.Text = servicoQueSeraCarregado.Cliente.Telefone;
+            nome.Text = servicoQueSeraCarregado.Cliente.Nome;
+            corVeiculo.Text = servicoQueSeraCarregado.Cliente.Cor;
+            chbLavado.Checked = Convert.ToBoolean(servicoQueSeraCarregado.Lavado);
+            convenio.SelectedValue = servicoQueSeraCarregado.Cliente.Convenio.ID;
+            cmbLavador.SelectedValue = servicoQueSeraCarregado.Lavador;
+            this.cmbLavador.SelectedValue = servicoQueSeraCarregado.Lavador;
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -59,12 +106,6 @@ namespace HenryCorporation.Lavajato.Presentation
             CriaTabela(servico);
         }
 
-        private void frmCaixa_Load(object sender, EventArgs e)
-        {
-            ordemServico.Focus();
-            CarregaConvenioDosClientes();
-        }
-
         private void btnAlterarQuantidade_Click(object sender, EventArgs e)
         {
             AlterarQuantidade();
@@ -84,14 +125,14 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void totalServico_TextChanged(object sender, EventArgs e)
         {
-            if (!totalServico.Text.Contains(enter))
-            {
-                total = totalServico.Text;
-            }
-            else
+            if (totalServico.Text.Contains(enter))
             {
                 totalServico.Text = total;
                 valor.Focus();
+            }
+            else
+            {
+                total = totalServico.Text;
             }
 
 
@@ -222,70 +263,8 @@ namespace HenryCorporation.Lavajato.Presentation
                     valor.Text = totalServico.Text;
                     break;
             }
-        }
-
-        private void btnFinalizarVenda_Click(object sender, EventArgs e)
-        {
-            CancelarVenda();
-        }
-
-        private void btnVendaAvulca_Click(object sender, EventArgs e)
-        {
-            FazerVendaAvulsa();
-        }
-
-        private void frmCaixa_KeyDown(object sender, KeyEventArgs e)
-        {
-            ChamaFuncoesDeVenda(e);
-        }
-
-        private void cmbLavador_KeyDown(object sender, KeyEventArgs e)
-        {
-            ChamaFuncoesDeVenda(e);
-        }
-
-        private void totalServico_KeyDown(object sender, KeyEventArgs e)
-        {
-            ChamaFuncoesDeVenda(e);
-        }
-
-        private void cmbFormaPagamento_KeyDown(object sender, KeyEventArgs e)
-        {
-            ChamaFuncoesDeVenda(e);
-        }
-
-        private void desconto_KeyDown(object sender, KeyEventArgs e)
-        {
-            ChamaFuncoesDeVenda(e);
-        }
-
-        private void troco_KeyDown(object sender, KeyEventArgs e)
-        {
-            ChamaFuncoesDeVenda(e);
-        }
-
-        private void btnConcluirVenda_KeyDown(object sender, KeyEventArgs e)
-        {
-            ChamaFuncoesDeVenda(e);
-        }
-
-        private void cmbProduto_KeyDown(object sender, KeyEventArgs e)
-        {
-            ChamaFuncoesDeVenda(e);
-        }
-
-        private void btnVendaAvulca_KeyUp(object sender, KeyEventArgs e)
-        {
-            ChamaFuncoesDeVenda(e);
-        }
-
-        private void ordemServico_Leave(object sender, EventArgs e)
-        {
-            int ordServico;
-            if (int.TryParse(this.ordemServico.Text, out ordServico))
-                ProcuraServico(ordServico);
-        }
-
+        }        
+        
         private void acertoFuturo_CheckedChanged(object sender, EventArgs e)
         {
             if (ExisteServico())
@@ -337,26 +316,6 @@ namespace HenryCorporation.Lavajato.Presentation
             servicoBL.Update(this.servico);
         }
 
-        private void ProcuraServico(int ordemServicoProcurada)
-        {
-            if (ordemServicoProcurada != 0)
-            {
-                servico.OrdemServico = ordemServicoProcurada;
-                servico = servicoBL.ByOrdemServico(servico);
-
-                if (!ExisteServico())
-                {
-                    MessageBox.Show(Resources.Nenhum_ordem_servico_aberta, Resources.Atencao);
-                    LimpaCampos();
-                    this.ordemServico.Focus();
-                    return;
-                }
-
-                CarregaCliente(this.servico);
-                CriaTabela(this.servico);
-            }
-        }
-
         private void CarregaConvenioDosClientes()
         {
             var convenioBl = new ConvenioBL();
@@ -368,19 +327,6 @@ namespace HenryCorporation.Lavajato.Presentation
         private bool ExisteServico()
         {
             return servicoBL.ExisteServico(this.servico);
-        }
-
-        private void CarregaCliente(Servico servicoQueSeraCarregado)
-        {
-            placa.Text = servicoQueSeraCarregado.Cliente.Placa;
-            veiculo.Text = servicoQueSeraCarregado.Cliente.Veiculo;
-            telefone.Text = servicoQueSeraCarregado.Cliente.Telefone;
-            nome.Text = servicoQueSeraCarregado.Cliente.Nome;
-            corVeiculo.Text = servicoQueSeraCarregado.Cliente.Cor;
-            chbLavado.Checked = Convert.ToBoolean(servicoQueSeraCarregado.Lavado);
-            convenio.SelectedValue = servicoQueSeraCarregado.Cliente.Convenio.ID;
-            cmbLavador.SelectedValue = servicoQueSeraCarregado.Lavador;
-            this.cmbLavador.SelectedValue = servicoQueSeraCarregado.Lavador;
         }
 
         private void CarregaLavadores()
@@ -473,15 +419,13 @@ namespace HenryCorporation.Lavajato.Presentation
             cmbFormaPagamento.ValueMember = "ID";
         }
 
-       
-
         private void CriaServicoItem()
         {
             var item = new ServicoItem();
             item.Produto.ID = int.Parse(cmbProduto.SelectedValue.ToString());
             item.Quantidade = int.Parse(quantidade.Text);
             item.Servico = this.servico;
-            servicoBL.ItemInsert(item);
+            servicoBL.ItemAdd(item);
         }
 
         private void FazerVendaAvulsa()
@@ -560,11 +504,10 @@ namespace HenryCorporation.Lavajato.Presentation
                 servicoBL.ItemDelete(this.servicoItem);
                 this.servico = servicoBL.ID(this.servico);
                 CriaTabela(this.servico);
-                MessageBox.Show(Resources.Item_excluido);
+                MessageBox.Show(Resources.Item_deletado);
             }
         }
 
-      
         private void CancelarVenda()
         {
             if (this.servicoItem.ID == 0)
@@ -584,8 +527,6 @@ namespace HenryCorporation.Lavajato.Presentation
             MessageBox.Show(Resources.Venda_cancelada);
         }
 
-      
-
         private void CriaServico()
         {
             this.servico.Cliente.ID = 69;
@@ -603,6 +544,13 @@ namespace HenryCorporation.Lavajato.Presentation
             this.servico.Finalizado = 0;
             this.servico.Lavado = 0;
             this.servico = servicoBL.Add(servico);
+        }
+
+        private void FormataGridView()
+        {
+            
+            
+            
         }
 
         private void ordemServico_KeyDown(object sender, KeyEventArgs e)
@@ -632,6 +580,67 @@ namespace HenryCorporation.Lavajato.Presentation
             }
         }
 
-       
+        private void btnFinalizarVenda_Click(object sender, EventArgs e)
+        {
+            CancelarVenda();
+        }
+
+        private void btnVendaAvulca_Click(object sender, EventArgs e)
+        {
+            FazerVendaAvulsa();
+        }
+
+        private void frmCaixa_KeyDown(object sender, KeyEventArgs e)
+        {
+            ChamaFuncoesDeVenda(e);
+        }
+
+        private void cmbLavador_KeyDown(object sender, KeyEventArgs e)
+        {
+            ChamaFuncoesDeVenda(e);
+        }
+
+        private void totalServico_KeyDown(object sender, KeyEventArgs e)
+        {
+            ChamaFuncoesDeVenda(e);
+        }
+
+        private void cmbFormaPagamento_KeyDown(object sender, KeyEventArgs e)
+        {
+            ChamaFuncoesDeVenda(e);
+        }
+
+        private void desconto_KeyDown(object sender, KeyEventArgs e)
+        {
+            ChamaFuncoesDeVenda(e);
+        }
+
+        private void troco_KeyDown(object sender, KeyEventArgs e)
+        {
+            ChamaFuncoesDeVenda(e);
+        }
+
+        private void btnConcluirVenda_KeyDown(object sender, KeyEventArgs e)
+        {
+            ChamaFuncoesDeVenda(e);
+        }
+
+        private void cmbProduto_KeyDown(object sender, KeyEventArgs e)
+        {
+            ChamaFuncoesDeVenda(e);
+        }
+
+        private void btnVendaAvulca_KeyUp(object sender, KeyEventArgs e)
+        {
+            ChamaFuncoesDeVenda(e);
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            ServicoLavador servicoLavador = new ServicoLavador();
+            servicoLavador.ShowDialog();
+            servicoLavador.Close();
+        }
+
     }
 }

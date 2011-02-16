@@ -1,4 +1,5 @@
-﻿namespace HenryCorporation.Lavajato.Presentation{
+﻿namespace HenryCorporation.Lavajato.Presentation.Relatorios
+{
     
     
     public partial class clientePorPlaca {
@@ -7,7 +8,7 @@
         }
     }
 }
-namespace HenryCorporation.Lavajato.Presentation.clientePorPlacaTableAdapters
+namespace HenryCorporation.Lavajato.Presentation.Relatorios.clientePorPlacaTableAdapters
 {
     
     
