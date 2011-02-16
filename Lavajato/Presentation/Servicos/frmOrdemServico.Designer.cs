@@ -441,7 +441,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private System.Windows.Forms.TextBox quantidadeProduto;
         
         private ClienteBL clienteBL = new ClienteBL();
-        private Cliente clienteParaCarregarAsInformacoes = new Cliente();
+        private Cliente clienteInformacao = new Cliente();
         private Servico servico = new Servico();
         private ServicoItem servicoItem = new ServicoItem();
         private ServicoBL servicoBL = new ServicoBL();

@@ -10,13 +10,16 @@ using System.Windows.Forms;
 using HenryCorporation.Lavajato.BusinessLogic;
 using HenryCorporation.Lavajato.DomainModel;
 using HenryCorporation.Lavajato.Operacional;
+using HenryCorporation.Lavajato.Interface;
+using HenryCorporation.Lavajato.Presentation.Properties;
 
 namespace HenryCorporation.Lavajato.Presentation
 {
     public partial class frmProduto : Form
     {
-        private ProdutoBL produtoBL = new ProdutoBL();
-        private HenryCorporation.Lavajato.DomainModel.Produto produto = new HenryCorporation.Lavajato.DomainModel.Produto();
+        private const string contemPonto = ".";
+        private IProdutoRepositorio _produtoRepository = new ProdutoBL();
+        private Produto _produto = new Produto();
         
         public frmProduto()
         {
@@ -25,14 +28,14 @@ namespace HenryCorporation.Lavajato.Presentation
             CarregaCategoriaProduto();
         }
 
-        public frmProduto(HenryCorporation.Lavajato.DomainModel.Produto produto)
+        public frmProduto(Produto produto)
         {
             InitializeComponent();
-            this.produto = produto;
+            _produto = produto;
             CarregaProdutos();
             CarregaCategoriaProduto();
-            this.produto = ProcuraProduto(this.produto);
-            CarregaCampos(this.produto);
+            _produto = ProcuraProduto(_produto);
+            CarregaCampos(_produto);
             tabProdutos.SelectedTab = tabProduto;
         }
 
@@ -40,51 +43,47 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             HenryCorporation.Lavajato.DomainModel.Produto produto = new HenryCorporation.Lavajato.DomainModel.Produto();
             produto.Descricao = nomePesquisa.Text;
-            grdProdutos.DataSource = produtoBL.ByName(produto);
+            grdProdutos.DataSource = _produtoRepository.ByName(produto);
             OcultaCampo();
-        }
-
-        private void OcultaCampo()
-        {
-            grdProdutos.Columns[0].Visible = false;
         }
 
         private void grdProdutos_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            this.produto.ID = int.Parse(grdProdutos.Rows[grdProdutos.CurrentRow.Index].Cells[0].Value.ToString());
-            this.produto = ProcuraProduto(this.produto);
-            CarregaCampos(this.produto);
+            this._produto.ID = int.Parse(grdProdutos.Rows[grdProdutos.CurrentRow.Index].Cells[0].Value.ToString());
+            this._produto = ProcuraProduto(this._produto);
+            CarregaCampos(this._produto);
             tabProdutos.SelectedTab = tabProduto;
         }
 
         private HenryCorporation.Lavajato.DomainModel.Produto ProcuraProduto(HenryCorporation.Lavajato.DomainModel.Produto produto)
         {
-            return produtoBL.ByID(produto);
+            return _produtoRepository.ByID(produto);
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            if (this.produto.ID == 0)
+            if (ProdutoExiste())
             {
-                MessageBox.Show("Favor selecionar um produto", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.FavorSelecionarUmItem, Resources.Atencao, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             if (descricao.Text.Length == 0)
             {
-                MessageBox.Show("Favor preencher todos os campos", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show(Resources.FavorPreencherTodosOsCampos, Resources.Atencao, MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
             SetProduto();
-            produtoBL.Update(this.produto);
+            _produtoRepository.Update(this._produto);
             CarregaProdutos();
-            MessageBox.Show("Produto atualizado com sucesso", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            MessageBox.Show(Resources.ProdutoAtualizadoComSucesso, Resources.Atencao, MessageBoxButtons.OK, MessageBoxIcon.Information);
+            descricao.Focus();
         }
 
         private void precoCompra_TextChanged(object sender, EventArgs e)
         {
-            if (precoCompra.Text.Contains("."))
+            if (precoCompra.Text.Contains(contemPonto))
             {
                 precoCompra.Text = precoCompra.Text.Remove(precoCompra.Text.Length - 1);
                 precoCompra.SelectionStart = precoCompra.Text.Length;
@@ -93,7 +92,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void precoVenda_TextChanged(object sender, EventArgs e)
         {
-            if (precoVenda.Text.Contains("."))
+            if (precoVenda.Text.Contains(contemPonto))
             {
                 precoVenda.Text = precoVenda.Text.Remove(precoVenda.Text.Length - 1);
                 precoVenda.SelectionStart = precoVenda.Text.Length;
@@ -103,34 +102,82 @@ namespace HenryCorporation.Lavajato.Presentation
         private void btnNovo_Click(object sender, EventArgs e)
         {
             LimpaCampos();
+            descricao.Focus();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            if (!Todos_Os_Campos_Obrigatorios_Estao_Preenchitos())
+            {
+                MessageBox.Show(Resources.Preencher_todos_os_campos, Resources.Atencao);
+                descricao.Focus();
+                return;
+            }
+
             SetProduto();
-            produtoBL.Add(this.produto);
+            _produtoRepository.Add(_produto);
             CarregaProdutos();
-            MessageBox.Show("Produto salvo com sucesso", "Atenção");
+            OcultaCampo();
+            MessageBox.Show(Resources.ProdutoSalvoComSucesso, Resources.Atencao);
+        }
+
+        private bool Todos_Os_Campos_Obrigatorios_Estao_Preenchitos()
+        {
+
+            int tipoProdutoID = 0;
+            try
+            {
+                tipoProdutoID = ((CategoriaProduto)cmbCategoriaProduto.SelectedValue).ID;
+            }
+            catch
+            {
+                tipoProdutoID = ((CategoriaProduto)cmbCategoriaProduto.SelectedItem).ID;
+            }
+
+
+            bool camposServico = descricao.TextLength != 0 || precoVenda.TextLength != 0;
+            bool camposProduto = camposServico || minimo.TextLength != 0 || quantidade.TextLength != 0 ||
+                precoCompra.TextLength != 0 || estoqueSaldo.TextLength != 0;
+
+            if (tipoProdutoID == EnumCategoriaProduto.Servico)
+            {
+                if (!camposServico)
+                    return false;
+
+            }
+            else
+            {
+                if (!camposProduto)
+                    return false;
+            }
+
+            return false;
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (this.produto.ID == 0)
+            if (ProdutoExiste())
             {
-                MessageBox.Show("Nennhum produto selecionado!", "Atenção");
+                MessageBox.Show(Resources.NennhumProdutoSelecionado, Resources.Atencao);
                 return;
             }
 
-            DialogResult dialogResult = MessageBox.Show("Deseja realmente excluir o produto", "Atenção!", MessageBoxButtons.YesNo);
+            DialogResult dialogResult = MessageBox.Show(Resources.Item_deletado, Resources.Atencao, MessageBoxButtons.YesNo);
             if (dialogResult == DialogResult.No)
             {
                 return;
             }
 
-            produtoBL.Delete(this.produto);
+            _produtoRepository.Delete(_produto);
             CarregaProdutos();
             LimpaCampos();
-            MessageBox.Show("Produto excluido!", "Atenção");
+            MessageBox.Show(Resources.Item_deletado, Resources.Atencao);
+            descricao.Focus();
+        }
+
+        private bool ProdutoExiste()
+        {
+            return !(_produto.ID > 0);
         }
 
         private void CarregaCategoriaProduto()
@@ -142,8 +189,12 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void CarregaProdutos()
         {
-            grdProdutos.DataSource = produtoBL.GetAll();
-            OcultaCampo();
+            grdProdutos.DataSource = _produtoRepository.GetAll();
+        }
+
+        private void OcultaCampo()
+        {
+            grdProdutos.Columns[0].Visible = false;
         }
 
         private void CarregaCampos(HenryCorporation.Lavajato.DomainModel.Produto produto)
@@ -159,26 +210,26 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void LimpaCampos()
         {
-            descricao.Text = "";
-            quantidade.Text = "";
-            precoCompra.Text = "";
-            precoVenda.Text = "";
-            minimo.Text = "";
+            descricao.Clear();
+            quantidade.Clear();
+            precoCompra.Clear();
+            precoVenda.Clear();
+            minimo.Clear();
             cmbCategoriaProduto.SelectedIndex = 0;
-            this.produto = new HenryCorporation.Lavajato.DomainModel.Produto();
+            this._produto = new Produto();
             
         }
 
         private void SetProduto()
         {
-            this.produto.Descricao = descricao.Text;
-            this.produto.PrecoCompra = Configuracao.ConverteParaDecimal(precoCompra.Text);
-            this.produto.ValorUnitario = Configuracao.ConverteParaDecimal(precoVenda.Text);
-            this.produto.CategoriaProduto.ID = int.Parse(cmbCategoriaProduto.SelectedValue.ToString());
+            _produto.Descricao = descricao.Text;
+            _produto.PrecoCompra = Configuracao.ConverteParaDecimal(precoCompra.Text);
+            _produto.ValorUnitario = Configuracao.ConverteParaDecimal(precoVenda.Text);
+            _produto.CategoriaProduto.ID = int.Parse(cmbCategoriaProduto.SelectedValue.ToString());
 
-            this.produto.Estoque.Quantidade = Configuracao.ConverteParaInteiro(quantidade.Text.Length > 0 ? quantidade.Text: "0");
-            this.produto.Estoque.Minimo = int.Parse(minimo.Text.Length > 0 ? minimo.Text : "0");
-            this.produto.Estoque.Data = this.produto.Estoque.Data;
+            _produto.Estoque.Quantidade = Configuracao.ConverteParaInteiro(quantidade.Text.Length > 0 ? quantidade.Text: "0");
+            _produto.Estoque.Minimo = int.Parse(minimo.Text.Length > 0 ? minimo.Text : "0");
+            _produto.Estoque.Data = this._produto.Estoque.Data;
         }
 
         private void precoCompra_Enter(object sender, EventArgs e)
@@ -189,7 +240,6 @@ namespace HenryCorporation.Lavajato.Presentation
         private void precoCompra_Leave(object sender, EventArgs e)
         {
             precoCompra.BackColor = Color.White;
-            precoVenda.Focus();
         }
 
         private void descricao_Enter(object sender, EventArgs e)

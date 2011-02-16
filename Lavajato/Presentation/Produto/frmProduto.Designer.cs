@@ -42,7 +42,7 @@
             this.btnNovo = new System.Windows.Forms.Button();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label4 = new System.Windows.Forms.Label();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.estoqueSaldo = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.minimo = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -120,8 +120,8 @@
             this.nomePesquisa.Size = new System.Drawing.Size(378, 21);
             this.nomePesquisa.TabIndex = 61;
             this.nomePesquisa.TextChanged += new System.EventHandler(this.nomePesquisa_TextChanged);
-            this.nomePesquisa.Leave += new System.EventHandler(this.nomePesquisa_Leave);
             this.nomePesquisa.Enter += new System.EventHandler(this.nomePesquisa_Enter);
+            this.nomePesquisa.Leave += new System.EventHandler(this.nomePesquisa_Leave);
             // 
             // grdProdutos
             // 
@@ -209,7 +209,7 @@
             // groupBox4
             // 
             this.groupBox4.Controls.Add(this.label4);
-            this.groupBox4.Controls.Add(this.textBox1);
+            this.groupBox4.Controls.Add(this.estoqueSaldo);
             this.groupBox4.Controls.Add(this.label3);
             this.groupBox4.Controls.Add(this.minimo);
             this.groupBox4.Controls.Add(this.label1);
@@ -230,15 +230,15 @@
             this.label4.TabIndex = 20;
             this.label4.Text = "Saldo Est:";
             // 
-            // textBox1
+            // estoqueSaldo
             // 
-            this.textBox1.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.textBox1.Enabled = false;
-            this.textBox1.Location = new System.Drawing.Point(69, 55);
-            this.textBox1.MaxLength = 50;
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(83, 20);
-            this.textBox1.TabIndex = 7;
+            this.estoqueSaldo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.estoqueSaldo.Enabled = false;
+            this.estoqueSaldo.Location = new System.Drawing.Point(69, 55);
+            this.estoqueSaldo.MaxLength = 50;
+            this.estoqueSaldo.Name = "estoqueSaldo";
+            this.estoqueSaldo.Size = new System.Drawing.Size(83, 20);
+            this.estoqueSaldo.TabIndex = 7;
             // 
             // label3
             // 
@@ -257,8 +257,8 @@
             this.minimo.Size = new System.Drawing.Size(83, 20);
             this.minimo.TabIndex = 5;
             this.minimo.TextChanged += new System.EventHandler(this.minimo_TextChanged);
-            this.minimo.Leave += new System.EventHandler(this.minimo_Leave);
             this.minimo.Enter += new System.EventHandler(this.minimo_Enter);
+            this.minimo.Leave += new System.EventHandler(this.minimo_Leave);
             // 
             // label1
             // 
@@ -277,8 +277,8 @@
             this.quantidade.Size = new System.Drawing.Size(83, 20);
             this.quantidade.TabIndex = 5;
             this.quantidade.TextChanged += new System.EventHandler(this.quantidade_TextChanged);
-            this.quantidade.Leave += new System.EventHandler(this.quantidade_Leave);
             this.quantidade.Enter += new System.EventHandler(this.quantidade_Enter);
+            this.quantidade.Leave += new System.EventHandler(this.quantidade_Leave);
             // 
             // groupBox3
             // 
@@ -298,8 +298,8 @@
             this.precoVenda.Size = new System.Drawing.Size(104, 20);
             this.precoVenda.TabIndex = 4;
             this.precoVenda.TextChanged += new System.EventHandler(this.precoVenda_TextChanged);
-            this.precoVenda.Leave += new System.EventHandler(this.precoVenda_Leave);
             this.precoVenda.Enter += new System.EventHandler(this.precoVenda_Enter);
+            this.precoVenda.Leave += new System.EventHandler(this.precoVenda_Leave);
             // 
             // groupBox2
             // 
@@ -319,8 +319,8 @@
             this.precoCompra.Size = new System.Drawing.Size(104, 20);
             this.precoCompra.TabIndex = 3;
             this.precoCompra.TextChanged += new System.EventHandler(this.precoCompra_TextChanged);
-            this.precoCompra.Leave += new System.EventHandler(this.precoCompra_Leave);
             this.precoCompra.Enter += new System.EventHandler(this.precoCompra_Enter);
+            this.precoCompra.Leave += new System.EventHandler(this.precoCompra_Leave);
             // 
             // groupBox1
             // 
@@ -371,8 +371,8 @@
             this.cmbCategoriaProduto.Size = new System.Drawing.Size(97, 21);
             this.cmbCategoriaProduto.TabIndex = 2;
             this.cmbCategoriaProduto.SelectedIndexChanged += new System.EventHandler(this.cmbCategoriaProduto_SelectedIndexChanged);
-            this.cmbCategoriaProduto.Leave += new System.EventHandler(this.cmbCategoriaProduto_Leave);
             this.cmbCategoriaProduto.Enter += new System.EventHandler(this.cmbCategoriaProduto_Enter);
+            this.cmbCategoriaProduto.Leave += new System.EventHandler(this.cmbCategoriaProduto_Leave);
             // 
             // label7
             // 
@@ -390,8 +390,8 @@
             this.descricao.Name = "descricao";
             this.descricao.Size = new System.Drawing.Size(275, 20);
             this.descricao.TabIndex = 1;
-            this.descricao.Leave += new System.EventHandler(this.descricao_Leave);
             this.descricao.Enter += new System.EventHandler(this.descricao_Enter);
+            this.descricao.Leave += new System.EventHandler(this.descricao_Leave);
             // 
             // label2
             // 
@@ -455,12 +455,12 @@
         private System.Windows.Forms.GroupBox groupBox5;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox nomePesquisa;
-        private System.Windows.Forms.Button btnSalvar;
         private System.Windows.Forms.Button btnSair;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox estoqueSaldo;
+        private System.Windows.Forms.Button btnSalvar;
     }
 }

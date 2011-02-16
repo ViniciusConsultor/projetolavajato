@@ -112,10 +112,10 @@
     <value>2.0</value>
   </resheader>
   <resheader name="reader">
-    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <resheader name="writer">
-    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
   <data name="Usuario_nao_encontrado" xml:space="preserve">
     <value>Nenhum usuário encontrado</value>
@@ -124,7 +124,7 @@
     <value>Atenção</value>
   </data>
   <data name="Preencher_todos_os_campos" xml:space="preserve">
-    <value>Preencher todos os campos</value>
+    <value>Favor preencher todos os campos</value>
   </data>
   <data name="Favor_inserir_nome_e_senha" xml:space="preserve">
     <value>Favor inserir nome e senha</value>
@@ -159,40 +159,71 @@
   <data name="Tamanho_Maximo_Placa" xml:space="preserve">
     <value>tamanhoMaximoDaPlaca</value>
   </data>
-	<data name="Separador_Placa">
-		<value xml:space="preserve">-</value>
-	</data>
-	<data name="Inserir_quantidade_valida">
-		<value xml:space="preserve">Favor inserir uma quantidade valida!</value>
-	</data>
-	<data name="Nenhum_servico_encontrado">
-		<value xml:space="preserve">Nenhum servico encontrado</value>
-	</data>
-	<data name="Desconto_maior_que_valor_produto">
-		<value xml:space="preserve">Desconto maior que o valor do produto!</value>
-	</data>
-	<data name="Nenhum_ordem_servico_aberta">
-		<value xml:space="preserve">Nenhum ordem servico aberta com esse número!</value>
-	</data>
-	<data name="Nenhem_item_selecionado">
-		<value xml:space="preserve">Nenhem item selecionado para alteração</value>
-	</data>
-	<data name="Nenhem_item_encontrado">
-		<value xml:space="preserve">Nenhem item encontrado!</value>
-	</data>
-	<data name="frmCaixa_VendaAvulsa">
-		<value xml:space="preserve">Deseja fazer venda avulsa?</value>
-	</data>
-	<data name="Apagar_o_item_de_pedido">
-		<value xml:space="preserve">Deseja realmente apagar o item de pedido</value>
-	</data>
-	<data name="Item_excluido">
-		<value xml:space="preserve">Item excluido</value>
-	</data>
-	<data name="Deseja_cancelar_a_venda">
-		<value xml:space="preserve">Deseja cancelar a venda</value>
-	</data>
-	<data name="Venda_cancelada">
-		<value xml:space="preserve">Venda cancelada com sucesso!</value>
-	</data>
+  <data name="Separador_Placa" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="Inserir_quantidade_valida" xml:space="preserve">
+    <value>Favor inserir uma quantidade valida!</value>
+  </data>
+  <data name="Nenhum_servico_encontrado" xml:space="preserve">
+    <value>Nenhum servico encontrado</value>
+  </data>
+  <data name="Desconto_maior_que_valor_produto" xml:space="preserve">
+    <value>Desconto maior que o valor do produto!</value>
+  </data>
+  <data name="Nenhum_ordem_servico_aberta" xml:space="preserve">
+    <value>Nenhum ordem servico aberta com esse número!</value>
+  </data>
+  <data name="Nenhem_item_selecionado" xml:space="preserve">
+    <value>Nenhem item selecionado para alteração</value>
+  </data>
+  <data name="Nenhem_item_encontrado" xml:space="preserve">
+    <value>Nenhem item encontrado!</value>
+  </data>
+  <data name="frmCaixa_VendaAvulsa" xml:space="preserve">
+    <value>Deseja fazer venda avulsa?</value>
+  </data>
+  <data name="Apagar_o_item_de_pedido" xml:space="preserve">
+    <value>Deseja realmente apagar o item de pedido</value>
+  </data>
+  <data name="Deseja_cancelar_a_venda" xml:space="preserve">
+    <value>Deseja cancelar a venda</value>
+  </data>
+  <data name="Venda_cancelada" xml:space="preserve">
+    <value>Venda cancelada com sucesso!</value>
+  </data>
+  <data name="OrdemServicoNaoEncontrada" xml:space="preserve">
+    <value>Nenhum ordem de servico encontrada com esse numero: </value>
+  </data>
+  <data name="SomenteNumeros" xml:space="preserve">
+    <value>Entre somente com Números</value>
+  </data>
+  <data name="ProdutoSalvoComSucesso" xml:space="preserve">
+    <value>Produto salvo com sucesso</value>
+    <comment>ProdutoSalvoComSucesso description</comment>
+  </data>
+  <data name="NennhumProdutoSelecionado" xml:space="preserve">
+    <value>Nennhum produto selecionado!</value>
+    <comment>NennhumProdutoSelecionado description</comment>
+  </data>
+  <data name="DesejaRealmenteExcluirOProduto" xml:space="preserve">
+    <value>Deseja realmente excluir o produto</value>
+    <comment>DesejaRealmenteExcluirOProduto description</comment>
+  </data>
+  <data name="ProdutoExcluido" xml:space="preserve">
+    <value>Produto excluido!</value>
+    <comment>ProdutoExcluido description</comment>
+  </data>
+  <data name="FavorSelecionarUmItem" xml:space="preserve">
+    <value>Favor selecionar um item</value>
+    <comment>FavorSelecionarUmProduto description</comment>
+  </data>
+  <data name="FavorPreencherTodosOsCampos" xml:space="preserve">
+    <value>Favor preencher todos os campos</value>
+    <comment>FavorPreencherTodosOsCampos description</comment>
+  </data>
+  <data name="ProdutoAtualizadoComSucesso" xml:space="preserve">
+    <value>Produto atualizado com sucesso</value>
+    <comment>ProdutoAtualizadoComSucesso description</comment>
+  </data>
 </root>

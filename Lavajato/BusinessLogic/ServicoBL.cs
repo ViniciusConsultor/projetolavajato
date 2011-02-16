@@ -60,7 +60,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
         #region Metodos GRUD ServicoItem
 
-        public void ItemInsert(ServicoItem servicoItem)
+        public void ItemAdd(ServicoItem servicoItem)
         {
             servicoDAO.ItemDoServicoInsert(servicoItem);
         }
@@ -111,28 +111,28 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
         public DataTable CriaGrid(Servico servico)
         {
-            DataSet dataSet = new DataSet();
             DataTable table = new DataTable();
-            dataSet.Tables.Add(table);
-            table.Columns.AddRange(CarregaColunas());
+            table.Columns.AddRange(CarregaColunasOrdemServico());
+
             foreach (ServicoItem si in servico.ServicoItem)
             {
                 DataRow row = table.NewRow();
-                //row["ID"] = si.ID;
+                row["ID"] = si.ID;
                 row["Descricao"] = si.Produto.Descricao;
                 row["Quantidade"] = si.Quantidade;
                 row["Valor"] = si.Produto.ValorUnitario.ToString("C");
                 row["Total"] = (si.Produto.ValorUnitario * si.Quantidade).ToString("C");
                 table.Rows.Add(row);
-            }
+            } 
+           
             return table;
         }
 
-        public static DataColumn[] CarregaColunas()
+        public static DataColumn[] CarregaColunasOrdemServico()
         {
             DataColumn[] columns = new DataColumn[6];
 
-            //// Create new DataColumn, set DataType, ColumnName and add to DataTable.    
+            // Create new DataColumn, set DataType, ColumnName and add to DataTable.    
             DataColumn ID = new DataColumn();
             ID.ColumnName = "ID";
             columns[0] = ID;
@@ -153,7 +153,45 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             Total.ColumnName = "Total";
             columns[4] = Total;
             return columns;
+
         }
+
+        public static DataColumn[] ServicoCarregaColunas()
+        {
+            DataColumn[] columns = new DataColumn[7];
+
+            // Create new DataColumn, set DataType, ColumnName and add to DataTable.    
+            DataColumn ID = new DataColumn();
+            ID.ColumnName = "ID";
+            columns[0] = ID;
+
+            DataColumn Descricao = new DataColumn();
+            Descricao.ColumnName = "Descricao";
+            columns[1] = Descricao;
+
+            DataColumn Quantidade = new DataColumn();
+            Quantidade.ColumnName = "Quantidade";
+            columns[2] = Quantidade;
+
+            DataColumn Valor = new DataColumn();
+            Valor.ColumnName = "Valor";
+            columns[3] = Valor;
+
+            DataColumn Total = new DataColumn();
+            Total.ColumnName = "Total";
+            columns[4] = Total;
+
+            DataColumn Lavador = new DataColumn();
+            Total.ColumnName = "Lavador";
+            columns[5] = Total;
+            return columns;
+
+
+        }
+
+
+
+
 
 
         private DataColumn[] ColunasCarroLavando()
