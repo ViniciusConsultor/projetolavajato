@@ -40,10 +40,10 @@
             // 
             this.groupBox5.Controls.Add(this.label12);
             this.groupBox5.Controls.Add(this.nomePesquisa);
-            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.groupBox5.Location = new System.Drawing.Point(1, 318);
+            this.groupBox5.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox5.Location = new System.Drawing.Point(1, 413);
             this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(508, 59);
+            this.groupBox5.Size = new System.Drawing.Size(655, 71);
             this.groupBox5.TabIndex = 4;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Procura por:";
@@ -51,31 +51,32 @@
             // label12
             // 
             this.label12.AutoSize = true;
-            this.label12.Location = new System.Drawing.Point(5, 15);
+            this.label12.Location = new System.Drawing.Point(6, 20);
             this.label12.Name = "label12";
-            this.label12.Size = new System.Drawing.Size(44, 15);
+            this.label12.Size = new System.Drawing.Size(55, 20);
             this.label12.TabIndex = 8;
             this.label12.Text = "Nome:";
             // 
             // nomePesquisa
             // 
             this.nomePesquisa.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nomePesquisa.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nomePesquisa.Location = new System.Drawing.Point(8, 33);
+            this.nomePesquisa.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nomePesquisa.Location = new System.Drawing.Point(7, 40);
             this.nomePesquisa.MaxLength = 50;
+            this.nomePesquisa.Multiline = true;
             this.nomePesquisa.Name = "nomePesquisa";
-            this.nomePesquisa.Size = new System.Drawing.Size(494, 21);
+            this.nomePesquisa.Size = new System.Drawing.Size(640, 25);
             this.nomePesquisa.TabIndex = 7;
             this.nomePesquisa.TextChanged += new System.EventHandler(this.nomePesquisa_TextChanged);
-            this.nomePesquisa.Leave += new System.EventHandler(this.nomePesquisa_Leave);
             this.nomePesquisa.Enter += new System.EventHandler(this.nomePesquisa_Enter);
+            this.nomePesquisa.Leave += new System.EventHandler(this.nomePesquisa_Leave);
             // 
             // grdProdutos
             // 
             this.grdProdutos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.grdProdutos.Location = new System.Drawing.Point(1, 2);
             this.grdProdutos.Name = "grdProdutos";
-            this.grdProdutos.Size = new System.Drawing.Size(508, 310);
+            this.grdProdutos.Size = new System.Drawing.Size(655, 405);
             this.grdProdutos.TabIndex = 3;
             this.grdProdutos.DoubleClick += new System.EventHandler(this.grdProdutos_DoubleClick);
             // 
@@ -83,14 +84,15 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(511, 381);
+            this.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.ClientSize = new System.Drawing.Size(660, 496);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.grdProdutos);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.MaximizeBox = false;
             this.Name = "frmProdutoPesquisa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "frmProdutoPesquisa";
+            this.Text = "Pesquisa Produto";
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdProdutos)).EndInit();

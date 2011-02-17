@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Data;
 using HenryCorporation.Lavajato.DataAccess;
+using System.Data.SqlClient;
 
 namespace HenryCorporation.Lavajato.Presentation
 {
@@ -15,16 +16,23 @@ namespace HenryCorporation.Lavajato.Presentation
 
         }
 
-        public DataSet GeraTabela(string query)
+        public DataSet byQuery(string query)
         {
-            if (query.Length == 0)
-                throw new Exception("Nenhum consulta para geração de relatório encontrado");
-
 
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             return dataBaseHelper.Run(this.ConnectionString);
 
-            
         }
+
+        public DataSet byProcedure(string query, SqlParameter[] parameter)
+        {
+            
+            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            dataBaseHelper.Parameters = parameter;
+            return dataBaseHelper.RunProcedure(query);
+
+        }
+
+
     }
 }

@@ -38,8 +38,10 @@ namespace HenryCorporation.Lavajato.Presentation
 
             if (this.IsAutenticado)
             {
+                this.Visible = false;
                 var frmPrin = new frmPrincipal();
                 frmPrin.ShowDialog();
+
                 this.Close();
             }
             else 
@@ -52,5 +54,6 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             this.Close();
         }
+
     }
 }

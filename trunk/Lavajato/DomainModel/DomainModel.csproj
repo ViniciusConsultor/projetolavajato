@@ -82,6 +82,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Retirada.cs" />
     <Compile Include="Servico.cs" />
+    <Compile Include="ServicoFuncionario.cs" />
     <Compile Include="ServicoItens.cs" />
     <Compile Include="Suprimento.cs" />
     <Compile Include="TipoDeProduto.cs" />
