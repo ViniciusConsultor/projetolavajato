@@ -226,4 +226,19 @@
     <value>Produto atualizado com sucesso</value>
     <comment>ProdutoAtualizadoComSucesso description</comment>
   </data>
+  <data name="BinDebug" xml:space="preserve">
+    <value>bin\Debug\</value>
+  </data>
+  <data name="dsFechamentoCaixa" xml:space="preserve">
+    <value>dsFechamentoCaixa_DataTable1</value>
+  </data>
+  <data name="fdsf" xml:space="preserve">
+    <value>sfdfsd</value>
+  </data>
+  <data name="rdlVendaPorPeriodo" xml:space="preserve">
+    <value>VendaPorPeriodo.rdlc</value>
+  </data>
+  <data name="relFechamentoDeCaixa" xml:space="preserve">
+    <value>\\Relatorios\\caixa\\fechamentodecaixa</value>
+  </data>
 </root>

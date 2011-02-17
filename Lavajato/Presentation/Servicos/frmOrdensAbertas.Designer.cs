@@ -35,9 +35,9 @@
             // grdOrdensAbertas
             // 
             this.grdOrdensAbertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdOrdensAbertas.Location = new System.Drawing.Point(0, 1);
+            this.grdOrdensAbertas.Location = new System.Drawing.Point(8, 6);
             this.grdOrdensAbertas.Name = "grdOrdensAbertas";
-            this.grdOrdensAbertas.Size = new System.Drawing.Size(430, 527);
+            this.grdOrdensAbertas.Size = new System.Drawing.Size(710, 570);
             this.grdOrdensAbertas.TabIndex = 0;
             this.grdOrdensAbertas.DoubleClick += new System.EventHandler(this.grdOrdensAbertas_DoubleClick);
             // 
@@ -45,12 +45,13 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(430, 526);
+            this.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.ClientSize = new System.Drawing.Size(730, 588);
             this.Controls.Add(this.grdOrdensAbertas);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.SizableToolWindow;
             this.MaximizeBox = false;
             this.Name = "frmOrdensAbertas";
-            this.Text = "frmOrdensAbertas";
+            this.Text = "Ordens Abertas";
             this.Load += new System.EventHandler(this.frmOrdensAbertas_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdOrdensAbertas)).EndInit();
             this.ResumeLayout(false);

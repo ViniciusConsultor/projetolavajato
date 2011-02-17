@@ -637,7 +637,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void button1_Click(object sender, EventArgs e)
         {
-            ServicoLavador servicoLavador = new ServicoLavador();
+            frmServicoLavador servicoLavador = new frmServicoLavador(servico);
             servicoLavador.ShowDialog();
             servicoLavador.Close();
         }

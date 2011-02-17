@@ -67,6 +67,11 @@ namespace HenryCorporation.Lavajato.DataAccess
             SqlHelper.ExecuteNonQuery(base.ConnectionString, CommandType.Text, this.Sql, this.Parameters );
         }
 
+        public DataSet RunProcedure(string procedure)
+        {
+            return SqlHelper.ExecuteDataset(base.ConnectionString, procedure, this.Parameters);
+        }
+
         public SqlDataReader Run(SqlParameter[] parameters)
         {
             SqlDataReader dr;

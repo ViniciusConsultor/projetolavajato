@@ -32,10 +32,10 @@ namespace HenryCorporation.Lavajato.Presentation
         /// </summary>
         private void InitializeComponent()
         {
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle45 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle46 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle47 = new System.Windows.Forms.DataGridViewCellStyle();
-            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle48 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.grdServico = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.quantidadeProduto = new System.Windows.Forms.TextBox();
@@ -68,38 +68,38 @@ namespace HenryCorporation.Lavajato.Presentation
             // 
             // grdServico
             // 
-            dataGridViewCellStyle45.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.grdServico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle45;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.grdServico.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle5;
             this.grdServico.BackgroundColor = System.Drawing.Color.WhiteSmoke;
             this.grdServico.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
-            dataGridViewCellStyle46.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle46.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle46.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle46.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle46.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle46.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle46.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdServico.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle46;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdServico.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle6;
             this.grdServico.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewCellStyle47.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle47.BackColor = System.Drawing.SystemColors.Window;
-            dataGridViewCellStyle47.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle47.ForeColor = System.Drawing.SystemColors.ControlText;
-            dataGridViewCellStyle47.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle47.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle47.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
-            this.grdServico.DefaultCellStyle = dataGridViewCellStyle47;
+            dataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle7.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle7.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle7.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle7.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle7.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle7.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.grdServico.DefaultCellStyle = dataGridViewCellStyle7;
             this.grdServico.Location = new System.Drawing.Point(3, 201);
             this.grdServico.MultiSelect = false;
             this.grdServico.Name = "grdServico";
-            dataGridViewCellStyle48.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
-            dataGridViewCellStyle48.BackColor = System.Drawing.SystemColors.Control;
-            dataGridViewCellStyle48.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            dataGridViewCellStyle48.ForeColor = System.Drawing.SystemColors.WindowText;
-            dataGridViewCellStyle48.SelectionBackColor = System.Drawing.SystemColors.Highlight;
-            dataGridViewCellStyle48.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
-            dataGridViewCellStyle48.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
-            this.grdServico.RowHeadersDefaultCellStyle = dataGridViewCellStyle48;
+            dataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle8.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle8.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle8.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle8.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.grdServico.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.grdServico.Size = new System.Drawing.Size(788, 332);
             this.grdServico.TabIndex = 69;
             this.grdServico.MouseClick += new System.Windows.Forms.MouseEventHandler(this.grdServico_MouseClick);
@@ -133,7 +133,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.groupBox1.TabIndex = 70;
             this.groupBox1.TabStop = false;
             // 
-            // textBox1
+            // quantidadeProduto
             // 
             this.quantidadeProduto.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.quantidadeProduto.Location = new System.Drawing.Point(539, 153);
@@ -141,8 +141,8 @@ namespace HenryCorporation.Lavajato.Presentation
             this.quantidadeProduto.Size = new System.Drawing.Size(91, 31);
             this.quantidadeProduto.TabIndex = 11;
             this.quantidadeProduto.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
-            this.quantidadeProduto.Leave += new System.EventHandler(this.textBox1_Leave);
             this.quantidadeProduto.Enter += new System.EventHandler(this.textBox1_Enter);
+            this.quantidadeProduto.Leave += new System.EventHandler(this.textBox1_Leave);
             // 
             // label2
             // 
@@ -162,8 +162,8 @@ namespace HenryCorporation.Lavajato.Presentation
             this.telefone.Name = "telefone";
             this.telefone.Size = new System.Drawing.Size(258, 31);
             this.telefone.TabIndex = 5;
-            this.telefone.Leave += new System.EventHandler(this.telefone_Leave);
             this.telefone.Enter += new System.EventHandler(this.telefone_Enter);
+            this.telefone.Leave += new System.EventHandler(this.telefone_Leave);
             // 
             // placa
             // 
@@ -173,8 +173,8 @@ namespace HenryCorporation.Lavajato.Presentation
             this.placa.Name = "placa";
             this.placa.Size = new System.Drawing.Size(258, 31);
             this.placa.TabIndex = 1;
-            this.placa.Leave += new System.EventHandler(this.placa_Leave);
             this.placa.Enter += new System.EventHandler(this.placa_Enter_1);
+            this.placa.Leave += new System.EventHandler(this.placa_Leave);
             // 
             // min
             // 
@@ -184,8 +184,8 @@ namespace HenryCorporation.Lavajato.Presentation
             this.min.Name = "min";
             this.min.Size = new System.Drawing.Size(150, 33);
             this.min.TabIndex = 8;
-            this.min.Leave += new System.EventHandler(this.min_Leave);
             this.min.Enter += new System.EventHandler(this.min_Enter);
+            this.min.Leave += new System.EventHandler(this.min_Leave);
             // 
             // hora
             // 
@@ -196,8 +196,8 @@ namespace HenryCorporation.Lavajato.Presentation
             this.hora.Name = "hora";
             this.hora.Size = new System.Drawing.Size(166, 33);
             this.hora.TabIndex = 7;
-            this.hora.Leave += new System.EventHandler(this.hora_Leave);
             this.hora.Enter += new System.EventHandler(this.hora_Enter);
+            this.hora.Leave += new System.EventHandler(this.hora_Leave);
             // 
             // adicionarServico
             // 
@@ -230,8 +230,8 @@ namespace HenryCorporation.Lavajato.Presentation
             this.cmdServico.Name = "cmdServico";
             this.cmdServico.Size = new System.Drawing.Size(356, 33);
             this.cmdServico.TabIndex = 10;
-            this.cmdServico.Leave += new System.EventHandler(this.cmdServico_Leave);
             this.cmdServico.Enter += new System.EventHandler(this.cmdServico_Enter);
+            this.cmdServico.Leave += new System.EventHandler(this.cmdServico_Leave);
             // 
             // label11
             // 
@@ -263,8 +263,8 @@ namespace HenryCorporation.Lavajato.Presentation
             this.dataEntrada.Name = "dataEntrada";
             this.dataEntrada.Size = new System.Drawing.Size(317, 31);
             this.dataEntrada.TabIndex = 6;
-            this.dataEntrada.Leave += new System.EventHandler(this.dataEntrada_Leave);
             this.dataEntrada.Enter += new System.EventHandler(this.dataEntrada_Enter);
+            this.dataEntrada.Leave += new System.EventHandler(this.dataEntrada_Leave);
             // 
             // label1
             // 
@@ -283,8 +283,8 @@ namespace HenryCorporation.Lavajato.Presentation
             this.corVeiculo.Name = "corVeiculo";
             this.corVeiculo.Size = new System.Drawing.Size(317, 31);
             this.corVeiculo.TabIndex = 4;
-            this.corVeiculo.Leave += new System.EventHandler(this.corVeiculo_Leave);
             this.corVeiculo.Enter += new System.EventHandler(this.corVeiculo_Enter);
+            this.corVeiculo.Leave += new System.EventHandler(this.corVeiculo_Leave);
             // 
             // nome
             // 
@@ -293,8 +293,8 @@ namespace HenryCorporation.Lavajato.Presentation
             this.nome.Name = "nome";
             this.nome.Size = new System.Drawing.Size(258, 31);
             this.nome.TabIndex = 3;
-            this.nome.Leave += new System.EventHandler(this.nome_Leave);
             this.nome.Enter += new System.EventHandler(this.nome_Enter);
+            this.nome.Leave += new System.EventHandler(this.nome_Leave);
             // 
             // label9
             // 
@@ -333,8 +333,8 @@ namespace HenryCorporation.Lavajato.Presentation
             this.veiculo.Name = "veiculo";
             this.veiculo.Size = new System.Drawing.Size(316, 31);
             this.veiculo.TabIndex = 2;
-            this.veiculo.Leave += new System.EventHandler(this.veiculo_Leave);
             this.veiculo.Enter += new System.EventHandler(this.veiculo_Enter);
+            this.veiculo.Leave += new System.EventHandler(this.veiculo_Leave);
             // 
             // lblVeiculo
             // 
@@ -393,6 +393,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(794, 578);
             this.Controls.Add(this.btnGerarOrdemServico);
             this.Controls.Add(this.btnFechar);
@@ -402,7 +403,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmOrdemServico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmOrdemServico";
+            this.Text = "Ordem Servico";
             this.Load += new System.EventHandler(this.frmOrdemServico_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdServico)).EndInit();
             this.groupBox1.ResumeLayout(false);

@@ -112,6 +112,11 @@
     <Compile Include="ContasAPagar\frmPesquisaContasAPagar.Designer.cs">
       <DependentUpon>frmPesquisaContasAPagar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Properties\Resources1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
     <Compile Include="Servicos\DataGridComboBoxColumn.cs">
       <SubType>Component</SubType>
     </Compile>
@@ -212,25 +217,25 @@
       <DependentUpon>frmProdutosInternos.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\frmFechamentoCaixa.resx">
+    <EmbeddedResource Include="Relatorios\Caixa\FechamentoDeCaixa\frmFechamentoCaixa.resx">
       <DependentUpon>frmFechamentoCaixa.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\frmLavagemPorLavadorRelatorio.resx">
+    <EmbeddedResource Include="Relatorios\Lavagens\PorLavador\frmLavagemPorLavadorRelatorio.resx">
       <DependentUpon>frmLavagemPorLavadorRelatorio.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\frmLavagensPorLavador.resx">
+    <EmbeddedResource Include="Relatorios\Lavagens\PorLavador\frmLavagensPorLavador.resx">
       <DependentUpon>frmLavagensPorLavador.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\frmRelatorioDeVendas.resx">
+    <EmbeddedResource Include="Relatorios\Caixa\VendaDiariaPorVendedor\frmRelatorioDeVendas.resx">
       <DependentUpon>frmRelatorioDeVendas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\frmVendasDiarias.resx">
+    <EmbeddedResource Include="Relatorios\Caixa\VendaDiariaPorVendedor\frmVendasDiarias.resx">
       <DependentUpon>frmVendasDiarias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\HistoricoCliente.rdlc" />
+    <EmbeddedResource Include="Relatorios\Cliente\Historico\HistoricoCliente.rdlc" />
     <EmbeddedResource Include="Produto\frmCategoriaProduto.resx">
       <DependentUpon>frmCategoriaProduto.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -245,30 +250,30 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
-      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
       <SubType>Designer</SubType>
+      <LastGenOutput>Resources1.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\frmClientePesquisaPorPlaca.resx">
+    <EmbeddedResource Include="Relatorios\Cliente\PorPlaca\frmClientePesquisaPorPlaca.resx">
       <DependentUpon>frmClientePesquisaPorPlaca.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\frmClientePorPlaca.rdlc" />
-    <EmbeddedResource Include="Relatorios\frmClientesPorPlaca.resx">
+    <EmbeddedResource Include="Relatorios\Cliente\PorPlaca\frmClientePorPlaca.rdlc" />
+    <EmbeddedResource Include="Relatorios\Cliente\PorPlaca\frmClientesPorPlaca.resx">
       <DependentUpon>frmClientesPorPlaca.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\frmProdutoAbaixoEstoque.resx">
+    <EmbeddedResource Include="Relatorios\Produto\AbaixoEstoque\frmProdutoAbaixoEstoque.resx">
       <DependentUpon>frmProdutoAbaixoEstoque.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\frmRelatorioFechamentoDeCaixa.resx">
+    <EmbeddedResource Include="Relatorios\Caixa\FechamentoDeCaixa\frmRelatorioFechamentoDeCaixa.resx">
       <DependentUpon>frmRelatorioFechamentoDeCaixa.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\relProdutoAbaixoEstoque.rdlc" />
-    <EmbeddedResource Include="Relatorios\relRelatorioDeVendas.rdlc" />
-    <EmbeddedResource Include="Relatorios\rptLavagemPorLavador.rdlc" />
-    <EmbeddedResource Include="Relatorios\VendaPorPeriodo.rdlc" />
+    <EmbeddedResource Include="Relatorios\Produto\AbaixoEstoque\relProdutoAbaixoEstoque.rdlc" />
+    <EmbeddedResource Include="Relatorios\Caixa\VendaDiariaPorVendedor\relRelatorioDeVendas.rdlc" />
+    <EmbeddedResource Include="Relatorios\Lavagens\PorLavador\rptLavagemPorLavador.rdlc" />
+    <EmbeddedResource Include="Relatorios\Caixa\FechamentoDeCaixa\VendaPorPeriodo.rdlc" />
     <EmbeddedResource Include="Servicos\frmAlterarQuantidadeItem.resx">
       <DependentUpon>frmAlterarQuantidadeItem.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -293,8 +298,8 @@
       <DependentUpon>frmRetirada.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Servicos\ServicoLavador.resx">
-      <DependentUpon>ServicoLavador.cs</DependentUpon>
+    <EmbeddedResource Include="Servicos\frmServicoLavador.resx">
+      <DependentUpon>frmServicoLavador.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
@@ -304,11 +309,6 @@
       <DependentUpon>frmUsuarioPesquisa.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <Compile Include="Properties\Resources.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DependentUpon>Resources.resx</DependentUpon>
-      <DesignTime>True</DesignTime>
-    </Compile>
     <None Include="App.config">
       <SubType>Designer</SubType>
     </None>
@@ -317,70 +317,70 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Relatorios\clientePorPlaca.xsc">
+    <None Include="Relatorios\Cliente\PorPlaca\clientePorPlaca.xsc">
       <DependentUpon>clientePorPlaca.xsd</DependentUpon>
     </None>
-    <None Include="Relatorios\clientePorPlaca.xsd">
+    <None Include="Relatorios\Cliente\PorPlaca\clientePorPlaca.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>clientePorPlaca.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Relatorios\clientePorPlaca.xss">
+    <None Include="Relatorios\Cliente\PorPlaca\clientePorPlaca.xss">
       <DependentUpon>clientePorPlaca.xsd</DependentUpon>
     </None>
-    <None Include="Relatorios\dsFechamentoCaixa.xsc">
+    <None Include="Relatorios\Caixa\FechamentoDeCaixa\dsFechamentoCaixa.xsc">
       <DependentUpon>dsFechamentoCaixa.xsd</DependentUpon>
     </None>
-    <None Include="Relatorios\dsFechamentoCaixa.xsd">
+    <None Include="Relatorios\Caixa\FechamentoDeCaixa\dsFechamentoCaixa.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>dsFechamentoCaixa.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Relatorios\dsFechamentoCaixa.xss">
+    <None Include="Relatorios\Caixa\FechamentoDeCaixa\dsFechamentoCaixa.xss">
       <DependentUpon>dsFechamentoCaixa.xsd</DependentUpon>
     </None>
-    <None Include="Relatorios\dsLavagemPorLavador.xsc">
+    <None Include="Relatorios\Lavagens\PorLavador\dsLavagemPorLavador.xsc">
       <DependentUpon>dsLavagemPorLavador.xsd</DependentUpon>
     </None>
-    <None Include="Relatorios\dsLavagemPorLavador.xsd">
+    <None Include="Relatorios\Lavagens\PorLavador\dsLavagemPorLavador.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>dsLavagemPorLavador.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Relatorios\dsLavagemPorLavador.xss">
+    <None Include="Relatorios\Lavagens\PorLavador\dsLavagemPorLavador.xss">
       <DependentUpon>dsLavagemPorLavador.xsd</DependentUpon>
     </None>
-    <None Include="Relatorios\HistoricoCliente.xsc">
+    <None Include="Relatorios\Cliente\Historico\HistoricoCliente.xsc">
       <DependentUpon>HistoricoCliente.xsd</DependentUpon>
     </None>
-    <None Include="Relatorios\HistoricoCliente.xsd">
+    <None Include="Relatorios\Cliente\Historico\HistoricoCliente.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>HistoricoCliente.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Relatorios\HistoricoCliente.xss">
+    <None Include="Relatorios\Cliente\Historico\HistoricoCliente.xss">
       <DependentUpon>HistoricoCliente.xsd</DependentUpon>
     </None>
-    <None Include="Relatorios\relProdutoAbaixoEstoque.xsc">
+    <None Include="Relatorios\Produto\AbaixoEstoque\relProdutoAbaixoEstoque.xsc">
       <DependentUpon>relProdutoAbaixoEstoque.xsd</DependentUpon>
     </None>
-    <None Include="Relatorios\relProdutoAbaixoEstoque.xsd">
+    <None Include="Relatorios\Produto\AbaixoEstoque\relProdutoAbaixoEstoque.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>relProdutoAbaixoEstoque.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Relatorios\relProdutoAbaixoEstoque.xss">
+    <None Include="Relatorios\Produto\AbaixoEstoque\relProdutoAbaixoEstoque.xss">
       <DependentUpon>relProdutoAbaixoEstoque.xsd</DependentUpon>
     </None>
-    <None Include="Relatorios\relVendasDiarias.xsc">
+    <None Include="Relatorios\Caixa\VendaDiariaPorVendedor\relVendasDiarias.xsc">
       <DependentUpon>relVendasDiarias.xsd</DependentUpon>
     </None>
-    <None Include="Relatorios\relVendasDiarias.xsd">
+    <None Include="Relatorios\Caixa\VendaDiariaPorVendedor\relVendasDiarias.xsd">
       <SubType>Designer</SubType>
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>relVendasDiarias.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Relatorios\relVendasDiarias.xss">
+    <None Include="Relatorios\Caixa\VendaDiariaPorVendedor\relVendasDiarias.xss">
       <DependentUpon>relVendasDiarias.xsd</DependentUpon>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">
@@ -388,94 +388,94 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="Relatorios\clientePorPlaca.cs">
+    <Compile Include="Relatorios\Cliente\PorPlaca\clientePorPlaca.cs">
       <DependentUpon>clientePorPlaca.xsd</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Relatorios\clientePorPlaca.Designer.cs">
+    <Compile Include="Relatorios\Cliente\PorPlaca\clientePorPlaca.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>clientePorPlaca.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Relatorios\dsFechamentoCaixa.Designer.cs">
+    <Compile Include="Relatorios\Caixa\FechamentoDeCaixa\dsFechamentoCaixa.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsFechamentoCaixa.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Relatorios\dsLavagemPorLavador.Designer.cs">
+    <Compile Include="Relatorios\Lavagens\PorLavador\dsLavagemPorLavador.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>dsLavagemPorLavador.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Relatorios\frmClientePesquisaPorPlaca.cs">
+    <Compile Include="Relatorios\Cliente\PorPlaca\frmClientePesquisaPorPlaca.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Relatorios\frmClientePesquisaPorPlaca.Designer.cs">
+    <Compile Include="Relatorios\Cliente\PorPlaca\frmClientePesquisaPorPlaca.Designer.cs">
       <DependentUpon>frmClientePesquisaPorPlaca.cs</DependentUpon>
     </Compile>
-    <Compile Include="Relatorios\frmClientesPorPlaca.cs">
+    <Compile Include="Relatorios\Cliente\PorPlaca\frmClientesPorPlaca.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Relatorios\frmClientesPorPlaca.Designer.cs">
+    <Compile Include="Relatorios\Cliente\PorPlaca\frmClientesPorPlaca.Designer.cs">
       <DependentUpon>frmClientesPorPlaca.cs</DependentUpon>
     </Compile>
-    <Compile Include="Relatorios\frmFechamentoCaixa.cs">
+    <Compile Include="Relatorios\Caixa\FechamentoDeCaixa\frmFechamentoCaixa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Relatorios\frmFechamentoCaixa.Designer.cs">
+    <Compile Include="Relatorios\Caixa\FechamentoDeCaixa\frmFechamentoCaixa.Designer.cs">
       <DependentUpon>frmFechamentoCaixa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Relatorios\frmLavagemPorLavadorRelatorio.cs">
+    <Compile Include="Relatorios\Lavagens\PorLavador\frmLavagemPorLavadorRelatorio.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Relatorios\frmLavagemPorLavadorRelatorio.Designer.cs">
+    <Compile Include="Relatorios\Lavagens\PorLavador\frmLavagemPorLavadorRelatorio.Designer.cs">
       <DependentUpon>frmLavagemPorLavadorRelatorio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Relatorios\frmLavagensPorLavador.cs">
+    <Compile Include="Relatorios\Lavagens\PorLavador\frmLavagensPorLavador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Relatorios\frmLavagensPorLavador.Designer.cs">
+    <Compile Include="Relatorios\Lavagens\PorLavador\frmLavagensPorLavador.Designer.cs">
       <DependentUpon>frmLavagensPorLavador.cs</DependentUpon>
     </Compile>
-    <Compile Include="Relatorios\frmProdutoAbaixoEstoque.cs">
+    <Compile Include="Relatorios\Produto\AbaixoEstoque\frmProdutoAbaixoEstoque.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Relatorios\frmProdutoAbaixoEstoque.Designer.cs">
+    <Compile Include="Relatorios\Produto\AbaixoEstoque\frmProdutoAbaixoEstoque.Designer.cs">
       <DependentUpon>frmProdutoAbaixoEstoque.cs</DependentUpon>
     </Compile>
-    <Compile Include="Relatorios\frmRelatorioDeVendas.cs">
+    <Compile Include="Relatorios\Caixa\VendaDiariaPorVendedor\frmRelatorioDeVendas.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Relatorios\frmRelatorioDeVendas.Designer.cs">
+    <Compile Include="Relatorios\Caixa\VendaDiariaPorVendedor\frmRelatorioDeVendas.Designer.cs">
       <DependentUpon>frmRelatorioDeVendas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Relatorios\frmRelatorioFechamentoDeCaixa.cs">
+    <Compile Include="Relatorios\Caixa\FechamentoDeCaixa\frmRelatorioFechamentoDeCaixa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Relatorios\frmRelatorioFechamentoDeCaixa.Designer.cs">
+    <Compile Include="Relatorios\Caixa\FechamentoDeCaixa\frmRelatorioFechamentoDeCaixa.Designer.cs">
       <DependentUpon>frmRelatorioFechamentoDeCaixa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Relatorios\frmVendasDiarias.cs">
+    <Compile Include="Relatorios\Caixa\VendaDiariaPorVendedor\frmVendasDiarias.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Relatorios\frmVendasDiarias.Designer.cs">
+    <Compile Include="Relatorios\Caixa\VendaDiariaPorVendedor\frmVendasDiarias.Designer.cs">
       <DependentUpon>frmVendasDiarias.cs</DependentUpon>
     </Compile>
-    <Compile Include="Relatorios\HistoricoCliente.Designer.cs">
+    <Compile Include="Relatorios\Cliente\Historico\HistoricoCliente.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>HistoricoCliente.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Relatorios\relProdutoAbaixoEstoque.Designer.cs">
+    <Compile Include="Relatorios\Produto\AbaixoEstoque\relProdutoAbaixoEstoque.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>relProdutoAbaixoEstoque.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Relatorios\relVendasDiarias.cs">
+    <Compile Include="Relatorios\Caixa\VendaDiariaPorVendedor\relVendasDiarias.cs">
       <DependentUpon>relVendasDiarias.xsd</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="Relatorios\relVendasDiarias.Designer.cs">
+    <Compile Include="Relatorios\Caixa\VendaDiariaPorVendedor\relVendasDiarias.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>relVendasDiarias.xsd</DependentUpon>
@@ -517,11 +517,11 @@
     <Compile Include="Servicos\frmRetirada.Designer.cs">
       <DependentUpon>frmRetirada.cs</DependentUpon>
     </Compile>
-    <Compile Include="Servicos\ServicoLavador.cs">
+    <Compile Include="Servicos\frmServicoLavador.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Servicos\ServicoLavador.Designer.cs">
-      <DependentUpon>ServicoLavador.cs</DependentUpon>
+    <Compile Include="Servicos\frmServicoLavador.Designer.cs">
+      <DependentUpon>frmServicoLavador.cs</DependentUpon>
     </Compile>
     <Compile Include="Usuarios\frmUsuario.cs">
       <SubType>Form</SubType>

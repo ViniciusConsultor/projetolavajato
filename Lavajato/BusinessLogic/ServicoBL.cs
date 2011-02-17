@@ -82,6 +82,68 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
         #endregion
 
+        #region "Funcionarios do Servico"
+
+        public void AddFuncionarioNoServico(Servico _servico, Produto _produto)
+        {
+            servicoDAO.AddFuncionarioNoServico(_servico, _produto);            
+        }
+
+        public void ServicoFuncionarioDelete(int _indexRowDelete)
+        {
+            servicoDAO.ServicoFuncionarioDelete(_indexRowDelete);
+        }
+
+        public DataTable ServicoFuncionarios(Servico servico)
+        {
+            return GetServicoFuncionario(servicoDAO.ServicoFuncionarioByServico(servico));
+
+        }
+
+        //colocar isso aqui num extension metodos
+        private  DataTable GetServicoFuncionario(List<ServicoFuncionario> servicoFuncionarios)
+        {
+            DataTable table = new DataTable();
+            table.Columns.AddRange(GetColumns());
+
+            foreach (ServicoFuncionario sf in servicoFuncionarios)
+            {
+                DataRow row = table.NewRow();
+                row["ID"] = sf.ID;
+                row["Servico"] = sf.Produto.Descricao;
+                table.Rows.Add(row);
+            }
+            return table;
+        }
+
+        //colocar isso aqui num extension metodos
+        private DataColumn[] GetColumns()
+        {
+            DataColumn[] columns = new DataColumn[2];
+
+            DataColumn id = new DataColumn();
+            id.ColumnName = "ID";
+            columns[0] = id;
+
+            DataColumn desc = new DataColumn();
+            desc.ColumnName = "Servico";
+            columns[1] = desc;
+
+            return columns;
+        }
+
+
+
+        /// <summary>
+        /// Deleta um serviço atribuido ao funcionario
+        /// </summary>
+        /// <param name="servicoFuncionario">Entidade ServicoFuncionario</param>
+        public void ServicoFuncionarioDelete(ServicoFuncionario servicoFuncionario)
+        {
+            throw new NotImplementedException("Erro: função não implementada");
+        }
+
+        #endregion
         
         public DataTable CriaGridCarrosLavano()
         {
@@ -128,6 +190,8 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             return table;
         }
 
+
+
         public static DataColumn[] CarregaColunasOrdemServico()
         {
             DataColumn[] columns = new DataColumn[6];
@@ -158,7 +222,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
         public static DataColumn[] ServicoCarregaColunas()
         {
-            DataColumn[] columns = new DataColumn[7];
+            DataColumn[] columns = new DataColumn[6];
 
             // Create new DataColumn, set DataType, ColumnName and add to DataTable.    
             DataColumn ID = new DataColumn();
@@ -183,16 +247,11 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
             DataColumn Lavador = new DataColumn();
             Total.ColumnName = "Lavador";
-            columns[5] = Total;
+            columns[5] = Lavador;
             return columns;
 
 
         }
-
-
-
-
-
 
         private DataColumn[] ColunasCarroLavando()
         {
