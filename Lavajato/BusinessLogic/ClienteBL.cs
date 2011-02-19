@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using HenryCorporation.Lavajato.DataAccess;
 using HenryCorporation.Lavajato.DomainModel;
+using System.Data;
 
 namespace HenryCorporation.Lavajato.BusinessLogic
 {
@@ -59,6 +60,14 @@ namespace HenryCorporation.Lavajato.BusinessLogic
         public void Delete(Cliente cliente)
         {
             clienteDao.Delete(cliente);
+        }
+
+        public DataTable CriaTabelaOrdemServico(Cliente cliente)
+        {
+            cliente = clienteDao.ByPlaca(cliente);
+            IList<Servico> servicos = new ServicoBL().ByServicosDoCliente(cliente);
+            DataTable table = ClienteTabela.CriaTabelaOrdemServico(servicos);
+            return table;
         }
 
     }

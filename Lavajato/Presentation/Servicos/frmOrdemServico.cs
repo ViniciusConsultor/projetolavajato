@@ -22,7 +22,7 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             InitializeComponent();
             btnCadastraCliente.Enabled = false;
-            dataTable.Columns.AddRange(ServicoBL.ServicoCarregaColunas());
+            dataTable.Columns.AddRange(ServicoColunas.ServicoCarregaColunas());
             dataSetItens.Tables.Add(dataTable);
         }
 
@@ -74,7 +74,7 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             dataTable = new DataTable();
             dataSetItens = new DataSet();
-            dataTable.Columns.AddRange(ServicoBL.CarregaColunasOrdemServico());
+            dataTable.Columns.AddRange(ServicoColunas.CarregaColunasOrdemServico());
             dataSetItens.Tables.Add(dataTable);
             grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
         }
@@ -85,7 +85,7 @@ namespace HenryCorporation.Lavajato.Presentation
             {
                 dataTable = new DataTable();
                 dataSetItens = new DataSet();
-                dataTable.Columns.AddRange(ServicoBL.CarregaColunasOrdemServico());
+                dataTable.Columns.AddRange(ServicoColunas.CarregaColunasOrdemServico());
                 dataSetItens.Tables.Add(dataTable);
                 grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
             }
@@ -277,7 +277,7 @@ namespace HenryCorporation.Lavajato.Presentation
             corVeiculo.Text = "";
             dataSetItens = new DataSet();
             dataTable = new DataTable();
-            dataTable.Columns.AddRange(ServicoBL.CarregaColunasOrdemServico());
+            dataTable.Columns.AddRange(ServicoColunas.CarregaColunasOrdemServico());
             dataSetItens.Tables.Add(dataTable);
             grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
 

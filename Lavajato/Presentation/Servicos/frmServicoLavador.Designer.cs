@@ -49,9 +49,9 @@
             this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label3.Location = new System.Drawing.Point(169, 16);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(345, 29);
+            this.label3.Size = new System.Drawing.Size(323, 29);
             this.label3.TabIndex = 5;
-            this.label3.Text = "Adicionar Lavadorer ao serciço";
+            this.label3.Text = "Adicionar Lavador ao serciço";
             // 
             // groupBox1
             // 
@@ -112,7 +112,7 @@
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(101, 30);
             this.btnAdicionar.TabIndex = 5;
-            this.btnAdicionar.Text = "Adicionar +";
+            this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = true;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
             // 
@@ -157,7 +157,7 @@
             this.Controls.Add(this.groupBox1);
             this.Name = "frmServicoLavador";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "ServicoLavador";
+            this.Text = "Lavador responsável pelo serviço";
             this.Load += new System.EventHandler(this.frmServicoLavador_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

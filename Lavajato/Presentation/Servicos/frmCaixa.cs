@@ -13,13 +13,13 @@ using HenryCorporation.Lavajato.Presentation.Properties;
 
 namespace HenryCorporation.Lavajato.Presentation
 {
-    public partial class frmCaixa : login
+    public partial class frmCaixa :login
     {
         public frmCaixa()
         {
             InitializeComponent();
             CarregaProdutos();
-            CarregaLavadores();
+            //CarregaLavadores();
             CarregaFormaPagamento();
             ordemServico.Focus();
         }
@@ -28,7 +28,7 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             InitializeComponent();
             CarregaProdutos();
-            CarregaLavadores();
+            //CarregaLavadores();
             CarregaFormaPagamento();
             ProcuraServico(servico.OrdemServico);
             
@@ -48,6 +48,7 @@ namespace HenryCorporation.Lavajato.Presentation
                 this.servico = ProcuraServico(ordServico);
                 CarregaCliente(this.servico);
                 CriaTabela(this.servico);
+                MudaNomeDoForumario(servico);
                 
             }
             catch (ArgumentException ex)
@@ -83,8 +84,13 @@ namespace HenryCorporation.Lavajato.Presentation
             corVeiculo.Text = servicoQueSeraCarregado.Cliente.Cor;
             chbLavado.Checked = Convert.ToBoolean(servicoQueSeraCarregado.Lavado);
             convenio.SelectedValue = servicoQueSeraCarregado.Cliente.Convenio.ID;
-            cmbLavador.SelectedValue = servicoQueSeraCarregado.Lavador;
-            this.cmbLavador.SelectedValue = servicoQueSeraCarregado.Lavador;
+            //cmbLavador.SelectedValue = servicoQueSeraCarregado.Lavador;
+            //this.cmbLavador.SelectedValue = servicoQueSeraCarregado.Lavador;
+        }
+
+        private void MudaNomeDoForumario(Servico servico)
+        {
+            this.Text = this.Text + servico.OrdemServico;
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)
@@ -308,13 +314,13 @@ namespace HenryCorporation.Lavajato.Presentation
             new ClienteBL().Update(this.servico.Cliente);
         }
 
-        private void cmbLavador_SelectedIndexChanged(object sender, EventArgs e)
+        /*private void cmbLavador_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (this.cmbLavador.SelectedIndex == 0 || this.cmbLavador.SelectedIndex == -1) return;
             
             servico.Lavador = int.Parse(cmbLavador.SelectedValue.ToString());
             servicoBL.Update(this.servico);
-        }
+        }*/
 
         private void CarregaConvenioDosClientes()
         {
@@ -329,12 +335,12 @@ namespace HenryCorporation.Lavajato.Presentation
             return servicoBL.ExisteServico(this.servico);
         }
 
-        private void CarregaLavadores()
+       /* private void CarregaLavadores()
         {
             cmbLavador.DataSource = new UsuarioBL().GetUsuarioTipoLavador();
             cmbLavador.DisplayMember = "Nome";
             cmbLavador.ValueMember = "ID";
-        }
+        }*/
 
         private Convenio SetUpConvenio()
         {
@@ -451,7 +457,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.servico.Lavado = 1;
             this.servico.Pago = 1;
             this.servico.FormaPagamento = ((FormaPagamento)(cmbFormaPagamento.SelectedItem));
-            this.servico.Lavador = cmbLavador.SelectedValue == null ? 0 : int.Parse(cmbLavador.SelectedValue.ToString());
+            //this.servico.Lavador = cmbLavador.SelectedValue == null ? 0 : int.Parse(cmbLavador.SelectedValue.ToString());
             this.servico.Total = Configuracao.ConverteParaDecimal(totalServico.Text);
             this.servico.SubTotal = Configuracao.ConverteParaDecimal(totalServico.Text);
             this.servico.Desconto = Configuracao.ConverteParaDecimal(desconto.Text);
@@ -641,6 +647,8 @@ namespace HenryCorporation.Lavajato.Presentation
             servicoLavador.ShowDialog();
             servicoLavador.Close();
         }
+
+     
 
     }
 }

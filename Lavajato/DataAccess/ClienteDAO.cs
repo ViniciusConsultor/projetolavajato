@@ -130,6 +130,7 @@ namespace HenryCorporation.Lavajato.DataAccess
             return cli;
         }
 
+
         public Cliente ByPlaca(Cliente cliente)
         {
             string query = sql + " Where [Delete] = 0 and placa = '" + cliente.Placa.Trim() + "'";

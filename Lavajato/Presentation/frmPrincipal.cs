@@ -178,5 +178,11 @@ namespace Presentation
             var masterLogin = new frmMasterLogin();
             masterLogin.ShowDialog();
         }
+
+        private void incluirLavadorNoServiçoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProcuraServicoPorPlaca frmProcuraServicoPorPlaca = new frmProcuraServicoPorPlaca();
+            frmProcuraServicoPorPlaca.ShowDialog();
+        }
     }
 }

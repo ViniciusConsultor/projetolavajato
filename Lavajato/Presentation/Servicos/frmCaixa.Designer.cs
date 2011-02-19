@@ -56,8 +56,6 @@ namespace HenryCorporation.Lavajato.Presentation
             this.ordemServico = new System.Windows.Forms.TextBox();
             this.chbLavado = new System.Windows.Forms.CheckBox();
             this.label5 = new System.Windows.Forms.Label();
-            this.cmbLavador = new System.Windows.Forms.ComboBox();
-            this.label4 = new System.Windows.Forms.Label();
             this.dataEntrada = new System.Windows.Forms.DateTimePicker();
             this.label10 = new System.Windows.Forms.Label();
             this.min = new System.Windows.Forms.ComboBox();
@@ -307,8 +305,6 @@ namespace HenryCorporation.Lavajato.Presentation
             this.groupBox2.Controls.Add(this.ordemServico);
             this.groupBox2.Controls.Add(this.chbLavado);
             this.groupBox2.Controls.Add(this.label5);
-            this.groupBox2.Controls.Add(this.cmbLavador);
-            this.groupBox2.Controls.Add(this.label4);
             this.groupBox2.Controls.Add(this.dataEntrada);
             this.groupBox2.Controls.Add(this.label10);
             this.groupBox2.Controls.Add(this.min);
@@ -333,11 +329,11 @@ namespace HenryCorporation.Lavajato.Presentation
             // button1
             // 
             this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 8.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.Location = new System.Drawing.Point(142, 348);
+            this.button1.Location = new System.Drawing.Point(142, 316);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(240, 33);
             this.button1.TabIndex = 114;
-            this.button1.Text = "Incluir mais Lavador no Serviço";
+            this.button1.Text = "Incluir Lavador no Serviço";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
@@ -368,12 +364,13 @@ namespace HenryCorporation.Lavajato.Presentation
             this.ordemServico.Name = "ordemServico";
             this.ordemServico.Size = new System.Drawing.Size(240, 31);
             this.ordemServico.TabIndex = 1;
+            //this.ordemServico.Enter += new System.EventHandler(this.ordemServico_Enter);
             this.ordemServico.Leave += new System.EventHandler(this.ordemServico_Leave);
             // 
             // chbLavado
             // 
             this.chbLavado.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.chbLavado.Location = new System.Drawing.Point(143, 381);
+            this.chbLavado.Location = new System.Drawing.Point(142, 349);
             this.chbLavado.Name = "chbLavado";
             this.chbLavado.Size = new System.Drawing.Size(239, 29);
             this.chbLavado.TabIndex = 12;
@@ -392,26 +389,6 @@ namespace HenryCorporation.Lavajato.Presentation
             this.label5.Size = new System.Drawing.Size(127, 29);
             this.label5.TabIndex = 110;
             this.label5.Text = "Ord. Serv.:";
-            // 
-            // cmbLavador
-            // 
-            this.cmbLavador.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cmbLavador.FormattingEnabled = true;
-            this.cmbLavador.Location = new System.Drawing.Point(142, 316);
-            this.cmbLavador.Name = "cmbLavador";
-            this.cmbLavador.Size = new System.Drawing.Size(240, 33);
-            this.cmbLavador.TabIndex = 10;
-            this.cmbLavador.SelectedIndexChanged += new System.EventHandler(this.cmbLavador_SelectedIndexChanged);
-            // 
-            // label4
-            // 
-            this.label4.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(18, 318);
-            this.label4.Margin = new System.Windows.Forms.Padding(2, 0, 2, 0);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(120, 31);
-            this.label4.TabIndex = 108;
-            this.label4.Text = "Lavador:";
             // 
             // dataEntrada
             // 
@@ -671,7 +648,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.MinimizeBox = false;
             this.Name = "frmCaixa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
-            this.Text = "frmCaixa";
+            this.Text = "Caixa";
             this.Load += new System.EventHandler(this.frmCaixa_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCaixa_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.grdServico)).EndInit();
@@ -708,8 +685,6 @@ namespace HenryCorporation.Lavajato.Presentation
         private System.Windows.Forms.TextBox ordemServico;
         private System.Windows.Forms.CheckBox chbLavado;
         private System.Windows.Forms.Label label5;
-        private System.Windows.Forms.ComboBox cmbLavador;
-        private System.Windows.Forms.Label label4;
         private System.Windows.Forms.DateTimePicker dataEntrada;
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.ComboBox min;

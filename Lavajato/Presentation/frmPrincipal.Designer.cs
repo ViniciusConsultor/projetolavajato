@@ -42,6 +42,8 @@
             this.produtosInternosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.promoçõesToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.credorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.trocarUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.servicoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.caixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.servicoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
@@ -49,6 +51,7 @@
             this.saidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ordemServiçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ordemServicoAbertoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.incluirLavadorNoServiçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contasAPagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pesquisaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -61,8 +64,6 @@
             this.clientePorPlacaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.lavagemPorLavadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.trocarUToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-            this.sairToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -99,7 +100,7 @@
             this.cadastroClienteToolStripMenuItem,
             this.consultaClienteToolStripMenuItem});
             this.clientesToolStripMenuItem.Name = "clientesToolStripMenuItem";
-            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.clientesToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.clientesToolStripMenuItem.Text = "Clientes";
             // 
             // cadastroClienteToolStripMenuItem
@@ -122,7 +123,7 @@
             this.cadatroProdutosToolStripMenuItem,
             this.procuraUsuariosToolStripMenuItem});
             this.usuáriosToolStripMenuItem.Name = "usuáriosToolStripMenuItem";
-            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.usuáriosToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.usuáriosToolStripMenuItem.Text = "Usuários";
             // 
             // cadatroProdutosToolStripMenuItem
@@ -146,7 +147,7 @@
             this.procuraProdutosToolStripMenuItem,
             this.produtosInternosToolStripMenuItem});
             this.produtoToolStripMenuItem.Name = "produtoToolStripMenuItem";
-            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.produtoToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.produtoToolStripMenuItem.Text = "Mercadorias";
             // 
             // categoriaProdutosToolStripMenuItem
@@ -173,23 +174,38 @@
             // promoçõesToolStripMenuItem
             // 
             this.promoçõesToolStripMenuItem.Name = "promoçõesToolStripMenuItem";
-            this.promoçõesToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.promoçõesToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.promoçõesToolStripMenuItem.Text = "Convênios";
             this.promoçõesToolStripMenuItem.Click += new System.EventHandler(this.promoçõesToolStripMenuItem_Click);
             // 
             // credorToolStripMenuItem
             // 
             this.credorToolStripMenuItem.Name = "credorToolStripMenuItem";
-            this.credorToolStripMenuItem.Size = new System.Drawing.Size(152, 22);
+            this.credorToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
             this.credorToolStripMenuItem.Text = "Credor";
             this.credorToolStripMenuItem.Click += new System.EventHandler(this.credorToolStripMenuItem_Click);
+            // 
+            // trocarUToolStripMenuItem
+            // 
+            this.trocarUToolStripMenuItem.Name = "trocarUToolStripMenuItem";
+            this.trocarUToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.trocarUToolStripMenuItem.Text = "Trocar Usuário";
+            this.trocarUToolStripMenuItem.Click += new System.EventHandler(this.trocarUToolStripMenuItem_Click);
+            // 
+            // sairToolStripMenuItem
+            // 
+            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
+            this.sairToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
+            this.sairToolStripMenuItem.Text = "Sair";
+            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
             // 
             // servicoToolStripMenuItem
             // 
             this.servicoToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.caixaToolStripMenuItem,
             this.ordemServiçoToolStripMenuItem,
-            this.ordemServicoAbertoToolStripMenuItem});
+            this.ordemServicoAbertoToolStripMenuItem,
+            this.incluirLavadorNoServiçoToolStripMenuItem});
             this.servicoToolStripMenuItem.Name = "servicoToolStripMenuItem";
             this.servicoToolStripMenuItem.Size = new System.Drawing.Size(54, 20);
             this.servicoToolStripMenuItem.Text = "Servico";
@@ -201,7 +217,7 @@
             this.entradaToolStripMenuItem,
             this.saidaToolStripMenuItem});
             this.caixaToolStripMenuItem.Name = "caixaToolStripMenuItem";
-            this.caixaToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.caixaToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.caixaToolStripMenuItem.Text = "Caixa";
             // 
             // servicoToolStripMenuItem1
@@ -228,16 +244,23 @@
             // ordemServiçoToolStripMenuItem
             // 
             this.ordemServiçoToolStripMenuItem.Name = "ordemServiçoToolStripMenuItem";
-            this.ordemServiçoToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.ordemServiçoToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.ordemServiçoToolStripMenuItem.Text = "Ordem Serviço";
             this.ordemServiçoToolStripMenuItem.Click += new System.EventHandler(this.ordemServiçoToolStripMenuItem_Click);
             // 
             // ordemServicoAbertoToolStripMenuItem
             // 
             this.ordemServicoAbertoToolStripMenuItem.Name = "ordemServicoAbertoToolStripMenuItem";
-            this.ordemServicoAbertoToolStripMenuItem.Size = new System.Drawing.Size(191, 22);
+            this.ordemServicoAbertoToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
             this.ordemServicoAbertoToolStripMenuItem.Text = "Ordem Servico Aberto";
             this.ordemServicoAbertoToolStripMenuItem.Click += new System.EventHandler(this.ordemServicoAbertoToolStripMenuItem_Click);
+            // 
+            // incluirLavadorNoServiçoToolStripMenuItem
+            // 
+            this.incluirLavadorNoServiçoToolStripMenuItem.Name = "incluirLavadorNoServiçoToolStripMenuItem";
+            this.incluirLavadorNoServiçoToolStripMenuItem.Size = new System.Drawing.Size(209, 22);
+            this.incluirLavadorNoServiçoToolStripMenuItem.Text = "Incluir Lavador no Serviço";
+            this.incluirLavadorNoServiçoToolStripMenuItem.Click += new System.EventHandler(this.incluirLavadorNoServiçoToolStripMenuItem_Click);
             // 
             // relatóriosToolStripMenuItem
             // 
@@ -333,20 +356,6 @@
             this.toolStrip1.TabIndex = 1;
             this.toolStrip1.Text = "toolStrip1";
             // 
-            // trocarUToolStripMenuItem
-            // 
-            this.trocarUToolStripMenuItem.Name = "trocarUToolStripMenuItem";
-            this.trocarUToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.trocarUToolStripMenuItem.Text = "Trocar Usuário";
-            this.trocarUToolStripMenuItem.Click += new System.EventHandler(this.trocarUToolStripMenuItem_Click);
-            // 
-            // sairToolStripMenuItem
-            // 
-            this.sairToolStripMenuItem.Name = "sairToolStripMenuItem";
-            this.sairToolStripMenuItem.Size = new System.Drawing.Size(155, 22);
-            this.sairToolStripMenuItem.Text = "Sair";
-            this.sairToolStripMenuItem.Click += new System.EventHandler(this.sairToolStripMenuItem_Click);
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -403,6 +412,7 @@
         private System.Windows.Forms.ToolStripMenuItem fechamentoDeCaixaPorVendedorToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem trocarUToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem sairToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem incluirLavadorNoServiçoToolStripMenuItem;
     }
 }
 

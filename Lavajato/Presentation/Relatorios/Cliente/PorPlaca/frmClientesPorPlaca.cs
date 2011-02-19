@@ -96,12 +96,12 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void reportViewer1_Click(object sender, EventArgs e)
         {
-            string teste = "";
+
         }
 
         private void reportViewer1_Hyperlink(object sender, HyperlinkEventArgs e)
         {
-            string teste= "";
+
         }
 
      

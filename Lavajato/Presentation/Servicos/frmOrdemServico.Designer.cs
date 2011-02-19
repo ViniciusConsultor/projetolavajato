@@ -100,7 +100,7 @@ namespace HenryCorporation.Lavajato.Presentation
             dataGridViewCellStyle8.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.grdServico.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
-            this.grdServico.Size = new System.Drawing.Size(788, 332);
+            this.grdServico.Size = new System.Drawing.Size(796, 332);
             this.grdServico.TabIndex = 69;
             this.grdServico.MouseClick += new System.Windows.Forms.MouseEventHandler(this.grdServico_MouseClick);
             // 
@@ -129,7 +129,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.groupBox1.Controls.Add(this.lblPlaca);
             this.groupBox1.Location = new System.Drawing.Point(2, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(789, 194);
+            this.groupBox1.Size = new System.Drawing.Size(797, 194);
             this.groupBox1.TabIndex = 70;
             this.groupBox1.TabStop = false;
             // 
@@ -157,7 +157,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // telefone
             // 
             this.telefone.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.telefone.Location = new System.Drawing.Point(92, 83);
+            this.telefone.Location = new System.Drawing.Point(103, 83);
             this.telefone.Mask = "(99) 0000-0000";
             this.telefone.Name = "telefone";
             this.telefone.Size = new System.Drawing.Size(258, 31);
@@ -168,7 +168,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // placa
             // 
             this.placa.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.placa.Location = new System.Drawing.Point(92, 21);
+            this.placa.Location = new System.Drawing.Point(103, 21);
             this.placa.Mask = "AAA-0000";
             this.placa.Name = "placa";
             this.placa.Size = new System.Drawing.Size(258, 31);
@@ -180,7 +180,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // 
             this.min.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.min.FormattingEnabled = true;
-            this.min.Location = new System.Drawing.Point(630, 113);
+            this.min.Location = new System.Drawing.Point(638, 113);
             this.min.Name = "min";
             this.min.Size = new System.Drawing.Size(150, 33);
             this.min.TabIndex = 8;
@@ -192,7 +192,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.hora.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.hora.ForeColor = System.Drawing.SystemColors.WindowText;
             this.hora.FormattingEnabled = true;
-            this.hora.Location = new System.Drawing.Point(464, 113);
+            this.hora.Location = new System.Drawing.Point(472, 113);
             this.hora.Name = "hora";
             this.hora.Size = new System.Drawing.Size(166, 33);
             this.hora.TabIndex = 7;
@@ -213,7 +213,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // btnCadastraCliente
             // 
             this.btnCadastraCliente.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCadastraCliente.Location = new System.Drawing.Point(92, 116);
+            this.btnCadastraCliente.Location = new System.Drawing.Point(103, 116);
             this.btnCadastraCliente.Name = "btnCadastraCliente";
             this.btnCadastraCliente.Size = new System.Drawing.Size(258, 34);
             this.btnCadastraCliente.TabIndex = 9;
@@ -226,9 +226,9 @@ namespace HenryCorporation.Lavajato.Presentation
             this.cmdServico.AutoCompleteMode = System.Windows.Forms.AutoCompleteMode.Suggest;
             this.cmdServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cmdServico.FormattingEnabled = true;
-            this.cmdServico.Location = new System.Drawing.Point(105, 151);
+            this.cmdServico.Location = new System.Drawing.Point(101, 151);
             this.cmdServico.Name = "cmdServico";
-            this.cmdServico.Size = new System.Drawing.Size(356, 33);
+            this.cmdServico.Size = new System.Drawing.Size(360, 33);
             this.cmdServico.TabIndex = 10;
             this.cmdServico.Enter += new System.EventHandler(this.cmdServico_Enter);
             this.cmdServico.Leave += new System.EventHandler(this.cmdServico_Leave);
@@ -237,7 +237,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // 
             this.label11.AutoSize = true;
             this.label11.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label11.Location = new System.Drawing.Point(6, 151);
+            this.label11.Location = new System.Drawing.Point(3, 149);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(100, 29);
             this.label11.TabIndex = 89;
@@ -247,7 +247,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // 
             this.label10.AutoSize = true;
             this.label10.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label10.Location = new System.Drawing.Point(380, 117);
+            this.label10.Location = new System.Drawing.Point(388, 117);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(81, 29);
             this.label10.TabIndex = 88;
@@ -259,7 +259,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.dataEntrada.Enabled = false;
             this.dataEntrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.dataEntrada.Format = System.Windows.Forms.DateTimePickerFormat.Time;
-            this.dataEntrada.Location = new System.Drawing.Point(464, 80);
+            this.dataEntrada.Location = new System.Drawing.Point(472, 80);
             this.dataEntrada.Name = "dataEntrada";
             this.dataEntrada.Size = new System.Drawing.Size(317, 31);
             this.dataEntrada.TabIndex = 6;
@@ -270,7 +270,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(359, 83);
+            this.label1.Location = new System.Drawing.Point(367, 83);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 29);
             this.label1.TabIndex = 86;
@@ -279,7 +279,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // corVeiculo
             // 
             this.corVeiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.corVeiculo.Location = new System.Drawing.Point(464, 49);
+            this.corVeiculo.Location = new System.Drawing.Point(472, 49);
             this.corVeiculo.Name = "corVeiculo";
             this.corVeiculo.Size = new System.Drawing.Size(317, 31);
             this.corVeiculo.TabIndex = 4;
@@ -289,7 +289,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // nome
             // 
             this.nome.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.nome.Location = new System.Drawing.Point(92, 52);
+            this.nome.Location = new System.Drawing.Point(103, 52);
             this.nome.Name = "nome";
             this.nome.Size = new System.Drawing.Size(258, 31);
             this.nome.TabIndex = 3;
@@ -300,7 +300,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // 
             this.label9.AutoSize = true;
             this.label9.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label9.Location = new System.Drawing.Point(403, 49);
+            this.label9.Location = new System.Drawing.Point(411, 49);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(58, 29);
             this.label9.TabIndex = 82;
@@ -310,7 +310,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // 
             this.label8.AutoSize = true;
             this.label8.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label8.Location = new System.Drawing.Point(27, 84);
+            this.label8.Location = new System.Drawing.Point(35, 84);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(61, 29);
             this.label8.TabIndex = 81;
@@ -320,7 +320,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // 
             this.label7.AutoSize = true;
             this.label7.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label7.Location = new System.Drawing.Point(3, 52);
+            this.label7.Location = new System.Drawing.Point(11, 52);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(85, 29);
             this.label7.TabIndex = 80;
@@ -329,7 +329,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // veiculo
             // 
             this.veiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.veiculo.Location = new System.Drawing.Point(464, 18);
+            this.veiculo.Location = new System.Drawing.Point(472, 18);
             this.veiculo.Name = "veiculo";
             this.veiculo.Size = new System.Drawing.Size(316, 31);
             this.veiculo.TabIndex = 2;
@@ -340,7 +340,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // 
             this.lblVeiculo.AutoSize = true;
             this.lblVeiculo.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblVeiculo.Location = new System.Drawing.Point(362, 21);
+            this.lblVeiculo.Location = new System.Drawing.Point(370, 21);
             this.lblVeiculo.Name = "lblVeiculo";
             this.lblVeiculo.Size = new System.Drawing.Size(99, 29);
             this.lblVeiculo.TabIndex = 78;
@@ -350,7 +350,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // 
             this.lblPlaca.AutoSize = true;
             this.lblPlaca.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblPlaca.Location = new System.Drawing.Point(9, 20);
+            this.lblPlaca.Location = new System.Drawing.Point(17, 20);
             this.lblPlaca.Name = "lblPlaca";
             this.lblPlaca.Size = new System.Drawing.Size(79, 29);
             this.lblPlaca.TabIndex = 76;
@@ -394,7 +394,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.ClientSize = new System.Drawing.Size(794, 578);
+            this.ClientSize = new System.Drawing.Size(802, 578);
             this.Controls.Add(this.btnGerarOrdemServico);
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnExcluir);

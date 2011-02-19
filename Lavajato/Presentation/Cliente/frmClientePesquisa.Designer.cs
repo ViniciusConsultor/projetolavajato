@@ -28,24 +28,17 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.grdClientes = new System.Windows.Forms.DataGridView();
             this.label13 = new System.Windows.Forms.Label();
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.label12 = new System.Windows.Forms.Label();
             this.placaPesquisa = new System.Windows.Forms.TextBox();
             this.nomePesquisa = new System.Windows.Forms.TextBox();
-            ((System.ComponentModel.ISupportInitialize)(this.grdClientes)).BeginInit();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.grdClientes = new System.Windows.Forms.DataGridView();
             this.groupBox4.SuspendLayout();
+            this.groupBox1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.grdClientes)).BeginInit();
             this.SuspendLayout();
-            // 
-            // grdClientes
-            // 
-            this.grdClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdClientes.Location = new System.Drawing.Point(0, 3);
-            this.grdClientes.Name = "grdClientes";
-            this.grdClientes.Size = new System.Drawing.Size(735, 394);
-            this.grdClientes.TabIndex = 2;
-            this.grdClientes.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.grdClientes_MouseDoubleClick);
             // 
             // label13
             // 
@@ -107,32 +100,53 @@
             this.nomePesquisa.Enter += new System.EventHandler(this.nomePesquisa_Enter);
             this.nomePesquisa.Leave += new System.EventHandler(this.nomePesquisa_Leave);
             // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.grdClientes);
+            this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox1.Location = new System.Drawing.Point(3, -1);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(732, 404);
+            this.groupBox1.TabIndex = 4;
+            this.groupBox1.TabStop = false;
+            // 
+            // grdClientes
+            // 
+            this.grdClientes.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.grdClientes.Location = new System.Drawing.Point(6, 12);
+            this.grdClientes.Name = "grdClientes";
+            this.grdClientes.Size = new System.Drawing.Size(720, 383);
+            this.grdClientes.TabIndex = 3;
+            this.grdClientes.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.grdClientes_MouseDoubleClick);
+            // 
             // frmClientePesquisa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(737, 494);
-            this.Controls.Add(this.grdClientes);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
             this.Name = "frmClientePesquisa";
             this.Text = "Pesquisa de Clientes";
-            ((System.ComponentModel.ISupportInitialize)(this.grdClientes)).EndInit();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
+            this.groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.grdClientes)).EndInit();
             this.ResumeLayout(false);
 
         }
 
         #endregion
 
-        private System.Windows.Forms.DataGridView grdClientes;
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.GroupBox groupBox4;
         private System.Windows.Forms.Label label12;
         private System.Windows.Forms.TextBox placaPesquisa;
         private System.Windows.Forms.TextBox nomePesquisa;
+        private System.Windows.Forms.GroupBox groupBox1;
+        private System.Windows.Forms.DataGridView grdClientes;
 
     }
 }

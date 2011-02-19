@@ -56,6 +56,11 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             servicoDAO.Update(servico);
         }
 
+        public IList<Servico> ByServicosDoCliente(Cliente cliente)
+        {
+            return servicoDAO.ByServicosDoCliente(cliente);
+        }
+
         #endregion
 
         #region Metodos GRUD ServicoItem
@@ -103,36 +108,8 @@ namespace HenryCorporation.Lavajato.BusinessLogic
         //colocar isso aqui num extension metodos
         private  DataTable GetServicoFuncionario(List<ServicoFuncionario> servicoFuncionarios)
         {
-            DataTable table = new DataTable();
-            table.Columns.AddRange(GetColumns());
-
-            foreach (ServicoFuncionario sf in servicoFuncionarios)
-            {
-                DataRow row = table.NewRow();
-                row["ID"] = sf.ID;
-                row["Servico"] = sf.Produto.Descricao;
-                table.Rows.Add(row);
-            }
-            return table;
+            return ServicoTabela.GetServicoFuncionario(servicoFuncionarios);
         }
-
-        //colocar isso aqui num extension metodos
-        private DataColumn[] GetColumns()
-        {
-            DataColumn[] columns = new DataColumn[2];
-
-            DataColumn id = new DataColumn();
-            id.ColumnName = "ID";
-            columns[0] = id;
-
-            DataColumn desc = new DataColumn();
-            desc.ColumnName = "Servico";
-            columns[1] = desc;
-
-            return columns;
-        }
-
-
 
         /// <summary>
         /// Deleta um serviço atribuido ao funcionario
@@ -147,19 +124,8 @@ namespace HenryCorporation.Lavajato.BusinessLogic
         
         public DataTable CriaGridCarrosLavano()
         {
-            var dataSet = new DataSet();
-            var table = new DataTable();
-            dataSet.Tables.Add(table);
-            table.Columns.AddRange(ColunasCarroLavando());
-            foreach (Servico si in servicoDAO.GetCarrosLavando())
-            {
-                DataRow row = table.NewRow();
-                row["Placa"] = si.Cliente.Placa;
-                row["Carro"] = si.Cliente.Veiculo;
-                row["Saida"] = si.Saida.ToShortTimeString();
-                table.Rows.Add(row);
-            }
-            return table;
+            IList<Servico> servicos = servicoDAO.GetCarrosLavando();
+            return ServicoTabela.CriaGridCarrosLavano(servicos);
         }
 
         public int OrdemServicoMax()
@@ -173,103 +139,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
         public DataTable CriaGrid(Servico servico)
         {
-            DataTable table = new DataTable();
-            table.Columns.AddRange(CarregaColunasOrdemServico());
-
-            foreach (ServicoItem si in servico.ServicoItem)
-            {
-                DataRow row = table.NewRow();
-                row["ID"] = si.ID;
-                row["Descricao"] = si.Produto.Descricao;
-                row["Quantidade"] = si.Quantidade;
-                row["Valor"] = si.Produto.ValorUnitario.ToString("C");
-                row["Total"] = (si.Produto.ValorUnitario * si.Quantidade).ToString("C");
-                table.Rows.Add(row);
-            } 
-           
-            return table;
-        }
-
-
-
-        public static DataColumn[] CarregaColunasOrdemServico()
-        {
-            DataColumn[] columns = new DataColumn[6];
-
-            // Create new DataColumn, set DataType, ColumnName and add to DataTable.    
-            DataColumn ID = new DataColumn();
-            ID.ColumnName = "ID";
-            columns[0] = ID;
-
-            DataColumn Descricao = new DataColumn();
-            Descricao.ColumnName = "Descricao";
-            columns[1] = Descricao;
-
-            DataColumn Quantidade = new DataColumn();
-            Quantidade.ColumnName = "Quantidade";
-            columns[2] = Quantidade;
-
-            DataColumn Valor = new DataColumn();
-            Valor.ColumnName = "Valor";
-            columns[3] = Valor;
-
-            DataColumn Total = new DataColumn();
-            Total.ColumnName = "Total";
-            columns[4] = Total;
-            return columns;
-
-        }
-
-        public static DataColumn[] ServicoCarregaColunas()
-        {
-            DataColumn[] columns = new DataColumn[6];
-
-            // Create new DataColumn, set DataType, ColumnName and add to DataTable.    
-            DataColumn ID = new DataColumn();
-            ID.ColumnName = "ID";
-            columns[0] = ID;
-
-            DataColumn Descricao = new DataColumn();
-            Descricao.ColumnName = "Descricao";
-            columns[1] = Descricao;
-
-            DataColumn Quantidade = new DataColumn();
-            Quantidade.ColumnName = "Quantidade";
-            columns[2] = Quantidade;
-
-            DataColumn Valor = new DataColumn();
-            Valor.ColumnName = "Valor";
-            columns[3] = Valor;
-
-            DataColumn Total = new DataColumn();
-            Total.ColumnName = "Total";
-            columns[4] = Total;
-
-            DataColumn Lavador = new DataColumn();
-            Total.ColumnName = "Lavador";
-            columns[5] = Lavador;
-            return columns;
-
-
-        }
-
-        private DataColumn[] ColunasCarroLavando()
-        {
-            DataColumn[] columns = new DataColumn[4];
-
-            DataColumn placa = new DataColumn();
-            placa.ColumnName = "Placa";
-            columns[0] = placa;
-
-            DataColumn clie = new DataColumn();
-            clie.ColumnName = "Carro";
-            columns[1] = clie;
-
-            DataColumn sai = new DataColumn();
-            sai.ColumnName = "Saida";
-            columns[2] = sai;
-
-            return columns;
+            return ServicoTabela.CriaGrid(servico);
         }
 
         public bool ExisteServico(Servico servico)
@@ -279,41 +149,14 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
         public DataTable GetLavados(bool estaolavados)
         {
-            DataColumn[] columns = new DataColumn[5];
+            IList<Servico> servicos = servicoDAO.GetAll(estaolavados.ToString());
+            return ServicoTabela.GetLavados(servicos);
+        }
 
-            DataColumn ID = new DataColumn();
-            ID.ColumnName = "ID";
-            columns[0] = ID;
-
-            DataColumn Descricao = new DataColumn();
-            Descricao.ColumnName = "Cliente";
-            columns[1] = Descricao;
-
-            DataColumn Quantidade = new DataColumn();
-            Quantidade.ColumnName = "Placa";
-            columns[2] = Quantidade;
-
-            DataColumn Valor = new DataColumn();
-            Valor.ColumnName = "Lavado";
-            columns[3] = Valor;
-
-            DataSet dataSet = new DataSet();
-            DataTable table = new DataTable();
-            dataSet.Tables.Add(table);
-            table.Columns.AddRange(columns);
-
-            foreach (Servico serv in servicoDAO.GetAll(estaolavados.ToString()))
-            {
-                // Declare DataColumn and DataRow variables.
-                DataRow row = table.NewRow();
-                row["ID"] = serv.ID;
-                row["Cliente"] = serv.Cliente.Nome;
-                row["Placa"] = serv.Cliente.Placa;
-                row["Lavado"] = serv.Lavado == 0 ? "Não Lavado" : "Lavado";
-                table.Rows.Add(row);
-            }
-
-            return table;
+        public DataTable GetOrdemServico(Servico servico)
+        {
+            servico = servicoDAO.ByOrdemServico(servico);
+            return ServicoTabela.GetOrdemServico(servico);
         }
     }
 }
