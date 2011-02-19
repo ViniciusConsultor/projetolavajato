@@ -30,6 +30,15 @@ namespace HenryCorporation.Lavajato.Presentation
             OcultaCampos();
         }
 
+        private void grdUsuarios_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            Usuario usuario = new Usuario();
+            usuario.ID = int.Parse(grdUsuarios.Rows[grdUsuarios.CurrentRow.Index].Cells[0].Value.ToString());
+            frmUsuario frmUsuario = new frmUsuario(usuario);
+            frmUsuario.ShowDialog();
+            this.Close();
+        }
+
         private void loginPesquisa_TextChanged(object sender, EventArgs e)
         {
             grdUsuarios.DataSource = usuarioBL.ByLogin(loginPesquisa.Text);
@@ -39,15 +48,6 @@ namespace HenryCorporation.Lavajato.Presentation
         private void OcultaCampos()
         {
             grdUsuarios.Columns[0].Visible = false;
-        }
-
-        private void grdUsuarios_MouseDoubleClick(object sender, MouseEventArgs e)
-        {
-            Usuario usuario = new Usuario();
-            usuario.ID = int.Parse(grdUsuarios.Rows[grdUsuarios.CurrentRow.Index].Cells[0].Value.ToString());
-            frmUsuario frmUsuario = new frmUsuario(usuario);
-            frmUsuario.ShowDialog();
-            this.Close();
         }
 
         private void nomePesquisa_Enter(object sender, EventArgs e)

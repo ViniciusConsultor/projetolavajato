@@ -32,14 +32,7 @@ namespace HenryCorporation.Lavajato.Presentation
             get { return credor; }
             set { credor = value; }
         }
-
-        private void grdCredor_DoubleClick(object sender, EventArgs e)
-        {
-            this.credor.ID = int.Parse(grdCredor.Rows[grdCredor.CurrentRow.Index].Cells[0].Value.ToString());
-            this.credor = this.credorBL.ByID(this.credor);
-            this.Close();
-        }
-              
+      
         private void razaoSocialPesquisa_TextChanged_1(object sender, EventArgs e)
         {
             Credor crd = new Credor();
@@ -72,6 +65,13 @@ namespace HenryCorporation.Lavajato.Presentation
         private void nomeFantasiaPesquisa_Leave(object sender, EventArgs e)
         {
             nomeFantasiaPesquisa.BackColor = Color.White;
+        }
+
+        private void grdCredor_MouseDoubleClick(object sender, MouseEventArgs e)
+        {
+            this.credor.ID = int.Parse(grdCredor.Rows[grdCredor.CurrentRow.Index].Cells[0].Value.ToString());
+            this.credor = this.credorBL.ByID(this.credor);
+            this.Close();
         }
 
 
