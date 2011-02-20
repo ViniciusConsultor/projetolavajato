@@ -704,7 +704,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private System.Windows.Forms.ComboBox convenio;
         private System.Windows.Forms.ComboBox comboBox1;
         
-        private Servico servico = new Servico();
+        private Servico _servico = new Servico();
         private ServicoItem servicoItem = new ServicoItem();
         private ServicoBL servicoBL = new ServicoBL();
         private string enter = "\r\n";
