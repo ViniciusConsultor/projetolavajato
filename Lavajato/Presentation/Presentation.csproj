@@ -117,9 +117,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="Servicos\DataGridComboBoxColumn.cs">
-      <SubType>Component</SubType>
-    </Compile>
     <Compile Include="frmMasterLogin.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -140,9 +137,6 @@
     </Compile>
     <Compile Include="Servicos\frmProcuraServicoPorPlaca.Designer.cs">
       <DependentUpon>frmProcuraServicoPorPlaca.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Servicos\NoKeyUpCombo.cs">
-      <SubType>Component</SubType>
     </Compile>
     <Compile Include="Produto\frmCategoriaProduto.cs">
       <SubType>Form</SubType>
@@ -214,9 +208,6 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Servicos\frmProcuraServicoPorPlaca.resx">
       <DependentUpon>frmProcuraServicoPorPlaca.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Servicos\NoKeyUpCombo.resx">
-      <DependentUpon>NoKeyUpCombo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Produto\frmProdutoRetiradoEstoqueInterno.resx">
       <DependentUpon>frmProdutoRetiradoEstoqueInterno.cs</DependentUpon>

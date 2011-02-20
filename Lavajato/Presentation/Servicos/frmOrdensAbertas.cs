@@ -22,13 +22,13 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             grdOrdensAbertas.DataSource = new ServicoBL().GetLavados(true);
         }
-
-        private void grdOrdensAbertas_DoubleClick(object sender, EventArgs e)
+        
+        private void grdOrdensAbertas_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Servico servico = new Servico();
             servico.ID = int.Parse(grdOrdensAbertas.Rows[grdOrdensAbertas.CurrentRow.Index].Cells[0].Value.ToString());
             servico = new ServicoBL().ID(servico);
-            
+
             frmCaixa frmCaixa = new frmCaixa(servico);
             frmCaixa.ShowDialog();
         }
