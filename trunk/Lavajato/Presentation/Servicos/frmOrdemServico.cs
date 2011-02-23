@@ -38,27 +38,32 @@ namespace HenryCorporation.Lavajato.Presentation
             if (Equals(placa.Text, Resources.Placa_vazia))
                 return;
 
-            var clienteInformacao = ClienteCarregaInformacoes();
+            Cliente cliente = CarregaInformacoesDoCliente();
+            CarregaCliente(cliente);
             LiberaBotaoParaCadastroDeCliente();
-            servico = ServicoCarrega();
+            
+            _servico = ServicoCarrega();
+            
             ImprimeNumeroOrdemServico();
             ImprimeMensagemParaCarroJaLavado();
+            
             LimpaGrid(placa.Text);
-            CarregaItens(servico);
-            CarregaCliente(this.clienteInformacao);
+            CarregaItens(_servico);
+            
+            
             LiberaBotaoParaExclusaoDeItens();
         }
 
-        private Cliente ClienteCarregaInformacoes()
+        private Cliente CarregaInformacoesDoCliente()
         {
-            this.clienteInformacao.Placa = placa.Text;
-            this.clienteInformacao = ProcuraCliente(this.clienteInformacao);
-            return this.clienteInformacao;
+            _cliente.Placa = placa.Text;
+            _cliente = ProcuraCliente(this._cliente);
+            return _cliente;
         }
 
         private void LiberaBotaoParaCadastroDeCliente()
         {
-            if (clienteInformacao.ID == 0)
+            if (_cliente.ID == 0)
             {
                 var dialogResult = MessageBox.Show(Resources.Cliente_não_Cadastrado, Resources.Atencao, MessageBoxButtons.YesNo);
                 if (dialogResult == DialogResult.Yes)
@@ -81,7 +86,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void LimpaGrid(string placaPesquisada)
         {
-            if (Equals(clienteInformacao.Placa, placaPesquisada))
+            if (Equals(_cliente.Placa, placaPesquisada))
             {
                 dataTable = new DataTable();
                 dataSetItens = new DataSet();
@@ -93,29 +98,33 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private Servico ServicoCarrega()
         {
-            return servicoBL.ByCliente(this.clienteInformacao);
+            Servico servico = servicoBL.ByCliente(this._cliente);
+            if (servico.Finalizado == 0)
+                return servico;
+            else
+                return new Servico();
         }
 
         private void CarroJaLavado()
         {
-            if (this.servico.Finalizado == 0)
-                MessageBox.Show(Resources.Ordem_de_Serviço_Aberto + servico.OrdemServico, Resources.Atencao);
+            if (this._servico.Finalizado == 0)
+                MessageBox.Show(Resources.Ordem_de_Serviço_Aberto + _servico.OrdemServico, Resources.Atencao);
         }
 
         private void LiberaBotaoParaExclusaoDeItens()
         {
-            btnExcluir.Enabled = this.servico.ID == 0;
+            btnExcluir.Enabled = this._servico.ID == 0;
         }
 
         private void ImprimeNumeroOrdemServico()
         {
-            if (this.servico.ID > 0)
-                MessageBox.Show("Número da Ordem Serviço: " + this.servico.OrdemServico, "Atenção");
+            if (_servico.Finalizado == 0 && _servico.ID > 0)
+                MessageBox.Show("Número da Ordem Serviço: " + this._servico.OrdemServico, "Atenção");
         }
 
         private void ImprimeMensagemParaCarroJaLavado()
         {
-            if (this.servico.Lavado > 0)
+            if (this._servico.Lavado > 0)
                 MessageBox.Show("Carro já lavado", "Atenção");
         }
 
@@ -126,7 +135,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void adicionarServico_Click(object sender, EventArgs e)
         {
-            if (clienteInformacao.ID == 0)
+            if (_cliente.ID == 0)
             {
                 MessageBox.Show(Resources.Favor_escolher_um_cliente, Resources.Atencao);
                 return;
@@ -137,8 +146,8 @@ namespace HenryCorporation.Lavajato.Presentation
         private void btnCadastraCliente_Click(object sender, EventArgs e)
         {
             var clientePlaca = new Cliente();
-            clienteInformacao.Placa = placa.Text;
-            if (clienteBL.Existe(clienteInformacao))
+            _cliente.Placa = placa.Text;
+            if (clienteBL.Existe(_cliente))
             {
                 MessageBox.Show(Resources.Cliente_já_existente_na_base, Resources.Atencao);
                 return;
@@ -171,22 +180,30 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnGerarOrdemServico_Click(object sender, EventArgs e)
         {
-            this.servico = ServicoSalva();
-            var itens =  ItensParaInsercao(this.servico);
-            SalvaItens(itens);
-            //IImprimir impressao = new ImprimirComprovantePagamento(this.servico);
-            LiberaBotaoParaExclusaoDeItens();
+            if (dataSetItens.Tables[0].Rows.Count > 0)
+            {
+                _servico = ServicoSalva();
+                var itens = ItensParaInsercao(_servico);
+                SalvaItens(itens);
+                //IImprimir impressao = new ImprimirComprovantePagamento(this.servico);
+                LiberaBotaoParaExclusaoDeItens();
+                MessageBox.Show("Número da Ordem Serviço é: " + this._servico.OrdemServico, "Ordem Serviço");
+            }
+            else
+            {
+                MessageBox.Show("Nenhum serviço adicionado a O.S. ");
+            }
         }
 
         private Servico ServicoSalva()
         {
-            if (!ServicoExiste(this.servico))
+            if (!ServicoExiste(this._servico))
                 return servicoBL.Add(NovoServico());
             else
             {
-                servico.Total = SomaTotal();
-                servicoBL.Update(this.servico);
-                return this.servico;
+                _servico.Total = SomaTotal();
+                servicoBL.Update(this._servico);
+                return this._servico;
             }
         }
 
@@ -204,13 +221,16 @@ namespace HenryCorporation.Lavajato.Presentation
         private Servico NovoServico()
         {
             var servicoSalva = new Servico();
-            servicoSalva.Cliente = this.clienteInformacao;
+            servicoSalva.Cliente = this._cliente;
             servicoSalva.Total = SomaTotal();
             servicoSalva.SubTotal = 0;
             servicoSalva.Desconto = 0;
             servicoSalva.Entrada = DateTime.Now;
 
-            servicoSalva.Saida = servicoSalva.Entrada.AddHours(double.Parse(hora.SelectedItem.ToString())).AddMinutes(double.Parse(min.SelectedItem.ToString()));
+            servicoSalva.Saida = servicoSalva.Entrada
+                .AddHours(double.Parse(hora.SelectedItem.ToString()))
+                .AddMinutes(double.Parse(min.SelectedItem.ToString()));
+            
             servicoSalva.OrdemServico = servicoBL.OrdemServicoMax();
             servicoSalva.FormaPagamento.ID = 1;
             servicoSalva.Usuario = this.Usuario;
@@ -228,7 +248,7 @@ namespace HenryCorporation.Lavajato.Presentation
         //criar metodo somente para inserção passando o list
         private List<ServicoItem> ItensParaInsercao(Servico servico)
         {
-            var ids = new List<int>();
+            IList<int> ids = new List<int>();
             foreach (DataRow row in dataSetItens.Tables[0].Rows)
             {
                 var ID = int.Parse(row["ID"].ToString());
@@ -262,14 +282,14 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             var qtdeTotal = dataSetItens.Tables[0].Rows.Cast<DataRow>().Sum(
                 row => Configuracao.ConverteParaDecimal(row["Total"].ToString()));
-            this.servico.Total = qtdeTotal;
+            this._servico.Total = qtdeTotal;
             return  qtdeTotal;
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            servico = new Servico();
-            clienteInformacao = new Cliente();
+            _servico = new Servico();
+            _cliente = new Cliente();
             placa.Text = "";
             veiculo.Text = "";
             telefone.Text = "";
@@ -285,16 +305,16 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void ClienteInsert()
         {
-            this.clienteInformacao = clienteBL.Insert(clienteInformacao);
+            this._cliente = clienteBL.Insert(_cliente);
         }
 
         private void SetUpFieldsCliente()
         {
-            this.clienteInformacao.Placa = placa.Text;
-            this.clienteInformacao.Veiculo = veiculo.Text;
-            this.clienteInformacao.Telefone = telefone.Text;
-            this.clienteInformacao.Nome = nome.Text;
-            this.clienteInformacao.Cor = corVeiculo.Text;
+            this._cliente.Placa = placa.Text;
+            this._cliente.Veiculo = veiculo.Text;
+            this._cliente.Telefone = telefone.Text;
+            this._cliente.Nome = nome.Text;
+            this._cliente.Cor = corVeiculo.Text;
         }
 
         private void CarregaHora()
@@ -409,11 +429,11 @@ namespace HenryCorporation.Lavajato.Presentation
                 return;
             }
 
-            placa.Text = clienteInformacao.Placa;
-            veiculo.Text = clienteInformacao.Veiculo;
-            telefone.Text = clienteInformacao.Telefone;
-            nome.Text = clienteInformacao.Nome;
-            corVeiculo.Text = clienteInformacao.Cor;
+            placa.Text = _cliente.Placa;
+            veiculo.Text = _cliente.Veiculo;
+            telefone.Text = _cliente.Telefone;
+            nome.Text = _cliente.Nome;
+            corVeiculo.Text = _cliente.Cor;
         }
 
         private void LimparCamposCadastro()
@@ -526,9 +546,13 @@ namespace HenryCorporation.Lavajato.Presentation
         private void placa_Enter_1(object sender, EventArgs e)
         {
             placa.BackColor = Color.Yellow;
-
         }
 
         #endregion
+
+        private void placa_TypeValidationCompleted(object sender, TypeValidationEventArgs e)
+        {
+
+        }
     }
 }

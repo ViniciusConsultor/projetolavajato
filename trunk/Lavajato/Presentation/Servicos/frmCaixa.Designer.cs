@@ -48,7 +48,6 @@ namespace HenryCorporation.Lavajato.Presentation
             this.btnCancelarVenda = new System.Windows.Forms.Button();
             this.btnConcluirVenda = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
-            this.btnVendaAvulca = new System.Windows.Forms.Button();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
             this.label15 = new System.Windows.Forms.Label();
@@ -91,7 +90,7 @@ namespace HenryCorporation.Lavajato.Presentation
             btnAlterarQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             btnAlterarQuantidade.Location = new System.Drawing.Point(161, 579);
             btnAlterarQuantidade.Name = "btnAlterarQuantidade";
-            btnAlterarQuantidade.Size = new System.Drawing.Size(156, 40);
+            btnAlterarQuantidade.Size = new System.Drawing.Size(169, 40);
             btnAlterarQuantidade.TabIndex = 22;
             btnAlterarQuantidade.Text = "Alterar Quantidade (F3)";
             btnAlterarQuantidade.UseVisualStyleBackColor = true;
@@ -158,7 +157,6 @@ namespace HenryCorporation.Lavajato.Presentation
             this.desconto.Size = new System.Drawing.Size(112, 33);
             this.desconto.TabIndex = 19;
             this.desconto.TextChanged += new System.EventHandler(this.desconto_TextChanged);
-            this.desconto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.desconto_KeyDown);
             // 
             // label12
             // 
@@ -181,7 +179,6 @@ namespace HenryCorporation.Lavajato.Presentation
             this.cmbFormaPagamento.Size = new System.Drawing.Size(161, 33);
             this.cmbFormaPagamento.TabIndex = 16;
             this.cmbFormaPagamento.SelectedIndexChanged += new System.EventHandler(this.cmbFormaPagamento_SelectedIndexChanged);
-            this.cmbFormaPagamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbFormaPagamento_KeyDown);
             // 
             // label11
             // 
@@ -204,7 +201,6 @@ namespace HenryCorporation.Lavajato.Presentation
             this.troco.Size = new System.Drawing.Size(112, 33);
             this.troco.TabIndex = 20;
             this.troco.TextChanged += new System.EventHandler(this.troco_TextChanged);
-            this.troco.KeyDown += new System.Windows.Forms.KeyEventHandler(this.troco_KeyDown);
             // 
             // label6
             // 
@@ -249,12 +245,11 @@ namespace HenryCorporation.Lavajato.Presentation
             this.totalServico.Size = new System.Drawing.Size(112, 33);
             this.totalServico.TabIndex = 17;
             this.totalServico.TextChanged += new System.EventHandler(this.totalServico_TextChanged);
-            this.totalServico.KeyDown += new System.Windows.Forms.KeyEventHandler(this.totalServico_KeyDown);
             // 
             // btnCancelarVenda
             // 
             this.btnCancelarVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarVenda.Location = new System.Drawing.Point(629, 579);
+            this.btnCancelarVenda.Location = new System.Drawing.Point(486, 579);
             this.btnCancelarVenda.Name = "btnCancelarVenda";
             this.btnCancelarVenda.Size = new System.Drawing.Size(156, 40);
             this.btnCancelarVenda.TabIndex = 25;
@@ -272,30 +267,17 @@ namespace HenryCorporation.Lavajato.Presentation
             this.btnConcluirVenda.Text = "Concluir Venda (F2)";
             this.btnConcluirVenda.UseVisualStyleBackColor = true;
             this.btnConcluirVenda.Click += new System.EventHandler(this.btnConcluirVenda_Click);
-            this.btnConcluirVenda.KeyDown += new System.Windows.Forms.KeyEventHandler(this.btnConcluirVenda_KeyDown);
             // 
             // btnExcluir
             // 
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.Location = new System.Drawing.Point(473, 579);
+            this.btnExcluir.Location = new System.Drawing.Point(330, 579);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(156, 40);
             this.btnExcluir.TabIndex = 24;
             this.btnExcluir.Text = "Excluir Item (F5)";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
-            // 
-            // btnVendaAvulca
-            // 
-            this.btnVendaAvulca.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnVendaAvulca.Location = new System.Drawing.Point(317, 579);
-            this.btnVendaAvulca.Name = "btnVendaAvulca";
-            this.btnVendaAvulca.Size = new System.Drawing.Size(156, 40);
-            this.btnVendaAvulca.TabIndex = 23;
-            this.btnVendaAvulca.Text = "Venda Avulsa (F4)";
-            this.btnVendaAvulca.UseVisualStyleBackColor = true;
-            this.btnVendaAvulca.Click += new System.EventHandler(this.btnVendaAvulca_Click);
-            this.btnVendaAvulca.KeyUp += new System.Windows.Forms.KeyEventHandler(this.btnVendaAvulca_KeyUp);
             // 
             // groupBox2
             // 
@@ -364,7 +346,6 @@ namespace HenryCorporation.Lavajato.Presentation
             this.ordemServico.Name = "ordemServico";
             this.ordemServico.Size = new System.Drawing.Size(240, 31);
             this.ordemServico.TabIndex = 1;
-            //this.ordemServico.Enter += new System.EventHandler(this.ordemServico_Enter);
             this.ordemServico.Leave += new System.EventHandler(this.ordemServico_Leave);
             // 
             // chbLavado
@@ -376,7 +357,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.chbLavado.TabIndex = 12;
             this.chbLavado.Text = "Lavado";
             this.chbLavado.UseVisualStyleBackColor = true;
-            this.chbLavado.CheckedChanged += new System.EventHandler(this.chbLavado_CheckedChanged_1);
+            this.chbLavado.CheckedChanged += new System.EventHandler(this.chbLavado_CheckedChanged);
             // 
             // label5
             // 
@@ -591,7 +572,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // 
             // btnAdicionar
             // 
-            this.btnAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdicionar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnAdicionar.Location = new System.Drawing.Point(673, 19);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(104, 35);
@@ -638,7 +619,6 @@ namespace HenryCorporation.Lavajato.Presentation
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(acertoFuturo);
-            this.Controls.Add(this.btnVendaAvulca);
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(btnAlterarQuantidade);
             this.Controls.Add(this.btnConcluirVenda);
@@ -650,7 +630,6 @@ namespace HenryCorporation.Lavajato.Presentation
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Caixa";
             this.Load += new System.EventHandler(this.frmCaixa_Load);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.frmCaixa_KeyDown);
             ((System.ComponentModel.ISupportInitialize)(this.grdServico)).EndInit();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
@@ -680,7 +659,6 @@ namespace HenryCorporation.Lavajato.Presentation
         private System.Windows.Forms.Label label13;
         private System.Windows.Forms.TextBox desconto;
         private System.Windows.Forms.Button btnCancelarVenda;
-        private System.Windows.Forms.Button btnVendaAvulca;
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox ordemServico;
         private System.Windows.Forms.CheckBox chbLavado;
@@ -705,7 +683,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private System.Windows.Forms.ComboBox comboBox1;
         
         private Servico _servico = new Servico();
-        private ServicoItem servicoItem = new ServicoItem();
+        private ServicoItem _servicoItem = new ServicoItem();
         private ServicoBL servicoBL = new ServicoBL();
         private string enter = "\r\n";
 

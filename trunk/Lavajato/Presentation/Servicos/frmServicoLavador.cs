@@ -40,12 +40,31 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnAdicionar_Click(object sender, EventArgs e)
         {
-            Produto produto = new Produto();
-            produto.ID = int.Parse(cmbServico.SelectedValue.ToString());
+            if (!PodeAdicionar())
+            {
+                _servico.Usuario.ID = int.Parse(cmbLavador.SelectedValue.ToString());
+                Produto produto = new Produto() { ID = int.Parse(cmbServico.SelectedValue.ToString()) };
 
-            _servicoBL.AddFuncionarioNoServico(_servico, produto);
-             CarregaServicoFuncionario();
-            MessageBox.Show("Salvo com sucesso!", Resources.Atencao);
+                _servicoBL.FuncionarioNoServicoAdd(_servico, produto);
+                CarregaServicoFuncionario();
+                MessageBox.Show("Salvo com sucesso!", Resources.Atencao);
+            }
+            else
+            {
+                MessageBox.Show("Serviço já adicionado a um usuário!", Resources.Atencao);
+            }
+        }
+
+        private bool PodeAdicionar()
+        {
+            DataTable table = _servicoBL.ServicoFuncionariosGet(_servico);
+            foreach (DataRow row in table.Rows)
+            {
+                string ser = row["Servico"].ToString();
+                if (ser == ((Produto)cmbServico.SelectedItem).Descricao)
+                    return true;
+            }
+            return false;
         }
 
         private void btnRemover_Click(object sender, EventArgs e)
@@ -74,13 +93,19 @@ namespace HenryCorporation.Lavajato.Presentation
 
         public void CarregaServicoFuncionario()
         {
-            grdServicoFuncionario.DataSource = _servicoBL.ServicoFuncionarios(_servico);
+            grdServicoFuncionario.DataSource = _servicoBL.ServicoFuncionariosGet(_servico);
         }
 
         private void CarregaProdutos()
         {
-            var produtoBl = new ProdutoBL();
-            cmbServico.DataSource = produtoBl.TipoServico(EnumCategoriaProduto.Produto);
+            IList<Produto> produtos = new List<Produto>();
+            foreach (var item in _servico.ServicoItem)
+            {
+                if (item.Produto.CategoriaProduto.ID == 2)
+                    produtos.Add(item.Produto);
+            }
+            
+            cmbServico.DataSource = produtos;
             cmbServico.DisplayMember = "Descricao";
             cmbServico.ValueMember = "ID";
         }

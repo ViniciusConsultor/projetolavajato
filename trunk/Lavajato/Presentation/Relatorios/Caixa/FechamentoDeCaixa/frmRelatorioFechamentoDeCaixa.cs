@@ -50,7 +50,6 @@ namespace HenryCorporation.Lavajato.Presentation
         public DataTable GetFechamentoDeCaixa()
         {
             Util util = new Util();
-            
             DataTable table = new DataTable();
             table.Columns.AddRange(SetUpColumns());
 
@@ -64,16 +63,17 @@ namespace HenryCorporation.Lavajato.Presentation
                 var row = table.NewRow();
                 row["OSInicial"] = reader.GetInt32(0);
                 row["OSFinal"] = reader.GetInt32(1);
-                row["OSCancelado"] = reader.GetInt32(3);
-                row["TotalVendas"] = reader.GetDecimal(4);
-                row["TotalDesconto"] = reader.GetDecimal(5);
-                row["Dinheiro"] = reader.GetDecimal(6);
-                row["VisaDebito"] = reader.GetDecimal(7);
-                row["VisaCredito"] = reader.GetDecimal(8);
-                row["MasterDebito"] = reader.GetDecimal(9);
-                row["MasterCredito"] = reader.GetDecimal(10);
-                row["Entrada"] = reader.GetDecimal(11);
-                row["Saida"] = reader.GetDecimal(12);
+                row["OSCancelado"] = reader.GetInt32(2);
+                row["TotalVendas"] = reader.GetDecimal(3);
+                row["TotalDesconto"] = reader.GetDecimal(4);
+                row["Dinheiro"] = reader.GetDecimal(5);
+                row["VisaDebito"] = reader.GetDecimal(6);
+                row["VisaCredito"] = reader.GetDecimal(7);
+                row["MasterDebito"] = reader.GetDecimal(8);
+                row["MasterCredito"] = reader.GetDecimal(9);
+                row["Entrada"] = reader.GetDecimal(10);
+                row["Saida"] = reader.GetDecimal(11);
+                row["SomaTotal"] = reader.GetDecimal(12);
 
                 table.Rows.Add(row);
             }
@@ -90,7 +90,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private static DataColumn[] SetUpColumns()
         {
-            var columns = new DataColumn[12];
+            var columns = new DataColumn[13];
 
             var osInicial = new DataColumn();
             osInicial.ColumnName = "OSInicial";
@@ -139,6 +139,10 @@ namespace HenryCorporation.Lavajato.Presentation
             DataColumn saida = new DataColumn();
             saida.ColumnName = "Saida";
             columns[11] = saida;
+
+            DataColumn SomaTotal = new DataColumn();
+            SomaTotal.ColumnName = "SomaTotal";
+            columns[12] = SomaTotal;
 
             return columns;
         }

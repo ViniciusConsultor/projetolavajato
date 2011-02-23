@@ -173,6 +173,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.placa.Name = "placa";
             this.placa.Size = new System.Drawing.Size(258, 31);
             this.placa.TabIndex = 1;
+            this.placa.TypeValidationCompleted += new System.Windows.Forms.TypeValidationEventHandler(this.placa_TypeValidationCompleted);
             this.placa.Enter += new System.EventHandler(this.placa_Enter_1);
             this.placa.Leave += new System.EventHandler(this.placa_Leave);
             // 
@@ -442,8 +443,8 @@ namespace HenryCorporation.Lavajato.Presentation
         private System.Windows.Forms.TextBox quantidadeProduto;
         
         private ClienteBL clienteBL = new ClienteBL();
-        private Cliente clienteInformacao = new Cliente();
-        private Servico servico = new Servico();
+        private Cliente _cliente = new Cliente();
+        private Servico _servico = new Servico();
         private ServicoItem servicoItem = new ServicoItem();
         private ServicoBL servicoBL = new ServicoBL();
         private DataSet dataSetItens = new DataSet();

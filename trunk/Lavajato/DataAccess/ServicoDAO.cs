@@ -29,12 +29,12 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public Servico Add(Servico servico)
         {
-            string query = " INSERT INTO [Servico] ([ClienteID],[Total],[SubTotal], " +
+            string query = " INSERT INTO [Servico]([ClienteID],[Total],[SubTotal], " +
                            " [Desconto],[Saida],[Entrada],[OrdemServico],[FormaPagamentoID],[Delete]," +
                            " [Cancelado],[Lavado],[Finalizado], [UsuarioID], [Pago])" +
                            " VALUES('" + servico.Cliente.ID + "' " +
                            " ,'" + servico.Total.ToString().Replace(",", ".") + "' " +
-                           " ,'" + servico.SubTotal + "' " +
+                           " ,'" + servico.SubTotal.ToString().Replace(",", ".") + "' " +
                            " ,'" + servico.Desconto + "' " +
                            " , '" + Configuracao.HoraSaida(servico.Saida) + "' " +
                            " , '" + Configuracao.HoraEntrada(servico.Entrada) + "' " +
@@ -186,10 +186,12 @@ namespace HenryCorporation.Lavajato.DataAccess
             return SetUpField(dataSet);
         }
 
-        public List<Servico> GetAll(string query)
+        public List<Servico> GetAll(bool isLavados)
         {
-
-            var dataBaseHelper = query.Length == 0 ? new DataBaseHelper(this.sql) : new DataBaseHelper(this.sql + " Where [Delete] = 0 and [Pago] = 0  And [Cancelado] = 0 ");
+            string condicao = " Where [Delete] = 0 And [Cancelado] = 0 And Finalizado = 1 ";
+            var dataBaseHelper = isLavados
+                ? new DataBaseHelper(this.sql + condicao + " And OrdemServico <> 0 order by OrdemServico Asc  ") 
+                : new DataBaseHelper(this.sql + condicao);
             var dataSet = dataBaseHelper.Run(this.ConnectionString);
             return SetUpFields(dataSet);
         }
@@ -293,7 +295,8 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public void AddFuncionarioNoServico(Servico _servico, Produto _produto)
         {
-            string query = " INSERT INTO [Lavajato].[dbo].[ServicoFuncionario] ([ServicoID], [ProdutoID], [Del])VALUES ('" + _servico.ID + "','" + _produto.ID + "', 0 )";
+            string query = " INSERT INTO [Lavajato].[dbo].[ServicoFuncionario] ([ServicoID], [ProdutoID], "+
+                " [LavadorID],[Del])VALUES ('" + _servico.ID + "','" + _produto.ID + "','"+_servico.Usuario.ID+"', 0 )";
 
             var dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run();
@@ -309,33 +312,47 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public ServicoFuncionario ServicoFuncionarioGet(ServicoFuncionario servicoFuncionario)
         {
-            string query = " SELECT [ID],[ServicoID],[ProdutoID],[Del] FROM [Lavajato].[dbo].[ServicoFuncionario] WHERE [Del] = 0 and ID = " + servicoFuncionario.ID ;
+            string query = " SELECT [ID],[ServicoID],[ProdutoID],[LavadorID],[Del] FROM [Lavajato].[dbo].[ServicoFuncionario] WHERE [Del] = 0 and ID = " + servicoFuncionario.ID;
             var dataBaseHelper = new DataBaseHelper(query);
             return SetUpFieldServicoFuncionario(dataBaseHelper.Run(this.ConnectionString));
         }
 
         public List<ServicoFuncionario> ServicoFuncionarioByServico(Servico servico)
         {
-            string query = " SELECT [ID],[ServicoID],[ProdutoID], [Del] FROM [Lavajato].[dbo].[ServicoFuncionario] WHERE [Del] = 0 and ServicoID = " + servico.ID;
+            string query = " SELECT [ID], [ServicoID], [ProdutoID], [LavadorID], [Del] FROM [Lavajato].[dbo].[ServicoFuncionario] WHERE [Del] = 0 and ServicoID = " + servico.ID;
             var dataBaseHelper = new DataBaseHelper(query);
             return SetUpFieldServicoFuncionarios(dataBaseHelper.Run(this.ConnectionString));
         }
 
+        public ServicoFuncionario ServicoFuncionarioByID(ServicoFuncionario servicoFuncionario)
+        {
+            string query = " SELECT [ID], [ServicoID], [ProdutoID], [LavadorID], [Del] "+
+            " FROM [ServicoFuncionario] WHERE [Del] = 0 and ServicoID = " + servicoFuncionario.ID;
+            var dataBaseHelper = new DataBaseHelper(query);
+            return SetUpFieldServicoFuncionario(dataBaseHelper.Run(this.ConnectionString));
+        }
 
         private ServicoFuncionario SetUpFieldServicoFuncionario(DataSet dataSet)
         {
             ProdutoDAO produtodao = new ProdutoDAO();
+            UsuarioDAO usuariodao = new UsuarioDAO();
             ServicoFuncionario servicoFuncionario = new ServicoFuncionario();
 
             DataTableReader reader = dataSet.Tables[0].CreateDataReader();
             if (reader.Read())
             {
                 Produto produto = new Produto();
-                
+                Usuario usuario = new Usuario();
+
                 servicoFuncionario.ID = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
                 servicoFuncionario.Servico = reader.IsDBNull(1) ? new Servico() : this.ByID(reader.GetInt32(1));
+                
                 produto.ID = reader.IsDBNull(2) ? 0 : reader.GetInt32(2);
                 servicoFuncionario.Produto = produtodao.ByID(produto);
+                
+                usuario.ID = reader.IsDBNull(3) ? 0: reader.GetInt32(3);
+                servicoFuncionario.Lavador = usuariodao.ByID(usuario);
+
             }
             return servicoFuncionario;
         }
@@ -343,6 +360,7 @@ namespace HenryCorporation.Lavajato.DataAccess
         private List<ServicoFuncionario> SetUpFieldServicoFuncionarios(DataSet dataSet)
         {
             ProdutoDAO produtodao = new ProdutoDAO();
+            UsuarioDAO usuariodao = new UsuarioDAO();
 
             List<ServicoFuncionario> servicoFuncionarios = new List<ServicoFuncionario>();
             DataTableReader reader = dataSet.Tables[0].CreateDataReader();
@@ -351,11 +369,16 @@ namespace HenryCorporation.Lavajato.DataAccess
                 ServicoFuncionario servicoFuncionario = new ServicoFuncionario();
 
                 Produto produto = new Produto();
+                Usuario usuario = new Usuario();
                 
                 servicoFuncionario.ID = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
                 servicoFuncionario.Servico = reader.IsDBNull(1) ? new Servico() : this.ByID(reader.GetInt32(1));
                 produto.ID = reader.IsDBNull(2) ? 0 : reader.GetInt32(2);
                 servicoFuncionario.Produto = produtodao.ByID(produto);
+                
+                usuario.ID = reader.IsDBNull(3) ? 0 : reader.GetInt32(3);
+                servicoFuncionario.Lavador = usuariodao.ByID(usuario);
+                
                 servicoFuncionarios.Add(servicoFuncionario);
             }
 
@@ -364,5 +387,6 @@ namespace HenryCorporation.Lavajato.DataAccess
 
 
         #endregion
+
     }
 }
