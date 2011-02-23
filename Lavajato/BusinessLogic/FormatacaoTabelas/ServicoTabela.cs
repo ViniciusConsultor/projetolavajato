@@ -37,9 +37,10 @@ namespace HenryCorporation.Lavajato.BusinessLogic
                 // Declare DataColumn and DataRow variables.
                 DataRow row = table.NewRow();
                 row["ID"] = serv.ID;
-                row["Cliente"] = serv.Cliente.Nome;
+                row["Ordem Servico"] = serv.OrdemServico;
                 row["Placa"] = serv.Cliente.Placa;
                 row["Lavado"] = serv.Lavado == 0 ? "Não Lavado" : "Lavado";
+                row["Hora Prevista de Saida"] = serv.Saida.Hour + ":" + serv.Saida.Minute;
                 table.Rows.Add(row);
             }
 
@@ -93,6 +94,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
                 DataRow row = table.NewRow();
                 row["ID"] = sf.ID;
                 row["Servico"] = sf.Produto.Descricao;
+                row["Lavador"] = sf.Lavador.Nome;
                 table.Rows.Add(row);
             }
             return table;

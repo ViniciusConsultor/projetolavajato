@@ -6,6 +6,7 @@ using HenryCorporation.Lavajato.DataAccess;
 using HenryCorporation.Lavajato.DomainModel;
 using System.Data;
 
+
 namespace HenryCorporation.Lavajato.BusinessLogic
 {
     public class ServicoBL
@@ -70,6 +71,15 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             servicoDAO.ItemDoServicoInsert(servicoItem);
         }
 
+        public void ItemAdd(Servico servico)
+        {
+            foreach (var item in servico.ServicoItem)
+            {
+                item.Servico = servico;
+                servicoDAO.ItemDoServicoInsert(item);
+            }
+        }
+
         public void ItemUpdate(ServicoItem servicoItem)
         {
             servicoDAO.ServicoItemUpdate(servicoItem);
@@ -89,7 +99,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
         #region "Funcionarios do Servico"
 
-        public void AddFuncionarioNoServico(Servico _servico, Produto _produto)
+        public void FuncionarioNoServicoAdd(Servico _servico, Produto _produto)
         {
             servicoDAO.AddFuncionarioNoServico(_servico, _produto);            
         }
@@ -99,17 +109,21 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             servicoDAO.ServicoFuncionarioDelete(_indexRowDelete);
         }
 
-        public DataTable ServicoFuncionarios(Servico servico)
+        public DataTable ServicoFuncionariosGet(Servico servico)
         {
-            return GetServicoFuncionario(servicoDAO.ServicoFuncionarioByServico(servico));
-
+            return ServicoFuncionarioGet(servicoDAO.ServicoFuncionarioByServico(servico));
         }
 
-        //colocar isso aqui num extension metodos
-        private  DataTable GetServicoFuncionario(List<ServicoFuncionario> servicoFuncionarios)
+        public DataTable ServicoFuncionarioByID(ServicoFuncionario servicoFuncionario)
+        {
+            return new DataTable();
+        }
+
+        private DataTable ServicoFuncionarioGet(List<ServicoFuncionario> servicoFuncionarios)
         {
             return ServicoTabela.GetServicoFuncionario(servicoFuncionarios);
         }
+
 
         /// <summary>
         /// Deleta um serviço atribuido ao funcionario
@@ -149,7 +163,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
         public DataTable GetLavados(bool estaolavados)
         {
-            IList<Servico> servicos = servicoDAO.GetAll(estaolavados.ToString());
+            IList<Servico> servicos = servicoDAO.GetAll(estaolavados);
             return ServicoTabela.GetLavados(servicos);
         }
 
@@ -158,5 +172,16 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             servico = servicoDAO.ByOrdemServico(servico);
             return ServicoTabela.GetOrdemServico(servico);
         }
+
+        public string RetiraCifraoDaMoedaReal(decimal valor)
+        {
+            return valor.ToString("C").Replace("R$", "");
+        }
+
+        public string NomeDoUsuario(Usuario usuario)
+        {
+            return " Usuário " + usuario.Nome;
+        }
+
     }
 }
