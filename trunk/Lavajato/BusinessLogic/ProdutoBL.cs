@@ -7,6 +7,7 @@ using System.Data;
 using HenryCorporation.Lavajato.DataAccess;
 using HenryCorporation.Lavajato.DomainModel;
 using HenryCorporation.Lavajato.Interface;
+using System.Windows.Forms;
 
 namespace HenryCorporation.Lavajato.BusinessLogic
 {
@@ -88,6 +89,16 @@ namespace HenryCorporation.Lavajato.BusinessLogic
         public DataTable TipoServico(int TipoProduto)
         {
             return GetProdutos(produtoDAO.TipoServico(TipoProduto)); 
+        }
+
+        public ComboBox CarregaProdutos()
+        {
+            ComboBox comboBox = new ComboBox();
+            
+            comboBox.DataSource = TipoServico(EnumCategoriaProduto.Produto);
+            comboBox.DisplayMember = "Descricao";
+            comboBox.ValueMember = "ID";
+            return comboBox;
         }
 
         #endregion

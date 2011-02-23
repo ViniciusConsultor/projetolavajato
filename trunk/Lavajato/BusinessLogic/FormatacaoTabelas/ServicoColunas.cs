@@ -12,7 +12,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
         
         public static DataColumn[] GetColumns()
         {
-            DataColumn[] columns = new DataColumn[2];
+            DataColumn[] columns = new DataColumn[3];
 
             DataColumn id = new DataColumn();
             id.ColumnName = "ID";
@@ -21,7 +21,11 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             DataColumn desc = new DataColumn();
             desc.ColumnName = "Servico";
             columns[1] = desc;
-
+            
+            DataColumn Lavador = new DataColumn();
+            Lavador.ColumnName = "Lavador";
+            columns[2] = Lavador;
+            
             return columns;
         }
 
@@ -55,14 +59,14 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
         public static DataColumn[] GetLavados()
         {
-            DataColumn[] columns = new DataColumn[5];
+            DataColumn[] columns = new DataColumn[6];
 
             DataColumn ID = new DataColumn();
             ID.ColumnName = "ID";
             columns[0] = ID;
 
             DataColumn Descricao = new DataColumn();
-            Descricao.ColumnName = "Cliente";
+            Descricao.ColumnName = "Ordem Servico";
             columns[1] = Descricao;
 
             DataColumn Quantidade = new DataColumn();
@@ -73,6 +77,10 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             Valor.ColumnName = "Lavado";
             columns[3] = Valor;
 
+            DataColumn horaPrevistadeSaida = new DataColumn();
+            horaPrevistadeSaida.ColumnName = "Hora Prevista de Saida";
+            columns[4] = horaPrevistadeSaida;
+            
         
             return columns;
         }
