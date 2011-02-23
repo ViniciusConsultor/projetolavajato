@@ -9,6 +9,8 @@ using System.Windows.Forms;
 using Microsoft.Reporting.WinForms;
 using System.IO;
 
+using HenryCorporation.Lavajato.Presentation.Properties;
+
 namespace HenryCorporation.Lavajato.Presentation
 {
     public partial class frmProdutoAbaixoEstoque : Form
@@ -26,30 +28,26 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void PreviewReport(DataTable table)
         {
-            string strPathReport = Path.Combine(Application.StartupPath + "\\Relatorios\\" , "relProdutoAbaixoEstoque.rdlc");
+            string strPathReport = Path.Combine(Application.StartupPath + Resources.ProdutoAbaixoEstoque , Resources.relProdutoAbaixoEstoque);
             
-            strPathReport = strPathReport.Replace(@"bin\Debug\", "");
+            strPathReport = strPathReport.Replace(Resources.BinDebug, "");
             this.rvProdutoAbaixoEstoque.LocalReport.ReportPath = strPathReport;
 
-            ReportDataSource myReportDataSource = new ReportDataSource("relProdutoAbaixoEstoque_DataTable1", table);
+            ReportDataSource myReportDataSource = new ReportDataSource(Resources.dsProdutoAbaixoEstoque, table);
             this.rvProdutoAbaixoEstoque.LocalReport.DataSources.Add(myReportDataSource);
         }
 
         public DataTable GetProdutoAbaixoEstoque()
         {
+
             Util util = new Util();
-            string query = " SELECT P.DESCRICAO, P.VALORUNITARIO, E.MINIMO, E.QUANTIDADE, P.PRECOCOMPRA, CP.DESCRICAO [CATEGORIAPRODUTO] FROM PRODUTO P "+
-	                       " INNER JOIN ESTOQUE E ON P.ESTOQUE = E.ESTOQUEID "+
-                           " INNER JOIN CATEGORIAPRODUTO CP ON P.CATEGORIAPRODUTOID = CP.CATEGORIAPRODUTOID " +
-                           " WHERE CP.CATEGORIAPRODUTOID = 1 ";
-
-
             DataTable table = new DataTable();
             table.Columns.AddRange(SetUpColumns());
 
-            DataSet dataSet = util.byQuery(query);
+            DataSet dataSet = util.byQuery("ProdutoAbaixoEstoque");
             dataSet.Tables.Add(table);
             DataTableReader reader = dataSet.Tables[0].CreateDataReader();
+            
             while (reader.Read())
             {
                 DataRow row = table.NewRow();

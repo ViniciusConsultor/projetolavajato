@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCaixa {
+namespace HenryCorporation.Lavajato.Presentation.Relatorios.Lavagens.CarrosNoLavajato {
     
     
     /// <summary>
@@ -20,9 +20,9 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("dsFechamentoCaixa")]
+    [global::System.Xml.Serialization.XmlRootAttribute("dsCarrosNoLavajato")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class dsFechamentoCaixa : global::System.Data.DataSet {
+    public partial class dsCarrosNoLavajato : global::System.Data.DataSet {
         
         private DataTable1DataTable tableDataTable1;
         
@@ -30,7 +30,7 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public dsFechamentoCaixa() {
+        public dsCarrosNoLavajato() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected dsFechamentoCaixa(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected dsCarrosNoLavajato(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -127,7 +127,7 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            dsFechamentoCaixa cln = ((dsFechamentoCaixa)(base.Clone()));
+            dsCarrosNoLavajato cln = ((dsCarrosNoLavajato)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -199,9 +199,9 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "dsFechamentoCaixa";
+            this.DataSetName = "dsCarrosNoLavajato";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/dsFechamentoCaixa.xsd";
+            this.Namespace = "http://tempuri.org/dsCarrosNoLavajato.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
             this.tableDataTable1 = new DataTable1DataTable();
@@ -225,7 +225,7 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            dsFechamentoCaixa ds = new dsFechamentoCaixa();
+            dsCarrosNoLavajato ds = new dsCarrosNoLavajato();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -279,31 +279,15 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
         public partial class DataTable1DataTable : global::System.Data.TypedTableBase<DataTable1Row> {
             
-            private global::System.Data.DataColumn columnOSInicial;
+            private global::System.Data.DataColumn columnServicoID;
             
-            private global::System.Data.DataColumn columnOSFinal;
+            private global::System.Data.DataColumn columnOrdemServico;
             
-            private global::System.Data.DataColumn columnOSCancelado;
+            private global::System.Data.DataColumn columnPlaca;
             
-            private global::System.Data.DataColumn columnTotalVendas;
+            private global::System.Data.DataColumn columnLavado;
             
-            private global::System.Data.DataColumn columnTotalDesconto;
-            
-            private global::System.Data.DataColumn columnDinheiro;
-            
-            private global::System.Data.DataColumn columnVisaDebito;
-            
-            private global::System.Data.DataColumn columnVisaCredito;
-            
-            private global::System.Data.DataColumn columnMasterDebito;
-            
-            private global::System.Data.DataColumn columnMasterCredito;
-            
-            private global::System.Data.DataColumn columnEntrada;
-            
-            private global::System.Data.DataColumn columnSaida;
-            
-            private global::System.Data.DataColumn columnSomaTotal;
+            private global::System.Data.DataColumn columnHoraPrevistadeSaida;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
@@ -340,105 +324,41 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn OSInicialColumn {
+            public global::System.Data.DataColumn ServicoIDColumn {
                 get {
-                    return this.columnOSInicial;
+                    return this.columnServicoID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn OSFinalColumn {
+            public global::System.Data.DataColumn OrdemServicoColumn {
                 get {
-                    return this.columnOSFinal;
+                    return this.columnOrdemServico;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn OSCanceladoColumn {
+            public global::System.Data.DataColumn PlacaColumn {
                 get {
-                    return this.columnOSCancelado;
+                    return this.columnPlaca;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TotalVendasColumn {
+            public global::System.Data.DataColumn LavadoColumn {
                 get {
-                    return this.columnTotalVendas;
+                    return this.columnLavado;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TotalDescontoColumn {
+            public global::System.Data.DataColumn HoraPrevistadeSaidaColumn {
                 get {
-                    return this.columnTotalDesconto;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DinheiroColumn {
-                get {
-                    return this.columnDinheiro;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn VisaDebitoColumn {
-                get {
-                    return this.columnVisaDebito;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn VisaCreditoColumn {
-                get {
-                    return this.columnVisaCredito;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MasterDebitoColumn {
-                get {
-                    return this.columnMasterDebito;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MasterCreditoColumn {
-                get {
-                    return this.columnMasterCredito;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn EntradaColumn {
-                get {
-                    return this.columnEntrada;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SaidaColumn {
-                get {
-                    return this.columnSaida;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SomaTotalColumn {
-                get {
-                    return this.columnSomaTotal;
+                    return this.columnHoraPrevistadeSaida;
                 }
             }
             
@@ -479,22 +399,14 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable1Row AddDataTable1Row(int OSInicial, int OSFinal, int OSCancelado, decimal TotalVendas, decimal TotalDesconto, decimal Dinheiro, decimal VisaDebito, decimal VisaCredito, decimal MasterDebito, decimal MasterCredito, decimal Entrada, decimal Saida, decimal SomaTotal) {
+            public DataTable1Row AddDataTable1Row(string ServicoID, string OrdemServico, string Placa, string Lavado, string HoraPrevistadeSaida) {
                 DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        OSInicial,
-                        OSFinal,
-                        OSCancelado,
-                        TotalVendas,
-                        TotalDesconto,
-                        Dinheiro,
-                        VisaDebito,
-                        VisaCredito,
-                        MasterDebito,
-                        MasterCredito,
-                        Entrada,
-                        Saida,
-                        SomaTotal};
+                        ServicoID,
+                        OrdemServico,
+                        Placa,
+                        Lavado,
+                        HoraPrevistadeSaida};
                 rowDataTable1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable1Row);
                 return rowDataTable1Row;
@@ -517,63 +429,26 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnOSInicial = base.Columns["OSInicial"];
-                this.columnOSFinal = base.Columns["OSFinal"];
-                this.columnOSCancelado = base.Columns["OSCancelado"];
-                this.columnTotalVendas = base.Columns["TotalVendas"];
-                this.columnTotalDesconto = base.Columns["TotalDesconto"];
-                this.columnDinheiro = base.Columns["Dinheiro"];
-                this.columnVisaDebito = base.Columns["VisaDebito"];
-                this.columnVisaCredito = base.Columns["VisaCredito"];
-                this.columnMasterDebito = base.Columns["MasterDebito"];
-                this.columnMasterCredito = base.Columns["MasterCredito"];
-                this.columnEntrada = base.Columns["Entrada"];
-                this.columnSaida = base.Columns["Saida"];
-                this.columnSomaTotal = base.Columns["SomaTotal"];
+                this.columnServicoID = base.Columns["ServicoID"];
+                this.columnOrdemServico = base.Columns["OrdemServico"];
+                this.columnPlaca = base.Columns["Placa"];
+                this.columnLavado = base.Columns["Lavado"];
+                this.columnHoraPrevistadeSaida = base.Columns["HoraPrevistadeSaida"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnOSInicial = new global::System.Data.DataColumn("OSInicial", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOSInicial);
-                this.columnOSFinal = new global::System.Data.DataColumn("OSFinal", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOSFinal);
-                this.columnOSCancelado = new global::System.Data.DataColumn("OSCancelado", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOSCancelado);
-                this.columnTotalVendas = new global::System.Data.DataColumn("TotalVendas", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotalVendas);
-                this.columnTotalDesconto = new global::System.Data.DataColumn("TotalDesconto", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotalDesconto);
-                this.columnDinheiro = new global::System.Data.DataColumn("Dinheiro", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDinheiro);
-                this.columnVisaDebito = new global::System.Data.DataColumn("VisaDebito", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVisaDebito);
-                this.columnVisaCredito = new global::System.Data.DataColumn("VisaCredito", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVisaCredito);
-                this.columnMasterDebito = new global::System.Data.DataColumn("MasterDebito", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMasterDebito);
-                this.columnMasterCredito = new global::System.Data.DataColumn("MasterCredito", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMasterCredito);
-                this.columnEntrada = new global::System.Data.DataColumn("Entrada", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnEntrada);
-                this.columnSaida = new global::System.Data.DataColumn("Saida", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSaida);
-                this.columnSomaTotal = new global::System.Data.DataColumn("SomaTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSomaTotal);
-                this.columnOSInicial.ReadOnly = true;
-                this.columnOSFinal.ReadOnly = true;
-                this.columnOSCancelado.ReadOnly = true;
-                this.columnTotalVendas.ReadOnly = true;
-                this.columnTotalDesconto.ReadOnly = true;
-                this.columnDinheiro.ReadOnly = true;
-                this.columnVisaDebito.ReadOnly = true;
-                this.columnVisaCredito.ReadOnly = true;
-                this.columnMasterDebito.ReadOnly = true;
-                this.columnMasterCredito.ReadOnly = true;
-                this.columnEntrada.ReadOnly = true;
-                this.columnSaida.ReadOnly = true;
-                this.columnSomaTotal.ReadOnly = true;
+                this.columnServicoID = new global::System.Data.DataColumn("ServicoID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnServicoID);
+                this.columnOrdemServico = new global::System.Data.DataColumn("OrdemServico", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOrdemServico);
+                this.columnPlaca = new global::System.Data.DataColumn("Placa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPlaca);
+                this.columnLavado = new global::System.Data.DataColumn("Lavado", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnLavado);
+                this.columnHoraPrevistadeSaida = new global::System.Data.DataColumn("HoraPrevistadeSaida", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnHoraPrevistadeSaida);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -641,7 +516,7 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                dsFechamentoCaixa ds = new dsFechamentoCaixa();
+                dsCarrosNoLavajato ds = new dsCarrosNoLavajato();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -716,366 +591,142 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int OSInicial {
+            public string ServicoID {
                 get {
                     try {
-                        return ((int)(this[this.tableDataTable1.OSInicialColumn]));
+                        return ((string)(this[this.tableDataTable1.ServicoIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OSInicial\' in table \'DataTable1\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ServicoID\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.OSInicialColumn] = value;
+                    this[this.tableDataTable1.ServicoIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int OSFinal {
+            public string OrdemServico {
                 get {
                     try {
-                        return ((int)(this[this.tableDataTable1.OSFinalColumn]));
+                        return ((string)(this[this.tableDataTable1.OrdemServicoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OSFinal\' in table \'DataTable1\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'OrdemServico\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.OSFinalColumn] = value;
+                    this[this.tableDataTable1.OrdemServicoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int OSCancelado {
+            public string Placa {
                 get {
                     try {
-                        return ((int)(this[this.tableDataTable1.OSCanceladoColumn]));
+                        return ((string)(this[this.tableDataTable1.PlacaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OSCancelado\' in table \'DataTable1\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Placa\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.OSCanceladoColumn] = value;
+                    this[this.tableDataTable1.PlacaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal TotalVendas {
+            public string Lavado {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDataTable1.TotalVendasColumn]));
+                        return ((string)(this[this.tableDataTable1.LavadoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TotalVendas\' in table \'DataTable1\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Lavado\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.TotalVendasColumn] = value;
+                    this[this.tableDataTable1.LavadoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal TotalDesconto {
+            public string HoraPrevistadeSaida {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDataTable1.TotalDescontoColumn]));
+                        return ((string)(this[this.tableDataTable1.HoraPrevistadeSaidaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TotalDesconto\' in table \'DataTable1\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'HoraPrevistadeSaida\' in table \'DataTable1\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.TotalDescontoColumn] = value;
+                    this[this.tableDataTable1.HoraPrevistadeSaidaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Dinheiro {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableDataTable1.DinheiroColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Dinheiro\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.DinheiroColumn] = value;
-                }
+            public bool IsServicoIDNull() {
+                return this.IsNull(this.tableDataTable1.ServicoIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal VisaDebito {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableDataTable1.VisaDebitoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'VisaDebito\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.VisaDebitoColumn] = value;
-                }
+            public void SetServicoIDNull() {
+                this[this.tableDataTable1.ServicoIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal VisaCredito {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableDataTable1.VisaCreditoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'VisaCredito\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.VisaCreditoColumn] = value;
-                }
+            public bool IsOrdemServicoNull() {
+                return this.IsNull(this.tableDataTable1.OrdemServicoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal MasterDebito {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableDataTable1.MasterDebitoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MasterDebito\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.MasterDebitoColumn] = value;
-                }
+            public void SetOrdemServicoNull() {
+                this[this.tableDataTable1.OrdemServicoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal MasterCredito {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableDataTable1.MasterCreditoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MasterCredito\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.MasterCreditoColumn] = value;
-                }
+            public bool IsPlacaNull() {
+                return this.IsNull(this.tableDataTable1.PlacaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Entrada {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableDataTable1.EntradaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Entrada\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.EntradaColumn] = value;
-                }
+            public void SetPlacaNull() {
+                this[this.tableDataTable1.PlacaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Saida {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableDataTable1.SaidaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Saida\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.SaidaColumn] = value;
-                }
+            public bool IsLavadoNull() {
+                return this.IsNull(this.tableDataTable1.LavadoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal SomaTotal {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableDataTable1.SomaTotalColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SomaTotal\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.SomaTotalColumn] = value;
-                }
+            public void SetLavadoNull() {
+                this[this.tableDataTable1.LavadoColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsOSInicialNull() {
-                return this.IsNull(this.tableDataTable1.OSInicialColumn);
+            public bool IsHoraPrevistadeSaidaNull() {
+                return this.IsNull(this.tableDataTable1.HoraPrevistadeSaidaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetOSInicialNull() {
-                this[this.tableDataTable1.OSInicialColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsOSFinalNull() {
-                return this.IsNull(this.tableDataTable1.OSFinalColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetOSFinalNull() {
-                this[this.tableDataTable1.OSFinalColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsOSCanceladoNull() {
-                return this.IsNull(this.tableDataTable1.OSCanceladoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetOSCanceladoNull() {
-                this[this.tableDataTable1.OSCanceladoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTotalVendasNull() {
-                return this.IsNull(this.tableDataTable1.TotalVendasColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTotalVendasNull() {
-                this[this.tableDataTable1.TotalVendasColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTotalDescontoNull() {
-                return this.IsNull(this.tableDataTable1.TotalDescontoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTotalDescontoNull() {
-                this[this.tableDataTable1.TotalDescontoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDinheiroNull() {
-                return this.IsNull(this.tableDataTable1.DinheiroColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDinheiroNull() {
-                this[this.tableDataTable1.DinheiroColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsVisaDebitoNull() {
-                return this.IsNull(this.tableDataTable1.VisaDebitoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetVisaDebitoNull() {
-                this[this.tableDataTable1.VisaDebitoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsVisaCreditoNull() {
-                return this.IsNull(this.tableDataTable1.VisaCreditoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetVisaCreditoNull() {
-                this[this.tableDataTable1.VisaCreditoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsMasterDebitoNull() {
-                return this.IsNull(this.tableDataTable1.MasterDebitoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetMasterDebitoNull() {
-                this[this.tableDataTable1.MasterDebitoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsMasterCreditoNull() {
-                return this.IsNull(this.tableDataTable1.MasterCreditoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetMasterCreditoNull() {
-                this[this.tableDataTable1.MasterCreditoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsEntradaNull() {
-                return this.IsNull(this.tableDataTable1.EntradaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetEntradaNull() {
-                this[this.tableDataTable1.EntradaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSaidaNull() {
-                return this.IsNull(this.tableDataTable1.SaidaColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSaidaNull() {
-                this[this.tableDataTable1.SaidaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSomaTotalNull() {
-                return this.IsNull(this.tableDataTable1.SomaTotalColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSomaTotalNull() {
-                this[this.tableDataTable1.SomaTotalColumn] = global::System.Convert.DBNull;
+            public void SetHoraPrevistadeSaidaNull() {
+                this[this.tableDataTable1.HoraPrevistadeSaidaColumn] = global::System.Convert.DBNull;
             }
         }
         

@@ -8,7 +8,10 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.Reporting.WinForms;
+
 using HenryCorporation.Lavajato.Operacional;
+using HenryCorporation.Lavajato.Presentation.Properties;
+
 
 namespace HenryCorporation.Lavajato.Presentation
 {
@@ -38,7 +41,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void PreviewReport(DataTable table)
         {
-            string strPathReport = Path.Combine(Application.StartupPath + "\\Relatorios\\", "rptLavagemPorLavador.rdlc");
+            string strPathReport = Path.Combine(Application.StartupPath + "\\Relatorios\\Lavagens\\PorLavador", "rptLavagemPorLavador.rdlc");
             strPathReport = strPathReport.Replace(@"bin\Debug\", "");
              this.reportViewer1.LocalReport.ReportPath = strPathReport;
 

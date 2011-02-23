@@ -132,6 +132,32 @@
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Relatorios\Lavagens\CarrosNoLavajato\dsCarrosNoLavajato.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsCarrosNoLavajato.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Lavagens\CarrosNoLavajato\frmCarrosNoLavajato.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Lavagens\CarrosNoLavajato\frmCarrosNoLavajato.Designer.cs">
+      <DependentUpon>frmCarrosNoLavajato.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Produto\Produtos\dsProdutosEstoque.cs">
+      <DependentUpon>dsProdutosEstoque.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Produto\Produtos\dsProdutosEstoque.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsProdutosEstoque.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Produto\Produtos\frmProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Produto\Produtos\frmProdutos.Designer.cs">
+      <DependentUpon>frmProdutos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Servicos\frmProcuraServicoPorPlaca.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -206,6 +232,14 @@
       <DependentUpon>frmPrincipal.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Lavagens\CarrosNoLavajato\frmCarrosNoLavajato.resx">
+      <DependentUpon>frmCarrosNoLavajato.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Lavagens\CarrosNoLavajato\rptCarrosNoLavajato.rdlc" />
+    <EmbeddedResource Include="Relatorios\Produto\Produtos\frmProdutos.resx">
+      <DependentUpon>frmProdutos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Produto\Produtos\rptProdutosEstoque.rdlc" />
     <EmbeddedResource Include="Servicos\frmProcuraServicoPorPlaca.resx">
       <DependentUpon>frmProcuraServicoPorPlaca.cs</DependentUpon>
     </EmbeddedResource>
@@ -301,6 +335,9 @@
     <EmbeddedResource Include="Servicos\frmServicoLavador.resx">
       <DependentUpon>frmServicoLavador.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Servicos\frmVendaAvulsa.resx">
+      <DependentUpon>frmVendaAvulsa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -338,6 +375,17 @@
     </None>
     <None Include="Relatorios\Caixa\FechamentoDeCaixa\dsFechamentoCaixa.xss">
       <DependentUpon>dsFechamentoCaixa.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Lavagens\CarrosNoLavajato\dsCarrosNoLavajato.xsc">
+      <DependentUpon>dsCarrosNoLavajato.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Lavagens\CarrosNoLavajato\dsCarrosNoLavajato.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsCarrosNoLavajato.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Lavagens\CarrosNoLavajato\dsCarrosNoLavajato.xss">
+      <DependentUpon>dsCarrosNoLavajato.xsd</DependentUpon>
     </None>
     <None Include="Relatorios\Lavagens\PorLavador\dsLavagemPorLavador.xsc">
       <DependentUpon>dsLavagemPorLavador.xsd</DependentUpon>
@@ -522,6 +570,12 @@
     </Compile>
     <Compile Include="Servicos\frmServicoLavador.Designer.cs">
       <DependentUpon>frmServicoLavador.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Servicos\frmVendaAvulsa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Servicos\frmVendaAvulsa.Designer.cs">
+      <DependentUpon>frmVendaAvulsa.cs</DependentUpon>
     </Compile>
     <Compile Include="Usuarios\frmUsuario.cs">
       <SubType>Form</SubType>
@@ -1538,6 +1592,18 @@
     <Content Include="icons\zoom_in.png" />
     <Content Include="icons\zoom_out.png" />
     <Content Include="Pendencias.txt" />
+    <None Include="Relatorios\Produto\Produtos\dsProdutosEstoque.xsc">
+      <DependentUpon>dsProdutosEstoque.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Produto\Produtos\dsProdutosEstoque.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsProdutosEstoque.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Produto\Produtos\dsProdutosEstoque.xss">
+      <DependentUpon>dsProdutosEstoque.xsd</DependentUpon>
+    </None>
+    <None Include="Resources\Edit_No.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">

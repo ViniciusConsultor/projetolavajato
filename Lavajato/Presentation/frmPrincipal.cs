@@ -116,8 +116,7 @@ namespace Presentation
 
         private void produtoAbaixoEstoqueToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frmPAE = new frmProdutoAbaixoEstoque();
-            frmPAE.ShowDialog();
+            
         }
 
         private void carrosLavadosToolStripMenuItem_Click(object sender, EventArgs e)
@@ -183,6 +182,83 @@ namespace Presentation
         {
             frmProcuraServicoPorPlaca frmProcuraServicoPorPlaca = new frmProcuraServicoPorPlaca();
             frmProcuraServicoPorPlaca.ShowDialog();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            frmCliente frmcliente = new frmCliente();
+            frmcliente.ShowDialog();
+        }
+
+        private void toolStripButton2_Click(object sender, EventArgs e)
+        {
+            frmCaixa frmcaixa = new frmCaixa();
+            frmcaixa.ShowDialog();
+        }
+
+        private void toolStripButton3_Click(object sender, EventArgs e)
+        {
+            frmProduto frmproduto = new frmProduto();
+            frmproduto.ShowDialog();
+        }
+
+        private void toolStripButton4_Click(object sender, EventArgs e)
+        {
+            var frmAbertas = new frmOrdensAbertas();
+            frmAbertas.ShowDialog();
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            frmCliente frmcliente = new frmCliente();
+            frmcliente.ShowDialog();
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            frmProduto frmproduto = new frmProduto();
+            frmproduto.ShowDialog();
+        }
+
+        private void button3_Click(object sender, EventArgs e)
+        {
+            frmCaixa frmcaixa = new frmCaixa();
+            frmcaixa.ShowDialog();
+        }
+
+        private void button4_Click(object sender, EventArgs e)
+        {
+            frmUsuario frmusuario = new frmUsuario();
+            frmusuario.ShowDialog();
+        }
+
+        private void button5_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void vendaAvulsaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmVendaAvulsa frmVendaAvulsa = new frmVendaAvulsa();
+            frmVendaAvulsa.ShowDialog();
+        }
+
+        private void proudutoAbaixoEstoqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            var frmPAE = new frmProdutoAbaixoEstoque();
+            frmPAE.ShowDialog();
+        }
+
+        private void produtoEmEstoqueToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProdutos frmproduto = new frmProdutos();
+            frmproduto.ShowDialog();
+        }
+
+        private void carrosNoLavajatoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmCarrosNoLavajato frmcarrosnolavajato = new frmCarrosNoLavajato();
+            frmcarrosnolavajato.ShowDialog();
         }
     }
 }

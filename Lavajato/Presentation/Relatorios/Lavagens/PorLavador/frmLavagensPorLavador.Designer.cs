@@ -31,8 +31,8 @@
             this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.btnGerarRelatorio = new System.Windows.Forms.Button();
             this.cmbLavador = new System.Windows.Forms.ComboBox();
+            this.btnGerarRelatorio = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.dateTimePicker2 = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
@@ -70,6 +70,14 @@
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Lavador";
             // 
+            // cmbLavador
+            // 
+            this.cmbLavador.FormattingEnabled = true;
+            this.cmbLavador.Location = new System.Drawing.Point(11, 25);
+            this.cmbLavador.Name = "cmbLavador";
+            this.cmbLavador.Size = new System.Drawing.Size(628, 28);
+            this.cmbLavador.TabIndex = 8;
+            // 
             // btnGerarRelatorio
             // 
             this.btnGerarRelatorio.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -79,14 +87,7 @@
             this.btnGerarRelatorio.TabIndex = 9;
             this.btnGerarRelatorio.Text = "Gerar Relatório";
             this.btnGerarRelatorio.UseVisualStyleBackColor = true;
-            // 
-            // cmbLavador
-            // 
-            this.cmbLavador.FormattingEnabled = true;
-            this.cmbLavador.Location = new System.Drawing.Point(11, 25);
-            this.cmbLavador.Name = "cmbLavador";
-            this.cmbLavador.Size = new System.Drawing.Size(628, 28);
-            this.cmbLavador.TabIndex = 8;
+            this.btnGerarRelatorio.Click += new System.EventHandler(this.btnGerarRelatorio_Click);
             // 
             // groupBox3
             // 

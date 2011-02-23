@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.btnAtualizaListagem = new System.Windows.Forms.Button();
             this.grdOrdensAbertas = new System.Windows.Forms.DataGridView();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdOrdensAbertas)).BeginInit();
@@ -36,6 +37,7 @@
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.btnAtualizaListagem);
             this.groupBox1.Controls.Add(this.grdOrdensAbertas);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox1.Location = new System.Drawing.Point(4, 2);
@@ -44,12 +46,23 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // btnAtualizaListagem
+            // 
+            this.btnAtualizaListagem.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAtualizaListagem.Location = new System.Drawing.Point(6, 10);
+            this.btnAtualizaListagem.Name = "btnAtualizaListagem";
+            this.btnAtualizaListagem.Size = new System.Drawing.Size(708, 36);
+            this.btnAtualizaListagem.TabIndex = 2;
+            this.btnAtualizaListagem.Text = "Atualiza listagem de carros não lavados";
+            this.btnAtualizaListagem.UseVisualStyleBackColor = true;
+            this.btnAtualizaListagem.Click += new System.EventHandler(this.btnAtualizaListagem_Click);
+            // 
             // grdOrdensAbertas
             // 
             this.grdOrdensAbertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdOrdensAbertas.Location = new System.Drawing.Point(5, 13);
+            this.grdOrdensAbertas.Location = new System.Drawing.Point(5, 52);
             this.grdOrdensAbertas.Name = "grdOrdensAbertas";
-            this.grdOrdensAbertas.Size = new System.Drawing.Size(710, 564);
+            this.grdOrdensAbertas.Size = new System.Drawing.Size(710, 525);
             this.grdOrdensAbertas.TabIndex = 1;
             this.grdOrdensAbertas.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.grdOrdensAbertas_MouseDoubleClick);
             // 
@@ -75,6 +88,7 @@
 
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView grdOrdensAbertas;
+        private System.Windows.Forms.Button btnAtualizaListagem;
 
     }
 }

@@ -10,11 +10,13 @@ namespace HenryCorporation.Lavajato.DomainModel
         public int ID { get; set; }
         public Servico Servico { get; set; }
         public Produto Produto { get; set; }
+        public Usuario Lavador { get; set; }
 
         public ServicoFuncionario()
         {
             Servico = new Servico();
             Produto = new Produto();
+            Lavador = new Usuario();
         }
 
 

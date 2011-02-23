@@ -13,8 +13,10 @@ namespace HenryCorporation.Lavajato.Presentation
 {
     public partial class frmAlterarQuantidadeItem : Form
     {
-        private ServicoItem servicoItem;
+        private ServicoItem _servicoItem;
         private ServicoBL servicoBL = new ServicoBL();
+        public ServicoItem ServicoItem { get; set; }
+
         public frmAlterarQuantidadeItem()
         {
             InitializeComponent();
@@ -23,33 +25,41 @@ namespace HenryCorporation.Lavajato.Presentation
         public frmAlterarQuantidadeItem(ServicoItem servicoItem)
         {
             InitializeComponent();
-            this.servicoItem = servicoItem;
-            CarregaServicoItem(this.servicoItem);
+            _servicoItem = servicoItem;
+            CarregaServicoItem(this._servicoItem);
         }
 
         private void CarregaServicoItem(ServicoItem servicoItem)
         {
             if (servicoItem.ID == 0)
             {
-                return;
+                quantidade.Value = decimal.Parse(servicoItem.Quantidade.ToString());
             }
-
-            lblProduto.Text = servicoItem.Produto.Descricao;
-            quantidade.Value = decimal.Parse(servicoItem.Quantidade.ToString());
+            else
+            {
+                lblProduto.Text = servicoItem.Produto.Descricao;
+                quantidade.Value = decimal.Parse(servicoItem.Quantidade.ToString());
+            }
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            this.servicoItem.Quantidade = Convert.ToInt32(quantidade.Value);
-            servicoBL.ItemUpdate(this.servicoItem);
-            MessageBox.Show("Quantidade alterada com sucesso", "Atenção");
+            if (_servicoItem.ID > 0)
+            {
+                _servicoItem.Quantidade = Convert.ToInt32(quantidade.Value);
+                servicoBL.ItemUpdate(_servicoItem);
+                MessageBox.Show("Quantidade alterada com sucesso", "Atenção");
+            }
+            else
+            {
+                _servicoItem.Quantidade = Convert.ToInt32(quantidade.Value);
+                ServicoItem = _servicoItem;
+            }
         }
 
         private void button2_Click(object sender, EventArgs e)
         {
             this.Close();
         }
-        
-        
     }
 }

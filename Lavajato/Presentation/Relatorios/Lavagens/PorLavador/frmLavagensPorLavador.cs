@@ -30,6 +30,6 @@ namespace HenryCorporation.Lavajato.Presentation
             cmbLavador.DataSource = new UsuarioBL().GetUsuarioTipoLavador();
             cmbLavador.DisplayMember = "Nome";
             cmbLavador.ValueMember = "ID";
-        }
+        }       
     }
 }

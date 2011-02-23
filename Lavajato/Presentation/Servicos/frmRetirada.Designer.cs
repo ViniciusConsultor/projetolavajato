@@ -113,6 +113,7 @@
             // 
             // descricao
             // 
+            this.descricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descricao.Location = new System.Drawing.Point(137, 56);
             this.descricao.Multiline = true;
             this.descricao.Name = "descricao";
@@ -121,6 +122,7 @@
             // 
             // valor
             // 
+            this.valor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valor.Location = new System.Drawing.Point(137, 19);
             this.valor.Multiline = true;
             this.valor.Name = "valor";
@@ -146,6 +148,7 @@
             this.btnCancelar.TabIndex = 13;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalvar
             // 
@@ -156,6 +159,7 @@
             this.btnSalvar.TabIndex = 12;
             this.btnSalvar.Text = "OK";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // frmRetirada
             // 
