@@ -32,7 +32,5 @@ namespace HenryCorporation.Lavajato.Presentation
             return dataBaseHelper.RunProcedure(query);
 
         }
-
-
     }
 }
