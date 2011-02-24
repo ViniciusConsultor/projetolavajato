@@ -272,4 +272,31 @@
   <data name="rdlCarroNoLavajato" xml:space="preserve">
     <value>rptCarrosNoLavajato.rdlc</value>
   </data>
+  <data name="dsServicoPorLavador" xml:space="preserve">
+    <value>dsLavagemPorLavador_DataTable1</value>
+  </data>
+  <data name="pathServicoPorLavador" xml:space="preserve">
+    <value>\\Relatorios\\Lavagens\\PorLavador</value>
+  </data>
+  <data name="rdlServicoPorLavador" xml:space="preserve">
+    <value>rptLavagemPorLavador.rdlc</value>
+  </data>
+  <data name="dsCientePorPlaca" xml:space="preserve">
+    <value>dsClientePorPlaca</value>
+  </data>
+  <data name="pathClientePorPlaca" xml:space="preserve">
+    <value>\\Relatorios\\Cliente\\PorPlaca\\</value>
+  </data>
+  <data name="rdlClientePorPlaca" xml:space="preserve">
+    <value>rdlClientePorPlaca.rdlc</value>
+  </data>
+  <data name="dsServicoPorOS" xml:space="preserve">
+    <value>dsServicoPorOS</value>
+  </data>
+  <data name="pathServicoPorPlaca" xml:space="preserve">
+    <value>\\Relatorios\\Caixa\\PorOrdemServico</value>
+  </data>
+  <data name="rdlrptServicoPorOS" xml:space="preserve">
+    <value>rptServicoPorOS.rdlc</value>
+  </data>
 </root>

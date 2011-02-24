@@ -23,6 +23,11 @@ namespace HenryCorporation.Lavajato.Presentation
             CarregaUsuarios();
             
         }
+        
+        private void frmUsuario_Load(object sender, EventArgs e)
+        {
+            nome.Focus();
+        }
 
         private void CarregaTipoUsuario()
         {
@@ -49,17 +54,31 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (login.Text.Length == 0 || senha.Text.Length == 0 ||nome.Text.Length == 0)
+            if ((login.Enabled && senha.Enabled))
             {
-                MessageBox.Show("Favor preencher todos os campos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); ;
-                return;
+                if (login.Text.Length == 0 || senha.Text.Length == 0)
+                {
+                    MessageBox.Show("Favor preencher todos os campos!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation); ;
+                    return;
+                }
             }
 
-            btnNovo.Enabled = true;
+            if (nome.TextLength == 0)
+            {
+                MessageBox.Show("Favor preencher o campo nome!", "Atenção"); 
+            }
+
+            if (usuario.ID > 0)
+            {
+                MessageBox.Show("Para alterar o usuário click em ALTERAR", "Atenção");
+                return;
+            }
+                       
             SetUsuario();
             this.usuario = usuarioBL.Insert(this.usuario);
             CarregaUsuarios();
             MessageBox.Show("Usuário salvo com sucesso!", "Atenção") ;
+            LimpaCampos();
 
         }
 
@@ -170,7 +189,6 @@ namespace HenryCorporation.Lavajato.Presentation
         private void btnNovo_Click(object sender, EventArgs e)
         {
             LimpaCampos();
-            btnNovo.Enabled = false;
             cmbTipoUsuario.SelectedIndex = -1;
         }
 
@@ -207,7 +225,8 @@ namespace HenryCorporation.Lavajato.Presentation
             if (cmbTipoUsuario.SelectedValue == null)
                 return;
 
-            if (cmbTipoUsuario.SelectedValue.ToString() == "3")
+            var tipoDeUsuario = cmbTipoUsuario.SelectedValue.ToString();
+            if (tipoDeUsuario.Equals("3"))
             {
                 login.Enabled = false;
                 senha.Enabled = false;
@@ -413,6 +432,5 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             this.Close();
         }
-
     }
 }

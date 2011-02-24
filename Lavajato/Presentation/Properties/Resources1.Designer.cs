@@ -160,6 +160,15 @@ namespace HenryCorporation.Lavajato.Presentation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to dsClientePorPlaca.
+        /// </summary>
+        internal static string dsCientePorPlaca {
+            get {
+                return ResourceManager.GetString("dsCientePorPlaca", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to dsFechamentoCaixa_DataTable1.
         /// </summary>
         internal static string dsFechamentoCaixa {
@@ -183,6 +192,24 @@ namespace HenryCorporation.Lavajato.Presentation.Properties {
         internal static string dsProdutoEstoque {
             get {
                 return ResourceManager.GetString("dsProdutoEstoque", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to dsLavagemPorLavador_DataTable1.
+        /// </summary>
+        internal static string dsServicoPorLavador {
+            get {
+                return ResourceManager.GetString("dsServicoPorLavador", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to dsServicoPorOS.
+        /// </summary>
+        internal static string dsServicoPorOS {
+            get {
+                return ResourceManager.GetString("dsServicoPorOS", resourceCulture);
             }
         }
         
@@ -338,11 +365,38 @@ namespace HenryCorporation.Lavajato.Presentation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to \\Relatorios\\Cliente\\PorPlaca\\.
+        /// </summary>
+        internal static string pathClientePorPlaca {
+            get {
+                return ResourceManager.GetString("pathClientePorPlaca", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to \Relatorios\Produto\Produtos.
         /// </summary>
         internal static string pathRDLProdutoEstoque {
             get {
                 return ResourceManager.GetString("pathRDLProdutoEstoque", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to \\Relatorios\\Lavagens\\PorLavador.
+        /// </summary>
+        internal static string pathServicoPorLavador {
+            get {
+                return ResourceManager.GetString("pathServicoPorLavador", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to \\Relatorios\\Caixa\\PorOrdemServico.
+        /// </summary>
+        internal static string pathServicoPorPlaca {
+            get {
+                return ResourceManager.GetString("pathServicoPorPlaca", resourceCulture);
             }
         }
         
@@ -410,11 +464,38 @@ namespace HenryCorporation.Lavajato.Presentation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to rdlClientePorPlaca.rdlc.
+        /// </summary>
+        internal static string rdlClientePorPlaca {
+            get {
+                return ResourceManager.GetString("rdlClientePorPlaca", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to rptProdutosEstoque.rdlc.
         /// </summary>
         internal static string rdlProdutoEstoque {
             get {
                 return ResourceManager.GetString("rdlProdutoEstoque", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to rptServicoPorOS.rdlc.
+        /// </summary>
+        internal static string rdlrptServicoPorOS {
+            get {
+                return ResourceManager.GetString("rdlrptServicoPorOS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to rptLavagemPorLavador.rdlc.
+        /// </summary>
+        internal static string rdlServicoPorLavador {
+            get {
+                return ResourceManager.GetString("rdlServicoPorLavador", resourceCulture);
             }
         }
         

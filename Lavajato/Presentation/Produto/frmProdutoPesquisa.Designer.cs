@@ -88,7 +88,7 @@
             this.ClientSize = new System.Drawing.Size(660, 496);
             this.Controls.Add(this.groupBox5);
             this.Controls.Add(this.grdProdutos);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmProdutoPesquisa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;

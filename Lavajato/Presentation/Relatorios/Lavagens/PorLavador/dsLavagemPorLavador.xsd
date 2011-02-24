@@ -11,27 +11,29 @@
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="dsLavagemPorLavador" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:Generator_UserDSName="dsLavagemPorLavador" msprop:Generator_DataSetName="dsLavagemPorLavador" msprop:EnableTableAdapterManager="true">
+  <xs:element name="dsLavagemPorLavador" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="dsLavagemPorLavador" msprop:Generator_UserDSName="dsLavagemPorLavador">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="DataTable1" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowClassName="DataTable1Row" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_TablePropName="DataTable1" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting">
+        <xs:element name="DataTable1" msprop:Generator_TableClassName="DataTable1DataTable" msprop:Generator_RowEvArgName="DataTable1RowChangeEvent" msprop:Generator_TableVarName="tableDataTable1" msprop:Generator_TablePropName="DataTable1" msprop:Generator_RowDeletingName="DataTable1RowDeleting" msprop:Generator_UserTableName="DataTable1" msprop:Generator_RowChangingName="DataTable1RowChanging" msprop:Generator_RowDeletedName="DataTable1RowDeleted" msprop:Generator_RowChangedName="DataTable1RowChanged" msprop:Generator_RowEvHandlerName="DataTable1RowChangeEventHandler" msprop:Generator_RowClassName="DataTable1Row">
           <xs:complexType>
             <xs:sequence>
-              <xs:element name="Nome" msprop:Generator_UserColumnName="Nome" msprop:Generator_ColumnPropNameInRow="Nome" msprop:Generator_ColumnVarNameInTable="columnNome" msprop:Generator_ColumnPropNameInTable="NomeColumn" minOccurs="0">
+              <xs:element name="Nome" msprop:Generator_ColumnVarNameInTable="columnNome" msprop:Generator_ColumnPropNameInRow="Nome" msprop:Generator_ColumnPropNameInTable="NomeColumn" msprop:Generator_UserColumnName="Nome" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="50" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="Descricao" msprop:Generator_UserColumnName="Descricao" msprop:Generator_ColumnPropNameInRow="Descricao" msprop:Generator_ColumnVarNameInTable="columnDescricao" msprop:Generator_ColumnPropNameInTable="DescricaoColumn" minOccurs="0">
+              <xs:element name="Descricao" msprop:Generator_ColumnVarNameInTable="columnDescricao" msprop:Generator_ColumnPropNameInRow="Descricao" msprop:Generator_ColumnPropNameInTable="DescricaoColumn" msprop:Generator_UserColumnName="Descricao" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="45" />
                   </xs:restriction>
                 </xs:simpleType>
               </xs:element>
-              <xs:element name="TOTALSERVICOS" msdata:ReadOnly="true" msprop:Generator_UserColumnName="TOTALSERVICOS" msprop:Generator_ColumnPropNameInRow="TOTALSERVICOS" msprop:Generator_ColumnVarNameInTable="columnTOTALSERVICOS" msprop:Generator_ColumnPropNameInTable="TOTALSERVICOSColumn" type="xs:int" minOccurs="0" />
+              <xs:element name="TOTALSERVICOS" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnTOTALSERVICOS" msprop:Generator_ColumnPropNameInRow="TOTALSERVICOS" msprop:Generator_ColumnPropNameInTable="TOTALSERVICOSColumn" msprop:Generator_UserColumnName="TOTALSERVICOS" type="xs:int" minOccurs="0" />
+              <xs:element name="DataInicial" msprop:Generator_ColumnVarNameInTable="columnDataInicial" msprop:Generator_ColumnPropNameInRow="DataInicial" msprop:Generator_ColumnPropNameInTable="DataInicialColumn" msprop:Generator_UserColumnName="DataInicial" type="xs:string" minOccurs="0" />
+              <xs:element name="DataFinal" msprop:Generator_ColumnVarNameInTable="columnDataFinal" msprop:Generator_ColumnPropNameInRow="DataFinal" msprop:Generator_ColumnPropNameInTable="DataFinalColumn" msprop:Generator_UserColumnName="DataFinal" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

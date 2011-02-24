@@ -25,6 +25,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
                 row["ID"] = serv.ID;
                 row["Cliente"] = serv.Cliente.Nome;
                 row["Placa"] = serv.Cliente.Placa;
+                row["Data"] = serv.Entrada;
                 table.Rows.Add(row);
             }
 

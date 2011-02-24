@@ -47,6 +47,11 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             servicoDAO.CarroLavado(servico);
         }
 
+        /// <summary>
+        /// Retorna Ordem de Serviço que não foi finalizado
+        /// </summary>
+        /// <param name="servico">Entidade Servico com Ordem de Serviço Preenchida</param>
+        /// <returns></returns>
         public Servico ByOrdemServico(Servico servico)
         {
             return servicoDAO.ByOrdemServico(servico);
@@ -167,9 +172,23 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             return ServicoTabela.GetLavados(servicos);
         }
 
+        public DataTable GetCarrosNoLavajato()
+        {
+            IList<Servico> servicos = servicoDAO.GetCarrosNoLavajato();
+            return ServicoTabela.GetLavados(servicos);
+        }
+
+        /// <summary>
+        /// Retorna Ordens de Serviços tando finalizadas quanto não finalizados para incluir lavador
+        /// no serviço
+        /// </summary>
+        /// <param name="servico">Entidade Servico com propriedade ordem de serviço preenchida 
+        /// para pesquisa
+        /// </param>
+        /// <returns>Retorna um DataTable com as Ordens encontradas</returns>
         public DataTable GetOrdemServico(Servico servico)
         {
-            servico = servicoDAO.ByOrdemServico(servico);
+            servico = servicoDAO.ByOrdemServicoFinalizadas(servico);
             return ServicoTabela.GetOrdemServico(servico);
         }
 

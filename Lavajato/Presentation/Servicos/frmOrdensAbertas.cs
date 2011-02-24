@@ -27,7 +27,10 @@ namespace HenryCorporation.Lavajato.Presentation
         private void grdOrdensAbertas_MouseDoubleClick(object sender, MouseEventArgs e)
         {
             Servico servico = new Servico();
-            servico.ID = int.Parse(grdOrdensAbertas.Rows[grdOrdensAbertas.CurrentRow.Index].Cells[0].Value.ToString());
+            var index = grdOrdensAbertas.Rows[grdOrdensAbertas.CurrentRow.Index].Cells[0].Value.ToString();
+            index = index.Length > 0 ? index : "0"; 
+                        
+            servico.ID = int.Parse(index);
             servico = new ServicoBL().ID(servico);
 
             if (servico.ID > 0)
@@ -45,7 +48,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void CarregaLavagens()
         {
-            grdOrdensAbertas.DataSource = new ServicoBL().GetLavados(true);
+            grdOrdensAbertas.DataSource = new ServicoBL().GetCarrosNoLavajato();
         }
 
         private void btnAtualizaListagem_Click(object sender, EventArgs e)

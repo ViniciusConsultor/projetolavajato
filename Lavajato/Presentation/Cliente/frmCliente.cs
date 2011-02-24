@@ -97,13 +97,6 @@ namespace HenryCorporation.Lavajato.Presentation
             return clienteBL.ByID(cliente);
         }
 
-        private void btnNovo_Click_1(object sender, EventArgs e)
-        {
-            LimpaCampos();
-            btnNovo.Enabled = false;
-            RetornaFocoParaPlaca();
-        }
-
         private void LimpaCampos()
         {
             placa.Text = "";
@@ -172,7 +165,6 @@ namespace HenryCorporation.Lavajato.Presentation
             CarregaCliente();
             clienteBL.Insert(cliente);
             this.cliente = clienteBL.ByPlaca(cliente);
-            btnNovo.Enabled = true;
             CarregaClientesCadastrados();
             MessageBox.Show("Cliente salvo com sucesso!", "Atenção");
             RetornaFocoParaPlaca();

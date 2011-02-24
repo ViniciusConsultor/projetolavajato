@@ -81,7 +81,8 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(this.txtRetirada);
             this.Controls.Add(this.btnRetirada);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmProdutoRetiradoEstoqueInterno";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Produto Retirado Estoque Interno";

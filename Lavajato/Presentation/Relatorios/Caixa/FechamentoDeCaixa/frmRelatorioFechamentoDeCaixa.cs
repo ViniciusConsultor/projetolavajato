@@ -83,8 +83,8 @@ namespace HenryCorporation.Lavajato.Presentation
         private SqlParameter[] GetParameters()
         {
             SqlParameter[] parameters =new SqlParameter[2];
-            parameters[0] = new SqlParameter("@data", this._data);
-            parameters[1] = new SqlParameter("@idUsuario", this._usuarioID);
+            parameters[0] = new SqlParameter("@data", _data);
+            parameters[1] = new SqlParameter("@idUsuario", _usuarioID);
             return parameters;
         }
 

@@ -38,7 +38,6 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
-            this.btnNovo = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
@@ -173,21 +172,12 @@
             this.label4.TabIndex = 4;
             this.label4.Text = "Nome:";
             // 
-            // btnNovo
-            // 
-            this.btnNovo.Location = new System.Drawing.Point(10, 239);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(131, 38);
-            this.btnNovo.TabIndex = 15;
-            this.btnNovo.Text = "Novo";
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click_1);
-            // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(403, 239);
+            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.Location = new System.Drawing.Point(188, 239);
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(131, 38);
+            this.btnExcluir.Size = new System.Drawing.Size(91, 31);
             this.btnExcluir.TabIndex = 17;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
@@ -195,9 +185,10 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(141, 239);
+            this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAlterar.Location = new System.Drawing.Point(97, 239);
             this.btnAlterar.Name = "btnAlterar";
-            this.btnAlterar.Size = new System.Drawing.Size(131, 38);
+            this.btnAlterar.Size = new System.Drawing.Size(91, 31);
             this.btnAlterar.TabIndex = 16;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
@@ -205,9 +196,10 @@
             // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(534, 239);
+            this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.Location = new System.Drawing.Point(614, 239);
             this.btnSair.Name = "btnSair";
-            this.btnSair.Size = new System.Drawing.Size(131, 38);
+            this.btnSair.Size = new System.Drawing.Size(91, 31);
             this.btnSair.TabIndex = 18;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
@@ -215,9 +207,10 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(272, 239);
+            this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvar.Location = new System.Drawing.Point(6, 239);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(131, 38);
+            this.btnSalvar.Size = new System.Drawing.Size(91, 31);
             this.btnSalvar.TabIndex = 14;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
@@ -295,7 +288,6 @@
             this.tabPage2.Controls.Add(this.btnSair);
             this.tabPage2.Controls.Add(this.btnAlterar);
             this.tabPage2.Controls.Add(this.btnExcluir);
-            this.tabPage2.Controls.Add(this.btnNovo);
             this.tabPage2.Location = new System.Drawing.Point(4, 29);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -327,7 +319,7 @@
             // porcentagem
             // 
             this.porcentagem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.porcentagem.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.porcentagem.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.porcentagem.Location = new System.Drawing.Point(194, 12);
             this.porcentagem.MaxLength = 50;
             this.porcentagem.Multiline = true;
@@ -335,6 +327,8 @@
             this.porcentagem.Size = new System.Drawing.Size(131, 25);
             this.porcentagem.TabIndex = 21;
             this.porcentagem.TextChanged += new System.EventHandler(this.porcentagem_TextChanged);
+            this.porcentagem.Enter += new System.EventHandler(this.porcentagem_Enter);
+            this.porcentagem.Leave += new System.EventHandler(this.porcentagem_Leave);
             // 
             // label20
             // 
@@ -348,7 +342,7 @@
             // desconto
             // 
             this.desconto.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.desconto.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.desconto.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.desconto.Location = new System.Drawing.Point(36, 12);
             this.desconto.MaxLength = 50;
             this.desconto.Multiline = true;
@@ -390,7 +384,7 @@
             // 
             this.cep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.cep.Location = new System.Drawing.Point(121, 132);
-            this.cep.Mask = "99.999-999";
+            this.cep.Mask = "99-999-999";
             this.cep.Name = "cep";
             this.cep.Size = new System.Drawing.Size(136, 26);
             this.cep.TabIndex = 9;
@@ -409,7 +403,7 @@
             // cidade
             // 
             this.cidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cidade.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cidade.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cidade.Location = new System.Drawing.Point(453, 87);
             this.cidade.MaxLength = 50;
             this.cidade.Multiline = true;
@@ -512,7 +506,7 @@
             // bairro
             // 
             this.bairro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.bairro.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.bairro.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.bairro.Location = new System.Drawing.Point(257, 132);
             this.bairro.MaxLength = 50;
             this.bairro.Multiline = true;
@@ -552,7 +546,7 @@
             // numero
             // 
             this.numero.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.numero.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.numero.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.numero.Location = new System.Drawing.Point(374, 87);
             this.numero.MaxLength = 50;
             this.numero.Multiline = true;
@@ -574,7 +568,7 @@
             // endereco
             // 
             this.endereco.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.endereco.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.endereco.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.endereco.Location = new System.Drawing.Point(6, 87);
             this.endereco.MaxLength = 50;
             this.endereco.Multiline = true;
@@ -596,7 +590,7 @@
             // nome
             // 
             this.nome.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.nome.Font = new System.Drawing.Font("Arial", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.nome.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.nome.Location = new System.Drawing.Point(6, 42);
             this.nome.MaxLength = 50;
             this.nome.Multiline = true;
@@ -613,7 +607,8 @@
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(727, 574);
             this.Controls.Add(this.tabControl1);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmConvenios";
             this.Text = "Convenios";
             this.Load += new System.EventHandler(this.frmConvenios_Load);
@@ -650,10 +645,8 @@
         private System.Windows.Forms.Label label6;
         
         private System.Windows.Forms.Label label5;
-        
+
         private System.Windows.Forms.Label label4;
-        
-        private System.Windows.Forms.Button btnNovo;
         private System.Windows.Forms.Button btnExcluir;
         private System.Windows.Forms.Button btnAlterar;
         private System.Windows.Forms.Button btnSair;

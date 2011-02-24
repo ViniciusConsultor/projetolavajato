@@ -178,9 +178,19 @@ namespace HenryCorporation.Lavajato.DataAccess
             return servicoItemDAO.ByID(servicoItem);
         }
 
+        public Servico ByOrdemServicoFinalizadas(Servico servico)
+        {
+            //somente pesquisar ordem de serviço que não foram finalizadas
+            var query = sql + "Where [Delete] = 0 And [OrdemServico] =" + servico.OrdemServico;
+            var dataBaseHelper = new DataBaseHelper(query);
+            var dataSet = dataBaseHelper.Run(this.ConnectionString);
+            return SetUpField(dataSet);
+        }
+
         public Servico ByOrdemServico(Servico servico)
         {
-            var query = sql + "Where [Delete] = 0 And [OrdemServico] =" + servico.OrdemServico;
+            //somente pesquisar ordem de serviço que não foram finalizadas
+            var query = sql + "Where [Delete] = 0 And Finalizado = 0 And [Cancelado] = 0 And [OrdemServico] =" + servico.OrdemServico;
             var dataBaseHelper = new DataBaseHelper(query);
             var dataSet = dataBaseHelper.Run(this.ConnectionString);
             return SetUpField(dataSet);
@@ -192,6 +202,16 @@ namespace HenryCorporation.Lavajato.DataAccess
             var dataBaseHelper = isLavados
                 ? new DataBaseHelper(this.sql + condicao + " And OrdemServico <> 0 order by OrdemServico Asc  ") 
                 : new DataBaseHelper(this.sql + condicao);
+            var dataSet = dataBaseHelper.Run(this.ConnectionString);
+            return SetUpFields(dataSet);
+        }
+
+        public List<Servico> GetCarrosNoLavajato()
+        {
+            string condicao = " Where [Delete] = 0 And Finalizado = 0 And [Cancelado] = 0 "+
+            " And OrdemServico <> 0 order by OrdemServico Asc  ";
+
+            var dataBaseHelper =  new DataBaseHelper(this.sql + condicao);
             var dataSet = dataBaseHelper.Run(this.ConnectionString);
             return SetUpFields(dataSet);
         }

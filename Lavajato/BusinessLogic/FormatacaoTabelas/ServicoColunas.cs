@@ -31,7 +31,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
         public static DataColumn[] CarregaColunasOrdemServico()
         {
-            DataColumn[] columns = new DataColumn[6];
+            DataColumn[] columns = new DataColumn[5];
 
             // Create new DataColumn, set DataType, ColumnName and add to DataTable.    
             DataColumn ID = new DataColumn();
@@ -138,7 +138,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             return columns;
         }
 
-        public static DataColumn[] GetOrdemServico(Servico servico)
+        public static DataColumn[] GetOrdemServico()
         {
             DataColumn[] columns = new DataColumn[4];
 

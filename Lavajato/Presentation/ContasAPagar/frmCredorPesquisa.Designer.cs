@@ -114,6 +114,7 @@
             this.ClientSize = new System.Drawing.Size(589, 562);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
             this.Name = "frmCredorPesquisa";
             this.Text = "frmCredorPesquisa";
             this.groupBox1.ResumeLayout(false);

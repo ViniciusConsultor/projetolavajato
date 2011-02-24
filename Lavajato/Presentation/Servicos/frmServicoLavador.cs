@@ -23,6 +23,7 @@ namespace HenryCorporation.Lavajato.Presentation
         public frmServicoLavador()
         {
             InitializeComponent();
+
         }
 
         public frmServicoLavador(Servico servico)

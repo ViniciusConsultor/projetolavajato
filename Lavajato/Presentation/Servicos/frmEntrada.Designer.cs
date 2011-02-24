@@ -77,6 +77,7 @@
             // 
             // descricao
             // 
+            this.descricao.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.descricao.Location = new System.Drawing.Point(137, 56);
             this.descricao.MaxLength = 250;
             this.descricao.Multiline = true;
@@ -86,6 +87,7 @@
             // 
             // valor
             // 
+            this.valor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valor.Location = new System.Drawing.Point(137, 19);
             this.valor.MaxLength = 5;
             this.valor.Multiline = true;
@@ -111,6 +113,7 @@
             this.btnCancelar.TabIndex = 24;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnSalvar
             // 
@@ -121,6 +124,7 @@
             this.btnSalvar.TabIndex = 22;
             this.btnSalvar.Text = "OK";
             this.btnSalvar.UseVisualStyleBackColor = true;
+            this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
             // 
             // lblOperador
             // 
@@ -152,7 +156,8 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.lblOperador);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmEntrada";
             this.Text = "Entrada/Suprimento";
             this.groupBox1.ResumeLayout(false);

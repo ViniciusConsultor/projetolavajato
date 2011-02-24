@@ -139,7 +139,7 @@ namespace Presentation
 
         private void clientePorPlacaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var cliePesquisa = new frmClientePesquisaPorPlaca();
+            frmClientePesquisaPorPlaca cliePesquisa = new frmClientePesquisaPorPlaca();
             cliePesquisa.ShowDialog();
         }
 
@@ -259,6 +259,18 @@ namespace Presentation
         {
             frmCarrosNoLavajato frmcarrosnolavajato = new frmCarrosNoLavajato();
             frmcarrosnolavajato.ShowDialog();
+        }
+
+        private void serviçoPorOSToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmServicoPorOS frmServicoPorOS = new frmServicoPorOS();
+            frmServicoPorOS.ShowDialog();
+        }
+
+        private void cancelaServiçoFinalizadoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmProcuraServicoPorOS frmProcuraServicoPorOS = new frmProcuraServicoPorOS();
+            frmProcuraServicoPorOS.ShowDialog();
         }
     }
 }

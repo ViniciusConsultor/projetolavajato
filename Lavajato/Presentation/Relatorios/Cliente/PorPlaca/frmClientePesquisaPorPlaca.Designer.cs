@@ -40,21 +40,22 @@
             this.groupBox1.Controls.Add(this.button1);
             this.groupBox1.Controls.Add(this.placa);
             this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Location = new System.Drawing.Point(0, 3);
+            this.groupBox1.Location = new System.Drawing.Point(19, 2);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(433, 100);
+            this.groupBox1.Size = new System.Drawing.Size(410, 100);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
             // button1
             // 
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.button1.Location = new System.Drawing.Point(33, 47);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(366, 42);
             this.button1.TabIndex = 5;
             this.button1.Text = "Gerar Relatório";
             this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
             // placa
             // 

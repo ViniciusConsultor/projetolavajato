@@ -26,36 +26,41 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void ordemServico_TextChanged(object sender, EventArgs e)
         {
-            if (ordemServico.TextLength > 0)
-            {
-                Servico servico = new Servico() { OrdemServico = Convert.ToInt32(ordemServico.Text) };
-                grdServicos.DataSource = new ServicoBL().GetOrdemServico(servico);
-                OculdaColunaNoGrid();
-            }
+            var os = ordemServico.TextLength > 0 ? ordemServico.Text : "0";
+            Servico servico = new Servico() { OrdemServico = Convert.ToInt32(os) };
+            grdServicos.DataSource = new ServicoBL().GetOrdemServico(servico);
+            OculdaColunaNoGrid();
         }
 
         private void placa_TextChanged(object sender, EventArgs e)
         {
-            if (placa.TextLength > 0)
-            {
-                Cliente cliente = new Cliente() { Placa = placa.Text };
-                grdServicos.DataSource = new ClienteBL().CriaTabelaOrdemServico(cliente);
-                OculdaColunaNoGrid();
-            }
+            Cliente cliente = new Cliente() { Placa = placa.Text };
+            grdServicos.DataSource = new ClienteBL().CriaTabelaOrdemServico(cliente);
+            OculdaColunaNoGrid();
+
         }
 
         private void grdServicos_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            Servico servico = new Servico();
-            servico.ID = int.Parse(grdServicos.Rows[grdServicos.CurrentRow.Index].Cells[0].Value.ToString());
-            frmServicoLavador frmServicoLavador = new frmServicoLavador(servico);
-            frmServicoLavador.ShowDialog();
-            this.Visible = true;
+            var index = grdServicos.Rows[grdServicos.CurrentRow.Index].Cells[0].Value;
+        
+            if (!string.IsNullOrEmpty(index.ToString()))
+            {
+                Servico servico = new Servico(){ID= int.Parse(index.ToString())};
+                servico = new ServicoBL().ID(servico);
+                frmServicoLavador frmServicoLavador = new frmServicoLavador(servico);
+                frmServicoLavador.ShowDialog();
+            }
         }
 
         private void OculdaColunaNoGrid()
         {
             grdServicos.Columns[0].Visible = false;
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

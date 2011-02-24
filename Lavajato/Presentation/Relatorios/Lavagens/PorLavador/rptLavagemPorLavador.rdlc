@@ -46,7 +46,9 @@
             <TextRuns>
               <TextRun>
                 <Value>=First(Fields!Nome.Value)</Value>
-                <Style />
+                <Style>
+                  <FontSize>11pt</FontSize>
+                </Style>
               </TextRun>
             </TextRuns>
             <Style>
@@ -56,9 +58,9 @@
         </Paragraphs>
         <rd:DefaultName>Nome</rd:DefaultName>
         <Top>0.09418cm</Top>
-        <Left>2.5cm</Left>
+        <Left>2.3095cm</Left>
         <Height>0.63492cm</Height>
-        <Width>5.9cm</Width>
+        <Width>8.7575cm</Width>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
@@ -87,7 +89,7 @@
         <Top>0.09418cm</Top>
         <Left>0.14127cm</Left>
         <Height>0.63492cm</Height>
-        <Width>2.35873cm</Width>
+        <Width>2.00948cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -97,9 +99,8 @@
         </Style>
       </Textbox>
       <Line Name="line1">
-        <Top>0cm</Top>
         <Height>0cm</Height>
-        <Width>16.3cm</Width>
+        <Width>16cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <Border>
@@ -132,6 +133,7 @@
                             <TextRun>
                               <Value>Serviço</Value>
                               <Style>
+                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
@@ -161,12 +163,13 @@
                             <TextRun>
                               <Value>Total</Value>
                               <Style>
+                                <FontSize>11pt</FontSize>
                                 <FontWeight>Bold</FontWeight>
                               </Style>
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -227,7 +230,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -273,16 +276,16 @@
         <DataSetName>dsLavagemPorLavador_DataTable1</DataSetName>
         <Top>0.7291cm</Top>
         <Left>0.14709cm</Left>
-        <Height>1.26984cm</Height>
-        <Width>7.1cm</Width>
+        <Height>1.26985cm</Height>
+        <Width>7.10001cm</Width>
         <ZIndex>3</ZIndex>
         <Style />
       </Tablix>
     </ReportItems>
-    <Height>1.99894cm</Height>
+    <Height>1.99895cm</Height>
     <Style />
   </Body>
-  <Width>16.3cm</Width>
+  <Width>16.08833cm</Width>
   <Page>
     <PageHeader>
       <Height>1.5cm</Height>
@@ -373,8 +376,8 @@
             </Paragraph>
           </Paragraphs>
           <rd:DefaultName>textbox9</rd:DefaultName>
-          <Top>0.14709cm</Top>
-          <Left>0.1cm</Left>
+          <Top>0.14708cm</Top>
+          <Left>0.25875cm</Left>
           <Height>0.63492cm</Height>
           <Width>15.7cm</Width>
           <Style>
@@ -385,9 +388,9 @@
           </Style>
         </Textbox>
         <Line Name="line2">
-          <Top>0.1cm</Top>
+          <Top>0.09999cm</Top>
           <Height>0cm</Height>
-          <Width>16.3cm</Width>
+          <Width>16cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>

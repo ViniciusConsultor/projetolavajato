@@ -127,7 +127,8 @@
             this.ClientSize = new System.Drawing.Size(737, 494);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.groupBox4);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmClientePesquisa";
             this.Text = "Pesquisa de Clientes";
             this.groupBox4.ResumeLayout(false);
