@@ -401,7 +401,8 @@ namespace HenryCorporation.Lavajato.Presentation
             this.Controls.Add(this.btnExcluir);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grdServico);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmOrdemServico";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
             this.Text = "Ordem Servico";
@@ -449,6 +450,6 @@ namespace HenryCorporation.Lavajato.Presentation
         private ServicoBL servicoBL = new ServicoBL();
         private DataSet dataSetItens = new DataSet();
         private DataTable dataTable = new DataTable();
-        private int indexColumaDataGrid;
+        private int _indexRow;
     }
 }

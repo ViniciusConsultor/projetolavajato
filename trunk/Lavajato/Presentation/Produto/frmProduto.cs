@@ -25,6 +25,7 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             InitializeComponent();
             CarregaProdutos();
+            OcultaCampo();
             CarregaCategoriaProduto();
         }
 
@@ -33,6 +34,7 @@ namespace HenryCorporation.Lavajato.Presentation
             InitializeComponent();
             _produto = produto;
             CarregaProdutos();
+            OcultaCampo();
             CarregaCategoriaProduto();
             _produto = ProcuraProduto(_produto);
             CarregaCampos(_produto);
@@ -41,7 +43,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void nomePesquisa_TextChanged(object sender, EventArgs e)
         {
-            HenryCorporation.Lavajato.DomainModel.Produto produto = new HenryCorporation.Lavajato.DomainModel.Produto();
+            Produto produto = new Produto();
             produto.Descricao = nomePesquisa.Text;
             grdProdutos.DataSource = _produtoRepository.ByName(produto);
             OcultaCampo();
@@ -107,7 +109,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
-            if (!Todos_Os_Campos_Obrigatorios_Estao_Preenchitos())
+            if (Todos_Os_Campos_Obrigatorios_Estao_Preenchitos())
             {
                 MessageBox.Show(Resources.Preencher_todos_os_campos, Resources.Atencao);
                 descricao.Focus();
@@ -136,8 +138,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
 
             bool camposServico = descricao.TextLength != 0 || precoVenda.TextLength != 0;
-            bool camposProduto = camposServico || minimo.TextLength != 0 || quantidade.TextLength != 0 ||
-                precoCompra.TextLength != 0 || estoqueSaldo.TextLength != 0;
+            bool camposProduto = camposServico || minimo.TextLength != 0 || quantidade.TextLength != 0;
 
             if (tipoProdutoID == EnumCategoriaProduto.Servico)
             {
@@ -190,6 +191,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private void CarregaProdutos()
         {
             grdProdutos.DataSource = _produtoRepository.GetAll();
+            FormataGrid();
         }
 
         private void OcultaCampo()
@@ -216,7 +218,7 @@ namespace HenryCorporation.Lavajato.Presentation
             precoVenda.Clear();
             minimo.Clear();
             cmbCategoriaProduto.SelectedIndex = 0;
-            this._produto = new Produto();
+            _produto = new Produto();
             
         }
 
@@ -230,6 +232,22 @@ namespace HenryCorporation.Lavajato.Presentation
             _produto.Estoque.Quantidade = Configuracao.ConverteParaInteiro(quantidade.Text.Length > 0 ? quantidade.Text: "0");
             _produto.Estoque.Minimo = int.Parse(minimo.Text.Length > 0 ? minimo.Text : "0");
             _produto.Estoque.Data = this._produto.Estoque.Data;
+        }
+
+        private void FormataGrid()
+        {
+            grdProdutos.Columns[1].Width = 180;
+            grdProdutos.Columns[1].HeaderText = "Descrição";
+
+            grdProdutos.Columns[2].Width = 130;
+            grdProdutos.Columns[2].HeaderText = "Preço Venda";
+
+            grdProdutos.Columns[3].Width = 130;
+            grdProdutos.Columns[3].HeaderText = "Valor Unitário";
+
+            grdProdutos.Columns[4].Width = 80;
+            grdProdutos.Columns[4].HeaderText = "Estoque";
+            grdProdutos.Columns[5].Width = 135;
         }
 
         private void precoCompra_Enter(object sender, EventArgs e)

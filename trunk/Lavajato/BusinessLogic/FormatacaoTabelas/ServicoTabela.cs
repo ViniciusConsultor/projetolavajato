@@ -14,12 +14,13 @@ namespace HenryCorporation.Lavajato.BusinessLogic
         public static DataTable GetOrdemServico(Servico servico)
         {
             DataTable table = new DataTable();
-            table.Columns.AddRange(ServicoColunas.CarregaColunasOrdemServico());
+            table.Columns.AddRange(ServicoColunas.GetOrdemServico());
 
             DataRow row = table.NewRow();
             row["ID"] = servico.ID;
             row["Cliente"] = servico.Cliente.Nome;
             row["Placa"] = servico.Cliente.Placa;
+            row["Data"] = (servico.Entrada == new DateTime(01,01, 0001, 00,00,00) ? "" : servico.Entrada.ToShortDateString());
             table.Rows.Add(row);
 
             return table;

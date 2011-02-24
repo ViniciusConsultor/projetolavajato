@@ -8,12 +8,15 @@ using System.Text;
 using System.Windows.Forms;
 using System.IO;
 using Microsoft.Reporting.WinForms;
+using System.Data.SqlClient;
+
+using HenryCorporation.Lavajato.Presentation.Properties;
 
 namespace HenryCorporation.Lavajato.Presentation
 {
     public partial class frmClientesPorPlaca : Form
     {
-        private string placa;
+        private string _placa;
 
         public frmClientesPorPlaca()
         {
@@ -23,71 +26,79 @@ namespace HenryCorporation.Lavajato.Presentation
         public frmClientesPorPlaca(string placa)
         {
             InitializeComponent();
-            this.placa = placa;
-            PreviewReport(GetClientePorPlaca());
+            _placa = placa;
+
+            PreviewReport(GetServicoClientes());
             this.reportViewer1.RefreshReport();
         }
 
         private void frmClientesPorPlaca_Load(object sender, EventArgs e)
         {
-            
+         
         }
 
         private void PreviewReport(DataTable table)
         {
-            string strPathReport = Path.Combine(Application.StartupPath + "\\Relatorios\\", "frmClientePorPlaca.rdlc");
+            string strPathReport = Path.Combine(Application.StartupPath +
+                Resources.pathClientePorPlaca, Resources.rdlClientePorPlaca);
 
-            strPathReport = strPathReport.Replace(@"bin\Debug\", "");
+            strPathReport = strPathReport.Replace(Resources.BinDebug, "");
             this.reportViewer1.LocalReport.ReportPath = strPathReport;
 
-            ReportDataSource myReportDataSource = new ReportDataSource("clientePorPlaca_Servico", table);
+            ReportDataSource myReportDataSource = new ReportDataSource(Resources.dsCientePorPlaca, table);
             this.reportViewer1.LocalReport.DataSources.Add(myReportDataSource);
         }
 
-        public DataTable GetClientePorPlaca()
+        public DataTable GetServicoClientes()
         {
             Util util = new Util();
-            string query = " SELECT Servico.ServicoID, convert(varchar, Servico.Entrada, 103) DataServico, Servico.OrdemServico" +
-                           " FROM Clientes " +
-                           " INNER JOIN Servico ON Clientes.ClienteID = Servico.ClienteID  " +
-                           " INNER JOIN ServicoItens ON Servico.ServicoID = ServicoItens.ServicoID " +
-                           " INNER JOIN Produto ON ServicoItens.ProdutoID = Produto.ProdutoID  " +
-                           " WHERE clientes.placa = '" + placa + "' and clientes.[delete] = 0" +
-                           " GROUP BY Servico.ServicoID, convert(varchar, Servico.Entrada, 103), Servico.OrdemServico";
-            
             DataTable table = new DataTable();
             table.Columns.AddRange(SetUpColumns());
 
-            DataSet dataSet = util.byQuery(query);
+            SqlParameter[] parameter = GetParameters();
+
+            var dataSet = util.byProcedure("procHistoricoCliente", parameter);
             dataSet.Tables.Add(table);
-            DataTableReader reader = dataSet.Tables[0].CreateDataReader();
+            var reader = dataSet.Tables[0].CreateDataReader();
             while (reader.Read())
             {
                 DataRow row = table.NewRow();
-                row["ServicoID"] = reader.IsDBNull(0) ? 0 :  reader.GetInt32(0);
-                row["DataServico"] = reader.IsDBNull(1) ? "" : reader.GetString(1);
-                row["OrdemServico"] = reader.IsDBNull(2) ? 0 : reader.GetInt32(2);
+                row["ServicoID"] = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
+                row["Descricao"] = reader.IsDBNull(1) ? "" : reader.GetString(1);
+                row["DataServico"] = reader.IsDBNull(2) ? "" : reader.GetString(2);
+                row["OrdemServico"] = reader.IsDBNull(3) ? 0 : reader.GetInt32(3);
                 table.Rows.Add(row);
             }
             return table;
         }
 
+        private SqlParameter[] GetParameters()
+        {
+            SqlParameter[] parameters = new SqlParameter[1];
+            parameters[0] = new SqlParameter("@placa", _placa);
+            
+            return parameters;
+        }
 
         private DataColumn[] SetUpColumns()
         {
-            DataColumn[] columns = new DataColumn[3];
+            DataColumn[] columns = new DataColumn[4];
 
             DataColumn servicoID = new DataColumn();
             servicoID.ColumnName = "ServicoID";
             columns[0] = servicoID;
 
+            DataColumn descricao = new DataColumn();
+            descricao.ColumnName = "Descricao";
+            columns[1] = descricao;
+
             DataColumn dataServico = new DataColumn();
             dataServico.ColumnName = "DataServico";
-            columns[1] = dataServico;
+            columns[2] = dataServico;
 
             DataColumn dataServ = new DataColumn();
             dataServ.ColumnName = "OrdemServico";
-            columns[2] = dataServ;
+            columns[3] = dataServ;
 
             return columns;
         }

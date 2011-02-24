@@ -132,6 +132,28 @@
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Relatorios\Caixa\PorOrdemServico\dsServicoPorOS.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsServicoPorOS.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Caixa\PorOrdemServico\frmServicoPorOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Caixa\PorOrdemServico\frmServicoPorOS.Designer.cs">
+      <DependentUpon>frmServicoPorOS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Caixa\PorOrdemServico\relServicoPorOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Caixa\PorOrdemServico\relServicoPorOS.Designer.cs">
+      <DependentUpon>relServicoPorOS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Cliente\PorPlaca\dstClientePorPlaca.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dstClientePorPlaca.xsd</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\Lavagens\CarrosNoLavajato\dsCarrosNoLavajato.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -157,6 +179,12 @@
     </Compile>
     <Compile Include="Relatorios\Produto\Produtos\frmProdutos.Designer.cs">
       <DependentUpon>frmProdutos.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Servicos\frmProcuraServicoPorOS.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Servicos\frmProcuraServicoPorOS.Designer.cs">
+      <DependentUpon>frmProcuraServicoPorOS.cs</DependentUpon>
     </Compile>
     <Compile Include="Servicos\frmProcuraServicoPorPlaca.cs">
       <SubType>Form</SubType>
@@ -232,6 +260,14 @@
       <DependentUpon>frmPrincipal.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Caixa\PorOrdemServico\frmServicoPorOS.resx">
+      <DependentUpon>frmServicoPorOS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Caixa\PorOrdemServico\relServicoPorOS.resx">
+      <DependentUpon>relServicoPorOS.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Caixa\PorOrdemServico\rptServicoPorOS.rdlc" />
+    <EmbeddedResource Include="Relatorios\Cliente\PorPlaca\rdlClientePorPlaca.rdlc" />
     <EmbeddedResource Include="Relatorios\Lavagens\CarrosNoLavajato\frmCarrosNoLavajato.resx">
       <DependentUpon>frmCarrosNoLavajato.cs</DependentUpon>
     </EmbeddedResource>
@@ -240,6 +276,9 @@
       <DependentUpon>frmProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Produto\Produtos\rptProdutosEstoque.rdlc" />
+    <EmbeddedResource Include="Servicos\frmProcuraServicoPorOS.resx">
+      <DependentUpon>frmProcuraServicoPorOS.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Servicos\frmProcuraServicoPorPlaca.resx">
       <DependentUpon>frmProcuraServicoPorPlaca.cs</DependentUpon>
     </EmbeddedResource>
@@ -291,7 +330,6 @@
       <DependentUpon>frmClientePesquisaPorPlaca.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\Cliente\PorPlaca\frmClientePorPlaca.rdlc" />
     <EmbeddedResource Include="Relatorios\Cliente\PorPlaca\frmClientesPorPlaca.resx">
       <DependentUpon>frmClientesPorPlaca.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -332,6 +370,9 @@
       <DependentUpon>frmRetirada.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Servicos\frmServicoCancelado.resx">
+      <DependentUpon>frmServicoCancelado.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Servicos\frmServicoLavador.resx">
       <DependentUpon>frmServicoLavador.cs</DependentUpon>
     </EmbeddedResource>
@@ -354,17 +395,6 @@
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
-    <None Include="Relatorios\Cliente\PorPlaca\clientePorPlaca.xsc">
-      <DependentUpon>clientePorPlaca.xsd</DependentUpon>
-    </None>
-    <None Include="Relatorios\Cliente\PorPlaca\clientePorPlaca.xsd">
-      <SubType>Designer</SubType>
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>clientePorPlaca.Designer.cs</LastGenOutput>
-    </None>
-    <None Include="Relatorios\Cliente\PorPlaca\clientePorPlaca.xss">
-      <DependentUpon>clientePorPlaca.xsd</DependentUpon>
-    </None>
     <None Include="Relatorios\Caixa\FechamentoDeCaixa\dsFechamentoCaixa.xsc">
       <DependentUpon>dsFechamentoCaixa.xsd</DependentUpon>
     </None>
@@ -375,6 +405,28 @@
     </None>
     <None Include="Relatorios\Caixa\FechamentoDeCaixa\dsFechamentoCaixa.xss">
       <DependentUpon>dsFechamentoCaixa.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Caixa\PorOrdemServico\dsServicoPorOS.xsc">
+      <DependentUpon>dsServicoPorOS.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Caixa\PorOrdemServico\dsServicoPorOS.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsServicoPorOS.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Caixa\PorOrdemServico\dsServicoPorOS.xss">
+      <DependentUpon>dsServicoPorOS.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Cliente\PorPlaca\dstClientePorPlaca.xsc">
+      <DependentUpon>dstClientePorPlaca.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Cliente\PorPlaca\dstClientePorPlaca.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dstClientePorPlaca.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Cliente\PorPlaca\dstClientePorPlaca.xss">
+      <DependentUpon>dstClientePorPlaca.xsd</DependentUpon>
     </None>
     <None Include="Relatorios\Lavagens\CarrosNoLavajato\dsCarrosNoLavajato.xsc">
       <DependentUpon>dsCarrosNoLavajato.xsd</DependentUpon>
@@ -435,15 +487,6 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
-    </Compile>
-    <Compile Include="Relatorios\Cliente\PorPlaca\clientePorPlaca.cs">
-      <DependentUpon>clientePorPlaca.xsd</DependentUpon>
-      <SubType>Component</SubType>
-    </Compile>
-    <Compile Include="Relatorios\Cliente\PorPlaca\clientePorPlaca.Designer.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>clientePorPlaca.xsd</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\Caixa\FechamentoDeCaixa\dsFechamentoCaixa.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -564,6 +607,12 @@
     </Compile>
     <Compile Include="Servicos\frmRetirada.Designer.cs">
       <DependentUpon>frmRetirada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Servicos\frmServicoCancelado.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Servicos\frmServicoCancelado.Designer.cs">
+      <DependentUpon>frmServicoCancelado.cs</DependentUpon>
     </Compile>
     <Compile Include="Servicos\frmServicoLavador.cs">
       <SubType>Form</SubType>

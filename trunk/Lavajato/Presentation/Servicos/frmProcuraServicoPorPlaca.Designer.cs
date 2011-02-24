@@ -35,6 +35,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.grdServicos = new System.Windows.Forms.DataGridView();
+            this.button1 = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdServicos)).BeginInit();
@@ -79,9 +80,7 @@
             this.placa.Name = "placa";
             this.placa.Size = new System.Drawing.Size(301, 26);
             this.placa.TabIndex = 4;
-            //this.placa.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.placa_MaskInputRejected);
             this.placa.TextChanged += new System.EventHandler(this.placa_TextChanged);
-            //this.placa.ImeModeChanged += new System.EventHandler(this.placa_ImeModeChanged);
             // 
             // label1
             // 
@@ -112,15 +111,29 @@
             this.grdServicos.TabIndex = 0;
             this.grdServicos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.grdServicos_MouseDoubleClick);
             // 
+            // button1
+            // 
+            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.button1.Location = new System.Drawing.Point(364, 327);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(120, 31);
+            this.button1.TabIndex = 7;
+            this.button1.Text = "Fechar";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.button1_Click);
+            // 
             // frmProcuraServicoPorPlaca
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.ClientSize = new System.Drawing.Size(490, 331);
+            this.ClientSize = new System.Drawing.Size(490, 362);
+            this.Controls.Add(this.button1);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
             this.Name = "frmProcuraServicoPorPlaca";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Procura Servico Por Placa";
             this.Load += new System.EventHandler(this.frmProcuraServicoPorPlaca_Load);
             this.groupBox1.ResumeLayout(false);
@@ -140,5 +153,6 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView grdServicos;
         private System.Windows.Forms.TextBox ordemServico;
+        private System.Windows.Forms.Button button1;
     }
 }

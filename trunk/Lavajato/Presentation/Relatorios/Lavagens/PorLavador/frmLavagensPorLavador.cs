@@ -21,7 +21,9 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnGerarRelatorio_Click(object sender, EventArgs e)
         {
-            frmLavagemPorLavadorRelatorio rel = new frmLavagemPorLavadorRelatorio(dateTimePicker1.Value, dateTimePicker2.Value, int.Parse(cmbLavador.SelectedValue.ToString()));
+            frmLavagemPorLavadorRelatorio rel = new frmLavagemPorLavadorRelatorio(
+                Configuracao.HoraPtBR( dateTimePicker1.Value), Configuracao.HoraPtBR(dateTimePicker2.Value),
+                int.Parse(cmbLavador.SelectedValue.ToString()));
             rel.ShowDialog();
         }
 

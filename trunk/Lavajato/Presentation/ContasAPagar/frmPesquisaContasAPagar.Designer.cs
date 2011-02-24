@@ -175,6 +175,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
             this.Name = "frmPesquisaContasAPagar";
             this.Text = "Pesquisa";
             this.groupBox1.ResumeLayout(false);

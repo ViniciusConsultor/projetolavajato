@@ -24,7 +24,7 @@ namespace HenryCorporation.Lavajato.Operacional
                 return 0;
 
             string strTemp = valor.Replace("R$", "");
-            return Convert.ToDecimal(strTemp);
+             return Convert.ToDecimal(strTemp);
         }
 
         public static int ConverteParaInteiro(string valor)
@@ -67,9 +67,9 @@ namespace HenryCorporation.Lavajato.Operacional
 
         public static object[] CarregaMinuto()
         {
-            object[] m = new object[12];
+            object[] m = new object[13];
             int j = 0;
-            for (int i = 5; i <= 60; i += 5)
+            for (int i = 0; i <= 60; i += 5)
             {
                 m[j] = (i);
                 j++;

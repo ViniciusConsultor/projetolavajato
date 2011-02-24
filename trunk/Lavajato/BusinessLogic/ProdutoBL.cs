@@ -41,7 +41,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
         List<Produto> IGeneric<Produto>.GetAll()
         {
-            return produtoDAO.GetAll();
+            return  produtoDAO.GetAll();
         }
 
         public DataTable GetAll(List<Produto> produtos)

@@ -49,7 +49,6 @@ namespace HenryCorporation.Lavajato.Presentation
             cliente.ID = int.Parse(grdClientes.Rows[grdClientes.CurrentRow.Index].Cells[0].Value.ToString());
             frmCliente frmCliente = new frmCliente(cliente);
             frmCliente.ShowDialog();
-            this.Close();
         }
 
         private void OculdaColuna()

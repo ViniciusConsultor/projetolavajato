@@ -37,7 +37,6 @@
             this.nomePesquisa = new System.Windows.Forms.TextBox();
             this.grdClientes = new System.Windows.Forms.DataGridView();
             this.tabManutencao = new System.Windows.Forms.TabPage();
-            this.btnNovo = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
@@ -173,7 +172,6 @@
             // tabManutencao
             // 
             this.tabManutencao.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.tabManutencao.Controls.Add(this.btnNovo);
             this.tabManutencao.Controls.Add(this.btnSair);
             this.tabManutencao.Controls.Add(this.btnSalvar);
             this.tabManutencao.Controls.Add(this.groupBox3);
@@ -188,19 +186,10 @@
             this.tabManutencao.TabIndex = 1;
             this.tabManutencao.Text = "Cliente";
             // 
-            // btnNovo
-            // 
-            this.btnNovo.Location = new System.Drawing.Point(8, 383);
-            this.btnNovo.Name = "btnNovo";
-            this.btnNovo.Size = new System.Drawing.Size(103, 38);
-            this.btnNovo.TabIndex = 14;
-            this.btnNovo.Text = "Novo";
-            this.btnNovo.UseVisualStyleBackColor = true;
-            this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click_1);
-            // 
             // btnSair
             // 
-            this.btnSair.Location = new System.Drawing.Point(630, 383);
+            this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.Location = new System.Drawing.Point(634, 367);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(103, 38);
             this.btnSair.TabIndex = 17;
@@ -210,7 +199,8 @@
             // 
             // btnSalvar
             // 
-            this.btnSalvar.Location = new System.Drawing.Point(214, 383);
+            this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSalvar.Location = new System.Drawing.Point(6, 367);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(103, 38);
             this.btnSalvar.TabIndex = 13;
@@ -221,7 +211,7 @@
             // groupBox3
             // 
             this.groupBox3.Controls.Add(this.convenio);
-            this.groupBox3.Location = new System.Drawing.Point(6, 318);
+            this.groupBox3.Location = new System.Drawing.Point(4, 305);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(733, 59);
             this.groupBox3.TabIndex = 15;
@@ -240,7 +230,8 @@
             // 
             // btnAlterar
             // 
-            this.btnAlterar.Location = new System.Drawing.Point(111, 383);
+            this.btnAlterar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAlterar.Location = new System.Drawing.Point(109, 367);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(103, 38);
             this.btnAlterar.TabIndex = 15;
@@ -250,7 +241,8 @@
             // 
             // btnExcluir
             // 
-            this.btnExcluir.Location = new System.Drawing.Point(317, 383);
+            this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnExcluir.Location = new System.Drawing.Point(212, 367);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(103, 38);
             this.btnExcluir.TabIndex = 16;
@@ -278,7 +270,7 @@
             this.groupBox2.Controls.Add(this.nome);
             this.groupBox2.Location = new System.Drawing.Point(6, 93);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(733, 219);
+            this.groupBox2.Size = new System.Drawing.Size(733, 209);
             this.groupBox2.TabIndex = 9;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dados Pessoais";
@@ -286,11 +278,11 @@
             // cep
             // 
             this.cep.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.cep.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.cep.Location = new System.Drawing.Point(138, 129);
-            this.cep.Mask = "99.9999-999";
+            this.cep.Font = new System.Drawing.Font("Arial", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.cep.Location = new System.Drawing.Point(138, 130);
+            this.cep.Mask = "99-999-999";
             this.cep.Name = "cep";
-            this.cep.Size = new System.Drawing.Size(118, 26);
+            this.cep.Size = new System.Drawing.Size(118, 25);
             this.cep.TabIndex = 8;
             this.cep.Enter += new System.EventHandler(this.cep_Enter_1);
             this.cep.Leave += new System.EventHandler(this.cep_Leave_1);
@@ -299,7 +291,7 @@
             // 
             this.celular.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.celular.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.celular.Location = new System.Drawing.Point(144, 178);
+            this.celular.Location = new System.Drawing.Point(138, 176);
             this.celular.Mask = "(00)0000-0000";
             this.celular.Name = "celular";
             this.celular.Size = new System.Drawing.Size(112, 26);
@@ -311,7 +303,7 @@
             // 
             this.fone.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.fone.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.fone.Location = new System.Drawing.Point(9, 178);
+            this.fone.Location = new System.Drawing.Point(9, 176);
             this.fone.Mask = "(00)0000-0000";
             this.fone.Name = "fone";
             this.fone.Size = new System.Drawing.Size(129, 26);
@@ -322,7 +314,7 @@
             // label11
             // 
             this.label11.AutoSize = true;
-            this.label11.Location = new System.Drawing.Point(144, 158);
+            this.label11.Location = new System.Drawing.Point(134, 156);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(62, 20);
             this.label11.TabIndex = 19;
@@ -331,7 +323,7 @@
             // label10
             // 
             this.label10.AutoSize = true;
-            this.label10.Location = new System.Drawing.Point(6, 158);
+            this.label10.Location = new System.Drawing.Point(6, 156);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(50, 20);
             this.label10.TabIndex = 17;
@@ -339,6 +331,7 @@
             // 
             // uf
             // 
+            this.uf.Font = new System.Drawing.Font("Microsoft Sans Serif", 11.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.uf.FormattingEnabled = true;
             this.uf.Items.AddRange(new object[] {
             "AC ",
@@ -370,7 +363,7 @@
             "TO"});
             this.uf.Location = new System.Drawing.Point(8, 130);
             this.uf.Name = "uf";
-            this.uf.Size = new System.Drawing.Size(130, 28);
+            this.uf.Size = new System.Drawing.Size(130, 26);
             this.uf.TabIndex = 7;
             this.uf.Enter += new System.EventHandler(this.uf_Enter);
             this.uf.Leave += new System.EventHandler(this.uf_Leave);
@@ -378,7 +371,7 @@
             // label9
             // 
             this.label9.AutoSize = true;
-            this.label9.Location = new System.Drawing.Point(252, 109);
+            this.label9.Location = new System.Drawing.Point(252, 110);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(55, 20);
             this.label9.TabIndex = 14;
@@ -388,11 +381,11 @@
             // 
             this.bairro.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.bairro.Font = new System.Drawing.Font("Arial", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.bairro.Location = new System.Drawing.Point(256, 129);
+            this.bairro.Location = new System.Drawing.Point(256, 130);
             this.bairro.MaxLength = 50;
             this.bairro.Multiline = true;
             this.bairro.Name = "bairro";
-            this.bairro.Size = new System.Drawing.Size(448, 25);
+            this.bairro.Size = new System.Drawing.Size(454, 25);
             this.bairro.TabIndex = 9;
             this.bairro.Enter += new System.EventHandler(this.bairro_Enter);
             this.bairro.Leave += new System.EventHandler(this.bairro_Leave);
@@ -400,7 +393,7 @@
             // label8
             // 
             this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(134, 109);
+            this.label8.Location = new System.Drawing.Point(134, 110);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(42, 20);
             this.label8.TabIndex = 12;
@@ -561,8 +554,10 @@
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(767, 619);
             this.Controls.Add(this.tabClientes);
-            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmCliente";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cadastro de Cliente";
             this.Load += new System.EventHandler(this.frmCliente_Load);
             this.tabClientes.ResumeLayout(false);
@@ -621,7 +616,6 @@
         private System.Windows.Forms.MaskedTextBox cep;
         private System.Windows.Forms.ComboBox convenio;
         private System.Windows.Forms.Button btnSair;
-        private System.Windows.Forms.Button btnNovo;
 
     }
 }

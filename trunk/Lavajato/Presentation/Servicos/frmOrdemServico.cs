@@ -158,28 +158,44 @@ namespace HenryCorporation.Lavajato.Presentation
             MessageBox.Show(Resources.Cliente_salvo_com_sucesso, Resources.Atencao);
             btnCadastraCliente.Enabled = false;
         }
-      
+
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            var res = MessageBox.Show(Resources.Apagar_item_de_pedido, Resources.Atencao, MessageBoxButtons.YesNo);
-            if (res == DialogResult.No)
+            var index = grdServico.Rows[_indexRow].Cells[1].Value;
+            var tempIndex = index != null ? index : "";
+            
+            tempIndex = tempIndex.ToString().Length > 0 ? index : "0";
+            if (tempIndex.Equals("0"))
             {
+                MessageBox.Show("Nenhum item encontrado", "Atenção!");
                 return;
             }
 
-            dataSetItens.Tables[0].Rows[dataSetItens.Tables[0].Rows.Count != 0 ? indexColumaDataGrid : 0].Delete();
-            grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
+            var res = MessageBox.Show(Resources.Apagar_item_de_pedido, Resources.Atencao, MessageBoxButtons.YesNo);
+            if (res == DialogResult.Yes)
+            {
+                dataSetItens.Tables[0].Rows[
+                   dataSetItens.Tables[0].Rows.Count != 0 ? _indexRow : 0].Delete();
+                grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
 
-            MessageBox.Show(Resources.Item_deletado, Resources.Atencao);
+                MessageBox.Show(Resources.Item_deletado, Resources.Atencao);
+
+            }
         }
 
         private void grdServico_MouseClick(object sender, MouseEventArgs e)
         {
-            if (grdServico.CurrentRow != null) indexColumaDataGrid = grdServico.CurrentRow.Index;
+            _indexRow = grdServico.CurrentRow.Index;
         }
 
         private void btnGerarOrdemServico_Click(object sender, EventArgs e)
         {
+            if (HoraEMinMaiorQueZero())
+            {
+                MessageBox.Show("Favor marcar hora ou minuto diferente de zero!", "Atenção!");
+                return;
+            }
+            
             if (dataSetItens.Tables[0].Rows.Count > 0)
             {
                 _servico = ServicoSalva();
@@ -193,6 +209,13 @@ namespace HenryCorporation.Lavajato.Presentation
             {
                 MessageBox.Show("Nenhum serviço adicionado a O.S. ");
             }
+        }
+
+        private bool HoraEMinMaiorQueZero()
+        {
+            double m = double.Parse(min.SelectedItem.ToString());
+            double h = double.Parse(hora.SelectedItem.ToString());
+            return (m == 0 && h == 0);
         }
 
         private Servico ServicoSalva()

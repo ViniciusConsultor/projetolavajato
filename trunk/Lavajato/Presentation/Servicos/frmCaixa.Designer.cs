@@ -40,7 +40,6 @@ namespace HenryCorporation.Lavajato.Presentation
             this.label12 = new System.Windows.Forms.Label();
             this.cmbFormaPagamento = new System.Windows.Forms.ComboBox();
             this.label11 = new System.Windows.Forms.Label();
-            this.troco = new System.Windows.Forms.TextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.valor = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
@@ -77,6 +76,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.label3 = new System.Windows.Forms.Label();
             this.cmbProduto = new System.Windows.Forms.ComboBox();
             this.quantidade = new System.Windows.Forms.TextBox();
+            this.txttroco = new System.Windows.Forms.TextBox();
             btnAlterarQuantidade = new System.Windows.Forms.Button();
             acertoFuturo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdServico)).BeginInit();
@@ -120,12 +120,12 @@ namespace HenryCorporation.Lavajato.Presentation
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.txttroco);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.desconto);
             this.groupBox1.Controls.Add(this.label12);
             this.groupBox1.Controls.Add(this.cmbFormaPagamento);
             this.groupBox1.Controls.Add(this.label11);
-            this.groupBox1.Controls.Add(this.troco);
             this.groupBox1.Controls.Add(this.label6);
             this.groupBox1.Controls.Add(this.valor);
             this.groupBox1.Controls.Add(this.label1);
@@ -191,17 +191,6 @@ namespace HenryCorporation.Lavajato.Presentation
             this.label11.TabIndex = 90;
             this.label11.Text = "Troco:";
             // 
-            // troco
-            // 
-            this.troco.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.troco.Location = new System.Drawing.Point(502, 44);
-            this.troco.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
-            this.troco.Multiline = true;
-            this.troco.Name = "troco";
-            this.troco.Size = new System.Drawing.Size(112, 33);
-            this.troco.TabIndex = 20;
-            this.troco.TextChanged += new System.EventHandler(this.troco_TextChanged);
-            // 
             // label6
             // 
             this.label6.AutoSize = true;
@@ -237,6 +226,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // 
             // totalServico
             // 
+            this.totalServico.Enabled = false;
             this.totalServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalServico.Location = new System.Drawing.Point(166, 44);
             this.totalServico.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
@@ -255,7 +245,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.btnCancelarVenda.TabIndex = 25;
             this.btnCancelarVenda.Text = "Cancelar Venda (F6)";
             this.btnCancelarVenda.UseVisualStyleBackColor = true;
-            this.btnCancelarVenda.Click += new System.EventHandler(this.btnFinalizarVenda_Click);
+            this.btnCancelarVenda.Click += new System.EventHandler(this.btnCancelarVenda_Click);
             // 
             // btnConcluirVenda
             // 
@@ -610,6 +600,16 @@ namespace HenryCorporation.Lavajato.Presentation
             this.quantidade.Size = new System.Drawing.Size(56, 35);
             this.quantidade.TabIndex = 112;
             // 
+            // txttroco
+            // 
+            this.txttroco.Enabled = false;
+            this.txttroco.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txttroco.Location = new System.Drawing.Point(502, 44);
+            this.txttroco.Multiline = true;
+            this.txttroco.Name = "txttroco";
+            this.txttroco.Size = new System.Drawing.Size(112, 33);
+            this.txttroco.TabIndex = 95;
+            // 
             // frmCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -625,9 +625,10 @@ namespace HenryCorporation.Lavajato.Presentation
             this.Controls.Add(this.btnCancelarVenda);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.grdServico);
-            this.MinimizeBox = false;
+            this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MaximizeBox = false;
             this.Name = "frmCaixa";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Caixa";
             this.Load += new System.EventHandler(this.frmCaixa_Load);
             ((System.ComponentModel.ISupportInitialize)(this.grdServico)).EndInit();
@@ -648,7 +649,6 @@ namespace HenryCorporation.Lavajato.Presentation
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.ComboBox cmbFormaPagamento;
         private System.Windows.Forms.Label label11;
-        private System.Windows.Forms.TextBox troco;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.TextBox valor;
         private System.Windows.Forms.Label label1;
@@ -698,5 +698,6 @@ namespace HenryCorporation.Lavajato.Presentation
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbProduto;
         private System.Windows.Forms.TextBox quantidade;
+        private System.Windows.Forms.TextBox txttroco;
     }
 }

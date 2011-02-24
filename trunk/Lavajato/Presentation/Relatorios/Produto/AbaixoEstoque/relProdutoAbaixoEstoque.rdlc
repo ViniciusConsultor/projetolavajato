@@ -115,7 +115,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -146,7 +146,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -238,7 +238,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -267,7 +267,7 @@
                             </TextRun>
                           </TextRuns>
                           <Style>
-                            <TextAlign>Right</TextAlign>
+                            <TextAlign>Center</TextAlign>
                           </Style>
                         </Paragraph>
                       </Paragraphs>
@@ -291,7 +291,7 @@
                         <Paragraph>
                           <TextRuns>
                             <TextRun>
-                              <Value>=Fields!VALORUNITARIO.Value</Value>
+                              <Value>=FormatCurrency( Fields!VALORUNITARIO.Value,2)</Value>
                               <Style />
                             </TextRun>
                           </TextRuns>
@@ -343,12 +343,12 @@
         </TablixRowHierarchy>
         <DataSetName>relProdutoAbaixoEstoque_DataTable1</DataSetName>
         <Left>0.2cm</Left>
-        <Height>1.26984cm</Height>
+        <Height>1.26985cm</Height>
         <Width>13.2cm</Width>
         <Style />
       </Tablix>
     </ReportItems>
-    <Height>1.26984cm</Height>
+    <Height>1.26985cm</Height>
     <Style />
   </Body>
   <Width>13.5cm</Width>
@@ -489,7 +489,7 @@
     <ColumnSpacing>1cm</ColumnSpacing>
     <Style />
   </Page>
-  <Language>en-US</Language>
+  <Language>pt-BR</Language>
   <ConsumeContainerWhitespace>true</ConsumeContainerWhitespace>
   <rd:ReportID>af76cfb4-94b3-499c-99dc-6f1bfb38f6fc</rd:ReportID>
   <rd:ReportUnitType>Cm</rd:ReportUnitType>
