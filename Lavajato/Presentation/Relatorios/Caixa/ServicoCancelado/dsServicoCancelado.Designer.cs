@@ -10,7 +10,7 @@
 
 #pragma warning disable 1591
 
-namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCaixa {
+namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.ServicoCancelado {
     
     
     /// <summary>
@@ -20,17 +20,17 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
     [global::System.ComponentModel.DesignerCategoryAttribute("code")]
     [global::System.ComponentModel.ToolboxItem(true)]
     [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedDataSetSchema")]
-    [global::System.Xml.Serialization.XmlRootAttribute("dsFechamentoCaixa")]
+    [global::System.Xml.Serialization.XmlRootAttribute("dsServicoCancelado")]
     [global::System.ComponentModel.Design.HelpKeywordAttribute("vs.data.DataSet")]
-    public partial class dsFechamentoCaixa : global::System.Data.DataSet {
+    public partial class dsServicoCancelado : global::System.Data.DataSet {
         
-        private DataTable1DataTable tableDataTable1;
+        private dsServicoCanceladoDataTable tabledsServicoCancelado;
         
         private global::System.Data.SchemaSerializationMode _schemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public dsFechamentoCaixa() {
+        public dsServicoCancelado() {
             this.BeginInit();
             this.InitClass();
             global::System.ComponentModel.CollectionChangeEventHandler schemaChangedHandler = new global::System.ComponentModel.CollectionChangeEventHandler(this.SchemaChanged);
@@ -41,7 +41,7 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        protected dsFechamentoCaixa(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+        protected dsServicoCancelado(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                 base(info, context, false) {
             if ((this.IsBinarySerialized(info, context) == true)) {
                 this.InitVars(false);
@@ -54,8 +54,8 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             if ((this.DetermineSchemaSerializationMode(info, context) == global::System.Data.SchemaSerializationMode.IncludeSchema)) {
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXmlSchema(new global::System.Xml.XmlTextReader(new global::System.IO.StringReader(strSchema)));
-                if ((ds.Tables["DataTable1"] != null)) {
-                    base.Tables.Add(new DataTable1DataTable(ds.Tables["DataTable1"]));
+                if ((ds.Tables["dsServicoCancelado"] != null)) {
+                    base.Tables.Add(new dsServicoCanceladoDataTable(ds.Tables["dsServicoCancelado"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -79,9 +79,9 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         [global::System.ComponentModel.Browsable(false)]
         [global::System.ComponentModel.DesignerSerializationVisibility(global::System.ComponentModel.DesignerSerializationVisibility.Content)]
-        public DataTable1DataTable DataTable1 {
+        public dsServicoCanceladoDataTable _dsServicoCancelado {
             get {
-                return this.tableDataTable1;
+                return this.tabledsServicoCancelado;
             }
         }
         
@@ -127,7 +127,7 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public override global::System.Data.DataSet Clone() {
-            dsFechamentoCaixa cln = ((dsFechamentoCaixa)(base.Clone()));
+            dsServicoCancelado cln = ((dsServicoCancelado)(base.Clone()));
             cln.InitVars();
             cln.SchemaSerializationMode = this.SchemaSerializationMode;
             return cln;
@@ -152,8 +152,8 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
                 this.Reset();
                 global::System.Data.DataSet ds = new global::System.Data.DataSet();
                 ds.ReadXml(reader);
-                if ((ds.Tables["DataTable1"] != null)) {
-                    base.Tables.Add(new DataTable1DataTable(ds.Tables["DataTable1"]));
+                if ((ds.Tables["dsServicoCancelado"] != null)) {
+                    base.Tables.Add(new dsServicoCanceladoDataTable(ds.Tables["dsServicoCancelado"]));
                 }
                 this.DataSetName = ds.DataSetName;
                 this.Prefix = ds.Prefix;
@@ -188,10 +188,10 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         internal void InitVars(bool initTable) {
-            this.tableDataTable1 = ((DataTable1DataTable)(base.Tables["DataTable1"]));
+            this.tabledsServicoCancelado = ((dsServicoCanceladoDataTable)(base.Tables["dsServicoCancelado"]));
             if ((initTable == true)) {
-                if ((this.tableDataTable1 != null)) {
-                    this.tableDataTable1.InitVars();
+                if ((this.tabledsServicoCancelado != null)) {
+                    this.tabledsServicoCancelado.InitVars();
                 }
             }
         }
@@ -199,18 +199,18 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         private void InitClass() {
-            this.DataSetName = "dsFechamentoCaixa";
+            this.DataSetName = "dsServicoCancelado";
             this.Prefix = "";
-            this.Namespace = "http://tempuri.org/dsFechamentoCaixa.xsd";
+            this.Namespace = "http://tempuri.org/dsServicoCancelado.xsd";
             this.EnforceConstraints = true;
             this.SchemaSerializationMode = global::System.Data.SchemaSerializationMode.IncludeSchema;
-            this.tableDataTable1 = new DataTable1DataTable();
-            base.Tables.Add(this.tableDataTable1);
+            this.tabledsServicoCancelado = new dsServicoCanceladoDataTable();
+            base.Tables.Add(this.tabledsServicoCancelado);
         }
         
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        private bool ShouldSerializeDataTable1() {
+        private bool ShouldSerialize_dsServicoCancelado() {
             return false;
         }
         
@@ -225,7 +225,7 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
         public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedDataSetSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
-            dsFechamentoCaixa ds = new dsFechamentoCaixa();
+            dsServicoCancelado ds = new dsServicoCancelado();
             global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
             global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
             global::System.Xml.Schema.XmlSchemaAny any = new global::System.Xml.Schema.XmlSchemaAny();
@@ -270,47 +270,29 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
         }
         
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public delegate void DataTable1RowChangeEventHandler(object sender, DataTable1RowChangeEvent e);
+        public delegate void dsServicoCanceladoRowChangeEventHandler(object sender, dsServicoCanceladoRowChangeEvent e);
         
         /// <summary>
         ///Represents the strongly named DataTable class.
         ///</summary>
         [global::System.Serializable()]
         [global::System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")]
-        public partial class DataTable1DataTable : global::System.Data.TypedTableBase<DataTable1Row> {
+        public partial class dsServicoCanceladoDataTable : global::System.Data.TypedTableBase<dsServicoCanceladoRow> {
             
-            private global::System.Data.DataColumn columnOSInicial;
+            private global::System.Data.DataColumn columnNome;
             
-            private global::System.Data.DataColumn columnOSFinal;
+            private global::System.Data.DataColumn columnServicoID;
             
-            private global::System.Data.DataColumn columnOSCancelado;
-            
-            private global::System.Data.DataColumn columnTotalVendas;
-            
-            private global::System.Data.DataColumn columnTotalDesconto;
-            
-            private global::System.Data.DataColumn columnDinheiro;
-            
-            private global::System.Data.DataColumn columnVisaDebito;
-            
-            private global::System.Data.DataColumn columnVisaCredito;
-            
-            private global::System.Data.DataColumn columnMasterDebito;
-            
-            private global::System.Data.DataColumn columnMasterCredito;
+            private global::System.Data.DataColumn columnTotal;
             
             private global::System.Data.DataColumn columnEntrada;
             
-            private global::System.Data.DataColumn columnSaida;
-            
-            private global::System.Data.DataColumn columnSomaTotal;
-            
-            private global::System.Data.DataColumn columnQtdeOS;
+            private global::System.Data.DataColumn columnProduto;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable1DataTable() {
-                this.TableName = "DataTable1";
+            public dsServicoCanceladoDataTable() {
+                this.TableName = "dsServicoCancelado";
                 this.BeginInit();
                 this.InitClass();
                 this.EndInit();
@@ -318,7 +300,7 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DataTable1DataTable(global::System.Data.DataTable table) {
+            internal dsServicoCanceladoDataTable(global::System.Data.DataTable table) {
                 this.TableName = table.TableName;
                 if ((table.CaseSensitive != table.DataSet.CaseSensitive)) {
                     this.CaseSensitive = table.CaseSensitive;
@@ -335,88 +317,32 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            protected DataTable1DataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
+            protected dsServicoCanceladoDataTable(global::System.Runtime.Serialization.SerializationInfo info, global::System.Runtime.Serialization.StreamingContext context) : 
                     base(info, context) {
                 this.InitVars();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn OSInicialColumn {
+            public global::System.Data.DataColumn NomeColumn {
                 get {
-                    return this.columnOSInicial;
+                    return this.columnNome;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn OSFinalColumn {
+            public global::System.Data.DataColumn ServicoIDColumn {
                 get {
-                    return this.columnOSFinal;
+                    return this.columnServicoID;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn OSCanceladoColumn {
+            public global::System.Data.DataColumn TotalColumn {
                 get {
-                    return this.columnOSCancelado;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TotalVendasColumn {
-                get {
-                    return this.columnTotalVendas;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn TotalDescontoColumn {
-                get {
-                    return this.columnTotalDesconto;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn DinheiroColumn {
-                get {
-                    return this.columnDinheiro;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn VisaDebitoColumn {
-                get {
-                    return this.columnVisaDebito;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn VisaCreditoColumn {
-                get {
-                    return this.columnVisaCredito;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MasterDebitoColumn {
-                get {
-                    return this.columnMasterDebito;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn MasterCreditoColumn {
-                get {
-                    return this.columnMasterCredito;
+                    return this.columnTotal;
                 }
             }
             
@@ -430,25 +356,9 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SaidaColumn {
+            public global::System.Data.DataColumn ProdutoColumn {
                 get {
-                    return this.columnSaida;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn SomaTotalColumn {
-                get {
-                    return this.columnSomaTotal;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public global::System.Data.DataColumn QtdeOSColumn {
-                get {
-                    return this.columnQtdeOS;
+                    return this.columnProduto;
                 }
             }
             
@@ -463,58 +373,49 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable1Row this[int index] {
+            public dsServicoCanceladoRow this[int index] {
                 get {
-                    return ((DataTable1Row)(this.Rows[index]));
+                    return ((dsServicoCanceladoRow)(this.Rows[index]));
                 }
             }
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DataTable1RowChangeEventHandler DataTable1RowChanging;
+            public event dsServicoCanceladoRowChangeEventHandler dsServicoCanceladoRowChanging;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DataTable1RowChangeEventHandler DataTable1RowChanged;
+            public event dsServicoCanceladoRowChangeEventHandler dsServicoCanceladoRowChanged;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DataTable1RowChangeEventHandler DataTable1RowDeleting;
+            public event dsServicoCanceladoRowChangeEventHandler dsServicoCanceladoRowDeleting;
             
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public event DataTable1RowChangeEventHandler DataTable1RowDeleted;
+            public event dsServicoCanceladoRowChangeEventHandler dsServicoCanceladoRowDeleted;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void AddDataTable1Row(DataTable1Row row) {
+            public void AdddsServicoCanceladoRow(dsServicoCanceladoRow row) {
                 this.Rows.Add(row);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable1Row AddDataTable1Row(int OSInicial, int OSFinal, int OSCancelado, decimal TotalVendas, decimal TotalDesconto, decimal Dinheiro, decimal VisaDebito, decimal VisaCredito, decimal MasterDebito, decimal MasterCredito, decimal Entrada, decimal Saida, decimal SomaTotal, string QtdeOS) {
-                DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
+            public dsServicoCanceladoRow AdddsServicoCanceladoRow(string Nome, string ServicoID, string Total, string Entrada, string Produto) {
+                dsServicoCanceladoRow rowdsServicoCanceladoRow = ((dsServicoCanceladoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
-                        OSInicial,
-                        OSFinal,
-                        OSCancelado,
-                        TotalVendas,
-                        TotalDesconto,
-                        Dinheiro,
-                        VisaDebito,
-                        VisaCredito,
-                        MasterDebito,
-                        MasterCredito,
+                        Nome,
+                        ServicoID,
+                        Total,
                         Entrada,
-                        Saida,
-                        SomaTotal,
-                        QtdeOS};
-                rowDataTable1Row.ItemArray = columnValuesArray;
-                this.Rows.Add(rowDataTable1Row);
-                return rowDataTable1Row;
+                        Produto};
+                rowdsServicoCanceladoRow.ItemArray = columnValuesArray;
+                this.Rows.Add(rowdsServicoCanceladoRow);
+                return rowdsServicoCanceladoRow;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public override global::System.Data.DataTable Clone() {
-                DataTable1DataTable cln = ((DataTable1DataTable)(base.Clone()));
+                dsServicoCanceladoDataTable cln = ((dsServicoCanceladoDataTable)(base.Clone()));
                 cln.InitVars();
                 return cln;
             }
@@ -522,98 +423,60 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataTable CreateInstance() {
-                return new DataTable1DataTable();
+                return new dsServicoCanceladoDataTable();
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             internal void InitVars() {
-                this.columnOSInicial = base.Columns["OSInicial"];
-                this.columnOSFinal = base.Columns["OSFinal"];
-                this.columnOSCancelado = base.Columns["OSCancelado"];
-                this.columnTotalVendas = base.Columns["TotalVendas"];
-                this.columnTotalDesconto = base.Columns["TotalDesconto"];
-                this.columnDinheiro = base.Columns["Dinheiro"];
-                this.columnVisaDebito = base.Columns["VisaDebito"];
-                this.columnVisaCredito = base.Columns["VisaCredito"];
-                this.columnMasterDebito = base.Columns["MasterDebito"];
-                this.columnMasterCredito = base.Columns["MasterCredito"];
+                this.columnNome = base.Columns["Nome"];
+                this.columnServicoID = base.Columns["ServicoID"];
+                this.columnTotal = base.Columns["Total"];
                 this.columnEntrada = base.Columns["Entrada"];
-                this.columnSaida = base.Columns["Saida"];
-                this.columnSomaTotal = base.Columns["SomaTotal"];
-                this.columnQtdeOS = base.Columns["QtdeOS"];
+                this.columnProduto = base.Columns["Produto"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             private void InitClass() {
-                this.columnOSInicial = new global::System.Data.DataColumn("OSInicial", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOSInicial);
-                this.columnOSFinal = new global::System.Data.DataColumn("OSFinal", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOSFinal);
-                this.columnOSCancelado = new global::System.Data.DataColumn("OSCancelado", typeof(int), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnOSCancelado);
-                this.columnTotalVendas = new global::System.Data.DataColumn("TotalVendas", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotalVendas);
-                this.columnTotalDesconto = new global::System.Data.DataColumn("TotalDesconto", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnTotalDesconto);
-                this.columnDinheiro = new global::System.Data.DataColumn("Dinheiro", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnDinheiro);
-                this.columnVisaDebito = new global::System.Data.DataColumn("VisaDebito", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVisaDebito);
-                this.columnVisaCredito = new global::System.Data.DataColumn("VisaCredito", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnVisaCredito);
-                this.columnMasterDebito = new global::System.Data.DataColumn("MasterDebito", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMasterDebito);
-                this.columnMasterCredito = new global::System.Data.DataColumn("MasterCredito", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnMasterCredito);
-                this.columnEntrada = new global::System.Data.DataColumn("Entrada", typeof(decimal), null, global::System.Data.MappingType.Element);
+                this.columnNome = new global::System.Data.DataColumn("Nome", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNome);
+                this.columnServicoID = new global::System.Data.DataColumn("ServicoID", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnServicoID);
+                this.columnTotal = new global::System.Data.DataColumn("Total", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnTotal);
+                this.columnEntrada = new global::System.Data.DataColumn("Entrada", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnEntrada);
-                this.columnSaida = new global::System.Data.DataColumn("Saida", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSaida);
-                this.columnSomaTotal = new global::System.Data.DataColumn("SomaTotal", typeof(decimal), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnSomaTotal);
-                this.columnQtdeOS = new global::System.Data.DataColumn("QtdeOS", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnQtdeOS);
-                this.columnOSInicial.ReadOnly = true;
-                this.columnOSFinal.ReadOnly = true;
-                this.columnOSCancelado.ReadOnly = true;
-                this.columnTotalVendas.ReadOnly = true;
-                this.columnTotalDesconto.ReadOnly = true;
-                this.columnDinheiro.ReadOnly = true;
-                this.columnVisaDebito.ReadOnly = true;
-                this.columnVisaCredito.ReadOnly = true;
-                this.columnMasterDebito.ReadOnly = true;
-                this.columnMasterCredito.ReadOnly = true;
-                this.columnEntrada.ReadOnly = true;
-                this.columnSaida.ReadOnly = true;
-                this.columnSomaTotal.ReadOnly = true;
+                this.columnProduto = new global::System.Data.DataColumn("Produto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnProduto);
+                this.ExtendedProperties.Add("Generator_TablePropName", "_dsServicoCancelado");
+                this.ExtendedProperties.Add("Generator_UserTableName", "dsServicoCancelado");
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable1Row NewDataTable1Row() {
-                return ((DataTable1Row)(this.NewRow()));
+            public dsServicoCanceladoRow NewdsServicoCanceladoRow() {
+                return ((dsServicoCanceladoRow)(this.NewRow()));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Data.DataRow NewRowFromBuilder(global::System.Data.DataRowBuilder builder) {
-                return new DataTable1Row(builder);
+                return new dsServicoCanceladoRow(builder);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override global::System.Type GetRowType() {
-                return typeof(DataTable1Row);
+                return typeof(dsServicoCanceladoRow);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanged(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanged(e);
-                if ((this.DataTable1RowChanged != null)) {
-                    this.DataTable1RowChanged(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
+                if ((this.dsServicoCanceladoRowChanged != null)) {
+                    this.dsServicoCanceladoRowChanged(this, new dsServicoCanceladoRowChangeEvent(((dsServicoCanceladoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -621,8 +484,8 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowChanging(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowChanging(e);
-                if ((this.DataTable1RowChanging != null)) {
-                    this.DataTable1RowChanging(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
+                if ((this.dsServicoCanceladoRowChanging != null)) {
+                    this.dsServicoCanceladoRowChanging(this, new dsServicoCanceladoRowChangeEvent(((dsServicoCanceladoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -630,8 +493,8 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleted(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleted(e);
-                if ((this.DataTable1RowDeleted != null)) {
-                    this.DataTable1RowDeleted(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
+                if ((this.dsServicoCanceladoRowDeleted != null)) {
+                    this.dsServicoCanceladoRowDeleted(this, new dsServicoCanceladoRowChangeEvent(((dsServicoCanceladoRow)(e.Row)), e.Action));
                 }
             }
             
@@ -639,14 +502,14 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             protected override void OnRowDeleting(global::System.Data.DataRowChangeEventArgs e) {
                 base.OnRowDeleting(e);
-                if ((this.DataTable1RowDeleting != null)) {
-                    this.DataTable1RowDeleting(this, new DataTable1RowChangeEvent(((DataTable1Row)(e.Row)), e.Action));
+                if ((this.dsServicoCanceladoRowDeleting != null)) {
+                    this.dsServicoCanceladoRowDeleting(this, new dsServicoCanceladoRowChangeEvent(((dsServicoCanceladoRow)(e.Row)), e.Action));
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void RemoveDataTable1Row(DataTable1Row row) {
+            public void RemovedsServicoCanceladoRow(dsServicoCanceladoRow row) {
                 this.Rows.Remove(row);
             }
             
@@ -655,7 +518,7 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             public static global::System.Xml.Schema.XmlSchemaComplexType GetTypedTableSchema(global::System.Xml.Schema.XmlSchemaSet xs) {
                 global::System.Xml.Schema.XmlSchemaComplexType type = new global::System.Xml.Schema.XmlSchemaComplexType();
                 global::System.Xml.Schema.XmlSchemaSequence sequence = new global::System.Xml.Schema.XmlSchemaSequence();
-                dsFechamentoCaixa ds = new dsFechamentoCaixa();
+                dsServicoCancelado ds = new dsServicoCancelado();
                 global::System.Xml.Schema.XmlSchemaAny any1 = new global::System.Xml.Schema.XmlSchemaAny();
                 any1.Namespace = "http://www.w3.org/2001/XMLSchema";
                 any1.MinOccurs = new decimal(0);
@@ -673,7 +536,7 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
                 type.Attributes.Add(attribute1);
                 global::System.Xml.Schema.XmlSchemaAttribute attribute2 = new global::System.Xml.Schema.XmlSchemaAttribute();
                 attribute2.Name = "tableTypeName";
-                attribute2.FixedValue = "DataTable1DataTable";
+                attribute2.FixedValue = "dsServicoCanceladoDataTable";
                 type.Attributes.Add(attribute2);
                 type.Particle = sequence;
                 global::System.Xml.Schema.XmlSchema dsSchema = ds.GetSchemaSerializable();
@@ -717,407 +580,155 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
         /// <summary>
         ///Represents strongly named DataRow class.
         ///</summary>
-        public partial class DataTable1Row : global::System.Data.DataRow {
+        public partial class dsServicoCanceladoRow : global::System.Data.DataRow {
             
-            private DataTable1DataTable tableDataTable1;
+            private dsServicoCanceladoDataTable tabledsServicoCancelado;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            internal DataTable1Row(global::System.Data.DataRowBuilder rb) : 
+            internal dsServicoCanceladoRow(global::System.Data.DataRowBuilder rb) : 
                     base(rb) {
-                this.tableDataTable1 = ((DataTable1DataTable)(this.Table));
+                this.tabledsServicoCancelado = ((dsServicoCanceladoDataTable)(this.Table));
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int OSInicial {
+            public string Nome {
                 get {
                     try {
-                        return ((int)(this[this.tableDataTable1.OSInicialColumn]));
+                        return ((string)(this[this.tabledsServicoCancelado.NomeColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OSInicial\' in table \'DataTable1\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Nome\' in table \'dsServicoCancelado\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.OSInicialColumn] = value;
+                    this[this.tabledsServicoCancelado.NomeColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int OSFinal {
+            public string ServicoID {
                 get {
                     try {
-                        return ((int)(this[this.tableDataTable1.OSFinalColumn]));
+                        return ((string)(this[this.tabledsServicoCancelado.ServicoIDColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OSFinal\' in table \'DataTable1\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'ServicoID\' in table \'dsServicoCancelado\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.OSFinalColumn] = value;
+                    this[this.tabledsServicoCancelado.ServicoIDColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public int OSCancelado {
+            public string Total {
                 get {
                     try {
-                        return ((int)(this[this.tableDataTable1.OSCanceladoColumn]));
+                        return ((string)(this[this.tabledsServicoCancelado.TotalColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'OSCancelado\' in table \'DataTable1\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Total\' in table \'dsServicoCancelado\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.OSCanceladoColumn] = value;
+                    this[this.tabledsServicoCancelado.TotalColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal TotalVendas {
+            public string Entrada {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDataTable1.TotalVendasColumn]));
+                        return ((string)(this[this.tabledsServicoCancelado.EntradaColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TotalVendas\' in table \'DataTable1\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Entrada\' in table \'dsServicoCancelado\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.TotalVendasColumn] = value;
+                    this[this.tabledsServicoCancelado.EntradaColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal TotalDesconto {
+            public string Produto {
                 get {
                     try {
-                        return ((decimal)(this[this.tableDataTable1.TotalDescontoColumn]));
+                        return ((string)(this[this.tabledsServicoCancelado.ProdutoColumn]));
                     }
                     catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'TotalDesconto\' in table \'DataTable1\' is DBNull.", e);
+                        throw new global::System.Data.StrongTypingException("The value for column \'Produto\' in table \'dsServicoCancelado\' is DBNull.", e);
                     }
                 }
                 set {
-                    this[this.tableDataTable1.TotalDescontoColumn] = value;
+                    this[this.tabledsServicoCancelado.ProdutoColumn] = value;
                 }
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Dinheiro {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableDataTable1.DinheiroColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Dinheiro\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.DinheiroColumn] = value;
-                }
+            public bool IsNomeNull() {
+                return this.IsNull(this.tabledsServicoCancelado.NomeColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal VisaDebito {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableDataTable1.VisaDebitoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'VisaDebito\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.VisaDebitoColumn] = value;
-                }
+            public void SetNomeNull() {
+                this[this.tabledsServicoCancelado.NomeColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal VisaCredito {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableDataTable1.VisaCreditoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'VisaCredito\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.VisaCreditoColumn] = value;
-                }
+            public bool IsServicoIDNull() {
+                return this.IsNull(this.tabledsServicoCancelado.ServicoIDColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal MasterDebito {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableDataTable1.MasterDebitoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MasterDebito\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.MasterDebitoColumn] = value;
-                }
+            public void SetServicoIDNull() {
+                this[this.tabledsServicoCancelado.ServicoIDColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal MasterCredito {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableDataTable1.MasterCreditoColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'MasterCredito\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.MasterCreditoColumn] = value;
-                }
+            public bool IsTotalNull() {
+                return this.IsNull(this.tabledsServicoCancelado.TotalColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Entrada {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableDataTable1.EntradaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Entrada\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.EntradaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal Saida {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableDataTable1.SaidaColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'Saida\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.SaidaColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public decimal SomaTotal {
-                get {
-                    try {
-                        return ((decimal)(this[this.tableDataTable1.SomaTotalColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'SomaTotal\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.SomaTotalColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public string QtdeOS {
-                get {
-                    try {
-                        return ((string)(this[this.tableDataTable1.QtdeOSColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("The value for column \'QtdeOS\' in table \'DataTable1\' is DBNull.", e);
-                    }
-                }
-                set {
-                    this[this.tableDataTable1.QtdeOSColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsOSInicialNull() {
-                return this.IsNull(this.tableDataTable1.OSInicialColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetOSInicialNull() {
-                this[this.tableDataTable1.OSInicialColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsOSFinalNull() {
-                return this.IsNull(this.tableDataTable1.OSFinalColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetOSFinalNull() {
-                this[this.tableDataTable1.OSFinalColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsOSCanceladoNull() {
-                return this.IsNull(this.tableDataTable1.OSCanceladoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetOSCanceladoNull() {
-                this[this.tableDataTable1.OSCanceladoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTotalVendasNull() {
-                return this.IsNull(this.tableDataTable1.TotalVendasColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTotalVendasNull() {
-                this[this.tableDataTable1.TotalVendasColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsTotalDescontoNull() {
-                return this.IsNull(this.tableDataTable1.TotalDescontoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetTotalDescontoNull() {
-                this[this.tableDataTable1.TotalDescontoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsDinheiroNull() {
-                return this.IsNull(this.tableDataTable1.DinheiroColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetDinheiroNull() {
-                this[this.tableDataTable1.DinheiroColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsVisaDebitoNull() {
-                return this.IsNull(this.tableDataTable1.VisaDebitoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetVisaDebitoNull() {
-                this[this.tableDataTable1.VisaDebitoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsVisaCreditoNull() {
-                return this.IsNull(this.tableDataTable1.VisaCreditoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetVisaCreditoNull() {
-                this[this.tableDataTable1.VisaCreditoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsMasterDebitoNull() {
-                return this.IsNull(this.tableDataTable1.MasterDebitoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetMasterDebitoNull() {
-                this[this.tableDataTable1.MasterDebitoColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsMasterCreditoNull() {
-                return this.IsNull(this.tableDataTable1.MasterCreditoColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetMasterCreditoNull() {
-                this[this.tableDataTable1.MasterCreditoColumn] = global::System.Convert.DBNull;
+            public void SetTotalNull() {
+                this[this.tabledsServicoCancelado.TotalColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsEntradaNull() {
-                return this.IsNull(this.tableDataTable1.EntradaColumn);
+                return this.IsNull(this.tabledsServicoCancelado.EntradaColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetEntradaNull() {
-                this[this.tableDataTable1.EntradaColumn] = global::System.Convert.DBNull;
+                this[this.tabledsServicoCancelado.EntradaColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSaidaNull() {
-                return this.IsNull(this.tableDataTable1.SaidaColumn);
+            public bool IsProdutoNull() {
+                return this.IsNull(this.tabledsServicoCancelado.ProdutoColumn);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSaidaNull() {
-                this[this.tableDataTable1.SaidaColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsSomaTotalNull() {
-                return this.IsNull(this.tableDataTable1.SomaTotalColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetSomaTotalNull() {
-                this[this.tableDataTable1.SomaTotalColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public bool IsQtdeOSNull() {
-                return this.IsNull(this.tableDataTable1.QtdeOSColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public void SetQtdeOSNull() {
-                this[this.tableDataTable1.QtdeOSColumn] = global::System.Convert.DBNull;
+            public void SetProdutoNull() {
+                this[this.tabledsServicoCancelado.ProdutoColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -1125,22 +736,22 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
         ///Row event argument class
         ///</summary>
         [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-        public class DataTable1RowChangeEvent : global::System.EventArgs {
+        public class dsServicoCanceladoRowChangeEvent : global::System.EventArgs {
             
-            private DataTable1Row eventRow;
+            private dsServicoCanceladoRow eventRow;
             
             private global::System.Data.DataRowAction eventAction;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable1RowChangeEvent(DataTable1Row row, global::System.Data.DataRowAction action) {
+            public dsServicoCanceladoRowChangeEvent(dsServicoCanceladoRow row, global::System.Data.DataRowAction action) {
                 this.eventRow = row;
                 this.eventAction = action;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public DataTable1Row Row {
+            public dsServicoCanceladoRow Row {
                 get {
                     return this.eventRow;
                 }

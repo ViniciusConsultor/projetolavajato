@@ -63,17 +63,18 @@ namespace HenryCorporation.Lavajato.Presentation
                 var row = table.NewRow();
                 row["OSInicial"] = reader.GetInt32(0);
                 row["OSFinal"] = reader.GetInt32(1);
-                row["OSCancelado"] = reader.GetInt32(2);
-                row["TotalVendas"] = reader.GetDecimal(3);
-                row["TotalDesconto"] = reader.GetDecimal(4);
-                row["Dinheiro"] = reader.GetDecimal(5);
-                row["VisaDebito"] = reader.GetDecimal(6);
-                row["VisaCredito"] = reader.GetDecimal(7);
-                row["MasterDebito"] = reader.GetDecimal(8);
-                row["MasterCredito"] = reader.GetDecimal(9);
-                row["Entrada"] = reader.GetDecimal(10);
-                row["Saida"] = reader.GetDecimal(11);
-                row["SomaTotal"] = reader.GetDecimal(12);
+                row["QtdeOS"] = reader.GetInt32(2);
+                row["OSCancelado"] = reader.GetInt32(3);
+                row["TotalVendas"] = reader.GetDecimal(4);
+                row["TotalDesconto"] = reader.GetDecimal(5);
+                row["Dinheiro"] = reader.GetDecimal(6);
+                row["VisaDebito"] = reader.GetDecimal(7);
+                row["VisaCredito"] = reader.GetDecimal(8);
+                row["MasterDebito"] = reader.GetDecimal(9);
+                row["MasterCredito"] = reader.GetDecimal(10);
+                row["Entrada"] = reader.GetDecimal(11);
+                row["Saida"] = reader.GetDecimal(12);
+                row["SomaTotal"] = reader.GetDecimal(13);
 
                 table.Rows.Add(row);
             }
@@ -90,7 +91,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private static DataColumn[] SetUpColumns()
         {
-            var columns = new DataColumn[13];
+            var columns = new DataColumn[14];
 
             var osInicial = new DataColumn();
             osInicial.ColumnName = "OSInicial";
@@ -100,49 +101,53 @@ namespace HenryCorporation.Lavajato.Presentation
             osFinal.ColumnName = "OSFinal";
             columns[1] = osFinal;
 
+            var QtdeOS = new DataColumn();
+            QtdeOS.ColumnName = "QtdeOS";
+            columns[2] = QtdeOS;
+            
             DataColumn osCancelado = new DataColumn();
             osCancelado.ColumnName = "OSCancelado";
-            columns[2] = osCancelado;
+            columns[3] = osCancelado;
 
             DataColumn totalVendas = new DataColumn();
             totalVendas.ColumnName = "TotalVendas";
-            columns[3] = totalVendas;
+            columns[4] = totalVendas;
 
             DataColumn totalDesconto = new DataColumn();
             totalDesconto.ColumnName = "TotalDesconto";
-            columns[4] = totalDesconto;
+            columns[5] = totalDesconto;
 
             DataColumn dinheiro = new DataColumn();
             dinheiro.ColumnName = "Dinheiro";
-            columns[5] = dinheiro;
+            columns[6] = dinheiro;
 
             DataColumn visaDebito = new DataColumn();
             visaDebito.ColumnName = "VisaDebito";
-            columns[6] = visaDebito;
+            columns[7] = visaDebito;
 
             DataColumn visaCredito = new DataColumn();
             visaCredito.ColumnName = "VisaCredito";
-            columns[7] = visaCredito;
+            columns[8] = visaCredito;
 
             DataColumn masterDebito = new DataColumn();
             masterDebito.ColumnName = "MasterDebito";
-            columns[8] = masterDebito;
+            columns[9] = masterDebito;
 
             DataColumn masterCredito = new DataColumn();
             masterCredito.ColumnName = "MasterCredito";
-            columns[9] = masterCredito;
+            columns[10] = masterCredito;
 
             DataColumn entrada = new DataColumn();
             entrada.ColumnName = "Entrada";
-            columns[10] = entrada;
+            columns[11] = entrada;
 
             DataColumn saida = new DataColumn();
             saida.ColumnName = "Saida";
-            columns[11] = saida;
+            columns[12] = saida;
 
             DataColumn SomaTotal = new DataColumn();
             SomaTotal.ColumnName = "SomaTotal";
-            columns[12] = SomaTotal;
+            columns[13] = SomaTotal;
 
             return columns;
         }

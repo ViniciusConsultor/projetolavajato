@@ -22,17 +22,17 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnLogar_Click(object sender, EventArgs e)
         {
-            //if ((string.IsNullOrEmpty(login.Text) ||
-            //    string.IsNullOrEmpty(password.Text)))
-            //{
-            //    MessageBox.Show(Resources.Favor_inserir_nome_e_senha, Resources.Preencher_todos_os_campos);
-            //    return;
-            //}
+            if ((string.IsNullOrEmpty(login.Text) ||
+                string.IsNullOrEmpty(password.Text)))
+            {
+                MessageBox.Show(Resources.Favor_inserir_nome_e_senha, Resources.Preencher_todos_os_campos);
+                return;
+            }
 
             var user = new Usuario
                            {
-                               Login = "loginteste",//login.Text,
-                               Password = "senhateste"//password.Text
+                               Login = login.Text,//"loginteste"
+                               Password = password.Text//"senhateste"
                            };
             this.Usuario= user;
 

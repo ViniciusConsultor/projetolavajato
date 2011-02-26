@@ -287,6 +287,18 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.PorOrdemServic
             
             private global::System.Data.DataColumn columnLavador;
             
+            private global::System.Data.DataColumn columnDesconto;
+            
+            private global::System.Data.DataColumn columnValorUnitario;
+            
+            private global::System.Data.DataColumn columnNome;
+            
+            private global::System.Data.DataColumn columnPlaca;
+            
+            private global::System.Data.DataColumn columnEntrada;
+            
+            private global::System.Data.DataColumn columnSaida;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public ServicoPorOSDataTable() {
@@ -354,6 +366,54 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.PorOrdemServic
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DescontoColumn {
+                get {
+                    return this.columnDesconto;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ValorUnitarioColumn {
+                get {
+                    return this.columnValorUnitario;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn NomeColumn {
+                get {
+                    return this.columnNome;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn PlacaColumn {
+                get {
+                    return this.columnPlaca;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn EntradaColumn {
+                get {
+                    return this.columnEntrada;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn SaidaColumn {
+                get {
+                    return this.columnSaida;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -389,13 +449,19 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.PorOrdemServic
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
-            public ServicoPorOSRow AddServicoPorOSRow(string OrdemServico, string Total, string Produtos, string Lavador) {
+            public ServicoPorOSRow AddServicoPorOSRow(string OrdemServico, string Total, string Produtos, string Lavador, string Desconto, string ValorUnitario, string Nome, string Placa, string Entrada, string Saida) {
                 ServicoPorOSRow rowServicoPorOSRow = ((ServicoPorOSRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         OrdemServico,
                         Total,
                         Produtos,
-                        Lavador};
+                        Lavador,
+                        Desconto,
+                        ValorUnitario,
+                        Nome,
+                        Placa,
+                        Entrada,
+                        Saida};
                 rowServicoPorOSRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowServicoPorOSRow);
                 return rowServicoPorOSRow;
@@ -422,6 +488,12 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.PorOrdemServic
                 this.columnTotal = base.Columns["Total"];
                 this.columnProdutos = base.Columns["Produtos"];
                 this.columnLavador = base.Columns["Lavador"];
+                this.columnDesconto = base.Columns["Desconto"];
+                this.columnValorUnitario = base.Columns["ValorUnitario"];
+                this.columnNome = base.Columns["Nome"];
+                this.columnPlaca = base.Columns["Placa"];
+                this.columnEntrada = base.Columns["Entrada"];
+                this.columnSaida = base.Columns["Saida"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -435,6 +507,18 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.PorOrdemServic
                 base.Columns.Add(this.columnProdutos);
                 this.columnLavador = new global::System.Data.DataColumn("Lavador", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnLavador);
+                this.columnDesconto = new global::System.Data.DataColumn("Desconto", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDesconto);
+                this.columnValorUnitario = new global::System.Data.DataColumn("ValorUnitario", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnValorUnitario);
+                this.columnNome = new global::System.Data.DataColumn("Nome", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnNome);
+                this.columnPlaca = new global::System.Data.DataColumn("Placa", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnPlaca);
+                this.columnEntrada = new global::System.Data.DataColumn("Entrada", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnEntrada);
+                this.columnSaida = new global::System.Data.DataColumn("Saida", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnSaida);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -641,6 +725,102 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.PorOrdemServic
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Desconto {
+                get {
+                    try {
+                        return ((string)(this[this.tableServicoPorOS.DescontoColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Desconto\' in table \'ServicoPorOS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableServicoPorOS.DescontoColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ValorUnitario {
+                get {
+                    try {
+                        return ((string)(this[this.tableServicoPorOS.ValorUnitarioColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ValorUnitario\' in table \'ServicoPorOS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableServicoPorOS.ValorUnitarioColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Nome {
+                get {
+                    try {
+                        return ((string)(this[this.tableServicoPorOS.NomeColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Nome\' in table \'ServicoPorOS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableServicoPorOS.NomeColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Placa {
+                get {
+                    try {
+                        return ((string)(this[this.tableServicoPorOS.PlacaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Placa\' in table \'ServicoPorOS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableServicoPorOS.PlacaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Entrada {
+                get {
+                    try {
+                        return ((string)(this[this.tableServicoPorOS.EntradaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Entrada\' in table \'ServicoPorOS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableServicoPorOS.EntradaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string Saida {
+                get {
+                    try {
+                        return ((string)(this[this.tableServicoPorOS.SaidaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Saida\' in table \'ServicoPorOS\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableServicoPorOS.SaidaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsOrdemServicoNull() {
                 return this.IsNull(this.tableServicoPorOS.OrdemServicoColumn);
             }
@@ -685,6 +865,78 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.PorOrdemServic
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetLavadorNull() {
                 this[this.tableServicoPorOS.LavadorColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDescontoNull() {
+                return this.IsNull(this.tableServicoPorOS.DescontoColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDescontoNull() {
+                this[this.tableServicoPorOS.DescontoColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsValorUnitarioNull() {
+                return this.IsNull(this.tableServicoPorOS.ValorUnitarioColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetValorUnitarioNull() {
+                this[this.tableServicoPorOS.ValorUnitarioColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsNomeNull() {
+                return this.IsNull(this.tableServicoPorOS.NomeColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetNomeNull() {
+                this[this.tableServicoPorOS.NomeColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsPlacaNull() {
+                return this.IsNull(this.tableServicoPorOS.PlacaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetPlacaNull() {
+                this[this.tableServicoPorOS.PlacaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsEntradaNull() {
+                return this.IsNull(this.tableServicoPorOS.EntradaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetEntradaNull() {
+                this[this.tableServicoPorOS.EntradaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsSaidaNull() {
+                return this.IsNull(this.tableServicoPorOS.SaidaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetSaidaNull() {
+                this[this.tableServicoPorOS.SaidaColumn] = global::System.Convert.DBNull;
             }
         }
         

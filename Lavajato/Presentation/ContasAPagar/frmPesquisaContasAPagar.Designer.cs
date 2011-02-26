@@ -66,7 +66,7 @@
             this.nomeCredorPesquisa.Name = "nomeCredorPesquisa";
             this.nomeCredorPesquisa.Size = new System.Drawing.Size(514, 26);
             this.nomeCredorPesquisa.TabIndex = 3;
-            this.nomeCredorPesquisa.TextChanged += new System.EventHandler(this.nomeCredorPesquisa_TextChanged);
+            //this.nomeCredorPesquisa.TextChanged += new System.EventHandler(this.nomeCredorPesquisa_TextChanged);
             this.nomeCredorPesquisa.Enter += new System.EventHandler(this.nomeCredorPesquisa_Enter);
             this.nomeCredorPesquisa.Leave += new System.EventHandler(this.nomeCredorPesquisa_Leave);
             // 
@@ -85,7 +85,7 @@
             this.documentoPesquisa.Name = "documentoPesquisa";
             this.documentoPesquisa.Size = new System.Drawing.Size(108, 26);
             this.documentoPesquisa.TabIndex = 1;
-            this.documentoPesquisa.TextChanged += new System.EventHandler(this.documentoPesquisa_TextChanged);
+            //this.documentoPesquisa.TextChanged += new System.EventHandler(this.documentoPesquisa_TextChanged);
             this.documentoPesquisa.Enter += new System.EventHandler(this.documentoPesquisa_Enter);
             this.documentoPesquisa.Leave += new System.EventHandler(this.documentoPesquisa_Leave);
             // 
@@ -122,7 +122,7 @@
             this.groupBox3.Controls.Add(this.MostrarTodos);
             this.groupBox3.Controls.Add(this.VencendoHoje);
             this.groupBox3.Controls.Add(this.label3);
-            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.groupBox3.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.groupBox3.Location = new System.Drawing.Point(650, -1);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(130, 112);
@@ -132,6 +132,7 @@
             // 
             // Pagos
             // 
+            this.Pagos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.Pagos.Location = new System.Drawing.Point(6, 80);
             this.Pagos.Name = "Pagos";
             this.Pagos.Size = new System.Drawing.Size(117, 29);
@@ -141,6 +142,7 @@
             // 
             // MostrarTodos
             // 
+            this.MostrarTodos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.MostrarTodos.Location = new System.Drawing.Point(6, 51);
             this.MostrarTodos.Name = "MostrarTodos";
             this.MostrarTodos.Size = new System.Drawing.Size(117, 29);
@@ -150,6 +152,7 @@
             // 
             // VencendoHoje
             // 
+            this.VencendoHoje.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.VencendoHoje.Location = new System.Drawing.Point(7, 22);
             this.VencendoHoje.Name = "VencendoHoje";
             this.VencendoHoje.Size = new System.Drawing.Size(117, 29);
@@ -178,6 +181,7 @@
             this.MaximizeBox = false;
             this.Name = "frmPesquisaContasAPagar";
             this.Text = "Pesquisa";
+            //this.Load += new System.EventHandler(this.frmPesquisaContasAPagar_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);

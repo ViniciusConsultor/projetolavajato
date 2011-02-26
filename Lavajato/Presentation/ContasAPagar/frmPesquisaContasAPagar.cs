@@ -23,32 +23,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void CarregaDados()
         {
-            grdContasPagar.DataSource = contaPagarBL.PesquisaPorDataETipo(ContaPagar.TipoPesquisa.MostrarTodos.ToString(), documentoPesquisa.Text, DateTime.Now).DefaultView;
-        }
-
-        private void documentoPesquisa_TextChanged(object sender, EventArgs e)
-        {
-            grdContasPagar.DataSource = contaPagarBL.PesquisaPorDataETipo(ContaPagar.TipoPesquisa.Documento.ToString(), documentoPesquisa.Text, DateTime.Now);
-        }
-
-        private void nomeCredorPesquisa_TextChanged(object sender, EventArgs e)
-        {
-            grdContasPagar.DataSource = contaPagarBL.PesquisaPorDataETipo(ContaPagar.TipoPesquisa.VencendoHoje.ToString(), nomeCredorPesquisa.Text, DateTime.Now);
-        }
-
-        private void VencendoHoje_Click(object sender, EventArgs e)
-        {
-            grdContasPagar.DataSource = contaPagarBL.PesquisaPorDataETipo(ContaPagar.TipoPesquisa.VencendoHoje.ToString(), "", DateTime.Now);
-        }
-
-        private void MostrarTodos_Click(object sender, EventArgs e)
-        {
-            grdContasPagar.DataSource = contaPagarBL.PesquisaPorDataETipo(ContaPagar.TipoPesquisa.MostrarTodos.ToString(), "", DateTime.Now);
-        }
-
-        private void Pagos_Click(object sender, EventArgs e)
-        {
-            grdContasPagar.DataSource = contaPagarBL.PesquisaPorDataETipo(ContaPagar.TipoPesquisa.Pagos.ToString(), "", DateTime.Now);
+            grdContasPagar.DataSource = contaPagarBL.GetAll();
         }
 
         private void documentoPesquisa_Enter(object sender, EventArgs e)
@@ -70,5 +45,6 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             nomeCredorPesquisa.BackColor = Color.White;
         }
+
     }
 }

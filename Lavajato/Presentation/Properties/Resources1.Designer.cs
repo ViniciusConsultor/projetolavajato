@@ -79,7 +79,7 @@ namespace HenryCorporation.Lavajato.Presentation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Atenção.
+        ///   Looks up a localized string similar to Atenção!.
         /// </summary>
         internal static string Atencao {
             get {
@@ -169,7 +169,7 @@ namespace HenryCorporation.Lavajato.Presentation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to dsFechamentoCaixa_DataTable1.
+        ///   Looks up a localized string similar to dsFechamentoDeCaixa.
         /// </summary>
         internal static string dsFechamentoCaixa {
             get {
@@ -192,6 +192,15 @@ namespace HenryCorporation.Lavajato.Presentation.Properties {
         internal static string dsProdutoEstoque {
             get {
                 return ResourceManager.GetString("dsProdutoEstoque", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to dsServicoCancelado.
+        /// </summary>
+        internal static string dsServicoCancelado {
+            get {
+                return ResourceManager.GetString("dsServicoCancelado", resourceCulture);
             }
         }
         
@@ -253,15 +262,6 @@ namespace HenryCorporation.Lavajato.Presentation.Properties {
         internal static string FavorSelecionarUmItem {
             get {
                 return ResourceManager.GetString("FavorSelecionarUmItem", resourceCulture);
-            }
-        }
-        
-        /// <summary>
-        ///   Looks up a localized string similar to sfdfsd.
-        /// </summary>
-        internal static string fdsf {
-            get {
-                return ResourceManager.GetString("fdsf", resourceCulture);
             }
         }
         
@@ -383,6 +383,15 @@ namespace HenryCorporation.Lavajato.Presentation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to \\Relatorios\\Caixa\\ServicoCancelado.
+        /// </summary>
+        internal static string pathServicoCancelado {
+            get {
+                return ResourceManager.GetString("pathServicoCancelado", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to \\Relatorios\\Lavagens\\PorLavador.
         /// </summary>
         internal static string pathServicoPorLavador {
@@ -487,6 +496,15 @@ namespace HenryCorporation.Lavajato.Presentation.Properties {
         internal static string rdlrptServicoPorOS {
             get {
                 return ResourceManager.GetString("rdlrptServicoPorOS", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to rdlServicoCancelado.rdlc.
+        /// </summary>
+        internal static string rdlServicoCancelado {
+            get {
+                return ResourceManager.GetString("rdlServicoCancelado", resourceCulture);
             }
         }
         

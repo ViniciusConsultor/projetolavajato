@@ -10,7 +10,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HenryCorporation.Lavajato.Presentation</RootNamespace>
     <AssemblyName>Presentation</AssemblyName>
-    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <FileUpgradeFlags>
     </FileUpgradeFlags>
@@ -132,6 +132,10 @@
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Relatorios\Caixa\FechamentoDeCaixa\dsFechamentoCaixa.cs">
+      <DependentUpon>dsFechamentoCaixa.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
     <Compile Include="Relatorios\Caixa\PorOrdemServico\dsServicoPorOS.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -148,6 +152,21 @@
     </Compile>
     <Compile Include="Relatorios\Caixa\PorOrdemServico\relServicoPorOS.Designer.cs">
       <DependentUpon>relServicoPorOS.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Caixa\ServicoCancelado\dsServicoCancelado.cs">
+      <DependentUpon>dsServicoCancelado.xsd</DependentUpon>
+      <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Caixa\ServicoCancelado\dsServicoCancelado.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsServicoCancelado.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Caixa\ServicoCancelado\frmServicoCanceladoPorUsuario.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Caixa\ServicoCancelado\frmServicoCanceladoPorUsuario.Designer.cs">
+      <DependentUpon>frmServicoCanceladoPorUsuario.cs</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\Cliente\PorPlaca\dstClientePorPlaca.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -267,6 +286,10 @@
       <DependentUpon>relServicoPorOS.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Caixa\PorOrdemServico\rptServicoPorOS.rdlc" />
+    <EmbeddedResource Include="Relatorios\Caixa\ServicoCancelado\frmServicoCanceladoPorUsuario.resx">
+      <DependentUpon>frmServicoCanceladoPorUsuario.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Caixa\ServicoCancelado\rdlServicoCancelado.rdlc" />
     <EmbeddedResource Include="Relatorios\Cliente\PorPlaca\rdlClientePorPlaca.rdlc" />
     <EmbeddedResource Include="Relatorios\Lavagens\CarrosNoLavajato\frmCarrosNoLavajato.resx">
       <DependentUpon>frmCarrosNoLavajato.cs</DependentUpon>
@@ -416,6 +439,17 @@
     </None>
     <None Include="Relatorios\Caixa\PorOrdemServico\dsServicoPorOS.xss">
       <DependentUpon>dsServicoPorOS.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Caixa\ServicoCancelado\dsServicoCancelado.xsc">
+      <DependentUpon>dsServicoCancelado.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Caixa\ServicoCancelado\dsServicoCancelado.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsServicoCancelado.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Caixa\ServicoCancelado\dsServicoCancelado.xss">
+      <DependentUpon>dsServicoCancelado.xsd</DependentUpon>
     </None>
     <None Include="Relatorios\Cliente\PorPlaca\dstClientePorPlaca.xsc">
       <DependentUpon>dstClientePorPlaca.xsd</DependentUpon>

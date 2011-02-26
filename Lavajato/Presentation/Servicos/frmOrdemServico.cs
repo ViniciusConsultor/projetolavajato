@@ -98,7 +98,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private Servico ServicoCarrega()
         {
-            Servico servico = servicoBL.ByCliente(this._cliente);
+            Servico servico = servicoBL.ByCliente(_cliente);
             if (servico.Finalizado == 0)
                 return servico;
             else
@@ -213,9 +213,13 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private bool HoraEMinMaiorQueZero()
         {
-            double m = double.Parse(min.SelectedItem.ToString());
-            double h = double.Parse(hora.SelectedItem.ToString());
-            return (m == 0 && h == 0);
+            if (_servico.ID > 0)
+            {
+                double m = double.Parse(min.SelectedItem.ToString());
+                double h = double.Parse(hora.SelectedItem.ToString());
+                return (m == 0 && h == 0);
+            }
+            return false;
         }
 
         private Servico ServicoSalva()

@@ -171,7 +171,7 @@
     <comment>FavorSelecionarUmProduto description</comment>
   </data>
   <data name="dsFechamentoCaixa" xml:space="preserve">
-    <value>dsFechamentoCaixa_DataTable1</value>
+    <value>dsFechamentoDeCaixa</value>
   </data>
   <data name="Apagar_item_de_pedido" xml:space="preserve">
     <value>Deseja realmente apagar o item de pedido</value>
@@ -216,14 +216,11 @@
     <value>Nenhum ordem de servico encontrada com esse numero: </value>
   </data>
   <data name="Atencao" xml:space="preserve">
-    <value>Atenção</value>
+    <value>Atenção!</value>
   </data>
   <data name="DesejaRealmenteExcluirOProduto" xml:space="preserve">
     <value>Deseja realmente excluir o produto</value>
     <comment>DesejaRealmenteExcluirOProduto description</comment>
-  </data>
-  <data name="fdsf" xml:space="preserve">
-    <value>sfdfsd</value>
   </data>
   <data name="NennhumProdutoSelecionado" xml:space="preserve">
     <value>Nennhum produto selecionado!</value>
@@ -241,9 +238,9 @@
   <data name="Favor_inserir_nome_e_senha" xml:space="preserve">
     <value>Favor inserir nome e senha</value>
   </data>
-  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
+  <assembly alias="System.Windows.Forms" name="System.Windows.Forms, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" />
   <data name="Edit_No" type="System.Resources.ResXFileRef, System.Windows.Forms">
-    <value>..\Resources\Edit_No.png;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+    <value>..\Resources\Edit_No.png;System.Drawing.Bitmap, System.Drawing, Version=2.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
   <data name="dsProdutoAbaixoEstoque" xml:space="preserve">
     <value>relProdutoAbaixoEstoque_DataTable1</value>
@@ -298,5 +295,14 @@
   </data>
   <data name="rdlrptServicoPorOS" xml:space="preserve">
     <value>rptServicoPorOS.rdlc</value>
+  </data>
+  <data name="dsServicoCancelado" xml:space="preserve">
+    <value>dsServicoCancelado</value>
+  </data>
+  <data name="pathServicoCancelado" xml:space="preserve">
+    <value>\\Relatorios\\Caixa\\ServicoCancelado</value>
+  </data>
+  <data name="rdlServicoCancelado" xml:space="preserve">
+    <value>rdlServicoCancelado.rdlc</value>
   </data>
 </root>
