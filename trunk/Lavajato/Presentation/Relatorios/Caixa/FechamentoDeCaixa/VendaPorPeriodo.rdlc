@@ -10,7 +10,7 @@
     </DataSource>
   </DataSources>
   <DataSets>
-    <DataSet Name="dsFechamentoCaixa_DataTable1">
+    <DataSet Name="dsFechamentoDeCaixa">
       <Fields>
         <Field Name="OSInicial">
           <DataField>OSInicial</DataField>
@@ -64,22 +64,29 @@
           <DataField>SomaTotal</DataField>
           <rd:TypeName>System.Decimal</rd:TypeName>
         </Field>
+        <Field Name="QtdeOS">
+          <DataField>QtdeOS</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DummyDataSource</DataSourceName>
-        <CommandText />
-        <rd:UseGenericDesigner>true</rd:UseGenericDesigner>
+        <CommandText>/* Local Query */</CommandText>
       </Query>
       <rd:DataSetInfo>
         <rd:DataSetName>dsFechamentoCaixa</rd:DataSetName>
+        <rd:SchemaPath>C:\projetos\Lavajato\Presentation\Relatorios\Caixa\FechamentoDeCaixa\dsFechamentoCaixa.xsd</rd:SchemaPath>
         <rd:TableName>DataTable1</rd:TableName>
+        <rd:TableAdapterFillMethod />
+        <rd:TableAdapterGetDataMethod />
+        <rd:TableAdapterName />
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
   <Body>
     <ReportItems>
       <Line Name="line2">
-        <Top>9.2cm</Top>
+        <Top>10.02549cm</Top>
         <Left>0.2cm</Left>
         <Height>0cm</Height>
         <Width>6.1cm</Width>
@@ -169,7 +176,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>textbox14</rd:DefaultName>
-        <Top>1.26984cm</Top>
+        <Top>1.90476cm</Top>
         <Left>0.3cm</Left>
         <Height>0.63492cm</Height>
         <Width>3.48968cm</Width>
@@ -200,7 +207,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>textbox18</rd:DefaultName>
-        <Top>1.90476cm</Top>
+        <Top>2.53968cm</Top>
         <Left>0.3cm</Left>
         <Height>0.63492cm</Height>
         <Width>3.48968cm</Width>
@@ -231,7 +238,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>textbox19</rd:DefaultName>
-        <Top>2.53968cm</Top>
+        <Top>3.1746cm</Top>
         <Left>0.3cm</Left>
         <Height>0.63492cm</Height>
         <Width>3.48968cm</Width>
@@ -262,7 +269,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>textbox20</rd:DefaultName>
-        <Top>3.1746cm</Top>
+        <Top>3.80952cm</Top>
         <Left>0.3cm</Left>
         <Height>0.63492cm</Height>
         <Width>3.48968cm</Width>
@@ -292,7 +299,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>3.80952cm</Top>
+        <Top>4.44444cm</Top>
         <Left>0.3cm</Left>
         <Height>0.63492cm</Height>
         <Width>3.48968cm</Width>
@@ -322,7 +329,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>4.44444cm</Top>
+        <Top>5.07936cm</Top>
         <Left>0.3cm</Left>
         <Height>0.63492cm</Height>
         <Width>3.48968cm</Width>
@@ -352,7 +359,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>5.07936cm</Top>
+        <Top>5.71428cm</Top>
         <Left>0.3cm</Left>
         <Height>0.63492cm</Height>
         <Width>3.48968cm</Width>
@@ -382,7 +389,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>5.71428cm</Top>
+        <Top>6.3492cm</Top>
         <Left>0.3cm</Left>
         <Height>0.63492cm</Height>
         <Width>3.48968cm</Width>
@@ -412,7 +419,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>6.3492cm</Top>
+        <Top>6.98412cm</Top>
         <Left>0.3cm</Left>
         <Height>0.63492cm</Height>
         <Width>3.48968cm</Width>
@@ -442,7 +449,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>6.98412cm</Top>
+        <Top>7.61904cm</Top>
         <Left>0.3cm</Left>
         <Height>0.63492cm</Height>
         <Width>3.48968cm</Width>
@@ -470,7 +477,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>9.3cm</Top>
+        <Top>10.12549cm</Top>
         <Left>2.8cm</Left>
         <Height>0.63492cm</Height>
         <Width>3.48968cm</Width>
@@ -500,7 +507,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>7.61904cm</Top>
+        <Top>8.25396cm</Top>
         <Left>0.3cm</Left>
         <Height>0.63492cm</Height>
         <Width>3.48968cm</Width>
@@ -586,7 +593,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>OSCancelado</rd:DefaultName>
-        <Top>1.26984cm</Top>
+        <Top>1.90476cm</Top>
         <Left>3.78968cm</Left>
         <Height>0.63492cm</Height>
         <Width>2.53968cm</Width>
@@ -615,7 +622,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>TotalVendas</rd:DefaultName>
-        <Top>1.90476cm</Top>
+        <Top>2.53968cm</Top>
         <Left>3.78968cm</Left>
         <Height>0.63492cm</Height>
         <Width>2.53968cm</Width>
@@ -644,7 +651,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Dinheiro</rd:DefaultName>
-        <Top>3.1746cm</Top>
+        <Top>3.80952cm</Top>
         <Left>3.78968cm</Left>
         <Height>0.63492cm</Height>
         <Width>2.53968cm</Width>
@@ -673,7 +680,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>TotalDesconto</rd:DefaultName>
-        <Top>2.53968cm</Top>
+        <Top>3.1746cm</Top>
         <Left>3.78968cm</Left>
         <Height>0.63492cm</Height>
         <Width>2.53968cm</Width>
@@ -702,7 +709,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>VisaDebito</rd:DefaultName>
-        <Top>3.80952cm</Top>
+        <Top>4.44444cm</Top>
         <Left>3.78968cm</Left>
         <Height>0.63492cm</Height>
         <Width>2.53968cm</Width>
@@ -731,7 +738,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>VisaCredito</rd:DefaultName>
-        <Top>4.44444cm</Top>
+        <Top>5.07936cm</Top>
         <Left>3.78968cm</Left>
         <Height>0.63492cm</Height>
         <Width>2.53968cm</Width>
@@ -760,7 +767,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>MasterDebito</rd:DefaultName>
-        <Top>5.07937cm</Top>
+        <Top>5.71428cm</Top>
         <Left>3.78968cm</Left>
         <Height>0.63492cm</Height>
         <Width>2.53968cm</Width>
@@ -789,7 +796,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>MasterCredito</rd:DefaultName>
-        <Top>5.71429cm</Top>
+        <Top>6.3492cm</Top>
         <Left>3.78968cm</Left>
         <Height>0.63492cm</Height>
         <Width>2.53968cm</Width>
@@ -818,7 +825,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Entrada</rd:DefaultName>
-        <Top>6.34921cm</Top>
+        <Top>6.98412cm</Top>
         <Left>3.78968cm</Left>
         <Height>0.63492cm</Height>
         <Width>2.53968cm</Width>
@@ -847,7 +854,7 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>Saida</rd:DefaultName>
-        <Top>6.98413cm</Top>
+        <Top>7.61904cm</Top>
         <Left>3.78968cm</Left>
         <Height>0.63492cm</Height>
         <Width>2.53968cm</Width>
@@ -875,7 +882,7 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>7.61905cm</Top>
+        <Top>8.25396cm</Top>
         <Left>3.78968cm</Left>
         <Height>0.63492cm</Height>
         <Width>2.53968cm</Width>
@@ -887,11 +894,75 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="Textbox11">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Fields!QtdeOS.Value</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox11</rd:DefaultName>
+        <Top>1.26984cm</Top>
+        <Left>3.78968cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.53968cm</Width>
+        <ZIndex>28</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Textbox12">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Qtde. OS</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Textbox12</rd:DefaultName>
+        <Top>1.26984cm</Top>
+        <Left>0.3cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>3.48968cm</Width>
+        <ZIndex>29</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>9.93492cm</Height>
+    <Height>11.01971cm</Height>
     <Style />
   </Body>
-  <Width>8.83968cm</Width>
+  <Width>8.8cm</Width>
   <Page>
     <PageHeader>
       <Height>1.6cm</Height>
@@ -998,6 +1069,7 @@
               </Style>
             </Paragraph>
           </Paragraphs>
+          <Top>0cm</Top>
           <Left>0.5cm</Left>
           <Height>0.63492cm</Height>
           <Width>7.7cm</Width>

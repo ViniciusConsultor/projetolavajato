@@ -54,6 +54,7 @@
             this.ordemServiçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ordemServicoAbertoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.incluirLavadorNoServiçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.cancelaServiçoFinalizadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.contasAPagarToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.pesquisaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -68,12 +69,13 @@
             this.lavagemPorLavadorToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.carrosNoLavajatoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.serviçoPorOSToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.serviçoCanceladoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.cancelaServiçoFinalizadoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.contasAPagarToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -281,6 +283,13 @@
             this.incluirLavadorNoServiçoToolStripMenuItem.Text = "Incluir Lavador no Serviço";
             this.incluirLavadorNoServiçoToolStripMenuItem.Click += new System.EventHandler(this.incluirLavadorNoServiçoToolStripMenuItem_Click);
             // 
+            // cancelaServiçoFinalizadoToolStripMenuItem
+            // 
+            this.cancelaServiçoFinalizadoToolStripMenuItem.Name = "cancelaServiçoFinalizadoToolStripMenuItem";
+            this.cancelaServiçoFinalizadoToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
+            this.cancelaServiçoFinalizadoToolStripMenuItem.Text = "Cancela Serviço Finalizado";
+            this.cancelaServiçoFinalizadoToolStripMenuItem.Click += new System.EventHandler(this.cancelaServiçoFinalizadoToolStripMenuItem_Click);
+            // 
             // relatóriosToolStripMenuItem
             // 
             this.relatóriosToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -293,6 +302,7 @@
             // contasAPagarToolStripMenuItem
             // 
             this.contasAPagarToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.contasAPagarToolStripMenuItem1,
             this.pesquisaToolStripMenuItem});
             this.contasAPagarToolStripMenuItem.Name = "contasAPagarToolStripMenuItem";
             this.contasAPagarToolStripMenuItem.Size = new System.Drawing.Size(171, 22);
@@ -302,7 +312,7 @@
             // pesquisaToolStripMenuItem
             // 
             this.pesquisaToolStripMenuItem.Name = "pesquisaToolStripMenuItem";
-            this.pesquisaToolStripMenuItem.Size = new System.Drawing.Size(127, 22);
+            this.pesquisaToolStripMenuItem.Size = new System.Drawing.Size(159, 22);
             this.pesquisaToolStripMenuItem.Text = "Pesquisa";
             this.pesquisaToolStripMenuItem.Click += new System.EventHandler(this.pesquisaToolStripMenuItem_Click);
             // 
@@ -320,7 +330,8 @@
             this.clienteToolStripMenuItem,
             this.lavagemPorLavadorToolStripMenuItem,
             this.carrosNoLavajatoToolStripMenuItem,
-            this.serviçoPorOSToolStripMenuItem});
+            this.serviçoPorOSToolStripMenuItem,
+            this.serviçoCanceladoToolStripMenuItem});
             this.relatóriosToolStripMenuItem1.Name = "relatóriosToolStripMenuItem1";
             this.relatóriosToolStripMenuItem1.Size = new System.Drawing.Size(67, 20);
             this.relatóriosToolStripMenuItem1.Text = "Relatórios";
@@ -392,6 +403,13 @@
             this.serviçoPorOSToolStripMenuItem.Text = "Serviço por O.S.";
             this.serviçoPorOSToolStripMenuItem.Click += new System.EventHandler(this.serviçoPorOSToolStripMenuItem_Click);
             // 
+            // serviçoCanceladoToolStripMenuItem
+            // 
+            this.serviçoCanceladoToolStripMenuItem.Name = "serviçoCanceladoToolStripMenuItem";
+            this.serviçoCanceladoToolStripMenuItem.Size = new System.Drawing.Size(190, 22);
+            this.serviçoCanceladoToolStripMenuItem.Text = "Serviço Cancelado";
+            this.serviçoCanceladoToolStripMenuItem.Click += new System.EventHandler(this.serviçoCanceladoToolStripMenuItem_Click);
+            // 
             // button1
             // 
             this.button1.Image = ((System.Drawing.Image)(resources.GetObject("button1.Image")));
@@ -442,12 +460,12 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // cancelaServiçoFinalizadoToolStripMenuItem
+            // contasAPagarToolStripMenuItem1
             // 
-            this.cancelaServiçoFinalizadoToolStripMenuItem.Name = "cancelaServiçoFinalizadoToolStripMenuItem";
-            this.cancelaServiçoFinalizadoToolStripMenuItem.Size = new System.Drawing.Size(211, 22);
-            this.cancelaServiçoFinalizadoToolStripMenuItem.Text = "Cancela Serviço Finalizado";
-            this.cancelaServiçoFinalizadoToolStripMenuItem.Click += new System.EventHandler(this.cancelaServiçoFinalizadoToolStripMenuItem_Click);
+            this.contasAPagarToolStripMenuItem1.Name = "contasAPagarToolStripMenuItem1";
+            this.contasAPagarToolStripMenuItem1.Size = new System.Drawing.Size(159, 22);
+            this.contasAPagarToolStripMenuItem1.Text = "Contas a Pagar";
+            this.contasAPagarToolStripMenuItem1.Click += new System.EventHandler(this.contasAPagarToolStripMenuItem1_Click);
             // 
             // frmPrincipal
             // 
@@ -519,6 +537,8 @@
         private System.Windows.Forms.ToolStripMenuItem carrosNoLavajatoToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem serviçoPorOSToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cancelaServiçoFinalizadoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem serviçoCanceladoToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem contasAPagarToolStripMenuItem1;
     }
 }
 

@@ -86,8 +86,7 @@ namespace Presentation
 
         private void contasAPagarToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frmContasAPagar = new frmContasAPagar();
-            frmContasAPagar.ShowDialog();
+           
         }
 
         private void ordemServicoAbertoToolStripMenuItem_Click(object sender, EventArgs e)
@@ -271,6 +270,18 @@ namespace Presentation
         {
             frmProcuraServicoPorOS frmProcuraServicoPorOS = new frmProcuraServicoPorOS();
             frmProcuraServicoPorOS.ShowDialog();
+        }
+
+        private void serviçoCanceladoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmServicoCanceladoPorUsuario frmServicoCanceladoPorUsuario = new frmServicoCanceladoPorUsuario();
+            frmServicoCanceladoPorUsuario.ShowDialog();
+        }
+
+        private void contasAPagarToolStripMenuItem1_Click(object sender, EventArgs e)
+        {
+            var frmContasAPagar = new frmContasAPagar();
+            frmContasAPagar.ShowDialog();
         }
     }
 }

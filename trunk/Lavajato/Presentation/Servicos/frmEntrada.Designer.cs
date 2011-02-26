@@ -89,7 +89,7 @@
             // 
             this.valor.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.valor.Location = new System.Drawing.Point(137, 19);
-            this.valor.MaxLength = 5;
+            this.valor.MaxLength = 10;
             this.valor.Multiline = true;
             this.valor.Name = "valor";
             this.valor.Size = new System.Drawing.Size(266, 31);

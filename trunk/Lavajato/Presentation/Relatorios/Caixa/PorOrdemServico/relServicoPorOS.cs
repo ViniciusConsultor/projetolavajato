@@ -65,6 +65,12 @@ namespace HenryCorporation.Lavajato.Presentation
                 row["Total"] = reader.GetDecimal(1);
                 row["Produtos"] = reader.GetString(2);
                 row["Lavador"] = reader.GetString(3);
+                row["Desconto"] = reader.GetDecimal(4);
+                row["ValorUnitario"] = reader.GetDecimal(5);
+                row["Nome"] = reader.GetString(6);
+                row["Placa"] = reader.GetString(7);
+                row["Entrada"] = reader.GetDateTime(8);
+                row["Saida"] = reader.GetDateTime(9);
                 
                 table.Rows.Add(row);
             }
@@ -80,7 +86,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private static DataColumn[] SetUpColumns()
         {
-            var columns = new DataColumn[4];
+            var columns = new DataColumn[10];
 
             var OrdemServico = new DataColumn();
             OrdemServico.ColumnName = "OrdemServico";
@@ -97,6 +103,30 @@ namespace HenryCorporation.Lavajato.Presentation
             DataColumn Lavador = new DataColumn();
             Lavador.ColumnName = "Lavador";
             columns[3] = Lavador;
+
+            DataColumn Desconto = new DataColumn();
+            Desconto.ColumnName = "Desconto";
+            columns[4] = Desconto;
+
+            DataColumn ValorUnitario = new DataColumn();
+            ValorUnitario.ColumnName = "ValorUnitario";
+            columns[5] = ValorUnitario;
+
+            DataColumn Nome = new DataColumn();
+            Nome.ColumnName = "Nome";
+            columns[6] = Nome;
+
+            DataColumn Placa = new DataColumn();
+            Placa.ColumnName = "Placa";
+            columns[7] = Placa;
+
+            DataColumn Entrada = new DataColumn();
+            Entrada.ColumnName = "Entrada";
+            columns[8] = Entrada;
+
+            DataColumn Saida = new DataColumn();
+            Saida.ColumnName = "Saida";
+            columns[9] = Saida;
 
             return columns;
         }

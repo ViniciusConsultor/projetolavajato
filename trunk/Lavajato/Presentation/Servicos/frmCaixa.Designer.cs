@@ -35,6 +35,7 @@ namespace HenryCorporation.Lavajato.Presentation
             System.Windows.Forms.CheckBox acertoFuturo;
             this.grdServico = new System.Windows.Forms.DataGridView();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.txtTrocoDoServico = new System.Windows.Forms.TextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.desconto = new System.Windows.Forms.TextBox();
             this.label12 = new System.Windows.Forms.Label();
@@ -76,7 +77,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.label3 = new System.Windows.Forms.Label();
             this.cmbProduto = new System.Windows.Forms.ComboBox();
             this.quantidade = new System.Windows.Forms.TextBox();
-            this.txttroco = new System.Windows.Forms.TextBox();
+            this.btnSair = new System.Windows.Forms.Button();
             btnAlterarQuantidade = new System.Windows.Forms.Button();
             acertoFuturo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdServico)).BeginInit();
@@ -120,7 +121,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.txttroco);
+            this.groupBox1.Controls.Add(this.txtTrocoDoServico);
             this.groupBox1.Controls.Add(this.label13);
             this.groupBox1.Controls.Add(this.desconto);
             this.groupBox1.Controls.Add(this.label12);
@@ -135,6 +136,17 @@ namespace HenryCorporation.Lavajato.Presentation
             this.groupBox1.Size = new System.Drawing.Size(789, 83);
             this.groupBox1.TabIndex = 85;
             this.groupBox1.TabStop = false;
+            // 
+            // textBox1
+            // 
+            this.txtTrocoDoServico.Enabled = false;
+            this.txtTrocoDoServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txtTrocoDoServico.Location = new System.Drawing.Point(502, 44);
+            this.txtTrocoDoServico.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
+            this.txtTrocoDoServico.Multiline = true;
+            this.txtTrocoDoServico.Name = "textBox1";
+            this.txtTrocoDoServico.Size = new System.Drawing.Size(112, 33);
+            this.txtTrocoDoServico.TabIndex = 98;
             // 
             // label13
             // 
@@ -239,9 +251,9 @@ namespace HenryCorporation.Lavajato.Presentation
             // btnCancelarVenda
             // 
             this.btnCancelarVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarVenda.Location = new System.Drawing.Point(486, 579);
+            this.btnCancelarVenda.Location = new System.Drawing.Point(459, 579);
             this.btnCancelarVenda.Name = "btnCancelarVenda";
-            this.btnCancelarVenda.Size = new System.Drawing.Size(156, 40);
+            this.btnCancelarVenda.Size = new System.Drawing.Size(146, 40);
             this.btnCancelarVenda.TabIndex = 25;
             this.btnCancelarVenda.Text = "Cancelar Venda (F6)";
             this.btnCancelarVenda.UseVisualStyleBackColor = true;
@@ -263,7 +275,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnExcluir.Location = new System.Drawing.Point(330, 579);
             this.btnExcluir.Name = "btnExcluir";
-            this.btnExcluir.Size = new System.Drawing.Size(156, 40);
+            this.btnExcluir.Size = new System.Drawing.Size(129, 40);
             this.btnExcluir.TabIndex = 24;
             this.btnExcluir.Text = "Excluir Item (F5)";
             this.btnExcluir.UseVisualStyleBackColor = true;
@@ -600,15 +612,16 @@ namespace HenryCorporation.Lavajato.Presentation
             this.quantidade.Size = new System.Drawing.Size(56, 35);
             this.quantidade.TabIndex = 112;
             // 
-            // txttroco
+            // btnSair
             // 
-            this.txttroco.Enabled = false;
-            this.txttroco.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txttroco.Location = new System.Drawing.Point(502, 44);
-            this.txttroco.Multiline = true;
-            this.txttroco.Name = "txttroco";
-            this.txttroco.Size = new System.Drawing.Size(112, 33);
-            this.txttroco.TabIndex = 95;
+            this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnSair.Location = new System.Drawing.Point(713, 579);
+            this.btnSair.Name = "btnSair";
+            this.btnSair.Size = new System.Drawing.Size(75, 40);
+            this.btnSair.TabIndex = 113;
+            this.btnSair.Text = "Sair";
+            this.btnSair.UseVisualStyleBackColor = true;
+            this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
             // 
             // frmCaixa
             // 
@@ -616,6 +629,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(800, 631);
+            this.Controls.Add(this.btnSair);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(acertoFuturo);
@@ -698,6 +712,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ComboBox cmbProduto;
         private System.Windows.Forms.TextBox quantidade;
-        private System.Windows.Forms.TextBox txttroco;
+        private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.TextBox txtTrocoDoServico;
     }
 }

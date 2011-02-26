@@ -45,11 +45,14 @@ namespace HenryCorporation.Lavajato.Presentation
             contaPagar.Serie = serie.Text;
             contaPagar.Documento = documento.Text;
             contaPagar.DataDocomento = dataDocumento.Value;
-            contaPagar.Credor.ID = int.Parse(credor.SelectedValue.ToString());
+            var credorTemp = credor.SelectedValue == null ? "0" : credor.SelectedValue.ToString();
+            contaPagar.Credor.ID = int.Parse(credorTemp.ToString());
             contaPagar.DataVencimento = dataDocumento.Value;
             contaPagar.TipoDocumento = tipoDocumento.SelectedItem.ToString();
             contaPagar.Obs = observacao.Text;
             contaPagar.DataPagamento = dataPagamento.Value;
+            contaPagar.ValorPago = decimal.Parse(valorPago.Text);
+            contaPagar.ValorTitulo = decimal.Parse(valorTitulo.Text);
         }
 
         private void SetUpCampos()
