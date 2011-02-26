@@ -32,10 +32,10 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             return contaPagarDAO.Insert(contaPagar);
         }
 
-        public DataTable PesquisaPorDataETipo(string tipoPesquisa, string documento, DateTime data)
+        public DataTable GetAll()
         {
 
-            IList<ContaPagar> contasPagar = contaPagarDAO.PesquisaPorDataETipo(tipoPesquisa, documento, data);
+            IList<ContaPagar> contasPagar = contaPagarDAO.GetAll();
             DataTable dataTable = ContaPagarTabela.PesquisaPorDataETipo(contasPagar);
 
             return dataTable;
