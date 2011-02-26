@@ -202,5 +202,10 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             return " Usuário " + usuario.Nome;
         }
 
+        public static decimal ConverteParaDecimal(string str)
+        {
+            str = str.Trim();
+            return Convert.ToDecimal(str.Length > 0 ? str: "0");
+        }
     }
 }
