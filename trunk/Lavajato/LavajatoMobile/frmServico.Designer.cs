@@ -143,6 +143,7 @@
             this.Menu = this.mainMenu1;
             this.Name = "frmServico";
             this.Text = "Servico";
+            this.Load += new System.EventHandler(this.frmServico_Load);
             this.ResumeLayout(false);
 
         }

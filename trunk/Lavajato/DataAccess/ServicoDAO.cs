@@ -132,7 +132,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public Servico ByCliente(Cliente cliente)
         {
-            var query = sql + "Where [Delete] = 0 And [Cancelado] = 0 And ClienteID = " + cliente.ID;
+            var query = sql + "Where [Delete] = 0 And [Cancelado] = 0 And Finalizado = 0 And ClienteID = " + cliente.ID;
             var dataBaseHelper = new DataBaseHelper(query);
             return SetUpField(dataBaseHelper.Run(this.ConnectionString));
         }

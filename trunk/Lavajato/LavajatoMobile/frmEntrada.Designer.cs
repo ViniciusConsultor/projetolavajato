@@ -50,7 +50,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.btnCadastrarServicos = new System.Windows.Forms.Button();
             this.entrada = new System.Windows.Forms.DateTimePicker();
-            this.inputPanel1 = new Microsoft.WindowsCE.Forms.InputPanel(this.components);
+            this.teclado = new Microsoft.WindowsCE.Forms.InputPanel(this.components);
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -64,7 +64,7 @@
             // 
             // label1
             // 
-            this.label1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.label1.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(42, 13);
@@ -94,10 +94,10 @@
             // 
             // label2
             // 
-            this.label2.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.label2.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.label2.Location = new System.Drawing.Point(123, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(42, 13);
+            this.label2.Size = new System.Drawing.Size(57, 13);
             this.label2.Text = "Veiculo:";
             // 
             // nome
@@ -113,10 +113,10 @@
             // 
             // label3
             // 
-            this.label3.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.label3.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.label3.Location = new System.Drawing.Point(3, 78);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(39, 13);
+            this.label3.Size = new System.Drawing.Size(42, 13);
             this.label3.Text = "Nome:";
             // 
             // cor
@@ -132,7 +132,7 @@
             // 
             // label4
             // 
-            this.label4.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.label4.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.label4.Location = new System.Drawing.Point(3, 39);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(42, 13);
@@ -140,7 +140,7 @@
             // 
             // label6
             // 
-            this.label6.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.label6.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.label6.Location = new System.Drawing.Point(146, 117);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(42, 13);
@@ -148,6 +148,7 @@
             // 
             // btnCadastraCliente
             // 
+            this.btnCadastraCliente.BackColor = System.Drawing.Color.Lime;
             this.btnCadastraCliente.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.btnCadastraCliente.Location = new System.Drawing.Point(153, 91);
             this.btnCadastraCliente.Name = "btnCadastraCliente";
@@ -160,16 +161,16 @@
             // 
             this.telefone.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
             this.telefone.Location = new System.Drawing.Point(123, 52);
+            this.telefone.MaxLength = 13;
             this.telefone.Name = "telefone";
             this.telefone.Size = new System.Drawing.Size(117, 26);
             this.telefone.TabIndex = 4;
-            this.telefone.TextChanged += new System.EventHandler(this.telefone_TextChanged);
             this.telefone.GotFocus += new System.EventHandler(this.telefone_GotFocus);
             this.telefone.LostFocus += new System.EventHandler(this.telefone_LostFocus);
             // 
             // label7
             // 
-            this.label7.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.label7.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.label7.Location = new System.Drawing.Point(123, 39);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(57, 13);
@@ -177,28 +178,28 @@
             // 
             // hora
             // 
-            this.hora.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
+            this.hora.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
             this.hora.Location = new System.Drawing.Point(147, 130);
             this.hora.Name = "hora";
-            this.hora.Size = new System.Drawing.Size(41, 27);
+            this.hora.Size = new System.Drawing.Size(41, 28);
             this.hora.TabIndex = 6;
             this.hora.LostFocus += new System.EventHandler(this.hora_LostFocus);
             this.hora.GotFocus += new System.EventHandler(this.hora_GotFocus);
             // 
             // label5
             // 
-            this.label5.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Regular);
+            this.label5.Font = new System.Drawing.Font("Tahoma", 8F, System.Drawing.FontStyle.Bold);
             this.label5.Location = new System.Drawing.Point(3, 117);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(42, 13);
+            this.label5.Size = new System.Drawing.Size(56, 13);
             this.label5.Text = "Entrada:";
             // 
             // min
             // 
-            this.min.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
+            this.min.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
             this.min.Location = new System.Drawing.Point(188, 130);
             this.min.Name = "min";
-            this.min.Size = new System.Drawing.Size(52, 27);
+            this.min.Size = new System.Drawing.Size(52, 28);
             this.min.TabIndex = 7;
             this.min.LostFocus += new System.EventHandler(this.min_LostFocus);
             this.min.GotFocus += new System.EventHandler(this.min_GotFocus);
@@ -213,6 +214,7 @@
             // 
             // btnCadastrarServicos
             // 
+            this.btnCadastrarServicos.BackColor = System.Drawing.Color.Lime;
             this.btnCadastrarServicos.Location = new System.Drawing.Point(0, 157);
             this.btnCadastrarServicos.Name = "btnCadastrarServicos";
             this.btnCadastrarServicos.Size = new System.Drawing.Size(240, 23);
@@ -225,7 +227,7 @@
             this.entrada.CustomFormat = "hh:mm";
             this.entrada.Enabled = false;
             this.entrada.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
-            this.entrada.Location = new System.Drawing.Point(0, 202);
+            this.entrada.Location = new System.Drawing.Point(93, 241);
             this.entrada.Name = "entrada";
             this.entrada.Size = new System.Drawing.Size(147, 27);
             this.entrada.TabIndex = 6;
@@ -258,6 +260,7 @@
             this.Controls.Add(this.label2);
             this.Controls.Add(this.placa);
             this.Controls.Add(this.label1);
+            this.Font = new System.Drawing.Font("Tahoma", 95F, System.Drawing.FontStyle.Regular);
             this.Menu = this.mainMenu1;
             this.Name = "frmEntrada";
             this.Text = "Entrada";
@@ -286,7 +289,7 @@
         private System.Windows.Forms.Button btnCadastrarServicos;
         private System.Windows.Forms.MenuItem menuItem2;
         private System.Windows.Forms.DateTimePicker entrada;
-        private Microsoft.WindowsCE.Forms.InputPanel inputPanel1;
+        private Microsoft.WindowsCE.Forms.InputPanel teclado;
 
     }
 }

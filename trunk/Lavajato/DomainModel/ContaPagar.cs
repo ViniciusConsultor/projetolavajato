@@ -20,17 +20,7 @@ namespace HenryCorporation.Lavajato.DomainModel
         public DateTime AtrasoDias{ get; set; }
         public decimal ValorPago{ get; set; }
         public decimal SaldoAPagar { get; set; }
-
-        public enum TipoPesquisa 
-        { 
-            VencendoHoje,
-            DataVencimento,
-            MostrarTodos,
-            Pagos,
-            Documento,
-            RazaoSocial,
-            DataDocumento,
-        }
+        public decimal ValorTitulo { get; set; }
 
         public ContaPagar()
         {
