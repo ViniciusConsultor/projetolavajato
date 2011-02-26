@@ -12,12 +12,13 @@ namespace LavajatoMobile
 {
     public partial class frmServico : Form
     {
-        private WSLavajato.Cliente cliente = new LavajatoMobile.WSLavajato.Cliente();
-        private WSLavajato.Servico servico = new LavajatoMobile.WSLavajato.Servico();
+        private WSLavajato.Cliente _cliente = new LavajatoMobile.WSLavajato.Cliente();
+        private WSLavajato.Servico _servico = new LavajatoMobile.WSLavajato.Servico();
         private WSLavajato.ServicoItem servicoItem = new LavajatoMobile.WSLavajato.ServicoItem();
-        private WSLavajato.Service wsService = new LavajatoMobile.WSLavajato.Service();
-        private DataSet dataSet = new DataSet();
-        private DataTable table = new DataTable();
+        private WSLavajato.WebServiceLavajato wsService = new LavajatoMobile.WSLavajato.WebServiceLavajato();
+
+        private DataSet dataSetItens = new DataSet();
+        private DataTable dataTable = new DataTable();       
 
         public frmServico()
         {
@@ -25,64 +26,141 @@ namespace LavajatoMobile
             CarregaProdutos();
         }
 
-        private DateTime dataEntrada;
-        private DateTime dataSaida;
-        public frmServico(Cliente cliente, DateTime entrada, DateTime saida)
+        private DateTime _dataEntrada;
+        private DateTime _dataSaida;
+
+        public frmServico(Cliente cliente, DateTime saida)
         {
+             InitializeComponent();
+             CarregaProdutos();
+             SetUpDataSet();
 
-            InitializeComponent();
-            this.cliente = cliente;
-            dataEntrada = entrada;
-            dataSaida = saida;
+            _cliente = cliente;
+            _dataSaida = saida;
+            
+            _servico = ServicoCarrega();
 
-            SetUpDataSet();
-            CarregaProdutos();
-            SetUpServico(this.cliente);
-            ExistePedidos(this.servico);
-            //CarregaItensDoServico(this.servico);
-        }
+            ImprimeNumeroOrdemServico();
+            ImprimeMensagemParaCarroJaLavado();
 
-        private void ExistePedidos(Servico servico)
-        {
-            if (this.servico.ID > 0 && this.servico.ServicoItem.Count() > 0)
-                MessageBox.Show("Ordem de serviço já emitida" + servico.OrdemServico);
-            else
-                MessageBox.Show("Escolha os produtos para adicionar o serviço", "Atenção");
+            CarregaItens(_servico);
+
         }
 
         private void SetUpDataSet()
         {
-            dataSet.Tables.Add(table);
-            dataSet.Tables[0].Columns.AddRange(CarregaColunas());
+            dataTable.Columns.AddRange(ServicoColunas.CarregaColunasServico());
+            dataSetItens.Tables.Add(dataTable);
+        }
+
+        private void frmServico_Load(object sender, EventArgs e)
+        {
+        }
+
+        private void CarregaItens(Servico servicoParaCarregarItens)
+        {
+            if (grdServico == null) return;
+
+            grdServico.DataSource = CarregaItensNoGrid(servicoParaCarregarItens);
+            grdServico.
+        }
+
+        private DataTable CarregaItensNoGrid(Servico servicoParaSerCarregado)
+        {
+
+            if (_servico == null || _servico.ServicoItem == null)
+                return new DataTable();
+
+            foreach (var si in servicoParaSerCarregado.ServicoItem)
+            {
+                var row = dataTable.NewRow();
+                row["ID"] = si.ID;
+                row["Descricao"] = si.Produto.Descricao;
+                row["Quantidade"] = si.Quantidade;
+                row["Valor"] = si.Produto.ValorUnitario.ToString("C");
+                row["Total"] = (si.Produto.ValorUnitario * si.Quantidade).ToString("C");
+                dataTable.Rows.Add(row);
+            }
+            return dataTable;
+        }
+
+        private Servico ServicoCarrega()
+        {
+            Servico servico = wsService.ByCliente(_cliente);
+            if (servico.Finalizado == 0)
+                return servico;
+            else
+                return new Servico();
+        }
+
+        private void ImprimeNumeroOrdemServico()
+        {
+            if (_servico.Finalizado == 0 && _servico.ID > 0)
+                MessageBox.Show("Número da Ordem Serviço: " + this._servico.OrdemServico, "Atenção");
+        }
+
+        private void ImprimeMensagemParaCarroJaLavado()
+        {
+            if (this._servico.Lavado > 0)
+                MessageBox.Show("Carro já lavado", "Atenção");
+        }
+
+        private void LimpaGrid()
+        {
+            dataTable = new DataTable();
+            dataSetItens = new DataSet();
+            dataTable.Columns.AddRange(ServicoColunas.CarregaColunasServico());
+            dataSetItens.Tables.Add(dataTable);
+            grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
+        }
+
+        private void LimpaGrid(string placaPesquisada)
+        {
+            if (Equals(_cliente.Placa, placaPesquisada))
+            {
+                dataTable = new DataTable();
+                dataSetItens = new DataSet();
+                dataTable.Columns.AddRange(ServicoColunas.CarregaColunasServico());
+                dataSetItens.Tables.Add(dataTable);
+                grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
+            }
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (this.servico.ID == 0)
+            if (this._servico.ID == 0)
             {
                 MessageBox.Show("Nenhum item encontrado!", "Atenção");
                 return;
             }
 
-            DialogResult res = MessageBox.Show("Deseja realmente apagar o item de pedido", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-            if (res == DialogResult.No)
+            DialogResult res = MessageBox.Show("Deseja realmente apagar o item de pedido", "Atenção", 
+                MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+            if (res == DialogResult.Yes)
             {
-                return;
+                wsService.ServicoItemDelete(this.servicoItem);
+                MessageBox.Show("Item deletado com sucesso!", "Atenção");
+                CarregaItensDoServico();
+                
             }
-
-            wsService.ServicoItemDelete(this.servicoItem);
-            MessageBox.Show("Item deletado com sucesso!", "Atenção");
-            CarregaItensDoServico();
-            CarregaItensDoServico(this.servico);
+                       
         }
 
         private void grdServico_Click(object sender, EventArgs e)
         {
-            if (grdServico.CurrentRowIndex <= -1)
+            int id = 0;
+            try
+            {
+                if (grdServico.CurrentRowIndex <= -1)
                 return;
 
-            int id = int.Parse(wsService.ServicoCriaGrid(this.servico).Rows[grdServico.CurrentRowIndex]["ID"].ToString());
+            id = int.Parse(ServicoBL.CriaGrid(_servico).Rows[grdServico.CurrentRowIndex]["ID"].ToString());
             this.servicoItem.ID = id;
+            }
+            catch (IndexOutOfRangeException)
+            {
+                id = 0;    
+            }
         }
 
         private void ItemDoServicoSalva(Servico servico)
@@ -94,260 +172,174 @@ namespace LavajatoMobile
             wsService.ServicoItemAdd(servicoItem);
         }
 
-        private void ItemDoServicoSalva2(Servico servico)
-        {
-            Produto produto = ((Produto)cmdServico.SelectedItem); 
-            ServicoItem servicoItem = new ServicoItem();
-            servicoItem.Produto = produto;
-            servicoItem.Quantidade = qtde.TextLength == 0 ? 1 : Convert.ToDecimal(qtde.Text);
-            servicoItem.Servico = servico;
-            CriaGrid(servicoItem);
-        }
-
         private void btnConcluir_Click(object sender, EventArgs e)
         {
-            foreach (DataRow row in this.dataSet.Tables[0].Rows)
+            if (dataSetItens.Tables[0].Rows.Count > 0)
             {
-                ServicoItem si = new ServicoItem();
-                si.Produto = new Produto();
-                si.Servico = new Servico();
-                si.Produto.ID = int.Parse(row[0].ToString());
-                si.Servico.ID = int.Parse(row[1].ToString());
-                si.Quantidade = int.Parse(row[3].ToString());
-                wsService.ServicoItemAdd(si);
-               
+                _servico = ServicoSalva();
+                var itens = ItensParaInsercao(_servico);
+                SalvaItens(itens);
+                //IImprimir impressao = new ImprimirComprovantePagamento(this.servico);
+                //LiberaBotaoParaExclusaoDeItens();
+                MessageBox.Show("Número da O. S.: " + this._servico.OrdemServico, "Ordem Serviço");
             }
-           
-            this.servico = wsService.ServicoByID(this.servico);
-            int impressao = wsService.EmiteRecibo(this.servico, frmAvarias.Avarias); 
-            if (impressao == 0)
-                MessageBox.Show("Erro ao imprimir, favor imprimir pelo Desktop", "Atenção");
             else
-                MessageBox.Show("Ticket Impressoo", "Atenção");
+            {
+                MessageBox.Show("Nenhum serviço adicionado a O.S. ");
+            }
 
-            DialogResult result = MessageBox.Show("Deseja imprimir outro ticket ?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-            if (result == DialogResult.Yes)
-                impressao = wsService.EmiteRecibo(this.servico, frmAvarias.Avarias);
-            
             this.Close();
+        }
+
+        //Caso o item já exista no bd não será necessario inserilo novamente
+        //criar um novo lista somente com os existentes.
+        //criar metodo somente para inserção passando o list
+        private List<ServicoItem> ItensParaInsercao(Servico servico)
+        {
+            IList<int> ids = new List<int>();
+            foreach (DataRow row in dataSetItens.Tables[0].Rows)
+            {
+                var ID = int.Parse(row["ID"].ToString());
+                foreach (ServicoItem si in servico.ServicoItem)
+                {
+                    if (ID == si.ID)
+                        ids.Add(ID);
+                }
+            }
+
+            var servicoItems = new List<ServicoItem>();
+            var idpi = new List<int>();
+            foreach (DataRow row in dataSetItens.Tables[0].Rows)
+            {
+                var servicoItemID = int.Parse(row["ID"].ToString());
+                if (!ids.Contains(servicoItemID))
+                {
+                    var item = new ServicoItem();
+                    var produto = new Produto() { ID = int.Parse(row["ID"].ToString()) };
+                    item.Produto = wsService.ProdutoByID(produto);
+                    item.Quantidade = int.Parse(row["Quantidade"].ToString());
+                    item.Servico = servico;
+                    servicoItems.Add(item);
+                }
+            }
+
+            return servicoItems;
+        }
+
+        private void SalvaItens(List<ServicoItem> servicoItens)
+        {
+            foreach (var item in servicoItens)
+                wsService.ServicoItemAdd(item);
         }
 
         private void btnAdicionaProduto_Click(object sender, EventArgs e)
         {
-            if (this.cliente.ID == 0)
+            if (_cliente.ID == 0)
             {
-                MessageBox.Show("Nenhum cliente encontrado!", "Atenção");
+                MessageBox.Show("Favor retornar e escolher um cliente valido", "Atenção!");
                 return;
             }
 
-            if (this.servico.ID == 0)
-            {
-                this.servico = ServicoSalva();
-                ItemDoServicoSalva2(this.servico);
-            }
-            else
-            {
-                ItemDoServicoSalva2(this.servico);
-            }
-
-            // CarregaItensDoServico2();
-            CarregaItensDoServico2(this.servico);
-        }
-      
-        private void CarregaItensDoServico(Servico servico)
-        {
-            table = wsService.ServicoCriaGrid(this.servico);
-            grdServico.DataSource = table;
-
-            DataGridTableStyle ts1 = new DataGridTableStyle();
-            ts1.MappingName = table.TableName;
-
-            DataGridColumnStyle id = new DataGridTextBoxColumn();
-            id.MappingName = "ID";
-            id.Width = -1;
-            ts1.GridColumnStyles.Add(id);
-
-            DataGridColumnStyle desc = new DataGridTextBoxColumn();
-            desc.MappingName = "Descricao";
-            desc.HeaderText = "Desc.";
-            desc.Width = 70;
-            ts1.GridColumnStyles.Add(desc);
-
-            DataGridColumnStyle qtde = new DataGridTextBoxColumn();
-            qtde.MappingName = "Quantidade";
-            qtde.HeaderText = "Qt";
-            qtde.Width = 22;
-            ts1.GridColumnStyles.Add(qtde);
-
-            DataGridColumnStyle val = new DataGridTextBoxColumn();
-            val.MappingName = "Valor";
-            val.HeaderText = "Valor";
-            val.Width = 56;
-            ts1.GridColumnStyles.Add(val);
-
-            DataGridColumnStyle tot = new DataGridTextBoxColumn();
-            tot.MappingName = "Total";
-            tot.HeaderText = "Total";
-            tot.Width = 56;
-            ts1.GridColumnStyles.Add(tot);
-
-            grdServico.TableStyles.Clear();
-            grdServico.TableStyles.Add(ts1);
-            SomaTotal();
+            AdicionaItem();
         }
 
-        public void CriaGrid(ServicoItem servicoItem)
+        private void AdicionaItem()
         {
-            DataRow row = this.dataSet.Tables[0].NewRow();
-            //row["ID"] = servicoItem.ID;
-            row["ProdutoID"] = servicoItem.Produto.ID;
-            row["ServicoID"] = servicoItem.Servico.ID;
-            row["Descricao"] = servicoItem.Produto.Descricao;
-            row["Quantidade"] = servicoItem.Quantidade;
-            row["Valor"] = servicoItem.Produto.ValorUnitario.ToString("C");
-            row["Total"] = (servicoItem.Produto.ValorUnitario * servicoItem.Quantidade).ToString("C");
-            this.dataSet.Tables[0].Rows.Add(row);
+            Produto produto = ((Produto)cmdServico.SelectedValue);   
+            produto = wsService.ProdutoByID(produto);
+            dataSetItens.Tables[0].Rows.Add(AdicionaLinhaDeItemAoGrid(produto));
+            grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
+
         }
 
-        private DataColumn[] CarregaColunas()
+        private DataRow AdicionaLinhaDeItemAoGrid(Produto item)
         {
-            DataColumn[] columns = new DataColumn[6];
+            var quantidadeDeItens = string.IsNullOrEmpty(qtde.Text) ? 1 : int.Parse(qtde.Text);
 
-            // Create new DataColumn, set DataType, ColumnName and add to DataTable.    
-            //DataColumn ID = new DataColumn();
-            //ID.ColumnName = "ID";
-            //columns[0] = ID;
+            var row = dataSetItens.Tables[0].NewRow();
+            row["ID"] = item.ID;
+            row["Descricao"] = item.Descricao;
+            row["Quantidade"] = quantidadeDeItens;
+            row["Valor"] = item.ValorUnitario.ToString("C");
+            row["Total"] = (item.ValorUnitario * quantidadeDeItens).ToString("C");
 
-            DataColumn produtoID = new DataColumn();
-            produtoID.ColumnName = "ProdutoID";
-            columns[0] = produtoID;
-
-            DataColumn servicoid = new DataColumn();
-            servicoid.ColumnName = "ServicoID";
-            columns[1] = servicoid;
-
-
-            DataColumn Descricao = new DataColumn();
-            Descricao.ColumnName = "Descricao";
-            columns[2] = Descricao;
-
-            DataColumn Quantidade = new DataColumn();
-            Quantidade.ColumnName = "Quantidade";
-            columns[3] = Quantidade;
-
-            DataColumn Valor = new DataColumn();
-            Valor.ColumnName = "Valor";
-            columns[4] = Valor;
-
-            DataColumn Total = new DataColumn();
-            Total.ColumnName = "Total";
-            columns[5] = Total;
-            return columns;
+            return row;
         }
 
         private Servico ServicoSalva()
         {
-            Servico servico = new Servico();
-            servico.Cliente = this.cliente;
-            servico.Total = 0;
-            servico.SubTotal = 0;
-            servico.Desconto = 0;
-            servico.Entrada =this.dataEntrada;
-            servico.Saida = this.dataSaida;
-            servico.FormaPagamento = new FormaPagamento() { ID = 1 };
-            servico.Usuario = new Usuario() { ID = 26 };
-
-            servico.Cancelado = 0;
-            servico.Delete = 0;
-            servico.Finalizado = 0;
-            servico.Lavado = 0;
-
-            return wsService.ServicoAdd(servico);
+            if (!ServicoExiste(_servico))
+                return wsService.ServicoAdd(NovoServico());
+            else
+            {
+                _servico.Total = SomaTotal();
+                wsService.ServicoUpdate(_servico);
+                return this._servico;
+            }
         }
 
-
-        private void CarregaItensDoServico2(Servico servico)
+        private Servico NovoServico()
         {
-            grdServico.DataSource = this.dataSet.Tables[0].DefaultView;
+            var servicoSalva = new Servico();
+            servicoSalva.Cliente = this._cliente;
+            servicoSalva.Total = SomaTotal();
+            servicoSalva.SubTotal = 0;
+            servicoSalva.Desconto = 0;
+            servicoSalva.Entrada = DateTime.Now;
 
-            DataGridTableStyle ts1 = new DataGridTableStyle();
-            ts1.MappingName = this.dataSet.Tables[0].TableName;
+            servicoSalva.Saida = _dataSaida;
 
-            //DataGridColumnStyle id = new DataGridTextBoxColumn();
-            //id.MappingName = "ID";
-            //id.Width = -1;
-            //ts1.GridColumnStyles.Add(id);
+            servicoSalva.FormaPagamento = new FormaPagamento();
+            servicoSalva.FormaPagamento.ID = 1;
 
-            DataGridColumnStyle produtoid = new DataGridTextBoxColumn();
-            produtoid.MappingName = "ProdutoID";
-            produtoid.Width = -1;
-            ts1.GridColumnStyles.Add(produtoid);
+            servicoSalva.Usuario = new Usuario();
+            servicoSalva.Usuario.ID = 26;
 
-            DataGridColumnStyle servicoid = new DataGridTextBoxColumn();
-            servicoid.MappingName = "ServicoID";
-            servicoid.Width = -1;
-            ts1.GridColumnStyles.Add(servicoid);
+            servicoSalva.Cancelado = 0;
+            servicoSalva.Delete = 0;
+            servicoSalva.Finalizado = 0;
+            servicoSalva.Lavado = 0;
 
-
-            DataGridColumnStyle desc = new DataGridTextBoxColumn();
-            desc.MappingName = "Descricao";
-            desc.HeaderText = "Desc.";
-            desc.Width = 70;
-            ts1.GridColumnStyles.Add(desc);
-
-            DataGridColumnStyle qtde = new DataGridTextBoxColumn();
-            qtde.MappingName = "Quantidade";
-            qtde.HeaderText = "Qt";
-            qtde.Width = 22;
-            ts1.GridColumnStyles.Add(qtde);
-
-            DataGridColumnStyle val = new DataGridTextBoxColumn();
-            val.MappingName = "Valor";
-            val.HeaderText = "Valor";
-            val.Width = 56;
-            ts1.GridColumnStyles.Add(val);
-
-            DataGridColumnStyle tot = new DataGridTextBoxColumn();
-            tot.MappingName = "Total";
-            tot.HeaderText = "Total";
-            tot.Width = 56;
-            ts1.GridColumnStyles.Add(tot);
-
-            grdServico.TableStyles.Clear();
-            grdServico.TableStyles.Add(ts1);
-            SomaTotal();
+            return servicoSalva;
         }
 
-        private void SetUpServico(Cliente cliente)
+        private decimal SomaTotal()
         {
-            this.servico = wsService.ServicoByCliente(cliente);
+            decimal total = 0;
+            foreach (DataRow item in dataSetItens.Tables[0].Rows)
+                total += decimal.Parse(item["Total"].ToString().Replace("$", "").Replace("R$", "").Replace(",", ".").Trim());
+
+            lblTotal.Text = "R$ " + total.ToString();
+            return total;
+        }
+
+        private bool ServicoExiste(Servico servico)
+        {
+            return servico.ID > 0;
         }
 
         private void CarregaItensDoServico()
         {
-            this.servico = wsService.ServicoByID(this.servico);
-        }      
-
-        private void SomaTotal()
-        {
-            decimal total = 0;
-            foreach (DataRow item in this.dataSet.Tables[0].Rows)
-                total += decimal.Parse(item["Total"].ToString().Replace("R$", "").Replace("$", "").Replace(",", ".").Trim());
-
-            lblTotal.Text = "R$ " + total.ToString();
-        }
-
-        private void CarregaProdutos()
-        {
-            cmdServico.DataSource = wsService.ProdutoTipo(2);
-            cmdServico.DisplayMember = "Descricao";
-            cmdServico.ValueMember = "ID";
+            _servico = wsService.ServicoByID(_servico);
         }
 
         private void btnAvarias_Click(object sender, EventArgs e)
         {
             frmAvarias frmAvarias = new frmAvarias();
             frmAvarias.ShowDialog();
+        }
+
+
+        private void CarregaProdutos()
+        {
+            BindingSource ds = new BindingSource();
+            ds.DataSource = wsService.ProdutoTipo(2);
+
+            cmdServico.Items.Clear();
+            cmdServico.DisplayMember = "ID";
+            cmdServico.ValueMember = "ID";
+            cmdServico.DataSource = ds;
+            
         }
     }
 }

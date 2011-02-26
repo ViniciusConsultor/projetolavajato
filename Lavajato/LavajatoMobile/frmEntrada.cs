@@ -13,8 +13,8 @@ namespace LavajatoMobile
     public partial class frmEntrada : Form
     {
 
-        private WSLavajato.Cliente cliente = new LavajatoMobile.WSLavajato.Cliente();
-        private WSLavajato.Service wsService = new LavajatoMobile.WSLavajato.Service();
+        private WSLavajato.Cliente _cliente = new LavajatoMobile.WSLavajato.Cliente();
+        private WSLavajato.WebServiceLavajato wsService = new LavajatoMobile.WSLavajato.WebServiceLavajato();
         
         public frmEntrada()
         {
@@ -28,58 +28,71 @@ namespace LavajatoMobile
 
         private void placa_LostFocus(object sender, EventArgs e)
         {
-            if (placa.TextLength == 0)
+            if (!PlacaEValida())
             {
                 placa.BackColor = Color.White;
-                inputPanel1.Enabled = true;
+                btnCadastraCliente.Text = "Cad. Cliente";
+                LimpaCampos();
                 return;
             }
 
-            if (placa.TextLength > 8)
-            {
-                MessageBox.Show("Placa deve conter 7 digitos", "Atenção");
-                inputPanel1.Enabled = true;
-                return;
-            }
-
-            this.cliente.Placa = placa.Text;
-            this.cliente = wsService.ClienteByPlaca(this.cliente);
+            _cliente.Placa = placa.Text;
+            _cliente = wsService.ClienteByPlaca(_cliente);
             
-            if (this.cliente.ID == 0)
+            if (_cliente.ID == 0)
             {
                 string placaTemp = placa.Text;
                 LimpaCampos();
-                DialogResult dialogResult = MessageBox.Show("Cliente não Cadastrado, deseja cadastrar?", "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                
+                DialogResult dialogResult = MessageBox.Show("Cliente não Cadastrado, deseja cadastrar?",
+                    "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 if (dialogResult == DialogResult.Yes)
                 {
                     placa.BackColor = Color.White;
                     placa.Text = placaTemp;
                     btnCadastraCliente.Text = "Cad. Cliente";
-                    inputPanel1.Enabled = true;
+                    teclado.Enabled = true;
                     return;
                 }
                 else
                 {
                     placa.BackColor = Color.Yellow;
                     placa.Focus();
-                    inputPanel1.Enabled = true;
+                    teclado.Enabled = true;
                 }
 
                 placa.BackColor = Color.White;
             }
             else 
             {
-                CarregaCliente(this.cliente);
+                CarregaCliente(this._cliente);
                 btnCadastraCliente.Text = "Alt. Cliente";
             }
 
             placa.BackColor = Color.White;
-            inputPanel1.Enabled = false;
+            teclado.Enabled = false;
+        }
+
+        private bool PlacaEValida()
+        {
+            if (placa.TextLength == 0)
+            {
+                teclado.Enabled = true;
+                return false;
+            }
+
+            if (placa.TextLength > 8)
+            {
+                MessageBox.Show("Placa deve conter 7 digitos", "Atenção");
+                teclado.Enabled = true;
+                return false;
+            }
+            return true;
         }
 
         private void btnCadastraCliente_Click(object sender, EventArgs e)
         {
-            if (this.cliente.ID == 0)
+            if (this._cliente.ID == 0)
             {
                 SetUpFieldsCliente();
                 ClienteInsert();
@@ -98,13 +111,40 @@ namespace LavajatoMobile
 
         private void btnCadastrarServicos_Click(object sender, EventArgs e)
         {
-            DateTime saida = DateTime.Now.AddHours(double.Parse(hora.SelectedItem.ToString())).AddMinutes(double.Parse(min.SelectedItem.ToString()));
-            frmServico frmServico = new frmServico(this.cliente, DateTime.Now, saida);
+            DateTime horaSaida;
+            if (VerificaHora() && VerificaMinuto())
+            {
+                MessageBox.Show("Favor inserir dada e hora de saida do veículo", "Atenção!");
+                return;
+            }
+
+            horaSaida = SetHoraEMinutoDeSaidaDoCarro();       
+
+            frmServico frmServico = new frmServico(_cliente, horaSaida);
             frmServico.ShowDialog();
             LimpaCampos();
             placa.BackColor = Color.Yellow;
             placa.Focus();
             btnCadastraCliente.Text = "Cad. Cliente";
+        }
+
+        private DateTime SetHoraEMinutoDeSaidaDoCarro()
+        {
+            var h = (hora.SelectedItem == null ? "0" : hora.SelectedItem.ToString());
+            var m = (min.SelectedItem == null ? "0" : min.SelectedItem.ToString());
+            return  DateTime.Now
+                .AddHours(double.Parse(h))
+                .AddMinutes(double.Parse(m));
+        }
+
+        private bool VerificaHora()
+        {
+            return ((hora.SelectedIndex == -1));
+        }
+
+        private bool VerificaMinuto()
+        {
+            return  ((min.SelectedIndex == -1));
         }
 
         private void placa_TextChanged(object sender, EventArgs e)
@@ -135,29 +175,10 @@ namespace LavajatoMobile
             placa.SelectionStart = placa.TextLength;
         }
 
-        private void telefone_TextChanged(object sender, EventArgs e)
-        {
-            string telefoneTemp = telefone.Text;
-            if (telefoneTemp == "(  )    -")
-            {
-                telefone.Text = "";
-                return;
-            }
-
-            if (telefoneTemp.Length == 10)
-            {
-                string ddd = "(" + telefoneTemp.Substring(0, 2) + ")";
-                string inicio = telefoneTemp.Substring(2, 4) + "-";
-                string numero = telefoneTemp.Substring(6, 4);
-                telefone.Text = ddd + inicio + numero;
-                telefone.SelectionStart = telefoneTemp.Length;
-            }
-        }
-
         private void btnLimpar_Click(object sender, EventArgs e)
         {
 
-            this.cliente = new LavajatoMobile.WSLavajato.Cliente();
+            this._cliente = new LavajatoMobile.WSLavajato.Cliente();
             placa.Text = "";
             veiculo.Text = "";
             telefone.Text = "";
@@ -171,7 +192,7 @@ namespace LavajatoMobile
 
         private void ClienteUpdate()
         {
-            wsService.ClienteUpdate(cliente);
+            wsService.ClienteUpdate(_cliente);
         }
 
         private DateTime SetUpSaidaData()
@@ -182,30 +203,30 @@ namespace LavajatoMobile
 
         private void ClienteInsert()
         {
-            this.cliente = wsService.ClienteAdd(this.cliente);
+            this._cliente = wsService.ClienteAdd(this._cliente);
         }
 
         private void SetUpFieldsCliente()
         {
-            this.cliente.Placa = placa.Text;
-            this.cliente.Veiculo = veiculo.Text;
-            this.cliente.Telefone = telefone.Text;
-            this.cliente.Nome = nome.Text;
-            this.cliente.Cor = cor.Text;
+            this._cliente.Placa = placa.Text;
+            this._cliente.Veiculo = veiculo.Text;
+            this._cliente.Telefone = telefone.Text;
+            this._cliente.Nome = nome.Text;
+            this._cliente.Cor = cor.Text;
         }
 
         private void CarregaCliente(Cliente cliente)
         {
-            placa.Text = this.cliente.Placa;
-            veiculo.Text = this.cliente.Veiculo;
-            telefone.Text = this.cliente.Telefone;
-            nome.Text = this.cliente.Nome;
-            cor.Text = this.cliente.Cor;
+            placa.Text = this._cliente.Placa;
+            veiculo.Text = this._cliente.Veiculo;
+            telefone.Text = this._cliente.Telefone;
+            nome.Text = this._cliente.Nome;
+            cor.Text = this._cliente.Cor;
         }
 
         private Cliente ProcuraCliente(Cliente cliente)
         {
-            return wsService.ClienteByPlaca(this.cliente);
+            return wsService.ClienteByPlaca(this._cliente);
         }
         
         private void CarregaHora()
@@ -216,13 +237,11 @@ namespace LavajatoMobile
             foreach (var item in Configuracao.CarregaMinuto())
                 min.Items.Add(item);
 
-            hora.SelectedIndex = 0;
-            min.SelectedIndex = 0;
         }
 
         private void LimpaCampos()
         {
-            this.cliente = new LavajatoMobile.WSLavajato.Cliente();
+            this._cliente = new LavajatoMobile.WSLavajato.Cliente();
             veiculo.Text = "";
             telefone.Text = "";
             nome.Text = "";
@@ -237,60 +256,70 @@ namespace LavajatoMobile
         private void veiculo_GotFocus(object sender, EventArgs e)
         {
             veiculo.BackColor = Color.Yellow;
-            inputPanel1.Enabled = true;
+            teclado.Enabled = true;
         }
 
         private void placa_GotFocus(object sender, EventArgs e)
         {
             placa.BackColor = Color.Yellow;
-            inputPanel1.Enabled = true;
+            teclado.Enabled = true;
         }
 
         private void veiculo_LostFocus(object sender, EventArgs e)
         {
             veiculo.BackColor = Color.White;
-            inputPanel1.Enabled = false;
+            teclado.Enabled = false;
         }
 
         private void cor_GotFocus(object sender, EventArgs e)
         {
             cor.BackColor = Color.Yellow;
-            inputPanel1.Enabled = true;
+            teclado.Enabled = true;
         }
 
         private void cor_LostFocus(object sender, EventArgs e)
         {
             cor.BackColor = Color.White;
-            inputPanel1.Enabled = true;
+            teclado.Enabled = true;
         }
 
         private void nome_GotFocus(object sender, EventArgs e)
         {
             nome.BackColor = Color.Yellow;
-            inputPanel1.Enabled = true;
+            teclado.Enabled = true;
         }
 
         private void nome_LostFocus(object sender, EventArgs e)
         {
             nome.BackColor = Color.White;
-            inputPanel1.Enabled = false;
+            teclado.Enabled = false;
         }
 
         private void telefone_GotFocus(object sender, EventArgs e)
         {
             telefone.BackColor = Color.Yellow;
-            inputPanel1.Enabled = true;
+            teclado.Enabled = true;
         }
 
         private void telefone_LostFocus(object sender, EventArgs e)
         {
+            string tel = telefone.Text;
             if (telefone.TextLength < 10)
             {
-                MessageBox.Show("Telefone deve conter DDD + Número. \n Exemplo 3135161163");
-                inputPanel1.Enabled = true;
+                MessageBox.Show("Telefone deve conter DDD + Número. \n Exemplo 3135161163","Atenção!");
+                teclado.Enabled = true;
             }
+            else if (telefone.TextLength == 10)
+            {
+                string ddd = "(" + tel.Substring(0, 2) + ")";
+                string inicio = tel.Substring(2, 4) + "-";
+                string numero = tel.Substring(6, 4);
+                telefone.Text = ddd + inicio + numero;
+                telefone.SelectionStart = tel.Length;
+            }
+
             telefone.BackColor = Color.White;
-            inputPanel1.Enabled = false;
+            teclado.Enabled = false;
         }
 
         private void entrada_GotFocus(object sender, EventArgs e)

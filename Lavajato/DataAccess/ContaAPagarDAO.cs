@@ -12,7 +12,8 @@ namespace HenryCorporation.Lavajato.DataAccess
     {
         private const string sql = "  SELECT [ContasAPagar].[ContasPagaID],[ContasAPagar].[NF],[ContasAPagar].[Serie],[ContasAPagar].[Documento],[ContasAPagar].[DataDocomento], " +
                                    " [ContasAPagar].[ClienteID],[ContasAPagar].[DataVencimento],[ContasAPagar].[TipoDocumento],[ContasAPagar].[Obs] " +
-                                   " ,[ContasAPagar].[DataPagamento],[ContasAPagar].[AtrasoDias],[ContasAPagar].[ValorPago],[ContasAPagar].[SaldoAPagar], [ContasAPagar].[ValorTitulo]  " +
+                                   " ,[ContasAPagar].[DataPagamento],[ContasAPagar].[AtrasoDias],[ContasAPagar].[ValorPago],[ContasAPagar].[SaldoAPagar], [ContasAPagar].[ValorTitulo], "+
+                                   "[ContasAPagar].[ValorTitulo]" +
                                    " FROM [ContasAPagar] ";
 
         public ContaAPagarDAO()
@@ -25,20 +26,21 @@ namespace HenryCorporation.Lavajato.DataAccess
             string query = " INSERT INTO [ContasAPagar] " +
                      " ([NF],[Serie],[Documento],[DataDocomento] " +
                      " ,[ClienteID],[DataVencimento],[TipoDocumento],[Obs] " +
-                     " ,[DataPagamento],[AtrasoDias],[ValorPago],[SaldoAPagar]) " +
+                     " ,[DataPagamento],[AtrasoDias],[ValorPago],[SaldoAPagar], [ValorTitulo]) " +
                      " VALUES " +
                      " ( '" + contarPagar.NF + "' " +
                      " , '" + contarPagar.Serie + "' " +
                      " , '" + contarPagar.Documento + "' " +
-                     " , '" + Configuracao.HoraEntrada( contarPagar.DataDocomento) + "' " +
+                     " , '" + Configuracao.HoraEntrada(contarPagar.DataDocomento) + "' " +
                      " , '" + contarPagar.Credor.ID + "' " +
-                     " , '" + Configuracao.HoraEntrada( contarPagar.DataVencimento) + "' " +
+                     " , '" + Configuracao.HoraEntrada(contarPagar.DataVencimento) + "' " +
                      " , '" + contarPagar.TipoDocumento + "' " +
                      " , '" + contarPagar.Obs + "' " +
-                     " , '" + Configuracao.HoraEntrada( contarPagar.DataPagamento) + "' " +
-                     " , '" + Configuracao.HoraEntrada( contarPagar.AtrasoDias) + "' " +
+                     " , '" + Configuracao.HoraEntrada(contarPagar.DataPagamento) + "' " +
+                     " , '" + Configuracao.HoraEntrada(contarPagar.AtrasoDias) + "' " +
                      " , '" + contarPagar.ValorPago + "' " +
-                     " , '" + contarPagar.SaldoAPagar + "' ) ";
+                     " , '" + contarPagar.SaldoAPagar + "' " +
+                     " , '" + contarPagar.ValorTitulo + "' )";
 
             DataBaseHelper baseHelper = new DataBaseHelper(query);
             baseHelper.Run(this.ConnectionString);
@@ -73,18 +75,19 @@ namespace HenryCorporation.Lavajato.DataAccess
         {
             string query = " UPDATE [ContasAPagar] " +
                " SET [NF] = '" + contarPagar.NF + "' " +
-               ",[Serie] = '" + contarPagar.Serie + "' " +
-               ",[Documento] ='" + contarPagar.Documento + "' " +
-               ",[DataDocomento] = '" + Configuracao.HoraEntrada( contarPagar.DataDocomento) + "' " +
-               ",[ClienteID] = '" + contarPagar.Credor.ID + "' " +
-               ",[DataVencimento] = '" + Configuracao.HoraEntrada( contarPagar.DataVencimento) + "' " +
-               ",[TipoDocumento] = '" + contarPagar.TipoDocumento + "' " +
-               ",[Obs] = '" + contarPagar.Obs + "' " +
-               ",[DataPagamento] = '" + Configuracao.HoraEntrada( contarPagar.DataPagamento) + "' " +
-               ",[AtrasoDias] = '" + contarPagar.AtrasoDias + "' " +
-               ",[ValorPago] = '" + contarPagar.ValorPago + "' " +
-               ",[SaldoAPagar] = '" + contarPagar.SaldoAPagar + "' " +
-               "WHERE [ContasPagaID] = " + contarPagar.ID;
+               " , [Serie] = '" + contarPagar.Serie + "' " +
+               " , [Documento] ='" + contarPagar.Documento + "' " +
+               " , [DataDocomento] = '" + Configuracao.HoraEntrada(contarPagar.DataDocomento) + "' " +
+               " , [ClienteID] = '" + contarPagar.Credor.ID + "' " +
+               " , [DataVencimento] = '" + Configuracao.HoraEntrada(contarPagar.DataVencimento) + "' " +
+               " , [TipoDocumento] = '" + contarPagar.TipoDocumento + "' " +
+               " , [Obs] = '" + contarPagar.Obs + "' " +
+               " , [DataPagamento] = '" + Configuracao.HoraEntrada(contarPagar.DataPagamento) + "' " +
+               " , [AtrasoDias] = '" + contarPagar.AtrasoDias + "' " +
+               " , [ValorPago] = '" + contarPagar.ValorPago + "' " +
+               " , [SaldoAPagar] = '" + contarPagar.SaldoAPagar + "' " +
+               " , [ValorTitulo] = '" + contarPagar.ValorTitulo + "' " +
+               " WHERE [ContasPagaID] = " + contarPagar.ID;
             DataBaseHelper baseHelper = new DataBaseHelper(query);
             baseHelper.Run();
             return ByID(contarPagar);
@@ -97,32 +100,6 @@ namespace HenryCorporation.Lavajato.DataAccess
             return SetUpFields(dst);
         }
 
-        public List<ContaPagar> PesquisaPorDataETipo(string tipoPesquisa, string documento, DateTime data)
-        {
-            string query = sql + " INNER JOIN Credor c on [ContasAPagar].[ClienteID] = c.[CredorID] ";
-            switch (tipoPesquisa)
-            {
-                case "MostrarTodos":
-                    query += " ORDER BY C.RAZAOSOCIAL ";
-                    break;
-                case "Pagos":
-                    query += " WHERE [ContasAPagar].[ValorPago] = [ContasAPagar].[ValorTitulo] ORDER BY C.RAZAOSOCIAL ";
-                    break;
-                case "Documento":
-                    query += " WHERE [ContasAPagar].[Documento] like('%" + documento + "%') ORDER BY C.RAZAOSOCIAL ";
-                    break;
-                case "RazaoSocial":
-                    query += " WHERE C.[RazaoSocial] like('%"+documento+"%') ORDER BY C.RAZAOSOCIAL ";
-                    break;
-                case "VencendoHoje":
-                    query += " WHERE CONVERT(VARCHAR, [ContasAPagar].[DataVencimento], 103) = '" + Configuracao.HoraPtBR(data) + "' ORDER BY C.RAZAOSOCIAL ";
-                    break;
-            }
-    
-            DataBaseHelper baseHelper = new DataBaseHelper(query);
-            DataSet dst = baseHelper.Run(this.ConnectionString);
-            return SetUpFields(dst);
-        }
 
         private ContaPagar SetUpField(DataSet dataSet)
         {

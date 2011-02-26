@@ -11,7 +11,7 @@ namespace LavajatoMobile
 {
     public partial class frmCarrosLavando : Form
     {
-        WSLavajato.Service wsLavajato = new LavajatoMobile.WSLavajato.Service();
+        //WSLavajato.Servico wsLavajato = new LavajatoMobile.WSLavajato.Servico();
 
         public frmCarrosLavando()
         {
@@ -20,7 +20,7 @@ namespace LavajatoMobile
 
         private void frmCarrosLavando_Load(object sender, EventArgs e)
         {
-            dataGrid1.DataSource = wsLavajato.CriaGridCarrosLavano();
+            //dataGrid1.DataSource = wsLavajato.CriaGridCarrosLavano();
         }
     }
 }
