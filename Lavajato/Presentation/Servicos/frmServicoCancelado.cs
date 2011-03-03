@@ -7,10 +7,12 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 using HenryCorporation.Lavajato.DomainModel;
+using HenryCorporation.Lavajato.Presentation.Properties;
+using HenryCorporation.Lavajato.BusinessLogic;
 
 namespace HenryCorporation.Lavajato.Presentation
 {
-    public partial class frmServicoCancelado : Form
+    public partial class frmServicoCancelado : login
     {
         private Servico _serviço;
         public frmServicoCancelado(Servico servico)
@@ -40,7 +42,17 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void chkCancelar_CheckedChanged(object sender, EventArgs e)
         {
+            DialogResult res = MessageBox.Show("Deseja Cancelar a O.S.", "Atenção!",
+                MessageBoxButtons.YesNo);
+            if (res == DialogResult.Yes)
+            {
+                _serviço.Cancelado = 1;
+                _serviço.Usuario = this.Usuario;
 
+                new ServicoBL().Update(_serviço);
+                MessageBox.Show(Resources.Venda_cancelada, Resources.Atencao);
+                this.Close();
+            }
         }
 
         private void btnFechar_Click(object sender, EventArgs e)

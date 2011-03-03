@@ -11,32 +11,49 @@ namespace LavajatoMobile
 {
     public partial class frmAvarias : Form
     {
-        public static string Avarias = "";
+        private int _indexRemove;
 
         public frmAvarias()
         {
             InitializeComponent();
+            //metodo para carregar avarias carro exista
         }
 
         private void btnAvaria_Click(object sender, EventArgs e)
         {
-            if (comboBox1.SelectedItem == null)
+            if (cmbAvarias.SelectedItem == null)
                 return;
 
-            string temp = "";
-            if (!lblAvaria.Text.Contains(comboBox1.SelectedItem.ToString()))
-                temp += comboBox1.SelectedItem.ToString();
-
-            lblAvaria.Text += temp + " ";
-            //int index =  lblAvaria.Text.IndexOf('-');
-            //if (index > -1)
-            //    lblAvaria.Text = lblAvaria.Text.Remove(index, 1);
+            lstAvarias.Items.Add(cmbAvarias.SelectedItem.ToString());
         }
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            Avarias = lblAvaria.Text;
+            GetAvarias(lstAvarias);
             this.Close();
+            
+        }
+
+        public static ListBox GetAvarias(ListBox avarias)
+        {
+            return avarias.Items.Count > 0 ? avarias : new ListBox();
+        }
+
+        private void lstAvarias_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            _indexRemove = lstAvarias.SelectedIndex;
+        }
+
+        private void btnExcluir_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                lstAvarias.Items.RemoveAt(_indexRemove);
+            }
+            catch (ArgumentOutOfRangeException)
+            {
+                MessageBox.Show("Favor escolher uma avaria válida para remoção", "Atenção!");
+            }
         }
     }
 }

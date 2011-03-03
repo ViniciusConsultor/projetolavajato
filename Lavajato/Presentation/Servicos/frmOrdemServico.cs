@@ -39,19 +39,23 @@ namespace HenryCorporation.Lavajato.Presentation
                 return;
 
             Cliente cliente = CarregaInformacoesDoCliente();
-            CarregaCliente(cliente);
-            LiberaBotaoParaCadastroDeCliente();
-            
-            _servico = ServicoCarrega();
-            
-            ImprimeNumeroOrdemServico();
-            ImprimeMensagemParaCarroJaLavado();
-            
-            LimpaGrid(placa.Text);
-            CarregaItens(_servico);
-            
-            
-            LiberaBotaoParaExclusaoDeItens();
+            if (cliente.ID > 0)
+            {
+                CarregaCliente(cliente);
+                _servico = ServicoCarrega();
+
+                ImprimeNumeroOrdemServico();
+                ImprimeMensagemParaCarroJaLavado();
+
+                LimpaGrid(placa.Text);
+                CarregaItens(_servico);
+
+                LiberaBotaoParaExclusaoDeItens();
+            }
+            else
+            {
+                LiberaBotaoParaCadastroDeCliente();
+            }
         }
 
         private Cliente CarregaInformacoesDoCliente()
@@ -70,7 +74,6 @@ namespace HenryCorporation.Lavajato.Presentation
                 {
                     btnCadastraCliente.Enabled = true;
                     LimpaGrid();
-                    return;
                 }
             }
         }
@@ -185,7 +188,8 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void grdServico_MouseClick(object sender, MouseEventArgs e)
         {
-            _indexRow = grdServico.CurrentRow.Index;
+            if (grdServico.CurrentRow.Index != null)
+                _indexRow = grdServico.CurrentRow.Index;
         }
 
         private void btnGerarOrdemServico_Click(object sender, EventArgs e)
@@ -198,12 +202,14 @@ namespace HenryCorporation.Lavajato.Presentation
             
             if (dataSetItens.Tables[0].Rows.Count > 0)
             {
-                _servico = ServicoSalva();
-                var itens = ItensParaInsercao(_servico);
-                SalvaItens(itens);
-                //IImprimir impressao = new ImprimirComprovantePagamento(this.servico);
+                //_servico = ServicoSalva();
+                //var itens = ItensParaInsercao(_servico);
+                //SalvaItens(itens);
+                IImprimir impressao = new ImprimirComprovantePagamento(_servico);
+                impressao.Imprimir(_servico);
                 LiberaBotaoParaExclusaoDeItens();
                 MessageBox.Show("Número da Ordem Serviço é: " + this._servico.OrdemServico, "Ordem Serviço");
+                LimpaCampos();
             }
             else
             {
@@ -315,18 +321,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            _servico = new Servico();
-            _cliente = new Cliente();
-            placa.Text = "";
-            veiculo.Text = "";
-            telefone.Text = "";
-            nome.Text = "";
-            corVeiculo.Text = "";
-            dataSetItens = new DataSet();
-            dataTable = new DataTable();
-            dataTable.Columns.AddRange(ServicoColunas.CarregaColunasOrdemServico());
-            dataSetItens.Tables.Add(dataTable);
-            grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
+            LimpaCampos();
 
         }
 
@@ -442,7 +437,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void CarregaProdutos()
         {
-            cmdServico.DataSource = new ProdutoBL().TipoServico(EnumCategoriaProduto.Servico);
+            cmdServico.DataSource = new ProdutoBL().Categoria(EnumCategoriaProduto.Servico);
             cmdServico.DisplayMember = "Descricao";
             cmdServico.ValueMember = "ID";
         }
@@ -452,7 +447,7 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             if (cliente.ID == 0)
             {
-                LimparCamposCadastro();
+                LimpaCampos();
                 return;
             }
 
@@ -463,12 +458,20 @@ namespace HenryCorporation.Lavajato.Presentation
             corVeiculo.Text = _cliente.Cor;
         }
 
-        private void LimparCamposCadastro()
+        private void LimpaCampos()
         {
+            _servico = new Servico();
+            _cliente = new Cliente();
+            placa.Clear();
             veiculo.Clear();
             telefone.Clear();
             nome.Clear();
             corVeiculo.Clear();
+            dataSetItens = new DataSet();
+            dataTable = new DataTable();
+            dataTable.Columns.AddRange(ServicoColunas.CarregaColunasOrdemServico());
+            dataSetItens.Tables.Add(dataTable);
+            grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
         }
         
         private Cliente ProcuraCliente(Cliente clienteProcurado)

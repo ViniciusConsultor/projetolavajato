@@ -20,8 +20,13 @@ namespace LavajatoMobile
         {
             InitializeComponent();
             CarregaHora();
-            textBox1.Text = DateTime.Now.ToShortTimeString();
-            textBox1.Enabled = false;
+            SetHoraInicial();
+        }
+
+        private void SetHoraInicial()
+        {
+            txtHoraInicial.Text = DateTime.Now.ToShortTimeString();
+            txtHoraInicial.Enabled = false;
         }
 
         #region Métodos Formulario
@@ -38,12 +43,12 @@ namespace LavajatoMobile
 
             _cliente.Placa = placa.Text;
             _cliente = wsService.ClienteByPlaca(_cliente);
-            
+
             if (_cliente.ID == 0)
             {
                 string placaTemp = placa.Text;
                 LimpaCampos();
-                
+
                 DialogResult dialogResult = MessageBox.Show("Cliente não Cadastrado, deseja cadastrar?",
                     "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 if (dialogResult == DialogResult.Yes)
@@ -60,14 +65,12 @@ namespace LavajatoMobile
                     placa.Focus();
                     teclado.Enabled = true;
                 }
-
                 placa.BackColor = Color.White;
+                return;
             }
-            else 
-            {
-                CarregaCliente(this._cliente);
-                btnCadastraCliente.Text = "Alt. Cliente";
-            }
+
+            CarregaCliente(this._cliente);
+            btnCadastraCliente.Text = "Alt. Cliente";
 
             placa.BackColor = Color.White;
             teclado.Enabled = false;

@@ -7,6 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using LavajatoMobile.WSLavajato;
+using Impressao;
 
 namespace LavajatoMobile
 {
@@ -14,11 +15,13 @@ namespace LavajatoMobile
     {
         private WSLavajato.Cliente _cliente = new LavajatoMobile.WSLavajato.Cliente();
         private WSLavajato.Servico _servico = new LavajatoMobile.WSLavajato.Servico();
-        private WSLavajato.ServicoItem servicoItem = new LavajatoMobile.WSLavajato.ServicoItem();
+        private WSLavajato.ServicoItem _servicoItem = new LavajatoMobile.WSLavajato.ServicoItem();
         private WSLavajato.WebServiceLavajato wsService = new LavajatoMobile.WSLavajato.WebServiceLavajato();
 
         private DataSet dataSetItens = new DataSet();
-        private DataTable dataTable = new DataTable();       
+        private DataTable dataTable = new DataTable();
+        private DateTime _dataSaida;
+        private int _indexRow;
 
         public frmServico()
         {
@@ -26,8 +29,13 @@ namespace LavajatoMobile
             CarregaProdutos();
         }
 
-        private DateTime _dataEntrada;
-        private DateTime _dataSaida;
+        private void CarregaProdutos()
+        {
+            cmdServico.DisplayMember = "Descricao1";
+            cmdServico.ValueMember = "ProdutoID";
+            cmdServico.DataSource = wsService.Categoria(2);
+
+        }
 
         public frmServico(Cliente cliente, DateTime saida)
         {
@@ -62,7 +70,8 @@ namespace LavajatoMobile
             if (grdServico == null) return;
 
             grdServico.DataSource = CarregaItensNoGrid(servicoParaCarregarItens);
-            grdServico.
+            grdServico.TableStyles.Clear();
+            grdServico.TableStyles.Add(ServicoBL.SetUpStyleGrid(dataSetItens));
         }
 
         private DataTable CarregaItensNoGrid(Servico servicoParaSerCarregado)
@@ -128,22 +137,20 @@ namespace LavajatoMobile
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (this._servico.ID == 0)
+            if (dataSetItens.Tables[0].Rows.Count > 0)
             {
-                MessageBox.Show("Nenhum item encontrado!", "Atenção");
-                return;
-            }
 
-            DialogResult res = MessageBox.Show("Deseja realmente apagar o item de pedido", "Atenção", 
-                MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-            if (res == DialogResult.Yes)
-            {
-                wsService.ServicoItemDelete(this.servicoItem);
-                MessageBox.Show("Item deletado com sucesso!", "Atenção");
-                CarregaItensDoServico();
-                
+                DialogResult res = MessageBox.Show("Deseja realmente apagar o item de pedido", "Atenção",
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+
+                if (res == DialogResult.Yes)
+                {
+                    dataSetItens.Tables[0].Rows[grdServico.CurrentRowIndex].Delete();
+                    grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
+
+                    MessageBox.Show("Item Deletado", "Atenção!");
+                }
             }
-                       
         }
 
         private void grdServico_Click(object sender, EventArgs e)
@@ -155,7 +162,7 @@ namespace LavajatoMobile
                 return;
 
             id = int.Parse(ServicoBL.CriaGrid(_servico).Rows[grdServico.CurrentRowIndex]["ID"].ToString());
-            this.servicoItem.ID = id;
+            
             }
             catch (IndexOutOfRangeException)
             {
@@ -179,8 +186,7 @@ namespace LavajatoMobile
                 _servico = ServicoSalva();
                 var itens = ItensParaInsercao(_servico);
                 SalvaItens(itens);
-                //IImprimir impressao = new ImprimirComprovantePagamento(this.servico);
-                //LiberaBotaoParaExclusaoDeItens();
+                wsService.EmiteRecibo(_servico);
                 MessageBox.Show("Número da O. S.: " + this._servico.OrdemServico, "Ordem Serviço");
             }
             else
@@ -245,11 +251,18 @@ namespace LavajatoMobile
 
         private void AdicionaItem()
         {
-            Produto produto = ((Produto)cmdServico.SelectedValue);   
-            produto = wsService.ProdutoByID(produto);
+            Produto produto = SetProduto();
             dataSetItens.Tables[0].Rows.Add(AdicionaLinhaDeItemAoGrid(produto));
             grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
 
+        }
+
+        private Produto SetProduto()
+        {
+            Produto produto = new Produto();
+            produto.ID = int.Parse(cmdServico.SelectedValue.ToString());
+            produto = wsService.ProdutoByID(produto);
+            return produto;
         }
 
         private DataRow AdicionaLinhaDeItemAoGrid(Produto item)
@@ -318,28 +331,11 @@ namespace LavajatoMobile
             return servico.ID > 0;
         }
 
-        private void CarregaItensDoServico()
-        {
-            _servico = wsService.ServicoByID(_servico);
-        }
-
         private void btnAvarias_Click(object sender, EventArgs e)
         {
             frmAvarias frmAvarias = new frmAvarias();
             frmAvarias.ShowDialog();
         }
 
-
-        private void CarregaProdutos()
-        {
-            BindingSource ds = new BindingSource();
-            ds.DataSource = wsService.ProdutoTipo(2);
-
-            cmdServico.Items.Clear();
-            cmdServico.DisplayMember = "ID";
-            cmdServico.ValueMember = "ID";
-            cmdServico.DataSource = ds;
-            
-        }
     }
 }
