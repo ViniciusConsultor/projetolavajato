@@ -59,7 +59,6 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             throw new NotImplementedException();
         }
 
-
         public void Delete(Produto produto)
         {
             produtoDAO.Delete(produto);
@@ -88,17 +87,12 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
         public DataTable TipoServico(int TipoProduto)
         {
-            return GetProdutos(produtoDAO.TipoServico(TipoProduto)); 
+            return produtoDAO.ByCategoria(TipoProduto);
         }
 
-        public ComboBox CarregaProdutos()
+        public IList<Produto> Categoria(int categoria)
         {
-            ComboBox comboBox = new ComboBox();
-            
-            comboBox.DataSource = TipoServico(EnumCategoriaProduto.Produto);
-            comboBox.DisplayMember = "Descricao";
-            comboBox.ValueMember = "ID";
-            return comboBox;
+            return produtoDAO.TipoServico(categoria);
         }
 
         #endregion
