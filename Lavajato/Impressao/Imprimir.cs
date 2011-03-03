@@ -24,15 +24,15 @@ namespace Impressao
             {
                 string quantidadeItens = "", valorUnitario = "", total = "";
 
-                quantidadeItens = FormataQuantidadeDeItens(item);
-                valorUnitario = FormataValorDoItem(item);
-                valorUnitario = FormataValorUnitario(valorUnitario);
-                total = FormataValorTotalDoItem(item);
+                quantidadeItens = SetQuantidadeDeItens(item);
+                valorUnitario = SetValorDoItem(item);
+                valorUnitario = SetValorUnitario(valorUnitario);
+                total = SetValorTotal(item);
                 somaTotal += Configuracao.ConverteParaDecimal(total);
                 total = FormataTotal(total);
 
-                recibo = FormataDescricao(item) + FormataQuantidadeDeItens(item) +
-                    FormataValorDoItem(item) + FormataValorDoItem(item) + enter;
+                recibo = FormataDescricao(item) + SetQuantidadeDeItens(item) +
+                    SetValorDoItem(item) + SetValorDoItem(item) + enter;
 
             }
             recibo += FormataSomaTotal(somaTotal);
@@ -66,17 +66,17 @@ namespace Impressao
         public string MontaCorpoRecibo(Servico servico)
         {
             string corpoRecibo = "";
-            corpoRecibo = "--------------------------------------------------";
-            corpoRecibo = "Nº: " + servico.OrdemServico + enter;
-            corpoRecibo = "Placa: " + servico.Cliente.Placa + "  Veículo:" + servico.Cliente.Veiculo + "  Cor:" + servico.Cliente.Cor + "" + enter;
-            corpoRecibo = "Nome:  " + servico.Cliente.Nome + "      Fone:" + servico.Cliente.Telefone + "" + enter;
-            corpoRecibo = "Entrada:  " + SetDateInput(servico) + "   Saida:" + servico.Saida.Hour + ":" + servico.Saida.Second + "" + enter;
-            corpoRecibo = "--------------------------------------------------" + enter;
-            corpoRecibo = "SERVICO             QTDE.     VALOR   TOTAL" + enter;
+            corpoRecibo += "--------------------------------------------------";
+            corpoRecibo += "Nº: " + servico.OrdemServico + enter;
+            corpoRecibo += "Placa: " + servico.Cliente.Placa + "  Veículo:" + servico.Cliente.Veiculo + "  Cor:" + servico.Cliente.Cor + "" + enter;
+            corpoRecibo += "Nome:  " + servico.Cliente.Nome + "      Fone:" + servico.Cliente.Telefone + "" + enter;
+            corpoRecibo += "Entrada:  " + SetDateInput(servico) + "   Saida:" + servico.Saida.Hour + ":" + servico.Saida.Second + "" + enter;
+            corpoRecibo += "--------------------------------------------------" + enter;
+            corpoRecibo += "SERVICO             QTDE.     VALOR   TOTAL" + enter;
             return corpoRecibo;
         }
 
-        public string FormataQuantidadeDeItens(ServicoItem item)
+        public string SetQuantidadeDeItens(ServicoItem item)
         {
             string qtde = item.Quantidade.ToString();
             return qtde;
@@ -91,7 +91,7 @@ namespace Impressao
             return entrada;
         }
 
-        public string FormataValorUnitario(string valUni)
+        public string SetValorUnitario(string valUni)
         {
             if (valUni.Length == 5)
                 valUni = "              " + valUni;
@@ -102,13 +102,13 @@ namespace Impressao
             return valUni;
         }
 
-        public string FormataValorTotalDoItem(ServicoItem item)
+        public string SetValorTotal(ServicoItem item)
         {
             string tot = (item.Produto.ValorUnitario * item.Quantidade).ToString("C").Replace("R$", "");
             return tot;
         }
 
-        public string FormataValorDoItem(ServicoItem item)
+        public string SetValorDoItem(ServicoItem item)
         {
             string valUni = item.Produto.ValorUnitario.ToString("C").Replace("R$", "");
             return valUni;
@@ -117,22 +117,22 @@ namespace Impressao
         public string FormataCabecalho()
         {
             string strCabecalho = "";
-            strCabecalho = enter;
-            strCabecalho = enter;
-            strCabecalho = enter;
-            strCabecalho = enter;
-            strCabecalho = enter;
-            strCabecalho = enter;
-            strCabecalho = enter;
-            strCabecalho = enter;
+            strCabecalho += enter;
+            strCabecalho += enter;
+            strCabecalho += enter;
+            strCabecalho += enter;
+            strCabecalho += enter;
+            strCabecalho += enter;
+            strCabecalho += enter;
+            strCabecalho += enter;
 
-            strCabecalho = "LAVEVIP - Estetica Automotiva " + enter;
-            strCabecalho = "Av. Pres. Carlos Luz, 3001, Caiçara" + enter;
-            strCabecalho = "Area QVip1 2ºP" + enter;
-            strCabecalho = "               LAVEVIP" + enter;
-            strCabecalho = "O melhor amigo do seu veiculo" + enter;
-            strCabecalho = "(31)3415-8085" + enter;
-            strCabecalho = "(31)9208-9977" + enter;
+            strCabecalho += "LAVEVIP - Estetica Automotiva " + enter;
+            strCabecalho += "Av. Pres. Carlos Luz, 3001, Caiçara" + enter;
+            strCabecalho += "Area QVip1 2ºP" + enter;
+            strCabecalho += "               LAVEVIP" + enter;
+            strCabecalho += "O melhor amigo do seu veiculo" + enter;
+            strCabecalho += "(31)3415-8085" + enter;
+            strCabecalho += "(31)9208-9977" + enter;
 
             return strCabecalho;
 

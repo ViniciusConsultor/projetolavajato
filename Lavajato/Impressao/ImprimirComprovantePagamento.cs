@@ -11,7 +11,7 @@ namespace Impressao
 {
     public class ImprimirComprovantePagamento : Imprimir, IImprimir
     {
-        private Servico servico { get; set; }
+        private Servico _servico { get; set; }
         private PrintDocument recibo { get; set; }
         private const string enter = "\n";
 
@@ -22,15 +22,15 @@ namespace Impressao
 
         public ImprimirComprovantePagamento(Servico servico)
         {
-            this.servico = servico;
+            this._servico = servico;
         }
 
         #region IImprimir Members
 
         public void Imprimir(Servico servico)
         {
-            this.servico = servico;
-            if (this.servico.ID == 0)
+            this._servico = servico;
+            if (this._servico.ID == 0)
                 throw new Exception("Nenhum Servico encontrado");
 
             this.recibo = new PrintDocument();
@@ -41,9 +41,9 @@ namespace Impressao
         public void recibo_PrintPage(object sender, PrintPageEventArgs ev)
         {
             StringBuilder recibo = new StringBuilder();
-
-            recibo.Append(MontaCorpoRecibo(this.servico));
-            recibo.Append(ExibeReciboFormatado(servico));
+            recibo.Append(FormataCabecalho());
+            recibo.Append(MontaCorpoRecibo(_servico));
+            recibo.Append(ExibeReciboFormatado(_servico));
 
             Pen myPen = new Pen(Brushes.Black);
             Point pt1 = new Point(30, 53);
