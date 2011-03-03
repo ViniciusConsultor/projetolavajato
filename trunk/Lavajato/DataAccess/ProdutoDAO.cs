@@ -91,6 +91,23 @@ namespace HenryCorporation.Lavajato.DataAccess
             return SetUpFields(dataBaseHelper.Run(this.ConnectionString));
         }
 
+        public DataTable ByCategoria(int TipoProduto)
+        {
+            DataBaseHelper dataBaseHelper;
+            if (TipoProduto == EnumCategoriaProduto.Servico)
+            {
+                string query = sql + " Where Produto.[Delete] = 0 And Produto.CategoriaProdutoID =" + EnumCategoriaProduto.Servico;
+                dataBaseHelper = new DataBaseHelper(query);
+            }
+            else
+            {
+                string query = sql + " Where Produto.[Delete] = 0 And Produto.CategoriaProdutoID =" + EnumCategoriaProduto.Produto;
+                dataBaseHelper = new DataBaseHelper(query);
+            }
+            DataTable table = dataBaseHelper.Run(this.ConnectionString).Tables[0];
+            return table;
+        }
+
         public List<Produto> ByName(Produto produto)
         {
             string query = sql + " Where Produto.[Delete] = 0 And Produto.Descricao like('%" + produto.Descricao.Trim() + "%') ";
