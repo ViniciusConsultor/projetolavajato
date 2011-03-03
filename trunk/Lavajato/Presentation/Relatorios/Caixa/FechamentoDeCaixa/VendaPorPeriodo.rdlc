@@ -873,7 +873,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>=FormatCurrency( Fields!SomaTotal.Value, 2)</Value>
+                <Value>=FormatCurrency(Fields!SomaTotal.Value,2)</Value>
                 <Style />
               </TextRun>
             </TextRuns>
@@ -1069,7 +1069,6 @@
               </Style>
             </Paragraph>
           </Paragraphs>
-          <Top>0cm</Top>
           <Left>0.5cm</Left>
           <Height>0.63492cm</Height>
           <Width>7.7cm</Width>

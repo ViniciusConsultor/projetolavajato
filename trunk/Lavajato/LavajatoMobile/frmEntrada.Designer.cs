@@ -47,7 +47,7 @@
             this.hora = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.min = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.txtHoraInicial = new System.Windows.Forms.TextBox();
             this.btnCadastrarServicos = new System.Windows.Forms.Button();
             this.entrada = new System.Windows.Forms.DateTimePicker();
             this.teclado = new Microsoft.WindowsCE.Forms.InputPanel(this.components);
@@ -206,11 +206,11 @@
             // 
             // textBox1
             // 
-            this.textBox1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
-            this.textBox1.Location = new System.Drawing.Point(1, 130);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(146, 26);
-            this.textBox1.TabIndex = 16;
+            this.txtHoraInicial.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
+            this.txtHoraInicial.Location = new System.Drawing.Point(1, 130);
+            this.txtHoraInicial.Name = "textBox1";
+            this.txtHoraInicial.Size = new System.Drawing.Size(146, 26);
+            this.txtHoraInicial.TabIndex = 16;
             // 
             // btnCadastrarServicos
             // 
@@ -243,7 +243,7 @@
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
             this.Controls.Add(this.btnCadastrarServicos);
-            this.Controls.Add(this.textBox1);
+            this.Controls.Add(this.txtHoraInicial);
             this.Controls.Add(this.min);
             this.Controls.Add(this.hora);
             this.Controls.Add(this.telefone);
@@ -285,7 +285,7 @@
         private System.Windows.Forms.ComboBox hora;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox min;
-        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.TextBox txtHoraInicial;
         private System.Windows.Forms.Button btnCadastrarServicos;
         private System.Windows.Forms.MenuItem menuItem2;
         private System.Windows.Forms.DateTimePicker entrada;

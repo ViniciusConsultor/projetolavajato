@@ -225,6 +225,7 @@
             // 
             // txtTroco
             // 
+            this.txtTroco.Enabled = false;
             this.txtTroco.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTroco.Location = new System.Drawing.Point(501, 31);
             this.txtTroco.Name = "txtTroco";
@@ -290,6 +291,7 @@
             // 
             // txtTotal
             // 
+            this.txtTotal.Enabled = false;
             this.txtTotal.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTotal.Location = new System.Drawing.Point(228, 31);
             this.txtTotal.Name = "txtTotal";

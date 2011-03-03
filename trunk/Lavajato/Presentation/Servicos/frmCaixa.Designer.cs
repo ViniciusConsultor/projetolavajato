@@ -137,14 +137,14 @@ namespace HenryCorporation.Lavajato.Presentation
             this.groupBox1.TabIndex = 85;
             this.groupBox1.TabStop = false;
             // 
-            // textBox1
+            // txtTrocoDoServico
             // 
             this.txtTrocoDoServico.Enabled = false;
             this.txtTrocoDoServico.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.txtTrocoDoServico.Location = new System.Drawing.Point(502, 44);
             this.txtTrocoDoServico.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.txtTrocoDoServico.Multiline = true;
-            this.txtTrocoDoServico.Name = "textBox1";
+            this.txtTrocoDoServico.Name = "txtTrocoDoServico";
             this.txtTrocoDoServico.Size = new System.Drawing.Size(112, 33);
             this.txtTrocoDoServico.TabIndex = 98;
             // 
@@ -169,6 +169,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.desconto.Size = new System.Drawing.Size(112, 33);
             this.desconto.TabIndex = 19;
             this.desconto.TextChanged += new System.EventHandler(this.desconto_TextChanged);
+            this.desconto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.desconto_KeyDown);
             // 
             // label12
             // 
@@ -191,6 +192,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.cmbFormaPagamento.Size = new System.Drawing.Size(161, 33);
             this.cmbFormaPagamento.TabIndex = 16;
             this.cmbFormaPagamento.SelectedIndexChanged += new System.EventHandler(this.cmbFormaPagamento_SelectedIndexChanged);
+            this.cmbFormaPagamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbFormaPagamento_KeyDown);
             // 
             // label11
             // 
@@ -224,6 +226,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.valor.Size = new System.Drawing.Size(112, 33);
             this.valor.TabIndex = 18;
             this.valor.TextChanged += new System.EventHandler(this.valor_TextChanged);
+            this.valor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.valor_KeyDown);
             // 
             // label1
             // 
@@ -247,6 +250,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.totalServico.Size = new System.Drawing.Size(112, 33);
             this.totalServico.TabIndex = 17;
             this.totalServico.TextChanged += new System.EventHandler(this.totalServico_TextChanged);
+            this.totalServico.KeyDown += new System.Windows.Forms.KeyEventHandler(this.totalServico_KeyDown);
             // 
             // btnCancelarVenda
             // 
@@ -340,6 +344,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.convenio.Size = new System.Drawing.Size(240, 33);
             this.convenio.TabIndex = 112;
             this.convenio.SelectedIndexChanged += new System.EventHandler(this.convenio_SelectedIndexChanged);
+            this.convenio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.convenio_KeyDown);
             // 
             // ordemServico
             // 
@@ -348,6 +353,8 @@ namespace HenryCorporation.Lavajato.Presentation
             this.ordemServico.Name = "ordemServico";
             this.ordemServico.Size = new System.Drawing.Size(240, 31);
             this.ordemServico.TabIndex = 1;
+            this.ordemServico.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ordemServico_KeyDown);
+            //this.ordemServico.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ordemServico_KeyPress);
             this.ordemServico.Leave += new System.EventHandler(this.ordemServico_Leave);
             // 
             // chbLavado
@@ -602,6 +609,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.cmbProduto.Name = "cmbProduto";
             this.cmbProduto.Size = new System.Drawing.Size(422, 33);
             this.cmbProduto.TabIndex = 113;
+            this.cmbProduto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProduto_KeyDown);
             // 
             // quantidade
             // 
@@ -611,6 +619,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.quantidade.Name = "quantidade";
             this.quantidade.Size = new System.Drawing.Size(56, 35);
             this.quantidade.TabIndex = 112;
+            this.quantidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.quantidade_KeyDown);
             // 
             // btnSair
             // 

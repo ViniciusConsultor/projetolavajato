@@ -37,7 +37,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private void CarregaProdutos()
         {
             var produtoBl = new ProdutoBL();
-            cmbProduto.DataSource = produtoBl.TipoServico(EnumCategoriaProduto.Produto);
+            cmbProduto.DataSource = produtoBl.Categoria(EnumCategoriaProduto.Produto);
             cmbProduto.DisplayMember = "Descricao";
             cmbProduto.ValueMember = "ID";
         }
@@ -183,7 +183,13 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void txtValor_TextChanged(object sender, EventArgs e)
         {
-            //FocoVaiParaValor();
+            if (txtValor.TextLength == 0)
+            {
+                txtTroco.Text = "";
+                txtDesconto.Text = "";
+                return;
+
+            }
 
             if (txtValor.Text.Contains("."))
             {
@@ -191,38 +197,61 @@ namespace HenryCorporation.Lavajato.Presentation
                 txtValor.SelectionStart = txtValor.Text.Length;
             }
 
-            decimal tempValor, tempTotal;
-            tempTotal = Convert.ToDecimal(txtTotal.TextLength > 0 ? Convert.ToDecimal(txtTotal.Text) : 0);
-            tempValor = Convert.ToDecimal(txtValor.TextLength > 0 ? Convert.ToDecimal(txtValor.Text) : 0);
+            var valorTemp = txtValor.Text;
+            decimal valorNum = 0;
+            if (valorTemp.Length > 0)
+                valorNum = Convert.ToDecimal(valorTemp);
 
-            var tempTroco = (tempValor > tempTotal ? tempValor - tempTotal : 0);
-            txtTroco.Text = tempTroco.ToString().Length > 0 ? _servicoBL.RetiraCifraoDaMoedaReal(tempTroco) : "";
+
+            var valorTotal = txtTotal.Text;
+            decimal totalTemp = 0;
+            if (valorTotal.Length > 0)
+                totalTemp = Convert.ToDecimal(txtTotal.Text);
+
+            txtTroco.Text = decimal.Subtract(valorNum, totalTemp).ToString();
         }
 
         private void txtDesconto_TextChanged(object sender, EventArgs e)
         {
-            //FocoVaiParaTroco();
-
             if (txtDesconto.Text.Contains("."))
             {
                 txtDesconto.Text = txtDesconto.Text.Remove(txtDesconto.TextLength - 1);
                 txtDesconto.SelectionStart = txtDesconto.Text.Length;
             }
 
-            var tempDesconto = Convert.ToDecimal(txtDesconto.TextLength > 0 ? txtDesconto.Text : "0");
-            var totalServico = ValorTotalCompra();
+            decimal totalServicoTemp = ValorTotalCompra();
+            decimal descontoTemp = ServicoBL.ConverteParaDecimal(txtDesconto.Text);
+            if (descontoTemp == 0)
+            {
+                txtTotal.Text = totalServicoTemp.ToString();
+                txtValor.Text = txtValor.Text;
+                txtTroco.Text = "";
 
-            if (tempDesconto > totalServico)
+                return;
+            }
+
+            if (descontoTemp > totalServicoTemp)
             {
                 MessageBox.Show(Resources.Desconto_maior_que_valor_produto, Resources.Atencao);
                 txtDesconto.Text = "";
-                txtDesconto.Focus();
             }
 
-            var valorTemp = (totalServico - tempDesconto);
-            txtValor.Text = tempDesconto <= totalServico ? 
-                _servicoBL.RetiraCifraoDaMoedaReal(valorTemp) : _servicoBL.RetiraCifraoDaMoedaReal(totalServico);
+            var valorTemp = decimal.Subtract(totalServicoTemp, descontoTemp).ToString();
 
+            if (txtValor.TextLength == 0)
+            {
+                txtTotal.Text = (totalServicoTemp - descontoTemp).ToString();
+            }
+
+            if (!string.IsNullOrEmpty(txtTroco.Text.Trim()))
+            {
+                if (!string.IsNullOrEmpty(txtDesconto.Text.Trim()))
+                {
+                    txtTroco.Text = (ServicoBL.ConverteParaDecimal(txtTroco.Text) - ServicoBL.ConverteParaDecimal(txtDesconto.Text)).ToString();
+                    txtValor.Text = txtValor.Text;
+                    txtTotal.Text = decimal.Subtract(totalServicoTemp, descontoTemp).ToString();
+                }
+            }
         }
 
         private void CarregaFormaPagamento()
@@ -256,12 +285,12 @@ namespace HenryCorporation.Lavajato.Presentation
             switch (cmbFormaPagamento.SelectedIndex)
             {
                 case 0:
+                    txtValor.Enabled = true;
                     txtDesconto.Enabled = true;
-                    txtTroco.Enabled = true;
                     break;
                 default:
                     txtDesconto.Enabled = false;
-                    txtTroco.Enabled = false;
+                    txtValor.Enabled = false;
                     txtValor.Text = txtTotal.Text;
                     break;
             }

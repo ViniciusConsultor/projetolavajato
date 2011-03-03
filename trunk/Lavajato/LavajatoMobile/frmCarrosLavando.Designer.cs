@@ -30,16 +30,38 @@
         private void InitializeComponent()
         {
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
-            this.dataGrid1 = new System.Windows.Forms.DataGrid();
+            this.grdServicos = new System.Windows.Forms.DataGrid();
+            this.btnAtualiza = new System.Windows.Forms.Button();
+            this.btnFechar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
-            // dataGrid1
+            // grdServicos
             // 
-            this.dataGrid1.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
-            this.dataGrid1.Location = new System.Drawing.Point(1, 3);
-            this.dataGrid1.Name = "dataGrid1";
-            this.dataGrid1.Size = new System.Drawing.Size(237, 262);
-            this.dataGrid1.TabIndex = 0;
+            this.grdServicos.BackgroundColor = System.Drawing.Color.FromArgb(((int)(((byte)(128)))), ((int)(((byte)(128)))), ((int)(((byte)(128)))));
+            this.grdServicos.Location = new System.Drawing.Point(1, 26);
+            this.grdServicos.Name = "grdServicos";
+            this.grdServicos.Size = new System.Drawing.Size(237, 218);
+            this.grdServicos.TabIndex = 0;
+            // 
+            // btnAtualiza
+            // 
+            this.btnAtualiza.BackColor = System.Drawing.Color.Lime;
+            this.btnAtualiza.Location = new System.Drawing.Point(1, 0);
+            this.btnAtualiza.Name = "btnAtualiza";
+            this.btnAtualiza.Size = new System.Drawing.Size(237, 26);
+            this.btnAtualiza.TabIndex = 1;
+            this.btnAtualiza.Text = "Atualizar Listagem";
+            this.btnAtualiza.Click += new System.EventHandler(this.btnAtualiza_Click);
+            // 
+            // btnFechar
+            // 
+            this.btnFechar.BackColor = System.Drawing.Color.Red;
+            this.btnFechar.Location = new System.Drawing.Point(165, 244);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(72, 21);
+            this.btnFechar.TabIndex = 2;
+            this.btnFechar.Text = "Fechar";
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // frmCarrosLavando
             // 
@@ -47,10 +69,12 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
-            this.Controls.Add(this.dataGrid1);
+            this.Controls.Add(this.btnFechar);
+            this.Controls.Add(this.btnAtualiza);
+            this.Controls.Add(this.grdServicos);
             this.Menu = this.mainMenu1;
             this.Name = "frmCarrosLavando";
-            this.Text = "frmCarrosLavando";
+            this.Text = "Carros no Lavajato";
             this.Load += new System.EventHandler(this.frmCarrosLavando_Load);
             this.ResumeLayout(false);
 
@@ -58,6 +82,8 @@
 
         #endregion
 
-        private System.Windows.Forms.DataGrid dataGrid1;
+        private System.Windows.Forms.DataGrid grdServicos;
+        private System.Windows.Forms.Button btnAtualiza;
+        private System.Windows.Forms.Button btnFechar;
     }
 }
