@@ -155,10 +155,18 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public Usuario ByLogin(Usuario usuario)
         {
+            string query = sql + "Where [Delete] = 0 And [Login] = '" + usuario.Login + "' ";
+            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            return SetUpField(dataBaseHelper.Run(this.ConnectionString));
+        }
+
+        public Usuario ByLoginAndPassword(Usuario usuario)
+        {
             string query = sql + "Where [Delete] = 0 And [Login] = '" + usuario.Login + "' and [Password] = '" + usuario.Password + "' ";
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             return SetUpField(dataBaseHelper.Run(this.ConnectionString));
         }
+
 
         private Usuario SetUpField(DataSet dataSet)
         {

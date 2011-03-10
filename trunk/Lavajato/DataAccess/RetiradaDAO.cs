@@ -9,7 +9,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 {
     public class RetiradaDAO : DataAccessBase
     {
-        private const string sql = " SELECT [RetiradaID],[UsuarioID],[Descricao],[Valor],[Data]  FROM [Retirada] ";
+        private const string sql = " SELECT [RetiradaID],[UsuarioID],[Descricao],[Valor],[Data], [Vale], [UsuarioVale]  FROM [Retirada] ";
 
         public RetiradaDAO()
         {
@@ -22,12 +22,17 @@ namespace HenryCorporation.Lavajato.DataAccess
                            "  [UsuarioID] " +
                            "  ,[Descricao] " +
                            "  ,[Valor] " +
-                           "  ,[Data]) " +
+                           "  ,[Data] " +
+                           "  ,[Vale] " +
+                           "  ,[UsuarioVale] ) " +
                            "   VALUES " +
                            "  (" + retirada.Usuario.ID + " " +
                            "  ,'" + retirada.Descricao + "' " +
                            "  ,'" + retirada.Valor.ToString().Replace(",", ".") + "' " +
-                           "  ,GetDate()) ";
+                           "  ,GetDate() " +
+                           "  ,'" + retirada.Vale.isVale + "' " +
+                           "  ,'" + retirada.Vale.Usuario.ID + "' )";
+
 
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run();
@@ -64,6 +69,9 @@ namespace HenryCorporation.Lavajato.DataAccess
                 retirada.Descricao = reader.IsDBNull(2) ? "" : reader.GetString(2);
                 retirada.Valor = reader.IsDBNull(3) ? 0 : reader.GetDecimal(3);
                 retirada.Data = reader.IsDBNull(4) ? DateTime.Now : reader.GetDateTime(4);
+                retirada.Vale.isVale = reader.IsDBNull(5) ? 0 : reader.GetInt32(5);
+                retirada.Vale.Usuario.ID = reader.IsDBNull(6) ? 0 : reader.GetInt32(6);
+                
                 return retirada;
             }
             return retirada;

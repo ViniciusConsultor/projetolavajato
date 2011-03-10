@@ -39,7 +39,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private Usuario GetByName(Usuario usuario)
         {
-            return usuarioBL.ByLogin(usuario);
+            return usuarioBL.ByLoginAndPassword(usuario);
         }
 
        

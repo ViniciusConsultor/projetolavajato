@@ -81,6 +81,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RetiradaDAO.cs" />
     <Compile Include="ServicoDAO.cs" />
+    <Compile Include="ServicoFormaPagamentoDAO.cs" />
     <Compile Include="ServicoItemDAO.cs" />
     <Compile Include="SQLHelper.cs" />
     <Compile Include="SuprimentoDAO.cs" />

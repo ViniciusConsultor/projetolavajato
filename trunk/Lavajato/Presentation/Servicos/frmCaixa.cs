@@ -166,17 +166,33 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnConcluirVenda_Click(object sender, EventArgs e)
         {
-            if (ExisteServico())
-            {
-                ConcluirVenda();
-                LimpaCampos();
-                this.Text = "Caixa Livre ";
-            }
-            else
+            if (!ExisteServico())
             {
                 MessageBox.Show(Resources.Nenhum_servico_encontrado, Resources.Atencao);
                 return;
+
             }
+
+            VendaFormaPagamento frmFormaPagamento = new VendaFormaPagamento(_servico);
+            frmFormaPagamento.ShowDialog();
+            
+            //ConcluirVenda();
+            LimpaCampos();
+            this.Text = "Caixa Livre ";
+        }
+
+        private void ConcluirVenda()
+        {
+            _servico.Finalizado = 1;
+            _servico.Lavado = 1;
+            _servico.Pago = 1;
+            _servico.FormaPagamento = ((FormaPagamento)(cmbFormaPagamento.SelectedItem));
+            _servico.Total = Configuracao.ConverteParaDecimal(totalServico.Text);
+            _servico.SubTotal = Configuracao.ConverteParaDecimal(totalServico.Text);
+            _servico.Desconto = Configuracao.ConverteParaDecimal(desconto.Text);
+            servicoBL.Update(_servico);
+
+            new ClienteBL().Update(_servico.Cliente);
         }
 
         private void totalServico_TextChanged(object sender, EventArgs e)
@@ -461,20 +477,6 @@ namespace HenryCorporation.Lavajato.Presentation
             cmbFormaPagamento.DataSource = new FormaPagamentoBL().GetAll();
             cmbFormaPagamento.DisplayMember = "Descricao";
             cmbFormaPagamento.ValueMember = "ID";
-        }
-
-        private void ConcluirVenda()
-        {
-            _servico.Finalizado = 1;
-            _servico.Lavado = 1;
-            _servico.Pago = 1;
-            _servico.FormaPagamento = ((FormaPagamento)(cmbFormaPagamento.SelectedItem));
-            _servico.Total = Configuracao.ConverteParaDecimal(totalServico.Text);
-            _servico.SubTotal = Configuracao.ConverteParaDecimal(totalServico.Text);
-            _servico.Desconto = Configuracao.ConverteParaDecimal(desconto.Text);
-            servicoBL.Update(_servico);
-
-            new ClienteBL().Update(_servico.Cliente);
         }
 
         private decimal ValorDesconto()

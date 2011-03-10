@@ -41,6 +41,11 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             usuarioDao.Update(usuario);
         }
 
+        public Usuario ByLoginAndPassword(Usuario usuario)
+        {
+            return usuarioDao.ByLoginAndPassword(usuario);
+        }
+
         public Usuario ByLogin(Usuario usuario)
         {
             return usuarioDao.ByLogin(usuario);

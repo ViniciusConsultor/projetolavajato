@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="CategoriaProdutoBL.cs" />
     <Compile Include="ClienteBL.cs" />
+    <Compile Include="Dinheiro.cs" />
     <Compile Include="FormatacaoTabelas\ClienteColuna.cs" />
     <Compile Include="FormatacaoTabelas\ClienteTabela.cs" />
     <Compile Include="FormatacaoTabelas\ContaPagaColuna.cs" />
