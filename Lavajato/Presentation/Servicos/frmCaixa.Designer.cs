@@ -89,7 +89,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // btnAlterarQuantidade
             // 
             btnAlterarQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            btnAlterarQuantidade.Location = new System.Drawing.Point(161, 579);
+            btnAlterarQuantidade.Location = new System.Drawing.Point(158, 573);
             btnAlterarQuantidade.Name = "btnAlterarQuantidade";
             btnAlterarQuantidade.Size = new System.Drawing.Size(169, 40);
             btnAlterarQuantidade.TabIndex = 22;
@@ -131,7 +131,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.groupBox1.Controls.Add(this.valor);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.totalServico);
-            this.groupBox1.Location = new System.Drawing.Point(4, 490);
+            this.groupBox1.Location = new System.Drawing.Point(2, 484);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(789, 83);
             this.groupBox1.TabIndex = 85;
@@ -255,7 +255,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // btnCancelarVenda
             // 
             this.btnCancelarVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelarVenda.Location = new System.Drawing.Point(459, 579);
+            this.btnCancelarVenda.Location = new System.Drawing.Point(456, 573);
             this.btnCancelarVenda.Name = "btnCancelarVenda";
             this.btnCancelarVenda.Size = new System.Drawing.Size(146, 40);
             this.btnCancelarVenda.TabIndex = 25;
@@ -266,7 +266,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // btnConcluirVenda
             // 
             this.btnConcluirVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnConcluirVenda.Location = new System.Drawing.Point(5, 579);
+            this.btnConcluirVenda.Location = new System.Drawing.Point(2, 573);
             this.btnConcluirVenda.Name = "btnConcluirVenda";
             this.btnConcluirVenda.Size = new System.Drawing.Size(156, 40);
             this.btnConcluirVenda.TabIndex = 21;
@@ -277,7 +277,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // btnExcluir
             // 
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.Location = new System.Drawing.Point(330, 579);
+            this.btnExcluir.Location = new System.Drawing.Point(327, 573);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(129, 40);
             this.btnExcluir.TabIndex = 24;
@@ -354,7 +354,6 @@ namespace HenryCorporation.Lavajato.Presentation
             this.ordemServico.Size = new System.Drawing.Size(240, 31);
             this.ordemServico.TabIndex = 1;
             this.ordemServico.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ordemServico_KeyDown);
-            //this.ordemServico.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.ordemServico_KeyPress);
             this.ordemServico.Leave += new System.EventHandler(this.ordemServico_Leave);
             // 
             // chbLavado
@@ -624,7 +623,7 @@ namespace HenryCorporation.Lavajato.Presentation
             // btnSair
             // 
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.Location = new System.Drawing.Point(713, 579);
+            this.btnSair.Location = new System.Drawing.Point(710, 573);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(75, 40);
             this.btnSair.TabIndex = 113;
@@ -637,7 +636,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.ClientSize = new System.Drawing.Size(800, 631);
+            this.ClientSize = new System.Drawing.Size(807, 620);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);

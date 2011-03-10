@@ -23,5 +23,7 @@ namespace HenryCorporation.Lavajato.DomainModel
             get { return usuario; }
             set { usuario = value; }
         }
+
+        public TipoRetirada TipoRetirada { get; set; }
     }
 }

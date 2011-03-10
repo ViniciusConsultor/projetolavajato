@@ -12,6 +12,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
     public class ServicoBL
     {
         ServicoDAO servicoDAO = new ServicoDAO();
+        ServicoFormaPagamentoDAO servicoFormaPagamentoDAO = new ServicoFormaPagamentoDAO();
         private const int qtdeMaximaDeOrdensDeServico = 1000;
         
 
@@ -140,7 +141,18 @@ namespace HenryCorporation.Lavajato.BusinessLogic
         }
 
         #endregion
+
+        #region Pagamento
+
+        public void InsertPagamento(Pagamento pagamento)
+        {
+            servicoFormaPagamentoDAO.Insert(pagamento);
+        }
         
+
+
+        #endregion
+
         public DataTable CriaGridCarrosLavano()
         {
             IList<Servico> servicos = servicoDAO.GetCarrosLavando();

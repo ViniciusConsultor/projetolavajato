@@ -16,6 +16,7 @@ namespace HenryCorporation.Lavajato.DomainModel
         public Retirada()
         {
             usuario = new Usuario();
+            Vale = new Vale();
         }
 
         public Usuario Usuario
@@ -23,5 +24,8 @@ namespace HenryCorporation.Lavajato.DomainModel
             get { return usuario; }
             set { usuario = value; }
         }
+
+        public TipoRetirada TipoRetirada { get; set; }
+        public Vale Vale { get; set; }
     }
 }

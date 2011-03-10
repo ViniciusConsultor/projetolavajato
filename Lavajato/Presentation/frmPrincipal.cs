@@ -62,7 +62,7 @@ namespace Presentation
 
         private void retiradaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var frmRetirada = new frmRetirada();
+            var frmRetirada = new frmRetiradaSuprimento();
             frmRetirada.ShowDialog();
         }
 
@@ -132,7 +132,7 @@ namespace Presentation
 
         private void saidaToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frmRetirada = new frmRetirada();
+            frmRetiradaSuprimento frmRetirada = new frmRetiradaSuprimento();
             frmRetirada.ShowDialog();
         }
 

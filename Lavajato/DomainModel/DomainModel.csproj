@@ -74,6 +74,8 @@
     <Compile Include="Estoque.cs" />
     <Compile Include="FormaPagamento.cs" />
     <Compile Include="Fornecedor.cs" />
+    <Compile Include="Movimentacao.cs" />
+    <Compile Include="Pagamento.cs" />
     <Compile Include="Permissao.cs" />
     <Compile Include="PermissoesUsuario.cs" />
     <Compile Include="Pessoa.cs" />
@@ -88,6 +90,7 @@
     <Compile Include="TipoDeProduto.cs" />
     <Compile Include="TipoFuncionario.cs" />
     <Compile Include="Usuario.cs" />
+    <Compile Include="Vale.cs" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
