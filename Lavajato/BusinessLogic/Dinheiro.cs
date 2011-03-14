@@ -19,23 +19,25 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             return 0;
         }
 
-        public static string RetiraCifraoDaMoedaReal(decimal valor)
+        public static string RetiraCifraoDaMoedaReal(string valor)
         {
-            return valor.ToString("C").Replace("R$", "");
+            if (valor.Length > 0)
+                return valor.ToString().Replace("R$", "");
+
+            return string.Empty;
         }
 
-        public static decimal RetiraCifraoDaMoedaReal(string valor)
+        public static decimal RetiraCifraoDaMoedaReal(decimal valor)
         {
-            if(valor.Length > 0)
-            return decimal.Parse( valor.Replace("R$", ""));
+            if(valor > 0)
+                return  decimal.Parse( valor.ToString().Replace("R$", ""));
 
             return 0;
         }
 
-
         public static decimal ConverteParaDecimal(string str)
         {
-            str = str.Trim();
+            str = RetiraCifraoDaMoedaReal( str.Trim());
             return Convert.ToDecimal(str.Length > 0 ? str : "0");
         }
     }

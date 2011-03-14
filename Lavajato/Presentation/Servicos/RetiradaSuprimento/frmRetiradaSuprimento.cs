@@ -50,7 +50,8 @@ namespace HenryCorporation.Lavajato.Presentation
                 {
                     Retirada retirada = SetUpRetirada();
                     retirada.TipoRetirada = TipoRetirada.Sangria;
-                    retirada = new RetiradaBL().Insert(retirada);
+                    retirada = new RetiradaBL().Add(retirada);
+
                     MessageBox.Show("Retirada inserida com sucesso!", "Atenção");
                 }
                 else if (isVale)
@@ -62,7 +63,8 @@ namespace HenryCorporation.Lavajato.Presentation
                     retirada.TipoRetirada = TipoRetirada.Vale;
                     retirada.Vale = new Vale() { Usuario = frmLoginRetirada.User };
                     retirada.Vale.isVale = 1;
-                    retirada = new RetiradaBL().Insert(retirada);
+                    retirada = new RetiradaBL().Add(retirada);
+
                     MessageBox.Show("Retirada inserida com sucesso!", "Atenção");
                 }
                 else if (isSuprimento)
@@ -70,13 +72,15 @@ namespace HenryCorporation.Lavajato.Presentation
                     Suprimento suprimento = SetUpSuprimento();
                     suprimento.TipoRetirada = TipoRetirada.Suprimento;
                     suprimento = new SuprimentoBL().Insert(suprimento);
+
                     MessageBox.Show("Suprimento inserido com sucesso!", "Atenção");
                 }
             }
-            catch (ArgumentException ex)
+            catch (ArgumentException)
             {
                 MessageBox.Show("Erro ao selecionar Tipo de Movimentação", "Atenção!");
             }
+
             LimpaCampos();
         }
 

@@ -48,7 +48,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void CarregaLavagens()
         {
-            grdOrdensAbertas.DataSource = new ServicoBL().GetCarrosNoLavajato();
+            grdOrdensAbertas.DataSource = new ServicoBL().GetCarrosNoLavajatoByDate(dateTimePicker.Value);
         }
 
         private void btnAtualizaListagem_Click(object sender, EventArgs e)

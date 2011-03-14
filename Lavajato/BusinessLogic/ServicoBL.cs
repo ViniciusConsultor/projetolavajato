@@ -190,6 +190,12 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             return ServicoTabela.GetLavados(servicos);
         }
 
+        public DataTable GetCarrosNoLavajatoByDate(DateTime date)
+        {
+            IList<Servico> servicos = servicoDAO.GetCarrosNoLavajatoByData(date);
+            return ServicoTabela.GetLavados(servicos);
+        }
+
         /// <summary>
         /// Retorna Ordens de Serviços tando finalizadas quanto não finalizados para incluir lavador
         /// no serviço

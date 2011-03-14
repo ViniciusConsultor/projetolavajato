@@ -45,9 +45,9 @@ namespace HenryCorporation.Lavajato.Presentation
             _servico.Lavado = 1;
             _servico.Pago = 1;
             _servico.FormaPagamento = ((FormaPagamento)(cmbFormaPagamento.SelectedItem));
-            _servico.Total = Configuracao.ConverteParaDecimal(txtTotalPagamento.Text);
-            _servico.SubTotal = Configuracao.ConverteParaDecimal(txtTotalPagamento.Text);
-            _servico.Desconto = Configuracao.ConverteParaDecimal(txtDesconto.Text);
+            _servico.Total = Configuracao.ConverteParaDecimal(Dinheiro.RetiraCifraoDaMoedaReal(txtTotalPagamento.Text));
+            _servico.SubTotal = Configuracao.ConverteParaDecimal(Dinheiro.RetiraCifraoDaMoedaReal(txtTotalPagamento.Text));
+            _servico.Desconto = Configuracao.ConverteParaDecimal(Dinheiro.RetiraCifraoDaMoedaReal(txtDesconto.Text));
             
             return _servico;
         }
@@ -66,7 +66,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnConcluirVenda_Click(object sender, EventArgs e)
         {
-            
+
             frmLoginFechamentoDeCaixa frmLoginFechamentoDeCaixa = null;
             if (txtDesconto.TextLength > 0)
             {
@@ -75,7 +75,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
                 if (!frmLoginFechamentoDeCaixa.User.TipoFuncionario.Descricao.Contains("Gerente"))
                 {
-                    MessageBox.Show("Você não tem permissão para dar desconto, favor entrar em contato com o Gerente", "Atenção");
+                    MessageBox.Show("Você não tem permissão para dar desconto, favor entrar em contato com o Gerente!", "Atenção!!");
                     return;
                 }            
             }
@@ -96,7 +96,7 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             Pagamento pagamento = new Pagamento();
             pagamento.Servico = _servico;
-            pagamento.Total = Dinheiro.RetiraCifraoDaMoedaReal(txtTotalPagamento.Text);
+            pagamento.Total = Dinheiro.RetiraCifraoDaMoedaReal(Dinheiro.ConverteParaDecimal( txtTotalPagamento.Text));
             pagamento.Desconto = Dinheiro.ConverteParaDecimal(txtDesconto.Text);
             pagamento.Dinheiro = Dinheiro.ConverteParaDecimal(txtDinheiro.Text);
             pagamento.Cartao = Dinheiro.ConverteParaDecimal(txtCartaoValor.Text);
@@ -104,7 +104,7 @@ namespace HenryCorporation.Lavajato.Presentation
             return pagamento;
         }
 
-        private decimal SomaDinheiroCartao()
+        private decimal TotalDinheiroMaisCartao()
         {
            return Dinheiro.ConverteParaDecimal( txtDinheiro.Text) + Dinheiro.ConverteParaDecimal(txtCartaoValor.Text); 
         }
@@ -133,9 +133,9 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void SetUpDesconto()
         {
-            if (SomaDinheiroCartao() > _servico.Total)
+            if (TotalDinheiroMaisCartao() > _servico.Total)
             {
-                txtTroco.Text = (SomaDinheiroCartao() - _servico.Total).ToString();
+                txtTroco.Text = (TotalDinheiroMaisCartao() - _servico.Total).ToString();
             }
             else
             {
@@ -146,19 +146,33 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void txtDesconto_TextChanged(object sender, EventArgs e)
         {
+            decimal somaDinheiroCartao = TotalDinheiroMaisCartao();
+
             if (txtDesconto.Text.Contains("."))
             {
                 txtDesconto.Text = txtDesconto.Text.Remove(txtDesconto.Text.Length - 1);
                 txtDesconto.SelectionStart = txtDesconto.Text.Length;
             }
+            else if (txtDesconto.TextLength == 0)
+            {
+                if (TotalDinheiroMaisCartao() > _servico.Total)
+                {
+                    txtTroco.Text = Dinheiro.Subtrai(somaDinheiroCartao.ToString(), _servico.Total.ToString()).ToString();
+                    txtTotalPagamento.Text = _servico.Total.ToString("C");
+                }
+                else
+                {
+                    txtTroco.Text = "";
+                    txtTotalPagamento.Text = _servico.Total.ToString("C");
+                }
+            }
 
-            decimal somaDinheiroCartao = SomaDinheiroCartao();
             decimal desconto = Dinheiro.ConverteParaDecimal(txtDesconto.Text);
             if (somaDinheiroCartao >= desconto)
             {
                 if (txtDesconto.TextLength > 0)
                 {
-                    txtTotalPagamento.Text = (_servico.Total - desconto).ToString();
+                    txtTotalPagamento.Text = (_servico.Total - desconto).ToString("C");
                     txtTroco.Text = (somaDinheiroCartao - Dinheiro.ConverteParaDecimal(txtTotalPagamento.Text)).ToString();
                 }
 
@@ -169,12 +183,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private decimal CalculaDesconto()
         {
-            return (SomaDinheiroCartao() - Dinheiro.ConverteParaDecimal(txtDesconto.Text));
+            return (TotalDinheiroMaisCartao() - Dinheiro.ConverteParaDecimal(txtDesconto.Text));
         }
-
-
-
-
-        
     }
 }
