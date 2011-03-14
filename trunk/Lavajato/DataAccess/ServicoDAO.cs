@@ -216,6 +216,16 @@ namespace HenryCorporation.Lavajato.DataAccess
             return SetUpFields(dataSet);
         }
 
+        public List<Servico> GetCarrosNoLavajatoByData(DateTime date)
+        {
+            string condicao = " Where [Delete] = 0 And Finalizado = 0 And [Cancelado] = 0 and CONVERT(varchar, Entrada, 103)  = '" + date.ToShortDateString() + "'" +
+            " And OrdemServico <> 0 order by OrdemServico Asc  ";
+
+            var dataBaseHelper = new DataBaseHelper(this.sql + condicao);
+            var dataSet = dataBaseHelper.Run(this.ConnectionString);
+            return SetUpFields(dataSet);
+        }
+
         #endregion
 
         #region MetodosAuxiliares

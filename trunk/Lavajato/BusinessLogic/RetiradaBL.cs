@@ -16,9 +16,9 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
         }
 
-        public Retirada Insert(Retirada retirada)
+        public Retirada Add(Retirada retirada)
         {
-            return retiradaDAO.Insert(retirada);
+            return retiradaDAO.Add(retirada);
         }
     }
 }

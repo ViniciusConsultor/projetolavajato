@@ -31,12 +31,14 @@
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnAtualizaListagem = new System.Windows.Forms.Button();
             this.grdOrdensAbertas = new System.Windows.Forms.DataGridView();
+            this.dateTimePicker = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdOrdensAbertas)).BeginInit();
             this.SuspendLayout();
             // 
             // groupBox1
             // 
+            this.groupBox1.Controls.Add(this.dateTimePicker);
             this.groupBox1.Controls.Add(this.btnAtualizaListagem);
             this.groupBox1.Controls.Add(this.grdOrdensAbertas);
             this.groupBox1.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -49,9 +51,9 @@
             // btnAtualizaListagem
             // 
             this.btnAtualizaListagem.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAtualizaListagem.Location = new System.Drawing.Point(6, 10);
+            this.btnAtualizaListagem.Location = new System.Drawing.Point(5, 44);
             this.btnAtualizaListagem.Name = "btnAtualizaListagem";
-            this.btnAtualizaListagem.Size = new System.Drawing.Size(708, 36);
+            this.btnAtualizaListagem.Size = new System.Drawing.Size(710, 36);
             this.btnAtualizaListagem.TabIndex = 2;
             this.btnAtualizaListagem.Text = "Atualiza listagem de carros não lavados";
             this.btnAtualizaListagem.UseVisualStyleBackColor = true;
@@ -60,11 +62,19 @@
             // grdOrdensAbertas
             // 
             this.grdOrdensAbertas.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.grdOrdensAbertas.Location = new System.Drawing.Point(5, 52);
+            this.grdOrdensAbertas.Location = new System.Drawing.Point(5, 80);
             this.grdOrdensAbertas.Name = "grdOrdensAbertas";
-            this.grdOrdensAbertas.Size = new System.Drawing.Size(710, 525);
+            this.grdOrdensAbertas.Size = new System.Drawing.Size(710, 498);
             this.grdOrdensAbertas.TabIndex = 1;
             this.grdOrdensAbertas.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.grdOrdensAbertas_MouseDoubleClick);
+            // 
+            // dateTimePicker
+            // 
+            this.dateTimePicker.CalendarFont = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.dateTimePicker.Location = new System.Drawing.Point(6, 18);
+            this.dateTimePicker.Name = "dateTimePicker";
+            this.dateTimePicker.Size = new System.Drawing.Size(708, 26);
+            this.dateTimePicker.TabIndex = 3;
             // 
             // frmOrdensAbertas
             // 
@@ -88,6 +98,7 @@
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.DataGridView grdOrdensAbertas;
         private System.Windows.Forms.Button btnAtualizaListagem;
+        private System.Windows.Forms.DateTimePicker dateTimePicker;
 
     }
 }

@@ -202,11 +202,11 @@ namespace HenryCorporation.Lavajato.Presentation
             
             if (dataSetItens.Tables[0].Rows.Count > 0)
             {
-                //_servico = ServicoSalva();
-                //var itens = ItensParaInsercao(_servico);
-                //SalvaItens(itens);
-                IImprimir impressao = new ImprimirComprovantePagamento(_servico);
-                impressao.Imprimir(_servico);
+                _servico = ServicoSalva();
+                var itens = ItensParaInsercao(_servico);
+                SalvaItens(itens);
+                //IImprimir impressao = new ImprimirComprovantePagamento(_servico);
+                //impressao.Imprimir(_servico);
                 LiberaBotaoParaExclusaoDeItens();
                 MessageBox.Show("Número da Ordem Serviço é: " + this._servico.OrdemServico, "Ordem Serviço");
                 LimpaCampos();
