@@ -51,9 +51,9 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void grdProdutos_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            this._produto.ID = int.Parse(grdProdutos.Rows[grdProdutos.CurrentRow.Index].Cells[0].Value.ToString());
-            this._produto = ProcuraProduto(this._produto);
-            CarregaCampos(this._produto);
+            _produto.ID = int.Parse(grdProdutos.Rows[grdProdutos.CurrentRow.Index].Cells[0].Value.ToString());
+            _produto = ProcuraProduto(_produto);
+            CarregaCampos(_produto);
             tabProdutos.SelectedTab = tabProduto;
         }
 
@@ -77,7 +77,7 @@ namespace HenryCorporation.Lavajato.Presentation
             }
 
             SetProduto();
-            _produtoRepository.Update(this._produto);
+            _produtoRepository.Update(_produto);
             CarregaProdutos();
             MessageBox.Show(Resources.ProdutoAtualizadoComSucesso, Resources.Atencao, MessageBoxButtons.OK, MessageBoxIcon.Information);
             descricao.Focus();
@@ -157,46 +157,21 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (ProdutoExiste())
-            {
-                MessageBox.Show(Resources.NennhumProdutoSelecionado, Resources.Atencao);
-                return;
-            }
 
-            DialogResult dialogResult = MessageBox.Show(Resources.Item_deletado, Resources.Atencao, MessageBoxButtons.YesNo);
-            if (dialogResult == DialogResult.No)
+            DialogResult dialogResult = MessageBox.Show("Deseja realmente excluir o Item?", Resources.Atencao, MessageBoxButtons.YesNo);
+            if (dialogResult == DialogResult.Yes)
             {
-                return;
+                _produtoRepository.Delete(_produto);
+                CarregaProdutos();
+                LimpaCampos();
+                MessageBox.Show(Resources.Item_deletado, Resources.Atencao);
+                descricao.Focus();
             }
-
-            _produtoRepository.Delete(_produto);
-            CarregaProdutos();
-            LimpaCampos();
-            MessageBox.Show(Resources.Item_deletado, Resources.Atencao);
-            descricao.Focus();
         }
 
         private bool ProdutoExiste()
         {
             return !(_produto.ID > 0);
-        }
-
-        private void CarregaCategoriaProduto()
-        {
-            cmbCategoriaProduto.DataSource = new CategoriaProdutoBL().GetAll();
-            cmbCategoriaProduto.DisplayMember = "Descricao";
-            cmbCategoriaProduto.ValueMember = "ID";
-        }
-
-        private void CarregaProdutos()
-        {
-            grdProdutos.DataSource = _produtoRepository.GetAll();
-            FormataGrid();
-        }
-
-        private void OcultaCampo()
-        {
-            grdProdutos.Columns[0].Visible = false;
         }
 
         private void CarregaCampos(HenryCorporation.Lavajato.DomainModel.Produto produto)
@@ -386,6 +361,26 @@ namespace HenryCorporation.Lavajato.Presentation
             }
         }
 
+        #region Metodos Auxiliares
+
+        private void CarregaCategoriaProduto()
+        {
+            cmbCategoriaProduto.DataSource = new CategoriaProdutoBL().GetAll();
+            cmbCategoriaProduto.DisplayMember = "Descricao";
+            cmbCategoriaProduto.ValueMember = "ID";
+        }
+
+        private void CarregaProdutos()
+        {
+            grdProdutos.DataSource = _produtoRepository.GetAll();
+            FormataGrid();
+        }
+
+        private void OcultaCampo()
+        {
+            grdProdutos.Columns[0].Visible = false;
+        }
+        
         private void btnSalvar_Leave(object sender, EventArgs e)
         {
             btnExcluir.Focus();
@@ -425,5 +420,7 @@ namespace HenryCorporation.Lavajato.Presentation
         {
 
         }
+
+        #endregion
     }
 }

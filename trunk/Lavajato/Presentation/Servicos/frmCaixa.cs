@@ -187,142 +187,14 @@ namespace HenryCorporation.Lavajato.Presentation
             _servico.Lavado = 1;
             _servico.Pago = 1;
             _servico.FormaPagamento = ((FormaPagamento)(cmbFormaPagamento.SelectedItem));
-            _servico.Total = Configuracao.ConverteParaDecimal(totalServico.Text);
-            _servico.SubTotal = Configuracao.ConverteParaDecimal(totalServico.Text);
-            _servico.Desconto = Configuracao.ConverteParaDecimal(desconto.Text);
+            _servico.Total = Dinheiro.ForDecimal(totalServico.Text);
+            _servico.SubTotal = Dinheiro.ForDecimal(totalServico.Text);
+            _servico.Desconto = Dinheiro.ForDecimal(desconto.Text);
             servicoBL.Update(_servico);
 
             new ClienteBL().Update(_servico.Cliente);
         }
 
-        private void totalServico_TextChanged(object sender, EventArgs e)
-        {
-            FocoVaiParaValor();
-
-            if (totalServico.Text.Contains("."))
-            {
-                totalServico.Text = totalServico.Text.Remove(totalServico.Text.Length - 1);
-                totalServico.SelectionStart = totalServico.Text.Length;
-            }
-        }
-
-        private void FocoVaiParaValor()
-        {
-            if (totalServico.Text.Contains(enter))
-            {
-                totalServico.Text = total;
-                valor.Focus();
-            }
-            else
-            {
-                total = totalServico.Text;
-            }
-        }
-
-        private void valor_TextChanged(object sender, EventArgs e)
-        {
-            FocoVaiParaDesconto();
-
-            if (valor.TextLength == 0)
-            {
-                txtTrocoDoServico.Text = "";
-                desconto.Text = "";
-                return;
-                
-            }
-
-            if (valor.Text.Contains("."))
-            {
-                valor.Text = valor.Text.Remove(valor.Text.Length - 1);
-                valor.SelectionStart = valor.Text.Length;
-            }
-
-            var valorTemp = valor.Text;
-            decimal valorNum = 0;
-            if (valorTemp.Length > 0)
-                valorNum = Convert.ToDecimal(valorTemp);
-
-
-            var valorTotal = totalServico.Text;
-            decimal totalTemp = 0;
-            if (valorTotal.Length > 0)
-                totalTemp = Convert.ToDecimal(totalServico.Text);
-
-            txtTrocoDoServico.Text = decimal.Subtract(valorNum, totalTemp).ToString();
-
-        }
-
-        private void FocoVaiParaDesconto()
-        {
-            if (!valor.Text.Contains(enter))
-            {
-                valorServico = valor.Text;
-            }
-            else
-            {
-                valor.Text = valorServico;
-                desconto.Focus();
-            }
-        }
-
-        private void FocoVaiParaTroco()
-        {
-            if (!desconto.Text.Contains(enter))
-            {
-                descontoServico = desconto.Text;
-            }
-            else
-            {
-                desconto.Text = descontoServico;
-                txtTrocoDoServico.Focus();
-            }
-        }
-
-        private void desconto_TextChanged(object sender, EventArgs e)
-        {
-            FocoVaiParaTroco();
-            
-            if (desconto.Text.Contains("."))
-            {
-                desconto.Text = desconto.Text.Remove(desconto.TextLength - 1);
-                desconto.SelectionStart = desconto.Text.Length;
-            }
-
-            decimal totalServicoTemp = TotalServicos();
-            decimal descontoTemp = ServicoBL.ConverteParaDecimal(desconto.Text);
-            if (descontoTemp == 0)
-            {
-                totalServico.Text = totalServicoTemp.ToString();
-                valor.Text = valor.Text;
-                txtTrocoDoServico.Text = "";
-
-                return;
-            }
-
-            if (descontoTemp > totalServicoTemp)
-            {
-                MessageBox.Show(Resources.Desconto_maior_que_valor_produto, Resources.Atencao);
-                desconto.Text = "";
-            }
-
-            var valorTemp = decimal.Subtract(totalServicoTemp, descontoTemp).ToString();
-            
-            if (valor.TextLength == 0)
-            {
-                totalServico.Text = (totalServicoTemp - descontoTemp).ToString();
-            }
-
-            if (!string.IsNullOrEmpty(txtTrocoDoServico.Text.Trim()))
-            {
-                if (!string.IsNullOrEmpty(desconto.Text.Trim()))
-                {
-                    txtTrocoDoServico.Text = (ServicoBL.ConverteParaDecimal(txtTrocoDoServico.Text) - ServicoBL.ConverteParaDecimal(desconto.Text)).ToString();
-                    valor.Text = valor.Text;
-                    totalServico.Text = decimal.Subtract(totalServicoTemp, descontoTemp).ToString();
-                }
-            }
-        }
-        
         private void troco_TextChanged(object sender, EventArgs e)
         {
             if (!txtTrocoDoServico.Text.Contains(enter))
@@ -365,21 +237,7 @@ namespace HenryCorporation.Lavajato.Presentation
             return (_servicoItem.ID > 0);
         }
 
-        private void cmbFormaPagamento_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            valor.Text = "";
-            switch (cmbFormaPagamento.SelectedIndex)
-            {
-                case 0:
-                    desconto.Enabled = true;
-                    break;
-                default:
-                    desconto.Enabled = false;
-                    txtTrocoDoServico.Enabled = false;
-                    valor.Text = totalServico.Text;
-                    break;
-            }
-        }        
+      
         
         private void acertoFuturo_CheckedChanged(object sender, EventArgs e)
         {
@@ -487,7 +345,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
             if (this._servico.Cliente.Convenio.PorcentagemDesconto > 0)
             {
-                var valTotal = Configuracao.ConverteParaDecimal( this.totalServico.Text);
+                var valTotal = Dinheiro.ForDecimal( this.totalServico.Text);
                 var desc = valorTotalComDesconto * Math.Abs(this._servico.Cliente.Convenio.PorcentagemDesconto / 100);
                 this.valor.Text = (valTotal - desc).ToString("C").Replace("R$", "");
                 return desc;
@@ -503,7 +361,7 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             decimal totalCompra = 0;
             for (var i = 0; i < grdServico.Rows.Count - 1; i++)
-                totalCompra += Configuracao.ConverteParaDecimal(grdServico.Rows[i].Cells[4].Value.ToString());
+                totalCompra += Dinheiro.ForDecimal(grdServico.Rows[i].Cells[4].Value.ToString());
 
             return totalCompra;
         }
@@ -542,32 +400,6 @@ namespace HenryCorporation.Lavajato.Presentation
             this._servico = servicoBL.Add(_servico);
         }
 
-        private void ChamaFuncoesDeCaixa(KeyEventArgs e)
-        {
-            switch (e.KeyData)
-            {
-                case Keys.Enter:
-                    PesquisaOrdemServico();
-                    break;
-                case Keys.F2:
-                    ConcluirVenda();
-                    break;
-                case Keys.F3:
-                    AlterarQuantidade();
-                    break;
-                case Keys.F4:
-                    CriaServico();
-                    break;
-                case Keys.F5:
-                    ExcluirServicoItem();
-                    break;
-                case Keys.F6:
-                    CancelarVenda();
-                    break;
-                
-            }
-        }
-
         private void btnFinalizarVenda_Click(object sender, EventArgs e)
         {
             if (!IsServicoItem())
@@ -600,12 +432,188 @@ namespace HenryCorporation.Lavajato.Presentation
             {
                 this._servico.Cancelado = 1;
                 _servico.FormaPagamento = ((FormaPagamento)(cmbFormaPagamento.SelectedItem));
-                _servico.Total = Configuracao.ConverteParaDecimal(totalServico.Text);
-                _servico.SubTotal = Configuracao.ConverteParaDecimal(totalServico.Text);
-                _servico.Desconto = Configuracao.ConverteParaDecimal(desconto.Text);
+                _servico.Total = Dinheiro.ForDecimal(totalServico.Text);
+                _servico.SubTotal = Dinheiro.ForDecimal(totalServico.Text);
+                _servico.Desconto = Dinheiro.ForDecimal(desconto.Text);
 
                 this.servicoBL.Update(this._servico);
                 MessageBox.Show(Resources.Venda_cancelada, Resources.Atencao);
+            }
+        }
+
+        #region Metodos Parados Temporariamente
+
+        private void cmbFormaPagamento_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            valor.Text = "";
+            switch (cmbFormaPagamento.SelectedIndex)
+            {
+                case 0:
+                    desconto.Enabled = true;
+                    break;
+                default:
+                    desconto.Enabled = false;
+                    txtTrocoDoServico.Enabled = false;
+                    valor.Text = totalServico.Text;
+                    break;
+            }
+        }
+
+        private void totalServico_TextChanged(object sender, EventArgs e)
+        {
+            FocoVaiParaValor();
+
+            if (totalServico.Text.Contains("."))
+            {
+                totalServico.Text = totalServico.Text.Remove(totalServico.Text.Length - 1);
+                totalServico.SelectionStart = totalServico.Text.Length;
+            }
+        }
+
+        private void valor_TextChanged(object sender, EventArgs e)
+        {
+            FocoVaiParaDesconto();
+
+            if (valor.TextLength == 0)
+            {
+                txtTrocoDoServico.Text = "";
+                desconto.Text = "";
+                return;
+
+            }
+
+            if (valor.Text.Contains("."))
+            {
+                valor.Text = valor.Text.Remove(valor.Text.Length - 1);
+                valor.SelectionStart = valor.Text.Length;
+            }
+
+            var valorTemp = valor.Text;
+            decimal valorNum = 0;
+            if (valorTemp.Length > 0)
+                valorNum = Convert.ToDecimal(valorTemp);
+
+
+            var valorTotal = totalServico.Text;
+            decimal totalTemp = 0;
+            if (valorTotal.Length > 0)
+                totalTemp = Convert.ToDecimal(totalServico.Text);
+
+            txtTrocoDoServico.Text = decimal.Subtract(valorNum, totalTemp).ToString();
+
+        }
+
+        private void desconto_TextChanged(object sender, EventArgs e)
+        {
+            FocoVaiParaTroco();
+
+            if (desconto.Text.Contains("."))
+            {
+                desconto.Text = desconto.Text.Remove(desconto.TextLength - 1);
+                desconto.SelectionStart = desconto.Text.Length;
+            }
+
+            decimal totalServicoTemp = TotalServicos();
+            decimal descontoTemp = ServicoBL.ConverteParaDecimal(desconto.Text);
+            if (descontoTemp == 0)
+            {
+                totalServico.Text = totalServicoTemp.ToString();
+                valor.Text = valor.Text;
+                txtTrocoDoServico.Text = "";
+
+                return;
+            }
+
+            if (descontoTemp > totalServicoTemp)
+            {
+                MessageBox.Show(Resources.Desconto_maior_que_valor_produto, Resources.Atencao);
+                desconto.Text = "";
+            }
+
+            var valorTemp = decimal.Subtract(totalServicoTemp, descontoTemp).ToString();
+
+            if (valor.TextLength == 0)
+            {
+                totalServico.Text = (totalServicoTemp - descontoTemp).ToString();
+            }
+
+            if (!string.IsNullOrEmpty(txtTrocoDoServico.Text.Trim()))
+            {
+                if (!string.IsNullOrEmpty(desconto.Text.Trim()))
+                {
+                    txtTrocoDoServico.Text = (ServicoBL.ConverteParaDecimal(txtTrocoDoServico.Text) - ServicoBL.ConverteParaDecimal(desconto.Text)).ToString();
+                    valor.Text = valor.Text;
+                    totalServico.Text = decimal.Subtract(totalServicoTemp, descontoTemp).ToString();
+                }
+            }
+        }
+
+        private void FocoVaiParaValor()
+        {
+            if (totalServico.Text.Contains(enter))
+            {
+                totalServico.Text = total;
+                valor.Focus();
+            }
+            else
+            {
+                total = totalServico.Text;
+            }
+        }
+
+        private void FocoVaiParaDesconto()
+        {
+            if (!valor.Text.Contains(enter))
+            {
+                valorServico = valor.Text;
+            }
+            else
+            {
+                valor.Text = valorServico;
+                desconto.Focus();
+            }
+        }
+
+        private void FocoVaiParaTroco()
+        {
+            if (!desconto.Text.Contains(enter))
+            {
+                descontoServico = desconto.Text;
+            }
+            else
+            {
+                desconto.Text = descontoServico;
+                txtTrocoDoServico.Focus();
+            }
+        }
+
+        #endregion
+
+        #region Eventos Auxiliares
+
+        private void ChamaFuncoesDeCaixa(KeyEventArgs e)
+        {
+            switch (e.KeyData)
+            {
+                case Keys.Enter:
+                    PesquisaOrdemServico();
+                    break;
+                case Keys.F2:
+                    ConcluirVenda();
+                    break;
+                case Keys.F3:
+                    AlterarQuantidade();
+                    break;
+                case Keys.F4:
+                    CriaServico();
+                    break;
+                case Keys.F5:
+                    ExcluirServicoItem();
+                    break;
+                case Keys.F6:
+                    CancelarVenda();
+                    break;
+
             }
         }
 
@@ -653,5 +661,9 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             ChamaFuncoesDeCaixa(e);
         }
+
+        #endregion
+
+       
     }
 }

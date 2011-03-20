@@ -15,12 +15,9 @@ namespace HenryCorporation.Lavajato.Presentation
     public partial class VendaFormaPagamento : Form
     {
         private Servico _servico;
+        private decimal _totalBakup = 0;
+        private int _indexDesconto = 10000;
 
-        public VendaFormaPagamento(Servico servico)
-        {
-            InitializeComponent();
-            _servico = servico;
-        }
 
         private void VendaFormaPagamento_Load(object sender, EventArgs e)
         {
@@ -28,16 +25,28 @@ namespace HenryCorporation.Lavajato.Presentation
             SetUpTotal();
         }
 
-        private void SetUpTotal()
+        public VendaFormaPagamento(Servico servico)
         {
-            lblVenda.Text =  _servico.Total.ToString("C");
-            txtTotalPagamento.Text = _servico.Total.ToString("C");
+            InitializeComponent();
+            _servico = servico;
+            _totalBakup = servico.Total;
+            ShowAllConvenios();
         }
 
-        //criar tabela para receber forma de pagamento
-        //dinheiro, cartão, desconto, valor
-        //mudar relatorio para pegar dessa tabela
+        private void ShowAllConvenios()
+        {
 
+            ConvenioBL convenioBl = new ConvenioBL();
+            convenio.DataSource = convenioBl.GetAll();
+            convenio.DisplayMember = "Nome";
+            convenio.ValueMember = "ID";
+        }
+
+        private void SetUpTotal()
+        {
+            lblVenda.Text = _servico.Total.ToString("C");
+            txtTotalPagamento.Text = _servico.Total.ToString("C");
+        }
 
         private Servico SetUpServico()
         {
@@ -45,9 +54,9 @@ namespace HenryCorporation.Lavajato.Presentation
             _servico.Lavado = 1;
             _servico.Pago = 1;
             _servico.FormaPagamento = ((FormaPagamento)(cmbFormaPagamento.SelectedItem));
-            _servico.Total = Configuracao.ConverteParaDecimal(Dinheiro.RetiraCifraoDaMoedaReal(txtTotalPagamento.Text));
-            _servico.SubTotal = Configuracao.ConverteParaDecimal(Dinheiro.RetiraCifraoDaMoedaReal(txtTotalPagamento.Text));
-            _servico.Desconto = Configuracao.ConverteParaDecimal(Dinheiro.RetiraCifraoDaMoedaReal(txtDesconto.Text));
+            _servico.Total = Configuracao.ConverteParaDecimal(Dinheiro.WithdrawDollar(txtTotalPagamento.Text));
+            _servico.SubTotal = Configuracao.ConverteParaDecimal(Dinheiro.WithdrawDollar(txtTotalPagamento.Text));
+            _servico.Desconto = Configuracao.ConverteParaDecimal(Dinheiro.WithdrawDollar(txtDesconto.Text));
             
             return _servico;
         }
@@ -66,7 +75,6 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnConcluirVenda_Click(object sender, EventArgs e)
         {
-
             frmLoginFechamentoDeCaixa frmLoginFechamentoDeCaixa = null;
             if (txtDesconto.TextLength > 0)
             {
@@ -77,7 +85,7 @@ namespace HenryCorporation.Lavajato.Presentation
                 {
                     MessageBox.Show("Você não tem permissão para dar desconto, favor entrar em contato com o Gerente!", "Atenção!!");
                     return;
-                }            
+                }
             }
 
             Pagamento pagamento = SetUpPagamento();
@@ -89,24 +97,26 @@ namespace HenryCorporation.Lavajato.Presentation
             servicoBL.InsertPagamento(pagamento);
             MessageBox.Show("Venda Realizada com Sucesso!", "Atenção");
             this.Close();
-            
+
         }
 
         private Pagamento SetUpPagamento()
         {
             Pagamento pagamento = new Pagamento();
             pagamento.Servico = _servico;
-            pagamento.Total = Dinheiro.RetiraCifraoDaMoedaReal(Dinheiro.ConverteParaDecimal( txtTotalPagamento.Text));
-            pagamento.Desconto = Dinheiro.ConverteParaDecimal(txtDesconto.Text);
-            pagamento.Dinheiro = Dinheiro.ConverteParaDecimal(txtDinheiro.Text);
-            pagamento.Cartao = Dinheiro.ConverteParaDecimal(txtCartaoValor.Text);
+            pagamento.Total = Dinheiro.WithdrawDollar(Dinheiro.ForDecimal(txtTotalPagamento.Text));
+            pagamento.Desconto = Dinheiro.ForDecimal(txtDesconto.Text);
+            pagamento.Dinheiro = Dinheiro.ForDecimal(txtDinheiro.Text);
+            pagamento.Cartao = Dinheiro.ForDecimal(txtCartaoValor.Text);
             pagamento.FormaPagamento = ((FormaPagamento)(cmbFormaPagamento.SelectedItem));
             return pagamento;
         }
 
         private decimal TotalDinheiroMaisCartao()
         {
-           return Dinheiro.ConverteParaDecimal( txtDinheiro.Text) + Dinheiro.ConverteParaDecimal(txtCartaoValor.Text); 
+            return decimal.Add(
+                Dinheiro.ForDecimal(txtDinheiro.Text), 
+                Dinheiro.ForDecimal(txtCartaoValor.Text)); 
         }
 
         private void txtDinheiro_TextChanged(object sender, EventArgs e)
@@ -124,7 +134,9 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             if (txtCartaoValor.Text.Contains("."))
             {
-                txtCartaoValor.Text = txtCartaoValor.Text.Remove(txtCartaoValor.Text.Length - 1);
+                txtCartaoValor.Text = txtCartaoValor.Text
+                    .Remove(txtCartaoValor.Text.Length - 1);
+
                 txtCartaoValor.SelectionStart = txtCartaoValor.Text.Length;
             }
 
@@ -135,11 +147,11 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             if (TotalDinheiroMaisCartao() > _servico.Total)
             {
-                txtTroco.Text = (TotalDinheiroMaisCartao() - _servico.Total).ToString();
+                txtTroco.Text = Dinheiro.Subtract(TotalDinheiroMaisCartao(), _servico.Total);
             }
             else
             {
-                txtTroco.Text = "";
+                txtTroco.Text = string.Empty;
             }
         }
 
@@ -150,40 +162,143 @@ namespace HenryCorporation.Lavajato.Presentation
 
             if (txtDesconto.Text.Contains("."))
             {
-                txtDesconto.Text = txtDesconto.Text.Remove(txtDesconto.Text.Length - 1);
+                txtDesconto.Text = txtDesconto.Text
+                    .Remove(txtDesconto.Text.Length - 1);
+
                 txtDesconto.SelectionStart = txtDesconto.Text.Length;
             }
             else if (txtDesconto.TextLength == 0)
             {
                 if (TotalDinheiroMaisCartao() > _servico.Total)
                 {
-                    txtTroco.Text = Dinheiro.Subtrai(somaDinheiroCartao.ToString(), _servico.Total.ToString()).ToString();
-                    txtTotalPagamento.Text = _servico.Total.ToString("C");
+                    txtTroco.Text = Dinheiro.Subtract(somaDinheiroCartao, _servico.Total)   ;
+                    txtTotalPagamento.Text = Dinheiro.WithDollar(_servico.Total);
+                    lblVenda.Text = Dinheiro.WithDollar( _servico.Total);
                 }
                 else
                 {
-                    txtTroco.Text = "";
-                    txtTotalPagamento.Text = _servico.Total.ToString("C");
+                    txtTroco.Text = string.Empty;
+                    txtTotalPagamento.Text = Dinheiro.WithDollar( _servico.Total);
                 }
             }
 
-            decimal desconto = Dinheiro.ConverteParaDecimal(txtDesconto.Text);
+            decimal desconto = Dinheiro.ForDecimal(txtDesconto.Text);
             if (somaDinheiroCartao >= desconto)
             {
                 if (txtDesconto.TextLength > 0)
                 {
-                    txtTotalPagamento.Text = (_servico.Total - desconto).ToString("C");
-                    txtTroco.Text = (somaDinheiroCartao - Dinheiro.ConverteParaDecimal(txtTotalPagamento.Text)).ToString();
+                    txtTotalPagamento.Text = Dinheiro.WithDollar(_servico.Total - desconto);
+
+                    txtTroco.Text = Dinheiro.Subtract(
+                        somaDinheiroCartao,
+                        Dinheiro.ForDecimal(txtTotalPagamento.Text)
+                        );
                 }
 
             }
 
-           
+
         }
 
         private decimal CalculaDesconto()
         {
-            return (TotalDinheiroMaisCartao() - Dinheiro.ConverteParaDecimal(txtDesconto.Text));
+            return Dinheiro.Subtract(
+                TotalDinheiroMaisCartao().ToString(),
+                txtDesconto.Text
+                );
         }
+
+        private void convenio_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+            if (convenio.SelectedIndex == 0)
+            {
+                txtTotalPagamento.Text = Dinheiro.WithDollar(_totalBakup);
+                _servico.Total = _totalBakup;
+                return;
+            }
+
+            if (_indexDesconto == convenio.SelectedIndex)
+            {
+                _indexDesconto = convenio.SelectedIndex;
+                return;
+            }
+
+            decimal total = _totalBakup;
+            int convID = int.Parse(this.convenio.SelectedValue.ToString());
+
+            Convenio conv = new ConvenioBL().ByID(new Convenio() { ID = convID });
+            if (conv.Valor > 0)
+            {
+                txtTotalPagamento.Text = Dinheiro.WithDollar(Dinheiro.Subtract(
+                    total.ToString(),
+                    conv.Valor.ToString())
+                    );
+                _servico.Total = Dinheiro.ForDecimal(Dinheiro.WithdrawDollar(txtTotalPagamento.Text));
+            }
+            else
+            {
+                decimal porcentagem = (total - (conv.PorcentagemDesconto)) / 100 * 10;
+                txtTotalPagamento.Text = Dinheiro.WithDollar(Dinheiro.Subtract(
+                    total.ToString(),
+                    porcentagem.ToString())
+                    );
+                _servico.Total = Dinheiro.ForDecimal(Dinheiro.WithdrawDollar(txtTotalPagamento.Text));
+            }
+        }
+
+        #region Auxiliares
+
+        private void txtDinheiro_Enter(object sender, EventArgs e)
+        {
+            txtDinheiro.BackColor = Color.Yellow;
+        }
+
+        private void txtDinheiro_Leave(object sender, EventArgs e)
+        {
+            txtDinheiro.BackColor = Color.White;
+        }
+
+        private void cmbFormaPagamento_Enter(object sender, EventArgs e)
+        {
+            cmbFormaPagamento.BackColor = Color.Yellow;
+        }
+
+        private void cmbFormaPagamento_Leave(object sender, EventArgs e)
+        {
+            cmbFormaPagamento.BackColor = Color.White;
+        }
+
+        private void txtCartaoValor_Enter(object sender, EventArgs e)
+        {
+            txtCartaoValor.BackColor = Color.Yellow;
+        }
+
+        private void txtCartaoValor_Leave(object sender, EventArgs e)
+        {
+            txtCartaoValor.BackColor = Color.White;
+        }
+
+        private void txtDesconto_Enter(object sender, EventArgs e)
+        {
+            txtDesconto.BackColor = Color.Yellow;
+        }
+
+        private void txtDesconto_Leave(object sender, EventArgs e)
+        {
+            txtDesconto.BackColor = Color.White;
+        }
+
+        private void convenio_Enter(object sender, EventArgs e)
+        {
+            convenio.BackColor = Color.Yellow;
+        }
+
+        private void convenio_Leave(object sender, EventArgs e)
+        {
+            convenio.BackColor = Color.White;
+        }
+
+        #endregion
     }
 }
