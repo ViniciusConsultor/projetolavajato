@@ -7,6 +7,7 @@ namespace HenryCorporation.Lavajato.DomainModel
 {
     public class Pagamento
     {
+        public int ID{get;set;}
         public decimal Total { get; set; }
         public decimal SubTotal { get; set; }
         public decimal Desconto { get; set; }
@@ -22,6 +23,7 @@ namespace HenryCorporation.Lavajato.DomainModel
         {
             Servico = new Servico();
             UsuarioDesconto = new Usuario();
+            FormaPagamento = new FormaPagamento();
         }
 
 

@@ -12,7 +12,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
     public class ServicoBL
     {
         ServicoDAO servicoDAO = new ServicoDAO();
-        ServicoFormaPagamentoDAO servicoFormaPagamentoDAO = new ServicoFormaPagamentoDAO();
+        ServicoFormaPagamentoDAO servicoPagamentoDAO = new ServicoFormaPagamentoDAO();
         private const int qtdeMaximaDeOrdensDeServico = 1000;
         
 
@@ -146,10 +146,13 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
         public void InsertPagamento(Pagamento pagamento)
         {
-            servicoFormaPagamentoDAO.Insert(pagamento);
-        }
-        
+            Pagamento pag = servicoPagamentoDAO.FindByServico(pagamento);
+            if (pag.ID == 0)
+                servicoPagamentoDAO.Insert(pagamento);
+            else
+                servicoPagamentoDAO.Update(pagamento);
 
+        }
 
         #endregion
 

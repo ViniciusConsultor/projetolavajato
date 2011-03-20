@@ -8,9 +8,9 @@ namespace HenryCorporation.Lavajato.DataAccess
 {
     public class DataAccessBase
     {
-        
         public DataAccessBase()
-        { 
+        {
+ 
         }
 
         protected string Sql { get; set; }
