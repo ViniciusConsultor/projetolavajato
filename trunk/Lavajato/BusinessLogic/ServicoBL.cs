@@ -38,7 +38,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             servicoDAO.Delete(servico);
         }
 
-        public Servico ID(Servico servico)
+        public Servico ByID(Servico servico)
         {
             return servicoDAO.ByID(servico);
         }
@@ -63,9 +63,25 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             servicoDAO.Update(servico);
         }
 
-        public IList<Servico> ByServicosDoCliente(Cliente cliente)
+        /// <summary>
+        /// Procura serviços do cliente do ID do cliente, não leva em conta a data
+        /// </summary>
+        /// <param name="cliente">Recebe cliente como parametro</param>
+        /// <returns></returns>
+        public IList<Servico> GetServicosDoCliente(Cliente cliente)
         {
             return servicoDAO.ByServicosDoCliente(cliente);
+        }
+
+
+        /// <summary>
+        /// Procura serviços do cliente por código do cliente e data de entrada 
+        /// </summary>
+        /// <param name="servico">Recebe serviço preenchido com ID do cliente e data de entrada</param>
+        /// <returns></returns>
+        public IList<Servico> GetServicosDoCliente(Servico servico)
+        {
+            return servicoDAO.ByServicosDoCliente(servico);
         }
 
         #endregion

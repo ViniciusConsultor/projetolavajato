@@ -11,8 +11,8 @@ namespace HenryCorporation.Lavajato.BusinessLogic
         {
             if(valor1.Length > 0 && valor2.Length >0)
             {
-                var val1 = ForDecimal(valor1);
-                var val2 = ForDecimal(valor2);
+                var val1 = ParseToDecimal(valor1);
+                var val2 = ParseToDecimal(valor2);
                 return decimal.Subtract(val1, val2);
             }
 
@@ -55,10 +55,20 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             return 0;
         }
 
-        public static decimal ForDecimal(string str)
+        public static decimal ParseToDecimal(string str)
         {
             str = WithdrawDollar( str.Trim());
             return Convert.ToDecimal(str.Length > 0 ? str : "0");
+        }
+
+        public static bool ParseToInt(string value)
+        {
+            int number;
+            bool result = Int32.TryParse(value, out number);
+            if (result)
+                return true;
+            else
+                return false;
         }
     }
 }

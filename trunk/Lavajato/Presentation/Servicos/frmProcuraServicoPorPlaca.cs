@@ -26,18 +26,31 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void ordemServico_TextChanged(object sender, EventArgs e)
         {
-            var os = ordemServico.TextLength > 0 ? ordemServico.Text : "0";
-            Servico servico = new Servico() { OrdemServico = Convert.ToInt32(os) };
-            grdServicos.DataSource = new ServicoBL().GetOrdemServico(servico);
-            OculdaColunaNoGrid();
+            if (string.IsNullOrEmpty(ordemServico.Text))
+                return;
+
+            if (Dinheiro.ParseToInt(ordemServico.Text))
+            {
+                Servico servico = new Servico();
+                servico.OrdemServico = Convert.ToInt32(ordemServico.Text);
+                servico.Entrada = entrada.Value;
+
+                grdServicos.DataSource = new ServicoBL().GetOrdemServico(servico);
+                OculdaColunaNoGrid();
+            }
         }
 
         private void placa_TextChanged(object sender, EventArgs e)
         {
-            Cliente cliente = new Cliente() { Placa = placa.Text };
-            grdServicos.DataSource = new ClienteBL().CriaTabelaOrdemServico(cliente);
-            OculdaColunaNoGrid();
+            if (!string.IsNullOrEmpty(placa.Text))
+            {
+                Servico servico = new Servico();
+                servico.Cliente.Placa = placa.Text;
+                servico.Entrada = entrada.Value;
 
+                grdServicos.DataSource = new ClienteBL().GetOrdensServico(servico);
+                OculdaColunaNoGrid();
+            }
         }
 
         private void grdServicos_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -46,8 +59,10 @@ namespace HenryCorporation.Lavajato.Presentation
         
             if (!string.IsNullOrEmpty(index.ToString()))
             {
-                Servico servico = new Servico(){ID= int.Parse(index.ToString())};
-                servico = new ServicoBL().ID(servico);
+                Servico servico = new Servico();
+                servico.ID = int.Parse(index.ToString());
+                servico = new ServicoBL().ByID(servico);
+
                 frmServicoLavador frmServicoLavador = new frmServicoLavador(servico);
                 frmServicoLavador.ShowDialog();
             }
@@ -55,7 +70,10 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void OculdaColunaNoGrid()
         {
-            grdServicos.Columns[0].Visible = false;
+            if (grdServicos.Rows.Count > 0)
+            {
+                grdServicos.Columns[0].Visible = false;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
