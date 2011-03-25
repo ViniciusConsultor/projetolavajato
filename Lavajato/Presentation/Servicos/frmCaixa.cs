@@ -118,7 +118,7 @@ namespace HenryCorporation.Lavajato.Presentation
             qtde = qtde > 0 ? qtde : 1;
 
             CriaServicoItem(qtde);
-            _servico = servicoBL.ID(_servico);
+            _servico = servicoBL.ByID(_servico);
             CarregaItens(_servico);
             FormataValores();
         }
@@ -150,7 +150,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
             frmAlterarQuantidadeItem frmAlterarQuantidade = new frmAlterarQuantidadeItem(_servicoItem);
             frmAlterarQuantidade.ShowDialog();
-            _servico = servicoBL.ID(_servico);
+            _servico = servicoBL.ByID(_servico);
             CarregaItens(_servico);
             FormataValores();
         }
@@ -187,9 +187,9 @@ namespace HenryCorporation.Lavajato.Presentation
             _servico.Lavado = 1;
             _servico.Pago = 1;
             _servico.FormaPagamento = ((FormaPagamento)(cmbFormaPagamento.SelectedItem));
-            _servico.Total = Dinheiro.ForDecimal(totalServico.Text);
-            _servico.SubTotal = Dinheiro.ForDecimal(totalServico.Text);
-            _servico.Desconto = Dinheiro.ForDecimal(desconto.Text);
+            _servico.Total = Dinheiro.ParseToDecimal(totalServico.Text);
+            _servico.SubTotal = Dinheiro.ParseToDecimal(totalServico.Text);
+            _servico.Desconto = Dinheiro.ParseToDecimal(desconto.Text);
             servicoBL.Update(_servico);
 
             new ClienteBL().Update(_servico.Cliente);
@@ -345,7 +345,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
             if (this._servico.Cliente.Convenio.PorcentagemDesconto > 0)
             {
-                var valTotal = Dinheiro.ForDecimal( this.totalServico.Text);
+                var valTotal = Dinheiro.ParseToDecimal( this.totalServico.Text);
                 var desc = valorTotalComDesconto * Math.Abs(this._servico.Cliente.Convenio.PorcentagemDesconto / 100);
                 this.valor.Text = (valTotal - desc).ToString("C").Replace("R$", "");
                 return desc;
@@ -361,7 +361,7 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             decimal totalCompra = 0;
             for (var i = 0; i < grdServico.Rows.Count - 1; i++)
-                totalCompra += Dinheiro.ForDecimal(grdServico.Rows[i].Cells[4].Value.ToString());
+                totalCompra += Dinheiro.ParseToDecimal(grdServico.Rows[i].Cells[4].Value.ToString());
 
             return totalCompra;
         }
@@ -373,7 +373,7 @@ namespace HenryCorporation.Lavajato.Presentation
             if (res != DialogResult.No)
             {
                 servicoBL.ItemDelete(_servicoItem);
-                _servico = servicoBL.ID(_servico);
+                _servico = servicoBL.ByID(_servico);
                 CarregaItens(_servico);     
                 FormataValores();
                 MessageBox.Show(Resources.Item_deletado);
@@ -432,9 +432,9 @@ namespace HenryCorporation.Lavajato.Presentation
             {
                 this._servico.Cancelado = 1;
                 _servico.FormaPagamento = ((FormaPagamento)(cmbFormaPagamento.SelectedItem));
-                _servico.Total = Dinheiro.ForDecimal(totalServico.Text);
-                _servico.SubTotal = Dinheiro.ForDecimal(totalServico.Text);
-                _servico.Desconto = Dinheiro.ForDecimal(desconto.Text);
+                _servico.Total = Dinheiro.ParseToDecimal(totalServico.Text);
+                _servico.SubTotal = Dinheiro.ParseToDecimal(totalServico.Text);
+                _servico.Desconto = Dinheiro.ParseToDecimal(desconto.Text);
 
                 this.servicoBL.Update(this._servico);
                 MessageBox.Show(Resources.Venda_cancelada, Resources.Atencao);

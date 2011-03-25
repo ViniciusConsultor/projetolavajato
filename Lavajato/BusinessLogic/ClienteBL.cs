@@ -62,12 +62,35 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             clienteDao.Delete(cliente);
         }
 
-        public DataTable CriaTabelaOrdemServico(Cliente cliente)
+        public DataTable GetOrdensServico(Cliente cliente)
         {
             cliente = clienteDao.ByPlaca(cliente);
-            IList<Servico> servicos = new ServicoBL().ByServicosDoCliente(cliente);
-            DataTable table = ClienteTabela.CriaTabelaOrdemServico(servicos);
-            return table;
+
+            if (cliente != null)
+            {
+                ServicoBL servicoBL = new ServicoBL();
+                IList<Servico> servicos = servicoBL.GetServicosDoCliente(cliente);
+                DataTable table = ClienteTabela.CriaTabelaOrdemServico(servicos);
+                return table;
+            }
+
+            return new DataTable();
+        }
+
+        public DataTable GetOrdensServico(Servico servico)
+        {
+            Cliente cliente = clienteDao.ByPlaca(servico.Cliente);
+            if (cliente.ID > 0)
+            {
+                servico.Cliente = cliente;
+
+                ServicoBL servicoBL = new ServicoBL();
+                IList<Servico> servicos = servicoBL.GetServicosDoCliente(servico);
+                DataTable table = ClienteTabela.CriaTabelaOrdemServico(servicos);
+                return table;
+            }
+
+            return new DataTable();
         }
 
     }

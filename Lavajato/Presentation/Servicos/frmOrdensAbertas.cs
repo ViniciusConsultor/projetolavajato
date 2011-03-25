@@ -31,7 +31,7 @@ namespace HenryCorporation.Lavajato.Presentation
             index = index.Length > 0 ? index : "0"; 
                         
             servico.ID = int.Parse(index);
-            servico = new ServicoBL().ID(servico);
+            servico = new ServicoBL().ByID(servico);
 
             if (servico.ID > 0)
             {

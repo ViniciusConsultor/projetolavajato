@@ -104,10 +104,10 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             Pagamento pagamento = new Pagamento();
             pagamento.Servico = _servico;
-            pagamento.Total = Dinheiro.WithdrawDollar(Dinheiro.ForDecimal(txtTotalPagamento.Text));
-            pagamento.Desconto = Dinheiro.ForDecimal(txtDesconto.Text);
-            pagamento.Dinheiro = Dinheiro.ForDecimal(txtDinheiro.Text);
-            pagamento.Cartao = Dinheiro.ForDecimal(txtCartaoValor.Text);
+            pagamento.Total = Dinheiro.WithdrawDollar(Dinheiro.ParseToDecimal(txtTotalPagamento.Text));
+            pagamento.Desconto = Dinheiro.ParseToDecimal(txtDesconto.Text);
+            pagamento.Dinheiro = Dinheiro.ParseToDecimal(txtDinheiro.Text);
+            pagamento.Cartao = Dinheiro.ParseToDecimal(txtCartaoValor.Text);
             pagamento.FormaPagamento = ((FormaPagamento)(cmbFormaPagamento.SelectedItem));
             return pagamento;
         }
@@ -115,8 +115,8 @@ namespace HenryCorporation.Lavajato.Presentation
         private decimal TotalDinheiroMaisCartao()
         {
             return decimal.Add(
-                Dinheiro.ForDecimal(txtDinheiro.Text), 
-                Dinheiro.ForDecimal(txtCartaoValor.Text)); 
+                Dinheiro.ParseToDecimal(txtDinheiro.Text), 
+                Dinheiro.ParseToDecimal(txtCartaoValor.Text)); 
         }
 
         private void txtDinheiro_TextChanged(object sender, EventArgs e)
@@ -182,7 +182,7 @@ namespace HenryCorporation.Lavajato.Presentation
                 }
             }
 
-            decimal desconto = Dinheiro.ForDecimal(txtDesconto.Text);
+            decimal desconto = Dinheiro.ParseToDecimal(txtDesconto.Text);
             if (somaDinheiroCartao >= desconto)
             {
                 if (txtDesconto.TextLength > 0)
@@ -191,7 +191,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
                     txtTroco.Text = Dinheiro.Subtract(
                         somaDinheiroCartao,
-                        Dinheiro.ForDecimal(txtTotalPagamento.Text)
+                        Dinheiro.ParseToDecimal(txtTotalPagamento.Text)
                         );
                 }
 
@@ -234,7 +234,7 @@ namespace HenryCorporation.Lavajato.Presentation
                     total.ToString(),
                     conv.Valor.ToString())
                     );
-                _servico.Total = Dinheiro.ForDecimal(Dinheiro.WithdrawDollar(txtTotalPagamento.Text));
+                _servico.Total = Dinheiro.ParseToDecimal(Dinheiro.WithdrawDollar(txtTotalPagamento.Text));
             }
             else
             {
@@ -243,7 +243,7 @@ namespace HenryCorporation.Lavajato.Presentation
                     total.ToString(),
                     porcentagem.ToString())
                     );
-                _servico.Total = Dinheiro.ForDecimal(Dinheiro.WithdrawDollar(txtTotalPagamento.Text));
+                _servico.Total = Dinheiro.ParseToDecimal(Dinheiro.WithdrawDollar(txtTotalPagamento.Text));
             }
         }
 

@@ -16,52 +16,73 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public void Insert(Pagamento pagamento)
         {
-            string query = " INSERT INTO [Lavajato].[dbo].[ServicoFormaPagamento] " +
-             " ([ServicoID],[Total],[SubTotal] " +
-             " ,[Desconto],[CartaoValor],[Dinheiro]" +
-             " ,[CartaoTipo],  [UsuarioDesc])" +
-             " VALUES " +
-             "('" + pagamento.Servico.ID + "' " +
-             ", '" + pagamento.Total.ToString().Replace(",", ".") + "' " +
-             ", '" + pagamento.SubTotal.ToString().Replace(",", ".") + "' " +
-             ", '" + pagamento.Desconto.ToString().Replace(",", ".") + "' " +
-             ", '" + pagamento.Cartao.ToString().Replace(",", ".") + "' " +
-             ", '" + pagamento.Dinheiro.ToString().Replace(",", ".") + "' " +
-             ", '" + pagamento.FormaPagamento.ID + "' " +
-             ", '" + pagamento.UsuarioDesconto.ID + "') ";
+            StringBuilder query = new StringBuilder();
+            query.Append(" INSERT INTO [Lavajato].[dbo].[ServicoFormaPagamento] ");
+            query.Append("([ServicoID],[Total],[SubTotal] ");
+            query.Append(",[Desconto],[Dinheiro]");
+            query.Append(",[UsuarioDesc],[VisaDebito] ");
+            query.Append(",[VisaCredito],[MasterDebito],[MasterCredito])");
+            query.Append(" VALUES ");
+            query.Append("('" + pagamento.Servico.ID + "' ");
+            query.Append(", '" + pagamento.Total.ToString().Replace(",", ".") + "' ");
+            query.Append(", '" + pagamento.SubTotal.ToString().Replace(",", ".") + "' ");
+            query.Append(", '" + pagamento.Desconto.ToString().Replace(",", ".") + "' ");
+            query.Append(", '" + pagamento.Dinheiro.ToString().Replace(",", ".") + "' ");
+            query.Append(", '" + pagamento.UsuarioDesconto.ID + "' ");
+            query.Append("," + (pagamento.FormaPagamento.ID == 2 ? pagamento.Cartao : 0).ToString().Replace(",", "."));
+            query.Append("," + (pagamento.FormaPagamento.ID == 3 ? pagamento.Cartao : 0).ToString().Replace(",", "."));
+            query.Append("," + (pagamento.FormaPagamento.ID == 4 ? pagamento.Cartao : 0).ToString().Replace(",", "."));
+            query.Append("," + (pagamento.FormaPagamento.ID == 5 ? pagamento.Cartao : 0).ToString().Replace(",", "."));
+            query.Append(")");
 
-
-            var dataBaseHelper = new DataBaseHelper(query);
+            var dataBaseHelper = new DataBaseHelper(query.ToString());
             dataBaseHelper.Run();
 
         }
 
         public void Update(Pagamento pagamento)
         {
-            string query = " UPDATE [Lavajato].[dbo].[ServicoFormaPagamento] " +
-              "SET "+ 
-              "   [Total] = '" + pagamento.Total + "' " +
-              "   ,[SubTotal] = '" + pagamento.SubTotal.ToString().Replace(",", ".") + "' " +
-              "   ,[Desconto] = '" + pagamento.Desconto.ToString().Replace(",", ".") + "' " +
-              "   ,[CartaoValor] = '" + pagamento.Cartao.ToString().Replace(",", ".") + "' " +
-              "   ,[Dinheiro] = '" + pagamento.Dinheiro.ToString().Replace(",", ".") + "' " +
-              "   ,[CartaoTipo] = '" + pagamento.FormaPagamento.ID + "' " +
-              " WHERE ServicoID = " + pagamento.Servico.ID;
+            StringBuilder query = new StringBuilder();
+                query.Append("  UPDATE [Lavajato].[dbo].[ServicoFormaPagamento]");
+                   query.Append("SET ");
+                      query.Append("[Total] = " + pagamento.Total);
+                      query.Append(",[SubTotal] = " + pagamento.SubTotal);
+                      query.Append(",[Desconto] = " + pagamento.Desconto);
+                      query.Append(",[Dinheiro] = " + pagamento.Dinheiro);
+                      query.Append(",[UsuarioDesc] ="+pagamento.UsuarioDesconto);
+                      query.Append(",[VisaDebito] ="+ (pagamento.FormaPagamento.ID == 2 ? pagamento.Cartao : 0).ToString().Replace(",", "."));
+                      query.Append(",[VisaCredito] ="+ (pagamento.FormaPagamento.ID == 3 ? pagamento.Cartao : 0).ToString().Replace(",", "."));
+                      query.Append(",[MasterDebito] ="+ (pagamento.FormaPagamento.ID == 4 ? pagamento.Cartao : 0).ToString().Replace(",", "."));
+                        query.Append(",[MasterCredito] ="+ (pagamento.FormaPagamento.ID == 5 ? pagamento.Cartao : 0).ToString().Replace(",", "."));
+                 query.Append("WHERE ServicoID = " + pagamento.Servico.ID);
+
+            
 
 
-            var dataBaseHelper = new DataBaseHelper(query);
+            var dataBaseHelper = new DataBaseHelper(query.ToString());
             dataBaseHelper.Run();
 
         }
 
         public Pagamento FindByServico(Pagamento pagamento)
         {
-            string query = " SELECT [FormaPagamentoID],[ServicoID],[Total],[SubTotal], " +
-                           " [Desconto],[CartaoValor],[Dinheiro],[CartaoTipo],[UsuarioDesc] " +
-                      " FROM [Lavajato].[dbo].[ServicoFormaPagamento] "+
-                      " WHERE ServicoID = " + pagamento.Servico.ID;
+            StringBuilder query = new StringBuilder();
+            query.Append(" SELECT [FormaPagamentoID]");
+                         query.Append( " ,[ServicoID]");
+                          query.Append(" ,[Total]");
+                          query.Append(" ,[SubTotal]");
+                          query.Append(" ,[Desconto]");
+                          query.Append(" ,[Dinheiro]");
+                          query.Append(" ,[UsuarioDesc]");
+                          query.Append(" ,[VisaDebito]");
+                          query.Append(" ,[VisaCredito]");
+                          query.Append(" ,[MasterDebito]");
+                          query.Append( ",[MasterCredito]");
+                          query.Append(" FROM [Lavajato].[dbo].[ServicoFormaPagamento]");
+                          query.Append("Where ServicoID = " + pagamento.Servico.ID);
 
-            var dataBaseHelper = new DataBaseHelper(query);
+
+            var dataBaseHelper = new DataBaseHelper(query.ToString());
             DataSet dst = dataBaseHelper.Run(this.ConnectionString);
             return SetUpField(dst);
 
@@ -78,10 +99,13 @@ namespace HenryCorporation.Lavajato.DataAccess
                 pagamento.Total = reader.IsDBNull(2) ? 0 : reader.GetDecimal(2);
                 pagamento.SubTotal = reader.IsDBNull(3) ? 0 : reader.GetDecimal(3);
                 pagamento.Desconto = reader.IsDBNull(4) ? 0 : reader.GetDecimal(4);
-                pagamento.Cartao = reader.IsDBNull(5) ? 0 : reader.GetDecimal(5);
-                pagamento.Dinheiro = reader.IsDBNull(6) ? 0 : reader.GetDecimal(6);
-                pagamento.FormaPagamento.ID = reader.IsDBNull(7) ? 0 : reader.GetInt32(7);
-                pagamento.UsuarioDesconto.ID = reader.IsDBNull(8) ? 0 : reader.GetInt32(8);
+                pagamento.Dinheiro = reader.IsDBNull(5) ? 0 : reader.GetDecimal(5);
+                pagamento.FormaPagamento.ID = reader.IsDBNull(6) ? 0 : reader.GetInt32(6);
+                pagamento.UsuarioDesconto.ID = reader.IsDBNull(7) ? 0 : reader.GetInt32(7);
+                pagamento.Cartao = reader.IsDBNull(8) ? 0 : reader.GetDecimal(8);
+                pagamento.Cartao = reader.IsDBNull(9) ? 0 : reader.GetDecimal(9);
+                pagamento.Cartao = reader.IsDBNull(10) ? 0 : reader.GetDecimal(10);
+                
                 return pagamento;
             }
             return pagamento;

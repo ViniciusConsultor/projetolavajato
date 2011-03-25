@@ -18,24 +18,53 @@ namespace HenryCorporation.Lavajato.Presentation
             InitializeComponent();
         }
 
+
+        /// <summary>
+        /// Procura uma ordem de serviço com base na data e numero da ordem de serviço
+        /// </summary>
         private void ordemServico_TextChanged(object sender, EventArgs e)
         {
-            var os = ordemServico.TextLength > 0 ? ordemServico.Text : "0";
-            Servico servico = new Servico() { OrdemServico = Convert.ToInt32(os) };
-            grdServicos.DataSource = new ServicoBL().GetOrdemServico(servico);
-            OculdaColunaNoGrid();
+            if (string.IsNullOrEmpty(ordemServico.Text) )
+                return;
+
+            if( Dinheiro.ParseToInt(ordemServico.Text))
+            {
+                Servico servico = new Servico();
+                servico.OrdemServico = Convert.ToInt32(ordemServico.Text);
+                servico.Entrada = entrada.Value;
+
+                grdServicos.DataSource = new ServicoBL().GetOrdemServico(servico);
+                FormatGrid();
+            }
+            else
+            {
+                MessageBox.Show("Favor digitar somente numeros!", "Atenção");
+            }
         }
+
 
         private void placa_TextChanged(object sender, EventArgs e)
         {
-            Cliente cliente = new Cliente() { Placa = placa.Text };
-            grdServicos.DataSource = new ClienteBL().CriaTabelaOrdemServico(cliente);
-            OculdaColunaNoGrid();
+            if (!string.IsNullOrEmpty(placa.Text))
+            {
+                Servico servico = new Servico();
+                servico.Cliente.Placa = placa.Text;
+                servico.Entrada = entrada.Value;
+
+                grdServicos.DataSource = new ClienteBL().GetOrdensServico(servico);
+                FormatGrid();
+            }
         }
 
-        private void OculdaColunaNoGrid()
+        private void FormatGrid()
         {
-            grdServicos.Columns[0].Visible = false;
+            if (grdServicos.Rows.Count > 0)
+            {
+                grdServicos.Columns[0].Visible = false;
+                grdServicos.Columns[1].Width = 150;
+                grdServicos.Columns[2].Width = 80;
+                grdServicos.Columns[3].Width = 160;
+            }
         }
 
         private void button1_Click(object sender, EventArgs e)
@@ -49,13 +78,44 @@ namespace HenryCorporation.Lavajato.Presentation
 
             if (!string.IsNullOrEmpty(index.ToString()))
             {
-                Servico servico = new Servico() { ID = int.Parse(index.ToString()) };
-                servico = new ServicoBL().ID(servico);
+                Servico servico = new Servico();
+                servico.ID = int.Parse(index.ToString());
+                
+                servico = new ServicoBL().ByID(servico);
+
                 frmServicoCancelado frmServicoLavador = new frmServicoCancelado(servico);
                 frmServicoLavador.ShowDialog();
             }
         }
 
-      
+        private void entrada_ValueChanged(object sender, EventArgs e)
+        {
+            if (!string.IsNullOrEmpty(ordemServico.Text))
+            {
+                if (Dinheiro.ParseToInt(ordemServico.Text))
+                {
+                    Servico servico = new Servico();
+                    servico.OrdemServico = Convert.ToInt32(ordemServico.Text);
+                    servico.Entrada = entrada.Value;
+
+                    grdServicos.DataSource = new ServicoBL().GetOrdemServico(servico);
+                    FormatGrid();
+                }
+                else
+                {
+                    MessageBox.Show("Favor digitar somente numeros!", "Atenção");
+                }
+            }
+            else if (!string.IsNullOrEmpty(placa.Text))
+            {
+                Servico servico = new Servico();
+                servico.Cliente.Placa = placa.Text;
+                servico.Entrada = entrada.Value;
+
+                grdServicos.DataSource = new ClienteBL().GetOrdensServico(servico);
+                FormatGrid();
+            }
+
+        }
     }
 }

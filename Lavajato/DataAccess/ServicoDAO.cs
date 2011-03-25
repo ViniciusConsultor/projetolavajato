@@ -137,10 +137,19 @@ namespace HenryCorporation.Lavajato.DataAccess
             return SetUpField(dataBaseHelper.Run(this.ConnectionString));
         }
 
+        public IList<Servico> ByServicosDoCliente(Servico servico)
+        {
+            var query = sql + "Where [Delete] = 0 And [Cancelado] = 0 And ClienteID = " + servico.Cliente.ID + " "+
+                "and convert(varchar, [entrada], 103) = '"+servico.Entrada.ToShortDateString()+"' ";
+            var dataBaseHelper = new DataBaseHelper(query);
+            return SetUpFields(dataBaseHelper.Run(this.ConnectionString));
+        }
+
         public IList<Servico> ByServicosDoCliente(Cliente cliente)
         {
-            var query = sql + "Where [Delete] = 0 And [Cancelado] = 0 And ClienteID = " + cliente.ID;
-            var dataBaseHelper = new DataBaseHelper(query);
+            var query = sql + "Where [Delete] = 0 And [Cancelado] = 0 And ClienteID = " + cliente.ID + " ";
+                
+            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             return SetUpFields(dataBaseHelper.Run(this.ConnectionString));
         }
 
@@ -180,16 +189,16 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public Servico ByOrdemServicoFinalizadas(Servico servico)
         {
-            //somente pesquisar ordem de serviço que não foram finalizadas
-            var query = sql + "Where [Delete] = 0 And [OrdemServico] =" + servico.OrdemServico;
-            var dataBaseHelper = new DataBaseHelper(query);
-            var dataSet = dataBaseHelper.Run(this.ConnectionString);
+            var query = sql + "Where [Delete] = 0 And [OrdemServico] = " + servico.OrdemServico + " " +
+                "and convert(varchar, [entrada], 103) = '" + servico.Entrada.ToShortDateString() + "' ";
+
+            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            DataSet dataSet = dataBaseHelper.Run(this.ConnectionString);
             return SetUpField(dataSet);
         }
 
         public Servico ByOrdemServico(Servico servico)
         {
-            //somente pesquisar ordem de serviço que não foram finalizadas
             var query = sql + "Where [Delete] = 0 And Finalizado = 0 And [Cancelado] = 0 And [OrdemServico] =" + servico.OrdemServico;
             var dataBaseHelper = new DataBaseHelper(query);
             var dataSet = dataBaseHelper.Run(this.ConnectionString);
