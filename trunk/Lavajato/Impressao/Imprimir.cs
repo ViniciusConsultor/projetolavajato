@@ -12,7 +12,7 @@ namespace Impressao
         private const string enter = "\n";
 
         public Imprimir()
-        { 
+        {
 
         }
 
@@ -22,17 +22,21 @@ namespace Impressao
             string recibo = "";
             foreach (var item in servico.ServicoItem)
             {
-                string quantidadeItens = "", valorUnitario = "", total = "";
+                string quantidadeItens = "", valorUnitario = "", total = "", descricao = "";
+
+                descricao = FormataDescricao(item);
 
                 quantidadeItens = SetQuantidadeDeItens(item);
+
                 valorUnitario = SetValorDoItem(item);
-                valorUnitario = SetValorUnitario(valorUnitario);
+                valorUnitario = FormataValorUnitario(valorUnitario);
+
                 total = SetValorTotal(item);
-                somaTotal += Configuracao.ConverteParaDecimal(total);
                 total = FormataTotal(total);
 
-                recibo = FormataDescricao(item) + SetQuantidadeDeItens(item) +
-                    SetValorDoItem(item) + SetValorDoItem(item) + enter;
+                somaTotal += Configuracao.ConverteParaDecimal(total);
+
+                recibo += descricao + quantidadeItens + valorUnitario + total + enter;
 
             }
             recibo += FormataSomaTotal(somaTotal);
@@ -43,43 +47,24 @@ namespace Impressao
         public string FormataDescricao(ServicoItem item)
         {
             string desc = "";
-            if (item.Produto.Descricao.Length > 16)
+            if (item.Produto.Descricao.Length > 17)
             {
-                desc = item.Produto.Descricao.Remove(16);
-            }
-            else if (item.Produto.Descricao.Length == 16)
-            {
-
+                item.Produto.Descricao.Substring(0, 17);
             }
             else
             {
-                desc = item.Produto.Descricao;
-                for (int i = 0; i < 17 - item.Produto.Descricao.Length; i++)
+                for (int i = item.Produto.Descricao.Length; i < 18 ; i++)
                 {
-                    desc += "  ";
+                    desc += " ";
                 }
             }
 
-            return desc;
-        }
-
-        public string MontaCorpoRecibo(Servico servico)
-        {
-            string corpoRecibo = "";
-            corpoRecibo += "--------------------------------------------------";
-            corpoRecibo += "Nº: " + servico.OrdemServico + enter;
-            corpoRecibo += "Placa: " + servico.Cliente.Placa + "  Veículo:" + servico.Cliente.Veiculo + "  Cor:" + servico.Cliente.Cor + "" + enter;
-            corpoRecibo += "Nome:  " + servico.Cliente.Nome + "      Fone:" + servico.Cliente.Telefone + "" + enter;
-            corpoRecibo += "Entrada:  " + SetDateInput(servico) + "   Saida:" + servico.Saida.Hour + ":" + servico.Saida.Second + "" + enter;
-            corpoRecibo += "--------------------------------------------------" + enter;
-            corpoRecibo += "SERVICO             QTDE.     VALOR   TOTAL" + enter;
-            return corpoRecibo;
+            return item.Produto.Descricao + desc;
         }
 
         public string SetQuantidadeDeItens(ServicoItem item)
         {
-            string qtde = item.Quantidade.ToString();
-            return qtde;
+            return item.Quantidade.ToString();
         }
 
 
@@ -91,27 +76,50 @@ namespace Impressao
             return entrada;
         }
 
-        public string SetValorUnitario(string valUni)
+        public string FormataValorUnitario(string valUni)
         {
             if (valUni.Length == 5)
-                valUni = "              " + valUni;
-            else if (valUni.Length == 4)
-                valUni = "              " + valUni;
+                valUni = "          " + valUni;
             else if (valUni.Length == 6)
-                valUni = "              " + valUni;
+                valUni = "         " + valUni;
+            else if (valUni.Length == 4)
+                valUni = "           " + valUni;
+
             return valUni;
         }
 
         public string SetValorTotal(ServicoItem item)
         {
-            string tot = (item.Produto.ValorUnitario * item.Quantidade).ToString("C").Replace("R$", "");
+            string tot = (item.Produto.ValorUnitario * item.Quantidade).ToString("C");
+            tot = tot.Replace("R$", "");
             return tot;
         }
 
         public string SetValorDoItem(ServicoItem item)
         {
-            string valUni = item.Produto.ValorUnitario.ToString("C").Replace("R$", "");
+            string valUni = item.Produto.ValorUnitario.ToString("C");
+            valUni = valUni.Replace("R$", "");
+
             return valUni;
+        }
+
+        public string FormataSomaTotal(decimal somaTotal)
+        {
+            return "                                        Valor Total: " + somaTotal;
+        }
+
+        public string FormataTotal(string tot)
+        {
+            if (tot.Length == 5)
+                tot = "     " + tot;
+            else if (tot.Length == 6)
+                tot = "    " + tot;
+            else if (tot.Length == 4)
+                tot = "      " + tot;
+
+            return tot;
+
+
         }
 
         public string FormataCabecalho()
@@ -126,33 +134,52 @@ namespace Impressao
             strCabecalho += enter;
             strCabecalho += enter;
 
-            strCabecalho += "LAVEVIP - Estetica Automotiva " + enter;
+            strCabecalho += "    LAVEVIP - Estética Automotiva " + enter;
             strCabecalho += "Av. Pres. Carlos Luz, 3001, Caiçara" + enter;
-            strCabecalho += "Area QVip1 2ºP" + enter;
-            strCabecalho += "               LAVEVIP" + enter;
-            strCabecalho += "O melhor amigo do seu veiculo" + enter;
-            strCabecalho += "(31)3415-8085" + enter;
-            strCabecalho += "(31)9208-9977" + enter;
+            strCabecalho += "Área QVip1 2ºP" + enter;
+            strCabecalho += "      O melhor amigo do seu veículo" + enter;
+            strCabecalho += "            (31)3415-8085" + enter;
+            strCabecalho += "Aberto de segunda à sabado das 10 às 22 horas" + enter;
+            strCabecalho += "E domingo de 12 às 19 horas" + enter;
 
             return strCabecalho;
 
         }
 
-        public string FormataSomaTotal(decimal somaTotal)
+        public string MontaCorpoRecibo(Servico servico)
         {
-            return "                                           Valor Total: " + somaTotal;
+            string corpoRecibo = "";
+            corpoRecibo += "------------------------------------------------------------" + enter;
+            corpoRecibo += "Nº O.S.:" + FormataEspacamentoEm20(servico.OrdemServico.ToString()) + "Placa:" + servico.Cliente.Placa + enter;
+            corpoRecibo += "Veículo:" + FormataEspacamentoEm20(servico.Cliente.Veiculo) +          "Cor:  " + servico.Cliente.Cor + "" + enter;
+            corpoRecibo += "Nome:   " + FormataEspacamentoEm20(servico.Cliente.Nome) +            "Fone: " + servico.Cliente.Telefone + "" + enter;
+            corpoRecibo += "Entrada:" + FormataEspacamentoEm20(SetDateInput(servico)) +           "Saida:" + servico.Saida.Hour + ":" + servico.Saida.Second + "" + enter;
+            corpoRecibo += "------------------------------------------------------------" + enter;
+            corpoRecibo += "SERVICO             QTDE.     VALOR   TOTAL" + enter;
+            return corpoRecibo;
         }
 
-        public string FormataTotal(string tot)
+        private string FormataEspacamentoEm20(string p)
         {
+            string temp="";
+            p = p.Trim();
 
-            if (tot.Length == 5)
-                tot = "    " + tot;
-            else if (tot.Length == 4)
-                tot = "      " + tot;
-            else if (tot.Length == 6)
-                tot = "   " + tot;
-            return tot;
+            if (p.Length < 21)
+            {
+                for (int i = p.Length; i < 20; i++)
+                {
+                    temp += " ";
+                }
+
+                p += temp;
+            }
+            else if (p.Length > 20)
+            {
+                p = p.Substring(0, 20);
+            }
+
+            return p;
+
         }
     }
 }

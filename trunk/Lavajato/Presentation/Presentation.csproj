@@ -1731,7 +1731,6 @@
     <None Include="Relatorios\Produto\Produtos\dsProdutosEstoque.xss">
       <DependentUpon>dsProdutosEstoque.xsd</DependentUpon>
     </None>
-    <None Include="Resources\Edit_No.png" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\BusinessLogic\BusinessLogic.csproj">
@@ -1761,6 +1760,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Properties\DataSources\" />
+    <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
     <BootstrapperPackage Include="Microsoft.Net.Client.3.5">

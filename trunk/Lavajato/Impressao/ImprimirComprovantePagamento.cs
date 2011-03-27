@@ -7,6 +7,9 @@ using System.Drawing.Printing;
 using System.Drawing;
 using HenryCorporation.Lavajato.Operacional;
 
+using System.Text;
+using System.IO;
+
 namespace Impressao
 {
     public class ImprimirComprovantePagamento : Imprimir, IImprimir
@@ -33,6 +36,8 @@ namespace Impressao
             if (this._servico.ID == 0)
                 throw new Exception("Nenhum Servico encontrado");
 
+            //recibo_PrintPage();
+
             this.recibo = new PrintDocument();
             this.recibo.PrintPage += new PrintPageEventHandler(this.recibo_PrintPage);
             this.recibo.Print();
@@ -40,16 +45,15 @@ namespace Impressao
 
         public void recibo_PrintPage(object sender, PrintPageEventArgs ev)
         {
-            StringBuilder recibo = new StringBuilder();
-            recibo.Append(FormataCabecalho());
-            recibo.Append(MontaCorpoRecibo(_servico));
-            recibo.Append(ExibeReciboFormatado(_servico));
+            string recibo = "";
+
+            recibo += MontaCorpoRecibo(_servico);
+            recibo += ExibeReciboFormatado(_servico);
 
             Pen myPen = new Pen(Brushes.Black);
-            Point pt1 = new Point(30, 53);
             Font myFont1 = new Font("Arial", 8);
 
-            ev.Graphics.DrawString(recibo.ToString(), myFont1, Brushes.Black, 30, 30);
+            ev.Graphics.DrawString(recibo, myFont1, Brushes.Black, 30, 30);
             ev.HasMorePages = false;
         }
 
