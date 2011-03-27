@@ -44,6 +44,9 @@ namespace HenryCorporation.Lavajato.Presentation
                 CarregaCliente(cliente);
                 _servico = ServicoCarrega();
 
+                min.SelectedItem = _servico.Saida.Minute;
+                hora.SelectedItem = _servico.Saida.Hour;
+
                 ImprimeNumeroOrdemServico();
                 ImprimeMensagemParaCarroJaLavado();
 
@@ -203,13 +206,17 @@ namespace HenryCorporation.Lavajato.Presentation
             if (dataSetItens.Tables[0].Rows.Count > 0)
             {
                 _servico = ServicoSalva();
-                var itens = ItensParaInsercao(_servico);
+                List<ServicoItem> itens = ItensParaInsercao(_servico);
+                _servico.ServicoItem.AddRange(itens);
                 SalvaItens(itens);
-                //IImprimir impressao = new ImprimirComprovantePagamento(_servico);
-                //impressao.Imprimir(_servico);
-                LiberaBotaoParaExclusaoDeItens();
-                MessageBox.Show("Número da Ordem Serviço é: " + this._servico.OrdemServico, "Ordem Serviço");
-                LimpaCampos();
+                
+                IImprimir impressao = new ImprimirComprovantePagamento(_servico);
+                impressao.Imprimir(_servico);
+                
+                //LiberaBotaoParaExclusaoDeItens();
+                
+                //MessageBox.Show("Número da Ordem Serviço é: " + this._servico.OrdemServico, "Ordem Serviço");
+                //LimpaCampos();
             }
             else
             {
@@ -219,13 +226,9 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private bool HoraEMinMaiorQueZero()
         {
-            if (_servico.ID > 0)
-            {
                 double m = double.Parse(min.SelectedItem.ToString());
                 double h = double.Parse(hora.SelectedItem.ToString());
                 return (m == 0 && h == 0);
-            }
-            return false;
         }
 
         private Servico ServicoSalva()
