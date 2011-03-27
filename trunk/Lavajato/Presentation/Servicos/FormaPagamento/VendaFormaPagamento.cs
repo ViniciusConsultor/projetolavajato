@@ -81,6 +81,15 @@ namespace HenryCorporation.Lavajato.Presentation
                 frmLoginFechamentoDeCaixa = new frmLoginFechamentoDeCaixa();
                 frmLoginFechamentoDeCaixa.ShowDialog();
 
+                if (frmLoginFechamentoDeCaixa.User.ID== 0)
+                {
+                    txtTotalPagamento.Text =
+                            (Dinheiro.ParseToDecimal(txtDesconto.Text) +
+                            Dinheiro.ParseToDecimal(txtTotalPagamento.Text)).ToString("C");
+                    txtDesconto.Text = "";
+                    return;
+                }
+
                 if (!frmLoginFechamentoDeCaixa.User.TipoFuncionario.Descricao.Contains("Gerente"))
                 {
                     MessageBox.Show("Você não tem permissão para dar desconto, favor entrar em contato com o Gerente!", "Atenção!!");

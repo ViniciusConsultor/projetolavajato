@@ -31,6 +31,11 @@
             this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
+            // txtPassword
+            // 
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
+            // 
             // btnLogin
             // 
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);

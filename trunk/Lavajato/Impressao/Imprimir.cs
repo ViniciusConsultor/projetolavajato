@@ -40,7 +40,9 @@ namespace Impressao
 
             }
             recibo += FormataSomaTotal(somaTotal);
+            recibo += "Não nos responsabilizamos parte Elétrica/Mecânica do veículo";
             recibo += FormataCabecalho();
+            
             return recibo;
         }
 
@@ -135,15 +137,13 @@ namespace Impressao
             strCabecalho += enter;
 
             strCabecalho += "    LAVEVIP - Estética Automotiva " + enter;
-            strCabecalho += "Av. Pres. Carlos Luz, 3001, Caiçara" + enter;
-            strCabecalho += "Área QVip1 2ºP" + enter;
             strCabecalho += "      O melhor amigo do seu veículo" + enter;
+            strCabecalho += "Av. Pres. Carlos Luz, 3001, Caiçara" + enter;
             strCabecalho += "            (31)3415-8085" + enter;
             strCabecalho += "Aberto de segunda à sabado das 10 às 22 horas" + enter;
             strCabecalho += "E domingo de 12 às 19 horas" + enter;
 
             return strCabecalho;
-
         }
 
         public string MontaCorpoRecibo(Servico servico)

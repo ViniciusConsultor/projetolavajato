@@ -80,6 +80,7 @@
             this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(254, 29);
             this.password.TabIndex = 9;
+            this.password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.password_KeyDown);
             // 
             // login
             // 

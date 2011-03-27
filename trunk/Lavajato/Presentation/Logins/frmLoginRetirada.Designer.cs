@@ -33,29 +33,28 @@
             // 
             // txtPassword
             // 
-            this.txtPassword.Visible = false;
-            // 
-            // label2
-            // 
-            this.label2.Visible = false;
+            this.txtPassword.PasswordChar = '*';
+            this.txtPassword.TabIndex = 3;
+            this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // btnCancelar
             // 
-            this.btnCancelar.Location = new System.Drawing.Point(263, 45);
+            this.btnCancelar.Location = new System.Drawing.Point(263, 73);
+            this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
             // 
             // btnLogin
             // 
-            this.btnLogin.Location = new System.Drawing.Point(118, 43);
+            this.btnLogin.Location = new System.Drawing.Point(118, 73);
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click_1);
             // 
             // groupBox1
             // 
-            this.groupBox1.Size = new System.Drawing.Size(394, 91);
+            this.groupBox1.Size = new System.Drawing.Size(394, 120);
             // 
             // frmLoginRetirada
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
-            this.ClientSize = new System.Drawing.Size(401, 110);
+            this.ClientSize = new System.Drawing.Size(401, 148);
             this.Name = "frmLoginRetirada";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.groupBox1.ResumeLayout(false);

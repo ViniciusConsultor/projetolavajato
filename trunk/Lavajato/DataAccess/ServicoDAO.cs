@@ -227,7 +227,14 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public List<Servico> GetCarrosNoLavajatoByData(DateTime date)
         {
-            string condicao = " Where [Delete] = 0 And Finalizado = 0 And [Cancelado] = 0 and CONVERT(varchar, Entrada, 103)  = '" + date.ToShortDateString() + "'" +
+
+            string mes = date.Month > 1 ? "0" + date.Month.ToString() : date.Month.ToString();
+            string dia = date.Day == 1 ? "0"+ date.Day.ToString() : date.Day.ToString();
+            string ano = date.Year.ToString();
+
+            string data = dia+"/"+mes+"/"+ano;
+           
+            string condicao = " Where [Delete] = 0 And Finalizado = 0 And [Cancelado] = 0 and CONVERT(varchar, Entrada, 103)  = '" + data + "'" +
             " And OrdemServico <> 0 order by OrdemServico Asc  ";
 
             var dataBaseHelper = new DataBaseHelper(this.sql + condicao);

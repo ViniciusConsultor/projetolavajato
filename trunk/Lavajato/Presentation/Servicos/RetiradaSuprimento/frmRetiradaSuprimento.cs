@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+
 using HenryCorporation.Lavajato.DomainModel;
 using HenryCorporation.Lavajato.BusinessLogic;
 
@@ -13,8 +14,6 @@ namespace HenryCorporation.Lavajato.Presentation
 {
     public partial class frmRetiradaSuprimento : login
     {
-
-
         public frmRetiradaSuprimento()
         {
             InitializeComponent();
@@ -59,13 +58,15 @@ namespace HenryCorporation.Lavajato.Presentation
                     Presentation.Logins.frmLoginRetirada frmLoginRetirada = new Logins.frmLoginRetirada();
                     frmLoginRetirada.ShowDialog();
 
-                    Retirada retirada = SetUpRetirada();
-                    retirada.TipoRetirada = TipoRetirada.Vale;
-                    retirada.Vale = new Vale() { Usuario = frmLoginRetirada.User };
-                    retirada.Vale.isVale = 1;
-                    retirada = new RetiradaBL().Add(retirada);
-
-                    MessageBox.Show("Retirada inserida com sucesso!", "Atenção");
+                    if (frmLoginRetirada.User.ID > 0)
+                    {
+                        Retirada retirada = SetUpRetirada();
+                        retirada.TipoRetirada = TipoRetirada.Vale;
+                        retirada.Vale = new Vale() { Usuario = frmLoginRetirada.User };
+                        retirada.Vale.isVale = 1;
+                        retirada = new RetiradaBL().Add(retirada);
+                        MessageBox.Show("Retirada inserida com sucesso!", "Atenção");
+                    }
                 }
                 else if (isSuprimento)
                 {
@@ -90,8 +91,7 @@ namespace HenryCorporation.Lavajato.Presentation
             retirada.Valor = Operacional.Configuracao.ConverteParaDecimal(valor.Text);
             retirada.Usuario = this.Usuario;
             retirada.Descricao = descricao.Text;
-            
-
+           
             return retirada;
         }
 

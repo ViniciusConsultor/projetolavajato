@@ -164,7 +164,7 @@
             // btnFinalizar
             // 
             this.btnFinalizar.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnFinalizar.Location = new System.Drawing.Point(4, 333);
+            this.btnFinalizar.Location = new System.Drawing.Point(4, 256);
             this.btnFinalizar.Name = "btnFinalizar";
             this.btnFinalizar.Size = new System.Drawing.Size(139, 23);
             this.btnFinalizar.TabIndex = 10;
@@ -175,7 +175,7 @@
             // btnAlterarQuantidade
             // 
             this.btnAlterarQuantidade.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnAlterarQuantidade.Location = new System.Drawing.Point(143, 333);
+            this.btnAlterarQuantidade.Location = new System.Drawing.Point(143, 256);
             this.btnAlterarQuantidade.Name = "btnAlterarQuantidade";
             this.btnAlterarQuantidade.Size = new System.Drawing.Size(115, 23);
             this.btnAlterarQuantidade.TabIndex = 11;
@@ -186,7 +186,7 @@
             // btnSair
             // 
             this.btnSair.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSair.Location = new System.Drawing.Point(493, 333);
+            this.btnSair.Location = new System.Drawing.Point(493, 256);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(115, 23);
             this.btnSair.TabIndex = 13;
@@ -197,7 +197,7 @@
             // btnExcluir
             // 
             this.btnExcluir.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnExcluir.Location = new System.Drawing.Point(258, 333);
+            this.btnExcluir.Location = new System.Drawing.Point(258, 256);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(115, 23);
             this.btnExcluir.TabIndex = 12;
@@ -217,11 +217,12 @@
             this.groupBox3.Controls.Add(this.label4);
             this.groupBox3.Controls.Add(this.cmbFormaPagamento);
             this.groupBox3.Controls.Add(this.label12);
-            this.groupBox3.Location = new System.Drawing.Point(4, 254);
+            this.groupBox3.Location = new System.Drawing.Point(4, 310);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(604, 73);
             this.groupBox3.TabIndex = 10;
             this.groupBox3.TabStop = false;
+            this.groupBox3.Visible = false;
             // 
             // txtTroco
             // 
@@ -340,16 +341,16 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.ClientSize = new System.Drawing.Size(614, 362);
+            this.ClientSize = new System.Drawing.Size(614, 283);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.btnExcluir);
-            this.Controls.Add(this.btnSair);
-            this.Controls.Add(this.btnAlterarQuantidade);
-            this.Controls.Add(this.btnFinalizar);
             this.Controls.Add(this.lblOperador);
             this.Controls.Add(this.label3);
+            this.Controls.Add(this.btnSair);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.Controls.Add(this.btnAlterarQuantidade);
+            this.Controls.Add(this.btnFinalizar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
             this.MaximizeBox = false;
             this.Name = "frmVendaAvulsa";

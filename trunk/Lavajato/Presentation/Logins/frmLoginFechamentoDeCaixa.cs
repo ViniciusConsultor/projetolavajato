@@ -17,6 +17,11 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnLogin_Click(object sender, EventArgs e)
         {
+            SetUpLogin();
+        }
+
+        private void SetUpLogin()
+        {
             if (txtLogin.TextLength > 0 && txtPassword.TextLength > 0)
             {
                 this.User.Login = txtLogin.Text.Trim();
@@ -32,6 +37,12 @@ namespace HenryCorporation.Lavajato.Presentation
             }
 
             this.Close();
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SetUpLogin();
         }
     }
 }

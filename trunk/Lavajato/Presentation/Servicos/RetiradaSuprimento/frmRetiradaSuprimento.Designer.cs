@@ -135,7 +135,7 @@
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCancelar.Location = new System.Drawing.Point(336, 234);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(101, 40);
+            this.btnCancelar.Size = new System.Drawing.Size(101, 36);
             this.btnCancelar.TabIndex = 13;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -146,7 +146,7 @@
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalvar.Location = new System.Drawing.Point(171, 234);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(101, 40);
+            this.btnSalvar.Size = new System.Drawing.Size(101, 36);
             this.btnSalvar.TabIndex = 12;
             this.btnSalvar.Text = "OK";
             this.btnSalvar.UseVisualStyleBackColor = true;
@@ -175,7 +175,7 @@
             this.lstTipoRetirada.Size = new System.Drawing.Size(259, 172);
             this.lstTipoRetirada.TabIndex = 0;
             // 
-            // frmRetirada
+            // frmRetiradaSuprimento
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -188,7 +188,7 @@
             this.Controls.Add(this.btnCancelar);
             this.Controls.Add(this.btnSalvar);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedToolWindow;
-            this.Name = "frmRetirada";
+            this.Name = "frmRetiradaSuprimento";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Retirada/Suprimento";
             this.Load += new System.EventHandler(this.frmRetirada_Load);
