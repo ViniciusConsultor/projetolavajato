@@ -148,7 +148,6 @@ namespace HenryCorporation.Lavajato.Presentation
             this.txtTrocoDoServico.Name = "txtTrocoDoServico";
             this.txtTrocoDoServico.Size = new System.Drawing.Size(112, 33);
             this.txtTrocoDoServico.TabIndex = 98;
-            //this.txtTrocoDoServico.TextChanged += new System.EventHandler(this.txtTrocoDoServico_TextChanged);
             // 
             // label13
             // 
@@ -640,7 +639,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.ClientSize = new System.Drawing.Size(798, 662);
+            this.ClientSize = new System.Drawing.Size(798, 537);
             this.Controls.Add(this.btnSair);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);

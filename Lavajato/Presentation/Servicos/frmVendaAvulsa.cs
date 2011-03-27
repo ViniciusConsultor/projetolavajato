@@ -143,6 +143,10 @@ namespace HenryCorporation.Lavajato.Presentation
             _servico = _servicoBL.Add(_servico);
             _servico.ServicoItem = servItemBack;
             _servicoBL.ItemAdd(_servico);
+
+            VendaFormaPagamento frmFormaPagamento = new VendaFormaPagamento(_servico);
+            frmFormaPagamento.ShowDialog();
+
             LimpaCampos();
         }
 
@@ -154,7 +158,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private Servico SetUpServico()
         {
-            _servico.Cliente.ID = 72;
+            _servico.Cliente.ID = 198;
             _servico.Usuario =  this.Usuario;
             _servico.Total = ValorTotalCompra();
             _servico.SubTotal = ValorTotalCompra();

@@ -324,20 +324,30 @@
     <EmbeddedResource Include="Relatorios\Caixa\PorOrdemServico\relServicoPorOS.resx">
       <DependentUpon>relServicoPorOS.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\Caixa\PorOrdemServico\rptServicoPorOS.rdlc" />
+    <EmbeddedResource Include="Relatorios\Caixa\PorOrdemServico\rptServicoPorOS.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Caixa\ServicoCancelado\frmServicoCanceladoPorUsuario.resx">
       <DependentUpon>frmServicoCanceladoPorUsuario.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\Caixa\ServicoCancelado\rdlServicoCancelado.rdlc" />
-    <EmbeddedResource Include="Relatorios\Cliente\PorPlaca\rdlClientePorPlaca.rdlc" />
+    <EmbeddedResource Include="Relatorios\Caixa\ServicoCancelado\rdlServicoCancelado.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Cliente\PorPlaca\rdlClientePorPlaca.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Lavagens\CarrosNoLavajato\frmCarrosNoLavajato.resx">
       <DependentUpon>frmCarrosNoLavajato.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\Lavagens\CarrosNoLavajato\rptCarrosNoLavajato.rdlc" />
+    <EmbeddedResource Include="Relatorios\Lavagens\CarrosNoLavajato\rptCarrosNoLavajato.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Produto\Produtos\frmProdutos.resx">
       <DependentUpon>frmProdutos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\Produto\Produtos\rptProdutosEstoque.rdlc" />
+    <EmbeddedResource Include="Relatorios\Produto\Produtos\rptProdutosEstoque.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Servicos\FormaPagamento\VendaFormaPagamento.resx">
       <DependentUpon>VendaFormaPagamento.cs</DependentUpon>
     </EmbeddedResource>
@@ -376,7 +386,9 @@
     <EmbeddedResource Include="Relatorios\Caixa\VendaDiariaPorVendedor\frmVendasDiarias.resx">
       <DependentUpon>frmVendasDiarias.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\Cliente\Historico\HistoricoCliente.rdlc" />
+    <EmbeddedResource Include="Relatorios\Cliente\Historico\HistoricoCliente.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Produto\frmCategoriaProduto.resx">
       <DependentUpon>frmCategoriaProduto.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -410,10 +422,18 @@
       <DependentUpon>frmRelatorioFechamentoDeCaixa.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Relatorios\Produto\AbaixoEstoque\relProdutoAbaixoEstoque.rdlc" />
-    <EmbeddedResource Include="Relatorios\Caixa\VendaDiariaPorVendedor\relRelatorioDeVendas.rdlc" />
-    <EmbeddedResource Include="Relatorios\Lavagens\PorLavador\rptLavagemPorLavador.rdlc" />
-    <EmbeddedResource Include="Relatorios\Caixa\FechamentoDeCaixa\VendaPorPeriodo.rdlc" />
+    <EmbeddedResource Include="Relatorios\Produto\AbaixoEstoque\relProdutoAbaixoEstoque.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Caixa\VendaDiariaPorVendedor\relRelatorioDeVendas.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Lavagens\PorLavador\rptLavagemPorLavador.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Caixa\FechamentoDeCaixa\VendaPorPeriodo.rdlc">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="Servicos\frmAlterarQuantidadeItem.resx">
       <DependentUpon>frmAlterarQuantidadeItem.cs</DependentUpon>
       <SubType>Designer</SubType>

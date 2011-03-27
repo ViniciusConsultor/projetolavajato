@@ -49,11 +49,12 @@ namespace Impressao
 
             recibo += MontaCorpoRecibo(_servico);
             recibo += ExibeReciboFormatado(_servico);
+            
 
-            Pen myPen = new Pen(Brushes.Black);
+            Pen myPen = new Pen(Brushes.Black); 
             Font myFont1 = new Font("Arial", 8);
 
-            ev.Graphics.DrawString(recibo, myFont1, Brushes.Black, 30, 30);
+            ev.Graphics.DrawString(recibo, myFont1, Brushes.Black, 25, 30);
             ev.HasMorePages = false;
         }
 

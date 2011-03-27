@@ -43,9 +43,10 @@ namespace HenryCorporation.Lavajato.Presentation
             {
                 CarregaCliente(cliente);
                 _servico = ServicoCarrega();
-
-                min.SelectedItem = _servico.Saida.Minute;
+                
                 hora.SelectedItem = _servico.Saida.Hour;
+                min.SelectedItem = _servico.Saida.Minute;
+                
 
                 ImprimeNumeroOrdemServico();
                 ImprimeMensagemParaCarroJaLavado();
@@ -207,16 +208,17 @@ namespace HenryCorporation.Lavajato.Presentation
             {
                 _servico = ServicoSalva();
                 List<ServicoItem> itens = ItensParaInsercao(_servico);
-                _servico.ServicoItem.AddRange(itens);
-                SalvaItens(itens);
                 
+                SalvaItens(itens);
+                _servico = servicoBL.ByOrdemServico(_servico);
+
                 IImprimir impressao = new ImprimirComprovantePagamento(_servico);
                 impressao.Imprimir(_servico);
                 
-                //LiberaBotaoParaExclusaoDeItens();
+                LiberaBotaoParaExclusaoDeItens();
                 
-                //MessageBox.Show("Número da Ordem Serviço é: " + this._servico.OrdemServico, "Ordem Serviço");
-                //LimpaCampos();
+                MessageBox.Show("Número da Ordem Serviço é: " + this._servico.OrdemServico, "Ordem Serviço");
+                LimpaCampos();
             }
             else
             {

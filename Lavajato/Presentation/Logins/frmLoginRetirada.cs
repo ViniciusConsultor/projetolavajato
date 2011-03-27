@@ -19,10 +19,16 @@ namespace HenryCorporation.Lavajato.Presentation.Logins
 
         private void btnLogin_Click_1(object sender, EventArgs e)
         {
-            if (!string.IsNullOrEmpty(txtLogin.Text))
+            SetUpLogin();
+        }
+
+        private void SetUpLogin()
+        {
+            if (!string.IsNullOrEmpty(txtLogin.Text) || !string.IsNullOrEmpty(txtPassword.Text))
             {
                 this.User.Login = txtLogin.Text.Trim();
-                this.User = this.usuarioBL.ByLogin(this.User);
+                this.User.Password = txtPassword.Text.Trim();
+                this.User = this.usuarioBL.ByLoginAndPassword(this.User);
             }
 
             if (this.User.ID == 0)
@@ -32,6 +38,17 @@ namespace HenryCorporation.Lavajato.Presentation.Logins
                 return;
             }
             this.Close();
+        }
+
+        private void btnCancelar_Click(object sender, EventArgs e)
+        {
+            this.Close();
+        }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SetUpLogin();
         }
 
         
