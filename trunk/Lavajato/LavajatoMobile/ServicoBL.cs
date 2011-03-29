@@ -81,9 +81,9 @@ namespace LavajatoMobile
             ts1.GridColumnStyles.Add(id);
 
             DataGridColumnStyle OrdemServico = new DataGridTextBoxColumn();
-            OrdemServico.MappingName = "O.S.";
+            OrdemServico.MappingName = "Ordem Servico";
             OrdemServico.HeaderText = "O.S.";
-            OrdemServico.Width = 110;
+            OrdemServico.Width = 30;
             ts1.GridColumnStyles.Add(OrdemServico);
 
             DataGridColumnStyle Placa = new DataGridTextBoxColumn();
@@ -95,13 +95,13 @@ namespace LavajatoMobile
             DataGridColumnStyle Lavado = new DataGridTextBoxColumn();
             Lavado.MappingName = "Lavado";
             Lavado.HeaderText = "Lavado";
-            Lavado.Width = 80;
+            Lavado.Width = 75;
             ts1.GridColumnStyles.Add(Lavado);
 
             DataGridColumnStyle HoraPrevista = new DataGridTextBoxColumn();
             HoraPrevista.MappingName = "Hora Prevista de Saida";
-            HoraPrevista.HeaderText = "Hora Saida";
-            HoraPrevista.Width = 130;
+            HoraPrevista.HeaderText = "H. Saida";
+            HoraPrevista.Width = 135;
             ts1.GridColumnStyles.Add(HoraPrevista);
 
             return ts1;

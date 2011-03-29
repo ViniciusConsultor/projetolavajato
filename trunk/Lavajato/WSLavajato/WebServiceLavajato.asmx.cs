@@ -71,9 +71,9 @@ namespace WSLavajato
         }
 
         [WebMethod]
-        public DataTable CriaGridCarrosLavano()
+        public DataTable GetCarrosNoLavajato(DateTime date)
         {
-            return servicoBL.CriaGridCarrosLavano();
+            return servicoBL.GetCarrosNoLavajatoByDate(date);
         }
 
         #endregion
