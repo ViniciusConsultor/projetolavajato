@@ -13,7 +13,7 @@ namespace LavajatoMobile
     public partial class frmEntrada : Form
     {
 
-        private WSLavajato.Cliente _cliente = new LavajatoMobile.WSLavajato.Cliente();
+        private Cliente _cliente = new Cliente();
         private Servico _servico = new Servico();
         private WSLavajato.WebServiceLavajato wsService = new LavajatoMobile.WSLavajato.WebServiceLavajato();
         
@@ -24,17 +24,11 @@ namespace LavajatoMobile
             SetHoraInicial();
         }
 
-        private void SetHoraInicial()
-        {
-            txtHoraInicial.Text = DateTime.Now.ToShortTimeString();
-            txtHoraInicial.Enabled = false;
-        }
-
         #region Métodos Formulario
 
         private void placa_LostFocus(object sender, EventArgs e)
         {
-            if (!PlacaEValida())
+            if (!ServicoBL.PlacaValida(placa.Text))
             {
                 placa.BackColor = Color.White;
                 btnCadastraCliente.Text = "Cad. Cliente";
@@ -43,16 +37,22 @@ namespace LavajatoMobile
             }
 
             _cliente.Placa = placa.Text;
+
+            //Procura cliente com base na placa
             _cliente = wsService.ClienteByPlaca(_cliente);
+
+            //Procura serviço aberto se existir o cliente com ordem aberta
             _servico = CarregaServico(_cliente);
 
+            //se encontrar o cliente vai carregar as informaçõe do mesmo caso contrario, será perguntado
+            //se deseja cadastrar o cliente.
             if (_cliente.ID == 0)
             {
                 string placaTemp = placa.Text;
                 LimpaCampos();
 
-                DialogResult dialogResult = MessageBox.Show("Cliente não Cadastrado, deseja cadastrar?",
-                    "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                DialogResult dialogResult = MessageBox.Show("Cliente não Cadastrado, deseja cadastrar?","Atenção", 
+                    MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 if (dialogResult == DialogResult.Yes)
                 {
                     placa.BackColor = Color.White;
@@ -78,42 +78,33 @@ namespace LavajatoMobile
             teclado.Enabled = false;
         }
 
-        private Servico CarregaServico(Cliente _cliente)
+        /// <summary>
+        /// Seta hora que o carro está entrando no lavador
+        /// </summary>
+        private void SetHoraInicial()
         {
-            return wsService.ByCliente(_cliente);
+            txtHoraInicial.Text = DateTime.Now.ToShortTimeString();
+            txtHoraInicial.Enabled = false;
         }
-
-        private bool PlacaEValida()
-        {
-            if (placa.TextLength == 0)
-            {
-                teclado.Enabled = true;
-                return false;
-            }
-
-            if (placa.TextLength > 8)
-            {
-                MessageBox.Show("Placa deve conter 7 digitos", "Atenção");
-                teclado.Enabled = true;
-                return false;
-            }
-            return true;
-        }
-
+        
         private void btnCadastraCliente_Click(object sender, EventArgs e)
         {
             if (this._cliente.ID == 0)
             {
                 SetUpFieldsCliente();
                 ClienteInsert();
-                MessageBox.Show("Cliente salvo com sucesso!", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                
+                MessageBox.Show("Cliente salvo com sucesso!", "Atenção", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
                 btnCadastraCliente.Text = "Cad. Cliente";
             }
             else
             {
                 SetUpFieldsCliente();
                 ClienteUpdate();
-                MessageBox.Show("Cliente alterado com sucesso !", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                MessageBox.Show("Cliente alterado com sucesso !", "Atenção", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                
                 LimpaCampos();
                 btnCadastraCliente.Text = "Cad. Cliente";
             }
@@ -123,21 +114,37 @@ namespace LavajatoMobile
         {
             if (_cliente.ID > 0)
             {
-                DateTime horaSaida;
+                string h = (hora.SelectedItem == null) ? "0" : hora.SelectedItem.ToString();
+                string m = (min.SelectedItem == null ) ? "0" : hora.SelectedItem.ToString();
+
+                // se o serviço já existir não será verificado a hora, 
+                // caso ele esteja sendo criado será verificado
+                DateTime horaSaida = new DateTime();
                 if (_servico.ID == 0)
                 {
-                    if (HoraEMinMaiorQueZero())
+                    //se o serviço não existir ainda então é validada a data, hora e minuto não 
+                    //podem ser igual a zero(0)
+                    if (ServicoBL.HoraMinutoValidos(h, m))
                     {
                         MessageBox.Show("Favor inserir dada e hora de saida do veículo", "Atenção!");
                         return;
                     }
-                }
 
-                horaSaida = SetHoraEMinutoDeSaidaDoCarro();
+                    //Seta a hora de saida caso o id seja igual a zero
+                    horaSaida = ServicoBL.SetHoraMinutoDeSaidaDoCarro(h, m);
+                }
+                else
+                {
+                    //pega a hora de saida já salva no sistema
+                    horaSaida = _servico.Saida;
+                }
 
                 frmServico frmServico = new frmServico(_cliente, horaSaida);
                 frmServico.ShowDialog();
                 LimpaCampos();
+                
+                hora.SelectedItem = 0;
+                min.SelectedItem = 0;
 
                 btnCadastraCliente.Text = "Cad. Cliente";
                 placa.BackColor = Color.Yellow;
@@ -145,59 +152,22 @@ namespace LavajatoMobile
             }
             else
             {
-                MessageBox.Show("Favor escolher/Cadastrar cliente!", "Atenção");
+                MessageBox.Show("Favor escolher/cadastrar cliente!", "Atenção");
             }
         }
 
-        private bool HoraEMinMaiorQueZero()
-        {
-            double m = double.Parse(min.SelectedItem == null ? "0" : min.SelectedItem.ToString());
-            double h = double.Parse(hora.SelectedItem == null ? "0" : hora.SelectedItem.ToString());
-            return (m == 0 && h == 0 );
-        }
-
-        private DateTime SetHoraEMinutoDeSaidaDoCarro()
-        {
-            var h = (hora.SelectedItem == null ? "0" : hora.SelectedItem.ToString());
-            var m = (min.SelectedItem == null ? "0" : min.SelectedItem.ToString());
-            return  DateTime.Now
-                .AddHours(double.Parse(h))
-                .AddMinutes(double.Parse(m));
-        }
-
-        
         private void placa_TextChanged(object sender, EventArgs e)
         {
-            string placaBackup = placa.Text;
-
-            int index = placaBackup.IndexOfAny(new char[] { '-', '.', ',', '_' });
-            if (index > -1)
-                placaBackup = placaBackup.Remove(index, 1);
-
-            if (placaBackup.Length > 7)
-                placaBackup = placaBackup.Remove(7, placaBackup.Length - 7);
-
-            string letras = "";
-            string numeros = "";
-
-            if (placaBackup.Length >= 3)
-                letras = placaBackup.Substring(0, 3);
-
-            if (placaBackup.Length > 3 && placaBackup.Length >= 7)
-                numeros = placaBackup.Substring(3, placaBackup.Length - 3);
-
-            if (placa.Left > 0 && numeros.Length > 0)
-                placa.Text = letras + "-" + numeros;
-            else
-                placa.Text = placaBackup.ToUpper();
-
-            placa.SelectionStart = placa.TextLength;
+            //Validação da placa
+            string pl = ServicoBL.PlacaFormata(placa.Text);
+            placa.Text = pl.ToUpper();
+            placa.SelectionStart = pl.Length;
         }
 
         private void btnLimpar_Click(object sender, EventArgs e)
         {
 
-            this._cliente = new LavajatoMobile.WSLavajato.Cliente();
+            _cliente = new LavajatoMobile.WSLavajato.Cliente();
             placa.Text = "";
             veiculo.Text = "";
             telefone.Text = "";
@@ -214,33 +184,32 @@ namespace LavajatoMobile
             wsService.ClienteUpdate(_cliente);
         }
 
-        private DateTime SetUpSaidaData()
-        {
-            DateTime saida = entrada.Value.AddHours(double.Parse(hora.SelectedItem.ToString())).AddMinutes(double.Parse(min.SelectedItem.ToString()));
-            return saida;
-        }
-
         private void ClienteInsert()
         {
             this._cliente = wsService.ClienteAdd(this._cliente);
         }
 
+        private Servico CarregaServico(Cliente _cliente)
+        {
+            return wsService.ByCliente(_cliente);
+        }
+
         private void SetUpFieldsCliente()
         {
-            this._cliente.Placa = placa.Text;
-            this._cliente.Veiculo = veiculo.Text;
-            this._cliente.Telefone = telefone.Text;
-            this._cliente.Nome = nome.Text;
-            this._cliente.Cor = cor.Text;
+            _cliente.Placa = placa.Text;
+            _cliente.Veiculo = veiculo.Text;
+            _cliente.Telefone = telefone.Text;
+            _cliente.Nome = nome.Text;
+            _cliente.Cor = cor.Text;
         }
 
         private void CarregaCliente(Cliente cliente)
         {
-            placa.Text = this._cliente.Placa;
-            veiculo.Text = this._cliente.Veiculo;
-            telefone.Text = this._cliente.Telefone;
-            nome.Text = this._cliente.Nome;
-            cor.Text = this._cliente.Cor;
+            placa.Text = _cliente.Placa;
+            veiculo.Text = _cliente.Veiculo;
+            telefone.Text = _cliente.Telefone;
+            nome.Text = _cliente.Nome;
+            cor.Text = _cliente.Cor;
         }
 
         private Cliente ProcuraCliente(Cliente cliente)

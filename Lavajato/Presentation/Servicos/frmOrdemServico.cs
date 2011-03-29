@@ -43,11 +43,7 @@ namespace HenryCorporation.Lavajato.Presentation
             {
                 CarregaCliente(cliente);
                 _servico = ServicoCarrega();
-                
-                hora.SelectedItem = _servico.Saida.Hour;
-                min.SelectedItem = _servico.Saida.Minute;
-                
-
+                                
                 ImprimeNumeroOrdemServico();
                 ImprimeMensagemParaCarroJaLavado();
 
@@ -198,14 +194,17 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnGerarOrdemServico_Click(object sender, EventArgs e)
         {
-            if (HoraEMinMaiorQueZero())
-            {
-                MessageBox.Show("Favor marcar hora ou minuto diferente de zero!", "Atenção!");
-                return;
-            }
-            
             if (dataSetItens.Tables[0].Rows.Count > 0)
             {
+                if (_servico.ID == 0)
+                {
+                    if (HoraEMinMaiorQueZero())
+                    {
+                        MessageBox.Show("Favor marcar hora ou minuto diferente de zero!", "Atenção!");
+                        return;
+                    }
+                }
+
                 _servico = ServicoSalva();
                 List<ServicoItem> itens = ItensParaInsercao(_servico);
                 
