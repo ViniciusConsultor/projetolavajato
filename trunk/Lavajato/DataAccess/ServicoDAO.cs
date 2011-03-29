@@ -97,8 +97,8 @@ namespace HenryCorporation.Lavajato.DataAccess
                            " ,[Total] = '" + servico.Total.ToString().Replace(",", ".") + "' " +
                            " ,[SubTotal] = '" + servico.SubTotal.ToString().Replace(",", ".") + "' " +
                            " ,[Desconto] = '" + servico.Desconto.ToString().Replace(",", ".") + "' " +
-                           " ,[Saida] = getdate()" +
-                           " ,[Entrada] = getdate() " +
+                           " ,[Saida] = '" + Configuracao.HoraSaida(servico.Saida) + "'" +
+                           " ,[Entrada] = '" + Configuracao.HoraEntrada(servico.Entrada) + "' " +
                            " ,[OrdemServico] = '" + servico.OrdemServico + "' " +
                            " ,[FormaPagamentoID] = '" + servico.FormaPagamento.ID + "' " +
                            " ,[Delete] = '" + servico.Delete + "' " +
@@ -110,7 +110,7 @@ namespace HenryCorporation.Lavajato.DataAccess
                            " ,[LavadorID] = '" + servico.Lavador + "' " +
                            " WHERE [ServicoID] = " + servico.ID;
 
-            var dataBaseHelper = new DataBaseHelper(query);
+            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run();
         }
 
@@ -257,8 +257,8 @@ namespace HenryCorporation.Lavajato.DataAccess
                 servico.Total = reader.IsDBNull(2) ? 0 : reader.GetDecimal(2);
                 servico.SubTotal = reader.IsDBNull(3) ? 0 : reader.GetDecimal(3);
                 servico.Desconto = reader.IsDBNull(4) ? 0 : reader.GetDecimal(4);
-                servico.Saida = reader.IsDBNull(5) ? DateTime.Now : reader.GetDateTime(5);
-                servico.Entrada = reader.IsDBNull(6) ? DateTime.Now : reader.GetDateTime(6);
+                servico.Saida =  reader.GetDateTime(5);
+                servico.Entrada = reader.GetDateTime(6);
                 servico.OrdemServico = reader.IsDBNull(7) ? 0 : reader.GetInt32(7);
                 servico.FormaPagamento = FormaPagamentoByID(reader.GetInt32(8));
                 servico.Delete = reader.IsDBNull(9) ? 0 : Convert.ToInt32(reader.GetByte(9));

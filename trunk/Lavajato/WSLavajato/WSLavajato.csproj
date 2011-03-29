@@ -40,11 +40,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\BusinessLogic\bin\Debug\BusinessLogic.dll</HintPath>
     </Reference>
-    <Reference Include="DataAccess, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\BusinessLogic\bin\Debug\DataAccess.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
     <Reference Include="DomainModel, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\BusinessLogic\bin\Debug\DomainModel.dll</HintPath>
@@ -86,6 +81,12 @@
       <DependentUpon>WebServiceLavajato.asmx</DependentUpon>
       <SubType>Component</SubType>
     </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccess\DataAccess.csproj">
+      <Project>{EFB17A56-B089-4E1B-9B93-A59A3D7D2EAB}</Project>
+      <Name>DataAccess</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

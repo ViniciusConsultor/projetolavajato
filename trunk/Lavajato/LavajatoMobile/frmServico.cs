@@ -21,20 +21,11 @@ namespace LavajatoMobile
         private DataSet dataSetItens = new DataSet();
         private DataTable dataTable = new DataTable();
         private DateTime _dataSaida;
-        private int _indexRow;
 
         public frmServico()
         {
             InitializeComponent();
             CarregaProdutos();
-        }
-
-        private void CarregaProdutos()
-        {
-            cmdServico.DisplayMember = "Descricao1";
-            cmdServico.ValueMember = "ProdutoID";
-            cmdServico.DataSource = wsService.ByCategoria(2);
-
         }
 
         public frmServico(Cliente cliente, DateTime saida)
@@ -46,59 +37,19 @@ namespace LavajatoMobile
             _cliente = cliente;
             _dataSaida = saida;
             
-            _servico = ServicoCarrega();
+            _servico = ServicoBL.ServicoCarrega(_cliente);
 
-            ImprimeNumeroOrdemServico();
-            ImprimeMensagemParaCarroJaLavado();
+            ServicoBL.ImprimeNumeroOrdemServico(_servico);
+            ServicoBL.ImprimeMensagemParaCarroJaLavado(_servico);
 
             CarregaItens(_servico);
 
-        }
-
-        
-
-        private Servico ServicoCarrega()
-        {
-            Servico servico = wsService.ByCliente(_cliente);
-            if (servico.Finalizado == 0)
-                return servico;
-            else
-                return new Servico();
-        }
-
-        //public frmServico(Cliente cliente, Servico servico)
-        //{
-        //    InitializeComponent();
-        //    CarregaProdutos();
-        //    SetUpDataSet();
-
-        //    _cliente = cliente;
-        //    _servico = ServicoCarrega(_servico);
-
-        //    ImprimeNumeroOrdemServico();
-        //    ImprimeMensagemParaCarroJaLavado();
-
-        //    CarregaItens(_servico);
-
-        //}
-
-        private Servico ServicoCarrega(Servico servico)
-        {
-            servico = wsService.ServicoByID(servico);
-            if (servico.Finalizado == 0)
-                return servico;
-            else
-                return new Servico();
         }
 
         private void SetUpDataSet()
         {
             dataTable.Columns.AddRange(ServicoColunas.CarregaColunasServico());
             dataSetItens.Tables.Add(dataTable);
-        }
-
-        private void frmServico_Load(object sender, EventArgs e)
-        {
         }
 
         private void CarregaItens(Servico servicoParaCarregarItens)
@@ -108,6 +59,14 @@ namespace LavajatoMobile
             grdServico.DataSource = CarregaItensNoGrid(servicoParaCarregarItens);
             grdServico.TableStyles.Clear();
             grdServico.TableStyles.Add(ServicoBL.SetUpStyleGrid(dataSetItens));
+        }
+
+        private void CarregaProdutos()
+        {
+            cmdServico.DisplayMember = "Descricao1";
+            cmdServico.ValueMember = "ProdutoID";
+            cmdServico.DataSource = wsService.ByCategoria(2);
+
         }
 
         private DataTable CarregaItensNoGrid(Servico servicoParaSerCarregado)
@@ -129,47 +88,12 @@ namespace LavajatoMobile
             return dataTable;
         }
 
-        private void ImprimeNumeroOrdemServico()
-        {
-            if (_servico.Finalizado == 0 && _servico.ID > 0)
-                MessageBox.Show("Número da Ordem Serviço: " + this._servico.OrdemServico, "Atenção");
-        }
-
-        private void ImprimeMensagemParaCarroJaLavado()
-        {
-            if (this._servico.Lavado > 0)
-                MessageBox.Show("Carro já lavado", "Atenção");
-        }
-
-        private void LimpaGrid()
-        {
-            dataTable = new DataTable();
-            dataSetItens = new DataSet();
-            dataTable.Columns.AddRange(ServicoColunas.CarregaColunasServico());
-            dataSetItens.Tables.Add(dataTable);
-            grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
-        }
-
-        private void LimpaGrid(string placaPesquisada)
-        {
-            if (Equals(_cliente.Placa, placaPesquisada))
-            {
-                dataTable = new DataTable();
-                dataSetItens = new DataSet();
-                dataTable.Columns.AddRange(ServicoColunas.CarregaColunasServico());
-                dataSetItens.Tables.Add(dataTable);
-                grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
-            }
-        }
-
         private void btnExcluir_Click(object sender, EventArgs e)
         {
             if (dataSetItens.Tables[0].Rows.Count > 0)
             {
-
                 DialogResult res = MessageBox.Show("Deseja realmente apagar o item de pedido", "Atenção",
                     MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-
                 if (res == DialogResult.Yes)
                 {
                     dataSetItens.Tables[0].Rows[grdServico.CurrentRowIndex].Delete();
@@ -197,20 +121,15 @@ namespace LavajatoMobile
             }
         }
 
-        private void ItemDoServicoSalva(Servico servico)
-        {
-            ServicoItem servicoItem = new ServicoItem();
-            servicoItem.Produto = new Produto() { ID = ((Produto)cmdServico.SelectedItem).ID };
-            servicoItem.Quantidade = qtde.TextLength == 0 ? 1 : Convert.ToDecimal( qtde.Text);
-            servicoItem.Servico = servico;
-            wsService.ServicoItemAdd(servicoItem);
-        }
-
         private void btnConcluir_Click(object sender, EventArgs e)
         {
             if (dataSetItens.Tables[0].Rows.Count > 0)
             {
-                _servico = ServicoSalva();
+                _servico.Total = SomaTotal();
+                _servico.SubTotal = _servico.Total;
+                _servico.Cliente = _cliente;
+                _servico.Saida = _dataSaida;
+                _servico = ServicoBL.ServicoSalva(_servico);
                 
                 var itens = ItensParaInsercao(_servico);
                 SalvaItens(itens);
@@ -218,7 +137,7 @@ namespace LavajatoMobile
                 _servico = wsService.ServicoByID(_servico);
 
                 //imprime recibo
-                ImpressaoDeRecibo(_servico);
+                ServicoBL.ImpressaoDeRecibo(_servico);
                 
                 MessageBox.Show("Número da O. S.: " + this._servico.OrdemServico, "Ordem Serviço");
             }
@@ -228,17 +147,6 @@ namespace LavajatoMobile
             }
 
             this.Close();
-        }
-
-        private void ImpressaoDeRecibo(Servico _servico)
-        {
-            wsService.EmiteRecibo(_servico, "");
-
-            DialogResult result = MessageBox.Show("Deseja Imprimir outra copia do recibo?", 
-                "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
-            if(result == DialogResult.Yes)
-                wsService.EmiteRecibo(_servico, "");
-
         }
 
         //Caso o item já exista no bd não será necessario inserilo novamente
@@ -323,43 +231,7 @@ namespace LavajatoMobile
             return row;
         }
 
-        private Servico ServicoSalva()
-        {
-            if (!ServicoExiste(_servico))
-                return wsService.ServicoAdd(NovoServico());
-            else
-            {
-                _servico.Total = SomaTotal();
-                wsService.ServicoUpdate(_servico);
-                return this._servico;
-            }
-        }
-
-        private Servico NovoServico()
-        {
-            var servicoSalva = new Servico();
-            servicoSalva.Cliente = this._cliente;
-            servicoSalva.Total = SomaTotal();
-            servicoSalva.SubTotal = 0;
-            servicoSalva.Desconto = 0;
-            servicoSalva.Entrada = DateTime.Now;
-
-            servicoSalva.Saida = _dataSaida;
-
-            servicoSalva.FormaPagamento = new FormaPagamento();
-            servicoSalva.FormaPagamento.ID = 1;
-
-            servicoSalva.Usuario = new Usuario();
-            servicoSalva.Usuario.ID = 26;
-
-            servicoSalva.Cancelado = 0;
-            servicoSalva.Delete = 0;
-            servicoSalva.Finalizado = 0;
-            servicoSalva.Lavado = 0;
-
-            return servicoSalva;
-        }
-
+        
         private decimal SomaTotal()
         {
             decimal total = 0;
