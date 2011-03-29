@@ -359,12 +359,12 @@ namespace LavajatoMobile
             nome.SelectionStart = nome.TextLength;
         }
 
-        #endregion
-
         private void menuItem2_Click(object sender, EventArgs e)
         {
             frmCarrosLavando frmCarlosLavador = new frmCarrosLavando();
             frmCarlosLavador.ShowDialog();
         }
+
+        #endregion
     }
 }
