@@ -11,6 +11,7 @@ using HenryCorporation.Lavajato.BusinessLogic;
 using HenryCorporation.Lavajato.DataAccess;
 using HenryCorporation.Lavajato.DomainModel;
 using System.Collections.Generic;
+using Impressao;
 
 namespace WSLavajato
 {
@@ -103,11 +104,16 @@ namespace WSLavajato
         }
 
         [WebMethod]
+        public DataTable ByCategoria(int categoriaProduto)
+        {
+            return produtoDao.ByCategoria(categoriaProduto);
+        }
+
+        [WebMethod]
         public Produto ProdutoByID(Produto produto)
         {
             return produtoDao.ByID(produto);
         }
-
 
         #endregion
 
@@ -151,8 +157,10 @@ namespace WSLavajato
         [WebMethod]
         public int EmiteRecibo(HenryCorporation.Lavajato.DomainModel.Servico servico, string avaria)
         {
-            HenryCorporation.Lavajato.Operacional.Configuracao confi = new HenryCorporation.Lavajato.Operacional.Configuracao();
-            return confi.EmiteRecibo(servico, avaria);
+
+            IImprimir print = new ImprimirComprovantePagamento();
+            print.Imprimir(servico);
+            return 0;
         }
         #endregion
     }

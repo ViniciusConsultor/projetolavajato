@@ -21,7 +21,7 @@ namespace LavajatoMobile
 
         private void frmCarrosLavando_Load(object sender, EventArgs e)
         {
-            DataTable table = wsLavajato.CarregaLavagens();
+            DataTable table = wsLavajato.CriaGridCarrosLavano();
             grdServicos.DataSource = table;
             grdServicos.TableStyles.Clear();
             grdServicos.TableStyles.Add(ServicoBL.StyleGridCarrosLavados(table));
@@ -29,7 +29,7 @@ namespace LavajatoMobile
 
         private void btnAtualiza_Click(object sender, EventArgs e)
         {
-            DataTable table = wsLavajato.CarregaLavagens();
+            DataTable table = wsLavajato.CriaGridCarrosLavano();
             grdServicos.DataSource = table;
             grdServicos.TableStyles.Clear();
             grdServicos.TableStyles.Add(ServicoBL.StyleGridCarrosLavados(table));

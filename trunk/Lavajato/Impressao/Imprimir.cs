@@ -39,8 +39,8 @@ namespace Impressao
                 recibo += descricao + quantidadeItens + valorUnitario + total + enter;
 
             }
-            recibo += FormataSomaTotal(somaTotal);
-            recibo += "Não nos responsabilizamos parte Elétrica/Mecânica do veículo";
+            recibo += FormataSomaTotal(somaTotal) + enter;
+            recibo += "Não nos responsabilizamos parte Elétrica/Mecânica do veículo"+enter;
             recibo += FormataCabecalho();
             
             return recibo;
@@ -68,7 +68,6 @@ namespace Impressao
         {
             return item.Quantidade.ToString();
         }
-
 
         public string SetDateInput(Servico servico)
         {

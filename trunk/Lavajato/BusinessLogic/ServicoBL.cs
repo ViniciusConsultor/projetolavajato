@@ -178,6 +178,12 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             return ServicoTabela.CriaGridCarrosLavano(servicos);
         }
 
+        public DataTable CriaGridCarrosLavano(DateTime date)
+        {
+            IList<Servico> servicos = servicoDAO.GetCarrosNoLavajatoByData(date);
+            return ServicoTabela.CriaGridCarrosLavano(servicos);
+        }
+
         public int OrdemServicoMax()
         {
             int ordemServico = servicoDAO.OrdemServicoMax();
