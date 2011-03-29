@@ -479,6 +479,8 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="icons\Thumbs.db" />
+    <None Include="Lib\Microsoft_ReportViewer_Common_dll.zip" />
+    <None Include="Lib\Microsoft_ReportViewer_WinForms_dll.zip" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1739,6 +1741,9 @@
     <Content Include="icons\zoom.png" />
     <Content Include="icons\zoom_in.png" />
     <Content Include="icons\zoom_out.png" />
+    <Content Include="Lib\Microsoft.ReportViewer.Common.dll" />
+    <Content Include="Lib\Microsoft.ReportViewer.ProcessingObjectModel.dll" />
+    <Content Include="Lib\Microsoft.ReportViewer.WinForms.dll" />
     <Content Include="Pendencias.txt" />
     <None Include="Relatorios\Produto\Produtos\dsProdutosEstoque.xsc">
       <DependentUpon>dsProdutosEstoque.xsd</DependentUpon>

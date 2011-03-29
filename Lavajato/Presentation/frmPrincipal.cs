@@ -50,31 +50,31 @@ namespace Presentation
 
         private void procuraUsuariosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frmUsuarioPesquisa = new frmUsuarioPesquisa();
+            frmUsuarioPesquisa frmUsuarioPesquisa = new frmUsuarioPesquisa();
             frmUsuarioPesquisa.ShowDialog();
         }
 
         private void ordemServiçoToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frmOrdemServico = new frmOrdemServico();
+            frmOrdemServico frmOrdemServico = new frmOrdemServico();
             frmOrdemServico.ShowDialog();
         }
 
         private void retiradaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var frmRetirada = new frmRetiradaSuprimento();
+            frmRetiradaSuprimento frmRetirada = new frmRetiradaSuprimento();
             frmRetirada.ShowDialog();
         }
 
         private void entradaToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            var frmEntra = new frmEntrada();
+            frmEntrada frmEntra = new frmEntrada();
             frmEntra.ShowDialog();
         }
 
         private void lavadosToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var frmAbertas = new frmOrdensAbertas();
+            frmOrdensAbertas frmAbertas = new frmOrdensAbertas();
             frmAbertas.ShowDialog();
         }
 

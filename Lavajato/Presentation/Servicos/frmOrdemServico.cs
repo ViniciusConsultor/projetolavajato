@@ -192,7 +192,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void grdServico_MouseClick(object sender, MouseEventArgs e)
         {
-            if (grdServico.CurrentRow.Index != null)
+            if (grdServico.CurrentRow != null)
                 _indexRow = grdServico.CurrentRow.Index;
         }
 
