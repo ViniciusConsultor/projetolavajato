@@ -14,6 +14,7 @@ namespace LavajatoMobile
     {
 
         private WSLavajato.Cliente _cliente = new LavajatoMobile.WSLavajato.Cliente();
+        private Servico _servico = new Servico();
         private WSLavajato.WebServiceLavajato wsService = new LavajatoMobile.WSLavajato.WebServiceLavajato();
         
         public frmEntrada()
@@ -43,6 +44,7 @@ namespace LavajatoMobile
 
             _cliente.Placa = placa.Text;
             _cliente = wsService.ClienteByPlaca(_cliente);
+            _servico = CarregaServico(_cliente);
 
             if (_cliente.ID == 0)
             {
@@ -69,11 +71,16 @@ namespace LavajatoMobile
                 return;
             }
 
-            CarregaCliente(this._cliente);
+            CarregaCliente(_cliente);
+            
             btnCadastraCliente.Text = "Alt. Cliente";
-
             placa.BackColor = Color.White;
             teclado.Enabled = false;
+        }
+
+        private Servico CarregaServico(Cliente _cliente)
+        {
+            return wsService.ByCliente(_cliente);
         }
 
         private bool PlacaEValida()
@@ -114,21 +121,39 @@ namespace LavajatoMobile
 
         private void btnCadastrarServicos_Click(object sender, EventArgs e)
         {
-            DateTime horaSaida;
-            if (VerificaHora() && VerificaMinuto())
+            if (_cliente.ID > 0)
             {
-                MessageBox.Show("Favor inserir dada e hora de saida do veículo", "Atenção!");
-                return;
+                DateTime horaSaida;
+                if (_servico.ID == 0)
+                {
+                    if (HoraEMinMaiorQueZero())
+                    {
+                        MessageBox.Show("Favor inserir dada e hora de saida do veículo", "Atenção!");
+                        return;
+                    }
+                }
+
+                horaSaida = SetHoraEMinutoDeSaidaDoCarro();
+
+                frmServico frmServico = new frmServico(_cliente, horaSaida);
+                frmServico.ShowDialog();
+                LimpaCampos();
+
+                btnCadastraCliente.Text = "Cad. Cliente";
+                placa.BackColor = Color.Yellow;
+                placa.Focus();
             }
+            else
+            {
+                MessageBox.Show("Favor escolher/Cadastrar cliente!", "Atenção");
+            }
+        }
 
-            horaSaida = SetHoraEMinutoDeSaidaDoCarro();       
-
-            frmServico frmServico = new frmServico(_cliente, horaSaida);
-            frmServico.ShowDialog();
-            LimpaCampos();
-            placa.BackColor = Color.Yellow;
-            placa.Focus();
-            btnCadastraCliente.Text = "Cad. Cliente";
+        private bool HoraEMinMaiorQueZero()
+        {
+            double m = double.Parse(min.SelectedItem == null ? "0" : min.SelectedItem.ToString());
+            double h = double.Parse(hora.SelectedItem == null ? "0" : hora.SelectedItem.ToString());
+            return (m == 0 && h == 0 );
         }
 
         private DateTime SetHoraEMinutoDeSaidaDoCarro()
@@ -140,16 +165,7 @@ namespace LavajatoMobile
                 .AddMinutes(double.Parse(m));
         }
 
-        private bool VerificaHora()
-        {
-            return ((hora.SelectedIndex == -1));
-        }
-
-        private bool VerificaMinuto()
-        {
-            return  ((min.SelectedIndex == -1));
-        }
-
+        
         private void placa_TextChanged(object sender, EventArgs e)
         {
             string placaBackup = placa.Text;

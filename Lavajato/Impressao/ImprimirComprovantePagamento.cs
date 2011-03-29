@@ -25,36 +25,35 @@ namespace Impressao
 
         public ImprimirComprovantePagamento(Servico servico)
         {
-            this._servico = servico;
+            _servico = servico;
         }
 
         #region IImprimir Members
 
         public void Imprimir(Servico servico)
         {
-            this._servico = servico;
-            if (this._servico.ID == 0)
+            _servico = servico;
+            if (_servico.ID == 0)
                 throw new Exception("Nenhum Servico encontrado");
 
-            //recibo_PrintPage();
-
-            this.recibo = new PrintDocument();
-            this.recibo.PrintPage += new PrintPageEventHandler(this.recibo_PrintPage);
-            this.recibo.Print();
+           
+            recibo = new PrintDocument();
+            recibo.PrintPage += new PrintPageEventHandler(this.recibo_PrintPage);
+            recibo.Print();
         }
 
         public void recibo_PrintPage(object sender, PrintPageEventArgs ev)
         {
-            string recibo = "";
+            string strRecibo = "";
 
-            recibo += MontaCorpoRecibo(_servico);
-            recibo += ExibeReciboFormatado(_servico);
+            strRecibo += MontaCorpoRecibo(_servico);
+            strRecibo += ExibeReciboFormatado(_servico);
             
 
             Pen myPen = new Pen(Brushes.Black); 
             Font myFont1 = new Font("Arial", 8);
 
-            ev.Graphics.DrawString(recibo, myFont1, Brushes.Black, 25, 30);
+            ev.Graphics.DrawString(strRecibo, myFont1, Brushes.Black, 25, 30);
             ev.HasMorePages = false;
         }
 
