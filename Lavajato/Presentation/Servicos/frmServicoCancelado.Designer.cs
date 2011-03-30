@@ -29,6 +29,9 @@
         private void InitializeComponent()
         {
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.lblServicos = new System.Windows.Forms.ListBox();
+            this.label1 = new System.Windows.Forms.Label();
+            this.lblData = new System.Windows.Forms.Label();
             this.Servico = new System.Windows.Forms.Label();
             this.total = new System.Windows.Forms.Label();
             this.lblTotal = new System.Windows.Forms.Label();
@@ -37,9 +40,6 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.chkCancelar = new System.Windows.Forms.CheckBox();
             this.btnFechar = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.lblData = new System.Windows.Forms.Label();
-            this.lblServicos = new System.Windows.Forms.ListBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.SuspendLayout();
@@ -59,6 +59,37 @@
             this.groupBox1.Size = new System.Drawing.Size(427, 205);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
+            // 
+            // lblServicos
+            // 
+            this.lblServicos.Enabled = false;
+            this.lblServicos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblServicos.FormattingEnabled = true;
+            this.lblServicos.ItemHeight = 20;
+            this.lblServicos.Location = new System.Drawing.Point(169, 82);
+            this.lblServicos.Name = "lblServicos";
+            this.lblServicos.Size = new System.Drawing.Size(251, 104);
+            this.lblServicos.TabIndex = 8;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label1.Location = new System.Drawing.Point(108, 58);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(57, 24);
+            this.label1.TabIndex = 7;
+            this.label1.Text = "Data:";
+            // 
+            // lblData
+            // 
+            this.lblData.AutoSize = true;
+            this.lblData.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblData.Location = new System.Drawing.Point(165, 58);
+            this.lblData.Name = "lblData";
+            this.lblData.Size = new System.Drawing.Size(66, 24);
+            this.lblData.TabIndex = 6;
+            this.lblData.Text = "lblData";
             // 
             // Servico
             // 
@@ -143,37 +174,6 @@
             this.btnFechar.UseVisualStyleBackColor = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(108, 58);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(57, 24);
-            this.label1.TabIndex = 7;
-            this.label1.Text = "Data:";
-            // 
-            // lblData
-            // 
-            this.lblData.AutoSize = true;
-            this.lblData.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblData.Location = new System.Drawing.Point(165, 58);
-            this.lblData.Name = "lblData";
-            this.lblData.Size = new System.Drawing.Size(66, 24);
-            this.lblData.TabIndex = 6;
-            this.lblData.Text = "lblData";
-            // 
-            // lblServicos
-            // 
-            this.lblServicos.Enabled = false;
-            this.lblServicos.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblServicos.FormattingEnabled = true;
-            this.lblServicos.ItemHeight = 20;
-            this.lblServicos.Location = new System.Drawing.Point(169, 82);
-            this.lblServicos.Name = "lblServicos";
-            this.lblServicos.Size = new System.Drawing.Size(251, 104);
-            this.lblServicos.TabIndex = 8;
-            // 
             // frmServicoCancelado
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -183,7 +183,9 @@
             this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
             this.Name = "frmServicoCancelado";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Cancelamento Servico";
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

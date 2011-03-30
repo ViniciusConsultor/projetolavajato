@@ -63,6 +63,16 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             servicoDAO.Update(servico);
         }
 
+        public void Cancela(Servico servico)
+        {
+            servicoDAO.Cancel(servico);
+        }
+
+        //public void Delete(Servico servico)
+        //{
+        //    servicoDAO.ServicoDel(servico);
+        //}
+
         /// <summary>
         /// Procura serviços do cliente do ID do cliente, não leva em conta a data
         /// </summary>
@@ -222,7 +232,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
         }
 
         /// <summary>
-        /// Retorna Ordens de Serviços tando finalizadas quanto não finalizados para incluir lavador
+        /// Retorna Ordens de Serviços tanto finalizadas quanto não finalizados para incluir lavador
         /// no serviço
         /// </summary>
         /// <param name="servico">Entidade Servico com propriedade ordem de serviço preenchida 

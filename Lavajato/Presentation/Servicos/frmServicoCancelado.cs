@@ -15,6 +15,8 @@ namespace HenryCorporation.Lavajato.Presentation
     public partial class frmServicoCancelado : login
     {
         private Servico _serviço;
+        private ServicoBL _servicoBL = new ServicoBL();
+
         public frmServicoCancelado(Servico servico)
         {
             InitializeComponent();
@@ -27,6 +29,7 @@ namespace HenryCorporation.Lavajato.Presentation
             lblOrdemServico.Text = _serviço.OrdemServico.ToString();
             lblTotal.Text = _serviço.Total.ToString("C");
             lblData.Text = _serviço.Entrada.ToShortDateString();
+
             int i =1;
             StringBuilder servicos = new StringBuilder();
             foreach (ServicoItem si in _serviço.ServicoItem)
@@ -42,16 +45,26 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void chkCancelar_CheckedChanged(object sender, EventArgs e)
         {
-            DialogResult res = MessageBox.Show("Deseja Cancelar a O.S.", "Atenção!",
-                MessageBoxButtons.YesNo);
+            frmCancelaOrdemServico frmCancelaServico = new frmCancelaOrdemServico();
+
+            DialogResult res = MessageBox.Show("Deseja realmente cancelar a O.S.",
+                "Atenção!", MessageBoxButtons.YesNo);
             if (res == DialogResult.Yes)
+                frmCancelaServico.ShowDialog();
+
+            if (frmCancelaServico.User.ID > 0 &&
+                frmCancelaServico.User.TipoFuncionario.Descricao == "Gerente")
             {
                 _serviço.Cancelado = 1;
-                _serviço.Usuario = this.Usuario;
+                _serviço.Usuario = frmCancelaServico.User;
 
-                new ServicoBL().Update(_serviço);
+                _servicoBL.Cancela(_serviço);
                 MessageBox.Show(Resources.Venda_cancelada, Resources.Atencao);
                 this.Close();
+            }
+            else
+            {
+                MessageBox.Show("Usuário invalido!", "Atenção");
             }
         }
 

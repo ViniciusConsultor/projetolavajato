@@ -68,28 +68,34 @@
           <DataField>QtdeOS</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="Vale">
+          <DataField>Vale</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
+        <Field Name="TotalCaixa">
+          <DataField>TotalCaixa</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <Query>
         <DataSourceName>DummyDataSource</DataSourceName>
         <CommandText>/* Local Query */</CommandText>
       </Query>
       <rd:DataSetInfo>
-        <rd:DataSetName>dsFechamentoCaixa</rd:DataSetName>
-        <rd:SchemaPath>C:\projetos\Lavajato\Presentation\Relatorios\Caixa\FechamentoDeCaixa\dsFechamentoCaixa.xsd</rd:SchemaPath>
-        <rd:TableName>DataTable1</rd:TableName>
-        <rd:TableAdapterFillMethod />
-        <rd:TableAdapterGetDataMethod />
-        <rd:TableAdapterName />
+        <rd:DataSetName>HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCaixa</rd:DataSetName>
+        <rd:TableName>dsFechamentoCaixa</rd:TableName>
+        <rd:ObjectDataSourceSelectMethod>DataTable1</rd:ObjectDataSourceSelectMethod>
+        <rd:ObjectDataSourceType>HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCaixa.dsFechamentoCaixa, Relatorios.Caixa.FechamentoDeCaixa.dsFechamentoCaixa.Designer.cs, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null</rd:ObjectDataSourceType>
       </rd:DataSetInfo>
     </DataSet>
   </DataSets>
   <Body>
     <ReportItems>
       <Line Name="line2">
-        <Top>10.02549cm</Top>
-        <Left>0.2cm</Left>
+        <Top>10.81456cm</Top>
+        <Left>0.1635cm</Left>
         <Height>0cm</Height>
-        <Width>6.1cm</Width>
+        <Width>4.03625cm</Width>
         <Style>
           <Border>
             <Style>Solid</Style>
@@ -115,9 +121,9 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>textbox8</rd:DefaultName>
-        <Left>0.3cm</Left>
+        <Left>0.1635cm</Left>
         <Height>0.63492cm</Height>
-        <Width>3.48968cm</Width>
+        <Width>2.81656cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -146,9 +152,9 @@
         </Paragraphs>
         <rd:DefaultName>textbox9</rd:DefaultName>
         <Top>0.63492cm</Top>
-        <Left>0.3cm</Left>
+        <Left>0.1635cm</Left>
         <Height>0.63492cm</Height>
-        <Width>3.48968cm</Width>
+        <Width>2.81656cm</Width>
         <ZIndex>2</ZIndex>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -177,9 +183,9 @@
         </Paragraphs>
         <rd:DefaultName>textbox14</rd:DefaultName>
         <Top>1.90476cm</Top>
-        <Left>0.3cm</Left>
+        <Left>0.1635cm</Left>
         <Height>0.63492cm</Height>
-        <Width>3.48968cm</Width>
+        <Width>2.81656cm</Width>
         <ZIndex>3</ZIndex>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -207,10 +213,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>textbox18</rd:DefaultName>
-        <Top>2.53968cm</Top>
-        <Left>0.3cm</Left>
+        <Top>3.1746cm</Top>
+        <Left>0.1635cm</Left>
         <Height>0.63492cm</Height>
-        <Width>3.48968cm</Width>
+        <Width>2.81656cm</Width>
         <ZIndex>4</ZIndex>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -238,10 +244,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>textbox19</rd:DefaultName>
-        <Top>3.1746cm</Top>
-        <Left>0.3cm</Left>
+        <Top>3.80952cm</Top>
+        <Left>0.1635cm</Left>
         <Height>0.63492cm</Height>
-        <Width>3.48968cm</Width>
+        <Width>2.81656cm</Width>
         <ZIndex>5</ZIndex>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -269,10 +275,10 @@
           </Paragraph>
         </Paragraphs>
         <rd:DefaultName>textbox20</rd:DefaultName>
-        <Top>3.80952cm</Top>
-        <Left>0.3cm</Left>
+        <Top>4.44444cm</Top>
+        <Left>0.1635cm</Left>
         <Height>0.63492cm</Height>
-        <Width>3.48968cm</Width>
+        <Width>2.81656cm</Width>
         <ZIndex>6</ZIndex>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -299,10 +305,10 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>4.44444cm</Top>
-        <Left>0.3cm</Left>
+        <Top>5.07936cm</Top>
+        <Left>0.1635cm</Left>
         <Height>0.63492cm</Height>
-        <Width>3.48968cm</Width>
+        <Width>2.81656cm</Width>
         <ZIndex>7</ZIndex>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -329,10 +335,10 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>5.07936cm</Top>
-        <Left>0.3cm</Left>
+        <Top>5.71428cm</Top>
+        <Left>0.1635cm</Left>
         <Height>0.63492cm</Height>
-        <Width>3.48968cm</Width>
+        <Width>2.81656cm</Width>
         <ZIndex>8</ZIndex>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -359,10 +365,10 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>5.71428cm</Top>
-        <Left>0.3cm</Left>
+        <Top>6.3492cm</Top>
+        <Left>0.1635cm</Left>
         <Height>0.63492cm</Height>
-        <Width>3.48968cm</Width>
+        <Width>2.81656cm</Width>
         <ZIndex>9</ZIndex>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -389,10 +395,10 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>6.3492cm</Top>
-        <Left>0.3cm</Left>
+        <Top>6.98412cm</Top>
+        <Left>0.1635cm</Left>
         <Height>0.63492cm</Height>
-        <Width>3.48968cm</Width>
+        <Width>2.81656cm</Width>
         <ZIndex>10</ZIndex>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -419,10 +425,10 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>6.98412cm</Top>
-        <Left>0.3cm</Left>
+        <Top>7.61904cm</Top>
+        <Left>0.1635cm</Left>
         <Height>0.63492cm</Height>
-        <Width>3.48968cm</Width>
+        <Width>2.81656cm</Width>
         <ZIndex>11</ZIndex>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -449,10 +455,10 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>7.61904cm</Top>
-        <Left>0.3cm</Left>
+        <Top>8.25396cm</Top>
+        <Left>0.1635cm</Left>
         <Height>0.63492cm</Height>
-        <Width>3.48968cm</Width>
+        <Width>2.81656cm</Width>
         <ZIndex>12</ZIndex>
         <Style>
           <PaddingLeft>2pt</PaddingLeft>
@@ -477,8 +483,8 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>10.12549cm</Top>
-        <Left>2.8cm</Left>
+        <Top>10.91456cm</Top>
+        <Left>0.79975cm</Left>
         <Height>0.63492cm</Height>
         <Width>3.48968cm</Width>
         <ZIndex>13</ZIndex>
@@ -496,7 +502,7 @@
           <Paragraph>
             <TextRuns>
               <TextRun>
-                <Value>Saldo em Caixa</Value>
+                <Value>Total Vendas</Value>
                 <Style>
                   <FontWeight>Bold</FontWeight>
                 </Style>
@@ -507,417 +513,12 @@
             </Style>
           </Paragraph>
         </Paragraphs>
-        <Top>8.25396cm</Top>
-        <Left>0.3cm</Left>
+        <Top>9.5238cm</Top>
+        <Left>0.1cm</Left>
         <Height>0.63492cm</Height>
-        <Width>3.48968cm</Width>
+        <Width>2.88005cm</Width>
         <ZIndex>14</ZIndex>
         <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="OSInicial">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Fields!OSInicial.Value</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>OSInicial</rd:DefaultName>
-        <Left>3.78968cm</Left>
-        <Height>0.63492cm</Height>
-        <Width>2.53968cm</Width>
-        <ZIndex>15</ZIndex>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="OSFinal">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Fields!OSFinal.Value</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>OSFinal</rd:DefaultName>
-        <Top>0.63492cm</Top>
-        <Left>3.78968cm</Left>
-        <Height>0.63492cm</Height>
-        <Width>2.53968cm</Width>
-        <ZIndex>16</ZIndex>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="OSCancelado">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Fields!OSCancelado.Value</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>OSCancelado</rd:DefaultName>
-        <Top>1.90476cm</Top>
-        <Left>3.78968cm</Left>
-        <Height>0.63492cm</Height>
-        <Width>2.53968cm</Width>
-        <ZIndex>17</ZIndex>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="TotalVendas">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=FormatCurrency( Fields!TotalVendas.Value,2)</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>TotalVendas</rd:DefaultName>
-        <Top>2.53968cm</Top>
-        <Left>3.78968cm</Left>
-        <Height>0.63492cm</Height>
-        <Width>2.53968cm</Width>
-        <ZIndex>18</ZIndex>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Dinheiro">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=FormatCurrency( Fields!Dinheiro.Value,2)</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Dinheiro</rd:DefaultName>
-        <Top>3.80952cm</Top>
-        <Left>3.78968cm</Left>
-        <Height>0.63492cm</Height>
-        <Width>2.53968cm</Width>
-        <ZIndex>19</ZIndex>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="TotalDesconto">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=FormatCurrency( Fields!TotalDesconto.Value,2)</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>TotalDesconto</rd:DefaultName>
-        <Top>3.1746cm</Top>
-        <Left>3.78968cm</Left>
-        <Height>0.63492cm</Height>
-        <Width>2.53968cm</Width>
-        <ZIndex>20</ZIndex>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="VisaDebito">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=FormatCurrency( Fields!VisaDebito.Value,2)</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>VisaDebito</rd:DefaultName>
-        <Top>4.44444cm</Top>
-        <Left>3.78968cm</Left>
-        <Height>0.63492cm</Height>
-        <Width>2.53968cm</Width>
-        <ZIndex>21</ZIndex>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="VisaCredito">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=FormatCurrency( Fields!VisaCredito.Value,2)</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>VisaCredito</rd:DefaultName>
-        <Top>5.07936cm</Top>
-        <Left>3.78968cm</Left>
-        <Height>0.63492cm</Height>
-        <Width>2.53968cm</Width>
-        <ZIndex>22</ZIndex>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="MasterDebito">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=FormatCurrency( Fields!MasterDebito.Value,2)</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>MasterDebito</rd:DefaultName>
-        <Top>5.71428cm</Top>
-        <Left>3.78968cm</Left>
-        <Height>0.63492cm</Height>
-        <Width>2.53968cm</Width>
-        <ZIndex>23</ZIndex>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="MasterCredito">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=FormatCurrency(Fields!MasterCredito.Value,2)</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>MasterCredito</rd:DefaultName>
-        <Top>6.3492cm</Top>
-        <Left>3.78968cm</Left>
-        <Height>0.63492cm</Height>
-        <Width>2.53968cm</Width>
-        <ZIndex>24</ZIndex>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Entrada">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=FormatCurrency( Fields!Entrada.Value,2)</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Entrada</rd:DefaultName>
-        <Top>6.98412cm</Top>
-        <Left>3.78968cm</Left>
-        <Height>0.63492cm</Height>
-        <Width>2.53968cm</Width>
-        <ZIndex>25</ZIndex>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Saida">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=FormatCurrency( Fields!Saida.Value,2)</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Saida</rd:DefaultName>
-        <Top>7.61904cm</Top>
-        <Left>3.78968cm</Left>
-        <Height>0.63492cm</Height>
-        <Width>2.53968cm</Width>
-        <ZIndex>26</ZIndex>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="textbox10">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=FormatCurrency(Fields!SomaTotal.Value,2)</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style>
-              <TextAlign>Left</TextAlign>
-            </Style>
-          </Paragraph>
-        </Paragraphs>
-        <Top>8.25396cm</Top>
-        <Left>3.78968cm</Left>
-        <Height>0.63492cm</Height>
-        <Width>2.53968cm</Width>
-        <ZIndex>27</ZIndex>
-        <Style>
-          <PaddingLeft>2pt</PaddingLeft>
-          <PaddingRight>2pt</PaddingRight>
-          <PaddingTop>2pt</PaddingTop>
-          <PaddingBottom>2pt</PaddingBottom>
-        </Style>
-      </Textbox>
-      <Textbox Name="Textbox11">
-        <CanGrow>true</CanGrow>
-        <KeepTogether>true</KeepTogether>
-        <Paragraphs>
-          <Paragraph>
-            <TextRuns>
-              <TextRun>
-                <Value>=Fields!QtdeOS.Value</Value>
-                <Style />
-              </TextRun>
-            </TextRuns>
-            <Style />
-          </Paragraph>
-        </Paragraphs>
-        <rd:DefaultName>Textbox11</rd:DefaultName>
-        <Top>1.26984cm</Top>
-        <Left>3.78968cm</Left>
-        <Height>0.63492cm</Height>
-        <Width>2.53968cm</Width>
-        <ZIndex>28</ZIndex>
-        <Style>
-          <Border>
-            <Style>None</Style>
-          </Border>
           <PaddingLeft>2pt</PaddingLeft>
           <PaddingRight>2pt</PaddingRight>
           <PaddingTop>2pt</PaddingTop>
@@ -944,9 +545,428 @@
         </Paragraphs>
         <rd:DefaultName>Textbox12</rd:DefaultName>
         <Top>1.26984cm</Top>
-        <Left>0.3cm</Left>
+        <Left>0.1635cm</Left>
         <Height>0.63492cm</Height>
-        <Width>3.48968cm</Width>
+        <Width>2.81656cm</Width>
+        <ZIndex>15</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="OSInicial">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Fields!OSInicial.Value</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>OSInicial</rd:DefaultName>
+        <Left>2.98005cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.61656cm</Width>
+        <ZIndex>16</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="OSFinal">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Fields!OSFinal.Value</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>OSFinal</rd:DefaultName>
+        <Top>0.63492cm</Top>
+        <Left>2.98006cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.61656cm</Width>
+        <ZIndex>17</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="QtdeOS">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Fields!QtdeOS.Value</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>QtdeOS</rd:DefaultName>
+        <Top>1.26984cm</Top>
+        <Left>2.98006cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.61656cm</Width>
+        <ZIndex>18</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="OSCancelado">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=Fields!OSCancelado.Value</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>OSCancelado</rd:DefaultName>
+        <Top>1.90476cm</Top>
+        <Left>2.98006cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.61656cm</Width>
+        <ZIndex>19</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="TotalVendas">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=FormatCurrency(Fields!TotalVendas.Value,2)</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>TotalVendas</rd:DefaultName>
+        <Top>3.1746cm</Top>
+        <Left>2.98006cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.61656cm</Width>
+        <ZIndex>20</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="TotalDesconto">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=FormatCurrency(  Fields!TotalDesconto.Value,2)</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>TotalDesconto</rd:DefaultName>
+        <Top>3.80952cm</Top>
+        <Left>2.98006cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.61656cm</Width>
+        <ZIndex>21</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Dinheiro">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=FormatCurrency( Fields!Dinheiro.Value,2)</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Dinheiro</rd:DefaultName>
+        <Top>4.44444cm</Top>
+        <Left>2.98006cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.61656cm</Width>
+        <ZIndex>22</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="VisaDebito">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=FormatCurrency( Fields!VisaDebito.Value,2)</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>VisaDebito</rd:DefaultName>
+        <Top>5.07936cm</Top>
+        <Left>2.98006cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.61656cm</Width>
+        <ZIndex>23</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="VisaCredito">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=FormatCurrency( Fields!VisaCredito.Value,2)</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>VisaCredito</rd:DefaultName>
+        <Top>5.71428cm</Top>
+        <Left>2.98006cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.61656cm</Width>
+        <ZIndex>24</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="MasterDebito">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=FormatCurrency( Fields!MasterDebito.Value, 2)</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>MasterDebito</rd:DefaultName>
+        <Top>6.3492cm</Top>
+        <Left>2.98006cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.61656cm</Width>
+        <ZIndex>25</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="MasterCredito">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=FormatCurrency( Fields!MasterCredito.Value,2)</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>MasterCredito</rd:DefaultName>
+        <Top>6.98412cm</Top>
+        <Left>2.98006cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.61656cm</Width>
+        <ZIndex>26</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Entrada">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=FormatCurrency( Fields!Entrada.Value,2)</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Entrada</rd:DefaultName>
+        <Top>7.61904cm</Top>
+        <Left>2.98006cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.61656cm</Width>
+        <ZIndex>27</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Saida">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=FormatCurrency( Fields!Saida.Value,2)</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Saida</rd:DefaultName>
+        <Top>8.25396cm</Top>
+        <Left>2.98006cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.61656cm</Width>
+        <ZIndex>28</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="SomaTotal">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=FormatCurrency( Fields!SomaTotal.Value, 2)</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>SomaTotal</rd:DefaultName>
+        <Top>9.5238cm</Top>
+        <Left>2.98006cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.61656cm</Width>
         <ZIndex>29</ZIndex>
         <Style>
           <Border>
@@ -958,11 +978,132 @@
           <PaddingBottom>2pt</PaddingBottom>
         </Style>
       </Textbox>
+      <Textbox Name="TotalCaixa">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=FormatCurrency( Fields!TotalCaixa.Value, 2)</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>TotalCaixa</rd:DefaultName>
+        <Top>8.88888cm</Top>
+        <Left>2.98006cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.61656cm</Width>
+        <ZIndex>30</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="textbox10">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Vale</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>textbox9</rd:DefaultName>
+        <Top>2.53968cm</Top>
+        <Left>0.1635cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.81656cm</Width>
+        <ZIndex>31</ZIndex>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="Vale">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>=FormatCurrency( Fields!Vale.Value, 2)</Value>
+                <Style />
+              </TextRun>
+            </TextRuns>
+            <Style />
+          </Paragraph>
+        </Paragraphs>
+        <rd:DefaultName>Vale</rd:DefaultName>
+        <Top>2.53968cm</Top>
+        <Left>3.01533cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.61656cm</Width>
+        <ZIndex>32</ZIndex>
+        <Style>
+          <Border>
+            <Style>None</Style>
+          </Border>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
+      <Textbox Name="textbox11">
+        <CanGrow>true</CanGrow>
+        <KeepTogether>true</KeepTogether>
+        <Paragraphs>
+          <Paragraph>
+            <TextRuns>
+              <TextRun>
+                <Value>Saldo em Caixa</Value>
+                <Style>
+                  <FontWeight>Bold</FontWeight>
+                </Style>
+              </TextRun>
+            </TextRuns>
+            <Style>
+              <TextAlign>Right</TextAlign>
+            </Style>
+          </Paragraph>
+        </Paragraphs>
+        <Top>8.88888cm</Top>
+        <Left>0.10001cm</Left>
+        <Height>0.63492cm</Height>
+        <Width>2.88005cm</Width>
+        <ZIndex>33</ZIndex>
+        <Style>
+          <PaddingLeft>2pt</PaddingLeft>
+          <PaddingRight>2pt</PaddingRight>
+          <PaddingTop>2pt</PaddingTop>
+          <PaddingBottom>2pt</PaddingBottom>
+        </Style>
+      </Textbox>
     </ReportItems>
-    <Height>11.01971cm</Height>
+    <Height>12.1045cm</Height>
     <Style />
   </Body>
-  <Width>8.8cm</Width>
+  <Width>13.02195cm</Width>
   <Page>
     <PageHeader>
       <Height>1.6cm</Height>
@@ -991,7 +1132,7 @@
           <Top>0.75cm</Top>
           <Left>2.1cm</Left>
           <Height>0.63492cm</Height>
-          <Width>6cm</Width>
+          <Width>4.88875cm</Width>
           <Style>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
@@ -1002,7 +1143,7 @@
         <Line Name="line1">
           <Top>1.5cm</Top>
           <Height>0cm</Height>
-          <Width>8.8cm</Width>
+          <Width>6.98875cm</Width>
           <ZIndex>1</ZIndex>
           <Style>
             <Border>
@@ -1033,7 +1174,7 @@
           <rd:DefaultName>textbox1</rd:DefaultName>
           <Left>0.1cm</Left>
           <Height>0.75cm</Height>
-          <Width>8cm</Width>
+          <Width>6.88875cm</Width>
           <ZIndex>2</ZIndex>
           <Style>
             <PaddingLeft>2pt</PaddingLeft>
@@ -1046,7 +1187,7 @@
       <Style />
     </PageHeader>
     <PageFooter>
-      <Height>0.73492cm</Height>
+      <Height>1.39638cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>

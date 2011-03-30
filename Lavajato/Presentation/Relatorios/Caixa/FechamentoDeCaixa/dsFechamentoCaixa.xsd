@@ -31,6 +31,8 @@
               <xs:element name="Saida" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSaida" msprop:Generator_ColumnPropNameInRow="Saida" msprop:Generator_ColumnPropNameInTable="SaidaColumn" msprop:Generator_UserColumnName="Saida" type="xs:decimal" minOccurs="0" />
               <xs:element name="SomaTotal" msdata:ReadOnly="true" msprop:Generator_ColumnVarNameInTable="columnSomaTotal" msprop:Generator_ColumnPropNameInRow="SomaTotal" msprop:Generator_ColumnPropNameInTable="SomaTotalColumn" msprop:Generator_UserColumnName="SomaTotal" type="xs:decimal" minOccurs="0" />
               <xs:element name="QtdeOS" msprop:Generator_ColumnVarNameInTable="columnQtdeOS" msprop:Generator_ColumnPropNameInRow="QtdeOS" msprop:Generator_ColumnPropNameInTable="QtdeOSColumn" msprop:Generator_UserColumnName="QtdeOS" type="xs:string" minOccurs="0" />
+              <xs:element name="Vale" msprop:Generator_ColumnVarNameInTable="columnVale" msprop:Generator_ColumnPropNameInRow="Vale" msprop:Generator_ColumnPropNameInTable="ValeColumn" msprop:Generator_UserColumnName="Vale" type="xs:string" minOccurs="0" />
+              <xs:element name="TotalCaixa" msprop:Generator_ColumnVarNameInTable="columnTotalCaixa" msprop:Generator_ColumnPropNameInRow="TotalCaixa" msprop:Generator_ColumnPropNameInTable="TotalCaixaColumn" msprop:Generator_UserColumnName="TotalCaixa" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

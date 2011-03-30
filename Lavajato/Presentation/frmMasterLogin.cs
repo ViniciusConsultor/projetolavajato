@@ -17,8 +17,13 @@ namespace HenryCorporation.Lavajato.Presentation
         public frmMasterLogin()
         {
             InitializeComponent();
+            this.login.Focus();
         }
 
+        private void frmMasterLogin_Load(object sender, EventArgs e)
+        {
+          
+        }
 
         private void btnLogar_Click(object sender, EventArgs e)
         {
@@ -65,6 +70,5 @@ namespace HenryCorporation.Lavajato.Presentation
             if (e.KeyCode == Keys.Enter)
                 SetUpLogin();
         }
-
     }
 }

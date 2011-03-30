@@ -112,6 +112,12 @@
     <Compile Include="ContasAPagar\frmPesquisaContasAPagar.Designer.cs">
       <DependentUpon>frmPesquisaContasAPagar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logins\frmCancelaOrdemServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Logins\frmCancelaOrdemServico.Designer.cs">
+      <DependentUpon>frmCancelaOrdemServico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Logins\frmLoginBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -301,6 +307,9 @@
       <DependentUpon>frmPesquisaContasAPagar.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Logins\frmCancelaOrdemServico.resx">
+      <DependentUpon>frmCancelaOrdemServico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Logins\frmLoginBase.resx">
       <DependentUpon>frmLoginBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -481,6 +490,16 @@
     <None Include="icons\Thumbs.db" />
     <None Include="Lib\Microsoft_ReportViewer_Common_dll.zip" />
     <None Include="Lib\Microsoft_ReportViewer_WinForms_dll.zip" />
+    <None Include="Properties\DataSources\HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCaixa.dsFechamentoCaixa+DataTable1DataTable.datasource" />
+    <None Include="Properties\DataSources\HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCaixa.dsFechamentoCaixa+DataTable1Row.datasource" />
+    <None Include="Properties\DataSources\HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCaixa.dsFechamentoCaixa+DataTable1RowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCaixa.dsFechamentoCaixa+DataTable1RowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCaixa.dsFechamentoCaixa.datasource" />
+    <None Include="Properties\DataSources\HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCaixa.FechamentoCaixa+DataTable1DataTable.datasource" />
+    <None Include="Properties\DataSources\HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCaixa.FechamentoCaixa+DataTable1Row.datasource" />
+    <None Include="Properties\DataSources\HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCaixa.FechamentoCaixa+DataTable1RowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCaixa.FechamentoCaixa+DataTable1RowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCaixa.FechamentoCaixa.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -1784,7 +1803,6 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <Folder Include="Properties\DataSources\" />
     <Folder Include="Resources\" />
   </ItemGroup>
   <ItemGroup>
@@ -1803,6 +1821,9 @@
       <ProductName>Windows Installer 3.1</ProductName>
       <Install>true</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
