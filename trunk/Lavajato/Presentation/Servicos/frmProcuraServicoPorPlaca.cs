@@ -26,17 +26,18 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void ordemServico_TextChanged(object sender, EventArgs e)
         {
-            if (string.IsNullOrEmpty(ordemServico.Text))
-                return;
-
-            if (Dinheiro.ParseToInt(ordemServico.Text))
+            if (!string.IsNullOrEmpty(ordemServico.Text))
             {
-                Servico servico = new Servico();
-                servico.OrdemServico = Convert.ToInt32(ordemServico.Text);
-                servico.Entrada = entrada.Value;
 
-                grdServicos.DataSource = new ServicoBL().GetOrdemServico(servico);
-                OculdaColunaNoGrid();
+                if (Dinheiro.ParseToInt(ordemServico.Text))
+                {
+                    Servico servico = new Servico();
+                    servico.OrdemServico = Convert.ToInt32(ordemServico.Text);
+                    servico.Entrada = entrada.Value;
+
+                    grdServicos.DataSource = new ServicoBL().GetOrdemServico(servico);
+                    OculdaColunaNoGrid();
+                }
             }
         }
 
@@ -80,5 +81,7 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             this.Close();
         }
+
+       
     }
 }

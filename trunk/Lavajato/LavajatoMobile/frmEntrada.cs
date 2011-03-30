@@ -115,7 +115,7 @@ namespace LavajatoMobile
             if (_cliente.ID > 0)
             {
                 string h = (hora.SelectedItem == null) ? "0" : hora.SelectedItem.ToString();
-                string m = (min.SelectedItem == null ) ? "0" : hora.SelectedItem.ToString();
+                string m = (min.SelectedItem == null ) ? "0" : min.SelectedItem.ToString();
 
                 // se o serviço já existir não será verificado a hora, 
                 // caso ele esteja sendo criado será verificado

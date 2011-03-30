@@ -33,11 +33,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.ordemServico = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.entrada = new System.Windows.Forms.DateTimePicker();
+            this.label3 = new System.Windows.Forms.Label();
             this.grdServicos = new System.Windows.Forms.DataGridView();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.button1 = new System.Windows.Forms.Button();
-            this.label3 = new System.Windows.Forms.Label();
-            this.entrada = new System.Windows.Forms.DateTimePicker();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdServicos)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -61,6 +61,7 @@
             this.placa.Name = "placa";
             this.placa.Size = new System.Drawing.Size(298, 26);
             this.placa.TabIndex = 4;
+            //this.placa.MaskInputRejected += new System.Windows.Forms.MaskInputRejectedEventHandler(this.placa_MaskInputRejected);
             this.placa.TextChanged += new System.EventHandler(this.placa_TextChanged);
             // 
             // label2
@@ -96,6 +97,24 @@
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
+            // entrada
+            // 
+            this.entrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.entrada.Location = new System.Drawing.Point(177, 14);
+            this.entrada.Name = "entrada";
+            this.entrada.Size = new System.Drawing.Size(298, 26);
+            this.entrada.TabIndex = 6;
+            // 
+            // label3
+            // 
+            this.label3.AutoSize = true;
+            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(112, 14);
+            this.label3.Name = "label3";
+            this.label3.Size = new System.Drawing.Size(68, 25);
+            this.label3.TabIndex = 5;
+            this.label3.Text = "Data:";
+            // 
             // grdServicos
             // 
             this.grdServicos.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -125,24 +144,6 @@
             this.button1.Text = "Fechar";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
-            // 
-            // label3
-            // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(112, 14);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(68, 25);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Data:";
-            // 
-            // dateTimePicker1
-            // 
-            this.entrada.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.entrada.Location = new System.Drawing.Point(177, 14);
-            this.entrada.Name = "dateTimePicker1";
-            this.entrada.Size = new System.Drawing.Size(298, 26);
-            this.entrada.TabIndex = 6;
             // 
             // frmProcuraServicoPorPlaca
             // 

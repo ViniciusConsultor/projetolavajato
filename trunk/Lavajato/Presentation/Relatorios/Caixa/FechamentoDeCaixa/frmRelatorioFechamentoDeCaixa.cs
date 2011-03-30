@@ -66,15 +66,17 @@ namespace HenryCorporation.Lavajato.Presentation
                 row["QtdeOS"] = reader.GetInt32(2);
                 row["OSCancelado"] = reader.GetInt32(3);
                 row["TotalVendas"] = reader.GetDecimal(4);
-                row["TotalDesconto"] = reader.GetDecimal(5);
-                row["Dinheiro"] = reader.GetDecimal(6);
-                row["VisaDebito"] = reader.GetDecimal(7);
-                row["VisaCredito"] = reader.GetDecimal(8);
-                row["MasterDebito"] = reader.GetDecimal(9);
-                row["MasterCredito"] = reader.GetDecimal(10);
-                row["Entrada"] = reader.GetDecimal(11);
-                row["Saida"] = reader.GetDecimal(12);
-                row["SomaTotal"] = reader.GetDecimal(13);
+                row["TotalCaixa"] = reader.GetDecimal(5);
+                row["TotalDesconto"] = reader.GetDecimal(6);
+                row["Dinheiro"] = reader.GetDecimal(7);
+                row["VisaDebito"] = reader.GetDecimal(8);
+                row["VisaCredito"] = reader.GetDecimal(9);
+                row["MasterDebito"] = reader.GetDecimal(10);
+                row["MasterCredito"] = reader.GetDecimal(11);
+                row["Entrada"] = reader.GetDecimal(12);
+                row["Saida"] = reader.GetDecimal(13);
+                row["Vale"] = reader.GetDecimal(14);
+                row["SomaTotal"] = reader.GetDecimal(15);
 
                 table.Rows.Add(row);
             }
@@ -91,7 +93,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private static DataColumn[] SetUpColumns()
         {
-            var columns = new DataColumn[14];
+            var columns = new DataColumn[16];
 
             var osInicial = new DataColumn();
             osInicial.ColumnName = "OSInicial";
@@ -113,41 +115,49 @@ namespace HenryCorporation.Lavajato.Presentation
             totalVendas.ColumnName = "TotalVendas";
             columns[4] = totalVendas;
 
+            DataColumn TotalCaixa = new DataColumn();
+            TotalCaixa.ColumnName = "TotalCaixa";
+            columns[5] = TotalCaixa;
+
             DataColumn totalDesconto = new DataColumn();
             totalDesconto.ColumnName = "TotalDesconto";
-            columns[5] = totalDesconto;
+            columns[6] = totalDesconto;
 
             DataColumn dinheiro = new DataColumn();
             dinheiro.ColumnName = "Dinheiro";
-            columns[6] = dinheiro;
+            columns[7] = dinheiro;
 
             DataColumn visaDebito = new DataColumn();
             visaDebito.ColumnName = "VisaDebito";
-            columns[7] = visaDebito;
+            columns[8] = visaDebito;
 
             DataColumn visaCredito = new DataColumn();
             visaCredito.ColumnName = "VisaCredito";
-            columns[8] = visaCredito;
+            columns[9] = visaCredito;
 
             DataColumn masterDebito = new DataColumn();
             masterDebito.ColumnName = "MasterDebito";
-            columns[9] = masterDebito;
+            columns[10] = masterDebito;
 
             DataColumn masterCredito = new DataColumn();
             masterCredito.ColumnName = "MasterCredito";
-            columns[10] = masterCredito;
+            columns[11] = masterCredito;
 
             DataColumn entrada = new DataColumn();
             entrada.ColumnName = "Entrada";
-            columns[11] = entrada;
+            columns[12] = entrada;
 
-            DataColumn saida = new DataColumn();
-            saida.ColumnName = "Saida";
-            columns[12] = saida;
+            DataColumn Saida = new DataColumn();
+            Saida.ColumnName = "Saida";
+            columns[13] = Saida;
+
+            DataColumn Vale = new DataColumn();
+            Vale.ColumnName = "Vale";
+            columns[14] = Vale;
 
             DataColumn SomaTotal = new DataColumn();
             SomaTotal.ColumnName = "SomaTotal";
-            columns[13] = SomaTotal;
+            columns[15] = SomaTotal;
 
             return columns;
         }

@@ -92,7 +92,8 @@ namespace HenryCorporation.Lavajato.Presentation
 
                 if (!frmLoginFechamentoDeCaixa.User.TipoFuncionario.Descricao.Contains("Gerente"))
                 {
-                    MessageBox.Show("Você não tem permissão para dar desconto, favor entrar em contato com o Gerente!", "Atenção!!");
+                    MessageBox.Show("Você não tem permissão para dar desconto, favor entrar em contato com o Gerente!", 
+                        "Atenção!!");
                     return;
                 }
             }

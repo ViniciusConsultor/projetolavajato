@@ -80,11 +80,15 @@ namespace HenryCorporation.Lavajato.Presentation
             {
                 Servico servico = new Servico();
                 servico.ID = int.Parse(index.ToString());
-                
+
                 servico = new ServicoBL().ByID(servico);
 
                 frmServicoCancelado frmServicoLavador = new frmServicoCancelado(servico);
                 frmServicoLavador.ShowDialog();
+            }
+            else
+            {
+                MessageBox.Show("Usuario sem permissões para completar a operação!", "Atenção");
             }
         }
 

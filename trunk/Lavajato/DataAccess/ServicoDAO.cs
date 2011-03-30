@@ -114,6 +114,32 @@ namespace HenryCorporation.Lavajato.DataAccess
             dataBaseHelper.Run();
         }
 
+        public void Cancel(Servico servico)
+        {
+            var query = " UPDATE [Servico] " +
+                           " SET "+ 
+                           " [UserCancel] =  '" + servico.Usuario.ID + "' " +
+                           " ,[UserDataCancel] =  getdate() " +
+                           " ,[Cancelado] = " + servico.Cancelado +
+                           " WHERE [ServicoID] = " + servico.ID;
+
+            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            dataBaseHelper.Run();
+        }
+
+        public void ServicoDel(Servico servico)
+        {
+            var query = " UPDATE [Servico] " +
+                           " SET " +
+                           "  [UserDel] =  '" + servico.Usuario.ID + "' " +
+                           " ,[UserDateDel] =  getdate() " +
+                           " ,[Delete] = " + servico.Delete +
+                           " WHERE [ServicoID] = " + servico.ID;
+
+            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            dataBaseHelper.Run();
+        }
+
         public Servico ByID(Servico servico)
         {
             var query = sql + "Where [Delete] = 0 And [Cancelado] = 0  And [ServicoID] =" + servico.ID;
@@ -140,7 +166,7 @@ namespace HenryCorporation.Lavajato.DataAccess
         public IList<Servico> ByServicosDoCliente(Servico servico)
         {
             var query = sql + "Where [Delete] = 0 And [Cancelado] = 0 And ClienteID = " + servico.Cliente.ID + " "+
-                "and convert(varchar, [entrada], 103) = '"+servico.Entrada.ToShortDateString()+"' ";
+                "and convert(varchar, [entrada], 103) = '"+ ConvertDataFormatoPTBR( servico.Entrada)+"' ";
             var dataBaseHelper = new DataBaseHelper(query);
             return SetUpFields(dataBaseHelper.Run(this.ConnectionString));
         }
@@ -152,8 +178,6 @@ namespace HenryCorporation.Lavajato.DataAccess
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             return SetUpFields(dataBaseHelper.Run(this.ConnectionString));
         }
-
-
 
         public int OrdemServicoMax()
         {
@@ -189,8 +213,8 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public Servico ByOrdemServicoFinalizadas(Servico servico)
         {
-            var query = sql + "Where [Delete] = 0 And [OrdemServico] = " + servico.OrdemServico + " " +
-                "and convert(varchar, [entrada], 103) = '" + servico.Entrada.ToShortDateString() + "' ";
+            var query = sql + "Where [Delete] = 0 and cancelado = 0 And [OrdemServico] = " + servico.OrdemServico + " " +
+                "and convert(varchar, [entrada], 103) = '" + ConvertDataFormatoPTBR(servico.Entrada) + "' ";
 
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             DataSet dataSet = dataBaseHelper.Run(this.ConnectionString);
@@ -227,19 +251,23 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public List<Servico> GetCarrosNoLavajatoByData(DateTime date)
         {
+            string data = ConvertDataFormatoPTBR(date);
 
-            string mes = date.Month > 1 ? "0" + date.Month.ToString() : date.Month.ToString();
-            string dia = date.Day == 1 ? "0"+ date.Day.ToString() : date.Day.ToString();
-            string ano = date.Year.ToString();
-
-            string data = dia+"/"+mes+"/"+ano;
-           
-            string condicao = " Where [Delete] = 0 And Finalizado = 0 And [Cancelado] = 0 and CONVERT(varchar, Entrada, 103)  = '" + data + "'" +
+            string condicao = " Where [Delete] = 0 And [Cancelado] = 0 and CONVERT(varchar, Entrada, 103)  = '" + data + "'" +
             " And OrdemServico <> 0 order by OrdemServico Asc  ";
 
             var dataBaseHelper = new DataBaseHelper(this.sql + condicao);
             var dataSet = dataBaseHelper.Run(this.ConnectionString);
             return SetUpFields(dataSet);
+        }
+
+        private static string ConvertDataFormatoPTBR(DateTime date)
+        {
+            string mes = date.Month > 1 ? "0" + date.Month.ToString() : date.Month.ToString();
+            string dia = date.Day == 1 ? "0" + date.Day.ToString() : date.Day.ToString();
+            string ano = date.Year.ToString();
+
+            return dia + "/" + mes + "/" + ano;
         }
 
         #endregion

@@ -23,6 +23,11 @@ namespace HenryCorporation.Lavajato.Presentation.Logins
             usuarioBL = new UsuarioBL();
         }
 
+        private void frmLoginBase_Load(object sender, EventArgs e)
+        {
+            this.txtLogin.Focus();
+        }
+
         private void btnLogin_Click(object sender, EventArgs e)
         {
             //if (!string.IsNullOrEmpty(txtLogin.Text)|| txtPassword.TextLength > 0)
@@ -44,5 +49,7 @@ namespace HenryCorporation.Lavajato.Presentation.Logins
         {
             this.Close();
         }
+
+        
     }
 }

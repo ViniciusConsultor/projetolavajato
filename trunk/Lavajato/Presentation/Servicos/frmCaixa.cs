@@ -174,6 +174,7 @@ namespace HenryCorporation.Lavajato.Presentation
             }
 
             _servico.Total = TotalServicos();
+            _servico.Usuario = this.Usuario;
             VendaFormaPagamento frmFormaPagamento = new VendaFormaPagamento(_servico);
             frmFormaPagamento.ShowDialog();
             
