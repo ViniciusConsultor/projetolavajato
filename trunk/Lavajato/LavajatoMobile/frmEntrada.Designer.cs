@@ -29,7 +29,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
             this.mainMenu1 = new System.Windows.Forms.MainMenu();
             this.menuItem2 = new System.Windows.Forms.MenuItem();
             this.label1 = new System.Windows.Forms.Label();
@@ -49,8 +48,7 @@
             this.min = new System.Windows.Forms.ComboBox();
             this.btnCadastrarServicos = new System.Windows.Forms.Button();
             this.entrada = new System.Windows.Forms.DateTimePicker();
-            this.teclado = new Microsoft.WindowsCE.Forms.InputPanel(this.components);
-            this.txtHoraInicial = new System.Windows.Forms.TextBox();
+            this.dateTimePicker1 = new System.Windows.Forms.DateTimePicker();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -79,6 +77,7 @@
             this.placa.TabIndex = 1;
             this.placa.TextChanged += new System.EventHandler(this.placa_TextChanged);
             this.placa.GotFocus += new System.EventHandler(this.placa_GotFocus);
+            this.placa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.placa_KeyDown);
             this.placa.LostFocus += new System.EventHandler(this.placa_LostFocus);
             // 
             // veiculo
@@ -178,10 +177,10 @@
             // 
             // hora
             // 
-            this.hora.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
+            this.hora.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular);
             this.hora.Location = new System.Drawing.Point(147, 130);
             this.hora.Name = "hora";
-            this.hora.Size = new System.Drawing.Size(41, 28);
+            this.hora.Size = new System.Drawing.Size(41, 30);
             this.hora.TabIndex = 6;
             this.hora.LostFocus += new System.EventHandler(this.hora_LostFocus);
             this.hora.GotFocus += new System.EventHandler(this.hora_GotFocus);
@@ -196,10 +195,10 @@
             // 
             // min
             // 
-            this.min.Font = new System.Drawing.Font("Tahoma", 13F, System.Drawing.FontStyle.Regular);
+            this.min.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular);
             this.min.Location = new System.Drawing.Point(188, 130);
             this.min.Name = "min";
-            this.min.Size = new System.Drawing.Size(52, 28);
+            this.min.Size = new System.Drawing.Size(52, 30);
             this.min.TabIndex = 7;
             this.min.LostFocus += new System.EventHandler(this.min_LostFocus);
             this.min.GotFocus += new System.EventHandler(this.min_GotFocus);
@@ -228,14 +227,14 @@
             this.entrada.GotFocus += new System.EventHandler(this.entrada_GotFocus);
             this.entrada.LostFocus += new System.EventHandler(this.entrada_LostFocus);
             // 
-            // txtHoraInicial
+            // dateTimePicker1
             // 
-            this.txtHoraInicial.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular);
-            this.txtHoraInicial.Location = new System.Drawing.Point(1, 130);
-            this.txtHoraInicial.Multiline = true;
-            this.txtHoraInicial.Name = "txtHoraInicial";
-            this.txtHoraInicial.Size = new System.Drawing.Size(146, 28);
-            this.txtHoraInicial.TabIndex = 16;
+            this.dateTimePicker1.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
+            this.dateTimePicker1.Format = System.Windows.Forms.DateTimePickerFormat.Time;
+            this.dateTimePicker1.Location = new System.Drawing.Point(1, 130);
+            this.dateTimePicker1.Name = "dateTimePicker1";
+            this.dateTimePicker1.Size = new System.Drawing.Size(146, 27);
+            this.dateTimePicker1.TabIndex = 32;
             // 
             // frmEntrada
             // 
@@ -243,8 +242,8 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.dateTimePicker1);
             this.Controls.Add(this.btnCadastrarServicos);
-            this.Controls.Add(this.txtHoraInicial);
             this.Controls.Add(this.min);
             this.Controls.Add(this.hora);
             this.Controls.Add(this.telefone);
@@ -289,8 +288,7 @@
         private System.Windows.Forms.Button btnCadastrarServicos;
         private System.Windows.Forms.MenuItem menuItem2;
         private System.Windows.Forms.DateTimePicker entrada;
-        private Microsoft.WindowsCE.Forms.InputPanel teclado;
-        private System.Windows.Forms.TextBox txtHoraInicial;
+        private System.Windows.Forms.DateTimePicker dateTimePicker1;
 
     }
 }

@@ -7,6 +7,8 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using LavajatoMobile.WSLavajato;
+using System.Runtime.InteropServices;
+using System.Diagnostics;
 
 namespace LavajatoMobile
 {
@@ -16,12 +18,11 @@ namespace LavajatoMobile
         private Cliente _cliente = new Cliente();
         private Servico _servico = new Servico();
         private WSLavajato.WebServiceLavajato wsService = new LavajatoMobile.WSLavajato.WebServiceLavajato();
-        
+
         public frmEntrada()
         {
             InitializeComponent();
             CarregaHora();
-            SetHoraInicial();
         }
 
         #region Métodos Formulario
@@ -53,28 +54,21 @@ namespace LavajatoMobile
 
                 placa.Text = placaTemp;
                 btnCadastraCliente.Text = "Cad. Cliente";
-                teclado.Enabled = true;
+
 
                 placa.BackColor = Color.White;
                 return;
             }
 
             CarregaCliente(_cliente);
-            
+
             btnCadastraCliente.Text = "Alt. Cliente";
             placa.BackColor = Color.White;
-            teclado.Enabled = false;
+
+            SIPHandler.HideSIP();
+
         }
 
-        /// <summary>
-        /// Seta hora que o carro está entrando no lavador
-        /// </summary>
-        private void SetHoraInicial()
-        {
-            txtHoraInicial.Text = DateTime.Now.ToShortTimeString();
-            txtHoraInicial.Enabled = false;
-        }
-        
         private void btnCadastraCliente_Click(object sender, EventArgs e)
         {
             if (this._cliente.ID == 0)
@@ -146,7 +140,13 @@ namespace LavajatoMobile
 
         private void placa_TextChanged(object sender, EventArgs e)
         {
-            //Validação da placa
+            SIPHandler.ShowSIP();
+
+            if (placa.TextLength >= 3)
+                SIPHandler.ShowSIPNumeric();
+            else
+                SIPHandler.ShowSIPRegular();
+
             string pl = ServicoBL.PlacaFormata(placa.Text);
             placa.Text = pl.ToUpper();
             placa.SelectionStart = pl.Length;
@@ -231,50 +231,60 @@ namespace LavajatoMobile
 
         private void veiculo_GotFocus(object sender, EventArgs e)
         {
+            SIPHandler.ShowSIP();
+            SIPHandler.ShowSIPRegular();
             veiculo.BackColor = Color.Yellow;
-            teclado.Enabled = true;
-        }
-
-        private void placa_GotFocus(object sender, EventArgs e)
-        {
-            placa.BackColor = Color.Yellow;
-            teclado.Enabled = true;
+            
         }
 
         private void veiculo_LostFocus(object sender, EventArgs e)
         {
+            SIPHandler.HideSIP();
             veiculo.BackColor = Color.White;
-            teclado.Enabled = false;
+            
+        }
+
+        private void placa_GotFocus(object sender, EventArgs e)
+        {
+            SIPHandler.ShowSIP();
+            SIPHandler.ShowSIPRegular();
+            placa.BackColor = Color.Yellow;
+            
         }
 
         private void cor_GotFocus(object sender, EventArgs e)
         {
+            SIPHandler.ShowSIP();
+            SIPHandler.ShowSIPRegular();
             cor.BackColor = Color.Yellow;
-            teclado.Enabled = true;
         }
 
         private void cor_LostFocus(object sender, EventArgs e)
         {
+            SIPHandler.HideSIP();
             cor.BackColor = Color.White;
-            teclado.Enabled = true;
+            
         }
 
         private void nome_GotFocus(object sender, EventArgs e)
         {
+            SIPHandler.ShowSIP();
+            SIPHandler.ShowSIPRegular();
             nome.BackColor = Color.Yellow;
-            teclado.Enabled = true;
         }
 
         private void nome_LostFocus(object sender, EventArgs e)
         {
             nome.BackColor = Color.White;
-            teclado.Enabled = false;
+            SIPHandler.HideSIP();
         }
 
         private void telefone_GotFocus(object sender, EventArgs e)
         {
+            SIPHandler.ShowSIP();
+            SIPHandler.ShowSIPNumeric();
             telefone.BackColor = Color.Yellow;
-            teclado.Enabled = true;
+            
         }
 
         private void telefone_LostFocus(object sender, EventArgs e)
@@ -290,7 +300,8 @@ namespace LavajatoMobile
             }
 
             telefone.BackColor = Color.White;
-            teclado.Enabled = false;
+
+            SIPHandler.HideSIP();
         }
 
         private void entrada_GotFocus(object sender, EventArgs e)
@@ -349,5 +360,70 @@ namespace LavajatoMobile
         }
 
         #endregion
+
+        private void placa_KeyDown(object sender, KeyEventArgs e)
+        {
+        }
+
+        //#region Teclado
+
+        //public void SetKeyboardNumeric()
+        //{
+
+        //    Process p = Process.GetCurrentProcess();
+
+        //    if (p.MainWindowHandle != IntPtr.Zero)
+
+        //        SHSetImeMode(p.MainWindowHandle, SHIME_MODE.SHIME_MODE_NUMBERS);
+        //}
+
+        //public void SetKeyboardNormal()
+        //{
+
+        //    Process p = Process.GetCurrentProcess();
+
+        //    if (p.MainWindowHandle != IntPtr.Zero)
+
+        //        SHSetImeMode(p.MainWindowHandle, SHIME_MODE.SHIME_MODE_NONE);
+
+        //}
+
+        //private enum SHIME_MODE
+        //{
+
+        //    SHIME_MODE_NONE = 0,
+
+        //    SHIME_MODE_SPELL = 1,
+
+        //    SHIME_MODE_SPELL_CAPS = 2,
+
+        //    SHIME_MODE_SPELL_CAPS_LOCK = 3,
+
+        //    SHIME_MODE_AMBIGUOUS = 4,
+
+        //    SHIME_MODE_AMBIGUOUS_CAPS = 5,
+
+        //    SHIME_MODE_AMBIGUOUS_CAPS_LOCK = 6,
+
+        //    SHIME_MODE_NUMBERS = 7,
+
+        //    SHIME_MODE_CUSTOM = 8
+
+        //}
+
+        //[DllImport("aygshell.dll")]
+        //private static extern int SHSetImeMode(IntPtr hWnd, SHIME_MODE nMode);
+
+        //private void textBox1_GotFocus(object sender, EventArgs e)
+        //{
+        //    SetKeyboardNumeric();
+        //}
+
+        //private void textBox1_LostFocus(object sender, EventArgs e)
+        //{
+        //    SetKeyboardNormal();
+        //}
+
+        //#endregion
     }
 }
