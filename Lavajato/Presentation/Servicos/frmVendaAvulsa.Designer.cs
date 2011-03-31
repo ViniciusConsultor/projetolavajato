@@ -66,7 +66,7 @@
             this.groupBox2.Location = new System.Drawing.Point(4, 59);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(302, 195);
-            this.groupBox2.TabIndex = 1;
+            this.groupBox2.TabIndex = 11;
             this.groupBox2.TabStop = false;
             // 
             // grdServico
@@ -75,7 +75,7 @@
             this.grdServico.Location = new System.Drawing.Point(4, 12);
             this.grdServico.Name = "grdServico";
             this.grdServico.Size = new System.Drawing.Size(292, 179);
-            this.grdServico.TabIndex = 0;
+            this.grdServico.TabIndex = 10;
             this.grdServico.MouseClick += new System.Windows.Forms.MouseEventHandler(this.grdServico_MouseClick);
             // 
             // label3
@@ -84,7 +84,7 @@
             this.label3.Location = new System.Drawing.Point(186, 2);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(281, 27);
-            this.label3.TabIndex = 4;
+            this.label3.TabIndex = 12;
             this.label3.Text = "Modulo de Venda Avulsa";
             // 
             // lblOperador
@@ -93,7 +93,7 @@
             this.lblOperador.Location = new System.Drawing.Point(12, 33);
             this.lblOperador.Name = "lblOperador";
             this.lblOperador.Size = new System.Drawing.Size(311, 27);
-            this.lblOperador.TabIndex = 5;
+            this.lblOperador.TabIndex = 13;
             this.lblOperador.Text = "operador";
             // 
             // cmbProduto
@@ -124,7 +124,7 @@
             this.label2.Location = new System.Drawing.Point(3, 66);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(57, 20);
-            this.label2.TabIndex = 2;
+            this.label2.TabIndex = 3;
             this.label2.Text = "QTDE:";
             // 
             // txtQuantidade
@@ -132,7 +132,7 @@
             this.txtQuantidade.Location = new System.Drawing.Point(6, 89);
             this.txtQuantidade.Name = "txtQuantidade";
             this.txtQuantidade.Size = new System.Drawing.Size(278, 26);
-            this.txtQuantidade.TabIndex = 3;
+            this.txtQuantidade.TabIndex = 2;
             this.txtQuantidade.Enter += new System.EventHandler(this.txtQuantidade_Enter);
             this.txtQuantidade.Leave += new System.EventHandler(this.txtQuantidade_Leave);
             // 
@@ -147,7 +147,7 @@
             this.groupBox1.Location = new System.Drawing.Point(312, 59);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(296, 195);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             // 
             // btnAdicionar
@@ -167,7 +167,7 @@
             this.btnFinalizar.Location = new System.Drawing.Point(4, 256);
             this.btnFinalizar.Name = "btnFinalizar";
             this.btnFinalizar.Size = new System.Drawing.Size(139, 23);
-            this.btnFinalizar.TabIndex = 10;
+            this.btnFinalizar.TabIndex = 6;
             this.btnFinalizar.Text = "Finalizar Venda";
             this.btnFinalizar.UseVisualStyleBackColor = true;
             this.btnFinalizar.Click += new System.EventHandler(this.btnFinalizar_Click);
@@ -178,7 +178,7 @@
             this.btnAlterarQuantidade.Location = new System.Drawing.Point(143, 256);
             this.btnAlterarQuantidade.Name = "btnAlterarQuantidade";
             this.btnAlterarQuantidade.Size = new System.Drawing.Size(115, 23);
-            this.btnAlterarQuantidade.TabIndex = 11;
+            this.btnAlterarQuantidade.TabIndex = 7;
             this.btnAlterarQuantidade.Text = "Alterar Qtde.";
             this.btnAlterarQuantidade.UseVisualStyleBackColor = true;
             this.btnAlterarQuantidade.Click += new System.EventHandler(this.btnAlterarQuantidade_Click);
@@ -189,7 +189,7 @@
             this.btnSair.Location = new System.Drawing.Point(493, 256);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(115, 23);
-            this.btnSair.TabIndex = 13;
+            this.btnSair.TabIndex = 9;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
@@ -200,7 +200,7 @@
             this.btnExcluir.Location = new System.Drawing.Point(258, 256);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(115, 23);
-            this.btnExcluir.TabIndex = 12;
+            this.btnExcluir.TabIndex = 8;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);

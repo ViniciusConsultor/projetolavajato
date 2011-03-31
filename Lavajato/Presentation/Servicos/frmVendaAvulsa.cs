@@ -25,6 +25,7 @@ namespace HenryCorporation.Lavajato.Presentation
         public frmVendaAvulsa()
         {
             InitializeComponent();
+            cmbFormaPagamento.Focus();
         }
 
         private void frmVendaAvulsa_Load(object sender, EventArgs e)
@@ -158,7 +159,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private Servico SetUpServico()
         {
-            _servico.Cliente.ID = 198;
+            _servico.Cliente.ID = 72;
             _servico.Usuario =  this.Usuario;
             _servico.Total = ValorTotalCompra();
             _servico.SubTotal = ValorTotalCompra();

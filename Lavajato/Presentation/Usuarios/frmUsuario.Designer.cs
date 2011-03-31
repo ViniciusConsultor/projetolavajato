@@ -107,9 +107,7 @@
             this.tabControl.Name = "tabControl";
             this.tabControl.SelectedIndex = 0;
             this.tabControl.Size = new System.Drawing.Size(692, 554);
-            this.tabControl.TabIndex = 0;
-            //this.tabControl.SelectedIndexChanged += new System.EventHandler(this.tabControl_SelectedIndexChanged);
-            //this.tabControl.TabIndexChanged += new System.EventHandler(this.tabControl_TabIndexChanged);
+            this.tabControl.TabIndex = 8;
             // 
             // tabUsuarioPesquisa
             // 
@@ -142,8 +140,8 @@
             this.loginPesquisa.Location = new System.Drawing.Point(384, 33);
             this.loginPesquisa.MaxLength = 50;
             this.loginPesquisa.Name = "loginPesquisa";
-            this.loginPesquisa.Size = new System.Drawing.Size(241, 26);
-            this.loginPesquisa.TabIndex = 11;
+            this.loginPesquisa.Size = new System.Drawing.Size(288, 26);
+            this.loginPesquisa.TabIndex = 5;
             this.loginPesquisa.TextChanged += new System.EventHandler(this.loginPesquisa_TextChanged);
             this.loginPesquisa.Enter += new System.EventHandler(this.loginPesquisa_Enter);
             this.loginPesquisa.Leave += new System.EventHandler(this.loginPesquisa_Leave);
@@ -154,7 +152,7 @@
             this.label14.Location = new System.Drawing.Point(3, 13);
             this.label14.Name = "label14";
             this.label14.Size = new System.Drawing.Size(55, 20);
-            this.label14.TabIndex = 12;
+            this.label14.TabIndex = 2;
             this.label14.Text = "Nome:";
             // 
             // nomePesquisa
@@ -165,7 +163,7 @@
             this.nomePesquisa.MaxLength = 50;
             this.nomePesquisa.Name = "nomePesquisa";
             this.nomePesquisa.Size = new System.Drawing.Size(378, 26);
-            this.nomePesquisa.TabIndex = 9;
+            this.nomePesquisa.TabIndex = 3;
             this.nomePesquisa.TextChanged += new System.EventHandler(this.nomePesquisa_TextChanged);
             this.nomePesquisa.Enter += new System.EventHandler(this.nomePesquisa_Enter);
             this.nomePesquisa.Leave += new System.EventHandler(this.nomePesquisa_Leave);
@@ -176,7 +174,7 @@
             this.label17.Location = new System.Drawing.Point(380, 13);
             this.label17.Name = "label17";
             this.label17.Size = new System.Drawing.Size(52, 20);
-            this.label17.TabIndex = 10;
+            this.label17.TabIndex = 4;
             this.label17.Text = "Login:";
             // 
             // grdUsuarios
@@ -185,7 +183,7 @@
             this.grdUsuarios.Location = new System.Drawing.Point(3, 3);
             this.grdUsuarios.Name = "grdUsuarios";
             this.grdUsuarios.Size = new System.Drawing.Size(675, 440);
-            this.grdUsuarios.TabIndex = 0;
+            this.grdUsuarios.TabIndex = 7;
             this.grdUsuarios.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.grdUsuarios_MouseDoubleClick);
             // 
             // tabUsuario

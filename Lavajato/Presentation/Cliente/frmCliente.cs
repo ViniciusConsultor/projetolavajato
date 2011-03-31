@@ -15,7 +15,7 @@ namespace HenryCorporation.Lavajato.Presentation
     {
 
         private ClienteBL clienteBL = new ClienteBL();
-        private Cliente cliente = new Cliente();
+        private Cliente _cliente = new Cliente();
         
         public frmCliente()
         {
@@ -25,10 +25,11 @@ namespace HenryCorporation.Lavajato.Presentation
         public frmCliente(Cliente cliente)
         {
             InitializeComponent();
-            this.cliente = cliente;
-            this.cliente = ProcuraCliente(this.cliente);
-            CarregaCampos(this.cliente);
+            _cliente = cliente;
+            _cliente = ProcuraCliente(_cliente);
+            CarregaCampos(_cliente);
             tabClientes.SelectedTab = tabManutencao;
+            placaPesquisa.Focus();
         }
 
 
@@ -69,10 +70,11 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void grdClientes_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            this.cliente.ID = int.Parse(grdClientes.Rows[grdClientes.CurrentRow.Index].Cells[0].Value.ToString());
-            this.cliente = ProcuraCliente(this.cliente);
-            CarregaCampos(this.cliente);
+            this._cliente.ID = int.Parse(grdClientes.Rows[grdClientes.CurrentRow.Index].Cells[0].Value.ToString());
+            this._cliente = ProcuraCliente(this._cliente);
+            CarregaCampos(this._cliente);
             tabClientes.SelectedTab = tabManutencao;
+            placa.Focus();
         }
 
         private void CarregaCampos(Cliente cliente)
@@ -111,19 +113,19 @@ namespace HenryCorporation.Lavajato.Presentation
             bairro.Text = "";
             fone.Text = "";
             celular.Text = "";
-            this.cliente = new HenryCorporation.Lavajato.DomainModel.Cliente();
+            this._cliente = new HenryCorporation.Lavajato.DomainModel.Cliente();
         }
 
         private void btnAlterar_Click(object sender, EventArgs e)
         {
-            if (this.cliente.ID == 0)
+            if (this._cliente.ID == 0)
             {
                 MessageBox.Show("Nenhum Cliente encontrado", "Atenção");
                 return;
             }
 
             CarregaCliente();
-            clienteBL.Update(cliente);
+            clienteBL.Update(_cliente);
             CarregaClientesCadastrados();
             MessageBox.Show("Cliente alterado com sucesso", "Atenção");
             RetornaFocoParaPlaca();
@@ -131,19 +133,19 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void CarregaCliente()
         {
-            cliente.Placa = placa.Text;
-            cliente.Cor = cor.Text;
-            cliente.Veiculo = veiculo.Text;
+            _cliente.Placa = placa.Text;
+            _cliente.Cor = cor.Text;
+            _cliente.Veiculo = veiculo.Text;
 
-            cliente.Nome = nome.Text;
-            cliente.Endereco = endereco.Text;
-            cliente.Numero = numero.Text;
-            cliente.UF = uf.SelectedItem != null ? uf.SelectedItem.ToString() : "MG";
-            cliente.Cep = cep.Text;
-            cliente.Bairro = bairro.Text;
-            cliente.Telefone = fone.Text;
-            cliente.Celular = celular.Text;
-            cliente.Convenio = this.convenio.SelectedIndex > 0 ? new ConvenioBL().ByID(Convert.ToInt32(this.convenio.SelectedValue.ToString())) : new Convenio() { ID=0};
+            _cliente.Nome = nome.Text;
+            _cliente.Endereco = endereco.Text;
+            _cliente.Numero = numero.Text;
+            _cliente.UF = uf.SelectedItem != null ? uf.SelectedItem.ToString() : "MG";
+            _cliente.Cep = cep.Text;
+            _cliente.Bairro = bairro.Text;
+            _cliente.Telefone = fone.Text;
+            _cliente.Celular = celular.Text;
+            _cliente.Convenio = this.convenio.SelectedIndex > 0 ? new ConvenioBL().ByID(Convert.ToInt32(this.convenio.SelectedValue.ToString())) : new Convenio() { ID=0};
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -155,16 +157,16 @@ namespace HenryCorporation.Lavajato.Presentation
             }
 
             Cliente clientePlaca = new Cliente();
-            cliente.Placa = placa.Text;
-            if (clienteBL.Existe(this.cliente))
+            _cliente.Placa = placa.Text;
+            if (clienteBL.Existe(this._cliente))
             {
                 MessageBox.Show("Cliente já existente na base, favor mudar a placa", "Atenção");
                 return;
             }
 
             CarregaCliente();
-            clienteBL.Insert(cliente);
-            this.cliente = clienteBL.ByPlaca(cliente);
+            clienteBL.Insert(_cliente);
+            this._cliente = clienteBL.ByPlaca(_cliente);
             CarregaClientesCadastrados();
             MessageBox.Show("Cliente salvo com sucesso!", "Atenção");
             RetornaFocoParaPlaca();
@@ -177,7 +179,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
-            if (this.cliente.ID == 0)
+            if (this._cliente.ID == 0)
             {
                 MessageBox.Show("Favor escolher um cliente", "Atenção", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -189,7 +191,7 @@ namespace HenryCorporation.Lavajato.Presentation
                 return;
             }
 
-            clienteBL.Delete(this.cliente);
+            clienteBL.Delete(this._cliente);
             MessageBox.Show("Cliente deletado com sucesso!", "Atenção");
             CarregaClientesCadastrados();
             LimpaCampos();

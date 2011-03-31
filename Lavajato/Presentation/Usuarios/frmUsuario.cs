@@ -26,7 +26,7 @@ namespace HenryCorporation.Lavajato.Presentation
         
         private void frmUsuario_Load(object sender, EventArgs e)
         {
-            nome.Focus();
+            nomePesquisa.Focus();
         }
 
         private void CarregaTipoUsuario()
@@ -116,6 +116,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.usuario = ProcuraUsuario(this.usuario);
             tabControl.SelectedTab = tabUsuario;
             CarregaCampos(this.usuario);
+            nome.Focus();
         }
 
         private void CarregaCampos(HenryCorporation.Lavajato.DomainModel.Usuario usuario)
