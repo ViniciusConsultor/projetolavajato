@@ -20,6 +20,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private const string contemPonto = ".";
         private IProdutoRepositorio _produtoRepository = new ProdutoBL();
         private Produto _produto = new Produto();
+
         
         public frmProduto()
         {
@@ -27,6 +28,7 @@ namespace HenryCorporation.Lavajato.Presentation
             CarregaProdutos();
             OcultaCampo();
             CarregaCategoriaProduto();
+            nomePesquisa.Focus();
         }
 
         public frmProduto(Produto produto)
@@ -39,6 +41,12 @@ namespace HenryCorporation.Lavajato.Presentation
             _produto = ProcuraProduto(_produto);
             CarregaCampos(_produto);
             tabProdutos.SelectedTab = tabProduto;
+                        
+        }
+
+        private void frmProduto_Load(object sender, EventArgs e)
+        {
+            nomePesquisa.Focus();
         }
 
         private void nomePesquisa_TextChanged(object sender, EventArgs e)
@@ -55,6 +63,7 @@ namespace HenryCorporation.Lavajato.Presentation
             _produto = ProcuraProduto(_produto);
             CarregaCampos(_produto);
             tabProdutos.SelectedTab = tabProduto;
+            descricao.Focus();
         }
 
         private HenryCorporation.Lavajato.DomainModel.Produto ProcuraProduto(HenryCorporation.Lavajato.DomainModel.Produto produto)
@@ -80,7 +89,6 @@ namespace HenryCorporation.Lavajato.Presentation
             _produtoRepository.Update(_produto);
             CarregaProdutos();
             MessageBox.Show(Resources.ProdutoAtualizadoComSucesso, Resources.Atencao, MessageBoxButtons.OK, MessageBoxIcon.Information);
-            descricao.Focus();
         }
 
         private void precoCompra_TextChanged(object sender, EventArgs e)
@@ -104,7 +112,6 @@ namespace HenryCorporation.Lavajato.Presentation
         private void btnNovo_Click(object sender, EventArgs e)
         {
             LimpaCampos();
-            descricao.Focus();
         }
 
         private void btnSalvar_Click(object sender, EventArgs e)
@@ -112,7 +119,6 @@ namespace HenryCorporation.Lavajato.Presentation
             if (Todos_Os_Campos_Obrigatorios_Estao_Preenchitos())
             {
                 MessageBox.Show(Resources.Preencher_todos_os_campos, Resources.Atencao);
-                descricao.Focus();
                 return;
             }
 
@@ -165,7 +171,6 @@ namespace HenryCorporation.Lavajato.Presentation
                 CarregaProdutos();
                 LimpaCampos();
                 MessageBox.Show(Resources.Item_deletado, Resources.Atencao);
-                descricao.Focus();
             }
         }
 
@@ -243,7 +248,6 @@ namespace HenryCorporation.Lavajato.Presentation
         private void descricao_Leave(object sender, EventArgs e)
         {
             descricao.BackColor = Color.White;
-            this.cmbCategoriaProduto.Focus();
         }
 
         private void precoVenda_Enter(object sender, EventArgs e)
@@ -254,7 +258,6 @@ namespace HenryCorporation.Lavajato.Presentation
         private void precoVenda_Leave(object sender, EventArgs e)
         {
             precoVenda.BackColor = Color.White;
-            quantidade.Focus();
         }
 
         private void quantidade_Enter(object sender, EventArgs e)
@@ -265,7 +268,6 @@ namespace HenryCorporation.Lavajato.Presentation
         private void quantidade_Leave(object sender, EventArgs e)
         {
             quantidade.BackColor = Color.White;
-            minimo.Focus();
         }
 
         private void minimo_Enter(object sender, EventArgs e)
@@ -276,7 +278,6 @@ namespace HenryCorporation.Lavajato.Presentation
         private void minimo_Leave(object sender, EventArgs e)
         {
             minimo.BackColor = Color.White;
-            btnSalvar.Focus();
         }
 
         private void cmbCategoriaProduto_Enter(object sender, EventArgs e)
@@ -287,7 +288,6 @@ namespace HenryCorporation.Lavajato.Presentation
         private void cmbCategoriaProduto_Leave(object sender, EventArgs e)
         {
             cmbCategoriaProduto.BackColor = Color.White;
-            precoCompra.Focus();
         }
 
         private void quantidade_TextChanged(object sender, EventArgs e)
@@ -304,7 +304,6 @@ namespace HenryCorporation.Lavajato.Presentation
                     quantidade.Text = quantidade.Text.Remove(quantidade.Text.Length - 1);
                     MessageBox.Show("Favor digitar somente números inteiros", "Atenção");
                 }
-                quantidade.Focus();
             }
         }
 
@@ -322,7 +321,6 @@ namespace HenryCorporation.Lavajato.Presentation
                     minimo.Text = quantidade.Text.Remove(minimo.Text.Length - 1);
                     MessageBox.Show("Favor digitar somente números inteiros", "Atenção");
                 }
-                minimo.Focus();
             }
         }
 
@@ -383,27 +381,22 @@ namespace HenryCorporation.Lavajato.Presentation
         
         private void btnSalvar_Leave(object sender, EventArgs e)
         {
-            btnExcluir.Focus();
         }
 
         private void btnExcluir_Leave(object sender, EventArgs e)
         {
-            btnSair.Focus();
         }
 
         private void btnSair_Leave(object sender, EventArgs e)
         {
-            btnNovo.Focus();
         }
 
         private void btnNovo_Leave(object sender, EventArgs e)
         {
-            btnAlterar.Focus();
         }
 
         private void btnAlterar_Leave(object sender, EventArgs e)
         {
-            descricao.Focus();
         }
 
         private void nomePesquisa_Enter(object sender, EventArgs e)
@@ -416,11 +409,10 @@ namespace HenryCorporation.Lavajato.Presentation
             nomePesquisa.BackColor = Color.White;
         }
 
-        private void frmProduto_Load(object sender, EventArgs e)
-        {
-
-        }
+        
 
         #endregion
+
+     
     }
 }

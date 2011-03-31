@@ -30,6 +30,7 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             InitializeComponent();
             _servico = servico;
+            cmbServico.Focus();
         }
 
         private void frmServicoLavador_Load(object sender, EventArgs e)
@@ -37,6 +38,7 @@ namespace HenryCorporation.Lavajato.Presentation
             CarregaProdutos();
             CarregaLavadores();
             CarregaServicoFuncionario();
+            cmbServico.Focus();
         }
 
         private void btnAdicionar_Click(object sender, EventArgs e)

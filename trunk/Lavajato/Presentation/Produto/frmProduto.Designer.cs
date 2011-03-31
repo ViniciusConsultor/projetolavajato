@@ -76,7 +76,7 @@
             this.tabProdutos.Name = "tabProdutos";
             this.tabProdutos.SelectedIndex = 0;
             this.tabProdutos.Size = new System.Drawing.Size(701, 600);
-            this.tabProdutos.TabIndex = 58;
+            this.tabProdutos.TabIndex = 50;
             // 
             // tabProdutoPesquisa
             // 
@@ -108,7 +108,7 @@
             this.label12.Location = new System.Drawing.Point(6, 22);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(55, 20);
-            this.label12.TabIndex = 8;
+            this.label12.TabIndex = 1;
             this.label12.Text = "Nome:";
             // 
             // nomePesquisa
@@ -120,7 +120,7 @@
             this.nomePesquisa.Multiline = true;
             this.nomePesquisa.Name = "nomePesquisa";
             this.nomePesquisa.Size = new System.Drawing.Size(663, 25);
-            this.nomePesquisa.TabIndex = 61;
+            this.nomePesquisa.TabIndex = 0;
             this.nomePesquisa.TextChanged += new System.EventHandler(this.nomePesquisa_TextChanged);
             this.nomePesquisa.Enter += new System.EventHandler(this.nomePesquisa_Enter);
             this.nomePesquisa.Leave += new System.EventHandler(this.nomePesquisa_Leave);
@@ -131,7 +131,7 @@
             this.grdProdutos.Location = new System.Drawing.Point(7, 7);
             this.grdProdutos.Name = "grdProdutos";
             this.grdProdutos.Size = new System.Drawing.Size(672, 454);
-            this.grdProdutos.TabIndex = 60;
+            this.grdProdutos.TabIndex = 3;
             this.grdProdutos.MouseDoubleClick += new System.Windows.Forms.MouseEventHandler(this.grdProdutos_MouseDoubleClick);
             // 
             // tabProduto
@@ -159,7 +159,7 @@
             this.btnSalvar.Location = new System.Drawing.Point(211, 224);
             this.btnSalvar.Name = "btnSalvar";
             this.btnSalvar.Size = new System.Drawing.Size(104, 37);
-            this.btnSalvar.TabIndex = 10;
+            this.btnSalvar.TabIndex = 20;
             this.btnSalvar.Text = "Salvar";
             this.btnSalvar.UseVisualStyleBackColor = true;
             this.btnSalvar.Click += new System.EventHandler(this.btnSalvar_Click);
@@ -171,7 +171,7 @@
             this.btnSair.Location = new System.Drawing.Point(583, 224);
             this.btnSair.Name = "btnSair";
             this.btnSair.Size = new System.Drawing.Size(104, 37);
-            this.btnSair.TabIndex = 12;
+            this.btnSair.TabIndex = 22;
             this.btnSair.Text = "Sair";
             this.btnSair.UseVisualStyleBackColor = true;
             this.btnSair.Click += new System.EventHandler(this.btnSair_Click);
@@ -183,7 +183,7 @@
             this.btnAlterar.Location = new System.Drawing.Point(107, 224);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(104, 37);
-            this.btnAlterar.TabIndex = 9;
+            this.btnAlterar.TabIndex = 19;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);
@@ -195,7 +195,7 @@
             this.btnExcluir.Location = new System.Drawing.Point(315, 224);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(104, 37);
-            this.btnExcluir.TabIndex = 11;
+            this.btnExcluir.TabIndex = 21;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
@@ -207,7 +207,7 @@
             this.btnNovo.Location = new System.Drawing.Point(3, 224);
             this.btnNovo.Name = "btnNovo";
             this.btnNovo.Size = new System.Drawing.Size(104, 37);
-            this.btnNovo.TabIndex = 8;
+            this.btnNovo.TabIndex = 17;
             this.btnNovo.Text = "Novo";
             this.btnNovo.UseVisualStyleBackColor = true;
             this.btnNovo.Click += new System.EventHandler(this.btnNovo_Click);
@@ -224,7 +224,7 @@
             this.groupBox4.Location = new System.Drawing.Point(226, 79);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(461, 111);
-            this.groupBox4.TabIndex = 17;
+            this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Estoque";
             // 
@@ -234,7 +234,7 @@
             this.label4.Location = new System.Drawing.Point(19, 75);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(82, 20);
-            this.label4.TabIndex = 20;
+            this.label4.TabIndex = 16;
             this.label4.Text = "Saldo Est:";
             // 
             // estoqueSaldo
@@ -245,7 +245,7 @@
             this.estoqueSaldo.MaxLength = 50;
             this.estoqueSaldo.Name = "estoqueSaldo";
             this.estoqueSaldo.Size = new System.Drawing.Size(83, 26);
-            this.estoqueSaldo.TabIndex = 7;
+            this.estoqueSaldo.TabIndex = 17;
             // 
             // label3
             // 
@@ -253,7 +253,7 @@
             this.label3.Location = new System.Drawing.Point(38, 49);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(63, 20);
-            this.label3.TabIndex = 19;
+            this.label3.TabIndex = 14;
             this.label3.Text = "Minimo:";
             // 
             // minimo
@@ -262,7 +262,7 @@
             this.minimo.Location = new System.Drawing.Point(107, 47);
             this.minimo.Name = "minimo";
             this.minimo.Size = new System.Drawing.Size(83, 26);
-            this.minimo.TabIndex = 5;
+            this.minimo.TabIndex = 15;
             this.minimo.TextChanged += new System.EventHandler(this.minimo_TextChanged);
             this.minimo.Enter += new System.EventHandler(this.minimo_Enter);
             this.minimo.Leave += new System.EventHandler(this.minimo_Leave);
@@ -270,10 +270,10 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 23);
+            this.label1.Location = new System.Drawing.Point(5, 23);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(96, 20);
-            this.label1.TabIndex = 18;
+            this.label1.TabIndex = 12;
             this.label1.Text = "Quantidade:";
             // 
             // quantidade
@@ -282,7 +282,7 @@
             this.quantidade.Location = new System.Drawing.Point(107, 21);
             this.quantidade.Name = "quantidade";
             this.quantidade.Size = new System.Drawing.Size(83, 26);
-            this.quantidade.TabIndex = 5;
+            this.quantidade.TabIndex = 13;
             this.quantidade.TextChanged += new System.EventHandler(this.quantidade_TextChanged);
             this.quantidade.Enter += new System.EventHandler(this.quantidade_Enter);
             this.quantidade.Leave += new System.EventHandler(this.quantidade_Leave);
@@ -293,7 +293,7 @@
             this.groupBox3.Location = new System.Drawing.Point(3, 139);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(217, 51);
-            this.groupBox3.TabIndex = 16;
+            this.groupBox3.TabIndex = 9;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Preço de Venda";
             // 
@@ -303,7 +303,7 @@
             this.precoVenda.Location = new System.Drawing.Point(15, 19);
             this.precoVenda.Name = "precoVenda";
             this.precoVenda.Size = new System.Drawing.Size(186, 26);
-            this.precoVenda.TabIndex = 4;
+            this.precoVenda.TabIndex = 10;
             this.precoVenda.TextChanged += new System.EventHandler(this.precoVenda_TextChanged);
             this.precoVenda.Enter += new System.EventHandler(this.precoVenda_Enter);
             this.precoVenda.Leave += new System.EventHandler(this.precoVenda_Leave);
@@ -314,7 +314,7 @@
             this.groupBox2.Location = new System.Drawing.Point(3, 79);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(217, 54);
-            this.groupBox2.TabIndex = 15;
+            this.groupBox2.TabIndex = 7;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Preço de Compra";
             // 
@@ -324,7 +324,7 @@
             this.precoCompra.Location = new System.Drawing.Point(15, 20);
             this.precoCompra.Name = "precoCompra";
             this.precoCompra.Size = new System.Drawing.Size(186, 26);
-            this.precoCompra.TabIndex = 3;
+            this.precoCompra.TabIndex = 8;
             this.precoCompra.TextChanged += new System.EventHandler(this.precoCompra_TextChanged);
             this.precoCompra.Enter += new System.EventHandler(this.precoCompra_Enter);
             this.precoCompra.Leave += new System.EventHandler(this.precoCompra_Leave);
@@ -377,7 +377,7 @@
             this.cmbCategoriaProduto.Location = new System.Drawing.Point(482, 35);
             this.cmbCategoriaProduto.Name = "cmbCategoriaProduto";
             this.cmbCategoriaProduto.Size = new System.Drawing.Size(178, 26);
-            this.cmbCategoriaProduto.TabIndex = 2;
+            this.cmbCategoriaProduto.TabIndex = 6;
             this.cmbCategoriaProduto.SelectedIndexChanged += new System.EventHandler(this.cmbCategoriaProduto_SelectedIndexChanged);
             this.cmbCategoriaProduto.Enter += new System.EventHandler(this.cmbCategoriaProduto_Enter);
             this.cmbCategoriaProduto.Leave += new System.EventHandler(this.cmbCategoriaProduto_Leave);
@@ -388,7 +388,7 @@
             this.label7.Location = new System.Drawing.Point(478, 15);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(82, 20);
-            this.label7.TabIndex = 14;
+            this.label7.TabIndex = 5;
             this.label7.Text = "Categoria:";
             // 
             // descricao
@@ -397,7 +397,7 @@
             this.descricao.Location = new System.Drawing.Point(8, 35);
             this.descricao.Name = "descricao";
             this.descricao.Size = new System.Drawing.Size(474, 26);
-            this.descricao.TabIndex = 1;
+            this.descricao.TabIndex = 4;
             this.descricao.Enter += new System.EventHandler(this.descricao_Enter);
             this.descricao.Leave += new System.EventHandler(this.descricao_Leave);
             // 
@@ -407,7 +407,7 @@
             this.label2.Location = new System.Drawing.Point(4, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(166, 20);
-            this.label2.TabIndex = 13;
+            this.label2.TabIndex = 3;
             this.label2.Text = "Descrição do Produto:";
             // 
             // frmProduto

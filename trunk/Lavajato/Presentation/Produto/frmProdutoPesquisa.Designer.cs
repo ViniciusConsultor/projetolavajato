@@ -44,7 +44,7 @@
             this.groupBox5.Location = new System.Drawing.Point(1, 413);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(655, 71);
-            this.groupBox5.TabIndex = 4;
+            this.groupBox5.TabIndex = 2;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Procura por:";
             // 
@@ -54,7 +54,7 @@
             this.label12.Location = new System.Drawing.Point(6, 20);
             this.label12.Name = "label12";
             this.label12.Size = new System.Drawing.Size(55, 20);
-            this.label12.TabIndex = 8;
+            this.label12.TabIndex = 1;
             this.label12.Text = "Nome:";
             // 
             // nomePesquisa
@@ -66,7 +66,7 @@
             this.nomePesquisa.Multiline = true;
             this.nomePesquisa.Name = "nomePesquisa";
             this.nomePesquisa.Size = new System.Drawing.Size(640, 25);
-            this.nomePesquisa.TabIndex = 7;
+            this.nomePesquisa.TabIndex = 0;
             this.nomePesquisa.TextChanged += new System.EventHandler(this.nomePesquisa_TextChanged);
             this.nomePesquisa.Enter += new System.EventHandler(this.nomePesquisa_Enter);
             this.nomePesquisa.Leave += new System.EventHandler(this.nomePesquisa_Leave);
@@ -93,6 +93,7 @@
             this.Name = "frmProdutoPesquisa";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Pesquisa Produto";
+            this.Load += new System.EventHandler(this.frmProdutoPesquisa_Load);
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdProdutos)).EndInit();

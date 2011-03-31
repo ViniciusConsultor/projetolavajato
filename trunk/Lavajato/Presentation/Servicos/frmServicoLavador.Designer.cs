@@ -50,7 +50,7 @@
             this.label3.Location = new System.Drawing.Point(169, 16);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(323, 29);
-            this.label3.TabIndex = 5;
+            this.label3.TabIndex = 6;
             this.label3.Text = "Adicionar Lavador ao serciço";
             // 
             // groupBox1
@@ -64,7 +64,7 @@
             this.groupBox1.Location = new System.Drawing.Point(4, 12);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(702, 158);
-            this.groupBox1.TabIndex = 6;
+            this.groupBox1.TabIndex = 5;
             this.groupBox1.TabStop = false;
             // 
             // label2
@@ -74,7 +74,7 @@
             this.label2.Location = new System.Drawing.Point(24, 85);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(100, 29);
-            this.label2.TabIndex = 9;
+            this.label2.TabIndex = 3;
             this.label2.Text = "Serviço:";
             // 
             // label1
@@ -84,7 +84,7 @@
             this.label1.Location = new System.Drawing.Point(19, 52);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(105, 29);
-            this.label1.TabIndex = 8;
+            this.label1.TabIndex = 1;
             this.label1.Text = "Lavador:";
             // 
             // cmbServico
@@ -94,7 +94,7 @@
             this.cmbServico.Location = new System.Drawing.Point(124, 85);
             this.cmbServico.Name = "cmbServico";
             this.cmbServico.Size = new System.Drawing.Size(567, 33);
-            this.cmbServico.TabIndex = 7;
+            this.cmbServico.TabIndex = 2;
             // 
             // cmbLavador
             // 
@@ -103,7 +103,7 @@
             this.cmbLavador.Location = new System.Drawing.Point(124, 48);
             this.cmbLavador.Name = "cmbLavador";
             this.cmbLavador.Size = new System.Drawing.Size(567, 33);
-            this.cmbLavador.TabIndex = 6;
+            this.cmbLavador.TabIndex = 0;
             // 
             // btnAdicionar
             // 
@@ -111,7 +111,7 @@
             this.btnAdicionar.Location = new System.Drawing.Point(591, 122);
             this.btnAdicionar.Name = "btnAdicionar";
             this.btnAdicionar.Size = new System.Drawing.Size(101, 30);
-            this.btnAdicionar.TabIndex = 5;
+            this.btnAdicionar.TabIndex = 4;
             this.btnAdicionar.Text = "Adicionar";
             this.btnAdicionar.UseVisualStyleBackColor = true;
             this.btnAdicionar.Click += new System.EventHandler(this.btnAdicionar_Click);
@@ -133,7 +133,7 @@
             this.btnRemover.Location = new System.Drawing.Point(591, 278);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(101, 30);
-            this.btnRemover.TabIndex = 10;
+            this.btnRemover.TabIndex = 9;
             this.btnRemover.Text = "Remover";
             this.btnRemover.UseVisualStyleBackColor = true;
             this.btnRemover.Click += new System.EventHandler(this.btnRemover_Click);
@@ -144,7 +144,7 @@
             this.grdServicoFuncionario.Location = new System.Drawing.Point(6, 15);
             this.grdServicoFuncionario.Name = "grdServicoFuncionario";
             this.grdServicoFuncionario.Size = new System.Drawing.Size(684, 262);
-            this.grdServicoFuncionario.TabIndex = 0;
+            this.grdServicoFuncionario.TabIndex = 8;
             this.grdServicoFuncionario.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
             // 
             // frmServicoLavador

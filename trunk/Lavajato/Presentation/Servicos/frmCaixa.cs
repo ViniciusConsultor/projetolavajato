@@ -52,7 +52,8 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void ordemServico_Leave(object sender, EventArgs e)
         {
-            PesquisaOrdemServico();   
+            PesquisaOrdemServico();
+            ordemServico.BackColor = Color.White;
         }
 
         private void PesquisaOrdemServico()
@@ -60,17 +61,20 @@ namespace HenryCorporation.Lavajato.Presentation
             try
             {
                 int ordServico = int.Parse(ordemServico.Text);
-                _servico = ProcuraServico(ordServico);
-                if (_servico.ID > 0)
+                if (ordServico > 0)
                 {
-                    CarregaCliente(_servico);
-                    CarregaItens(_servico);
-                    MudaNomeDoFormulario(_servico);
-                    FormataValores();
-                }
-                else
-                {
-                    MessageBox.Show("Nenhuma O.S. encontrada!", "Atenção");
+                    _servico = ProcuraServico(ordServico);
+                    if (_servico.ID > 0)
+                    {
+                        CarregaCliente(_servico);
+                        CarregaItens(_servico);
+                        MudaNomeDoFormulario(_servico);
+                        FormataValores();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Nenhuma O.S. encontrada!", "Atenção");
+                    }
                 }
             }
             catch (ArgumentException ex)
@@ -685,6 +689,31 @@ namespace HenryCorporation.Lavajato.Presentation
         }
 
         #endregion
+
+        private void ordemServico_Enter(object sender, EventArgs e)
+        {
+            ordemServico.BackColor = Color.Yellow;
+        }
+
+        private void cmbProduto_Enter(object sender, EventArgs e)
+        {
+            cmbProduto.BackColor = Color.Yellow;
+        }
+
+        private void cmbProduto_Leave(object sender, EventArgs e)
+        {
+            cmbProduto.BackColor = Color.White;
+        }
+
+        private void quantidade_Enter(object sender, EventArgs e)
+        {
+            quantidade.BackColor = Color.Yellow;
+        }
+
+        private void quantidade_Leave(object sender, EventArgs e)
+        {
+            quantidade.BackColor = Color.White;
+        }
 
        
     }

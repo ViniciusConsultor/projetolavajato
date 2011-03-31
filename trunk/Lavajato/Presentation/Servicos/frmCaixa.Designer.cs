@@ -367,6 +367,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.ordemServico.Name = "ordemServico";
             this.ordemServico.Size = new System.Drawing.Size(240, 31);
             this.ordemServico.TabIndex = 1;
+            this.ordemServico.Enter += new System.EventHandler(this.ordemServico_Enter);
             this.ordemServico.KeyDown += new System.Windows.Forms.KeyEventHandler(this.ordemServico_KeyDown);
             this.ordemServico.Leave += new System.EventHandler(this.ordemServico_Leave);
             // 
@@ -622,7 +623,9 @@ namespace HenryCorporation.Lavajato.Presentation
             this.cmbProduto.Name = "cmbProduto";
             this.cmbProduto.Size = new System.Drawing.Size(422, 33);
             this.cmbProduto.TabIndex = 113;
+            this.cmbProduto.Enter += new System.EventHandler(this.cmbProduto_Enter);
             this.cmbProduto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbProduto_KeyDown);
+            this.cmbProduto.Leave += new System.EventHandler(this.cmbProduto_Leave);
             // 
             // quantidade
             // 
@@ -632,7 +635,9 @@ namespace HenryCorporation.Lavajato.Presentation
             this.quantidade.Name = "quantidade";
             this.quantidade.Size = new System.Drawing.Size(56, 35);
             this.quantidade.TabIndex = 112;
+            this.quantidade.Enter += new System.EventHandler(this.quantidade_Enter);
             this.quantidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.quantidade_KeyDown);
+            this.quantidade.Leave += new System.EventHandler(this.quantidade_Leave);
             // 
             // frmCaixa
             // 

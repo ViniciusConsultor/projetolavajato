@@ -58,5 +58,10 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             grdProdutos.Columns[0].Visible = false;
         }
+
+        private void frmProdutoPesquisa_Load(object sender, EventArgs e)
+        {
+            nomePesquisa.Focus();
+        }
     }
 }
