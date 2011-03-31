@@ -119,6 +119,7 @@
     </Compile>
     <Compile Include="ServicoBL.cs" />
     <Compile Include="ServicoColunas.cs" />
+    <Compile Include="SIPHandler.cs" />
     <Compile Include="Validacoes.cs" />
     <Compile Include="Web References\WSLavajato\Reference.cs">
       <AutoGen>True</AutoGen>
