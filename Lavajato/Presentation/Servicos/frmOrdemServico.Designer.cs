@@ -173,8 +173,8 @@ namespace HenryCorporation.Lavajato.Presentation
             this.placa.Name = "placa";
             this.placa.Size = new System.Drawing.Size(258, 31);
             this.placa.TabIndex = 1;
-            this.placa.TypeValidationCompleted += new System.Windows.Forms.TypeValidationEventHandler(this.placa_TypeValidationCompleted);
             this.placa.Enter += new System.EventHandler(this.placa_Enter_1);
+            this.placa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.placa_KeyDown);
             this.placa.Leave += new System.EventHandler(this.placa_Leave);
             // 
             // min

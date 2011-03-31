@@ -46,7 +46,7 @@ namespace Impressao
             return recibo;
         }
 
-        public string FormataDescricao(ServicoItem item)
+        private string FormataDescricao(ServicoItem item)
         {
             string desc = "";
             if (item.Produto.Descricao.Length > 17)
@@ -64,12 +64,12 @@ namespace Impressao
             return item.Produto.Descricao + desc;
         }
 
-        public string SetQuantidadeDeItens(ServicoItem item)
+        private string SetQuantidadeDeItens(ServicoItem item)
         {
             return item.Quantidade.ToString();
         }
 
-        public string SetDateInput(Servico servico)
+        private string SetDateInput(Servico servico)
         {
             string hora = servico.Entrada.Hour.ToString().Length == 1 ? "0" + servico.Entrada.Hour.ToString() : servico.Entrada.Hour.ToString();
             string minuto = servico.Entrada.Minute.ToString().Length == 1 ? "0" + servico.Entrada.Minute.ToString() : servico.Entrada.Minute.ToString();
@@ -77,7 +77,7 @@ namespace Impressao
             return entrada;
         }
 
-        public string FormataValorUnitario(string valUni)
+        private string FormataValorUnitario(string valUni)
         {
             if (valUni.Length == 5)
                 valUni = "          " + valUni;
@@ -89,14 +89,14 @@ namespace Impressao
             return valUni;
         }
 
-        public string SetValorTotal(ServicoItem item)
+        private string SetValorTotal(ServicoItem item)
         {
             string tot = (item.Produto.ValorUnitario * item.Quantidade).ToString("C");
             tot = tot.Replace("R$", "");
             return tot;
         }
 
-        public string SetValorDoItem(ServicoItem item)
+        private string SetValorDoItem(ServicoItem item)
         {
             string valUni = item.Produto.ValorUnitario.ToString("C");
             valUni = valUni.Replace("R$", "");
@@ -104,12 +104,12 @@ namespace Impressao
             return valUni;
         }
 
-        public string FormataSomaTotal(decimal somaTotal)
+        private string FormataSomaTotal(decimal somaTotal)
         {
             return "                                        Valor Total: " + somaTotal;
         }
 
-        public string FormataTotal(string tot)
+        private string FormataTotal(string tot)
         {
             if (tot.Length == 5)
                 tot = "     " + tot;
@@ -123,7 +123,7 @@ namespace Impressao
 
         }
 
-        public string FormataCabecalho()
+        private string FormataCabecalho()
         {
             string strCabecalho = "";
             strCabecalho += enter;
@@ -152,7 +152,7 @@ namespace Impressao
             corpoRecibo += "Nº O.S.:" + FormataEspacamentoEm20(servico.OrdemServico.ToString()) + "Placa:" + servico.Cliente.Placa + enter;
             corpoRecibo += "Veículo:" + FormataEspacamentoEm20(servico.Cliente.Veiculo) +          "Cor:  " + servico.Cliente.Cor + "" + enter;
             corpoRecibo += "Nome:   " + FormataEspacamentoEm20(servico.Cliente.Nome) +            "Fone: " + servico.Cliente.Telefone + "" + enter;
-            corpoRecibo += "Entrada:" + FormataEspacamentoEm20(SetDateInput(servico)) +           "Saida:" + servico.Saida.Hour + ":" + servico.Saida.Second + "" + enter;
+            corpoRecibo += "Entrada:" + FormataEspacamentoEm20(SetDateInput(servico)) +           "Saida:" + servico.Saida.Hour + ":" + servico.Saida.Minute+ "" + enter;
             corpoRecibo += "------------------------------------------------------------" + enter;
             corpoRecibo += "SERVICO             QTDE.     VALOR   TOTAL" + enter;
             return corpoRecibo;

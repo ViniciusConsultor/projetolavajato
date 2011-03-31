@@ -7,20 +7,16 @@ using System.Drawing.Printing;
 using System.Drawing;
 using HenryCorporation.Lavajato.Operacional;
 
-using System.Text;
-using System.IO;
 
 namespace Impressao
 {
     public class ImprimirComprovantePagamento : Imprimir, IImprimir
     {
         private Servico _servico { get; set; }
-        private PrintDocument recibo { get; set; }
         private const string enter = "\n";
 
         public ImprimirComprovantePagamento()
         {
-
         }
 
         public ImprimirComprovantePagamento(Servico servico)
@@ -36,10 +32,11 @@ namespace Impressao
             if (_servico.ID == 0)
                 throw new Exception("Nenhum Servico encontrado");
 
-           
-            recibo = new PrintDocument();
-            recibo.PrintPage += new PrintPageEventHandler(this.recibo_PrintPage);
-            recibo.Print();
+            PrintDocument pd = new PrintDocument();
+            pd.PrintPage += new PrintPageEventHandler
+               (this.recibo_PrintPage);
+            pd.Print();
+            
         }
 
         public void recibo_PrintPage(object sender, PrintPageEventArgs ev)

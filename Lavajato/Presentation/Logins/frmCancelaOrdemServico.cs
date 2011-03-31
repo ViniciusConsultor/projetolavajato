@@ -42,5 +42,12 @@ namespace HenryCorporation.Lavajato.Presentation
             }
             this.Close();
         }
+
+        private void txtPassword_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SetUpLogin();
+
+        }
     }
 }

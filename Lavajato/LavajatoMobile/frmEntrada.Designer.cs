@@ -47,10 +47,10 @@
             this.hora = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
             this.min = new System.Windows.Forms.ComboBox();
-            this.txtHoraInicial = new System.Windows.Forms.TextBox();
             this.btnCadastrarServicos = new System.Windows.Forms.Button();
             this.entrada = new System.Windows.Forms.DateTimePicker();
             this.teclado = new Microsoft.WindowsCE.Forms.InputPanel(this.components);
+            this.txtHoraInicial = new System.Windows.Forms.TextBox();
             this.SuspendLayout();
             // 
             // mainMenu1
@@ -103,9 +103,9 @@
             // nome
             // 
             this.nome.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
-            this.nome.Location = new System.Drawing.Point(0, 91);
+            this.nome.Location = new System.Drawing.Point(1, 91);
             this.nome.Name = "nome";
-            this.nome.Size = new System.Drawing.Size(153, 26);
+            this.nome.Size = new System.Drawing.Size(152, 26);
             this.nome.TabIndex = 5;
             this.nome.TextChanged += new System.EventHandler(this.nome_TextChanged);
             this.nome.GotFocus += new System.EventHandler(this.nome_GotFocus);
@@ -122,9 +122,9 @@
             // cor
             // 
             this.cor.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
-            this.cor.Location = new System.Drawing.Point(0, 52);
+            this.cor.Location = new System.Drawing.Point(1, 52);
             this.cor.Name = "cor";
-            this.cor.Size = new System.Drawing.Size(123, 26);
+            this.cor.Size = new System.Drawing.Size(122, 26);
             this.cor.TabIndex = 3;
             this.cor.TextChanged += new System.EventHandler(this.cor_TextChanged);
             this.cor.GotFocus += new System.EventHandler(this.cor_GotFocus);
@@ -204,14 +204,6 @@
             this.min.LostFocus += new System.EventHandler(this.min_LostFocus);
             this.min.GotFocus += new System.EventHandler(this.min_GotFocus);
             // 
-            // textBox1
-            // 
-            this.txtHoraInicial.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
-            this.txtHoraInicial.Location = new System.Drawing.Point(1, 130);
-            this.txtHoraInicial.Name = "textBox1";
-            this.txtHoraInicial.Size = new System.Drawing.Size(146, 26);
-            this.txtHoraInicial.TabIndex = 16;
-            // 
             // btnCadastrarServicos
             // 
             this.btnCadastrarServicos.BackColor = System.Drawing.Color.Lime;
@@ -227,14 +219,23 @@
             this.entrada.CustomFormat = "hh:mm";
             this.entrada.Enabled = false;
             this.entrada.Font = new System.Drawing.Font("Tahoma", 12F, System.Drawing.FontStyle.Regular);
-            this.entrada.Location = new System.Drawing.Point(93, 241);
+            this.entrada.Location = new System.Drawing.Point(3, 186);
             this.entrada.Name = "entrada";
-            this.entrada.Size = new System.Drawing.Size(147, 27);
+            this.entrada.Size = new System.Drawing.Size(222, 27);
             this.entrada.TabIndex = 6;
             this.entrada.Value = new System.DateTime(2010, 8, 15, 17, 45, 0, 0);
             this.entrada.Visible = false;
             this.entrada.GotFocus += new System.EventHandler(this.entrada_GotFocus);
             this.entrada.LostFocus += new System.EventHandler(this.entrada_LostFocus);
+            // 
+            // txtHoraInicial
+            // 
+            this.txtHoraInicial.Font = new System.Drawing.Font("Tahoma", 14F, System.Drawing.FontStyle.Regular);
+            this.txtHoraInicial.Location = new System.Drawing.Point(1, 130);
+            this.txtHoraInicial.Multiline = true;
+            this.txtHoraInicial.Name = "txtHoraInicial";
+            this.txtHoraInicial.Size = new System.Drawing.Size(146, 28);
+            this.txtHoraInicial.TabIndex = 16;
             // 
             // frmEntrada
             // 
@@ -285,11 +286,11 @@
         private System.Windows.Forms.ComboBox hora;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.ComboBox min;
-        private System.Windows.Forms.TextBox txtHoraInicial;
         private System.Windows.Forms.Button btnCadastrarServicos;
         private System.Windows.Forms.MenuItem menuItem2;
         private System.Windows.Forms.DateTimePicker entrada;
         private Microsoft.WindowsCE.Forms.InputPanel teclado;
+        private System.Windows.Forms.TextBox txtHoraInicial;
 
     }
 }

@@ -219,12 +219,12 @@ namespace LavajatoMobile
 
         public static void ImpressaoDeRecibo(Servico _servico)
         {
-            wsService.EmiteRecibo(_servico, "");
+            wsService.Recibo(_servico);
 
             DialogResult result = MessageBox.Show("Deseja Imprimir outra copia?",
                 "Atenção", MessageBoxButtons.YesNo, MessageBoxIcon.Question, MessageBoxDefaultButton.Button1);
             if (result == DialogResult.Yes)
-                wsService.EmiteRecibo(_servico, "");
+                wsService.Recibo(_servico);
 
         }
 
