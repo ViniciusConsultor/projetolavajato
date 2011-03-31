@@ -7,7 +7,7 @@ using System.Drawing;
 using System.Text;
 using System.Windows.Forms;
 using LavajatoMobile.WSLavajato;
-using Impressao;
+
 
 namespace LavajatoMobile
 {
@@ -138,7 +138,7 @@ namespace LavajatoMobile
 
                 //imprime recibo
                 ServicoBL.ImpressaoDeRecibo(_servico);
-                
+             
                 MessageBox.Show("Número da O. S.: " + this._servico.OrdemServico, "Ordem Serviço");
             }
             else
@@ -199,6 +199,7 @@ namespace LavajatoMobile
             }
 
             AdicionaItem();
+            lblTotal.Text = "R$ " + SomaTotal();
         }
 
         private void AdicionaItem()
@@ -238,10 +239,11 @@ namespace LavajatoMobile
             foreach (DataRow item in dataSetItens.Tables[0].Rows)
             {
                 string tot = item["Total"].ToString();
-                tot = tot.Replace("R$", "").Replace("$", "").Replace(",",".");
+                tot = tot.Replace("R", "");
+                tot = tot.Replace("$", "");
                 total += decimal.Parse(tot.Trim());
             }
-            lblTotal.Text = "R$ " + total.ToString();
+            
             return total;
         }
 

@@ -5,6 +5,7 @@ using System.Text;
 
 namespace Impressao
 {
+
     public class ImprimirRecibo
     {
 

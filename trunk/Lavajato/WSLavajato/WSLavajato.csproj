@@ -50,7 +50,7 @@
     </Reference>
     <Reference Include="Impressao, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\Impressao\bin\Debug\Impressao.dll</HintPath>
+      <HintPath>..\Presentation\bin\Debug\Impressao.dll</HintPath>
     </Reference>
     <Reference Include="Operacional, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>

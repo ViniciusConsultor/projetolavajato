@@ -75,6 +75,14 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnConcluirVenda_Click(object sender, EventArgs e)
         {
+
+            if (TotalDinheiroMaisCartao() < _totalBakup)
+            {
+                MessageBox.Show("Venda não autorizada!", "Atenção");
+                return;
+            }
+
+
             frmLoginFechamentoDeCaixa frmLoginFechamentoDeCaixa = null;
             if (txtDesconto.TextLength > 0)
             {

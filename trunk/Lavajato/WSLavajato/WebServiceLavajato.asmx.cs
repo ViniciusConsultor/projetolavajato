@@ -152,16 +152,12 @@ namespace WSLavajato
 
         #endregion
 
-        #region Configuracao
 
         [WebMethod]
-        public int EmiteRecibo(HenryCorporation.Lavajato.DomainModel.Servico servico, string avaria)
+        public void Recibo(Servico servico)
         {
-
-            IImprimir print = new ImprimirComprovantePagamento();
+            Impressao.IImprimir print = new ImprimirComprovantePagamento();
             print.Imprimir(servico);
-            return 0;
         }
-        #endregion
     }
 }

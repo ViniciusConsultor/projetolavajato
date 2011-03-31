@@ -51,22 +51,10 @@ namespace LavajatoMobile
                 string placaTemp = placa.Text;
                 LimpaCampos();
 
-                DialogResult dialogResult = MessageBox.Show("Cliente não Cadastrado, deseja cadastrar?","Atenção", 
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    placa.BackColor = Color.White;
-                    placa.Text = placaTemp;
-                    btnCadastraCliente.Text = "Cad. Cliente";
-                    teclado.Enabled = true;
-                    return;
-                }
-                else
-                {
-                    placa.BackColor = Color.Yellow;
-                    placa.Focus();
-                    teclado.Enabled = true;
-                }
+                placa.Text = placaTemp;
+                btnCadastraCliente.Text = "Cad. Cliente";
+                teclado.Enabled = true;
+
                 placa.BackColor = Color.White;
                 return;
             }
@@ -292,12 +280,7 @@ namespace LavajatoMobile
         private void telefone_LostFocus(object sender, EventArgs e)
         {
             string tel = telefone.Text;
-            if (telefone.TextLength < 10)
-            {
-                MessageBox.Show("Telefone deve conter DDD + Número. \n Exemplo 3135161163","Atenção!");
-                teclado.Enabled = true;
-            }
-            else if (telefone.TextLength == 10)
+            if (telefone.TextLength == 10)
             {
                 string ddd = "(" + tel.Substring(0, 2) + ")";
                 string inicio = tel.Substring(2, 4) + "-";

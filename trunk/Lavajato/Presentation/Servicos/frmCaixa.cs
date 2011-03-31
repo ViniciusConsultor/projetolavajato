@@ -61,10 +61,17 @@ namespace HenryCorporation.Lavajato.Presentation
             {
                 int ordServico = int.Parse(ordemServico.Text);
                 _servico = ProcuraServico(ordServico);
-                CarregaCliente(_servico);
-                CarregaItens(_servico);
-                MudaNomeDoFormulario(_servico);
-                FormataValores();
+                if (_servico.ID > 0)
+                {
+                    CarregaCliente(_servico);
+                    CarregaItens(_servico);
+                    MudaNomeDoFormulario(_servico);
+                    FormataValores();
+                }
+                else
+                {
+                    MessageBox.Show("Nenhuma O.S. encontrada!", "Atenção");
+                }
             }
             catch (ArgumentException ex)
             {
@@ -432,14 +439,27 @@ namespace HenryCorporation.Lavajato.Presentation
                 MessageBoxButtons.YesNo);
             if (res == DialogResult.Yes)
             {
-                this._servico.Cancelado = 1;
-                _servico.FormaPagamento = ((FormaPagamento)(cmbFormaPagamento.SelectedItem));
-                _servico.Total = Dinheiro.ParseToDecimal(totalServico.Text);
-                _servico.SubTotal = Dinheiro.ParseToDecimal(totalServico.Text);
-                _servico.Desconto = Dinheiro.ParseToDecimal(desconto.Text);
 
-                this.servicoBL.Update(this._servico);
-                MessageBox.Show(Resources.Venda_cancelada, Resources.Atencao);
+                frmCancelaOrdemServico frmCancelaOrdemServico = new frmCancelaOrdemServico();
+                frmCancelaOrdemServico.ShowDialog();
+
+                if (frmCancelaOrdemServico.User.ID > 0 &&
+                frmCancelaOrdemServico.User.TipoFuncionario.Descricao == "Gerente")
+                {
+                    _servico.Cancelado = 1;
+                    _servico.Usuario = this.Usuario;
+                    _servico.FormaPagamento = ((FormaPagamento)(cmbFormaPagamento.SelectedItem));
+                    _servico.Total = Dinheiro.ParseToDecimal(totalServico.Text);
+                    _servico.SubTotal = Dinheiro.ParseToDecimal(totalServico.Text);
+                    _servico.Desconto = Dinheiro.ParseToDecimal(desconto.Text);
+
+                    this.servicoBL.Cancela(_servico);
+                    MessageBox.Show(Resources.Venda_cancelada, Resources.Atencao);
+                }
+                else
+                {
+                    MessageBox.Show("Usuário invalido!", "Atenção");
+                }
             }
         }
 

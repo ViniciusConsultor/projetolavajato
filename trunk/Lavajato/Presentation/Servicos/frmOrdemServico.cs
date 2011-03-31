@@ -24,15 +24,28 @@ namespace HenryCorporation.Lavajato.Presentation
             btnCadastraCliente.Enabled = false;
             dataTable.Columns.AddRange(ServicoColunas.ServicoCarregaColunas());
             dataSetItens.Tables.Add(dataTable);
+            placa.Focus();
         }
 
         private void frmOrdemServico_Load(object sender, EventArgs e)
         {
             CarregaHora();
             CarregaProdutos();
+            
         }
 
         private void placa_Leave(object sender, EventArgs e)
+        {
+            SetUpClienteEServico();
+        }
+
+        private void placa_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+                SetUpClienteEServico();
+        }
+
+        private void SetUpClienteEServico()
         {
             placa.BackColor = Color.White;
             if (Equals(placa.Text, Resources.Placa_vazia))
@@ -43,7 +56,7 @@ namespace HenryCorporation.Lavajato.Presentation
             {
                 CarregaCliente(cliente);
                 _servico = ServicoCarrega();
-                                
+
                 ImprimeNumeroOrdemServico();
                 ImprimeMensagemParaCarroJaLavado();
 
@@ -584,9 +597,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         #endregion
 
-        private void placa_TypeValidationCompleted(object sender, TypeValidationEventArgs e)
-        {
+        
 
-        }
     }
 }
