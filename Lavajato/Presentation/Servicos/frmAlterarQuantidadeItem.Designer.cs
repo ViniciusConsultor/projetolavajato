@@ -44,7 +44,7 @@
             this.lblProduto.Location = new System.Drawing.Point(96, 3);
             this.lblProduto.Name = "lblProduto";
             this.lblProduto.Size = new System.Drawing.Size(79, 29);
-            this.lblProduto.TabIndex = 0;
+            this.lblProduto.TabIndex = 4;
             this.lblProduto.Text = "label1";
             // 
             // groupBox1
@@ -55,7 +55,7 @@
             this.groupBox1.Location = new System.Drawing.Point(7, 39);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(263, 105);
-            this.groupBox1.TabIndex = 1;
+            this.groupBox1.TabIndex = 3;
             this.groupBox1.TabStop = false;
             // 
             // quantidade
@@ -64,7 +64,7 @@
             this.quantidade.Location = new System.Drawing.Point(28, 19);
             this.quantidade.Name = "quantidade";
             this.quantidade.Size = new System.Drawing.Size(216, 31);
-            this.quantidade.TabIndex = 7;
+            this.quantidade.TabIndex = 0;
             // 
             // button2
             // 
@@ -72,7 +72,7 @@
             this.button2.Location = new System.Drawing.Point(135, 56);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(101, 40);
-            this.button2.TabIndex = 6;
+            this.button2.TabIndex = 2;
             this.button2.Text = "Fechar";
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.button2_Click);
@@ -83,7 +83,7 @@
             this.btnAlterar.Location = new System.Drawing.Point(28, 56);
             this.btnAlterar.Name = "btnAlterar";
             this.btnAlterar.Size = new System.Drawing.Size(101, 40);
-            this.btnAlterar.TabIndex = 5;
+            this.btnAlterar.TabIndex = 1;
             this.btnAlterar.Text = "Alterar";
             this.btnAlterar.UseVisualStyleBackColor = true;
             this.btnAlterar.Click += new System.EventHandler(this.btnAlterar_Click);

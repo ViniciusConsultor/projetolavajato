@@ -66,7 +66,7 @@
             this.label1.Location = new System.Drawing.Point(22, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(423, 39);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 15;
             this.label1.Text = "Confirmando Pagamento";
             // 
             // label2
@@ -76,7 +76,7 @@
             this.label2.Location = new System.Drawing.Point(12, 58);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(172, 13);
-            this.label2.TabIndex = 1;
+            this.label2.TabIndex = 16;
             this.label2.Text = "TOTAL DA VENDA A PAGAR";
             // 
             // groupBox1
@@ -118,7 +118,7 @@
             this.groupBox2.Location = new System.Drawing.Point(15, 125);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(430, 54);
-            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Dinheiro:";
             // 
@@ -128,7 +128,7 @@
             this.txtDinheiro.Location = new System.Drawing.Point(99, 14);
             this.txtDinheiro.Name = "txtDinheiro";
             this.txtDinheiro.Size = new System.Drawing.Size(325, 29);
-            this.txtDinheiro.TabIndex = 6;
+            this.txtDinheiro.TabIndex = 0;
             this.txtDinheiro.TextChanged += new System.EventHandler(this.txtDinheiro_TextChanged);
             this.txtDinheiro.Enter += new System.EventHandler(this.txtDinheiro_Enter);
             this.txtDinheiro.Leave += new System.EventHandler(this.txtDinheiro_Leave);
@@ -150,7 +150,7 @@
             this.groupBox4.Location = new System.Drawing.Point(15, 395);
             this.groupBox4.Name = "groupBox4";
             this.groupBox4.Size = new System.Drawing.Size(430, 54);
-            this.groupBox4.TabIndex = 14;
+            this.groupBox4.TabIndex = 12;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Total Pago:";
             // 
@@ -161,7 +161,7 @@
             this.txtTotalPagamento.Location = new System.Drawing.Point(99, 16);
             this.txtTotalPagamento.Name = "txtTotalPagamento";
             this.txtTotalPagamento.Size = new System.Drawing.Size(325, 29);
-            this.txtTotalPagamento.TabIndex = 15;
+            this.txtTotalPagamento.TabIndex = 11;
             // 
             // label4
             // 
@@ -182,7 +182,7 @@
             this.cmbFormaPagamento.Margin = new System.Windows.Forms.Padding(2, 3, 2, 3);
             this.cmbFormaPagamento.Name = "cmbFormaPagamento";
             this.cmbFormaPagamento.Size = new System.Drawing.Size(159, 28);
-            this.cmbFormaPagamento.TabIndex = 8;
+            this.cmbFormaPagamento.TabIndex = 2;
             this.cmbFormaPagamento.Enter += new System.EventHandler(this.cmbFormaPagamento_Enter);
             this.cmbFormaPagamento.Leave += new System.EventHandler(this.cmbFormaPagamento_Leave);
             // 
@@ -194,7 +194,7 @@
             this.groupBox3.Location = new System.Drawing.Point(15, 179);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(430, 54);
-            this.groupBox3.TabIndex = 7;
+            this.groupBox3.TabIndex = 4;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Cartão:";
             // 
@@ -205,7 +205,7 @@
             this.txtCartaoValor.Multiline = true;
             this.txtCartaoValor.Name = "txtCartaoValor";
             this.txtCartaoValor.Size = new System.Drawing.Size(166, 28);
-            this.txtCartaoValor.TabIndex = 9;
+            this.txtCartaoValor.TabIndex = 3;
             this.txtCartaoValor.TextChanged += new System.EventHandler(this.txtCartaoValor_TextChanged);
             this.txtCartaoValor.Enter += new System.EventHandler(this.txtCartaoValor_Enter);
             this.txtCartaoValor.Leave += new System.EventHandler(this.txtCartaoValor_Leave);
@@ -217,7 +217,7 @@
             this.groupBox5.Location = new System.Drawing.Point(15, 233);
             this.groupBox5.Name = "groupBox5";
             this.groupBox5.Size = new System.Drawing.Size(430, 54);
-            this.groupBox5.TabIndex = 10;
+            this.groupBox5.TabIndex = 6;
             this.groupBox5.TabStop = false;
             this.groupBox5.Text = "Desconto:";
             // 
@@ -227,7 +227,7 @@
             this.txtDesconto.Location = new System.Drawing.Point(99, 19);
             this.txtDesconto.Name = "txtDesconto";
             this.txtDesconto.Size = new System.Drawing.Size(325, 29);
-            this.txtDesconto.TabIndex = 11;
+            this.txtDesconto.TabIndex = 5;
             this.txtDesconto.TextChanged += new System.EventHandler(this.txtDesconto_TextChanged);
             this.txtDesconto.Enter += new System.EventHandler(this.txtDesconto_Enter);
             this.txtDesconto.Leave += new System.EventHandler(this.txtDesconto_Leave);
@@ -239,7 +239,7 @@
             this.groupBox7.Location = new System.Drawing.Point(15, 341);
             this.groupBox7.Name = "groupBox7";
             this.groupBox7.Size = new System.Drawing.Size(430, 54);
-            this.groupBox7.TabIndex = 12;
+            this.groupBox7.TabIndex = 10;
             this.groupBox7.TabStop = false;
             this.groupBox7.Text = "Troco";
             // 
@@ -250,7 +250,7 @@
             this.txtTroco.Location = new System.Drawing.Point(99, 19);
             this.txtTroco.Name = "txtTroco";
             this.txtTroco.Size = new System.Drawing.Size(325, 29);
-            this.txtTroco.TabIndex = 13;
+            this.txtTroco.TabIndex = 9;
             // 
             // btnConcluirVenda
             // 
@@ -258,7 +258,7 @@
             this.btnConcluirVenda.Location = new System.Drawing.Point(15, 452);
             this.btnConcluirVenda.Name = "btnConcluirVenda";
             this.btnConcluirVenda.Size = new System.Drawing.Size(158, 35);
-            this.btnConcluirVenda.TabIndex = 16;
+            this.btnConcluirVenda.TabIndex = 13;
             this.btnConcluirVenda.Text = "Concluir Venda";
             this.btnConcluirVenda.UseVisualStyleBackColor = true;
             this.btnConcluirVenda.Click += new System.EventHandler(this.btnConcluirVenda_Click);
@@ -269,7 +269,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(335, 451);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(110, 35);
-            this.btnCancelar.TabIndex = 17;
+            this.btnCancelar.TabIndex = 14;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -281,7 +281,7 @@
             this.groupBox6.Location = new System.Drawing.Point(15, 287);
             this.groupBox6.Name = "groupBox6";
             this.groupBox6.Size = new System.Drawing.Size(430, 54);
-            this.groupBox6.TabIndex = 12;
+            this.groupBox6.TabIndex = 8;
             this.groupBox6.TabStop = false;
             this.groupBox6.Text = "Convenio:";
             // 
@@ -291,7 +291,7 @@
             this.convenio.Location = new System.Drawing.Point(99, 16);
             this.convenio.Name = "convenio";
             this.convenio.Size = new System.Drawing.Size(325, 28);
-            this.convenio.TabIndex = 0;
+            this.convenio.TabIndex = 7;
             this.convenio.SelectedIndexChanged += new System.EventHandler(this.convenio_SelectedIndexChanged);
             this.convenio.Enter += new System.EventHandler(this.convenio_Enter);
             this.convenio.Leave += new System.EventHandler(this.convenio_Leave);
