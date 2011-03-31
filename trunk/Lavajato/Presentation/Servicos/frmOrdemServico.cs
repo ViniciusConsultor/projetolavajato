@@ -6,11 +6,12 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Windows.Forms;
+using System.IO;
+
 using HenryCorporation.Lavajato.DomainModel;
 using HenryCorporation.Lavajato.BusinessLogic;
 using HenryCorporation.Lavajato.Operacional;
 using System.Drawing.Printing;
-using System.IO;
 using HenryCorporation.Lavajato.Presentation.Properties;
 using Impressao;
 
@@ -22,8 +23,10 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             InitializeComponent();
             btnCadastraCliente.Enabled = false;
+            
             dataTable.Columns.AddRange(ServicoColunas.ServicoCarregaColunas());
             dataSetItens.Tables.Add(dataTable);
+            
             placa.Focus();
         }
 
@@ -32,6 +35,23 @@ namespace HenryCorporation.Lavajato.Presentation
             CarregaHora();
             CarregaProdutos();
             
+            placa.Focus();
+            
+        }
+
+        private void CarregaHora()
+        {
+            hora.Items.AddRange(Configuracao.CarregaHora());
+            min.Items.AddRange(Configuracao.CarregaMinuto());
+            hora.SelectedIndex = 0;
+            min.SelectedIndex = 0;
+        }
+
+        private void CarregaProdutos()
+        {
+            cmdServico.DataSource = new ProdutoBL().Categoria(EnumCategoriaProduto.Servico);
+            cmdServico.DisplayMember = "Descricao";
+            cmdServico.ValueMember = "ID";
         }
 
         private void placa_Leave(object sender, EventArgs e)
@@ -171,8 +191,23 @@ namespace HenryCorporation.Lavajato.Presentation
 
             SetUpFieldsCliente();
             ClienteInsert();
+
             MessageBox.Show(Resources.Cliente_salvo_com_sucesso, Resources.Atencao);
             btnCadastraCliente.Enabled = false;
+        }
+
+        private void SetUpFieldsCliente()
+        {
+            this._cliente.Placa = placa.Text;
+            this._cliente.Veiculo = veiculo.Text;
+            this._cliente.Telefone = telefone.Text;
+            this._cliente.Nome = nome.Text;
+            this._cliente.Cor = corVeiculo.Text;
+        }
+
+        private void ClienteInsert()
+        {
+            this._cliente = clienteBL.Insert(_cliente);
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -245,6 +280,12 @@ namespace HenryCorporation.Lavajato.Presentation
                 return (m == 0 && h == 0);
         }
 
+        private void SalvaItens(List<ServicoItem> servicoItens)
+        {
+            foreach (var item in servicoItens)
+                this.servicoBL.ItemAdd(item);
+        }
+
         private Servico ServicoSalva()
         {
             if (!ServicoExiste(this._servico))
@@ -257,15 +298,17 @@ namespace HenryCorporation.Lavajato.Presentation
             }
         }
 
-        private void SalvaItens(List<ServicoItem> servicoItens)
-        {
-            foreach (var item in servicoItens)
-                this.servicoBL.ItemAdd(item);
-        }
-        
         private bool ServicoExiste(Servico servico)
         {
             return servico.ID > 0;
+        }
+
+        private decimal SomaTotal()
+        {
+            var qtdeTotal = dataSetItens.Tables[0].Rows.Cast<DataRow>().Sum(
+                row => Configuracao.ConverteParaDecimal(row["Total"].ToString()));
+            this._servico.Total = qtdeTotal;
+            return qtdeTotal;
         }
 
         private Servico NovoServico()
@@ -327,41 +370,11 @@ namespace HenryCorporation.Lavajato.Presentation
 
             return servicoItems;
         }
-    
-        private decimal SomaTotal()
-        {
-            var qtdeTotal = dataSetItens.Tables[0].Rows.Cast<DataRow>().Sum(
-                row => Configuracao.ConverteParaDecimal(row["Total"].ToString()));
-            this._servico.Total = qtdeTotal;
-            return  qtdeTotal;
-        }
 
         private void btnFechar_Click(object sender, EventArgs e)
         {
             LimpaCampos();
 
-        }
-
-        private void ClienteInsert()
-        {
-            this._cliente = clienteBL.Insert(_cliente);
-        }
-
-        private void SetUpFieldsCliente()
-        {
-            this._cliente.Placa = placa.Text;
-            this._cliente.Veiculo = veiculo.Text;
-            this._cliente.Telefone = telefone.Text;
-            this._cliente.Nome = nome.Text;
-            this._cliente.Cor = corVeiculo.Text;
-        }
-
-        private void CarregaHora()
-        {
-            hora.Items.AddRange(Configuracao.CarregaHora());
-            min.Items.AddRange(Configuracao.CarregaMinuto());
-            hora.SelectedIndex = 0;
-            min.SelectedIndex = 0;
         }
 
         private void CarregaItens(Servico servicoParaCarregarItens)
@@ -451,14 +464,6 @@ namespace HenryCorporation.Lavajato.Presentation
                 quantidadeProduto.SelectionStart = quantidadeProduto.Text.Length;
             }
         }
-
-        private void CarregaProdutos()
-        {
-            cmdServico.DataSource = new ProdutoBL().Categoria(EnumCategoriaProduto.Servico);
-            cmdServico.DisplayMember = "Descricao";
-            cmdServico.ValueMember = "ID";
-        }
-
 
         private void CarregaCliente(Cliente cliente)
         {

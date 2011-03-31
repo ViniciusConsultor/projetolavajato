@@ -101,7 +101,7 @@ namespace HenryCorporation.Lavajato.Presentation
             dataGridViewCellStyle8.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
             this.grdServico.RowHeadersDefaultCellStyle = dataGridViewCellStyle8;
             this.grdServico.Size = new System.Drawing.Size(796, 332);
-            this.grdServico.TabIndex = 69;
+            this.grdServico.TabIndex = 23;
             this.grdServico.MouseClick += new System.Windows.Forms.MouseEventHandler(this.grdServico_MouseClick);
             // 
             // groupBox1
@@ -130,7 +130,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.groupBox1.Location = new System.Drawing.Point(2, 2);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(797, 194);
-            this.groupBox1.TabIndex = 70;
+            this.groupBox1.TabIndex = 23;
             this.groupBox1.TabStop = false;
             // 
             // quantidadeProduto
@@ -139,7 +139,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.quantidadeProduto.Location = new System.Drawing.Point(539, 153);
             this.quantidadeProduto.Name = "quantidadeProduto";
             this.quantidadeProduto.Size = new System.Drawing.Size(91, 31);
-            this.quantidadeProduto.TabIndex = 11;
+            this.quantidadeProduto.TabIndex = 16;
             this.quantidadeProduto.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             this.quantidadeProduto.Enter += new System.EventHandler(this.textBox1_Enter);
             this.quantidadeProduto.Leave += new System.EventHandler(this.textBox1_Leave);
@@ -151,7 +151,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.label2.Location = new System.Drawing.Point(467, 151);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(72, 29);
-            this.label2.TabIndex = 97;
+            this.label2.TabIndex = 15;
             this.label2.Text = "Qtde:";
             // 
             // telefone
@@ -161,7 +161,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.telefone.Mask = "(99) 0000-0000";
             this.telefone.Name = "telefone";
             this.telefone.Size = new System.Drawing.Size(258, 31);
-            this.telefone.TabIndex = 5;
+            this.telefone.TabIndex = 9;
             this.telefone.Enter += new System.EventHandler(this.telefone_Enter);
             this.telefone.Leave += new System.EventHandler(this.telefone_Leave);
             // 
@@ -172,7 +172,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.placa.Mask = "AAA-0000";
             this.placa.Name = "placa";
             this.placa.Size = new System.Drawing.Size(258, 31);
-            this.placa.TabIndex = 1;
+            this.placa.TabIndex = 0;
             this.placa.Enter += new System.EventHandler(this.placa_Enter_1);
             this.placa.KeyDown += new System.Windows.Forms.KeyEventHandler(this.placa_KeyDown);
             this.placa.Leave += new System.EventHandler(this.placa_Leave);
@@ -184,7 +184,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.min.Location = new System.Drawing.Point(638, 113);
             this.min.Name = "min";
             this.min.Size = new System.Drawing.Size(150, 33);
-            this.min.TabIndex = 8;
+            this.min.TabIndex = 19;
             this.min.Enter += new System.EventHandler(this.min_Enter);
             this.min.Leave += new System.EventHandler(this.min_Leave);
             // 
@@ -196,7 +196,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.hora.Location = new System.Drawing.Point(472, 113);
             this.hora.Name = "hora";
             this.hora.Size = new System.Drawing.Size(166, 33);
-            this.hora.TabIndex = 7;
+            this.hora.TabIndex = 18;
             this.hora.Enter += new System.EventHandler(this.hora_Enter);
             this.hora.Leave += new System.EventHandler(this.hora_Leave);
             // 
@@ -206,7 +206,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.adicionarServico.Location = new System.Drawing.Point(630, 149);
             this.adicionarServico.Name = "adicionarServico";
             this.adicionarServico.Size = new System.Drawing.Size(150, 37);
-            this.adicionarServico.TabIndex = 12;
+            this.adicionarServico.TabIndex = 17;
             this.adicionarServico.Text = "Adicionar";
             this.adicionarServico.UseVisualStyleBackColor = true;
             this.adicionarServico.Click += new System.EventHandler(this.adicionarServico_Click);
@@ -217,7 +217,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.btnCadastraCliente.Location = new System.Drawing.Point(103, 116);
             this.btnCadastraCliente.Name = "btnCadastraCliente";
             this.btnCadastraCliente.Size = new System.Drawing.Size(258, 34);
-            this.btnCadastraCliente.TabIndex = 9;
+            this.btnCadastraCliente.TabIndex = 12;
             this.btnCadastraCliente.Text = "Cadastrar Cliente";
             this.btnCadastraCliente.UseVisualStyleBackColor = true;
             this.btnCadastraCliente.Click += new System.EventHandler(this.btnCadastraCliente_Click);
@@ -230,7 +230,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.cmdServico.Location = new System.Drawing.Point(101, 151);
             this.cmdServico.Name = "cmdServico";
             this.cmdServico.Size = new System.Drawing.Size(360, 33);
-            this.cmdServico.TabIndex = 10;
+            this.cmdServico.TabIndex = 14;
             this.cmdServico.Enter += new System.EventHandler(this.cmdServico_Enter);
             this.cmdServico.Leave += new System.EventHandler(this.cmdServico_Leave);
             // 
@@ -241,7 +241,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.label11.Location = new System.Drawing.Point(3, 149);
             this.label11.Name = "label11";
             this.label11.Size = new System.Drawing.Size(100, 29);
-            this.label11.TabIndex = 89;
+            this.label11.TabIndex = 13;
             this.label11.Text = "Serviço:";
             // 
             // label10
@@ -251,7 +251,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.label10.Location = new System.Drawing.Point(388, 117);
             this.label10.Name = "label10";
             this.label10.Size = new System.Drawing.Size(81, 29);
-            this.label10.TabIndex = 88;
+            this.label10.TabIndex = 16;
             this.label10.Text = "Saida:";
             // 
             // dataEntrada
@@ -263,7 +263,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.dataEntrada.Location = new System.Drawing.Point(472, 80);
             this.dataEntrada.Name = "dataEntrada";
             this.dataEntrada.Size = new System.Drawing.Size(317, 31);
-            this.dataEntrada.TabIndex = 6;
+            this.dataEntrada.TabIndex = 11;
             this.dataEntrada.Enter += new System.EventHandler(this.dataEntrada_Enter);
             this.dataEntrada.Leave += new System.EventHandler(this.dataEntrada_Leave);
             // 
@@ -271,10 +271,10 @@ namespace HenryCorporation.Lavajato.Presentation
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(367, 83);
+            this.label1.Location = new System.Drawing.Point(367, 80);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(102, 29);
-            this.label1.TabIndex = 86;
+            this.label1.TabIndex = 10;
             this.label1.Text = "Entrada:";
             // 
             // corVeiculo
@@ -283,7 +283,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.corVeiculo.Location = new System.Drawing.Point(472, 49);
             this.corVeiculo.Name = "corVeiculo";
             this.corVeiculo.Size = new System.Drawing.Size(317, 31);
-            this.corVeiculo.TabIndex = 4;
+            this.corVeiculo.TabIndex = 7;
             this.corVeiculo.Enter += new System.EventHandler(this.corVeiculo_Enter);
             this.corVeiculo.Leave += new System.EventHandler(this.corVeiculo_Leave);
             // 
@@ -293,7 +293,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.nome.Location = new System.Drawing.Point(103, 52);
             this.nome.Name = "nome";
             this.nome.Size = new System.Drawing.Size(258, 31);
-            this.nome.TabIndex = 3;
+            this.nome.TabIndex = 5;
             this.nome.Enter += new System.EventHandler(this.nome_Enter);
             this.nome.Leave += new System.EventHandler(this.nome_Leave);
             // 
@@ -304,7 +304,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.label9.Location = new System.Drawing.Point(411, 49);
             this.label9.Name = "label9";
             this.label9.Size = new System.Drawing.Size(58, 29);
-            this.label9.TabIndex = 82;
+            this.label9.TabIndex = 6;
             this.label9.Text = "Cor:";
             // 
             // label8
@@ -314,7 +314,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.label8.Location = new System.Drawing.Point(35, 84);
             this.label8.Name = "label8";
             this.label8.Size = new System.Drawing.Size(61, 29);
-            this.label8.TabIndex = 81;
+            this.label8.TabIndex = 8;
             this.label8.Text = "Tel.:";
             // 
             // label7
@@ -324,7 +324,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.label7.Location = new System.Drawing.Point(11, 52);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(85, 29);
-            this.label7.TabIndex = 80;
+            this.label7.TabIndex = 4;
             this.label7.Text = "Nome:";
             // 
             // veiculo
@@ -333,7 +333,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.veiculo.Location = new System.Drawing.Point(472, 18);
             this.veiculo.Name = "veiculo";
             this.veiculo.Size = new System.Drawing.Size(316, 31);
-            this.veiculo.TabIndex = 2;
+            this.veiculo.TabIndex = 3;
             this.veiculo.Enter += new System.EventHandler(this.veiculo_Enter);
             this.veiculo.Leave += new System.EventHandler(this.veiculo_Leave);
             // 
@@ -344,7 +344,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.lblVeiculo.Location = new System.Drawing.Point(370, 21);
             this.lblVeiculo.Name = "lblVeiculo";
             this.lblVeiculo.Size = new System.Drawing.Size(99, 29);
-            this.lblVeiculo.TabIndex = 78;
+            this.lblVeiculo.TabIndex = 2;
             this.lblVeiculo.Text = "Veiculo:";
             // 
             // lblPlaca
@@ -354,7 +354,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.lblPlaca.Location = new System.Drawing.Point(17, 20);
             this.lblPlaca.Name = "lblPlaca";
             this.lblPlaca.Size = new System.Drawing.Size(79, 29);
-            this.lblPlaca.TabIndex = 76;
+            this.lblPlaca.TabIndex = 1;
             this.lblPlaca.Text = "Placa:";
             // 
             // btnGerarOrdemServico
@@ -363,7 +363,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.btnGerarOrdemServico.Location = new System.Drawing.Point(690, 535);
             this.btnGerarOrdemServico.Name = "btnGerarOrdemServico";
             this.btnGerarOrdemServico.Size = new System.Drawing.Size(101, 40);
-            this.btnGerarOrdemServico.TabIndex = 15;
+            this.btnGerarOrdemServico.TabIndex = 20;
             this.btnGerarOrdemServico.Text = "Concluir";
             this.btnGerarOrdemServico.UseVisualStyleBackColor = true;
             this.btnGerarOrdemServico.Click += new System.EventHandler(this.btnGerarOrdemServico_Click);
@@ -374,7 +374,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.btnFechar.Location = new System.Drawing.Point(105, 535);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(151, 40);
-            this.btnFechar.TabIndex = 14;
+            this.btnFechar.TabIndex = 21;
             this.btnFechar.Text = "Limpar Campos";
             this.btnFechar.UseVisualStyleBackColor = true;
             this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
@@ -385,7 +385,7 @@ namespace HenryCorporation.Lavajato.Presentation
             this.btnExcluir.Location = new System.Drawing.Point(4, 535);
             this.btnExcluir.Name = "btnExcluir";
             this.btnExcluir.Size = new System.Drawing.Size(101, 40);
-            this.btnExcluir.TabIndex = 13;
+            this.btnExcluir.TabIndex = 21;
             this.btnExcluir.Text = "Excluir";
             this.btnExcluir.UseVisualStyleBackColor = true;
             this.btnExcluir.Click += new System.EventHandler(this.btnExcluir_Click);
