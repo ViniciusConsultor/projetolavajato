@@ -44,6 +44,7 @@ namespace LavajatoMobile
 
             //Procura serviço aberto se existir o cliente com ordem aberta
             _servico = CarregaServico(_cliente);
+            _servico.Cliente = _cliente;
 
             //se encontrar o cliente vai carregar as informaçõe do mesmo caso contrario, será perguntado
             //se deseja cadastrar o cliente.
@@ -114,6 +115,7 @@ namespace LavajatoMobile
 
                     //Seta a hora de saida caso o id seja igual a zero
                     horaSaida = ServicoBL.SetHoraMinutoDeSaidaDoCarro(h, m);
+                    _servico.Saida = horaSaida;
                 }
                 else
                 {
@@ -121,9 +123,13 @@ namespace LavajatoMobile
                     horaSaida = _servico.Saida;
                 }
 
-                frmServico frmServico = new frmServico(_cliente, horaSaida);
+                frmServico frmServico = new frmServico(_servico);
                 frmServico.ShowDialog();
                 LimpaCampos();
+
+                //frmServico frmServico = new frmServico(_cliente, horaSaida);
+                //frmServico.ShowDialog();
+                //LimpaCampos();
                 
                 hora.SelectedItem = 0;
                 min.SelectedItem = 0;

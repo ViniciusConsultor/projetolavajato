@@ -205,6 +205,20 @@ namespace LavajatoMobile
                 return new Servico();
         }
 
+        /// <summary>
+        /// Caso caso já esteja finalizado será retornado um novo serviço! Caso contrario
+        /// retorna o serviço atual
+        /// </summary>
+        /// <param name="Servico">Servico</param>
+        /// <returns>Retorna Serviço</returns>
+        public static Servico ServicoJaFinalizado(Servico servico)
+        {
+            if (servico.Finalizado == 0)
+                return servico;
+            else
+                return new Servico();
+        }
+
         public static void ImprimeNumeroOrdemServico(Servico _servico)
         {
             if (_servico.Finalizado == 0 && _servico.ID > 0)

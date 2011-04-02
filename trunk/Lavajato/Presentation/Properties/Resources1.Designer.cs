@@ -178,6 +178,15 @@ namespace HenryCorporation.Lavajato.Presentation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to dsFechamentoDeCaixaPorData.
+        /// </summary>
+        internal static string dsFechamentoDeCaixaPorData {
+            get {
+                return ResourceManager.GetString("dsFechamentoDeCaixaPorData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to relProdutoAbaixoEstoque_DataTable1.
         /// </summary>
         internal static string dsProdutoAbaixoEstoque {
@@ -475,6 +484,15 @@ namespace HenryCorporation.Lavajato.Presentation.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to rptFechamentoDeCaixaPorData.rdlc.
+        /// </summary>
+        internal static string rdlFechamentoDeCaixaPorData {
+            get {
+                return ResourceManager.GetString("rdlFechamentoDeCaixaPorData", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to rptProdutosEstoque.rdlc.
         /// </summary>
         internal static string rdlProdutoEstoque {
@@ -525,6 +543,15 @@ namespace HenryCorporation.Lavajato.Presentation.Properties {
         internal static string relFechamentoDeCaixa {
             get {
                 return ResourceManager.GetString("relFechamentoDeCaixa", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to \\Relatorios\\Caixa\\PorData\\.
+        /// </summary>
+        internal static string relFechamentoDeCaixaPorData {
+            get {
+                return ResourceManager.GetString("relFechamentoDeCaixaPorData", resourceCulture);
             }
         }
         

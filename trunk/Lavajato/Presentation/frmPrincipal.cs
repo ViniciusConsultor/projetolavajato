@@ -289,5 +289,11 @@ namespace Presentation
             frmListaProdutosTranferencia frmTransProdutos = new frmListaProdutosTranferencia();
             frmTransProdutos.ShowDialog();
         }
+
+        private void fechamentoDeCaixaPorDataToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmFechamentoCaixaPorData porData = new frmFechamentoCaixaPorData();
+            porData.ShowDialog();
+        }
     }
 }

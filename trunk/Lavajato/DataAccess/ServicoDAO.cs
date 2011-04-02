@@ -265,7 +265,7 @@ namespace HenryCorporation.Lavajato.DataAccess
         private static string ConvertDataFormatoPTBR(DateTime date)
         {
             string mes = date.Month > 1 ? "0" + date.Month.ToString() : date.Month.ToString();
-            string dia = date.Day == 1 ? "0" + date.Day.ToString() : date.Day.ToString();
+            string dia = date.Day.ToString().Length == 1 ? "0" + date.Day.ToString() : date.Day.ToString();
             string ano = date.Year.ToString();
 
             return dia + "/" + mes + "/" + ano;

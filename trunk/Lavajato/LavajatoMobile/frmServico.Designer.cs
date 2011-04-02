@@ -39,6 +39,7 @@
             this.label1 = new System.Windows.Forms.Label();
             this.qtde = new System.Windows.Forms.TextBox();
             this.btnAvarias = new System.Windows.Forms.Button();
+            this.btnFechar = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnConcluir
@@ -124,12 +125,23 @@
             this.btnAvarias.Text = "Avarias";
             this.btnAvarias.Click += new System.EventHandler(this.btnAvarias_Click);
             // 
+            // btnFechar
+            // 
+            this.btnFechar.BackColor = System.Drawing.Color.Red;
+            this.btnFechar.Location = new System.Drawing.Point(171, 209);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(67, 21);
+            this.btnFechar.TabIndex = 36;
+            this.btnFechar.Text = "Fechar";
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
+            // 
             // frmServico
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(96F, 96F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Dpi;
             this.AutoScroll = true;
             this.ClientSize = new System.Drawing.Size(240, 268);
+            this.Controls.Add(this.btnFechar);
             this.Controls.Add(this.btnAvarias);
             this.Controls.Add(this.qtde);
             this.Controls.Add(this.label1);
@@ -143,7 +155,6 @@
             this.Menu = this.mainMenu1;
             this.Name = "frmServico";
             this.Text = "Servico";
-            //this.Load += new System.EventHandler(this.frmServico_Load);
             this.ResumeLayout(false);
 
         }
@@ -159,5 +170,6 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.TextBox qtde;
         private System.Windows.Forms.Button btnAvarias;
+        private System.Windows.Forms.Button btnFechar;
     }
 }
