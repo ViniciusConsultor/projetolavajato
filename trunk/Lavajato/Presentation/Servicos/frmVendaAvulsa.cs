@@ -19,6 +19,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private ServicoBL _servicoBL = new ServicoBL();
         private Servico _servico = new Servico();
         private ProdutoBL _produtoBL = new ProdutoBL();
+
         private string enter = "\r\n";
         private int _indexRow = 0;
 
@@ -166,7 +167,7 @@ namespace HenryCorporation.Lavajato.Presentation
             _servico.Desconto = 0;
             _servico.Entrada = DateTime.Now;
             _servico.Saida = DateTime.Now;
-            _servico.OrdemServico = 000;
+            _servico.OrdemServico = _servicoBL.OrdemServicoMax();
             _servico.FormaPagamento.ID = 1;
 
             _servico.Cancelado = 0;
@@ -225,7 +226,7 @@ namespace HenryCorporation.Lavajato.Presentation
             }
 
             decimal totalServicoTemp = ValorTotalCompra();
-            decimal descontoTemp = ServicoBL.ConverteParaDecimal(txtDesconto.Text);
+            decimal descontoTemp = Dinheiro.ParseToDecimal(txtDesconto.Text);
             if (descontoTemp == 0)
             {
                 txtTotal.Text = totalServicoTemp.ToString();
@@ -252,7 +253,7 @@ namespace HenryCorporation.Lavajato.Presentation
             {
                 if (!string.IsNullOrEmpty(txtDesconto.Text.Trim()))
                 {
-                    txtTroco.Text = (ServicoBL.ConverteParaDecimal(txtTroco.Text) - ServicoBL.ConverteParaDecimal(txtDesconto.Text)).ToString();
+                    txtTroco.Text = (Dinheiro.ParseToDecimal(txtTroco.Text) - Dinheiro.ParseToDecimal(txtDesconto.Text)).ToString();
                     txtValor.Text = txtValor.Text;
                     txtTotal.Text = decimal.Subtract(totalServicoTemp, descontoTemp).ToString();
                 }
@@ -270,7 +271,7 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             if (txtTotal.Text.Contains(enter))
             {
-                txtTotal.Text = _servicoBL.RetiraCifraoDaMoedaReal(ValorTotalCompra());
+                txtTotal.Text = Dinheiro.WithdrawDollar(ValorTotalCompra()).ToString();
                 txtValor.Focus();
             }
             else

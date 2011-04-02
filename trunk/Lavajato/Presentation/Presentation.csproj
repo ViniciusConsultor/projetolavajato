@@ -118,6 +118,12 @@
     <Compile Include="Logins\frmCancelaOrdemServico.Designer.cs">
       <DependentUpon>frmCancelaOrdemServico.cs</DependentUpon>
     </Compile>
+    <Compile Include="Logins\frmExcluirServico.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Logins\frmExcluirServico.Designer.cs">
+      <DependentUpon>frmExcluirServico.cs</DependentUpon>
+    </Compile>
     <Compile Include="Logins\frmLoginBase.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -135,6 +141,18 @@
     </Compile>
     <Compile Include="Logins\frmLoginRetirada.Designer.cs">
       <DependentUpon>frmLoginRetirada.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produto\frmListaProdutosTranferencia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produto\frmListaProdutosTranferencia.Designer.cs">
+      <DependentUpon>frmListaProdutosTranferencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Produto\frmTransfereProdutos.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Produto\frmTransfereProdutos.Designer.cs">
+      <DependentUpon>frmTransfereProdutos.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\Resources1.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -310,6 +328,9 @@
     <EmbeddedResource Include="Logins\frmCancelaOrdemServico.resx">
       <DependentUpon>frmCancelaOrdemServico.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Logins\frmExcluirServico.resx">
+      <DependentUpon>frmExcluirServico.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Logins\frmLoginBase.resx">
       <DependentUpon>frmLoginBase.cs</DependentUpon>
     </EmbeddedResource>
@@ -326,6 +347,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Logins\frmLoginRetirada.resx">
       <DependentUpon>frmLoginRetirada.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produto\frmListaProdutosTranferencia.resx">
+      <DependentUpon>frmListaProdutosTranferencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Produto\frmTransfereProdutos.resx">
+      <DependentUpon>frmTransfereProdutos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Relatorios\Caixa\PorOrdemServico\frmServicoPorOS.resx">
       <DependentUpon>frmServicoPorOS.cs</DependentUpon>

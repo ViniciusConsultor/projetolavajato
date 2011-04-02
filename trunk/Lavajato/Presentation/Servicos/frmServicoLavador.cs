@@ -16,7 +16,7 @@ namespace HenryCorporation.Lavajato.Presentation
     public partial class frmServicoLavador : Form
     {
         private Servico _servico = new Servico();
-        private Produto _produto = new Produto();
+        private HenryCorporation.Lavajato.DomainModel.Produto _produto = new Produto();
         private ServicoBL _servicoBL = new ServicoBL();
         private int _indexRowDelete;
 
@@ -50,7 +50,6 @@ namespace HenryCorporation.Lavajato.Presentation
 
                 _servicoBL.FuncionarioNoServicoAdd(_servico, produto);
                 CarregaServicoFuncionario();
-                MessageBox.Show("Salvo com sucesso!", Resources.Atencao);
             }
             else
             {
@@ -82,16 +81,17 @@ namespace HenryCorporation.Lavajato.Presentation
             if (dialogResult == DialogResult.Yes)
             {
                 _servicoBL.ServicoFuncionarioDelete(_indexRowDelete);
-                MessageBox.Show("Item excluido com sucesso?", Resources.Atencao);
                 CarregaServicoFuncionario();
             }
         }
 
         private void dataGridView1_MouseClick(object sender, MouseEventArgs e)
         {
-            int index = 0;
-            if (int.TryParse(grdServicoFuncionario.Rows[grdServicoFuncionario.CurrentRow.Index].Cells[0].Value.ToString(), out index))
-                _indexRowDelete = index;
+            if (grdServicoFuncionario.Rows.Count > 0)
+            {
+                var index = grdServicoFuncionario.Rows[Validador.RetornaValorSelecionadoNoGrid(grdServicoFuncionario.CurrentRow)].Cells[0].Value;
+                _indexRowDelete = int.Parse((index == null || index.ToString().Length == 0 ? "0" : index.ToString()));
+            }
         }
 
         public void CarregaServicoFuncionario()
@@ -118,6 +118,11 @@ namespace HenryCorporation.Lavajato.Presentation
             cmbLavador.DataSource = new UsuarioBL().GetUsuarioTipoLavador();
             cmbLavador.DisplayMember = "Nome";
             cmbLavador.ValueMember = "ID";
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
     }
 }

@@ -77,6 +77,9 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void grdCredor_DoubleClick(object sender, EventArgs e)
         {
+            if (grdCredor.CurrentRow == null)
+                return;
+
             this.credor.ID = int.Parse(grdCredor.Rows[grdCredor.CurrentRow.Index].Cells[0].Value.ToString());
             this.credor = this.credorBL.ByID(this.credor);
             SetUpCampos();

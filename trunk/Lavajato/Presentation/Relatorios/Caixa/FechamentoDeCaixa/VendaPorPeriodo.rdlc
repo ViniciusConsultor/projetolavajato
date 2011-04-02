@@ -1103,54 +1103,13 @@
     <Height>12.1045cm</Height>
     <Style />
   </Body>
-  <Width>13.02195cm</Width>
+  <Width>5.81875cm</Width>
   <Page>
     <PageHeader>
-      <Height>1.6cm</Height>
+      <Height>2.5525cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
-        <Textbox Name="textbox2">
-          <CanGrow>true</CanGrow>
-          <KeepTogether>true</KeepTogether>
-          <Paragraphs>
-            <Paragraph>
-              <TextRuns>
-                <TextRun>
-                  <Value>="página " + Globals!PageNumber.ToString + " de " + Globals!TotalPages.ToString</Value>
-                  <Style>
-                    <FontFamily>Verdana</FontFamily>
-                    <FontSize>8pt</FontSize>
-                  </Style>
-                </TextRun>
-              </TextRuns>
-              <Style>
-                <TextAlign>Right</TextAlign>
-              </Style>
-            </Paragraph>
-          </Paragraphs>
-          <Top>0.75cm</Top>
-          <Left>2.1cm</Left>
-          <Height>0.63492cm</Height>
-          <Width>4.88875cm</Width>
-          <Style>
-            <PaddingLeft>2pt</PaddingLeft>
-            <PaddingRight>2pt</PaddingRight>
-            <PaddingTop>2pt</PaddingTop>
-            <PaddingBottom>2pt</PaddingBottom>
-          </Style>
-        </Textbox>
-        <Line Name="line1">
-          <Top>1.5cm</Top>
-          <Height>0cm</Height>
-          <Width>6.98875cm</Width>
-          <ZIndex>1</ZIndex>
-          <Style>
-            <Border>
-              <Style>Solid</Style>
-            </Border>
-          </Style>
-        </Line>
         <Textbox Name="textbox1">
           <CanGrow>true</CanGrow>
           <KeepTogether>true</KeepTogether>
@@ -1161,7 +1120,7 @@
                   <Value>Fechamento de Caixa</Value>
                   <Style>
                     <FontFamily>Verdana</FontFamily>
-                    <FontSize>14pt</FontSize>
+                    <FontSize>11pt</FontSize>
                     <FontWeight>Bold</FontWeight>
                   </Style>
                 </TextRun>
@@ -1173,9 +1132,8 @@
           </Paragraphs>
           <rd:DefaultName>textbox1</rd:DefaultName>
           <Left>0.1cm</Left>
-          <Height>0.75cm</Height>
-          <Width>6.88875cm</Width>
-          <ZIndex>2</ZIndex>
+          <Height>2.37611cm</Height>
+          <Width>5.49661cm</Width>
           <Style>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>
@@ -1187,7 +1145,7 @@
       <Style />
     </PageHeader>
     <PageFooter>
-      <Height>1.39638cm</Height>
+      <Height>1.69325cm</Height>
       <PrintOnFirstPage>true</PrintOnFirstPage>
       <PrintOnLastPage>true</PrintOnLastPage>
       <ReportItems>
@@ -1210,9 +1168,9 @@
               </Style>
             </Paragraph>
           </Paragraphs>
-          <Left>0.5cm</Left>
-          <Height>0.63492cm</Height>
-          <Width>7.7cm</Width>
+          <Left>0.1635cm</Left>
+          <Height>1.3493cm</Height>
+          <Width>5.46839cm</Width>
           <Style>
             <PaddingLeft>2pt</PaddingLeft>
             <PaddingRight>2pt</PaddingRight>

@@ -10,12 +10,14 @@ namespace HenryCorporation.Lavajato.DataAccess
     public class ProdutoDAO : DataAccessBase
     {
         private const string sql = " SELECT Produto.ProdutoID, Estoque.EstoqueID, CategoriaProduto.CategoriaProdutoID, CategoriaProduto.Descricao, Produto.Descricao, " +
-                                   " Produto.PrecoCompra, Produto.ValorUnitario " +
+                                   " Produto.PrecoCompra, Produto.ValorUnitario, Produto.ExpositorID " +
                                    " FROM Produto " +
                                    " INNER JOIN CategoriaProduto ON CategoriaProduto.CategoriaProdutoID = Produto.CategoriaProdutoID " +
-                                   " INNER JOIN Estoque on Estoque.EstoqueID = Produto.Estoque ";
+                                   " INNER JOIN Estoque on Estoque.EstoqueID = Produto.Estoque "+
+                                   " LEFT JOIN Expositor on Produto.ExpositorID = Expositor.ExpositorID ";
 
         private EstoqueDAO estoqueDAO = new EstoqueDAO();
+        private ExpositorDAO _expositorDAO = new ExpositorDAO();
 
         public ProdutoDAO()
         {
@@ -26,17 +28,29 @@ namespace HenryCorporation.Lavajato.DataAccess
         {
             string query = " INSERT INTO [Produto] " +
                 " ([Descricao],[ValorUnitario] " +
-                " ,[CategoriaProdutoID],[PrecoCompra],[Delete], [Estoque]) " +
+                " ,[CategoriaProdutoID],[PrecoCompra],[Delete], [Estoque], [ExpositorID]) " +
                 " VALUES " +
                 " ('" + produto.Descricao + "' " +
                 " ,'" + produto.ValorUnitario.ToString().Replace(",", ".") + "' " +
                 " ,'" + produto.CategoriaProduto.ID + "' " +
                 " ,'" + produto.PrecoCompra.ToString().Replace(",", ".") + "' " +
                 " ,0 "+
-                " ,'"+produto.Estoque.ID+"')";
+                " ,'"+produto.Estoque.ID+"' "+
+                " ,'"+produto.Expositor.ID+"' )";
 
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run();
+        }
+
+        private Produto Max()
+        {
+            string query = " SELECT MAX(produtoid) FROM produto ";
+            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            DataSet dataSet = dataBaseHelper.Run(this.ConnectionString);
+            
+            Produto prod = new Produto();
+            prod.ID = int.Parse(dataSet.Tables[0].Rows[0][0].ToString());
+            return ByID(prod);
         }
 
         public void Update(Produto produto)
@@ -115,6 +129,21 @@ namespace HenryCorporation.Lavajato.DataAccess
             return SetUpFields(dataBaseHelper.Run(this.ConnectionString));
         }
 
+        /// <summary>
+        /// Retorna produtos por categoria
+        /// </summary>
+        /// <param name="produto">Produto</param>
+        /// <returns>Listagem de Produtos</returns>
+        public List<Produto> ByCategoria(Produto produto)
+        {
+            string query = sql + " Where Produto.CategoriaProdutoID = 1 and  Produto.[Delete] = 0 " +
+            " And Produto.Descricao like('%" + produto.Descricao.Trim() + "%') ";
+
+            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            return SetUpFields(dataBaseHelper.Run(this.ConnectionString));
+        }
+
+
         private Produto SetUpField(DataSet dataSet)
         {
             DataTableReader reader = dataSet.Tables[0].CreateDataReader();
@@ -128,6 +157,7 @@ namespace HenryCorporation.Lavajato.DataAccess
                 produto.Descricao = reader.IsDBNull(4) ? "" : reader.GetString(4);
                 produto.PrecoCompra = reader.IsDBNull(5) ? 0 : reader.GetDecimal(5);
                 produto.ValorUnitario = reader.IsDBNull(6) ? 0 : reader.GetDecimal(6);
+                produto.Expositor = _expositorDAO.ByID(reader.IsDBNull(7) ? 0 : reader.GetInt32(7));
                 return produto;
             }
             return produto;
@@ -147,6 +177,7 @@ namespace HenryCorporation.Lavajato.DataAccess
                 produto.Descricao = reader.IsDBNull(4) ? "" : reader.GetString(4);
                 produto.PrecoCompra = reader.IsDBNull(5) ? 0 : reader.GetDecimal(5);
                 produto.ValorUnitario = reader.IsDBNull(6) ? 0 : reader.GetDecimal(6);
+                produto.Expositor = _expositorDAO.ByID(reader.IsDBNull(7) ? 0 : reader.GetInt32(7));
                 produtos.Add(produto);
             }
             return produtos;

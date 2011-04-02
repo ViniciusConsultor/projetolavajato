@@ -58,6 +58,10 @@ namespace HenryCorporation.Lavajato.BusinessLogic
         public static decimal ParseToDecimal(string str)
         {
             str = WithdrawDollar( str.Trim());
+            decimal result;
+            if (!decimal.TryParse(str, out result))
+                return 0;
+            
             return Convert.ToDecimal(str.Length > 0 ? str : "0");
         }
 

@@ -49,7 +49,7 @@
             this.groupBox1.Location = new System.Drawing.Point(2, 3);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(394, 127);
-            this.groupBox1.TabIndex = 0;
+            this.groupBox1.TabIndex = 6;
             this.groupBox1.TabStop = false;
             // 
             // txtPassword
@@ -59,6 +59,8 @@
             this.txtPassword.Name = "txtPassword";
             this.txtPassword.Size = new System.Drawing.Size(269, 29);
             this.txtPassword.TabIndex = 1;
+            this.txtPassword.Enter += new System.EventHandler(this.txtPassword_Enter);
+            this.txtPassword.Leave += new System.EventHandler(this.txtPassword_Leave);
             // 
             // label2
             // 
@@ -67,7 +69,7 @@
             this.label2.Location = new System.Drawing.Point(6, 45);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(112, 25);
-            this.label2.TabIndex = 6;
+            this.label2.TabIndex = 5;
             this.label2.Text = "Password:";
             // 
             // btnCancelar
@@ -76,7 +78,7 @@
             this.btnCancelar.Location = new System.Drawing.Point(256, 78);
             this.btnCancelar.Name = "btnCancelar";
             this.btnCancelar.Size = new System.Drawing.Size(124, 40);
-            this.btnCancelar.TabIndex = 4;
+            this.btnCancelar.TabIndex = 3;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
             this.btnCancelar.Click += new System.EventHandler(this.btnCancelar_Click);
@@ -87,7 +89,7 @@
             this.btnLogin.Location = new System.Drawing.Point(118, 78);
             this.btnLogin.Name = "btnLogin";
             this.btnLogin.Size = new System.Drawing.Size(124, 40);
-            this.btnLogin.TabIndex = 3;
+            this.btnLogin.TabIndex = 2;
             this.btnLogin.Text = "Registrar";
             this.btnLogin.UseVisualStyleBackColor = true;
             this.btnLogin.Click += new System.EventHandler(this.btnLogin_Click);
@@ -98,7 +100,9 @@
             this.txtLogin.Location = new System.Drawing.Point(118, 14);
             this.txtLogin.Name = "txtLogin";
             this.txtLogin.Size = new System.Drawing.Size(269, 29);
-            this.txtLogin.TabIndex = 1;
+            this.txtLogin.TabIndex = 0;
+            this.txtLogin.Enter += new System.EventHandler(this.txtLogin_Enter);
+            this.txtLogin.Leave += new System.EventHandler(this.txtLogin_Leave);
             // 
             // label1
             // 
@@ -107,7 +111,7 @@
             this.label1.Location = new System.Drawing.Point(47, 16);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(71, 25);
-            this.label1.TabIndex = 0;
+            this.label1.TabIndex = 4;
             this.label1.Text = "Login:";
             // 
             // frmLoginBase

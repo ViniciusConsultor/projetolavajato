@@ -14,5 +14,6 @@ namespace HenryCorporation.Lavajato.Interface
         DataTable ByName(Produto produto);
         DataTable TipoServico(int TipoProduto);
         DataTable GetProdutos(List<Produto> produtos);
+        List<Produto> ByCategoria(Produto produto);
     }
 }

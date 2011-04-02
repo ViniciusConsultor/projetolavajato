@@ -43,34 +43,43 @@ namespace HenryCorporation.Lavajato.Presentation
             InitializeComponent();
         }
 
-        private void chkCancelar_CheckedChanged(object sender, EventArgs e)
-        {
-            frmCancelaOrdemServico frmCancelaServico = new frmCancelaOrdemServico();
-
-            DialogResult res = MessageBox.Show("Deseja realmente cancelar a O.S.",
-                "Atenção!", MessageBoxButtons.YesNo);
-            if (res == DialogResult.Yes)
-                frmCancelaServico.ShowDialog();
-
-            if (frmCancelaServico.User.ID > 0 &&
-                frmCancelaServico.User.TipoFuncionario.Descricao == "Gerente")
-            {
-                _serviço.Cancelado = 1;
-                _serviço.Usuario = frmCancelaServico.User;
-
-                _servicoBL.Cancela(_serviço);
-                MessageBox.Show(Resources.Venda_cancelada, Resources.Atencao);
-                this.Close();
-            }
-            else
-            {
-                MessageBox.Show("Usuário invalido!", "Atenção");
-            }
-        }
-
+        
         private void btnFechar_Click(object sender, EventArgs e)
         {
-            this.Close();
+            this.Close();  
+        }
+
+        private void chkCancelar_Click(object sender, EventArgs e)
+        {
+            if (chkCancelar.Checked)
+            {
+                frmCancelaOrdemServico frmCancelaServico = new frmCancelaOrdemServico();
+                frmCancelaServico.ShowDialog();
+
+                if (frmCancelaServico.txtLogin.TextLength > 0 &&
+                    frmCancelaServico.txtPassword.TextLength > 0)
+                {
+                    if (frmCancelaServico.User.ID > 0 &&
+                        frmCancelaServico.User.TipoFuncionario.Descricao == "Gerente")
+                    {
+                        _serviço.Cancelado = chkCancelar.Checked ? 1 : 0;
+                        _serviço.Usuario = frmCancelaServico.User;
+
+                        _servicoBL.Cancela(_serviço);
+                        MessageBox.Show(Resources.Venda_cancelada, Resources.Atencao);
+                        this.Close();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Usuário sem permissão", "Atenção");
+                        chkCancelar.Checked = false;
+                    }
+                }
+                else
+                {
+                    chkCancelar.Checked = false;
+                }
+            }
         }
 
       

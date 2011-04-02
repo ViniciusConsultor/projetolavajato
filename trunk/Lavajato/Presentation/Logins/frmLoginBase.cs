@@ -50,6 +50,27 @@ namespace HenryCorporation.Lavajato.Presentation.Logins
             this.Close();
         }
 
+        private void txtLogin_Enter(object sender, EventArgs e)
+        {
+            txtLogin.BackColor = Color.Yellow;
+        }
+
+        private void txtLogin_Leave(object sender, EventArgs e)
+        {
+            txtLogin.BackColor = Color.White;
+        }
+
+        private void txtPassword_Enter(object sender, EventArgs e)
+        {
+            txtPassword.BackColor = Color.Yellow;
+        }
+
+        private void txtPassword_Leave(object sender, EventArgs e)
+        {
+            txtPassword.BackColor = Color.White;
+        }
+
+        
         
     }
 }

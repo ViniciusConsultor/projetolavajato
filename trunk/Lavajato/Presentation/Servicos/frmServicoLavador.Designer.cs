@@ -38,6 +38,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.btnRemover = new System.Windows.Forms.Button();
             this.grdServicoFuncionario = new System.Windows.Forms.DataGridView();
+            this.btnFechar = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdServicoFuncionario)).BeginInit();
@@ -118,6 +119,7 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.btnFechar);
             this.groupBox2.Controls.Add(this.btnRemover);
             this.groupBox2.Controls.Add(this.grdServicoFuncionario);
             this.groupBox2.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -130,7 +132,7 @@
             // btnRemover
             // 
             this.btnRemover.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRemover.Location = new System.Drawing.Point(591, 278);
+            this.btnRemover.Location = new System.Drawing.Point(6, 281);
             this.btnRemover.Name = "btnRemover";
             this.btnRemover.Size = new System.Drawing.Size(101, 30);
             this.btnRemover.TabIndex = 9;
@@ -146,6 +148,17 @@
             this.grdServicoFuncionario.Size = new System.Drawing.Size(684, 262);
             this.grdServicoFuncionario.TabIndex = 8;
             this.grdServicoFuncionario.MouseClick += new System.Windows.Forms.MouseEventHandler(this.dataGridView1_MouseClick);
+            // 
+            // btnFechar
+            // 
+            this.btnFechar.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnFechar.Location = new System.Drawing.Point(590, 281);
+            this.btnFechar.Name = "btnFechar";
+            this.btnFechar.Size = new System.Drawing.Size(101, 30);
+            this.btnFechar.TabIndex = 10;
+            this.btnFechar.Text = "Fechar";
+            this.btnFechar.UseVisualStyleBackColor = true;
+            this.btnFechar.Click += new System.EventHandler(this.btnFechar_Click);
             // 
             // frmServicoLavador
             // 
@@ -180,6 +193,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.DataGridView grdServicoFuncionario;
         private System.Windows.Forms.Button btnRemover;
+        private System.Windows.Forms.Button btnFechar;
 
     }
 }

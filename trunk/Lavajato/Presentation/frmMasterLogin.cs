@@ -22,7 +22,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void frmMasterLogin_Load(object sender, EventArgs e)
         {
-          
+
         }
 
         private void btnLogar_Click(object sender, EventArgs e)
@@ -69,6 +69,26 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             if (e.KeyCode == Keys.Enter)
                 SetUpLogin();
+        }
+
+        private void login_Enter(object sender, EventArgs e)
+        {
+            login.BackColor = Color.Yellow;
+        }
+
+        private void login_Leave(object sender, EventArgs e)
+        {
+            login.BackColor = Color.White;
+        }
+
+        private void password_Enter(object sender, EventArgs e)
+        {
+            password.BackColor = Color.Yellow;
+        }
+
+        private void password_Leave(object sender, EventArgs e)
+        {
+            password.BackColor = Color.White;
         }
     }
 }

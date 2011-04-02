@@ -46,6 +46,7 @@ namespace WSLavajato
         private int GetOrdemServico()
         {
             int ordemServico = servicoDao.OrdemServicoMax();
+
             if (ordemServico < qtdeMaximaDeOrdensDeServico)
                 return ordemServico += 1;
             else
@@ -79,12 +80,6 @@ namespace WSLavajato
         #endregion
 
         #region ServiceItem
-
-        [WebMethod]
-        public void ServicoItemDelete(ServicoItem servicoItem)
-        {
-            servicoDao.ItemDoServicoDelete(servicoItem);
-        }
 
         [WebMethod]
         public void ServicoItemAdd(ServicoItem servicoItem)

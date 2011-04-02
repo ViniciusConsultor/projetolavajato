@@ -96,6 +96,7 @@
     <Compile Include="SuprimentoBL.cs" />
     <Compile Include="TipoFuncionarioBL.cs" />
     <Compile Include="UsuarioBL.cs" />
+    <Compile Include="Validador.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataAccess\DataAccess.csproj">

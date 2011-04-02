@@ -161,7 +161,9 @@
             this.chkCancelar.TabIndex = 0;
             this.chkCancelar.Text = "Cancelar Ordem Serviço";
             this.chkCancelar.UseVisualStyleBackColor = true;
-            this.chkCancelar.CheckedChanged += new System.EventHandler(this.chkCancelar_CheckedChanged);
+            //this.chkCancelar.CheckedChanged += new System.EventHandler(this.chkCancelar_CheckedChanged);
+            //this.chkCancelar.CheckStateChanged += new System.EventHandler(this.chkCancelar_CheckStateChanged);
+            this.chkCancelar.Click += new System.EventHandler(this.chkCancelar_Click);
             // 
             // btnFechar
             // 
