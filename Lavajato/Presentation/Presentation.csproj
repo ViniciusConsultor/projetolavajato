@@ -51,12 +51,19 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL" />
+    <Reference Include="Microsoft.ReportViewer.Common, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.ReportViewer.WinForms, Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <Private>True</Private>
+    </Reference>
     <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Services" />
     <Reference Include="System.Xml.Linq">
       <RequiredTargetFramework>3.5</RequiredTargetFramework>
     </Reference>
@@ -174,9 +181,26 @@
     <Compile Include="login.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="Relatorios\Caixa\PorData\dsFechamentoDeCaixaPorData.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>dsFechamentoDeCaixaPorData.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="Relatorios\Caixa\PorData\frmRelFechamentoCaixaPorData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Caixa\PorData\frmRelFechamentoCaixaPorData.Designer.cs">
+      <DependentUpon>frmRelFechamentoCaixaPorData.cs</DependentUpon>
+    </Compile>
     <Compile Include="Relatorios\Caixa\FechamentoDeCaixa\dsFechamentoCaixa.cs">
       <DependentUpon>dsFechamentoCaixa.xsd</DependentUpon>
       <SubType>Component</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Caixa\PorData\frmFechamentoCaixaPorData.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Relatorios\Caixa\PorData\frmFechamentoCaixaPorData.Designer.cs">
+      <DependentUpon>frmFechamentoCaixaPorData.cs</DependentUpon>
     </Compile>
     <Compile Include="Relatorios\Caixa\PorOrdemServico\dsServicoPorOS.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -354,6 +378,14 @@
     <EmbeddedResource Include="Produto\frmTransfereProdutos.resx">
       <DependentUpon>frmTransfereProdutos.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Caixa\PorData\frmRelFechamentoCaixaPorData.resx">
+      <DependentUpon>frmRelFechamentoCaixaPorData.cs</DependentUpon>
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Caixa\PorData\frmFechamentoCaixaPorData.resx">
+      <DependentUpon>frmFechamentoCaixaPorData.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Relatorios\Caixa\PorData\rptFechamentoDeCaixaPorData.rdlc" />
     <EmbeddedResource Include="Relatorios\Caixa\PorOrdemServico\frmServicoPorOS.resx">
       <DependentUpon>frmServicoPorOS.cs</DependentUpon>
     </EmbeddedResource>
@@ -541,6 +573,17 @@
     </None>
     <None Include="Relatorios\Caixa\FechamentoDeCaixa\dsFechamentoCaixa.xss">
       <DependentUpon>dsFechamentoCaixa.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Caixa\PorData\dsFechamentoDeCaixaPorData.xsc">
+      <DependentUpon>dsFechamentoDeCaixaPorData.xsd</DependentUpon>
+    </None>
+    <None Include="Relatorios\Caixa\PorData\dsFechamentoDeCaixaPorData.xsd">
+      <SubType>Designer</SubType>
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>dsFechamentoDeCaixaPorData.Designer.cs</LastGenOutput>
+    </None>
+    <None Include="Relatorios\Caixa\PorData\dsFechamentoDeCaixaPorData.xss">
+      <DependentUpon>dsFechamentoDeCaixaPorData.xsd</DependentUpon>
     </None>
     <None Include="Relatorios\Caixa\PorOrdemServico\dsServicoPorOS.xsc">
       <DependentUpon>dsServicoPorOS.xsd</DependentUpon>

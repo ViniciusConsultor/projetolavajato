@@ -46,10 +46,21 @@ namespace LavajatoMobile
 
         }
 
-        private void SetUpDataSet()
+        public frmServico(Servico servico)
         {
-            dataTable.Columns.AddRange(ServicoColunas.CarregaColunasServico());
-            dataSetItens.Tables.Add(dataTable);
+            InitializeComponent();
+            CarregaProdutos();
+            SetUpDataSet();
+
+            _cliente = servico.Cliente;
+            
+            _servico = ServicoBL.ServicoJaFinalizado(servico);
+
+            //ServicoBL.ImprimeNumeroOrdemServico(_servico);
+            ServicoBL.ImprimeMensagemParaCarroJaLavado(_servico);
+
+            CarregaItens(_servico);
+
         }
 
         private void CarregaItens(Servico servicoParaCarregarItens)
@@ -59,6 +70,12 @@ namespace LavajatoMobile
             grdServico.DataSource = CarregaItensNoGrid(servicoParaCarregarItens);
             grdServico.TableStyles.Clear();
             grdServico.TableStyles.Add(ServicoBL.SetUpStyleGrid(dataSetItens));
+        }
+
+        private void SetUpDataSet()
+        {
+            dataTable.Columns.AddRange(ServicoColunas.CarregaColunasServico());
+            dataSetItens.Tables.Add(dataTable);
         }
 
         private void CarregaProdutos()
@@ -128,7 +145,6 @@ namespace LavajatoMobile
                 _servico.Total = SomaTotal();
                 _servico.SubTotal = _servico.Total;
                 _servico.Cliente = _cliente;
-                _servico.Saida = _dataSaida;
                 _servico = ServicoBL.ServicoSalva(_servico);
                 
                 var itens = ItensParaInsercao(_servico);
@@ -137,16 +153,32 @@ namespace LavajatoMobile
                 _servico = wsService.ServicoByID(_servico);
 
                 //imprime recibo
-                ServicoBL.ImpressaoDeRecibo(_servico);
-             
+                ServicoBL.ImpressaoDeRecibo(_servico); 
                 MessageBox.Show("Número da O. S.: " + this._servico.OrdemServico, "Ordem Serviço");
             }
             else
             {
                 MessageBox.Show("Nenhum serviço adicionado a O.S. ");
+                return;
             }
 
             this.Close();
+        }
+
+        private void AdicionaItemAoServico(List<ServicoItem> itens)
+        {
+            ServicoItem[] back = _servico.ServicoItem;
+
+            _servico.ServicoItem = 
+                new ServicoItem[_servico.ServicoItem.Count() + itens.Count];
+            itens.AddRange(back);
+
+            int i =0;
+            foreach (ServicoItem item in itens)
+            {
+                _servico.ServicoItem[i] = item;
+                i++;
+            }
         }
 
         //Caso o item já exista no bd não será necessario inserilo novamente
@@ -256,6 +288,11 @@ namespace LavajatoMobile
         {
             frmAvarias frmAvarias = new frmAvarias();
             frmAvarias.ShowDialog();
+        }
+
+        private void btnFechar_Click(object sender, EventArgs e)
+        {
+            this.Close();
         }
 
     }
