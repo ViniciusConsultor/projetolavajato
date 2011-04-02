@@ -70,6 +70,9 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void grdClientes_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            if (grdClientes.CurrentRow == null)
+                return;
+
             this._cliente.ID = int.Parse(grdClientes.Rows[grdClientes.CurrentRow.Index].Cells[0].Value.ToString());
             this._cliente = ProcuraCliente(this._cliente);
             CarregaCampos(this._cliente);

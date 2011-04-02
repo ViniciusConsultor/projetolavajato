@@ -15,6 +15,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
     {
         private ProdutoDAO produtoDAO = new ProdutoDAO();
         private EstoqueBL estoqueDAO = new EstoqueBL();
+        private ExpositorDAO expositorDAO = new ExpositorDAO();
 
         #region
 
@@ -28,6 +29,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
         Produto IGeneric<Produto>.Add(Produto obj)
         {
             estoqueDAO.Add(obj.Estoque);
+            expositorDAO.Add(obj.Expositor);
             produtoDAO.Add(obj);
             return obj;
         }
@@ -35,6 +37,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
         Produto IGeneric<Produto>.Update(Produto obj)
         {
             estoqueDAO.Update(obj.Estoque);
+            expositorDAO.Update(obj.Expositor);
             produtoDAO.Update(obj);
             return obj;
         }
@@ -67,6 +70,7 @@ namespace HenryCorporation.Lavajato.BusinessLogic
         public void Update(Produto produto)
         {
             estoqueDAO.Update(produto.Estoque);
+            expositorDAO.Update(produto.Expositor);
             produtoDAO.Update(produto);
         }
 
@@ -95,6 +99,11 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             return produtoDAO.TipoServico(categoria);
         }
 
+
+        public List<Produto> ByCategoria(Produto produto)
+        {
+            return produtoDAO.ByCategoria(produto);
+        }
         #endregion
 
 
@@ -132,7 +141,5 @@ namespace HenryCorporation.Lavajato.BusinessLogic
     
         #endregion
 
-
-       
     }
 }

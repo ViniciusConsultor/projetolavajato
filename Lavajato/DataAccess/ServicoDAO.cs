@@ -181,7 +181,8 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public int OrdemServicoMax()
         {
-            var query = "select top 1 ordemservico from servico order by servicoid desc";
+            //var query = "select top 1 ordemservico from servico order by servicoid desc";
+            var query = "select isnull(MAX(OrdemServico),0)  from servico";
             var dataBaseHelper = new DataBaseHelper(query);
             int index = dataBaseHelper.Run(this.ConnectionString).Tables[0].Rows.Count;
             return index > 0 ? int.Parse(dataBaseHelper.Run(this.ConnectionString).Tables[0].Rows[0][0].ToString()) : 0;
@@ -201,9 +202,9 @@ namespace HenryCorporation.Lavajato.DataAccess
             servicoItemDAO.Update(servicoItem);
         }
 
-        public void ItemDoServicoDelete(ServicoItem servicoItem)
+        public void ItemDoServicoDelete(ServicoItem servicoItem, Usuario usuario)
         {
-            servicoItemDAO.Delete(servicoItem);
+            servicoItemDAO.Delete(servicoItem, usuario);
         }
 
         public ServicoItem ByServicoItemID(ServicoItem servicoItem)

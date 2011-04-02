@@ -69,6 +69,7 @@
     <Compile Include="Cliente.cs" />
     <Compile Include="ContaPagar.cs" />
     <Compile Include="Convenio.cs" />
+    <Compile Include="Expositor.cs" />
     <Compile Include="Credor.cs" />
     <Compile Include="EnumCategoriaProduto.cs" />
     <Compile Include="Estoque.cs" />

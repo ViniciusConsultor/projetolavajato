@@ -40,10 +40,15 @@ namespace HenryCorporation.Lavajato.DataAccess
             return ByID(servicoItem);
         }
 
-        public void Delete(ServicoItem servicoItem)
+        public void Delete(ServicoItem servicoItem, Usuario usuario)
         {
-            string sql = " delete from servicoitens where servicoitensid = " + servicoItem.ID;
-            DataBaseHelper dataBaseHelper = new DataBaseHelper(sql);
+            var query = " UPDATE [ServicoItens] " +
+                        " SET [DelUser] = " + usuario.ID +
+                        " ,[DelDate] = getdate()" +
+                        " ,[Del] = 1 " +
+                        " WHERE [ServicoItensID] = " + servicoItem.ID;
+
+            var dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run();
         }
 
@@ -61,7 +66,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public ServicoItem ByID(ServicoItem servicoItem)
         {
-            string query = sql + "Where [ServicoItensID] =" + servicoItem.ID;
+            string query = sql + "Where ([Del] is null or [Del] = 0) and [ServicoItensID] =" + servicoItem.ID;
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             DataSet dataSet = dataBaseHelper.Run(this.ConnectionString);
             return SetUpServicoItem(dataSet);
@@ -87,7 +92,7 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         public List<ServicoItem> ItensByID(Servico servico)
         {
-            string query = sql + " Where [ServicoID] = " + servico.ID;
+            string query = sql + " Where ([Del] is null or [Del] = 0) and [ServicoID] = " + servico.ID;
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             DataSet dataSet = dataBaseHelper.Run(this.ConnectionString);
             return SetUpServicoItens(dataSet);

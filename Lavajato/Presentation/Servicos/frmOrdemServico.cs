@@ -102,12 +102,13 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             if (_cliente.ID == 0)
             {
-                var dialogResult = MessageBox.Show(Resources.Cliente_não_Cadastrado, Resources.Atencao, MessageBoxButtons.YesNo);
-                if (dialogResult == DialogResult.Yes)
-                {
-                    btnCadastraCliente.Enabled = true;
-                    LimpaGrid();
-                }
+                btnCadastraCliente.Enabled = true;
+                LimpaGrid();
+                CarregaItens(_servico);
+                veiculo.Clear();
+                telefone.Clear();
+                nome.Clear();
+                corVeiculo.Clear();
             }
         }
 
@@ -432,10 +433,8 @@ namespace HenryCorporation.Lavajato.Presentation
             }
 
             tamanhoPlaca = placa.Text.Length;
-            var tamanhoMaximoDaPlaca = 8;
             if (Equals(tamanhoPlaca, int.Parse(Resources.Tamanho_Maximo_Placa)))
             {
-
                 placa.Text = placa.Text.Remove(placa.Text.Length - 1);
                 placa.SelectionStart = placa.TextLength;
             }

@@ -61,7 +61,7 @@ namespace HenryCorporation.Lavajato.Presentation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deseja realmente apagar o item de pedido.
+        ///   Looks up a localized string similar to Deseja realmente apagar o item de pedido?.
         /// </summary>
         internal static string Apagar_item_de_pedido {
             get {
@@ -70,7 +70,7 @@ namespace HenryCorporation.Lavajato.Presentation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deseja realmente apagar o item de pedido.
+        ///   Looks up a localized string similar to Deseja realmente apagar o item de pedido?.
         /// </summary>
         internal static string Apagar_o_item_de_pedido {
             get {
@@ -133,7 +133,7 @@ namespace HenryCorporation.Lavajato.Presentation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to Deseja cancelar a venda.
+        ///   Looks up a localized string similar to Deseja cancelar a venda?.
         /// </summary>
         internal static string Deseja_cancelar_a_venda {
             get {

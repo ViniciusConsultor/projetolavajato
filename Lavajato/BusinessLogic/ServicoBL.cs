@@ -33,11 +33,6 @@ namespace HenryCorporation.Lavajato.BusinessLogic
              return servicoDAO.Add(servico);
         }
 
-        public void Delete(Servico servico)
-        {
-            servicoDAO.Delete(servico);
-        }
-
         public Servico ByID(Servico servico)
         {
             return servicoDAO.ByID(servico);
@@ -68,10 +63,10 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             servicoDAO.Cancel(servico);
         }
 
-        //public void Delete(Servico servico)
-        //{
-        //    servicoDAO.ServicoDel(servico);
-        //}
+        public void Delete(Servico servico)
+        {
+            servicoDAO.ServicoDel(servico);
+        }
 
         /// <summary>
         /// Procura serviços do cliente do ID do cliente, não leva em conta a data
@@ -117,9 +112,9 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             servicoDAO.ServicoItemUpdate(servicoItem);
         }
 
-        public void ItemDelete(ServicoItem servicoItem)
+        public void ItemDelete(ServicoItem servicoItem, Usuario usuario)
         {
-            servicoDAO.ItemDoServicoDelete(servicoItem);
+            servicoDAO.ItemDoServicoDelete(servicoItem, usuario);
         }
 
         public ServicoItem ItemID(ServicoItem servicoItem)
@@ -197,8 +192,9 @@ namespace HenryCorporation.Lavajato.BusinessLogic
         public int OrdemServicoMax()
         {
             int ordemServico = servicoDAO.OrdemServicoMax();
+
             if (ordemServico < qtdeMaximaDeOrdensDeServico)
-                return ordemServico += 1;
+                return ordemServico = ordemServico + 1;
             else
                 return ordemServico = 1;
         }
@@ -245,20 +241,9 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             return ServicoTabela.GetOrdemServico(servico);
         }
 
-        public string RetiraCifraoDaMoedaReal(decimal valor)
-        {
-            return valor.ToString("C").Replace("R$", "");
-        }
-
         public string NomeDoUsuario(Usuario usuario)
         {
             return " Usuário " + usuario.Nome;
-        }
-
-        public static decimal ConverteParaDecimal(string str)
-        {
-            str = str.Trim();
-            return Convert.ToDecimal(str.Length > 0 ? str: "0");
         }
     }
 }

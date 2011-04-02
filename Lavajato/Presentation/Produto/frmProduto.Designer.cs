@@ -35,6 +35,13 @@
             this.nomePesquisa = new System.Windows.Forms.TextBox();
             this.grdProdutos = new System.Windows.Forms.DataGridView();
             this.tabProduto = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.expSaldoEstoque = new System.Windows.Forms.TextBox();
+            this.label6 = new System.Windows.Forms.Label();
+            this.expMinimo = new System.Windows.Forms.TextBox();
+            this.label8 = new System.Windows.Forms.Label();
+            this.expQuantidade = new System.Windows.Forms.TextBox();
             this.btnSalvar = new System.Windows.Forms.Button();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnAlterar = new System.Windows.Forms.Button();
@@ -61,6 +68,7 @@
             this.groupBox5.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdProdutos)).BeginInit();
             this.tabProduto.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.groupBox2.SuspendLayout();
@@ -137,6 +145,7 @@
             // tabProduto
             // 
             this.tabProduto.BackColor = System.Drawing.Color.DeepSkyBlue;
+            this.tabProduto.Controls.Add(this.groupBox6);
             this.tabProduto.Controls.Add(this.btnSalvar);
             this.tabProduto.Controls.Add(this.btnSair);
             this.tabProduto.Controls.Add(this.btnAlterar);
@@ -152,6 +161,74 @@
             this.tabProduto.Size = new System.Drawing.Size(693, 567);
             this.tabProduto.TabIndex = 1;
             this.tabProduto.Text = "Produto";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.label5);
+            this.groupBox6.Controls.Add(this.expSaldoEstoque);
+            this.groupBox6.Controls.Add(this.label6);
+            this.groupBox6.Controls.Add(this.expMinimo);
+            this.groupBox6.Controls.Add(this.label8);
+            this.groupBox6.Controls.Add(this.expQuantidade);
+            this.groupBox6.Location = new System.Drawing.Point(450, 79);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(218, 111);
+            this.groupBox6.TabIndex = 18;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Expositor";
+            // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Location = new System.Drawing.Point(19, 75);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(82, 20);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "Saldo Est:";
+            // 
+            // expSaldoEstoque
+            // 
+            this.expSaldoEstoque.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.expSaldoEstoque.Enabled = false;
+            this.expSaldoEstoque.Location = new System.Drawing.Point(107, 73);
+            this.expSaldoEstoque.MaxLength = 50;
+            this.expSaldoEstoque.Name = "expSaldoEstoque";
+            this.expSaldoEstoque.Size = new System.Drawing.Size(83, 26);
+            this.expSaldoEstoque.TabIndex = 17;
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(38, 49);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(63, 20);
+            this.label6.TabIndex = 14;
+            this.label6.Text = "Minimo:";
+            // 
+            // expMinimo
+            // 
+            this.expMinimo.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.expMinimo.Location = new System.Drawing.Point(107, 47);
+            this.expMinimo.Name = "expMinimo";
+            this.expMinimo.Size = new System.Drawing.Size(83, 26);
+            this.expMinimo.TabIndex = 15;
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(5, 23);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(96, 20);
+            this.label8.TabIndex = 12;
+            this.label8.Text = "Quantidade:";
+            // 
+            // expQuantidade
+            // 
+            this.expQuantidade.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.expQuantidade.Location = new System.Drawing.Point(107, 21);
+            this.expQuantidade.Name = "expQuantidade";
+            this.expQuantidade.Size = new System.Drawing.Size(83, 26);
+            this.expQuantidade.TabIndex = 13;
             // 
             // btnSalvar
             // 
@@ -223,7 +300,7 @@
             this.groupBox4.Controls.Add(this.quantidade);
             this.groupBox4.Location = new System.Drawing.Point(226, 79);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(461, 111);
+            this.groupBox4.Size = new System.Drawing.Size(218, 111);
             this.groupBox4.TabIndex = 11;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Estoque";
@@ -429,6 +506,8 @@
             this.groupBox5.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.grdProdutos)).EndInit();
             this.tabProduto.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox4.PerformLayout();
             this.groupBox3.ResumeLayout(false);
@@ -471,5 +550,12 @@
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.TextBox estoqueSaldo;
         private System.Windows.Forms.Button btnSalvar;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox expSaldoEstoque;
+        private System.Windows.Forms.Label label6;
+        private System.Windows.Forms.TextBox expMinimo;
+        private System.Windows.Forms.Label label8;
+        private System.Windows.Forms.TextBox expQuantidade;
     }
 }

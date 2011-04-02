@@ -76,45 +76,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private void btnConcluirVenda_Click(object sender, EventArgs e)
         {
 
-            if (TotalDinheiroMaisCartao() < _totalBakup)
-            {
-                MessageBox.Show("Venda não autorizada!", "Atenção");
-                return;
-            }
-
-
-            frmLoginFechamentoDeCaixa frmLoginFechamentoDeCaixa = null;
-            if (txtDesconto.TextLength > 0)
-            {
-                frmLoginFechamentoDeCaixa = new frmLoginFechamentoDeCaixa();
-                frmLoginFechamentoDeCaixa.ShowDialog();
-
-                if (frmLoginFechamentoDeCaixa.User.ID== 0)
-                {
-                    txtTotalPagamento.Text =
-                            (Dinheiro.ParseToDecimal(txtDesconto.Text) +
-                            Dinheiro.ParseToDecimal(txtTotalPagamento.Text)).ToString("C");
-                    txtDesconto.Text = "";
-                    return;
-                }
-
-                if (!frmLoginFechamentoDeCaixa.User.TipoFuncionario.Descricao.Contains("Gerente"))
-                {
-                    MessageBox.Show("Você não tem permissão para dar desconto, favor entrar em contato com o Gerente!", 
-                        "Atenção!!");
-                    return;
-                }
-            }
-
-            Pagamento pagamento = SetUpPagamento();
-            pagamento.UsuarioDesconto = frmLoginFechamentoDeCaixa == null ? new Usuario() : frmLoginFechamentoDeCaixa.User;
-            _servico = SetUpServico();
-
-            ServicoBL servicoBL = new ServicoBL();
-            servicoBL.Update(_servico);
-            servicoBL.InsertPagamento(pagamento);
-            MessageBox.Show("Venda Realizada com Sucesso!", "Atenção");
-            this.Close();
+            FinalizaVenda();
 
         }
 
@@ -318,5 +280,78 @@ namespace HenryCorporation.Lavajato.Presentation
         }
 
         #endregion
+
+        private void txtDinheiro_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+                FinalizaVenda();
+        }
+
+        private void txtCartaoValor_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+                FinalizaVenda();
+        }
+
+        private void cmbFormaPagamento_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+                FinalizaVenda();
+        }
+
+        private void txtDesconto_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+                FinalizaVenda();
+        }
+
+        private void convenio_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.F2)
+                FinalizaVenda();
+        }
+
+        private void FinalizaVenda()
+        {
+            if (TotalDinheiroMaisCartao() < _totalBakup)
+            {
+                MessageBox.Show("Venda não autorizada!", "Atenção");
+                return;
+            }
+
+
+            frmLoginFechamentoDeCaixa frmLoginFechamentoDeCaixa = null;
+            if (txtDesconto.TextLength > 0)
+            {
+                frmLoginFechamentoDeCaixa = new frmLoginFechamentoDeCaixa();
+                frmLoginFechamentoDeCaixa.ShowDialog();
+
+                if (frmLoginFechamentoDeCaixa.User.ID == 0)
+                {
+                    txtTotalPagamento.Text =
+                            (Dinheiro.ParseToDecimal(txtDesconto.Text) +
+                            Dinheiro.ParseToDecimal(txtTotalPagamento.Text)).ToString("C");
+                    txtDesconto.Text = "";
+                    return;
+                }
+
+                if (!frmLoginFechamentoDeCaixa.User.TipoFuncionario.Descricao.Contains("Gerente"))
+                {
+                    MessageBox.Show("Você não tem permissão para dar desconto, favor entrar em contato com o Gerente!",
+                        "Atenção!!");
+                    return;
+                }
+            }
+
+            Pagamento pagamento = SetUpPagamento();
+            pagamento.UsuarioDesconto = frmLoginFechamentoDeCaixa == null ? new Usuario() : frmLoginFechamentoDeCaixa.User;
+            _servico = SetUpServico();
+
+            ServicoBL servicoBL = new ServicoBL();
+            servicoBL.Update(_servico);
+            servicoBL.InsertPagamento(pagamento);
+            MessageBox.Show("Venda Realizada com Sucesso!", "Atenção");
+            this.Close();
+        }
     }
 }

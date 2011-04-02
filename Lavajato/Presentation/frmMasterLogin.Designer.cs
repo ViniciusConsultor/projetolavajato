@@ -80,7 +80,9 @@
             this.password.PasswordChar = '*';
             this.password.Size = new System.Drawing.Size(254, 29);
             this.password.TabIndex = 2;
+            this.password.Enter += new System.EventHandler(this.password_Enter);
             this.password.KeyDown += new System.Windows.Forms.KeyEventHandler(this.password_KeyDown);
+            this.password.Leave += new System.EventHandler(this.password_Leave);
             // 
             // login
             // 
@@ -89,6 +91,8 @@
             this.login.Name = "login";
             this.login.Size = new System.Drawing.Size(254, 29);
             this.login.TabIndex = 1;
+            this.login.Enter += new System.EventHandler(this.login_Enter);
+            this.login.Leave += new System.EventHandler(this.login_Leave);
             // 
             // btnCancelar
             // 

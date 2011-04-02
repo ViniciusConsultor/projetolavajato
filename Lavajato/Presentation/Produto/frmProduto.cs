@@ -19,7 +19,7 @@ namespace HenryCorporation.Lavajato.Presentation
     {
         private const string contemPonto = ".";
         private IProdutoRepositorio _produtoRepository = new ProdutoBL();
-        private Produto _produto = new Produto();
+        private HenryCorporation.Lavajato.DomainModel.Produto _produto = new Produto();
 
         
         public frmProduto()
@@ -188,6 +188,10 @@ namespace HenryCorporation.Lavajato.Presentation
 
             minimo.Text = produto.Estoque.Minimo.ToString();
             quantidade.Text = produto.Estoque.Quantidade.ToString();
+
+            expMinimo.Text = produto.Expositor.Minimo.ToString();
+            expQuantidade.Text = produto.Expositor.Quantidade.ToString();
+
         }
 
         private void LimpaCampos()
@@ -212,6 +216,10 @@ namespace HenryCorporation.Lavajato.Presentation
             _produto.Estoque.Quantidade = Configuracao.ConverteParaInteiro(quantidade.Text.Length > 0 ? quantidade.Text: "0");
             _produto.Estoque.Minimo = int.Parse(minimo.Text.Length > 0 ? minimo.Text : "0");
             _produto.Estoque.Data = this._produto.Estoque.Data;
+
+            _produto.Expositor.Quantidade = Configuracao.ConverteParaInteiro(expQuantidade.Text.Length > 0 ? expQuantidade.Text : "0");
+            _produto.Expositor.Minimo = int.Parse(expMinimo.Text.Length > 0 ? expMinimo.Text : "0");
+            _produto.Expositor.Data = this._produto.Estoque.Data;
         }
 
         private void FormataGrid()

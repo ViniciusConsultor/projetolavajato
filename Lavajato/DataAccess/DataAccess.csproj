@@ -70,6 +70,7 @@
     <Compile Include="ClienteDAO.cs" />
     <Compile Include="ContaAPagarDAO.cs" />
     <Compile Include="ConvenioDAO.cs" />
+    <Compile Include="ExpositorDAO.cs" />
     <Compile Include="CredorDAO.cs" />
     <Compile Include="DataAccessBase.cs" />
     <Compile Include="DataBaseHelper.cs" />

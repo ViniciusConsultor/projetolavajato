@@ -283,5 +283,11 @@ namespace Presentation
             var frmContasAPagar = new frmContasAPagar();
             frmContasAPagar.ShowDialog();
         }
+
+        private void transferenciaDeProdutosToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmListaProdutosTranferencia frmTransProdutos = new frmListaProdutosTranferencia();
+            frmTransProdutos.ShowDialog();
+        }
     }
 }

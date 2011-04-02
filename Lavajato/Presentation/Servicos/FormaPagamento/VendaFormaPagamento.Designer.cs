@@ -131,6 +131,7 @@
             this.txtDinheiro.TabIndex = 0;
             this.txtDinheiro.TextChanged += new System.EventHandler(this.txtDinheiro_TextChanged);
             this.txtDinheiro.Enter += new System.EventHandler(this.txtDinheiro_Enter);
+            this.txtDinheiro.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDinheiro_KeyDown);
             this.txtDinheiro.Leave += new System.EventHandler(this.txtDinheiro_Leave);
             // 
             // label5
@@ -184,6 +185,7 @@
             this.cmbFormaPagamento.Size = new System.Drawing.Size(159, 28);
             this.cmbFormaPagamento.TabIndex = 2;
             this.cmbFormaPagamento.Enter += new System.EventHandler(this.cmbFormaPagamento_Enter);
+            this.cmbFormaPagamento.KeyDown += new System.Windows.Forms.KeyEventHandler(this.cmbFormaPagamento_KeyDown);
             this.cmbFormaPagamento.Leave += new System.EventHandler(this.cmbFormaPagamento_Leave);
             // 
             // groupBox3
@@ -208,6 +210,7 @@
             this.txtCartaoValor.TabIndex = 3;
             this.txtCartaoValor.TextChanged += new System.EventHandler(this.txtCartaoValor_TextChanged);
             this.txtCartaoValor.Enter += new System.EventHandler(this.txtCartaoValor_Enter);
+            this.txtCartaoValor.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtCartaoValor_KeyDown);
             this.txtCartaoValor.Leave += new System.EventHandler(this.txtCartaoValor_Leave);
             // 
             // groupBox5
@@ -230,6 +233,7 @@
             this.txtDesconto.TabIndex = 5;
             this.txtDesconto.TextChanged += new System.EventHandler(this.txtDesconto_TextChanged);
             this.txtDesconto.Enter += new System.EventHandler(this.txtDesconto_Enter);
+            this.txtDesconto.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtDesconto_KeyDown);
             this.txtDesconto.Leave += new System.EventHandler(this.txtDesconto_Leave);
             // 
             // groupBox7
@@ -257,9 +261,9 @@
             this.btnConcluirVenda.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnConcluirVenda.Location = new System.Drawing.Point(15, 452);
             this.btnConcluirVenda.Name = "btnConcluirVenda";
-            this.btnConcluirVenda.Size = new System.Drawing.Size(158, 35);
+            this.btnConcluirVenda.Size = new System.Drawing.Size(192, 35);
             this.btnConcluirVenda.TabIndex = 13;
-            this.btnConcluirVenda.Text = "Concluir Venda";
+            this.btnConcluirVenda.Text = "Concluir Venda (F2)";
             this.btnConcluirVenda.UseVisualStyleBackColor = true;
             this.btnConcluirVenda.Click += new System.EventHandler(this.btnConcluirVenda_Click);
             // 
@@ -294,6 +298,7 @@
             this.convenio.TabIndex = 7;
             this.convenio.SelectedIndexChanged += new System.EventHandler(this.convenio_SelectedIndexChanged);
             this.convenio.Enter += new System.EventHandler(this.convenio_Enter);
+            this.convenio.KeyDown += new System.Windows.Forms.KeyEventHandler(this.convenio_KeyDown);
             this.convenio.Leave += new System.EventHandler(this.convenio_Leave);
             // 
             // VendaFormaPagamento

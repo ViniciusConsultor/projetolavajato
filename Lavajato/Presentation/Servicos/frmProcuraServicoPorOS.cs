@@ -74,6 +74,9 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void grdServicos_MouseDoubleClick(object sender, MouseEventArgs e)
         {
+            if (grdServicos.CurrentRow == null)
+                return;
+
             var index = grdServicos.Rows[grdServicos.CurrentRow.Index].Cells[0].Value;
 
             if (!string.IsNullOrEmpty(index.ToString()))
