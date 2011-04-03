@@ -14,13 +14,32 @@ namespace HenryCorporation.Lavajato.DataAccess
         private const string sql = " SELECT [UsuarioID],[Login],[Password],[Endereco],[Numero],[Bairro],[Cep],[Cidade] "+
                             " ,[UF],[Email],[Celular],[Cpf],[RG],[Delete], [Nome],[Fone], [TipoFuncionarioID] " +
                             " FROM [Usuarios]";
-    
 
-        private const string sqlPermissao = " SELECT Permissao.PermissaoID, Permissao.Produto, Permissao.Usuario, Permissao.Servico, Permissao.OrdemServico, Permissao.Relatorio, Permissao.Caixa, " +
-                                            " Permissao.CategoriaProduto " +
-                                            " FROM Permissao INNER JOIN " +
-                                            " PermissaoUsuario ON Permissao.PermissaoID = Permissaousuario.PermissaoID INNER JOIN " +
-                                            " Usuarios ON PermissaoUsuario.UsuarioID = Usuarios.UsuarioID ";
+
+        private const string sqlPermissao = " SELECT " +
+                                           "  [Permissao].[PermissaoID]" +
+                                           " ,[Permissao].[cliente]" +
+                                           " ,[Permissao].[Usuario]" +
+                                           " ,[Permissao].[Produto]" +
+                                           " ,[Permissao].[Convenio]" +
+                                           " ,[Permissao].[Credor]" +
+                                           " ,[Permissao].[Servico]" +
+                                           " ,[Permissao].[OrdemServico]" +
+                                           " ,[Permissao].[OrdemAberto]" +
+                                           " ,[Permissao].[IncluirLavadorNoServico]" +
+                                           " ,[Permissao].[CancelaOrdemServico]" +
+                                           " ,[Permissao].[relCaixa]" +
+                                           " ,[Permissao].[relCaixaPorData]" +
+                                           " ,[Permissao].[relEstoque]" +
+                                           " ,[Permissao].[relCliente]" +
+                                           " ,[Permissao].[relLavagemPorLavador]" +
+                                           " ,[Permissao].[relCarrosNoLavajato]" +
+                                           " ,[Permissao].[relServicoPorOs]" +
+                                           " ,[Permissao].[relServicoCancelado]" +
+                                           "   FROM [Permissao]" +
+                                           "   INNER JOIN  PermissaoUsuario ON Permissao.PermissaoID = Permissaousuario.PermissaoID " +
+                                           "   INNER JOIN  Usuarios ON PermissaoUsuario.UsuarioID = Usuarios.UsuarioID ";
+
         
         public UsuarioDAO()
         {
@@ -55,9 +74,44 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         private void InsertPermissao(Usuario usuario)
         {
-            string query = " INSERT INTO Permissao (Produto, Usuario, Servico, OrdemServico, Relatorio, Caixa, CategoriaProduto) " +
-           " VALUES ( '" + usuario.Permissao.Produto + "', '" + usuario.Permissao.Usuario + "','" + usuario.Permissao.Servico + "', " +
-           " '" + usuario.Permissao.OrdemServico + "','" + usuario.Permissao.Relatorio + "', '" + usuario.Permissao.Caixa + "', '" + usuario.Permissao.CategoriaProduto + "' ) ";
+            string query = " INSERT INTO [Lavajato].[dbo].[Permissao] " +
+           " ([cliente]" +
+           " ,[Usuario]" +
+           " ,[Produto]" +
+           " ,[Convenio]" +
+           " ,[Credor]" +
+           " ,[Servico]" +
+           " ,[OrdemServico]" +
+           " ,[OrdemAberto]" +
+           " ,[IncluirLavadorNoServico]" +
+           " ,[CancelaOrdemServico]" +
+           " ,[relCaixa]" +
+           " ,[relCaixaPorData]" +
+           " ,[relEstoque]" +
+           " ,[relCliente]" +
+           " ,[relLavagemPorLavador]" +
+           " ,[relCarrosNoLavajato]" +
+           " ,[relServicoPorOs]" +
+           " ,[relServicoCancelado])" +
+     " VALUES " +
+           "('" + usuario.Permissao.cliente + "' " +
+           ",'" + usuario.Permissao.Usuario + "' " +
+           ",'" + usuario.Permissao.Produto + "' " +
+           ", '" + usuario.Permissao.Convenio + "' " +
+           ", '" + usuario.Permissao.Credor + "' " +
+           ",  '" + usuario.Permissao.Servico + "' " +
+           ",'" + usuario.Permissao.OrdemServico + "' " +
+           ",'" + usuario.Permissao.OrdemAberto + "' " +
+           ",'" + usuario.Permissao.IncluirLavadorNoServico + "' " +
+           ",'" + usuario.Permissao.CancelaOrdemServico + "' " +
+           ",'" + usuario.Permissao.relCaixa + "' " +
+           ",'" + usuario.Permissao.relCaixaPorData + "' " +
+           ",'" + usuario.Permissao.relEstoque + "' " +
+           ",'" + usuario.Permissao.relCliente + "' " +
+           ",'" + usuario.Permissao.relLavagemPorLavador + "' " +
+           ",'" + usuario.Permissao.relCarrosNoLavajato + "' " +
+           ",'" + usuario.Permissao.relServicoPorOs + "' " +
+           ", '" + usuario.Permissao.relServicoCancelado + "')";
 
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run();
@@ -121,9 +175,26 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         private void UpdatePermissoes(Permissao permissao)
         {
-            string query2 = "update Permissao set Produto = '" + permissao.Produto + "' , Usuario= '" + permissao.Usuario + "' " +
-                ", Servico= '" + permissao.Servico + "' , OrdemServico= '" + permissao.OrdemServico + "' , Relatorio= '" + permissao.Relatorio + "' , " +
-                "Caixa= '" + permissao.Caixa + "' , CategoriaProduto= '" + permissao.CategoriaProduto + "' where permissaoid ='" + permissao.ID + "'";
+            string query2 = " UPDATE [Lavajato].[dbo].[Permissao] " +
+                               " SET [cliente] = '" + permissao.cliente + "' " +
+                                  " ,[Usuario] = '" + permissao.Usuario + "' " +
+                                  " ,[Produto] = '" + permissao.Produto + "' " +
+                                  " ,[Convenio] = '" + permissao.Convenio + "' " +
+                                  " ,[Credor] = '" + permissao.Credor + "' " +
+                                  " ,[Servico] = '" + permissao.Servico + "' " +
+                                  " ,[OrdemServico] = '" + permissao.OrdemServico + "' " +
+                                  " ,[OrdemAberto] = '" + permissao.OrdemAberto + "' " +
+                                  " ,[IncluirLavadorNoServico] = '" + permissao.IncluirLavadorNoServico + "' " +
+                                  " ,[CancelaOrdemServico] = '" + permissao.CancelaOrdemServico + "' " +
+                                  " ,[relCaixa] = '" + permissao.relCaixa + "' " +
+                                  " ,[relCaixaPorData] = '" + permissao.relCaixaPorData + "' " +
+                                  " ,[relEstoque] = '" + permissao.relEstoque + "' " +
+                                  " ,[relCliente] = '" + permissao.relCliente + "' " +
+                                  " ,[relLavagemPorLavador] = '" + permissao.relLavagemPorLavador + "' " +
+                                  " ,[relCarrosNoLavajato] = '" + permissao.relCarrosNoLavajato + "' " +
+                                  " ,[relServicoPorOs] = '" + permissao.relServicoPorOs + "' " +
+                                  " ,[relServicoCancelado] = '" + permissao.relServicoCancelado + "' " +
+                             " WHERE [PermissaoID] = " + permissao.ID;
 
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query2);
             dataBaseHelper.Run();
@@ -249,22 +320,31 @@ namespace HenryCorporation.Lavajato.DataAccess
             return usuarios;
         }
 
-        public void AddPermissao(Permissao permissao)
-        {
-            string query = " INSERT INTO Permissao (Produto, Usuario, Servico, OrdemServico, Relatorio, Caixa, CategoriaProduto) " +
-            " VALUES ( '" + permissao.Produto + "', '" + permissao.Usuario + "','" + permissao.Servico + "', " +
-            " '" + permissao.OrdemServico + "','" + permissao.Relatorio + "', '" + permissao.Caixa + "', '" + permissao.CategoriaProduto + "' ) ";
-
-            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
-            dataBaseHelper.Run();
-        }
-
         public DataSet GetAll()
         {
-            string query = " SELECT Usuarios.UsuarioID, Usuarios.Nome, Usuarios.Login, Permissao.Produto, Permissao.Usuario, Permissao.Servico, Permissao.OrdemServico, Permissao.Relatorio, " +
-                           " Permissao.Caixa, Permissao.CategoriaProduto FROM Usuarios INNER JOIN " +
-                           " PermissaoUsuario ON Usuarios.UsuarioID = PermissaoUsuario.UsuarioID INNER JOIN " +
+            string query = "SELECT Usuarios.UsuarioID, Usuarios.Nome, Usuarios.Login, " +
+                           " [Permissao].[cliente]" +
+                           " ,[Permissao].[Usuario]" +
+                           " ,[Permissao].[Produto]" +
+                           " ,[Permissao].[Convenio]" +
+                           " ,[Permissao].[Credor]" +
+                           " ,[Permissao].[Servico]" +
+                           " ,[Permissao].[OrdemServico]" +
+                           " ,[Permissao].[OrdemAberto]" +
+                           " ,[Permissao].[IncluirLavadorNoServico]" +
+                           " ,[Permissao].[CancelaOrdemServico]" +
+                           " ,[Permissao].[relCaixa]" +
+                           " ,[Permissao].[relCaixaPorData]" +
+                           " ,[Permissao].[relEstoque]" +
+                           " ,[Permissao].[relCliente]" +
+                           " ,[Permissao].[relLavagemPorLavador]" +
+                           " ,[Permissao].[relCarrosNoLavajato]" +
+                           " ,[Permissao].[relServicoPorOs]" +
+                           " ,[Permissao].[relServicoCancelado]" +
+                           "  FROM Usuarios INNER JOIN " +
+                           "  PermissaoUsuario ON Usuarios.UsuarioID = PermissaoUsuario.UsuarioID INNER JOIN " +
                            " Permissao ON Permissaousuario.PermissaoID = Permissao.PermissaoID Where Usuarios.[Delete] = 0";
+
 
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
            return dataBaseHelper.Run(this.ConnectionString);
@@ -277,16 +357,28 @@ namespace HenryCorporation.Lavajato.DataAccess
             DataSet dataSet = dataBaseHelper.Run(this.ConnectionString);
             DataTableReader reader = dataSet.Tables[0].CreateDataReader();
             Permissao permissao = new Permissao();
-            if(reader.Read())
+            if (reader.Read())
             {
-                permissao.ID = reader.IsDBNull(0) ? 0 : reader.GetInt32(0) ;
-                permissao.Produto=reader.IsDBNull(1) ? 0 : Convert.ToInt32( reader.GetByte(1));
-                permissao.Usuario = reader.IsDBNull(0) ? 0 : reader.GetByte(2);
-                permissao.Servico = reader.IsDBNull(0) ? 0 : reader.GetByte(3);
-                permissao.OrdemServico = reader.IsDBNull(0) ? 0 : reader.GetByte(4);
-                permissao.Relatorio = reader.IsDBNull(0) ? 0 : reader.GetByte(5);
-                permissao.Caixa = reader.IsDBNull(0) ? 0 : reader.GetByte(6);
-                permissao.CategoriaProduto = reader.IsDBNull(0) ? 0 : reader.GetByte(7);
+
+                permissao.ID = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
+                permissao.cliente = permissao.cliente = reader.IsDBNull(1) ? 0 : reader.GetInt32(1);
+                permissao.Usuario = permissao.Usuario = reader.IsDBNull(2) ? 0 : reader.GetInt32(2);
+                permissao.Produto = permissao.Produto = reader.IsDBNull(3) ? 0 : reader.GetInt32(3);
+                permissao.Convenio = permissao.Convenio = reader.IsDBNull(4) ? 0 : reader.GetInt32(4);
+                permissao.Credor = permissao.Credor = reader.IsDBNull(5) ? 0 : reader.GetInt32(5);
+                permissao.Servico = permissao.Servico = reader.IsDBNull(6) ? 0 : reader.GetInt32(6);
+                permissao.OrdemServico = permissao.OrdemServico = reader.IsDBNull(7) ? 0 : reader.GetInt32(7);
+                permissao.OrdemAberto = permissao.OrdemAberto = reader.IsDBNull(8) ? 0 : reader.GetInt32(8);
+                permissao.IncluirLavadorNoServico = permissao.IncluirLavadorNoServico = reader.IsDBNull(9) ? 0 : reader.GetInt32(9);
+                permissao.CancelaOrdemServico = permissao.CancelaOrdemServico = reader.IsDBNull(10) ? 0 : reader.GetInt32(10);
+                permissao.relCaixa = permissao.relCaixa = reader.IsDBNull(11) ? 0 : Convert.ToInt32(reader.GetString(11));
+                permissao.relCaixaPorData = permissao.relCaixaPorData = reader.IsDBNull(12) ? 0 : Convert.ToInt32(reader.GetString(12));
+                permissao.relEstoque = permissao.relEstoque = reader.IsDBNull(13) ? 0 : Convert.ToInt32(reader.GetString(13));
+                permissao.relCliente = permissao.relCliente = reader.IsDBNull(14) ? 0 : Convert.ToInt32(reader.GetString(14));
+                permissao.relLavagemPorLavador = permissao.relLavagemPorLavador = reader.IsDBNull(15) ? 0 :Convert.ToInt32( reader.GetString(15));
+                permissao.relCarrosNoLavajato = permissao.relCarrosNoLavajato = reader.IsDBNull(16) ? 0 :Convert.ToInt32( reader.GetString(16));
+                permissao.relServicoPorOs = permissao.relServicoPorOs = reader.IsDBNull(17) ? 0 :Convert.ToInt32( reader.GetString(17));
+                permissao.relServicoCancelado = permissao.relServicoCancelado = reader.IsDBNull(18) ? 0 : Convert.ToInt32(reader.GetString(18));
                 return permissao;
             }
             return permissao;

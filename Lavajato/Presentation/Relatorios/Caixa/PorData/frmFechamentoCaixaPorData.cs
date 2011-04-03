@@ -19,8 +19,19 @@ namespace HenryCorporation.Lavajato.Presentation
         private void btnGerarRelatorio_Click(object sender, EventArgs e)
         {
             frmRelFechamentoCaixaPorData porData =
-                new frmRelFechamentoCaixaPorData(this.dateInicial.Value, this.dateFinal.Value);
+                new frmRelFechamentoCaixaPorData(ConvertDataFormatoPTBR(this.dateInicial.Value),
+            ConvertDataFormatoPTBR(this.dateFinal.Value));
             porData.ShowDialog();
+        }
+
+
+        private static string ConvertDataFormatoPTBR(DateTime date)
+        {
+            string mes = date.Month.ToString().Length == 1 ? "0" + date.Month.ToString() : date.Month.ToString();
+            string dia = date.Day.ToString().Length == 1 ? "0" + date.Day.ToString() : date.Day.ToString();
+            string ano = date.Year.ToString();
+
+            return dia + "/" + mes + "/" + ano;
         }
     }
 }

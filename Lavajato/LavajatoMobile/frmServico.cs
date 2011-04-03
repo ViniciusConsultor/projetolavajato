@@ -224,7 +224,7 @@ namespace LavajatoMobile
 
         private void btnAdicionaProduto_Click(object sender, EventArgs e)
         {
-            if (_cliente.ID == 0)
+            if (_servico.Cliente.ID == 0)
             {
                 MessageBox.Show("Favor retornar e escolher um cliente valido", "Atenção!");
                 return;

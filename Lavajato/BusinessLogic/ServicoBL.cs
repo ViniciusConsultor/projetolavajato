@@ -11,8 +11,10 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 {
     public class ServicoBL
     {
-        ServicoDAO servicoDAO = new ServicoDAO();
-        ServicoFormaPagamentoDAO servicoPagamentoDAO = new ServicoFormaPagamentoDAO();
+        private ServicoDAO servicoDAO = new ServicoDAO();
+        private ServicoFormaPagamentoDAO servicoPagamentoDAO = new ServicoFormaPagamentoDAO();
+        private ExpositorDAO expositorDAO = new ExpositorDAO();
+
         private const int qtdeMaximaDeOrdensDeServico = 1000;
         
 
@@ -23,16 +25,32 @@ namespace HenryCorporation.Lavajato.BusinessLogic
 
         #region Metodos CRUD Servico
 
+        /// <summary>
+        /// Procura Servico pela placa do cliente, para ser localizado deverá haver um serviço 
+        /// criado para o cliente
+        /// </summary>
+        /// <param name="cliente"></param>
+        /// <returns></returns>
         public Servico ByCliente(Cliente cliente)
         {
             return servicoDAO.ByCliente(cliente);
         }
 
+        /// <summary>
+        /// Adiciona um novo Serviço
+        /// </summary>
+        /// <param name="servico">Servico</param>
+        /// <returns>Retorna o Serviço Adicionado</returns>
         public Servico Add(Servico servico)
         {
              return servicoDAO.Add(servico);
         }
 
+        /// <summary>
+        /// Procura o Serviço por ID
+        /// </summary>
+        /// <param name="servico">Servico</param>
+        /// <returns>Servico</returns>
         public Servico ByID(Servico servico)
         {
             return servicoDAO.ByID(servico);

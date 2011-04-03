@@ -308,6 +308,6 @@
     <value>rptFechamentoDeCaixaPorData.rdlc</value>
   </data>
   <data name="relFechamentoDeCaixaPorData" xml:space="preserve">
-    <value>\\Relatorios\\Caixa\\PorData\\</value>
+    <value>\Relatorios\Caixa\PorData\</value>
   </data>
 </root>

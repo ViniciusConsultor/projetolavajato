@@ -39,7 +39,9 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void PreviewReport(DataTable table)
         {
-            string strPathReport = Path.Combine(Application.StartupPath + Resources.relFechamentoDeCaixa, Resources.rdlVendaPorPeriodo);
+            string strPathReport = Path.Combine(Application.StartupPath + Resources.relFechamentoDeCaixa,
+                Resources.rdlVendaPorPeriodo);
+            
             strPathReport = strPathReport.Replace(Resources.BinDebug, "");
             this.reportViewFechamentoCaixa.LocalReport.ReportPath = strPathReport;
 
