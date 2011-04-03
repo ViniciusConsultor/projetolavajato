@@ -547,7 +547,7 @@ namespace HenryCorporation.Lavajato.Presentation.Properties {
         }
         
         /// <summary>
-        ///   Looks up a localized string similar to \\Relatorios\\Caixa\\PorData\\.
+        ///   Looks up a localized string similar to \Relatorios\Caixa\PorData\.
         /// </summary>
         internal static string relFechamentoDeCaixaPorData {
             get {

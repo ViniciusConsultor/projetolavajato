@@ -62,6 +62,7 @@
             this.contasAReceberToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.relatóriosToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.fechamentoDeCaixaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.fechamentoDeCaixaPorDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtoAbaixoEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.proudutoAbaixoEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.produtoEmEstoqueToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -76,7 +77,6 @@
             this.button3 = new System.Windows.Forms.Button();
             this.button4 = new System.Windows.Forms.Button();
             this.button5 = new System.Windows.Forms.Button();
-            this.fechamentoDeCaixaPorDataToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -352,6 +352,13 @@
             this.fechamentoDeCaixaToolStripMenuItem.Text = "Fechamento De Caixa";
             this.fechamentoDeCaixaToolStripMenuItem.Click += new System.EventHandler(this.fechamentoDeCaixaToolStripMenuItem_Click);
             // 
+            // fechamentoDeCaixaPorDataToolStripMenuItem
+            // 
+            this.fechamentoDeCaixaPorDataToolStripMenuItem.Name = "fechamentoDeCaixaPorDataToolStripMenuItem";
+            this.fechamentoDeCaixaPorDataToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
+            this.fechamentoDeCaixaPorDataToolStripMenuItem.Text = "Fechamento De Caixa por Data";
+            this.fechamentoDeCaixaPorDataToolStripMenuItem.Click += new System.EventHandler(this.fechamentoDeCaixaPorDataToolStripMenuItem_Click);
+            // 
             // produtoAbaixoEstoqueToolStripMenuItem
             // 
             this.produtoAbaixoEstoqueToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
@@ -469,13 +476,6 @@
             this.button5.UseVisualStyleBackColor = true;
             this.button5.Click += new System.EventHandler(this.button5_Click);
             // 
-            // fechamentoDeCaixaPorDataToolStripMenuItem
-            // 
-            this.fechamentoDeCaixaPorDataToolStripMenuItem.Name = "fechamentoDeCaixaPorDataToolStripMenuItem";
-            this.fechamentoDeCaixaPorDataToolStripMenuItem.Size = new System.Drawing.Size(235, 22);
-            this.fechamentoDeCaixaPorDataToolStripMenuItem.Text = "Fechamento De Caixa por Data";
-            this.fechamentoDeCaixaPorDataToolStripMenuItem.Click += new System.EventHandler(this.fechamentoDeCaixaPorDataToolStripMenuItem_Click);
-            // 
             // frmPrincipal
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -505,9 +505,7 @@
         private System.Windows.Forms.ToolStripMenuItem cadatToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuáriosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem cadatroProdutosToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem procuraUsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem produtoToolStripMenuItem;
-        private System.Windows.Forms.ToolStripMenuItem categoriaProdutosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem procuraProdutosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem promoçõesToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem servicoToolStripMenuItem;
@@ -549,6 +547,8 @@
         private System.Windows.Forms.ToolStripMenuItem contasAPagarToolStripMenuItem1;
         private System.Windows.Forms.ToolStripMenuItem transferenciaDeProdutosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem fechamentoDeCaixaPorDataToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem procuraUsuariosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem categoriaProdutosToolStripMenuItem;
     }
 }
 

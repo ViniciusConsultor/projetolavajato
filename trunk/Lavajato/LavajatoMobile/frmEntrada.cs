@@ -123,6 +123,7 @@ namespace LavajatoMobile
                     horaSaida = _servico.Saida;
                 }
 
+                _servico.Cliente = _cliente;
                 frmServico frmServico = new frmServico(_servico);
                 frmServico.ShowDialog();
                 LimpaCampos();

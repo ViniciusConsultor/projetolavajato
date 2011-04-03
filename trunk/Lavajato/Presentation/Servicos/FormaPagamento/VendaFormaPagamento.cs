@@ -75,9 +75,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnConcluirVenda_Click(object sender, EventArgs e)
         {
-
             FinalizaVenda();
-
         }
 
         private Pagamento SetUpPagamento()
@@ -350,8 +348,24 @@ namespace HenryCorporation.Lavajato.Presentation
             ServicoBL servicoBL = new ServicoBL();
             servicoBL.Update(_servico);
             servicoBL.InsertPagamento(pagamento);
+            AtualizaExpositor(_servico.ServicoItem);
             MessageBox.Show("Venda Realizada com Sucesso!", "Atenção");
             this.Close();
+        }
+
+        private void AtualizaExpositor(List<ServicoItem> servicoItens)
+        {
+            ExpositorBL expositorBL = new ExpositorBL();
+
+            foreach (var item in servicoItens)
+            {
+                if (item.Produto.CategoriaProduto.ID == 1)
+                {
+                    Expositor expositor = item.Produto.Expositor;
+                    expositor.Quantidade -= int.Parse(item.Quantidade.ToString());
+                    expositorBL.Update(expositor);        
+                }
+            }
         }
     }
 }

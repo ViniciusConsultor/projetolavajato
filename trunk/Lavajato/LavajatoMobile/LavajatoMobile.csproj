@@ -131,10 +131,10 @@
     <WebReferences Include="Web References\" />
   </ItemGroup>
   <ItemGroup>
-    <WebReferenceUrl Include="http://notebook/webservicelavajato.asmx">
+    <WebReferenceUrl Include="http://192.168.0.150/webservicelavajato.asmx">
       <UrlBehavior>Static</UrlBehavior>
       <RelPath>Web References\WSLavajato\</RelPath>
-      <UpdateFromURL>http://notebook/webservicelavajato.asmx</UpdateFromURL>
+      <UpdateFromURL>http://192.168.0.150/webservicelavajato.asmx</UpdateFromURL>
       <ServiceLocationURL>
       </ServiceLocationURL>
       <CachedDynamicPropName>
@@ -144,9 +144,6 @@
       <CachedSettingsPropName>
       </CachedSettingsPropName>
     </WebReferenceUrl>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="Web References\WSLavajato\webservicelavajato.wsdl" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Web References\WSLavajato\Cliente.datasource">
@@ -163,6 +160,7 @@
       <DependentUpon>Reference.map</DependentUpon>
     </None>
     <None Include="Web References\WSLavajato\webservicelavajato.disco" />
+    <None Include="Web References\WSLavajato\webservicelavajato.wsdl" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CompactFramework.CSharp.targets" />
   <ProjectExtensions>

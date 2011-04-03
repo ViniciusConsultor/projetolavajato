@@ -101,13 +101,24 @@ namespace HenryCorporation.Lavajato.Presentation
             this.usuario.RG = rg.Text;
             this.usuario.TipoFuncionario = ((TipoFuncionario)cmbTipoUsuario.SelectedItem);
 
-            this.usuario.Permissao.OrdemServico = Convert.ToInt32(checkBoxOrdemServico.Checked);
-            this.usuario.Permissao.Servico = Convert.ToInt32(checkBoxServico.Checked);
+             this.usuario.Permissao.cliente = Convert.ToInt32(checkBoxCliente.Checked);
+             this.usuario.Permissao.Usuario = Convert.ToInt32(checkBoxUsuario.Checked);
             this.usuario.Permissao.Produto = Convert.ToInt32(checkBoxProduto.Checked);
-            this.usuario.Permissao.Relatorio = Convert.ToInt32(checkBoxRelatorio.Checked);
-            this.usuario.Permissao.Usuario = Convert.ToInt32(checkBoxUsuario.Checked);
-            this.usuario.Permissao.Caixa = Convert.ToInt32(checkBoxCaixa.Checked);
-            this.usuario.Permissao.CategoriaProduto = Convert.ToInt32(checkBoxCategoriaProduto.Checked);
+            this.usuario.Permissao.Convenio = Convert.ToInt32(checkBoxConvenio.Checked);
+            this.usuario.Permissao.Credor = Convert.ToInt32(checkBoxCredor.Checked);
+            this.usuario.Permissao.Servico = Convert.ToInt32(checkBoxServico.Checked);
+            this.usuario.Permissao.OrdemServico = Convert.ToInt32(checkBoxOrdemServico.Checked);
+            this.usuario.Permissao.OrdemAberto = Convert.ToInt32(checkOrdemEmAberto.Checked);
+            this.usuario.Permissao.IncluirLavadorNoServico =Convert.ToInt32(checkBoxIncluirLavadorNoServico.Checked);
+            this.usuario.Permissao.CancelaOrdemServico = Convert.ToInt32(checkBoxCancelaOrdemServicoFinalizada.Checked);
+            this.usuario.Permissao.relCaixa = Convert.ToInt32(checkBoxRelCaixa.Checked);
+            this.usuario.Permissao.relCaixaPorData = Convert.ToInt32(checkBoxRelCaixaPorData.Checked);
+            this.usuario.Permissao.relEstoque = Convert.ToInt32(checkBoxRelEstoque.Checked);
+            this.usuario.Permissao.relCliente = Convert.ToInt32(checkBoxRelClientes.Checked);
+            this.usuario.Permissao.relLavagemPorLavador =Convert.ToInt32(checkBoxRelLavagemPorLavador.Checked);
+            this.usuario.Permissao.relCarrosNoLavajato = Convert.ToInt32(checkBoxCarrosNoLavajato.Checked);
+            this.usuario.Permissao.relServicoPorOs = Convert.ToInt32(checkBoxServicoPorOS.Checked);
+            this.usuario.Permissao.relServicoCancelado = Convert.ToInt32(checkBoxServicoCancelado.Checked);
         }
 
         private void grdUsuarios_MouseDoubleClick(object sender, MouseEventArgs e)
@@ -138,13 +149,25 @@ namespace HenryCorporation.Lavajato.Presentation
             cmbTipoUsuario.SelectedValue = this.usuario.TipoFuncionario.ID;
 
 
-            checkBoxOrdemServico.Checked = Convert.ToBoolean(this.usuario.Permissao.OrdemServico);
-            checkBoxServico.Checked = Convert.ToBoolean(this.usuario.Permissao.Servico);
-            checkBoxProduto.Checked = Convert.ToBoolean(this.usuario.Permissao.Produto);
-            checkBoxRelatorio.Checked = Convert.ToBoolean(this.usuario.Permissao.Relatorio);
+            checkBoxCliente.Checked = Convert.ToBoolean(this.usuario.Permissao.cliente);
             checkBoxUsuario.Checked = Convert.ToBoolean(this.usuario.Permissao.Usuario);
-            checkBoxCaixa.Checked = Convert.ToBoolean(this.usuario.Permissao.Caixa);
-            checkBoxCategoriaProduto.Checked = Convert.ToBoolean(this.usuario.Permissao.CategoriaProduto);
+            checkBoxProduto.Checked = Convert.ToBoolean(this.usuario.Permissao.Produto);
+            checkBoxConvenio.Checked = Convert.ToBoolean(this.usuario.Permissao.Convenio);
+            checkBoxCredor.Checked = Convert.ToBoolean(this.usuario.Permissao.Credor);
+            checkBoxServico.Checked = Convert.ToBoolean(this.usuario.Permissao.Servico);
+            checkBoxOrdemServico.Checked = Convert.ToBoolean(this.usuario.Permissao.OrdemServico);
+            checkOrdemEmAberto.Checked = Convert.ToBoolean(this.usuario.Permissao.OrdemAberto);
+            checkBoxIncluirLavadorNoServico.Checked = Convert.ToBoolean(this.usuario.Permissao.IncluirLavadorNoServico);
+            checkBoxCancelaOrdemServicoFinalizada.Checked = Convert.ToBoolean(this.usuario.Permissao.CancelaOrdemServico);
+            checkBoxRelCaixa.Checked = Convert.ToBoolean(this.usuario.Permissao.relCaixa);
+            checkBoxRelCaixaPorData.Checked = Convert.ToBoolean(this.usuario.Permissao.relCaixaPorData);
+            checkBoxRelEstoque.Checked = Convert.ToBoolean(this.usuario.Permissao.relEstoque);
+            checkBoxRelClientes.Checked = Convert.ToBoolean(this.usuario.Permissao.relCliente);
+            checkBoxRelLavagemPorLavador.Checked = Convert.ToBoolean(this.usuario.Permissao.relLavagemPorLavador);
+            checkBoxCarrosNoLavajato.Checked = Convert.ToBoolean(this.usuario.Permissao.relCarrosNoLavajato);
+            checkBoxServicoPorOS.Checked = Convert.ToBoolean(this.usuario.Permissao.relServicoPorOs);
+            checkBoxServicoCancelado.Checked = Convert.ToBoolean(this.usuario.Permissao.relServicoCancelado);
+
         }
 
         private HenryCorporation.Lavajato.DomainModel.Usuario ProcuraUsuario(HenryCorporation.Lavajato.DomainModel.Usuario usuario)
@@ -212,32 +235,27 @@ namespace HenryCorporation.Lavajato.Presentation
             rg.Clear();
             this.usuario = new HenryCorporation.Lavajato.DomainModel.Usuario();
 
-            checkBoxOrdemServico.Checked = false;
-            checkBoxServico.Checked = false;
-            checkBoxProduto.Checked = false;
-            checkBoxRelatorio.Checked = false;
+            checkBoxCliente.Checked = false;
             checkBoxUsuario.Checked = false;
-            checkBoxCaixa.Checked = false;
-            checkBoxCategoriaProduto.Checked = false;
+            checkBoxProduto.Checked = false;
+            checkBoxConvenio.Checked = false;
+            checkBoxCredor.Checked = false;
+            checkBoxServico.Checked = false;
+            checkBoxOrdemServico.Checked = false;
+            checkOrdemEmAberto.Checked = false;
+            checkBoxIncluirLavadorNoServico.Checked = false;
+            checkBoxCancelaOrdemServicoFinalizada.Checked = false;
+            checkBoxRelCaixa.Checked = false;
+            checkBoxRelCaixaPorData.Checked = false;
+            checkBoxRelEstoque.Checked = false;
+            checkBoxRelClientes.Checked = false;
+            checkBoxRelLavagemPorLavador.Checked = false;
+            checkBoxCarrosNoLavajato.Checked = false;
+            checkBoxServicoPorOS.Checked = false;
+            checkBoxServicoCancelado.Checked = false;
+        
         }
-
-        private void cmbTipoUsuario_SelectedIndexChanged(object sender, EventArgs e)
-        {
-            if (cmbTipoUsuario.SelectedValue == null)
-                return;
-
-            var tipoDeUsuario = cmbTipoUsuario.SelectedValue.ToString();
-            if (tipoDeUsuario.Equals("3"))
-            {
-                login.Enabled = false;
-                senha.Enabled = false;
-            }
-            else
-            {
-                login.Enabled = true;
-                senha.Enabled = true;
-            }
-        }
+        
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {

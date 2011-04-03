@@ -21,9 +21,14 @@ namespace HenryCorporation.Lavajato.Presentation
             InitializeComponent();
         }
 
-        private DateTime _dataInicial, _dataFinal;
+        private string _dataInicial, _dataFinal;
 
         public frmRelFechamentoCaixaPorData(DateTime dataInicial, DateTime dataFinal)
+        {
+            InitializeComponent();
+        }
+
+        public frmRelFechamentoCaixaPorData(string dataInicial, string dataFinal)
         {
             InitializeComponent();
             _dataInicial = dataInicial;
@@ -40,10 +45,11 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             string strPathReport = Path.Combine(Application.StartupPath + Resources.relFechamentoDeCaixaPorData, 
                 Resources.rdlFechamentoDeCaixaPorData);
+
             strPathReport = strPathReport.Replace(Resources.BinDebug, "");
             this.reportViewFechamentoCaixa.LocalReport.ReportPath = strPathReport;
 
-            ReportDataSource myReportDataSource = new ReportDataSource(Resources.dsFechamentoDeCaixaPorData, table);
+            ReportDataSource myReportDataSource = new ReportDataSource("dsVendaPorData", table);
             this.reportViewFechamentoCaixa.LocalReport.DataSources.Add(myReportDataSource);
         }
 

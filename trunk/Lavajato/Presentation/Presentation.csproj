@@ -559,6 +559,11 @@
     <None Include="Properties\DataSources\HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCaixa.FechamentoCaixa+DataTable1RowChangeEvent.datasource" />
     <None Include="Properties\DataSources\HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCaixa.FechamentoCaixa+DataTable1RowChangeEventHandler.datasource" />
     <None Include="Properties\DataSources\HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCaixa.FechamentoCaixa.datasource" />
+    <None Include="Properties\DataSources\HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.PorData.dsFechamentoDeCaixaPorData+DataTable1DataTable.datasource" />
+    <None Include="Properties\DataSources\HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.PorData.dsFechamentoDeCaixaPorData+DataTable1Row.datasource" />
+    <None Include="Properties\DataSources\HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.PorData.dsFechamentoDeCaixaPorData+DataTable1RowChangeEvent.datasource" />
+    <None Include="Properties\DataSources\HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.PorData.dsFechamentoDeCaixaPorData+DataTable1RowChangeEventHandler.datasource" />
+    <None Include="Properties\DataSources\HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.PorData.dsFechamentoDeCaixaPorData.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

@@ -51,6 +51,7 @@ namespace HenryCorporation.Lavajato.Presentation
                     _produto.Estoque.Quantidade -= int.Parse(transferencia.Text);
                     _produtoBL.Update(_produto);
                     MessageBox.Show("Transferencia realizada com sucesso", "Atenção");
+                    this.Close();
                 }
                 else
                 {
