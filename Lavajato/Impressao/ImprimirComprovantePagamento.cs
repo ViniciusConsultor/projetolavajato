@@ -48,9 +48,9 @@ namespace Impressao
             
 
             Pen myPen = new Pen(Brushes.Black); 
-            Font myFont1 = new Font("Arial", 8);
+            Font myFont1 = new Font("Arial", 10);
 
-            ev.Graphics.DrawString(strRecibo, myFont1, Brushes.Black, 25, 30);
+            ev.Graphics.DrawString(strRecibo, myFont1, Brushes.Black, 4, 30);
             ev.HasMorePages = false;
         }
 
