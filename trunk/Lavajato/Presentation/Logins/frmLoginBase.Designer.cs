@@ -121,6 +121,8 @@
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
             this.ClientSize = new System.Drawing.Size(401, 144);
             this.Controls.Add(this.groupBox1);
+            this.MaximizeBox = false;
+            this.MinimizeBox = false;
             this.Name = "frmLoginBase";
             this.Text = "Login";
             this.Load += new System.EventHandler(this.frmLoginBase_Load);

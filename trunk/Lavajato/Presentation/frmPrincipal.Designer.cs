@@ -51,6 +51,8 @@
             this.servicoToolStripMenuItem1 = new System.Windows.Forms.ToolStripMenuItem();
             this.vendaAvulsaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.saidaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ediçãoRetiradaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.ediçãoEntradaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ordemServiçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ordemServicoAbertoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.incluirLavadorNoServiçoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -258,10 +260,27 @@
             // 
             // saidaToolStripMenuItem
             // 
+            this.saidaToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.ediçãoRetiradaToolStripMenuItem,
+            this.ediçãoEntradaToolStripMenuItem});
             this.saidaToolStripMenuItem.Name = "saidaToolStripMenuItem";
             this.saidaToolStripMenuItem.Size = new System.Drawing.Size(184, 22);
             this.saidaToolStripMenuItem.Text = "3 - Retirada/Entrada";
             this.saidaToolStripMenuItem.Click += new System.EventHandler(this.saidaToolStripMenuItem_Click);
+            // 
+            // ediçãoRetiradaToolStripMenuItem
+            // 
+            this.ediçãoRetiradaToolStripMenuItem.Name = "ediçãoRetiradaToolStripMenuItem";
+            this.ediçãoRetiradaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.ediçãoRetiradaToolStripMenuItem.Text = "1- Edição Retirada";
+            this.ediçãoRetiradaToolStripMenuItem.Click += new System.EventHandler(this.ediçãoRetiradaToolStripMenuItem_Click);
+            // 
+            // ediçãoEntradaToolStripMenuItem
+            // 
+            this.ediçãoEntradaToolStripMenuItem.Name = "ediçãoEntradaToolStripMenuItem";
+            this.ediçãoEntradaToolStripMenuItem.Size = new System.Drawing.Size(173, 22);
+            this.ediçãoEntradaToolStripMenuItem.Text = "2- Edição Entrada";
+            this.ediçãoEntradaToolStripMenuItem.Click += new System.EventHandler(this.ediçãoEntradaToolStripMenuItem_Click);
             // 
             // ordemServiçoToolStripMenuItem
             // 
@@ -549,6 +568,8 @@
         private System.Windows.Forms.ToolStripMenuItem fechamentoDeCaixaPorDataToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem procuraUsuariosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem categoriaProdutosToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ediçãoRetiradaToolStripMenuItem;
+        private System.Windows.Forms.ToolStripMenuItem ediçãoEntradaToolStripMenuItem;
     }
 }
 

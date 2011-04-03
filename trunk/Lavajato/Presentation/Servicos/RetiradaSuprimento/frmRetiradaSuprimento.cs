@@ -33,23 +33,32 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private void btnSalvar_Click(object sender, EventArgs e)
         {
+            RetiradaBL retiradaBL = new RetiradaBL();
+
             if (valor.TextLength == 0 || descricao.TextLength == 0)
             {
                 MessageBox.Show("Favor não deixar campos em branco", "Atenção");
                 return;
             }
 
-            bool isRetirada = lstTipoRetirada.Items[lstTipoRetirada.SelectedIndex].ToString().Contains(TipoRetirada.Sangria.ToString());
-            bool isVale = lstTipoRetirada.Items[lstTipoRetirada.SelectedIndex].ToString().Contains(TipoRetirada.Vale.ToString());
-            bool isSuprimento = lstTipoRetirada.Items[lstTipoRetirada.SelectedIndex].ToString().Contains(TipoRetirada.Suprimento.ToString());
-
+            bool isRetirada = lstTipoRetirada
+                .Items[lstTipoRetirada.SelectedIndex].ToString().Contains(TipoRetirada.Sangria.ToString());
+            bool isVale = lstTipoRetirada
+                .Items[lstTipoRetirada.SelectedIndex].ToString().Contains(TipoRetirada.Retirada.ToString());
+            bool isSuprimento = lstTipoRetirada
+                .Items[lstTipoRetirada.SelectedIndex].ToString().Contains(TipoRetirada.Suprimento.ToString());
+            bool valeTransporte = lstTipoRetirada
+                .Items[lstTipoRetirada.SelectedIndex].ToString().Contains(TipoRetirada.Transporte.ToString());
+            bool isDespecasNotaFiscal = lstTipoRetirada
+                .Items[lstTipoRetirada.SelectedIndex].ToString().Contains(TipoRetirada.Fiscal.ToString());
             try
             {
                 if (isRetirada)
                 {
                     Retirada retirada = SetUpRetirada();
                     retirada.TipoRetirada = TipoRetirada.Sangria;
-                    retirada = new RetiradaBL().Add(retirada);
+                    retirada.Vale.isVale = 1;
+                    retirada = retiradaBL.Add(retirada);
 
                     MessageBox.Show("Retirada inserida com sucesso!", "Atenção");
                 }
@@ -61,10 +70,10 @@ namespace HenryCorporation.Lavajato.Presentation
                     if (frmLoginRetirada.User.ID > 0)
                     {
                         Retirada retirada = SetUpRetirada();
-                        retirada.TipoRetirada = TipoRetirada.Vale;
+                        retirada.TipoRetirada = TipoRetirada.Retirada;
                         retirada.Vale = new Vale() { Usuario = frmLoginRetirada.User };
-                        retirada.Vale.isVale = 1;
-                        retirada = new RetiradaBL().Add(retirada);
+                        retirada.Vale.isVale = 2;
+                        retirada = retiradaBL.Add(retirada);
                         MessageBox.Show("Retirada inserida com sucesso!", "Atenção");
                     }
                 }
@@ -72,9 +81,27 @@ namespace HenryCorporation.Lavajato.Presentation
                 {
                     Suprimento suprimento = SetUpSuprimento();
                     suprimento.TipoRetirada = TipoRetirada.Suprimento;
-                    suprimento = new SuprimentoBL().Insert(suprimento);
+                    suprimento = new SuprimentoBL().Add(suprimento);
 
                     MessageBox.Show("Suprimento inserido com sucesso!", "Atenção");
+                }
+                else if (valeTransporte)
+                {
+                    Retirada retirada = SetUpRetirada();
+                    retirada.TipoRetirada = TipoRetirada.Sangria;
+                    retirada.Vale.isVale = 3;
+                    retirada = retiradaBL.Add(retirada);
+
+                    MessageBox.Show("Retirada inserida com sucesso!", "Atenção");
+                }
+                else if (isDespecasNotaFiscal)
+                {
+                    Retirada retirada = SetUpRetirada();
+                    retirada.TipoRetirada = TipoRetirada.Sangria;
+                    retirada.Vale.isVale = 4;
+                    retirada = retiradaBL.Add(retirada);
+
+                    MessageBox.Show("Retirada inserida com sucesso!", "Atenção");
                 }
             }
             catch (ArgumentException)

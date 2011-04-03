@@ -128,7 +128,7 @@
             // btnFechar
             // 
             this.btnFechar.BackColor = System.Drawing.Color.Red;
-            this.btnFechar.Location = new System.Drawing.Point(171, 209);
+            this.btnFechar.Location = new System.Drawing.Point(1, 188);
             this.btnFechar.Name = "btnFechar";
             this.btnFechar.Size = new System.Drawing.Size(67, 21);
             this.btnFechar.TabIndex = 36;

@@ -33,6 +33,8 @@
               <xs:element name="QtdeOS" msprop:Generator_ColumnVarNameInTable="columnQtdeOS" msprop:Generator_ColumnPropNameInRow="QtdeOS" msprop:Generator_ColumnPropNameInTable="QtdeOSColumn" msprop:Generator_UserColumnName="QtdeOS" type="xs:string" minOccurs="0" />
               <xs:element name="Vale" msprop:Generator_ColumnVarNameInTable="columnVale" msprop:Generator_ColumnPropNameInRow="Vale" msprop:Generator_ColumnPropNameInTable="ValeColumn" msprop:Generator_UserColumnName="Vale" type="xs:string" minOccurs="0" />
               <xs:element name="TotalCaixa" msprop:Generator_ColumnVarNameInTable="columnTotalCaixa" msprop:Generator_ColumnPropNameInRow="TotalCaixa" msprop:Generator_ColumnPropNameInTable="TotalCaixaColumn" msprop:Generator_UserColumnName="TotalCaixa" type="xs:string" minOccurs="0" />
+              <xs:element name="ValeTransporte" msprop:Generator_ColumnVarNameInTable="columnValeTransporte" msprop:Generator_ColumnPropNameInRow="ValeTransporte" msprop:Generator_ColumnPropNameInTable="ValeTransporteColumn" msprop:Generator_UserColumnName="ValeTransporte" type="xs:string" minOccurs="0" />
+              <xs:element name="DespeasNotaFiscal" msprop:Generator_ColumnVarNameInTable="columnDespeasNotaFiscal" msprop:Generator_ColumnPropNameInRow="DespeasNotaFiscal" msprop:Generator_ColumnPropNameInTable="DespeasNotaFiscalColumn" msprop:Generator_UserColumnName="DespeasNotaFiscal" type="xs:string" minOccurs="0" />
             </xs:sequence>
           </xs:complexType>
         </xs:element>

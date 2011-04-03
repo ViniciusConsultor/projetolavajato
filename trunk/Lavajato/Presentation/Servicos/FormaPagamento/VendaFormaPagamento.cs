@@ -12,7 +12,7 @@ using HenryCorporation.Lavajato.BusinessLogic;
 
 namespace HenryCorporation.Lavajato.Presentation
 {
-    public partial class VendaFormaPagamento : Form
+    public partial class VendaFormaPagamento : login
     {
         private Servico _servico;
         private decimal _totalBakup = 0;
@@ -57,7 +57,7 @@ namespace HenryCorporation.Lavajato.Presentation
             _servico.Total = Configuracao.ConverteParaDecimal(Dinheiro.WithdrawDollar(txtTotalPagamento.Text));
             _servico.SubTotal = Configuracao.ConverteParaDecimal(Dinheiro.WithdrawDollar(txtTotalPagamento.Text));
             _servico.Desconto = Configuracao.ConverteParaDecimal(Dinheiro.WithdrawDollar(txtDesconto.Text));
-            
+           
             return _servico;
         }
 
@@ -346,10 +346,15 @@ namespace HenryCorporation.Lavajato.Presentation
             _servico = SetUpServico();
 
             ServicoBL servicoBL = new ServicoBL();
+            _servico.UsuarioVendaFutura.ID = _servico.AcertoFuturo == 1 ? this.Usuario.ID : 0;
             servicoBL.Update(_servico);
             servicoBL.InsertPagamento(pagamento);
             AtualizaExpositor(_servico.ServicoItem);
+            
+            
             MessageBox.Show("Venda Realizada com Sucesso!", "Atenção");
+
+
             this.Close();
         }
 

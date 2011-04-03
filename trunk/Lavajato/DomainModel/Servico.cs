@@ -28,10 +28,11 @@ namespace HenryCorporation.Lavajato.DomainModel
         public int AcertoFuturo { get; set; }
         public int Pago { get; set; }
         public int Lavador { get; set; }
+        public Usuario UsuarioVendaFutura { get; set; }
 
         public Servico()
         {
-
+            UsuarioVendaFutura = new Usuario();
         }
 
         public Usuario Usuario

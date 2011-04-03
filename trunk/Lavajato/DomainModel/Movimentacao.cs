@@ -8,7 +8,9 @@ namespace HenryCorporation.Lavajato.DomainModel
     public enum TipoRetirada 
     {
         Sangria,
-        Vale ,
+        Retirada,
         Suprimento,
+        Transporte,
+        Fiscal,
     }
 }

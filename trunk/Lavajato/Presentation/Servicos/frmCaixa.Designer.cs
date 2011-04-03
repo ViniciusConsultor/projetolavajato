@@ -32,7 +32,6 @@ namespace HenryCorporation.Lavajato.Presentation
         private void InitializeComponent()
         {
             System.Windows.Forms.Button btnAlterarQuantidade;
-            System.Windows.Forms.CheckBox acertoFuturo;
             this.grdServico = new System.Windows.Forms.DataGridView();
             this.btnSair = new System.Windows.Forms.Button();
             this.btnExcluir = new System.Windows.Forms.Button();
@@ -60,8 +59,8 @@ namespace HenryCorporation.Lavajato.Presentation
             this.label3 = new System.Windows.Forms.Label();
             this.cmbProduto = new System.Windows.Forms.ComboBox();
             this.quantidade = new System.Windows.Forms.TextBox();
+            this.checkBoxAcertoFuturo = new System.Windows.Forms.CheckBox();
             btnAlterarQuantidade = new System.Windows.Forms.Button();
-            acertoFuturo = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.grdServico)).BeginInit();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -77,19 +76,6 @@ namespace HenryCorporation.Lavajato.Presentation
             btnAlterarQuantidade.Text = "Alterar Quantidade (F3)";
             btnAlterarQuantidade.UseVisualStyleBackColor = true;
             btnAlterarQuantidade.Click += new System.EventHandler(this.btnAlterarQuantidade_Click);
-            // 
-            // acertoFuturo
-            // 
-            acertoFuturo.AutoSize = true;
-            acertoFuturo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            acertoFuturo.Location = new System.Drawing.Point(144, 280);
-            acertoFuturo.Name = "acertoFuturo";
-            acertoFuturo.Size = new System.Drawing.Size(154, 29);
-            acertoFuturo.TabIndex = 8;
-            acertoFuturo.Text = "Acerto futuro";
-            acertoFuturo.UseVisualStyleBackColor = true;
-            acertoFuturo.Visible = false;
-            acertoFuturo.CheckedChanged += new System.EventHandler(this.acertoFuturo_CheckedChanged);
             // 
             // grdServico
             // 
@@ -147,10 +133,10 @@ namespace HenryCorporation.Lavajato.Presentation
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.checkBoxAcertoFuturo);
             this.groupBox2.Controls.Add(this.button1);
             this.groupBox2.Controls.Add(this.ordemServico);
             this.groupBox2.Controls.Add(this.chbLavado);
-            this.groupBox2.Controls.Add(acertoFuturo);
             this.groupBox2.Controls.Add(this.label5);
             this.groupBox2.Controls.Add(this.placa);
             this.groupBox2.Controls.Add(this.veiculo);
@@ -400,6 +386,18 @@ namespace HenryCorporation.Lavajato.Presentation
             this.quantidade.KeyDown += new System.Windows.Forms.KeyEventHandler(this.quantidade_KeyDown);
             this.quantidade.Leave += new System.EventHandler(this.quantidade_Leave);
             // 
+            // checkBoxAcertoFuturo
+            // 
+            this.checkBoxAcertoFuturo.AutoSize = true;
+            this.checkBoxAcertoFuturo.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.checkBoxAcertoFuturo.Location = new System.Drawing.Point(144, 280);
+            this.checkBoxAcertoFuturo.Name = "checkBoxAcertoFuturo";
+            this.checkBoxAcertoFuturo.Size = new System.Drawing.Size(161, 29);
+            this.checkBoxAcertoFuturo.TabIndex = 27;
+            this.checkBoxAcertoFuturo.Text = "Acerto Futuro";
+            this.checkBoxAcertoFuturo.UseVisualStyleBackColor = true;
+            this.checkBoxAcertoFuturo.CheckedChanged += new System.EventHandler(this.checkBoxAcertoFuturo_CheckedChanged);
+            // 
             // frmCaixa
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -468,5 +466,6 @@ namespace HenryCorporation.Lavajato.Presentation
         private System.Windows.Forms.ComboBox cmbProduto;
         private System.Windows.Forms.TextBox quantidade;
         private System.Windows.Forms.Button btnSair;
+        private System.Windows.Forms.CheckBox checkBoxAcertoFuturo;
     }
 }

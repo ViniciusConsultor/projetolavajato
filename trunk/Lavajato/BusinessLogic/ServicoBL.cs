@@ -86,6 +86,11 @@ namespace HenryCorporation.Lavajato.BusinessLogic
             servicoDAO.ServicoDel(servico);
         }
 
+        public void AcertoFuturo(Servico servico)
+        {
+            servicoDAO.AcertoFuturo(servico);
+        }
+
         /// <summary>
         /// Procura serviços do cliente do ID do cliente, não leva em conta a data
         /// </summary>
