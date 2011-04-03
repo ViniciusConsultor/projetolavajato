@@ -34,7 +34,6 @@
             // txtPassword
             // 
             this.txtPassword.PasswordChar = '*';
-            this.txtPassword.TabIndex = 3;
             this.txtPassword.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtPassword_KeyDown);
             // 
             // btnCancelar

@@ -39,7 +39,7 @@ namespace HenryCorporation.Lavajato.Presentation
             suprimento.Valor = Operacional.Configuracao.ConverteParaDecimal(valor.Text);
             suprimento.Usuario = this.Usuario;
             suprimento.Descricao = descricao.Text;
-            suprimento = suprimentoBL.Insert(suprimento);
+            suprimento = suprimentoBL.Add(suprimento);
 
             MessageBox.Show("Suprimento inserido com sucesso!", "Atenção");
 

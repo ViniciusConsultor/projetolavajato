@@ -311,6 +311,10 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             
             private global::System.Data.DataColumn columnTotalCaixa;
             
+            private global::System.Data.DataColumn columnValeTransporte;
+            
+            private global::System.Data.DataColumn columnDespeasNotaFiscal;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public DataTable1DataTable() {
@@ -474,6 +478,22 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn ValeTransporteColumn {
+                get {
+                    return this.columnValeTransporte;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public global::System.Data.DataColumn DespeasNotaFiscalColumn {
+                get {
+                    return this.columnDespeasNotaFiscal;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -525,7 +545,9 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
                         decimal SomaTotal, 
                         string QtdeOS, 
                         string Vale, 
-                        string TotalCaixa) {
+                        string TotalCaixa, 
+                        string ValeTransporte, 
+                        string DespeasNotaFiscal) {
                 DataTable1Row rowDataTable1Row = ((DataTable1Row)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         OSInicial,
@@ -543,7 +565,9 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
                         SomaTotal,
                         QtdeOS,
                         Vale,
-                        TotalCaixa};
+                        TotalCaixa,
+                        ValeTransporte,
+                        DespeasNotaFiscal};
                 rowDataTable1Row.ItemArray = columnValuesArray;
                 this.Rows.Add(rowDataTable1Row);
                 return rowDataTable1Row;
@@ -582,6 +606,8 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
                 this.columnQtdeOS = base.Columns["QtdeOS"];
                 this.columnVale = base.Columns["Vale"];
                 this.columnTotalCaixa = base.Columns["TotalCaixa"];
+                this.columnValeTransporte = base.Columns["ValeTransporte"];
+                this.columnDespeasNotaFiscal = base.Columns["DespeasNotaFiscal"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -619,6 +645,10 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
                 base.Columns.Add(this.columnVale);
                 this.columnTotalCaixa = new global::System.Data.DataColumn("TotalCaixa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnTotalCaixa);
+                this.columnValeTransporte = new global::System.Data.DataColumn("ValeTransporte", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnValeTransporte);
+                this.columnDespeasNotaFiscal = new global::System.Data.DataColumn("DespeasNotaFiscal", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnDespeasNotaFiscal);
                 this.columnOSInicial.ReadOnly = true;
                 this.columnOSFinal.ReadOnly = true;
                 this.columnOSCancelado.ReadOnly = true;
@@ -1030,6 +1060,38 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string ValeTransporte {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.ValeTransporteColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'ValeTransporte\' in table \'DataTable1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.ValeTransporteColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public string DespeasNotaFiscal {
+                get {
+                    try {
+                        return ((string)(this[this.tableDataTable1.DespeasNotaFiscalColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'DespeasNotaFiscal\' in table \'DataTable1\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableDataTable1.DespeasNotaFiscalColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public bool IsOSInicialNull() {
                 return this.IsNull(this.tableDataTable1.OSInicialColumn);
             }
@@ -1218,6 +1280,30 @@ namespace HenryCorporation.Lavajato.Presentation.Relatorios.Caixa.FechamentoDeCa
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
             public void SetTotalCaixaNull() {
                 this[this.tableDataTable1.TotalCaixaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsValeTransporteNull() {
+                return this.IsNull(this.tableDataTable1.ValeTransporteColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetValeTransporteNull() {
+                this[this.tableDataTable1.ValeTransporteColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public bool IsDespeasNotaFiscalNull() {
+                return this.IsNull(this.tableDataTable1.DespeasNotaFiscalColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")]
+            public void SetDespeasNotaFiscalNull() {
+                this[this.tableDataTable1.DespeasNotaFiscalColumn] = global::System.Convert.DBNull;
             }
         }
         

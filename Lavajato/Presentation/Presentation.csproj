@@ -522,6 +522,15 @@
       <DependentUpon>frmOrdensAbertas.cs</DependentUpon>
       <SubType>Designer</SubType>
     </EmbeddedResource>
+    <EmbeddedResource Include="Servicos\RetiradaSuprimento\frmPesquisaSuprimento.resx">
+      <DependentUpon>frmPesquisaSuprimento.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Servicos\RetiradaSuprimento\frmRetiradaEdicao.resx">
+      <DependentUpon>frmRetiradaEdicao.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Servicos\RetiradaSuprimento\frmRetiradaPesquisa.resx">
+      <DependentUpon>frmRetiradaPesquisa.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Servicos\RetiradaSuprimento\frmRetiradaSuprimento.resx">
       <DependentUpon>frmRetiradaSuprimento.cs</DependentUpon>
       <SubType>Designer</SubType>
@@ -534,6 +543,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Servicos\frmVendaAvulsa.resx">
       <DependentUpon>frmVendaAvulsa.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Servicos\RetiradaSuprimento\frmSuprimentoEdicao.resx">
+      <DependentUpon>frmSuprimentoEdicao.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Usuarios\frmUsuario.resx">
       <DependentUpon>frmUsuario.cs</DependentUpon>
@@ -797,6 +809,24 @@
     <Compile Include="Servicos\frmOrdensAbertas.Designer.cs">
       <DependentUpon>frmOrdensAbertas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Servicos\RetiradaSuprimento\frmPesquisaSuprimento.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Servicos\RetiradaSuprimento\frmPesquisaSuprimento.Designer.cs">
+      <DependentUpon>frmPesquisaSuprimento.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Servicos\RetiradaSuprimento\frmRetiradaEdicao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Servicos\RetiradaSuprimento\frmRetiradaEdicao.Designer.cs">
+      <DependentUpon>frmRetiradaEdicao.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Servicos\RetiradaSuprimento\frmRetiradaPesquisa.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Servicos\RetiradaSuprimento\frmRetiradaPesquisa.Designer.cs">
+      <DependentUpon>frmRetiradaPesquisa.cs</DependentUpon>
+    </Compile>
     <Compile Include="Servicos\RetiradaSuprimento\frmRetiradaSuprimento.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -820,6 +850,12 @@
     </Compile>
     <Compile Include="Servicos\frmVendaAvulsa.Designer.cs">
       <DependentUpon>frmVendaAvulsa.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Servicos\RetiradaSuprimento\frmSuprimentoEdicao.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Servicos\RetiradaSuprimento\frmSuprimentoEdicao.Designer.cs">
+      <DependentUpon>frmSuprimentoEdicao.cs</DependentUpon>
     </Compile>
     <Compile Include="Usuarios\frmUsuario.cs">
       <SubType>Form</SubType>

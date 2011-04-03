@@ -106,7 +106,7 @@ namespace HenryCorporation.Lavajato.Presentation
             nome.Text = servicoQueSeraCarregado.Cliente.Nome;
             corVeiculo.Text = servicoQueSeraCarregado.Cliente.Cor;
             chbLavado.Checked = Convert.ToBoolean(servicoQueSeraCarregado.Lavado);
-            //convenio.SelectedValue = servicoQueSeraCarregado.Cliente.Convenio.ID;
+            checkBoxAcertoFuturo.Checked = Convert.ToBoolean(servicoQueSeraCarregado.AcertoFuturo);
         }
 
         private void MudaNomeDoFormulario(Servico servico)
@@ -185,6 +185,7 @@ namespace HenryCorporation.Lavajato.Presentation
         private void btnConcluirVenda_Click(object sender, EventArgs e)
         {
             ConcluirVenda();
+            this.ordemServico.Focus();
         }
 
         private void ConcluirVenda()
@@ -210,6 +211,12 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             _servico.Lavado = Convert.ToInt32(chbLavado.Checked);
             servicoBL.CarroLavado(_servico);
+        }
+
+        private void checkBoxAcertoFuturo_CheckedChanged(object sender, EventArgs e)
+        {
+            _servico.AcertoFuturo = Convert.ToInt32(checkBoxAcertoFuturo.Checked);
+            servicoBL.AcertoFuturo(_servico);
         }
 
         private void btnExcluir_Click(object sender, EventArgs e)
@@ -239,23 +246,7 @@ namespace HenryCorporation.Lavajato.Presentation
         {
             return (_servicoItem.ID > 0);
         }
-
-      
         
-        private void acertoFuturo_CheckedChanged(object sender, EventArgs e)
-        {
-            if (ExisteServico())
-            {
-                _servico.AcertoFuturo = Convert.ToInt32(chbLavado.Checked.ToString());
-                servicoBL.CarroLavado(_servico);
-            }
-            else
-            {
-                MessageBox.Show(Resources.Nenhum_servico_encontrado);
-                return;
-            }
-        }
-
         private bool ExisteServico()
         {
             return servicoBL.ExisteServico(this._servico);

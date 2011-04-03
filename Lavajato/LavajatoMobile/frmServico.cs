@@ -60,6 +60,7 @@ namespace LavajatoMobile
             ServicoBL.ImprimeMensagemParaCarroJaLavado(_servico);
 
             CarregaItens(_servico);
+            lblTotal.Text = "R$ " + SomaTotal();
 
         }
 
@@ -107,18 +108,42 @@ namespace LavajatoMobile
 
         private void btnExcluir_Click(object sender, EventArgs e)
         {
+           
             if (dataSetItens.Tables[0].Rows.Count > 0)
             {
-                DialogResult res = MessageBox.Show("Deseja realmente apagar o item de pedido", "Atenção",
-                    MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
-                if (res == DialogResult.Yes)
-                {
-                    dataSetItens.Tables[0].Rows[grdServico.CurrentRowIndex].Delete();
-                    grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
+                if (grdServico.CurrentRowIndex == null)
+                    return;
 
-                    MessageBox.Show("Item Deletado", "Atenção!");
+                DataRow row = dataSetItens.Tables[0].Rows[grdServico.CurrentRowIndex];
+                int itemID = int.Parse(row["ID"].ToString());
+                bool itemDel = true;
+                foreach (var item in _servico.ServicoItem)
+                {
+                    if (item.ID == itemID)
+                    {
+                        itemDel = false;
+                        break;
+                    }
+                }
+
+                if (itemDel)
+                {
+                    DialogResult res = MessageBox.Show("Deseja realmente apagar o item de pedido", "Atenção",
+                        MessageBoxButtons.YesNo, MessageBoxIcon.Exclamation, MessageBoxDefaultButton.Button1);
+                    if (res == DialogResult.Yes)
+                    {
+                        dataSetItens.Tables[0].Rows[grdServico.CurrentRowIndex].Delete();
+                        grdServico.DataSource = dataSetItens.Tables[0].DefaultView;
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("Impossível excluir, chame o responsável", "Atenção");
                 }
             }
+
+
+       
         }
 
         private void grdServico_Click(object sender, EventArgs e)

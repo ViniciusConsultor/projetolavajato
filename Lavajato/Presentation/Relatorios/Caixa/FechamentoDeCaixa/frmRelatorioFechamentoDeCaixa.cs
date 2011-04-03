@@ -79,6 +79,8 @@ namespace HenryCorporation.Lavajato.Presentation
                 row["Saida"] = reader.GetDecimal(13);
                 row["Vale"] = reader.GetDecimal(14);
                 row["SomaTotal"] = reader.GetDecimal(15);
+                row["ValeTransporte"] = reader.GetDecimal(16);
+                row["DespeasNotaFiscal"] = reader.GetDecimal(17);
 
                 table.Rows.Add(row);
             }
@@ -95,7 +97,7 @@ namespace HenryCorporation.Lavajato.Presentation
 
         private static DataColumn[] SetUpColumns()
         {
-            var columns = new DataColumn[16];
+            var columns = new DataColumn[18];
 
             var osInicial = new DataColumn();
             osInicial.ColumnName = "OSInicial";
@@ -160,6 +162,14 @@ namespace HenryCorporation.Lavajato.Presentation
             DataColumn SomaTotal = new DataColumn();
             SomaTotal.ColumnName = "SomaTotal";
             columns[15] = SomaTotal;
+
+            DataColumn ValeTransporte = new DataColumn();
+            ValeTransporte.ColumnName = "ValeTransporte";
+            columns[16] = ValeTransporte;
+
+            DataColumn DespeasNotaFiscal = new DataColumn();
+            DespeasNotaFiscal.ColumnName = "DespeasNotaFiscal";
+            columns[17] = DespeasNotaFiscal;
 
             return columns;
         }

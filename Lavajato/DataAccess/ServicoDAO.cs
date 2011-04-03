@@ -15,7 +15,8 @@ namespace HenryCorporation.Lavajato.DataAccess
         internal ServicoItemDAO servicoItemDAO;
 
         string sql = " SELECT [ServicoID], [ClienteID], [Total], [SubTotal], [Desconto], [Saida], [Entrada] " +
-                     " ,[OrdemServico], [FormaPagamentoID], [Delete], [Cancelado], [Lavado], [Finalizado], [UsuarioID], [Pago],[LavadorID]  " +
+                     " ,[OrdemServico], [FormaPagamentoID], [Delete], [Cancelado], [Lavado], [Finalizado], [UsuarioID], "+
+                     " [Pago],[LavadorID], [IDUserAcertoFuturo], [AcertoFuturo]  " +
                      " FROM [Servico] ";
 
         public ServicoDAO()
@@ -31,7 +32,7 @@ namespace HenryCorporation.Lavajato.DataAccess
         {
             string query = " INSERT INTO [Servico]([ClienteID],[Total],[SubTotal], " +
                            " [Desconto],[Saida],[Entrada],[OrdemServico],[FormaPagamentoID],[Delete]," +
-                           " [Cancelado],[Lavado],[Finalizado], [UsuarioID], [Pago])" +
+                           " [Cancelado],[Lavado],[Finalizado], [UsuarioID], [Pago], [IDUserAcertoFuturo])" +
                            " VALUES('" + servico.Cliente.ID + "' " +
                            " ,'" + servico.Total.ToString().Replace(",", ".") + "' " +
                            " ,'" + servico.SubTotal.ToString().Replace(",", ".") + "' " +
@@ -45,7 +46,8 @@ namespace HenryCorporation.Lavajato.DataAccess
                            " ,'" + servico.Lavado + "' " +
                            " ,'" + servico.Finalizado + "' " +
                            " ,'" + servico.Usuario.ID + "' " +
-                           " ,'" + servico.Pago + "')";
+                           " ,'" + servico.Pago + "' "+
+                           " ,'" + servico.UsuarioVendaFutura.ID + "')";
 
             var dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run();
@@ -108,6 +110,8 @@ namespace HenryCorporation.Lavajato.DataAccess
                            " ,[UsuarioID] = '" + servico.Usuario.ID + "' " +
                            " ,[Pago] = '" + servico.Pago + "' " +
                            " ,[LavadorID] = '" + servico.Lavador + "' " +
+                           " ,[AcertoFuturo] = '" + servico.AcertoFuturo + "' " +
+                           " ,[IDUserAcertoFuturo] = '" + servico.UsuarioVendaFutura.ID + "' " +
                            " WHERE [ServicoID] = " + servico.ID;
 
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
@@ -275,6 +279,24 @@ namespace HenryCorporation.Lavajato.DataAccess
 
         #region MetodosAuxiliares
 
+        private Servico ServicoInserido()
+        {
+            string query = " SELECT MAX(SERVICOID) FROM SERVICO ";
+            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            DataSet dataSet = dataBaseHelper.Run(this.ConnectionString);
+            Servico servico = new Servico();
+            servico.ID = int.Parse(dataSet.Tables[0].Rows[0][0].ToString());
+            return ByID(servico);
+        }
+
+        private Usuario SetUpUsuario(int p)
+        {
+            Usuario user = new Usuario();
+            user.ID = p;
+            UsuarioDAO userDao = new UsuarioDAO();
+            return userDao.ByID(user);
+        }
+
         private Servico SetUpField(DataSet dataSet)
         {
             Servico servico = new Servico();
@@ -298,27 +320,11 @@ namespace HenryCorporation.Lavajato.DataAccess
                 servico.Pago = reader.IsDBNull(14) ? 0 : reader.GetInt32(14);
                 servico.Lavador = reader.IsDBNull(15) ? 0 : reader.GetInt32(15);
                 servico.ServicoItem = servicoItemDAO.ItensByID(servico);
+                servico.UsuarioVendaFutura = SetUpUsuario(reader.IsDBNull(16) ? 0 : reader.GetInt32(16));
+                servico.AcertoFuturo = reader.IsDBNull(17) ? 0 : reader.GetInt32(17);
                 return servico;
             }
             return servico;
-        }
-
-        private Servico ServicoInserido()
-        {
-            string query = " SELECT MAX(SERVICOID) FROM SERVICO ";
-            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
-            DataSet dataSet = dataBaseHelper.Run(this.ConnectionString);
-            Servico servico = new Servico();
-            servico.ID = int.Parse(dataSet.Tables[0].Rows[0][0].ToString());
-            return ByID(servico);
-        }
-
-        private Usuario SetUpUsuario(int p)
-        {
-            Usuario user = new Usuario();
-            user.ID = p;
-            UsuarioDAO userDao = new UsuarioDAO();
-            return userDao.ByID(user);
         }
 
         private List<Servico> SetUpFields(DataSet dataSet)
@@ -345,6 +351,7 @@ namespace HenryCorporation.Lavajato.DataAccess
                 servico.Pago = reader.IsDBNull(14) ? 0 : reader.GetInt32(14);
                 servico.Pago = reader.IsDBNull(15) ? 0 : reader.GetInt32(15);
                 servico.ServicoItem = servicoItemDAO.ItensByID(servico);
+                servico.UsuarioVendaFutura = SetUpUsuario(reader.IsDBNull(16) ? 0 : reader.GetInt32(13));
                 servicos.Add(servico);
             }
             return servicos;

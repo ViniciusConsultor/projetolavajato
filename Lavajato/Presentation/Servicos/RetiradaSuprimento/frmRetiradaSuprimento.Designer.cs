@@ -133,9 +133,9 @@
             // btnCancelar
             // 
             this.btnCancelar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnCancelar.Location = new System.Drawing.Point(336, 234);
+            this.btnCancelar.Location = new System.Drawing.Point(440, 231);
             this.btnCancelar.Name = "btnCancelar";
-            this.btnCancelar.Size = new System.Drawing.Size(101, 36);
+            this.btnCancelar.Size = new System.Drawing.Size(105, 27);
             this.btnCancelar.TabIndex = 13;
             this.btnCancelar.Text = "Cancelar";
             this.btnCancelar.UseVisualStyleBackColor = true;
@@ -144,9 +144,9 @@
             // btnSalvar
             // 
             this.btnSalvar.Font = new System.Drawing.Font("Microsoft Sans Serif", 14.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSalvar.Location = new System.Drawing.Point(171, 234);
+            this.btnSalvar.Location = new System.Drawing.Point(551, 231);
             this.btnSalvar.Name = "btnSalvar";
-            this.btnSalvar.Size = new System.Drawing.Size(101, 36);
+            this.btnSalvar.Size = new System.Drawing.Size(111, 27);
             this.btnSalvar.TabIndex = 12;
             this.btnSalvar.Text = "OK";
             this.btnSalvar.UseVisualStyleBackColor = true;
@@ -168,7 +168,9 @@
             this.lstTipoRetirada.ItemHeight = 24;
             this.lstTipoRetirada.Items.AddRange(new object[] {
             "Sangria",
-            "Vale",
+            "Retirada",
+            "Vale Transporte",
+            "Despeças Nota Fiscal",
             "Recebimento/Suprimento"});
             this.lstTipoRetirada.Location = new System.Drawing.Point(6, 11);
             this.lstTipoRetirada.Name = "lstTipoRetirada";
@@ -180,7 +182,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.DeepSkyBlue;
-            this.ClientSize = new System.Drawing.Size(668, 282);
+            this.ClientSize = new System.Drawing.Size(668, 261);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.lblOperador);

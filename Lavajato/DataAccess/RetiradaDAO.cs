@@ -40,6 +40,19 @@ namespace HenryCorporation.Lavajato.DataAccess
             return UltimaRetirada();
         }
 
+        public void Update(Retirada retirada)
+        {
+
+            string query = " UPDATE [Lavajato].[dbo].[Retirada] " +
+            "SET " +
+             "  [Descricao] = '" + retirada.Descricao + "'" +
+             "  ,[Valor] = '" + retirada.Valor.ToString().Replace(",", ".") + "' " +
+             " WHERE retiradaID =" + retirada.ID;
+
+            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            dataBaseHelper.Run();
+        }
+
         private Retirada UltimaRetirada()
         {
             string query = " SELECT MAX([RetiradaID])  FROM [Retirada] ";
@@ -55,10 +68,34 @@ namespace HenryCorporation.Lavajato.DataAccess
             string query = sql + " where retiradaid = " + retirada.ID;
             DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
             dataBaseHelper.Run(this.ConnectionString);
+            return SetUpField(dataBaseHelper.Run(this.ConnectionString));
+        }
+
+        public List<Retirada> ByDate(DateTime date)
+        {
+            string query = sql + " where convert(varchar, Data, 103) = '" + ConvertDataFormatoPTBR(date) + "'";
+            DataBaseHelper dataBaseHelper = new DataBaseHelper(query);
+            dataBaseHelper.Run(this.ConnectionString);
             return SetUpFields(dataBaseHelper.Run(this.ConnectionString));
         }
 
-        private Retirada SetUpFields(DataSet dataSet)
+        public List<Retirada> GetAll()
+        {
+            DataBaseHelper dataBaseHelper = new DataBaseHelper(sql);
+            dataBaseHelper.Run(this.ConnectionString);
+            return SetUpFields(dataBaseHelper.Run(this.ConnectionString));
+        }
+
+        private static string ConvertDataFormatoPTBR(DateTime date)
+        {
+            string mes = date.Month > 1 ? "0" + date.Month.ToString() : date.Month.ToString();
+            string dia = date.Day.ToString().Length == 1 ? "0" + date.Day.ToString() : date.Day.ToString();
+            string ano = date.Year.ToString();
+
+            return dia + "/" + mes + "/" + ano;
+        }
+
+        private Retirada SetUpField(DataSet dataSet)
         { 
             Retirada retirada = new Retirada();
             DataTableReader reader = dataSet.Tables[0].CreateDataReader();
@@ -76,5 +113,28 @@ namespace HenryCorporation.Lavajato.DataAccess
             }
             return retirada;
         }
+
+        private List<Retirada> SetUpFields(DataSet dataSet)
+        {
+            List<Retirada> retiradas = new List<Retirada>();
+            Retirada retirada;
+            DataTableReader reader = dataSet.Tables[0].CreateDataReader();
+            while (reader.Read())
+            {
+                retirada = new Retirada();
+                retirada.ID = reader.IsDBNull(0) ? 0 : reader.GetInt32(0);
+                retirada.Usuario.ID = reader.IsDBNull(1) ? 0 : reader.GetInt32(1);
+                retirada.Descricao = reader.IsDBNull(2) ? "" : reader.GetString(2);
+                retirada.Valor = reader.IsDBNull(3) ? 0 : reader.GetDecimal(3);
+                retirada.Data = reader.IsDBNull(4) ? DateTime.Now : reader.GetDateTime(4);
+                retirada.Vale.isVale = reader.IsDBNull(5) ? 0 : reader.GetInt32(5);
+                retirada.Vale.Usuario.ID = reader.IsDBNull(6) ? 0 : reader.GetInt32(6);
+                retiradas.Add(retirada);
+            }
+
+            return retiradas;
+        }
+
+       
     }
 }
